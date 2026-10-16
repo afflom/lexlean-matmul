@@ -3,12 +3,14 @@
 default: vv
 
 # The whole gate.
-vv: template-check fmt-check model lint test features bdd deny
+vv: template-check fmt-check model lint product-build product-reproducibility test features bdd deny product-mutations
+    node scripts/acceptance.mjs
     @echo "vv: the acceptance gate passed"
 
 # R1, R4, R5 --- the repository gates, each falsifiable.
 model:
     cargo run -q -p xtask -- validate
+    node scripts/project-policy.mjs
 
 # The hand-reviewed trust root is checked independently of generated project
 # content. PrismPM then validates the canonical contract and both locks.
@@ -21,6 +23,7 @@ template-check:
 # Regenerate everything the model owns: CONFORMANCE.md.
 model-write:
     cargo run -q -p xtask -- check-model --write
+    node scripts/write-errors.mjs --write
 
 fmt:
     cargo fmt --all
@@ -55,3 +58,26 @@ bdd:
 # Advisories, bans, licences and sources, over the dependency graph.
 deny:
     cargo deny --all-features check
+
+# All product compilation is delegated to the immutable SDK.
+setup:
+    prismpm fetch --locked
+
+build: product-build
+
+product-build:
+    node scripts/build.mjs
+
+# Diagnostic source proof; this does not qualify application artifacts.
+core-proof:
+    node scripts/verify-core.mjs
+
+product-mutations:
+    node scripts/mutations.mjs
+
+product-reproducibility:
+    node scripts/reproduce.mjs
+
+# Stage the exact verified SDK browser projection for GitHub Pages.
+pages:
+    node scripts/pages.mjs
