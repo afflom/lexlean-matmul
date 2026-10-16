@@ -116,6 +116,17 @@ function validateApplicationCustody(receipt, buildRoot, manifest) {
   assert.deepEqual(receipt.processes.slice(-3), owner.phases[1].processes, 'Top-level transcript must retain the original replay processes');
 }
 
+function validateBundleProvenanceTap(output) {
+  const expected = { tests: 5, suites: 0, pass: 5, fail: 0, cancelled: 0, skipped: 0, todo: 0 };
+  for (const [name, count] of Object.entries(expected)) {
+    const matches = [...output.matchAll(new RegExp(`^# ${name} ([0-9]+)$`, 'gm'))];
+    assert.equal(matches.length, 1, `Bundle provenance TAP must contain exactly one ${name} count`);
+    assert.equal(matches[0][1], String(count), `Bundle provenance TAP ${name} count differs`);
+  }
+  const plans = [...output.matchAll(/^1\.\.([0-9]+)$/gm)];
+  assert.deepEqual(plans.map(match => match[1]), ['5'], 'Bundle provenance TAP must execute its complete five-test plan');
+}
+
 const id = process.argv[2];
 let runtimeReport;
 assert(capabilityIds().includes(id), `Unregistered capability ${id}`);
@@ -125,7 +136,8 @@ if (id === 'MM-10') {
   assert.equal(native?.result?.member?.module, 'Production.BrowserSystem',
     'MM-10 requires the native Production.BrowserSystem system-model /2 authority');
   assert.equal(native.result.member.name, 'SystemModel');
-  run(process.execPath, ['--test', 'scripts/bundle-provenance.test.mjs']);
+  const provenanceTests = run(process.execPath, ['--test', '--test-reporter=tap', 'scripts/bundle-provenance.test.mjs']);
+  validateBundleProvenanceTap(provenanceTests);
 }
 const build = freshBuild();
 const buildRoot = path.dirname(confined(build.manifest_path));

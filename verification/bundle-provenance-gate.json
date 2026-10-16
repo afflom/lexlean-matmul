@@ -1,0 +1,123 @@
+{
+  "schema": "lexlean-matmul/bundle-provenance-gate-diagnostic/1",
+  "qualified_for_release": false,
+  "scope": "Named Node unit-test execution/count boundary only; complete MM-10, immutable SDK, native release, full just vv, and GitHub Pages acceptance remain required.",
+  "node_version": "v22.23.2",
+  "source": {
+    "path": "/home/alex/Desktop/lexlean-matmul/scripts/conformance.mjs",
+    "byte_length": 18821,
+    "sha256": "40880bf83e8dd1f9f9bf75b9b4ec567b580533d8d5dcfe0907c558f11d43e5c6"
+  },
+  "test_source": {
+    "path": "/home/alex/Desktop/lexlean-matmul/scripts/bundle-provenance.test.mjs",
+    "byte_length": 3388,
+    "sha256": "9b51aa2306814bb28cff68b018ed2bf138bffa2b5343c68c0307c8d50da1d103"
+  },
+  "validator_source_sha256": "19972b1d94f9a97425722b6f49febe3e0038f39e025e6645e9816198b0c42fba",
+  "validator_source": "function validateBundleProvenanceTap(output) {\n  const expected = { tests: 5, suites: 0, pass: 5, fail: 0, cancelled: 0, skipped: 0, todo: 0 };\n  for (const [name, count] of Object.entries(expected)) {\n    const matches = [...output.matchAll(new RegExp(`^# ${name} ([0-9]+)$`, 'gm'))];\n    assert.equal(matches.length, 1, `Bundle provenance TAP must contain exactly one ${name} count`);\n    assert.equal(matches[0][1], String(count), `Bundle provenance TAP ${name} count differs`);\n  }\n  const plans = [...output.matchAll(/^1\\.\\.([0-9]+)$/gm)];\n  assert.deepEqual(plans.map(match => match[1]), ['5'], 'Bundle provenance TAP must execute its complete five-test plan');\n}\n",
+  "exact_required_counts": {
+    "tests": 5,
+    "suites": 0,
+    "pass": 5,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "mutation": {
+    "isolated_test": {
+      "path": "/tmp/matmul-bundle-provenance-gate-iTiw7b/bundle-provenance-skipped.test.mjs",
+      "byte_length": 3487,
+      "sha256": "9776e83e90fb156ba820975eabd89d36a571ebf284aa5f01e6894540d792a14f"
+    },
+    "changes": "Absolutize the two original local imports and change only the positive native bundle identity test from test(...) to test.skip(...). Shipping tests and product source are unchanged.",
+    "original_selector": "test('native bundle accepts distinct full-graph and selected-application identities'"
+  },
+  "baseline": {
+    "command": [
+      "/home/alex/.local/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      "scripts/bundle-provenance.test.mjs"
+    ],
+    "node_exit_code": 0,
+    "exit_status_only_gate_would_pass": true,
+    "counts": {
+      "tests": 5,
+      "suites": 0,
+      "pass": 5,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "counter_gate": "passed",
+    "stdout": {
+      "path": "/tmp/matmul-bundle-provenance-gate-iTiw7b/baseline.tap",
+      "byte_length": 1150,
+      "sha256": "caa8839dc0c118d5b81d1f693f07f2b28947153311230e7e7d7a6e99d1590f3c"
+    },
+    "stderr": {
+      "path": "/tmp/matmul-bundle-provenance-gate-iTiw7b/baseline.stderr",
+      "byte_length": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout_text": "TAP version 13\n# Subtest: native bundle accepts distinct full-graph and selected-application identities\nok 1 - native bundle accepts distinct full-graph and selected-application identities\n  ---\n  duration_ms: 1.714255\n  type: 'test'\n  ...\n# Subtest: native bundle rejects a build result from a different source graph\nok 2 - native bundle rejects a build result from a different source graph\n  ---\n  duration_ms: 1.115103\n  type: 'test'\n  ...\n# Subtest: native bundle rejects an unbound manifest\nok 3 - native bundle rejects an unbound manifest\n  ---\n  duration_ms: 0.334606\n  type: 'test'\n  ...\n# Subtest: native bundle rejects an application snapshot outside the captured manifest\nok 4 - native bundle rejects an application snapshot outside the captured manifest\n  ---\n  duration_ms: 0.380024\n  type: 'test'\n  ...\n# Subtest: native bundle rejects model provenance that disagrees with its selected snapshot\nok 5 - native bundle rejects model provenance that disagrees with its selected snapshot\n  ---\n  duration_ms: 0.42281\n  type: 'test'\n  ...\n1..5\n# tests 5\n# suites 0\n# pass 5\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 78.507767\n"
+  },
+  "skipped_positive": {
+    "command": [
+      "/home/alex/.local/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      "/tmp/matmul-bundle-provenance-gate-iTiw7b/bundle-provenance-skipped.test.mjs"
+    ],
+    "node_exit_code": 0,
+    "exit_status_only_gate_would_pass": true,
+    "counts": {
+      "tests": 5,
+      "suites": 0,
+      "pass": 4,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 1,
+      "todo": 0
+    },
+    "counter_gate": "rejected",
+    "rejection": {
+      "name": "AssertionError",
+      "message": "Bundle provenance TAP pass count differs\n\n'4' !== '5'\n"
+    },
+    "stdout": {
+      "path": "/tmp/matmul-bundle-provenance-gate-iTiw7b/skipped-positive.tap",
+      "byte_length": 1155,
+      "sha256": "57ab80d30f760d772312b3d654e4f89da8d26d7ddd01ce9218d90b885831629b"
+    },
+    "stderr": {
+      "path": "/tmp/matmul-bundle-provenance-gate-iTiw7b/skipped-positive.stderr",
+      "byte_length": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout_text": "TAP version 13\n# Subtest: native bundle accepts distinct full-graph and selected-application identities\nok 1 - native bundle accepts distinct full-graph and selected-application identities # SKIP\n  ---\n  duration_ms: 0.70206\n  type: 'test'\n  ...\n# Subtest: native bundle rejects a build result from a different source graph\nok 2 - native bundle rejects a build result from a different source graph\n  ---\n  duration_ms: 1.694933\n  type: 'test'\n  ...\n# Subtest: native bundle rejects an unbound manifest\nok 3 - native bundle rejects an unbound manifest\n  ---\n  duration_ms: 0.416245\n  type: 'test'\n  ...\n# Subtest: native bundle rejects an application snapshot outside the captured manifest\nok 4 - native bundle rejects an application snapshot outside the captured manifest\n  ---\n  duration_ms: 0.4454\n  type: 'test'\n  ...\n# Subtest: native bundle rejects model provenance that disagrees with its selected snapshot\nok 5 - native bundle rejects model provenance that disagrees with its selected snapshot\n  ---\n  duration_ms: 0.578925\n  type: 'test'\n  ...\n1..5\n# tests 5\n# suites 0\n# pass 4\n# fail 0\n# cancelled 0\n# skipped 1\n# todo 0\n# duration_ms 76.665905\n"
+  },
+  "malformed_output_refusals": [
+    {
+      "label": "missing-count",
+      "output_sha256": "40d7205974c1eaade108a85e6e6a13f35330c566864ffeea31135d84a099e5c6",
+      "counter_gate": "rejected",
+      "scope": "TAP-output refusal check only"
+    },
+    {
+      "label": "duplicate-count",
+      "output_sha256": "69a21f5d71c4a6c4dc843907a254bad51a29a2344c419d5d70f4ae22491bf841",
+      "counter_gate": "rejected",
+      "scope": "TAP-output refusal check only"
+    },
+    {
+      "label": "incomplete-plan",
+      "output_sha256": "770570c68b0d38a8f20cb88f0a1b9796d12d5ba9cff0e29afceb329b35293aa7",
+      "counter_gate": "rejected",
+      "scope": "TAP-output refusal check only"
+    }
+  ],
+  "result": "passed: the genuine skipped test process exits zero and the shipping counter validator rejects its four-pass/one-skip result"
+}
