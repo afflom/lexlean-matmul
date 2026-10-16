@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { freshBuild, evidenceRoot, root, readJson, confined, sha, sourceModules, files, sourceDigest, verificationDigest, writeJson, capabilityIds } from './evidence.mjs';
+import { freshBuild, evidenceRoot, root, readJson, confined, sha, sourceModules, files, sourceDigest, verificationDigest, writeJson, capabilityIds, run } from './evidence.mjs';
 import { runRuntimeChecks } from './runtime-oracle.mjs';
 import { runExtendedChecks } from './extended-oracle.mjs';
 import { runCodecChecks } from './codec-oracle.mjs';
@@ -125,6 +125,7 @@ if (id === 'MM-10') {
   assert.equal(native?.result?.member?.module, 'Production.BrowserSystem',
     'MM-10 requires the native Production.BrowserSystem system-model /2 authority');
   assert.equal(native.result.member.name, 'SystemModel');
+  run(process.execPath, ['--test', 'scripts/bundle-provenance.test.mjs']);
 }
 const build = freshBuild();
 const buildRoot = path.dirname(confined(build.manifest_path));
