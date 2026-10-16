@@ -80,6 +80,13 @@ tables with 4,096 distinct products and a wide finite binary64 result exhausted
 its 1 GiB allocator. These cases now belong to the ordinary numerical oracles.
 Their captured diagnostics do not supply release acceptance.
 
+The [integer IEEE epilogue regression](verification/integer-ieee-epilogue-red.json)
+records two further failures in a successful normal Text-V2 build. Both the
+wide finite cancellation and dense significand GEMM reach the modeled 32,767
+page limit when applying 64-digit integer scalars. Their unscaled cases return
+the independent expected bytes. The exact request and expected hashes now
+belong to MM-13 and MM-16; the diagnostic record does not qualify those gates.
+
 ## SDK and release boundary
 
 Execution uses only the immutable SDK selected by [prismpm.lock](prismpm.lock).

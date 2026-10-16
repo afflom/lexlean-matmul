@@ -1,7 +1,7 @@
 Feature: floating
 
   @MM-13 @build
-  Scenario: IEEE binary32 and binary64 products decode exactly and encode once with the requested rounding and non-finite semantics.
+  Scenario: IEEE products decode exactly and encode once, including maximum dimensions with 64-digit integer epilogues and non-finite semantics.
     Given the locked LexLean and PrismPM model sources
     When the generated implementation is checked for MM-13
     Then its independent acceptance oracle succeeds

@@ -132,10 +132,37 @@ async function wideFiniteEncodingCase(machine) {
   const input = request(1, 'ieee', format, 'nearest', 8, 4, 8, csv(a), csv(b));
   assert(Buffer.byteLength(input) <= 16384, 'Wide finite IEEE request must fit the declared byte bound');
   await expect(machine, input, success(8, 8, output), 'binary64 8×8 wide finite encoding with a retained smallest-product sticky bit');
+  const prior = Array(64).fill(maximum);
+  const scaled = floatLinear(exact, prior.map(code => decode(format, code)), largest, -largest);
+  const scaledOutput = floatCodes(format, 'nearest', scaled);
+  assert(scaled.every(value => value.kind === 'finite' && value.coefficient === largest && value.exponent === -2148));
+  assert(scaledOutput.every(code => code === 0n), 'Exact cancellation must leave only alpha times the smallest-product residual');
+  const gemmInput = request(1, 'ieee-gemm', format, 'nearest', largest, -largest, 8, 4, 8, csv(a), csv(b), csv(prior));
+  assert(Buffer.byteLength(gemmInput) <= 16384, 'Wide finite GEMM must fit the declared byte bound');
+  await expect(machine, gemmInput, success(8, 8, scaledOutput), 'binary64 8×8 wide finite exact integer epilogue cancellation');
+}
+
+async function denseSignificandCases(machine) {
+  const code = 0x3ff5555555555555n;
+  const values = Array(64).fill(code), prior = Array(64).fill(0n);
+  const exact = floatProduct('f64', 8, 8, 8, values, values);
+  const scalarProduct = multiply(decode('f64', code), decode('f64', code));
+  const eightProducts = multiply(finite(8n), scalarProduct);
+  assert(exact.every(value => value.kind === 'finite' && value.coefficient === eightProducts.coefficient && value.exponent === eightProducts.exponent));
+  for (const alpha of [1n, largest]) {
+    const output = floatCodes('f64', 'nearest', floatLinear(exact, prior.map(value => decode('f64', value)), alpha, 0n));
+    assert(output.every(value => value === encode('f64', 'nearest', multiply(finite(alpha), eightProducts))));
+    const input = alpha === 1n
+      ? request(1, 'ieee', 'f64', 'nearest', 8, 8, 8, csv(values), csv(values))
+      : request(1, 'ieee-gemm', 'f64', 'nearest', alpha, 0, 8, 8, 8, csv(values), csv(values), csv(prior));
+    assert(Buffer.byteLength(input) <= 16384, 'Dense significand request must fit the declared byte bound');
+    await expect(machine, input, success(8, 8, output), `binary64 8×8 dense significands with ${alpha === 1n ? 'direct reduction' : '64-digit integer epilogue'}`);
+  }
 }
 
 async function ieeeCases(machine) {
   await wideFiniteEncodingCase(machine);
+  await denseSignificandCases(machine);
   const random = seeded(0x69656565);
   for (const [format, f] of Object.entries(formats)) {
     const one = BigInt(f.bias) << BigInt(f.fraction), negative = power(f.bits - 1);
