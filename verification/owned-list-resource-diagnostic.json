@@ -1,11 +1,15 @@
 {
   "application": {
     "complete_acceptance_required_for_release": 158,
-    "full_source_definitions_preserved": 158,
+    "diagnostic_application_declarations": 110,
     "product_application_unchanged": true,
+    "product_source_vector_definitions": 158,
     "selected_diagnostic_vectors": 109,
     "selected_vector_authority_commit": "dc1f9cf94c4f84fd7f690e5e84de4bd83d0c79da",
-    "selected_vector_authority_sha256": "d87ec1b1cc764a745b6cde27d440cbefd4a50819e0edc4e8997a8d3445db86ba"
+    "selected_vector_authority_sha256": "d87ec1b1cc764a745b6cde27d440cbefd4a50819e0edc4e8997a8d3445db86ba",
+    "source_vector_definitions_retained": 109,
+    "unused_tail_alias_helpers_removed": 5,
+    "unused_vector_definitions_removed": 49
   },
   "modules": {
     "Atlas": "76a0bcfe824d2bb6c1e14930fb5ac2ac399d41ed20c01e156503a02eb088dd57",
@@ -18,8 +22,8 @@
     "Model": "7c92b91e4bf18d65bbd3aeafd7110cbeb2e8fbfaade48ffaf3d1423bc9c872e9",
     "Protocol": "1cd1f9aecf8388b1ef6f9712c717622d624c60b8abe3f08d0f3be747bf3c7b65"
   },
-  "purpose": "Probe the original source366 SDK emitter and Core-Wasm resources with the current owned-list mathematical implementation; this source is not the release candidate.",
+  "purpose": "Probe exact current mathematics through the original source366 SDK reader using its authentic109-vector application metadata only; not the release candidate.",
   "qualified_for_release": false,
   "schema": "lexlean-matmul/owned-list-resource-diagnostic/1",
-  "source_parent": "e5946bc8726085569ea9d2e57e878fde7190e7d9"
+  "source_parent": "5c6635d5094c137ba2c2aef9dedb9ee922914f1c"
 }
