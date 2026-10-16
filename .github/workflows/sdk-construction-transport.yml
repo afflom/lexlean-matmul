@@ -1,0 +1,156 @@
+name: Transport original matrix SDK construction
+
+on:
+  push:
+    branches: [ci/sdk-construction-transport-2026-10-16]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  packages: write
+
+concurrency:
+  group: matrix-sdk-construction-transport
+  cancel-in-progress: false
+
+jobs:
+  transport:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      SOURCE_REVISION: 366b48e142cd9a6ea9dc01abc970f536a5fb931a
+      ARTIFACT_ID: '11953742351'
+      ARTIFACT_BYTES: '5334345317'
+      ARTIFACT_SHA256: bf7459038ee892e434c1ce501d62c10416b36daca7962179de041db6706f75cf
+      TARGET_REPOSITORY: ghcr.io/afflom/lexlean-matmul-sdk
+      TARGET_TAG: sdk-366b48e142cd9a6ea9dc01abc970f536a5fb931a-amd64
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: UOR-Foundation/PrismPM
+          ref: 366b48e142cd9a6ea9dc01abc970f536a5fb931a
+          persist-credentials: false
+          path: sdk-source
+      - name: Install exact official OCI transport
+        run: |
+          bash sdk-source/scripts/sdk-candidate.sh install-oras "$RUNNER_TEMP/oras"
+          echo "$RUNNER_TEMP/oras" >> "$GITHUB_PATH"
+      - name: Acquire and verify the original construction archive
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DOWNLOAD_URL: ${{ secrets.PRISMPM_SDK_CONSTRUCTION_DOWNLOAD_URL }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, stat, urllib.error, urllib.parse, urllib.request, zipfile
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, request, response, code, message, headers, url):
+                  return None
+          endpoint = 'https://api.github.com/repos/UOR-Foundation/PrismPM/actions/artifacts/' + os.environ['ARTIFACT_ID'] + '/zip'
+          request = urllib.request.Request(endpoint, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'})
+          try:
+              response = urllib.request.build_opener(NoRedirect).open(request, timeout=30)
+              raise AssertionError('artifact endpoint did not return its original download redirect')
+          except urllib.error.HTTPError as error:
+              if error.code in (301, 302, 303, 307, 308):
+                  location = error.headers['Location']
+              elif error.code in (403, 404) and os.environ.get('DOWNLOAD_URL'):
+                  print('Using the separately authorized short-lived original artifact download location; no token is forwarded.')
+                  location = os.environ['DOWNLOAD_URL']
+              else:
+                  raise RuntimeError('original artifact redirect refused with HTTP ' + str(error.code)) from None
+          parsed = urllib.parse.urlsplit(location)
+          assert parsed.scheme == 'https' and parsed.hostname and not parsed.username and not parsed.password and not parsed.fragment
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / 'original-construction'
+          root.mkdir()
+          archive = root / 'original.zip'
+          digest, size = hashlib.sha256(), 0
+          with urllib.request.urlopen(location, timeout=120) as response, archive.open('xb') as output:
+              while chunk := response.read(1024 * 1024):
+                  size += len(chunk)
+                  assert size <= int(os.environ['ARTIFACT_BYTES'])
+                  digest.update(chunk)
+                  output.write(chunk)
+          assert size == int(os.environ['ARTIFACT_BYTES'])
+          assert digest.hexdigest() == os.environ['ARTIFACT_SHA256']
+          names = {'sdk.oci.tar', 'construction.json'} | {'evidence/' + name for name in ['manifest.json', 'config.json', 'digest.txt', 'inventory.json', 'standards.lock', 'authority-result.json', 'model-check.json', 'cli.json', 'tamper.json', 'candidate.json']}
+          with zipfile.ZipFile(archive) as bundle:
+              entries = bundle.infolist()
+              assert len({entry.filename for entry in entries}) == len(entries)
+              assert {entry.filename for entry in entries if not entry.is_dir()} == names
+              for entry in entries:
+                  if entry.is_dir():
+                      assert entry.filename == 'evidence/'
+                      continue
+                  assert entry.filename in names and not stat.S_ISLNK(entry.external_attr >> 16)
+                  bundle.extract(entry, root)
+          record = json.loads((root / 'construction.json').read_bytes())
+          assert record['schema'] == 'prismpm/unpublished-sdk-construction/1'
+          assert record['scope'] == 'construction-only-not-acceptance'
+          assert record['source_revision'] == record['workflow_revision'] == os.environ['SOURCE_REVISION']
+          assert record['run_id'] == '38675824184' and record['platform'] == 'linux/amd64'
+          image = root / 'sdk.oci.tar'
+          with image.open('rb') as source:
+              image_digest = hashlib.file_digest(source, 'sha256').hexdigest()
+          assert record['archive'] == {'path': 'sdk.oci.tar', 'byte_length': image.stat().st_size, 'digest': 'sha256:' + image_digest}
+          for row in record['smoke_evidence']:
+              contents = (root / row['path']).read_bytes()
+              assert len(contents) == row['byte_length'] and 'sha256:' + hashlib.sha256(contents).hexdigest() == row['digest']
+          assert record['smoke']['status'] == 0 and record['smoke']['signal'] is None
+          print('Verified original GitHub archive and source-bound SDK OCI bytes:', size, digest.hexdigest())
+          archive.unlink()
+          PY
+      - name: Verify exact OCI metadata and original smoke evidence
+        run: |
+          construction="$RUNNER_TEMP/original-construction"
+          bash sdk-source/scripts/sdk-candidate.sh inspect "$construction/sdk.oci.tar" amd64 "$SOURCE_REVISION" "$RUNNER_TEMP/inspection"
+          digest=$(cat "$RUNNER_TEMP/inspection/digest.txt")
+          test "$digest" = "$(cat "$construction/evidence/digest.txt")"
+          cmp "$RUNNER_TEMP/inspection/manifest.json" "$construction/evidence/manifest.json"
+          cmp "$RUNNER_TEMP/inspection/config.json" "$construction/evidence/config.json"
+          node sdk-source/scripts/sdk-candidate.mjs verify "$construction/evidence" amd64 "$SOURCE_REVISION" "$digest"
+      - name: Publish unchanged original construction to the dedicated SDK package
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          printf '%s' "$GH_TOKEN" | oras login ghcr.io --username "$GITHUB_ACTOR" --password-stdin
+          construction="$RUNNER_TEMP/original-construction"
+          digest=$(cat "$construction/evidence/digest.txt")
+          target="$TARGET_REPOSITORY:$TARGET_TAG"
+          if existing=$(oras resolve "$target" 2> "$RUNNER_TEMP/resolve-error"); then
+            test "$existing" = "$digest"
+            printf '%s\n' 'The exact immutable construction is already present; no tag is overwritten.'
+          else
+            oras cp --from-oci-layout "$construction/sdk.oci.tar@$digest" "$target"
+          fi
+          test "$(oras resolve "$target")" = "$digest"
+          test "$(oras resolve "$TARGET_REPOSITORY@$digest")" = "$digest"
+          mkdir -p transport-evidence
+          cp "$construction/construction.json" transport-evidence/original-construction.json
+          cp "$construction/evidence/manifest.json" "$construction/evidence/config.json" "$construction/evidence/candidate.json" transport-evidence/
+          printf '{"auths":{}}\n' > "$RUNNER_TEMP/anonymous-registry.json"
+          if anonymous=$(oras resolve --registry-config "$RUNNER_TEMP/anonymous-registry.json" "$TARGET_REPOSITORY@$digest" 2> transport-evidence/anonymous-read.stderr); then
+            test "$anonymous" = "$digest"
+            export ANONYMOUS_READ=public
+          else
+            export ANONYMOUS_READ=requires-package-visibility
+          fi
+          export TRANSPORT_DIGEST="$digest"
+          python3 - <<'PY'
+          import json, os, pathlib
+          result = {'schema': 'lexlean-matmul/sdk-construction-transport/1', 'scope': 'original-unpublished-sdk-construction-transport',
+              'source_revision': os.environ['SOURCE_REVISION'], 'platform': 'linux/amd64', 'image': os.environ['TARGET_REPOSITORY'] + '@' + os.environ['TRANSPORT_DIGEST'],
+              'tag': os.environ['TARGET_TAG'], 'original_artifact_id': os.environ['ARTIFACT_ID'], 'original_archive_sha256': os.environ['ARTIFACT_SHA256'],
+              'anonymous_read': os.environ['ANONYMOUS_READ'], 'qualification': False,
+              'unclaimed': ['fresh-sdk-construction', 'full-vv', 'installed-dual-native-sdk-qualification', 'sdk-release', 'product-acceptance', 'deployment']}
+          pathlib.Path('transport-evidence/result.json').write_text(json.dumps(result, sort_keys=True) + '\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('Published the unchanged official source366 construction as `' + result['image'] + '`.\n\nThis transport grants no SDK or product acceptance. Anonymous read: ' + result['anonymous_read'] + '.\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: original-sdk-construction-transport
+          path: transport-evidence/
+          if-no-files-found: warn
+          retention-days: 7
