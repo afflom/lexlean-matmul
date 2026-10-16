@@ -1,0 +1,692 @@
+{
+  "schema": "lexlean-matmul/graded-atlas-allocation-diagnostic/1",
+  "qualified_for_release": false,
+  "scope": "Actual official SDK cold-source maintenance exports and native allocation counters only. This does not qualify the final consumer image, complete application guest memory, native BrowserSystem release, source-free bundle, or public Pages deployment. The tiny metadata fixture has a one-byte identity entry; unchanged mathematical definitions are retained as explicit library roots. Final product retains every one of the 158 acceptance vectors.",
+  "created_at": "2026-10-16T11:34:44.514000+00:00",
+  "registered_claims": [
+    "MM-13",
+    "MM-16"
+  ],
+  "source_sha256": {
+    "Core": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+    "Atlas": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b",
+    "Float": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6",
+    "Codec": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88",
+    "Epilogue": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87"
+  },
+  "source_audit": {
+    "schema": "lexlean-matmul/graded-atlas-source-audit/1",
+    "qualified_for_release": false,
+    "baseline_commit": "19d4615",
+    "modules": {
+      "Atlas": {
+        "source_sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b",
+        "baseline_sha256": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
+        "legacy_theorem_asts_preserved": 47,
+        "changed_legacy_declarations": [
+          "stripValuation",
+          "productUnits"
+        ],
+        "new_declarations": [
+          "atlasValuationPrefix",
+          "atlasValuationFromOffset",
+          "AtlasCoefficient",
+          "AtlasCoefficientList",
+          "AtlasMergeDecision",
+          "atlasCoefficientLength",
+          "atlasCoefficientAtomCount",
+          "atlasCoefficientAt",
+          "atlasCoefficientAtomAt",
+          "atlasRowCoefficient",
+          "atlasMergePresent",
+          "atlasMergeDecision",
+          "atlasMergeFinished",
+          "atlasMergeCoefficientWorker",
+          "atlasMergeCoefficientRow",
+          "atlasMergeCoefficientRows",
+          "atlasCoefficientMass",
+          "atlasCoefficientExtentStep",
+          "atlasCoefficientExtent",
+          "atlasCarryCoefficientTerm",
+          "atlasCarryCoefficientIndex",
+          "atlasCoefficientHalfWorker",
+          "atlasCoefficientHalf",
+          "atlasCoefficientParity",
+          "atlasCarryFinished",
+          "atlasCarryCoefficientWorker",
+          "atlasCarryCoefficients",
+          "atlasCoefficientAccumulator",
+          "atlasCoefficientProduct",
+          "gradeLedgerEmpty",
+          "gradeLedgerCombinesEqualPositions",
+          "gradeLedgerSignedCancellation",
+          "gradeLedgerPropagatesCarry",
+          "gradeLedgerPreservesSparseGap",
+          "valuationPreservesUnitTrailingZero",
+          "valuationAllZeroKeepsExtent"
+        ],
+        "new_theorems": [
+          "gradeLedgerEmpty",
+          "gradeLedgerCombinesEqualPositions",
+          "gradeLedgerSignedCancellation",
+          "gradeLedgerPropagatesCarry",
+          "gradeLedgerPreservesSparseGap",
+          "valuationPreservesUnitTrailingZero",
+          "valuationAllZeroKeepsExtent"
+        ]
+      },
+      "Float": {
+        "source_sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6",
+        "baseline_sha256": "6c923f014ae6e67594594b9cdcf44e3b809f5fdc767729a68e57194cdbef0952",
+        "legacy_theorem_asts_preserved": 72,
+        "changed_legacy_declarations": [
+          "floatProductTableOwned",
+          "gatherCell"
+        ],
+        "new_declarations": [
+          "floatDecodedBookOwned",
+          "floatProductValuesOwned",
+          "floatDecodedProductTableOwned",
+          "floatTableValueAt",
+          "decodedBookEmpty",
+          "tableValueAtSkipsRows"
+        ],
+        "new_theorems": [
+          "decodedBookEmpty",
+          "tableValueAtSkipsRows"
+        ]
+      }
+    },
+    "atlas_contains_no_whole_significand_multiplication_node": true,
+    "finite_float_multiply_ast_unchanged": true
+  },
+  "kernel": {
+    "image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
+    "actual_command": [
+      "lexlean",
+      "--diagnostic-format",
+      "json",
+      "verify",
+      "src/Application.lex.tex"
+    ],
+    "result": {
+      "artifacts": [
+        ".lexlean/verified/ea837f70e39397fdd44c2708dd168c6f2186edbefe1e7d8c2717786fb60e12e3"
+      ],
+      "attestation_id": "ea837f70e39397fdd44c2708dd168c6f2186edbefe1e7d8c2717786fb60e12e3",
+      "build_id": "c71ff7f0bbee65d5dbdbe361e8dafd3fbd19e565ae884baf2a9c4fd56af33a65",
+      "command": "verify",
+      "diagnostics": [],
+      "exit_code": 0,
+      "modules": [
+        "Application",
+        "Atlas",
+        "Codec",
+        "CodecProtocol",
+        "Core",
+        "Epilogue",
+        "ExtendedProtocol",
+        "Float",
+        "Foundation.View.Text.V1.Model",
+        "Model",
+        "Protocol"
+      ],
+      "semantic_id": "2642ae6349b67280602239bd1e74cf08663693da22a4ef8a09f4787a69dc54bb",
+      "source_id": "71764e53d983318e4825bc05dd2e779acfac18e3e456b492e460e66015edd379",
+      "spec": "lexlean/command-result/1",
+      "success": true
+    },
+    "attestation": {
+      "path": "/tmp/matmul-final-cache-application-proof/.lexlean/verified/ea837f70e39397fdd44c2708dd168c6f2186edbefe1e7d8c2717786fb60e12e3/attestation.json",
+      "byte_length": 338364,
+      "sha256": "3fea75d4c4d8c78ee34b8d278a5005a826f8a7fdc0250d5ad949a1eec1be0633"
+    },
+    "full_application_math_theorems": 241,
+    "added_certificates": [
+      {
+        "name": "LexLeanMatmul.Atlas.gradeLedgerEmpty",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      },
+      {
+        "name": "LexLeanMatmul.Atlas.gradeLedgerCombinesEqualPositions",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      },
+      {
+        "name": "LexLeanMatmul.Atlas.gradeLedgerSignedCancellation",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      },
+      {
+        "name": "LexLeanMatmul.Atlas.gradeLedgerPropagatesCarry",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      },
+      {
+        "name": "LexLeanMatmul.Atlas.gradeLedgerPreservesSparseGap",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      },
+      {
+        "name": "LexLeanMatmul.Atlas.valuationPreservesUnitTrailingZero",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      },
+      {
+        "name": "LexLeanMatmul.Atlas.valuationAllZeroKeepsExtent",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      },
+      {
+        "name": "LexLeanMatmul.Float.decodedBookEmpty",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      },
+      {
+        "name": "LexLeanMatmul.Float.tableValueAtSkipsRows",
+        "observed": [],
+        "policy": {
+          "axioms": [],
+          "kind": "none"
+        },
+        "result": "ok"
+      }
+    ]
+  },
+  "normal_exports": {
+    "owned_ledger_before_prefix": {
+      "qualified_for_release": false,
+      "project": "/tmp/matmul-grade-ledger-owned-maintenance-build",
+      "result": {
+        "build_id": "f19ab69dddf5116e80613d4d97cd5a6810cf60809a19cb154b7f13d410c4f5b0",
+        "manifest_path": ".prism/build/f19ab69dddf5116e80613d4d97cd5a6810cf60809a19cb154b7f13d410c4f5b0/manifest.json",
+        "model_path": ".prism/build/f19ab69dddf5116e80613d4d97cd5a6810cf60809a19cb154b7f13d410c4f5b0/model.prism.json",
+        "schema": "prismpm/build-result/1",
+        "semantic_id": "6911378abeb405abb05ee27e9c7ce8e54382d1d11fd39b91c4be216fe17535a9",
+        "source_id": "05319a7a181a9c6b15d8a4fd8ff7b8024f46d036dfe7ff9759ee9d92d30f8818"
+      },
+      "elapsed_seconds": 201.875171225,
+      "source_sdk_head": "c86c7156f7a36c0a164298c3a93dfe5d264d7a64",
+      "tools": {
+        "prismpm_sha256": "4d07b3dd8ec629390d223e754d043f56d113082e2b97cf0bb3b85f5c56007a28",
+        "lexlean_sha256": "7d358efeb80e89a5f9e3a0245fe33ca4d97450096c6ba1e2f895bf78d74df73b",
+        "cargo_lock_sha256": "d040dbea701952f379d6cc8c2a4c2525c7812dace22635320d894458e6ccf4d0",
+        "application_build_rs_sha256": "ebefbfdc9152a5262bab896f418a1b887cfb61ef66bfda93fdb8ba6b1a1199a6",
+        "verification_rs_sha256": "773c8a651c81c1d861b4f58c6763586431d92c760509079fb16b0254c898350c",
+        "lean_project_rs_sha256": "ee569ec185b17d455dc8adf60e0f98ae36ce5a789a7043c2bc858d0f9a4ebe58",
+        "exporter_archive_sha256": "7a1a716a57040ea2307f7a34e895a75ebdca7438cf9d5d0364007acb594366bf"
+      },
+      "inputs": {
+        "schema": "lexlean-matmul/source-maintenance-inputs/1",
+        "qualified_for_release": false,
+        "scope": "Official upstream cold-source SDK maintenance tiny fixture rooted at unchanged Float.linear, exporting actual Atlas coefficient-ledger and shorter-integer-epilogue dependency closure. Full158 product fixtures remain unchanged; no release qualification.",
+        "helper_roots": [
+          "LexLeanMatmul.Application.allocationIdentity",
+          "LexLeanMatmul.Float.floatCheckedTableMultiply",
+          "LexLeanMatmul.Float.linear"
+        ],
+        "math_unchanged": true,
+        "files": [
+          {
+            "path": "src/Application.lex.tex",
+            "byte_length": 4312,
+            "sha256": "71377df0d356ab6867bf1a5754a7d360d7248168ce25ceaafb2e03f1cae0255e"
+          },
+          {
+            "path": "src/Atlas.lex.tex",
+            "byte_length": 162012,
+            "sha256": "af6176cdffff76f3ce03329261b46a662d46160b54a493b229cbdc675f648c8b"
+          },
+          {
+            "path": "src/Core.lex.tex",
+            "byte_length": 304177,
+            "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+          },
+          {
+            "path": "src/Float.lex.tex",
+            "byte_length": 259510,
+            "sha256": "6c923f014ae6e67594594b9cdcf44e3b809f5fdc767729a68e57194cdbef0952"
+          },
+          {
+            "path": "src/Model.lex.tex",
+            "byte_length": 3475,
+            "sha256": "f1dbff70f95f524d1bd1830c7ff2b31a5b17b1d001f7b1ddc361279b48749abe"
+          }
+        ],
+        "core_memory_pages": 16384,
+        "core_stack_bytes": 16777216,
+        "consumer_sdk_lock_copied": false
+      },
+      "successful_manifest": {
+        "path": "/tmp/matmul-grade-ledger-owned-maintenance-build/.prism/build/f19ab69dddf5116e80613d4d97cd5a6810cf60809a19cb154b7f13d410c4f5b0/manifest.json",
+        "byte_length": 21134,
+        "sha256": "e6673722ad66742513a2f08414b285b58a788419432f510824020187388fb302"
+      },
+      "verified_artifact_files": 117,
+      "verified_artifact_bytes": 6463296,
+      "actual_ir": {
+        "path": "/tmp/matmul-grade-ledger-owned-maintenance-build/.prism/build/f19ab69dddf5116e80613d4d97cd5a6810cf60809a19cb154b7f13d410c4f5b0/cargo/kernel.ir",
+        "byte_length": 101436,
+        "sha256": "4aa02d0d4c512e31e431de70882a5b027aca4c1c4bc15819f4836a43953d38fd"
+      },
+      "actual_generated_rust": {
+        "path": "/tmp/matmul-grade-ledger-owned-maintenance-build/.prism/build/f19ab69dddf5116e80613d4d97cd5a6810cf60809a19cb154b7f13d410c4f5b0/cargo/package/src/lib.rs",
+        "byte_length": 125905,
+        "sha256": "ca478cf6a863231961951e86f2bddd957782e40829c95f9a32266c06717556aa"
+      },
+      "actual_roots": [
+        "LexLeanMatmul.Application.allocationIdentity",
+        "LexLeanMatmul.Float.floatCheckedTableMultiply",
+        "LexLeanMatmul.Float.linear"
+      ],
+      "included_definition_count": 149
+    },
+    "ledger_with_prefix_before_float_cache": {
+      "qualified_for_release": false,
+      "project": "/tmp/matmul-grade-ledger-final-maintenance-build",
+      "result": {
+        "build_id": "d4f158958c228833759d473ec0966975be5a652f83b019d121320a5d0434a52f",
+        "manifest_path": ".prism/build/d4f158958c228833759d473ec0966975be5a652f83b019d121320a5d0434a52f/manifest.json",
+        "model_path": ".prism/build/d4f158958c228833759d473ec0966975be5a652f83b019d121320a5d0434a52f/model.prism.json",
+        "schema": "prismpm/build-result/1",
+        "semantic_id": "cbae58d0d6bd369f77f497d93321134fbefa848eb3e0869cf7f71c2e186e1f38",
+        "source_id": "faba2ec3a342a21ffaf1abf37e5899ab61de4eefb4e27f9263e99638ce416858"
+      },
+      "elapsed_seconds": 217.126060228,
+      "source_sdk_head": "c86c7156f7a36c0a164298c3a93dfe5d264d7a64",
+      "tools": {
+        "prismpm_sha256": "4d07b3dd8ec629390d223e754d043f56d113082e2b97cf0bb3b85f5c56007a28",
+        "lexlean_sha256": "7d358efeb80e89a5f9e3a0245fe33ca4d97450096c6ba1e2f895bf78d74df73b",
+        "cargo_lock_sha256": "d040dbea701952f379d6cc8c2a4c2525c7812dace22635320d894458e6ccf4d0",
+        "application_build_rs_sha256": "ebefbfdc9152a5262bab896f418a1b887cfb61ef66bfda93fdb8ba6b1a1199a6",
+        "verification_rs_sha256": "773c8a651c81c1d861b4f58c6763586431d92c760509079fb16b0254c898350c",
+        "lean_project_rs_sha256": "ee569ec185b17d455dc8adf60e0f98ae36ce5a789a7043c2bc858d0f9a4ebe58",
+        "exporter_archive_sha256": "7a1a716a57040ea2307f7a34e895a75ebdca7438cf9d5d0364007acb594366bf"
+      },
+      "inputs": {
+        "schema": "lexlean-matmul/source-maintenance-inputs/1",
+        "qualified_for_release": false,
+        "scope": "Official upstream cold-source SDK maintenance tiny fixture rooted at unchanged Float.linear, exporting actual Atlas coefficient-ledger and shorter-integer-epilogue dependency closure. Full158 product fixtures remain unchanged; no release qualification.",
+        "helper_roots": [
+          "LexLeanMatmul.Application.allocationIdentity",
+          "LexLeanMatmul.Float.floatCheckedTableMultiply",
+          "LexLeanMatmul.Float.linear"
+        ],
+        "math_unchanged": true,
+        "files": [
+          {
+            "path": "src/Application.lex.tex",
+            "byte_length": 4312,
+            "sha256": "71377df0d356ab6867bf1a5754a7d360d7248168ce25ceaafb2e03f1cae0255e"
+          },
+          {
+            "path": "src/Atlas.lex.tex",
+            "byte_length": 164620,
+            "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b"
+          },
+          {
+            "path": "src/Core.lex.tex",
+            "byte_length": 304177,
+            "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+          },
+          {
+            "path": "src/Float.lex.tex",
+            "byte_length": 259510,
+            "sha256": "6c923f014ae6e67594594b9cdcf44e3b809f5fdc767729a68e57194cdbef0952"
+          },
+          {
+            "path": "src/Model.lex.tex",
+            "byte_length": 3475,
+            "sha256": "f1dbff70f95f524d1bd1830c7ff2b31a5b17b1d001f7b1ddc361279b48749abe"
+          }
+        ],
+        "core_memory_pages": 16384,
+        "core_stack_bytes": 16777216,
+        "consumer_sdk_lock_copied": false
+      },
+      "successful_manifest": {
+        "path": "/tmp/matmul-grade-ledger-final-maintenance-build/.prism/build/d4f158958c228833759d473ec0966975be5a652f83b019d121320a5d0434a52f/manifest.json",
+        "byte_length": 21134,
+        "sha256": "9ce2aeb73a5501dae59c136a9aaaef63b4b19cb12329662d478afa61f25f2563"
+      },
+      "verified_artifact_files": 117,
+      "verified_artifact_bytes": 6483879,
+      "actual_ir": {
+        "path": "/tmp/matmul-grade-ledger-final-maintenance-build/.prism/build/d4f158958c228833759d473ec0966975be5a652f83b019d121320a5d0434a52f/cargo/kernel.ir",
+        "byte_length": 101525,
+        "sha256": "b8ef54985184816baecf3c0b85bf4d2f0a7e1fbc4a4929f568c00c91a6abbd60"
+      },
+      "actual_generated_rust": {
+        "path": "/tmp/matmul-grade-ledger-final-maintenance-build/.prism/build/d4f158958c228833759d473ec0966975be5a652f83b019d121320a5d0434a52f/cargo/package/src/lib.rs",
+        "byte_length": 125809,
+        "sha256": "57ff008b6d770f0c24194f65324e5bfa883ca52c29259388ed2b037d59c94116"
+      },
+      "actual_roots": [
+        "LexLeanMatmul.Application.allocationIdentity",
+        "LexLeanMatmul.Float.floatCheckedTableMultiply",
+        "LexLeanMatmul.Float.linear"
+      ],
+      "included_definition_count": 150
+    },
+    "final_graded_contraction_and_float_cache": {
+      "qualified_for_release": false,
+      "project": "/tmp/matmul-ieee-table-cache-maintenance-build",
+      "result": {
+        "build_id": "c69e89e1ccbf2a5ec3717083ce97a26efa52e229e0a515ab78151ececaec84b7",
+        "manifest_path": ".prism/build/c69e89e1ccbf2a5ec3717083ce97a26efa52e229e0a515ab78151ececaec84b7/manifest.json",
+        "model_path": ".prism/build/c69e89e1ccbf2a5ec3717083ce97a26efa52e229e0a515ab78151ececaec84b7/model.prism.json",
+        "schema": "prismpm/build-result/1",
+        "semantic_id": "33252daabad3242caa08d5d684952c1c8b97423419708b0a806c82580d83faf4",
+        "source_id": "0fd21e49fdaddf3d7037a5212e6808715b348aa86ba1079a77200d265be92cd1"
+      },
+      "elapsed_seconds": 214.05477555,
+      "source_sdk_head": "c86c7156f7a36c0a164298c3a93dfe5d264d7a64",
+      "tools": {
+        "prismpm_sha256": "4d07b3dd8ec629390d223e754d043f56d113082e2b97cf0bb3b85f5c56007a28",
+        "lexlean_sha256": "7d358efeb80e89a5f9e3a0245fe33ca4d97450096c6ba1e2f895bf78d74df73b",
+        "cargo_lock_sha256": "d040dbea701952f379d6cc8c2a4c2525c7812dace22635320d894458e6ccf4d0",
+        "application_build_rs_sha256": "ebefbfdc9152a5262bab896f418a1b887cfb61ef66bfda93fdb8ba6b1a1199a6",
+        "verification_rs_sha256": "773c8a651c81c1d861b4f58c6763586431d92c760509079fb16b0254c898350c",
+        "lean_project_rs_sha256": "ee569ec185b17d455dc8adf60e0f98ae36ce5a789a7043c2bc858d0f9a4ebe58",
+        "exporter_archive_sha256": "7a1a716a57040ea2307f7a34e895a75ebdca7438cf9d5d0364007acb594366bf"
+      },
+      "inputs": {
+        "schema": "lexlean-matmul/source-maintenance-inputs/1",
+        "qualified_for_release": false,
+        "scope": "Official upstream cold-source SDK maintenance tiny fixture rooted at unchanged Float.linear, exporting actual Atlas coefficient-ledger and shorter-integer-epilogue dependency closure. Full158 product fixtures remain unchanged; no release qualification.",
+        "helper_roots": [
+          "LexLeanMatmul.Application.allocationIdentity",
+          "LexLeanMatmul.Float.floatCheckedTableMultiply",
+          "LexLeanMatmul.Float.linear"
+        ],
+        "math_unchanged": true,
+        "files": [
+          {
+            "path": "src/Application.lex.tex",
+            "byte_length": 4312,
+            "sha256": "71377df0d356ab6867bf1a5754a7d360d7248168ce25ceaafb2e03f1cae0255e"
+          },
+          {
+            "path": "src/Atlas.lex.tex",
+            "byte_length": 164620,
+            "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b"
+          },
+          {
+            "path": "src/Core.lex.tex",
+            "byte_length": 304177,
+            "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+          },
+          {
+            "path": "src/Float.lex.tex",
+            "byte_length": 266431,
+            "sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6"
+          },
+          {
+            "path": "src/Model.lex.tex",
+            "byte_length": 3475,
+            "sha256": "f1dbff70f95f524d1bd1830c7ff2b31a5b17b1d001f7b1ddc361279b48749abe"
+          }
+        ],
+        "core_memory_pages": 16384,
+        "core_stack_bytes": 16777216,
+        "consumer_sdk_lock_copied": false
+      },
+      "successful_manifest": {
+        "path": "/tmp/matmul-ieee-table-cache-maintenance-build/.prism/build/c69e89e1ccbf2a5ec3717083ce97a26efa52e229e0a515ab78151ececaec84b7/manifest.json",
+        "byte_length": 21134,
+        "sha256": "2ac10d038ec8a1020ad49836dff3ecdf720c53105b38266e60f68824e13a2df0"
+      },
+      "verified_artifact_files": 117,
+      "verified_artifact_bytes": 6538504,
+      "actual_ir": {
+        "path": "/tmp/matmul-ieee-table-cache-maintenance-build/.prism/build/c69e89e1ccbf2a5ec3717083ce97a26efa52e229e0a515ab78151ececaec84b7/cargo/kernel.ir",
+        "byte_length": 102345,
+        "sha256": "00425bab70155ef402509b7aad1260b2f8e877b20de38893b31cbf64cdaba25c"
+      },
+      "actual_generated_rust": {
+        "path": "/tmp/matmul-ieee-table-cache-maintenance-build/.prism/build/c69e89e1ccbf2a5ec3717083ce97a26efa52e229e0a515ab78151ececaec84b7/cargo/package/src/lib.rs",
+        "byte_length": 126553,
+        "sha256": "20f8f3e130810af4bcefced0721895fe0b60dff34035f2f5ab77a346ff1a76fd"
+      },
+      "actual_roots": [
+        "LexLeanMatmul.Application.allocationIdentity",
+        "LexLeanMatmul.Float.floatCheckedTableMultiply",
+        "LexLeanMatmul.Float.linear"
+      ],
+      "included_definition_count": 152
+    }
+  },
+  "actual_owned_worker_emission": {
+    "atlasMergeCoefficientWorker": {
+      "generated_function": "__prod_owned_27_atlasMergeCoefficientWorker",
+      "moved_vector_loop": true,
+      "no_accumulator_or_fixed_input_clone_in_loop": true,
+      "generated_body_sha256": "c15f1d5e6260a3944c6e197ffaa436651cbf613ee4216408495562ad54987b09"
+    },
+    "atlasCarryCoefficientWorker": {
+      "generated_function": "__prod_owned_27_atlasCarryCoefficientWorker",
+      "moved_vector_loop": true,
+      "no_accumulator_or_fixed_input_clone_in_loop": true,
+      "generated_body_sha256": "6413c500ae3034f3fb72eb9ab01c001ed315130a9e8aa66c81f672baa08ea72e"
+    }
+  },
+  "measurements": {
+    "initial_unlowered_worker_product": [
+      {
+        "case": "dense-one-product",
+        "allocated_bytes": 1977054,
+        "elapsed_seconds": 0.00186176,
+        "output_code": 4610685218510194460,
+        "scope": "actual-new-initial-ledger-IR (guard still expanded)"
+      },
+      {
+        "case": "large-exponent-one-product",
+        "allocated_bytes": 2956782,
+        "elapsed_seconds": 0.026156759,
+        "output_code": 9218868437227405312,
+        "scope": "actual-new-initial-ledger-IR (guard still expanded)"
+      }
+    ],
+    "owned_worker_product_before_prefix": [
+      {
+        "case": "dense-one-product",
+        "allocated_bytes": 183270,
+        "elapsed_seconds": 0.001562688,
+        "output_code": 4610685218510194460,
+        "scope": "actual-new-owned-ledger-IR; valuation prefix optimization not yet applied"
+      },
+      {
+        "case": "large-exponent-one-product",
+        "allocated_bytes": 1162998,
+        "elapsed_seconds": 0.029802648,
+        "output_code": 9218868437227405312,
+        "scope": "actual-new-owned-ledger-IR; valuation prefix optimization not yet applied"
+      }
+    ],
+    "canonical_word_before_prefix": [
+      {
+        "case": "dense-canonical-word",
+        "allocated_bytes": 18696,
+        "elapsed_seconds": 5.1907e-05,
+        "unit_bits": 53,
+        "grade_magnitude": 52
+      },
+      {
+        "case": "large-exponent-canonical-word",
+        "allocated_bytes": 453528,
+        "elapsed_seconds": 0.011672197,
+        "unit_bits": 53,
+        "grade_magnitude": 971
+      }
+    ],
+    "product_after_prefix": [
+      {
+        "case": "dense-one-product",
+        "allocated_bytes": 152390,
+        "elapsed_seconds": 0.001607975,
+        "output_code": 4610685218510194460,
+        "scope": "actual-final-ledger-with-prefix-valuation-IR"
+      },
+      {
+        "case": "large-exponent-one-product",
+        "allocated_bytes": 308710,
+        "elapsed_seconds": 0.028240122,
+        "output_code": 9218868437227405312,
+        "scope": "actual-final-ledger-with-prefix-valuation-IR"
+      }
+    ],
+    "canonical_word_after_prefix": [
+      {
+        "case": "dense-canonical-word",
+        "allocated_bytes": 3256,
+        "elapsed_seconds": 6.8371e-05,
+        "unit_bits": 53,
+        "grade_magnitude": 52
+      },
+      {
+        "case": "large-exponent-canonical-word",
+        "allocated_bytes": 26384,
+        "elapsed_seconds": 0.012751222,
+        "unit_bits": 53,
+        "grade_magnitude": 971
+      }
+    ],
+    "complete_table_before_float_cache": [
+      {
+        "case": "actual-case25-4096-distinct-IEEE-product-table",
+        "allocated_bytes": 923423256,
+        "elapsed_seconds": 9.358057106,
+        "independent_64_outputs_checked": true
+      }
+    ],
+    "max_exponent_table_before_float_cache": [
+      {
+        "case": "max-exponent-4096-distinct-IEEE-product-table",
+        "allocated_bytes": 2688084968,
+        "elapsed_seconds": 120.012094987,
+        "independent_64_outputs_checked": true
+      }
+    ],
+    "complete_table_after_float_cache": [
+      {
+        "case": "actual-case25-4096-distinct-IEEE-product-table",
+        "allocated_bytes": 802624536,
+        "elapsed_seconds": 7.657994857,
+        "independent_64_outputs_checked": true
+      }
+    ],
+    "max_exponent_table_after_float_cache": [
+      {
+        "case": "max-exponent-4096-distinct-IEEE-product-table",
+        "allocated_bytes": 1595780584,
+        "elapsed_seconds": 133.106009841,
+        "independent_64_outputs_checked": true
+      }
+    ],
+    "actual_final_integer_epilogues": [
+      {
+        "case": "wide_finite_integer_epilogue",
+        "allocated_bytes": 7159550,
+        "elapsed_seconds": 0.177249611,
+        "exact_integer_rational_checked": true,
+        "result_bits": 213,
+        "result_scale": 2148
+      },
+      {
+        "case": "dense_integer_epilogue",
+        "allocated_bytes": 1568276,
+        "elapsed_seconds": 0.007954678,
+        "exact_integer_rational_checked": true,
+        "result_bits": 318,
+        "result_scale": 101
+      }
+    ]
+  },
+  "native_counter_scope": "Counters compile the byte-identical published SDK-generated Rust with only an independent native allocator/expected-output harness appended. Cumulative native requested allocation is a diagnostic for the guest bump allocator; target layout, optimization and actual CoreWasm execution must still pass the full acceptance gate. No handwritten product arithmetic, SDK source edit, resource-bound change, domain reduction or acceptance-vector removal is part of this diagnostic.",
+  "counter_toolchain_container": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+  "counter_compile_command": [
+    "rustc",
+    "--edition=2021",
+    "-Awarnings",
+    "--cfg",
+    "feature=\"std\"",
+    "ACTUAL_GENERATED_RUST_PLUS_COUNTER.rs",
+    "-o",
+    "counter"
+  ],
+  "counter_files": {
+    "table-counter.rs": {
+      "path": "/tmp/matmul-grade-ledger-native-allocation/table-counter.rs",
+      "byte_length": 6226,
+      "sha256": "64523aa9d381d3ed33882e366de70129f96491b61270aed7d086136be8a5acfd"
+    },
+    "table-cache-measured.rs": {
+      "path": "/tmp/matmul-grade-ledger-native-allocation/table-cache-measured.rs",
+      "byte_length": 132779,
+      "sha256": "a6f5124af771064576eae62d288f00e44962e70313396ee6e19b2e71519c6482"
+    },
+    "large-exponent-table-counter.rs": {
+      "path": "/tmp/matmul-grade-ledger-native-allocation/large-exponent-table-counter.rs",
+      "byte_length": 6461,
+      "sha256": "2d2f6663aad23c659b3e73464da29f4c383a2741c83cf72f6d4dbe36a69a1c77"
+    },
+    "large-exponent-table-cache-measured.rs": {
+      "path": "/tmp/matmul-grade-ledger-native-allocation/large-exponent-table-cache-measured.rs",
+      "byte_length": 133014,
+      "sha256": "c83dc92d8c0de5d80fd0ca63c43e87e788a2a31f1b26c899d06f083528703bb6"
+    },
+    "integer-epilogue-cache-measured.rs": {
+      "path": "/tmp/matmul-grade-ledger-native-allocation/integer-epilogue-cache-measured.rs",
+      "byte_length": 138778,
+      "sha256": "16fb8efd5a71805333986651681041d1593807b3c55a6416b8b7bd1f29c72c66"
+    },
+    "table-cache-result.jsonl": {
+      "path": "/tmp/matmul-grade-ledger-native-allocation/table-cache-result.jsonl",
+      "byte_length": 154,
+      "sha256": "1c278b0e3fdc34ec40f0d9287b9a4371bc522e20eeec12d84644c11e087d982d"
+    },
+    "large-exponent-table-cache-result.jsonl": {
+      "path": "/tmp/matmul-grade-ledger-native-allocation/large-exponent-table-cache-result.jsonl",
+      "byte_length": 156,
+      "sha256": "73c58e0e4e4d33bb444a95d437f5bab16d92dc311fcf2ef1f24e77058009fa37"
+    },
+    "integer-epilogue-cache-result.jsonl": {
+      "path": "/tmp/matmul-grade-ledger-native-allocation/integer-epilogue-cache-result.jsonl",
+      "byte_length": 337,
+      "sha256": "8b9c8745b890d4a475f9e406ab7a513820c709793edd0f50edeb92ed468bb88f"
+    }
+  }
+}
