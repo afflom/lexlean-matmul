@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { freshBuild, confined, root, run, files, writeJson, readJson, sourceDigest, verificationDigest, sha, evidenceRoot } from './evidence.mjs';
+import { deploymentMetadata } from './system-model.mjs';
 
 const build = freshBuild();
 const acceptance = readJson(path.join(evidenceRoot, 'acceptance.json'));
@@ -15,11 +16,14 @@ run('node', ['scripts/conformance.mjs', 'MM-10']);
 const directory = path.join(path.dirname(confined(build.manifest_path)), 'view/browser');
 const inventory = files(directory);
 assert.equal(inventory.length, 6);
-const output = path.join(root, 'public');
+const target = deploymentMetadata();
+assert(target.directory.split('/').every(part => part && part !== '.' && part !== '..'));
+assert(!path.isAbsolute(target.directory));
+const output = path.join(root, target.directory);
 fs.rmSync(output, { recursive: true, force: true });
 fs.cpSync(directory, output, { recursive: true });
 assert.deepEqual(files(output), inventory);
 writeJson(path.join(evidenceRoot, 'pages.json'), {
   schema: 'lexlean-matmul/pages-projection/1', build_id: build.build_id, assets: inventory,
 });
-console.log('Staged the exact six-file verified browser projection in public/.');
+console.log(`Staged the exact six-file verified browser projection in ${target.directory}/.`);
