@@ -150,7 +150,7 @@ from the Core-Wasm allocator measured above.
 ## SDK and release boundary
 
 Execution uses only the immutable SDK selected by [prismpm.lock](prismpm.lock).
-The in-progress SDK maintenance refreshes the exact OSV inputs and addresses
+The SDK refreshes the exact OSV inputs and addresses
 native compilation budgets, closed acceptance-list aliases, native compiler
 stack setup, and explicitly modeled Core-Wasm resources. The normal Cargo
 owner preserves generated resource flags when adding source-path remaps.

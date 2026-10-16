@@ -1,0 +1,110 @@
+{
+  "schema": "lexlean-matmul/original-sdk-binding-handoff/1",
+  "scope": "original-immutable-sdk-transport-canonical-policy-binding-only",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:0578887b8034dca668b402c66df80aa83a751c8d83eb309a07f74dab27c925a4",
+  "sdk_source_revision": "0984474e0208207383c3f9779451d07b2c57b91b",
+  "sdk_source_pr": "https://github.com/UOR-Foundation/PrismPM/pull/195",
+  "template_revision": "1c7ee5150b65bfadfe8b8b54c0e1051f68b40394",
+  "template_source_pr": "https://github.com/UOR-Foundation/template/pull/15",
+  "action_reference": "UOR-Foundation/PrismPM/action@0984474e0208207383c3f9779451d07b2c57b91b",
+  "original_construction_run": "https://github.com/UOR-Foundation/PrismPM/actions/runs/38899514144",
+  "original_transport_run": "https://github.com/afflom/lexlean-matmul/actions/runs/38901932445",
+  "complete_binding_run": "https://github.com/afflom/lexlean-matmul/actions/runs/38908614696",
+  "complete_binding_workflow_revision": "eb23fe0718a57be9ce1d8b4c0c74ef81018e1386",
+  "native_original_selfchecks": [
+    {
+      "platform": "linux/amd64",
+      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:39ec2fbe7819fb21e3c255e633a6d37568a250cefdd4aa12c5f612ff9884bd74",
+      "native_smoke": {
+        "status": 0,
+        "signal": null,
+        "archive_binding": "held-descriptor-before-and-after"
+      },
+      "candidate_checks": [
+        "non-root",
+        "inventory",
+        "standards-lock",
+        "model-check",
+        "shadowed-tool-rejected"
+      ],
+      "original_artifact": "12048632111",
+      "original_zip_sha256": "8359000e989d563d297e9572f6579d44eee3262ee90b0a6a841b4eaddd01079b",
+      "qualification": false
+    },
+    {
+      "platform": "linux/arm64",
+      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:1ff6ef0bd1ee9fb1e3f643d8a520bcd417e4b466645ceb2051e2120a1fd783f0",
+      "native_smoke": {
+        "status": 0,
+        "signal": null,
+        "archive_binding": "held-descriptor-before-and-after"
+      },
+      "candidate_checks": [
+        "non-root",
+        "inventory",
+        "standards-lock",
+        "model-check",
+        "shadowed-tool-rejected"
+      ],
+      "original_artifact": "12048786883",
+      "original_zip_sha256": "a96d3c4e9d15fea7824dcf1ebf7b95090f6b653238db867575ee21f3ccfa6462",
+      "qualification": false
+    }
+  ],
+  "binding_artifact": {
+    "id": 12050185202,
+    "byte_length": 94959,
+    "digest": "sha256:28f3956057ada4509d8ee92da10d3cc9cb141b185be8162de0c11751af87007e"
+  },
+  "installed": true,
+  "bound_files": [
+    {
+      "byte_length": 1525,
+      "path": ".devcontainer/devcontainer.json",
+      "sha256": "58a53244039a975a1e05b5ad74bd2b12a33ca828e63f44e0eb8b96c50261e4ce"
+    },
+    {
+      "byte_length": 2390,
+      "path": ".github/workflows/bootstrap.yml",
+      "sha256": "1da9dc45db01def0b054f03a80f3b7db088baddb551bd33a355cf2a2de1e2562"
+    },
+    {
+      "byte_length": 23719,
+      "path": ".github/workflows/prismpm.yml",
+      "sha256": "aaf382125448a32b986112ac638bee4bdc31a13425677bc0ab262fdd08ba73ee"
+    },
+    {
+      "byte_length": 7724,
+      "path": ".github/workflows/template-update.yml",
+      "sha256": "36a04dd9ce1ef6f513d7ebb06d48b06b8aedc00554472f4c5864d3c799a87449"
+    },
+    {
+      "byte_length": 257573,
+      "path": "prismpm.lock",
+      "sha256": "c0803c6e4111d3619bae8f0144abf88a6719acb57fd9a650e067683c743d320e"
+    },
+    {
+      "byte_length": 61754,
+      "path": "standards.lock",
+      "sha256": "55eb16a9819d03db1e0db608ee23bde282ceb80c38c1c580e85e31bc5e86da87"
+    },
+    {
+      "byte_length": 1176,
+      "path": "template.lock",
+      "sha256": "ceb08189d3c8642e4c1da678f716aac88e984ef6960a35db5d63f93a9e0f2ad0"
+    }
+  ],
+  "qualification": false,
+  "unclaimed": [
+    "sdk-production-acceptance",
+    "consumer-full-vv",
+    "release",
+    "deployment"
+  ],
+  "notes": [
+    "The first upload omitted four dot-path outputs; strict closed-member verification rejected it before any product write.",
+    "The complete canonical rerender matches all seven original bound-file digests and all initially retained bytes.",
+    "SDK inputs and old cached advisory data remain independently validated by the ordinary final SDK; no consumer-cache data grants application acceptance."
+  ],
+  "evidence_index_sha256": "72ff8a2b214f2adae1a36a708baac239c7b82b0c3e2063fa6b382447c9eb0c98"
+}
