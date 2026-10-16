@@ -342,3 +342,5 @@ export async function runRuntimeChecks(id) {
   assert(machine.calls > 0, 'runtime acceptance must execute the generated dispatcher');
   return { schema: 'lexlean-matmul/runtime-acceptance/1', id, build_id: machine.buildId, wasm_sha256: machine.wasmSha256, requests: machine.calls, status: 'passed' };
 }
+
+export { runtime, expect, request, success, csv };

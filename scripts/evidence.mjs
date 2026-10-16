@@ -84,6 +84,13 @@ export function readBuild() {
   assert.match(build.build_id, /^[0-9a-f]{64}$/);
   return build;
 }
+export function capabilityIds() {
+  const ids = [...fs.readFileSync(path.join(root, 'model/ids.toml'), 'utf8')
+    .matchAll(/^id = "(MM-[0-9]+)"$/gm)].map(match => match[1]);
+  assert(ids.length > 0, 'The acceptance model must declare product capabilities.');
+  assert.equal(new Set(ids).size, ids.length, 'Duplicate product capability.');
+  return ids;
+}
 export function freshBuild() {
   sdk();
   const receipt = readJson(path.join(evidenceRoot, 'source.json'));
