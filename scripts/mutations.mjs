@@ -64,6 +64,31 @@ function rejectGeneratedTheorem(directory, moduleName, theorem, expectedModules)
     source_sha256: sha(sourceBytes), generated_sha256: sha(generatedBytes),
     generated_source: generatedPath, generated_lines: { first: firstLine, last: lastLine }, intended_diagnostic: intended };
 }
+function reversePackedFields(declarations) {
+  const decode = declarations.find(row => row.kind === 'definition' && row.name === 'decodeElement');
+  assert(decode, 'Missing codec decoder to falsify');
+  const successor = decode.body.branches.find(row => row.constructor.name === 'Nat.succ');
+  const packed = successor?.body.branches.find(row => row.constructor.name === 'CodecKind.packed');
+  assert(packed, 'Missing packed codec branch');
+  let replacements = 0;
+  function replace(value) {
+    if (!value || typeof value !== 'object') return value;
+    if (value.kind === 'primitive' && value.operation === 'quotient'
+        && value.arguments[0]?.kind === 'var' && value.arguments[0].name === 'position') {
+      assert.equal(value.arguments.length, 3);
+      assert.equal(value.arguments[1]?.function?.name, 'maximumBlock');
+      replacements += 1;
+      return { kind: 'primitive', operation: 'subtract', result: { kind: 'nat' }, arguments: [
+        { kind: 'primitive', operation: 'subtract', result: { kind: 'nat' }, arguments: [
+          { kind: 'project', value: { kind: 'var', name: 'node' }, field: 'parameter' }, { kind: 'nat', value: '1' }] },
+        structuredClone(value)] };
+    }
+    if (Array.isArray(value)) return value.map(replace);
+    return Object.fromEntries(Object.entries(value).map(([key, child]) => [key, replace(child)]));
+  }
+  packed.body = replace(packed.body);
+  assert.equal(replacements, 1, 'Expected exactly one packed low-first field selector');
+}
 try {
   const stale = path.join(temporary, 'stale-conformance');
   copySource(stale);
@@ -133,6 +158,19 @@ try {
   run('lexlean', ['lock'], wrongAtlasSign);
   mutations.push({ defect: 'negative-by-positive Laurent atom product sign inverted',
     ...rejectGeneratedTheorem(wrongAtlasSign, 'Atlas', 'lookupProductCase0', ['Atlas', 'Core']) });
+
+  const wrongPackedOrder = path.join(temporary, 'wrong-packed-field-order');
+  copySource(wrongPackedOrder);
+  run('prismpm', ['fetch', '--locked'], wrongPackedOrder);
+  const codec = sourceModules().find(module => module.module === 'Codec');
+  assert(codec, 'Missing structured codec authority');
+  reversePackedFields(codec.semantic.declarations);
+  const codecPath = path.join(wrongPackedOrder, 'src', codec.path);
+  fs.writeFileSync(codecPath, fs.readFileSync(codecPath, 'utf8').replace(/^\\semanticdata\{[^\n]*\}$/m,
+    () => `\\semanticdata{${canonical(codec.semantic)}}`));
+  run('lexlean', ['lock'], wrongPackedOrder);
+  mutations.push({ defect: 'packed codec low-first fields decoded in reverse order',
+    ...rejectGeneratedTheorem(wrongPackedOrder, 'Codec', 'packedLowFirst', ['Atlas', 'Codec', 'Core', 'Float']) });
 
   const foreign = path.join(temporary, 'handwritten-product-source');
   copySource(foreign);
