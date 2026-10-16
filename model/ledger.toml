@@ -101,3 +101,15 @@ id = "MM-15"
 level = "build"
 statement = "Bias and linear epilogues retain exact integer, complex, and tropical results until one terminal output encoding."
 feature = "features/suites/epilogues.feature"
+
+[[claim]]
+id = "MM-16"
+level = "build"
+statement = "Finite IEEE products normalize into canonical non-adjacent Laurent atoms and contract a ternary lookup before one encoding."
+feature = "features/suites/atlas.feature"
+
+[[claim]]
+id = "MM-17"
+level = "build"
+statement = "Total scalar and compositional codebooks decode stored symbols before the shared exact direct or tabulated matrix traversal."
+feature = "features/suites/codec.feature"
