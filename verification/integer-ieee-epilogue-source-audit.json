@@ -1,0 +1,111 @@
+{
+  "schema": "lexlean-matmul/integer-ieee-epilogue-source-audit/1",
+  "qualified_for_release": false,
+  "scope": "Pure source AST preservation and actual selected Application kernel certificate audit only; generated runtime, native System and complete just vv remain unqualified.",
+  "baseline_commit": "ee447fe22249f88782da99b4eb737cdf2dbe42f6",
+  "modules": [
+    {
+      "module": "Core",
+      "baseline_sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+      "current_sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+      "preserved_complete_theorems": 59,
+      "added_declarations": [],
+      "changed_existing_declarations": []
+    },
+    {
+      "module": "Atlas",
+      "baseline_sha256": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
+      "current_sha256": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
+      "preserved_complete_theorems": 47,
+      "added_declarations": [],
+      "changed_existing_declarations": []
+    },
+    {
+      "module": "Float",
+      "baseline_sha256": "e4989f77d8c4fe35888178a8e870f7b702e5666816a2ce9533d90a5c9448a0e2",
+      "current_sha256": "432370e5c9905fe4bb5ced939c346d289d35d681289b0026bb10f1aa250aca4c",
+      "preserved_complete_theorems": 67,
+      "added_declarations": [
+        "floatIntegerAtomValue",
+        "floatIntegerScaleAtom",
+        "floatIntegerScaleAtoms",
+        "floatIntegerScale",
+        "floatEpilogueMultiply",
+        "integerScaleEmptyAtoms",
+        "integerScaleNegativeFraction64",
+        "integerScaleSubnormal64",
+        "fractionalScaleRetainsAtlas32",
+        "integerScaleZeroInfinity32"
+      ],
+      "changed_existing_declarations": [
+        "linear"
+      ]
+    },
+    {
+      "module": "Epilogue",
+      "baseline_sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87",
+      "current_sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87",
+      "preserved_complete_theorems": 16,
+      "added_declarations": [],
+      "changed_existing_declarations": []
+    },
+    {
+      "module": "Codec",
+      "baseline_sha256": "a2c3ff47192b2609c9cdcd4d49d78944a13afa8ebe708f7a776757eb079c63a7",
+      "current_sha256": "a2c3ff47192b2609c9cdcd4d49d78944a13afa8ebe708f7a776757eb079c63a7",
+      "preserved_complete_theorems": 35,
+      "added_declarations": [],
+      "changed_existing_declarations": []
+    }
+  ],
+  "preserved_original_math_theorems": 224,
+  "new_scalar_theorems": [
+    {
+      "name": "LexLeanMatmul.Float.integerScaleEmptyAtoms",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Float.integerScaleNegativeFraction64",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Float.integerScaleSubnormal64",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Float.fractionalScaleRetainsAtlas32",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Float.integerScaleZeroInfinity32",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    }
+  ],
+  "application_attestation_id": "40a791c11ab6408f7f03225245075e3f8ca625bf932c8972b5777872df686f07",
+  "a_times_b_atlas_route": "Float.floatMultiply unchanged byte-for-byte as AST; only existing definition linear redirects its two scalar products to floatEpilogueMultiply."
+}

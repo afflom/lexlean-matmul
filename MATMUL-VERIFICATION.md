@@ -2,7 +2,7 @@
 
 The complete selected application source closure has passed Lean and
 leanchecker verification, including all 158 modeled byte vectors. The five
-mathematical modules contain 224 kernel-checked theorems. **Full generated
+mathematical modules contain 229 kernel-checked theorems. **Full generated
 application acceptance and GitHub Pages deployment remain pending.** Source
 verification is not a substitute for the repository's complete `just vv` gate.
 
@@ -16,13 +16,13 @@ the containing native system and does not execute generated application
 artifacts. The selected modules are Application, Atlas, Codec, CodecProtocol,
 Core, Epilogue, ExtendedProtocol, Float, Model, Protocol, and the SDK-owned Text
 V1 metadata module. Its attestation is
-`37fa92d510af8dea00b5020ff1ee1f7f745124082b313cd3a7a719ae9d8e97d8`.
+`40a791c11ab6408f7f03225245075e3f8ca625bf932c8972b5777872df686f07`.
 
 | Mathematical module | Declarations | Theorems |
 | --- | ---: | ---: |
 | Core | 262 | 59 |
 | Atlas | 134 | 47 |
-| Float | 218 | 67 |
+| Float | 228 | 72 |
 | Epilogue | 60 | 16 |
 | Codec | 656 | 35 |
 
@@ -35,6 +35,13 @@ low zeros, borrow propagation, and prefix limits. Subtraction computes its
 borrow and digit in scalar helpers before the recursive call, allowing the
 actual Lean exporter and Rust generator to preserve the moved accumulator.
 IEEE sticky-bit prefixes use the same bounded copy worker.
+Integer IEEE epilogues decompose only their scalar into canonical signed NAF
+atoms, then shift and add the existing exact aggregate. They preserve the
+Atlas multiplication path for matrix operands and the existing non-finite and
+fractional-scalar behavior. The [source audit](verification/integer-ieee-epilogue-source-audit.json)
+checks that all 224 preceding mathematical theorems remain unchanged and the
+five new scalar certificates have no axioms. Actual resource acceptance of
+this optimization remains pending.
 E8 rows use the same owned storage pattern;
 the independent oracle still validates every symbol against the pinned table.
 Computational definitions use distinct names across modules because the
