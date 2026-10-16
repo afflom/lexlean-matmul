@@ -30,6 +30,18 @@ model does not sanction.
 | --- | --- | --- |
 | `MM-02` | `build` | Signed binary, ternary, and signed eight-bit codecs preserve their declared decoded values. |
 
+## encoding
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-14` | `build` | Signed integer output encoders wrap or saturate the exact result at the requested width without intermediate loss. |
+
+## epilogues
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-15` | `build` | Bias and linear epilogues retain exact integer, complex, and tropical results until one terminal output encoding. |
+
 ## exact
 
 | ID | Level | Statement |
@@ -37,6 +49,12 @@ model does not sanction.
 | `MM-01` | `build` | Integer GEMM decodes operands, accumulates exact products, and applies the linear epilogue once. |
 | `MM-03` | `build` | Partitioned and tabulated accumulation agrees with direct accumulation, including partial blocks. |
 | `MM-04` | `build` | Complex integer products and dyadic products retain exact arithmetic through reduction. |
+
+## floating
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-13` | `build` | IEEE binary32 and binary64 products decode exactly and encode once with the requested rounding and non-finite semantics. |
 
 ## proofs
 
@@ -60,7 +78,7 @@ model does not sanction.
 
 | ID | Level | Statement |
 | --- | --- | --- |
-| `MM-10` | `build` | The typed browser system model binds the application, artifact, component, controls, and GitHub Pages target. |
+| `MM-10` | `build` | PrismPM browser-system /2 projects and verifies the bound application, artifact, component, mandatory controls, and GitHub Pages target. |
 
 ## tropical
 
@@ -97,8 +115,11 @@ Never re-derived, vendored, or gated on.
 | `MM-07` | `build` | Versioned matrix requests reject malformed values, incompatible shapes, and invalid codes with modeled errors. |
 | `MM-08` | `build` | LexLean generates kernel-checked arithmetic and codec theorems with explicit axiom policies. |
 | `MM-09` | `build` | One LexLean application model generates the native library, Core-Wasm, Holo archive, and accessible portable View. |
-| `MM-10` | `build` | The typed browser system model binds the application, artifact, component, controls, and GitHub Pages target. |
+| `MM-10` | `build` | PrismPM browser-system /2 projects and verifies the bound application, artifact, component, mandatory controls, and GitHub Pages target. |
 | `MM-11` | `build` | Independent exact arithmetic oracles validate generated runtime results and representative planted defects are rejected. |
 | `MM-12` | `build` | The pinned SDK reproduces platform-independent application artifacts from separate clean roots. |
 | `AUTH-UOR-MATMUL` | `some-true` | The cited UOR reference specifies decoding coded operands, exact accumulation, and a single output encoding. |
 | `AUTH-CALCULATOR` | `some-true` | The cited Calculator reference declares a LexLean-authored portable Core-Wasm, Holo, and Pages application. |
+| `MM-13` | `build` | IEEE binary32 and binary64 products decode exactly and encode once with the requested rounding and non-finite semantics. |
+| `MM-14` | `build` | Signed integer output encoders wrap or saturate the exact result at the requested width without intermediate loss. |
+| `MM-15` | `build` | Bias and linear epilogues retain exact integer, complex, and tropical results until one terminal output encoding. |
