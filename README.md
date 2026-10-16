@@ -11,11 +11,13 @@ archive, and portable browser application. Repository Rust and JavaScript
 provide verification and packaging. Shipped matrix arithmetic and request
 handling remain LexLean declarations.
 
-**Release status:** the complete `just vv` gate and public GitHub Pages
-publication have not passed. SDK fixes, a fresh locked catalog, and application
-builds are in progress. Successful component proofs establish their recorded
-source scope; they do not qualify the application or a deployment. See
-[MATMUL-VERIFICATION.md](MATMUL-VERIFICATION.md) for the observed evidence.
+[Open the application](https://afflom.github.io/lexlean-matmul/) ·
+[Acceptance and deployment runs](https://github.com/afflom/lexlean-matmul/actions/workflows/pages.yml)
+
+Release qualification requires the complete `just vv` gate and the protected
+Pages publication checks. Component proofs and diagnostic builds establish
+their recorded scope. See [MATMUL-VERIFICATION.md](MATMUL-VERIFICATION.md) for
+the evidence and release boundary.
 
 ## Build and verify
 
@@ -104,7 +106,8 @@ uses those same six exported assets.
 Deployment runs separately on protected `main` through the `github-pages`
 environment. Subsequent jobs verify the published bytes against both the
 accepted SDK release and the uploaded archive. The modeled destination is
-`https://afflom.github.io/lexlean-matmul/`; it is not yet a verified deployment.
+`https://afflom.github.io/lexlean-matmul/`. The workflow retains acceptance and
+publication results for each revision.
 
 The pure implementation uses persistent data and software arithmetic. Native
 SIMD throughput, caller-owned scratch, zero allocation, raw BLAS ABI, mutable

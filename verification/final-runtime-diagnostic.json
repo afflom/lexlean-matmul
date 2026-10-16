@@ -1,0 +1,3734 @@
+{
+  "schema": "lexlean-matmul/final-runtime-diagnostic/1",
+  "qualified_for_release": false,
+  "status": "passed",
+  "scope": "Actual successful normal full158 TextV2 source-maintenance SDK build and its generated Core-Wasm/browser artifacts only. This diagnostic does not establish immutable-SDK, native-system release, complete just vv, or live GitHub Pages acceptance.",
+  "excluded_acceptance": [
+    "MM-16 complete kernel-certificate/source binding (the same IEEE numerical cases execute under MM-13 here)",
+    "Final immutable SDK/index and locked consumer binding",
+    "Native Production.BrowserSystem /2 product_build and source-free OCI replay",
+    "Complete just vv including genuine mutations and clean reproduction",
+    "GitHub Pages deployment and live HTTPS/browser publication verification"
+  ],
+  "build": {
+    "project": "/tmp/matmul-source-maintenance-final-cache-build",
+    "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+    "started_at": "2026-10-16T11:32:44.436Z",
+    "completed_at": "2026-10-16T11:41:15.094Z",
+    "elapsed_seconds": 510.658195992,
+    "exit_code": 0,
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--name",
+      "matmul-source-maintenance-final-cache-diagnostic",
+      "--network",
+      "none",
+      "--user",
+      "0:0",
+      "--ulimit",
+      "stack=67108864:-1",
+      "--mount",
+      "type=bind,source=/tmp/lexlean-matmul-sdk-refresh.F6Im9d,target=/sdk-source,readonly",
+      "--mount",
+      "type=bind,source=/tmp/matmul-source-maintenance-final-cache-build,target=/probe",
+      "--workdir",
+      "/probe",
+      "--entrypoint",
+      "timeout",
+      "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1800",
+      "/sdk-source/target/debug/prismpm",
+      "--json",
+      "--project",
+      "/probe",
+      "build"
+    ],
+    "sdk_source_head": "c86c7156f7a36c0a164298c3a93dfe5d264d7a64",
+    "actual_source_built_cli": {
+      "path": "/tmp/lexlean-matmul-sdk-refresh.F6Im9d/target/debug/prismpm",
+      "byte_length": 404819224,
+      "sha256": "4d07b3dd8ec629390d223e754d043f56d113082e2b97cf0bb3b85f5c56007a28"
+    },
+    "base_toolchain_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+    "tool_hashes": {
+      "prismpm_sha256": "4d07b3dd8ec629390d223e754d043f56d113082e2b97cf0bb3b85f5c56007a28",
+      "lexlean_sha256": "7d358efeb80e89a5f9e3a0245fe33ca4d97450096c6ba1e2f895bf78d74df73b",
+      "cargo_lock_sha256": "d040dbea701952f379d6cc8c2a4c2525c7812dace22635320d894458e6ccf4d0",
+      "application_build_rs_sha256": "ebefbfdc9152a5262bab896f418a1b887cfb61ef66bfda93fdb8ba6b1a1199a6",
+      "verification_rs_sha256": "773c8a651c81c1d861b4f58c6763586431d92c760509079fb16b0254c898350c",
+      "lean_project_rs_sha256": "ee569ec185b17d455dc8adf60e0f98ae36ce5a789a7043c2bc858d0f9a4ebe58",
+      "exporter_archive_sha256": "7a1a716a57040ea2307f7a34e895a75ebdca7438cf9d5d0364007acb594366bf"
+    },
+    "lexlean_lock_sha256": "9912cd08e7a2f7fb489d00d2556e0ee66ef9e563f5ce178f38733d23258234d3",
+    "input_metadata": {
+      "capture": {
+        "path": "/tmp/matmul-source-maintenance-final-cache-build/maintenance-inputs.json",
+        "byte_length": 2557,
+        "sha256": "811a008a7cd99dc68abb8f2aa0d2d37d6ad9b7a86876185dd749fa111e76f73c"
+      },
+      "value": {
+        "schema": "lexlean-matmul/source-maintenance-inputs/1",
+        "qualified_for_release": false,
+        "scope": "Official cold-source SDK-maintenance diagnostic only; product untouched. Frozen158Application gets TextV2 resource metadata in isolatedhelper; V1view/vectors and allmath/protocolsource unchanged.",
+        "base_application_sha256": "ec1d1b3c79da6b63500213aab3c160bfa02d74498cd7ba2ec5498ace3a25816a",
+        "vectors_unchanged": 158,
+        "math_and_protocol_modules_unchanged": [
+          "Core",
+          "Atlas",
+          "Float",
+          "Epilogue",
+          "Codec",
+          "Protocol",
+          "ExtendedProtocol",
+          "CodecProtocol"
+        ],
+        "profile": "prismpm/text-application/2",
+        "core_memory_pages": 32767,
+        "core_stack_bytes": 16777216,
+        "consumer_sdk_lock_copied": false,
+        "files": [
+          {
+            "path": "src/Application.lex.tex",
+            "byte_length": 204675,
+            "sha256": "951a1fe90b484a4c3cbf4974ebe2c99d0117c8c0159c3ec4c50f7b85cb95b9a8"
+          },
+          {
+            "path": "src/Atlas.lex.tex",
+            "byte_length": 164620,
+            "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b"
+          },
+          {
+            "path": "src/Codec.lex.tex",
+            "byte_length": 1146068,
+            "sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88"
+          },
+          {
+            "path": "src/CodecProtocol.lex.tex",
+            "byte_length": 88203,
+            "sha256": "ee0a431c3a01a6c893bd3ed09b3bb1f1527bffef36be31cb210e394ad1715f5a"
+          },
+          {
+            "path": "src/Core.lex.tex",
+            "byte_length": 304177,
+            "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+          },
+          {
+            "path": "src/Epilogue.lex.tex",
+            "byte_length": 85876,
+            "sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87"
+          },
+          {
+            "path": "src/ExtendedProtocol.lex.tex",
+            "byte_length": 190587,
+            "sha256": "ae343c20e5d5c970ddd19018ad9c6a4c1a176cfbbcf4832a1420ce8e1288d5ce"
+          },
+          {
+            "path": "src/Float.lex.tex",
+            "byte_length": 266431,
+            "sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6"
+          },
+          {
+            "path": "src/MatmulSystem.lex.tex",
+            "byte_length": 58343,
+            "sha256": "8d08d9a87ab14767d5743244eade7391b074e1ccaaf8c8af3718ab5fef8ab3d5"
+          },
+          {
+            "path": "src/Model.lex.tex",
+            "byte_length": 3475,
+            "sha256": "f1dbff70f95f524d1bd1830c7ff2b31a5b17b1d001f7b1ddc361279b48749abe"
+          },
+          {
+            "path": "src/Protocol.lex.tex",
+            "byte_length": 122291,
+            "sha256": "51454a08ad1013fadb6073d8e1aa304af571437d54e911929552dee2d571b791"
+          }
+        ]
+      }
+    },
+    "normal_build_capture": {
+      "path": "/tmp/matmul-source-maintenance-final-cache-build/maintenance-result.json",
+      "byte_length": 5702,
+      "sha256": "e47b08c80adb6c222d511a1037f4e25757ee74e05e9f666c6d651d2f8e0dd8cd"
+    },
+    "successful_public_result": {
+      "capture": {
+        "path": "/tmp/matmul-source-maintenance-final-cache-build/sdk-build-result.json",
+        "byte_length": 519,
+        "sha256": "3fde285f66163dd1aadced73d3c881d8c7d0786f88896d79182c879e305c2804"
+      },
+      "value": {
+        "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+        "manifest_path": ".prism/build/44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4/manifest.json",
+        "model_path": ".prism/build/44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4/model.prism.json",
+        "schema": "prismpm/build-result/1",
+        "semantic_id": "bcf250d493c369a2173688440e7e40f0c17acebadd5c1483aae04b182f21f778",
+        "source_id": "c2755c63e6b957d0fc6d5a57a54c68e69f057865618a62590aca2553a4601459"
+      }
+    },
+    "manifest": {
+      "capture": {
+        "path": "/tmp/matmul-source-maintenance-final-cache-build/.prism/build/44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4/manifest.json",
+        "byte_length": 30359,
+        "sha256": "9034c848a47e1dc7a4730b39491c6445d50aff571bcc4a413adc96f87d4bfbdc"
+      },
+      "schema": "prismpm/build-manifest/1",
+      "inputs": {
+        "application_artifacts_sha256": "2d76b7b59f0e8f9386d867a3685f528889cb19560ce48e645dfb41512ba5a361",
+        "application_generator_sha256": "299bff948b57b1a5adde12a82062380978e575a2adc13152248f3e970a32c4cc",
+        "dependency_register_sha256": "fbf3d16cedb6e54789e923752dca818b4c4f835631f8b73e4f89642bd6eec9e4",
+        "emitter_semantics_id": "84f4e23e4f6aa3d46822c967dc3e0064fd4e3ffddc9fc21e3861d8322a9beedf",
+        "lexlean_build_id": "3db30a174ba6b28379b60c923523e10eaf10754e01b8c69d925616afd093a6ab",
+        "lexlean_semantic_id": "bcf250d493c369a2173688440e7e40f0c17acebadd5c1483aae04b182f21f778",
+        "lexlean_source_id": "c2755c63e6b957d0fc6d5a57a54c68e69f057865618a62590aca2553a4601459",
+        "model_id": "29398547747c0ba03a0f46929592d9b7bf86e3c0137a981941c482b6b8c6a53c",
+        "schema": "prismpm/build-inputs/2",
+        "system_id": null
+      },
+      "all_file_hashes_and_lengths_rechecked": true,
+      "verified_files": 167,
+      "verified_bytes": 28462779,
+      "files": [
+        {
+          "byte_length": 847938,
+          "kind": "artifact",
+          "path": "LexLean Matmul.holo",
+          "sha256": "4bfab4b8bc403484d2288ec369b71c1cd7107bfffd72d86f159889bf78b4a48c",
+          "verified": true
+        },
+        {
+          "byte_length": 356,
+          "kind": "artifact",
+          "path": "application/application-manifest.bin",
+          "sha256": "5cad12a9211ffc3c2fe101450165629745a4d3856d699eecca25ed43589136b6",
+          "verified": true
+        },
+        {
+          "byte_length": 104,
+          "kind": "artifact",
+          "path": "application/capability-request.bin",
+          "sha256": "888ef9fab26cf92f0a20a1d0fdf7e5dd494f7eb7ec23dfb26a039a7233cb4a02",
+          "verified": true
+        },
+        {
+          "byte_length": 1017,
+          "kind": "artifact",
+          "path": "application/directory.json",
+          "sha256": "f934ae0945c5263fd8744f2a74c0e0842e7e7052d684fce6d12276accb87b992",
+          "verified": true
+        },
+        {
+          "byte_length": 257,
+          "kind": "artifact",
+          "path": "application/exporter-identity.json",
+          "sha256": "0ba060738d7d7f7073fe2559e48c3ac78042207bc805226c8b61db6cdf221e94",
+          "verified": true
+        },
+        {
+          "byte_length": 561,
+          "kind": "artifact",
+          "path": "application/holo-identities.json",
+          "sha256": "b6cd3ee5092f7a61d561dac230bff9d59eca415b2b82f94fd0a33c9b25f2028a",
+          "verified": true
+        },
+        {
+          "byte_length": 289,
+          "kind": "lexlean-manifest",
+          "path": "application/lcnf-manifest.json",
+          "sha256": "be702500a36e8f5a1721e0e2ce277a28863ccd0482aee468c856146652a38ef1",
+          "verified": true
+        },
+        {
+          "byte_length": 14828,
+          "kind": "lexlean-manifest",
+          "path": "application/lexlean-build-manifest.json",
+          "sha256": "f11d129deb5d3a1d39c2a79e772c719a8c2d180e4a4ecacb6101b151b00dc02e",
+          "verified": true
+        },
+        {
+          "byte_length": 17599,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Application.coverage.json",
+          "sha256": "30a709e59e83e28ddd51014adacb0a272700ecbf2e4c0d9b16e6a79161e50ce2",
+          "verified": true
+        },
+        {
+          "byte_length": 9351,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Atlas.coverage.json",
+          "sha256": "840dee5d3981d5a896cceec54b164ce1b17a604d4342da3ff7d825f9251f3681",
+          "verified": true
+        },
+        {
+          "byte_length": 9993,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Codec.coverage.json",
+          "sha256": "07dac505195383e3de45bf40ee186bd880230492de823be5d48f602c58b3253b",
+          "verified": true
+        },
+        {
+          "byte_length": 13085,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/CodecProtocol.coverage.json",
+          "sha256": "08f977bfe7e638c3399e161e66ab5d6a03bc9f446824b572d2e402f9552fa0c7",
+          "verified": true
+        },
+        {
+          "byte_length": 8675,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Core.coverage.json",
+          "sha256": "c4a150839ddec3de890a18a622f1a3bffc79e32e2a8732891d03530f57421c44",
+          "verified": true
+        },
+        {
+          "byte_length": 10145,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Epilogue.coverage.json",
+          "sha256": "2dac8f254055030edc580adb794e6c72236976e08d5c265f761d547e4c09695a",
+          "verified": true
+        },
+        {
+          "byte_length": 12685,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/ExtendedProtocol.coverage.json",
+          "sha256": "45548dbc156f7e0b78e61fa25700b3afbefdbbf320d583c485ad8b5deb9e48ec",
+          "verified": true
+        },
+        {
+          "byte_length": 9972,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Float.coverage.json",
+          "sha256": "b0a375afc548c3146331b4f0dc41c48dff3e32a45a437f731d42724b53b50ece",
+          "verified": true
+        },
+        {
+          "byte_length": 15285,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Foundation/View/Text/V1/Model.coverage.json",
+          "sha256": "88d213d231e88b638b1241816acd9444b381666f831c7782e6d51a81bc14ff00",
+          "verified": true
+        },
+        {
+          "byte_length": 17813,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Foundation/View/Text/V2/Model.coverage.json",
+          "sha256": "6afe7f8be1734541087cce549b4241737cdb92035e350ecda9890346a326cbb4",
+          "verified": true
+        },
+        {
+          "byte_length": 8690,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Model.coverage.json",
+          "sha256": "7edf22de674cc87431eca7143b0e602b96064f3e663ca2eb75159c85d9904a6f",
+          "verified": true
+        },
+        {
+          "byte_length": 10164,
+          "kind": "coverage",
+          "path": "application/lexlean-build/coverage/LexLeanMatmul/Protocol.coverage.json",
+          "sha256": "cc31be67575d9779a088be12b40403f2f71c29c718ce9b2b31f49873dab150fe",
+          "verified": true
+        },
+        {
+          "byte_length": 11645,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Application.closure.json",
+          "sha256": "dda658560336769010613a32f0944bb065b97bd9c7a7533bb4d0a458edc8fbb8",
+          "verified": true
+        },
+        {
+          "byte_length": 10603,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Atlas.closure.json",
+          "sha256": "204ff527d02906b01492a8b3d4d326a52f034515cc60f0bb5c9ce3f964ceaf08",
+          "verified": true
+        },
+        {
+          "byte_length": 10603,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Codec.closure.json",
+          "sha256": "044463f1b79364b428ae8215bbd808c191666013a70940ddf7c99ef92d4eacaf",
+          "verified": true
+        },
+        {
+          "byte_length": 10611,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/CodecProtocol.closure.json",
+          "sha256": "a4eae3d5b451b083df846cf70a6942f6f1e25643f98f086cb58d54b2d4d5cb44",
+          "verified": true
+        },
+        {
+          "byte_length": 10602,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Core.closure.json",
+          "sha256": "a85a849db67e0c132ae6c2e33c4bd3c7647ba9441fc024367064767f23d8320d",
+          "verified": true
+        },
+        {
+          "byte_length": 10606,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Epilogue.closure.json",
+          "sha256": "e53dae057c51e2ab7c00dc75b57f0685c2238bade0bb12b3f86b68384922d3e1",
+          "verified": true
+        },
+        {
+          "byte_length": 10614,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/ExtendedProtocol.closure.json",
+          "sha256": "45452c1a66f30a3926560890bd89382a0eb6ef9cfeffcfd17bdeda44ef7c0459",
+          "verified": true
+        },
+        {
+          "byte_length": 10603,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Float.closure.json",
+          "sha256": "6ed6cce6be477f3ab40df810e2f4bdabb2ffaef486d817c1c205a7a1360b11af",
+          "verified": true
+        },
+        {
+          "byte_length": 11663,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Foundation.View.Text.V1.Model.closure.json",
+          "sha256": "34f242552a116cdf62cf3b2a16f0069a3672285910cf08042b04312ea7313dbc",
+          "verified": true
+        },
+        {
+          "byte_length": 11663,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Foundation.View.Text.V2.Model.closure.json",
+          "sha256": "ab04bb3ce4bf993ee2447e1497f9d98876dc75b4cfbd7884d1b83a9afd0f6fbe",
+          "verified": true
+        },
+        {
+          "byte_length": 10603,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Model.closure.json",
+          "sha256": "9ab7067f649ae87edd8ff80b3a359938cbd0711b7117cea7a58e85e436d4e212",
+          "verified": true
+        },
+        {
+          "byte_length": 10606,
+          "kind": "lexicon-closure",
+          "path": "application/lexlean-build/lexicons/Protocol.closure.json",
+          "sha256": "76db2b25ca938f5a5c18f0abfb1c925521e48e1318a268c4350d5d94545cc8fe",
+          "verified": true
+        },
+        {
+          "byte_length": 851,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Application.map.json",
+          "sha256": "226ab14338fd5f3a226c2a37d71a92345b7cf0afb51795731e4f84acfd2e0c24",
+          "verified": true
+        },
+        {
+          "byte_length": 825,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Atlas.map.json",
+          "sha256": "fe2eaa49db928bf1eb890b72d51ead393146c68635f53cbe0b990e0c1c935d51",
+          "verified": true
+        },
+        {
+          "byte_length": 829,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Codec.map.json",
+          "sha256": "378be84fdf14e9e7f2e92c358dea24ac9e1c4d9ec6672a70c60daea99a51ff3e",
+          "verified": true
+        },
+        {
+          "byte_length": 855,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/CodecProtocol.map.json",
+          "sha256": "5aabd7641d7ec0f64cf4e002b1c673bdeac47e301b193f507823527dd483ebb2",
+          "verified": true
+        },
+        {
+          "byte_length": 822,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Core.map.json",
+          "sha256": "e2837b6463af56d4e1421318094e4c122a9609f0747d94d71839205a0643a474",
+          "verified": true
+        },
+        {
+          "byte_length": 835,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Epilogue.map.json",
+          "sha256": "7fd255323221d09c2d9c6d13ba5c52667f3a2551419dde11694eb79a6ec98c0e",
+          "verified": true
+        },
+        {
+          "byte_length": 869,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/ExtendedProtocol.map.json",
+          "sha256": "41b79fc1531c57c632b6ac3c61fa98b39c45f5ff77f80b22db9831913fe329d6",
+          "verified": true
+        },
+        {
+          "byte_length": 825,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Float.map.json",
+          "sha256": "03581465bae6f09609f48f4ccbce8e43ff9d9d364fd548f550eda783bcfff13c",
+          "verified": true
+        },
+        {
+          "byte_length": 935,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Foundation/View/Text/V1/Model.map.json",
+          "sha256": "7405ea887afc366d46e1d369a8f3e10b76609c621ce7d33a0ecda2262dc5f58e",
+          "verified": true
+        },
+        {
+          "byte_length": 935,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Foundation/View/Text/V2/Model.map.json",
+          "sha256": "ba6f22dd4a2dcbb5a80c60cc45f491e61e32c12215eb2b4411cd5829e69d19ff",
+          "verified": true
+        },
+        {
+          "byte_length": 819,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Model.map.json",
+          "sha256": "3d96762be59af9871622b53d872a7c0d22da5ff7dedf99124ec2cad02074e55f",
+          "verified": true
+        },
+        {
+          "byte_length": 837,
+          "kind": "source-map",
+          "path": "application/lexlean-build/maps/LexLeanMatmul/Protocol.map.json",
+          "sha256": "ef4765fc68e0a9ea718352c360e6fced65d4383a25e9319be4a1fd02e397ada2",
+          "verified": true
+        },
+        {
+          "byte_length": 840635,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Application.lean",
+          "sha256": "62d7f2a55de746278d4df2dfe595909082b7b3537018126456a887c500d09738",
+          "verified": true
+        },
+        {
+          "byte_length": 350863,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Application.tex",
+          "sha256": "dd1558d29c80e7648a9b5a40d48e67e37ad026e2c78c5263a2f02f3c1dbc8f57",
+          "verified": true
+        },
+        {
+          "byte_length": 59632,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Atlas.lean",
+          "sha256": "a43942995aafe8dd6c1f6d952df607be66a9836f8b2faac9c4c9067b0a323499",
+          "verified": true
+        },
+        {
+          "byte_length": 60886,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Atlas.tex",
+          "sha256": "1ee63b107a2ac21133457f909334f7a0888065b3b1cafc49c80838c50900a60f",
+          "verified": true
+        },
+        {
+          "byte_length": 368316,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Codec.lean",
+          "sha256": "bf50b5c7c4cee193210312df52200f20d2638da610c935c3ed9f9ef86669ec7a",
+          "verified": true
+        },
+        {
+          "byte_length": 448877,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Codec.tex",
+          "sha256": "78c90329df585bbb38be1f1adb85eb098328a9901ea7f8f96586ef95082f1ebd",
+          "verified": true
+        },
+        {
+          "byte_length": 40200,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/CodecProtocol.lean",
+          "sha256": "7e4e36e571a0aa89206c1753cfcf023d3a19b3ed4482e07faf7522ac3561b1b6",
+          "verified": true
+        },
+        {
+          "byte_length": 30539,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/CodecProtocol.tex",
+          "sha256": "cd1d4def785b1b7b96f74136f742c2a29f42b8ba427c355054d5fb31c6482d5b",
+          "verified": true
+        },
+        {
+          "byte_length": 93523,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Core.lean",
+          "sha256": "0022ccc8a3002ea20bd73a6de585a9adeb8f65610a1fc305da1dc4d39456941b",
+          "verified": true
+        },
+        {
+          "byte_length": 104547,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Core.tex",
+          "sha256": "8a3781c6f830d33659e765da81fdc8efcff74b63220f118c83f2eca533bc6e7c",
+          "verified": true
+        },
+        {
+          "byte_length": 40211,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Epilogue.lean",
+          "sha256": "fae14325f478919366d83de12bca72047fd83748d783dcba8f4e9ee3c499139f",
+          "verified": true
+        },
+        {
+          "byte_length": 28226,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Epilogue.tex",
+          "sha256": "658d31619a6942301bad503606f2cb5259d57106287d3033ddf925840ac95b1a",
+          "verified": true
+        },
+        {
+          "byte_length": 83943,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/ExtendedProtocol.lean",
+          "sha256": "0b10cb8fe45d38cc781119c094fab503a6a7b79afc3482e4837e644b0e9e19a2",
+          "verified": true
+        },
+        {
+          "byte_length": 72782,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/ExtendedProtocol.tex",
+          "sha256": "e21888927489b5b09ef5136aa976e720c3c109f7241247046c051d97431c984e",
+          "verified": true
+        },
+        {
+          "byte_length": 85742,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Float.lean",
+          "sha256": "450fdda94e5a7b79bf3308033fb04138c9cd24f5e74d20c94dcbccfab9cbdeeb",
+          "verified": true
+        },
+        {
+          "byte_length": 94565,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Float.tex",
+          "sha256": "a0a3ebbb4e4e13d82b8af11603caa61c4989dba539826e60ad982bf52d18cc8e",
+          "verified": true
+        },
+        {
+          "byte_length": 1098,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Foundation/View/Text/V1/Model.lean",
+          "sha256": "e32dcf8e135f8c05bb333e0702ae5d607feae30e5e961144f8eb66767d455756",
+          "verified": true
+        },
+        {
+          "byte_length": 612,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Foundation/View/Text/V1/Model.tex",
+          "sha256": "f18a94dee5e0a5d48b632a838009f1b9399e98fe1c0b50e510d5da76998554c9",
+          "verified": true
+        },
+        {
+          "byte_length": 1027,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Foundation/View/Text/V2/Model.lean",
+          "sha256": "1cf387363e5be59cf6c25cbe2d5e3e54d64caf5dee95c7206a3e365ec1dff834",
+          "verified": true
+        },
+        {
+          "byte_length": 460,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Foundation/View/Text/V2/Model.tex",
+          "sha256": "51cc1b4aae650d47c23b76b42d099b8e21fa0cb563b88e28fe356422dcef6767",
+          "verified": true
+        },
+        {
+          "byte_length": 1757,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Model.lean",
+          "sha256": "7b0b9325d88af40cd9325436f1584610e3882d7d8b6fce1be0040f40d1ba106c",
+          "verified": true
+        },
+        {
+          "byte_length": 4941,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Model.tex",
+          "sha256": "433a3f487d37b21447679e69217c4ac5fa79df9920ad2baa4203d3e916d4b808",
+          "verified": true
+        },
+        {
+          "byte_length": 57782,
+          "kind": "lean",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Protocol.lean",
+          "sha256": "d43aaf5515450e73169f6c61fb6b67d2e2614c689312c87746840b9223fbbdbd",
+          "verified": true
+        },
+        {
+          "byte_length": 42960,
+          "kind": "latex",
+          "path": "application/lexlean-build/modules/LexLeanMatmul/Protocol.tex",
+          "sha256": "b0878b51e8cab268db36ce47b47c78ea7eba5367c95b63fbdd6ab8c51e6b54d3",
+          "verified": true
+        },
+        {
+          "byte_length": 7940095,
+          "kind": "semantic-snapshot",
+          "path": "application/lexlean-snapshot.json",
+          "sha256": "50f799e743a46635f1033a71c2accea0fff09380144d59c3644d06b484e48d46",
+          "verified": true
+        },
+        {
+          "byte_length": 2141,
+          "kind": "artifact",
+          "path": "application/model-provenance.json",
+          "sha256": "c0b2efbbe1502262ce8a47bb0fb9b85c31289746d80bc25f788dcd41f4e8f93f",
+          "verified": true
+        },
+        {
+          "byte_length": 610,
+          "kind": "lexlean-manifest",
+          "path": "application/source-manifest.json",
+          "sha256": "7f6207af72984b18bbce368b5c48c15a810dc531ad1b5b1216ead6a14c4ec376",
+          "verified": true
+        },
+        {
+          "byte_length": 201,
+          "kind": "artifact",
+          "path": "application/target-profile.json",
+          "sha256": "28e97ac90659fcbe23a4fdfafab2617c899d3c8b88c3cc234c5eaf515cbbaeca",
+          "verified": true
+        },
+        {
+          "byte_length": 31643,
+          "kind": "artifact",
+          "path": "cargo/coverage.json",
+          "sha256": "c29b65fbc56743ce8fa1466e72bcfb1b1058bc90d2b0fcf63ac0f5417964b2e3",
+          "verified": true
+        },
+        {
+          "byte_length": 843421,
+          "kind": "artifact",
+          "path": "cargo/kernel.ir",
+          "sha256": "31cc4b359f7b39baa7ac834fd670a8de84b2892a35897d2c35842a0cce1e94aa",
+          "verified": true
+        },
+        {
+          "byte_length": 117160,
+          "kind": "artifact",
+          "path": "cargo/lexlean-matmul-0.1.0.crate",
+          "sha256": "cc25c82f7d6bc729afd5035e10921dedb1b6625227582dc175fe66cee0434925",
+          "verified": true
+        },
+        {
+          "byte_length": 390,
+          "kind": "artifact",
+          "path": "cargo/package/Cargo.lock",
+          "sha256": "74977c68ac639b2071246f163cd80c657d9e015568cf78db857bea1ac63b7eee",
+          "verified": true
+        },
+        {
+          "byte_length": 659,
+          "kind": "artifact",
+          "path": "cargo/package/Cargo.toml",
+          "sha256": "fede3c111f8005d3cdf07460d387640ac1005c1dd30dd7036da9fb66925f0876",
+          "verified": true
+        },
+        {
+          "byte_length": 10138,
+          "kind": "artifact",
+          "path": "cargo/package/LICENSE-APACHE",
+          "sha256": "0d0a33bfc9c787ea04bdf88212b635bda27d28a0f8181db33853767cc73820b2",
+          "verified": true
+        },
+        {
+          "byte_length": 1066,
+          "kind": "artifact",
+          "path": "cargo/package/LICENSE-MIT",
+          "sha256": "3f96829e754d532a3c70521826693f13ab8303a17b7f715cb2a0811dae867682",
+          "verified": true
+        },
+        {
+          "byte_length": 465,
+          "kind": "artifact",
+          "path": "cargo/package/README.md",
+          "sha256": "8393a9460abc1a17c1eee0f8d88ac8c2441123a45d383d327bd46bd323c82a26",
+          "verified": true
+        },
+        {
+          "byte_length": 938,
+          "kind": "lexlean-manifest",
+          "path": "cargo/package/generation-manifest.json",
+          "sha256": "845f0dbd5a24468b4e89886736c839ce97a646d004f778097a38afc87db90d74",
+          "verified": true
+        },
+        {
+          "byte_length": 1221803,
+          "kind": "artifact",
+          "path": "cargo/package/src/lib.rs",
+          "sha256": "c2ed52ee72d97a1baaf6e4c1f14c8d2fe9f64258a97a7f5c458add17d8707ecc",
+          "verified": true
+        },
+        {
+          "byte_length": 31570,
+          "kind": "artifact",
+          "path": "cargo/roots.json",
+          "sha256": "4814f02a9e2811840b35122cdb1ba1f2d3937eba64fea7dfb67e5a2f701b9d91",
+          "verified": true
+        },
+        {
+          "byte_length": 604948,
+          "kind": "artifact",
+          "path": "core-wasm/lexlean_matmul_core_wasm.wasm",
+          "sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "verified": true
+        },
+        {
+          "byte_length": 283,
+          "kind": "artifact",
+          "path": "core-wasm/package/.cargo/config.toml",
+          "sha256": "4eb9b38b7bbcdaf4d0d70e87b7f0600f37fd37a4ad077b4243c02c0b88ae4b61",
+          "verified": true
+        },
+        {
+          "byte_length": 168,
+          "kind": "artifact",
+          "path": "core-wasm/package/Cargo.lock",
+          "sha256": "0634ee8e663d867a428408ebab040f1a6813aa7360c3b795470cc489c83a5426",
+          "verified": true
+        },
+        {
+          "byte_length": 244,
+          "kind": "artifact",
+          "path": "core-wasm/package/Cargo.toml",
+          "sha256": "c748f4fde5a8b1a2b2d9a825a50597e90b6dcef8b6df9b50fab3f1478dd27720",
+          "verified": true
+        },
+        {
+          "byte_length": 694,
+          "kind": "lexlean-manifest",
+          "path": "core-wasm/package/generation-manifest.json",
+          "sha256": "c577ab14658fc9fce200771198095797296598539eab87b5ba2354d4ca49d165",
+          "verified": true
+        },
+        {
+          "byte_length": 1225793,
+          "kind": "artifact",
+          "path": "core-wasm/package/src/lib.rs",
+          "sha256": "62be936e9d3d4088e2157dc08b3168a6073a493c55a8c7c135ecf4d153b084d3",
+          "verified": true
+        },
+        {
+          "byte_length": 17599,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Application.coverage.json",
+          "sha256": "30a709e59e83e28ddd51014adacb0a272700ecbf2e4c0d9b16e6a79161e50ce2",
+          "verified": true
+        },
+        {
+          "byte_length": 9351,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Atlas.coverage.json",
+          "sha256": "840dee5d3981d5a896cceec54b164ce1b17a604d4342da3ff7d825f9251f3681",
+          "verified": true
+        },
+        {
+          "byte_length": 9993,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Codec.coverage.json",
+          "sha256": "07dac505195383e3de45bf40ee186bd880230492de823be5d48f602c58b3253b",
+          "verified": true
+        },
+        {
+          "byte_length": 13085,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/CodecProtocol.coverage.json",
+          "sha256": "08f977bfe7e638c3399e161e66ab5d6a03bc9f446824b572d2e402f9552fa0c7",
+          "verified": true
+        },
+        {
+          "byte_length": 8675,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Core.coverage.json",
+          "sha256": "c4a150839ddec3de890a18a622f1a3bffc79e32e2a8732891d03530f57421c44",
+          "verified": true
+        },
+        {
+          "byte_length": 10145,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Epilogue.coverage.json",
+          "sha256": "2dac8f254055030edc580adb794e6c72236976e08d5c265f761d547e4c09695a",
+          "verified": true
+        },
+        {
+          "byte_length": 12685,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/ExtendedProtocol.coverage.json",
+          "sha256": "45548dbc156f7e0b78e61fa25700b3afbefdbbf320d583c485ad8b5deb9e48ec",
+          "verified": true
+        },
+        {
+          "byte_length": 9972,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Float.coverage.json",
+          "sha256": "b0a375afc548c3146331b4f0dc41c48dff3e32a45a437f731d42724b53b50ece",
+          "verified": true
+        },
+        {
+          "byte_length": 15285,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Foundation/View/Text/V1/Model.coverage.json",
+          "sha256": "88d213d231e88b638b1241816acd9444b381666f831c7782e6d51a81bc14ff00",
+          "verified": true
+        },
+        {
+          "byte_length": 17813,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Foundation/View/Text/V2/Model.coverage.json",
+          "sha256": "6afe7f8be1734541087cce549b4241737cdb92035e350ecda9890346a326cbb4",
+          "verified": true
+        },
+        {
+          "byte_length": 8690,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Model.coverage.json",
+          "sha256": "7edf22de674cc87431eca7143b0e602b96064f3e663ca2eb75159c85d9904a6f",
+          "verified": true
+        },
+        {
+          "byte_length": 10164,
+          "kind": "coverage",
+          "path": "lexlean/build/coverage/LexLeanMatmul/Protocol.coverage.json",
+          "sha256": "cc31be67575d9779a088be12b40403f2f71c29c718ce9b2b31f49873dab150fe",
+          "verified": true
+        },
+        {
+          "byte_length": 11645,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Application.closure.json",
+          "sha256": "dda658560336769010613a32f0944bb065b97bd9c7a7533bb4d0a458edc8fbb8",
+          "verified": true
+        },
+        {
+          "byte_length": 10603,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Atlas.closure.json",
+          "sha256": "204ff527d02906b01492a8b3d4d326a52f034515cc60f0bb5c9ce3f964ceaf08",
+          "verified": true
+        },
+        {
+          "byte_length": 10603,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Codec.closure.json",
+          "sha256": "044463f1b79364b428ae8215bbd808c191666013a70940ddf7c99ef92d4eacaf",
+          "verified": true
+        },
+        {
+          "byte_length": 10611,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/CodecProtocol.closure.json",
+          "sha256": "a4eae3d5b451b083df846cf70a6942f6f1e25643f98f086cb58d54b2d4d5cb44",
+          "verified": true
+        },
+        {
+          "byte_length": 10602,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Core.closure.json",
+          "sha256": "a85a849db67e0c132ae6c2e33c4bd3c7647ba9441fc024367064767f23d8320d",
+          "verified": true
+        },
+        {
+          "byte_length": 10606,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Epilogue.closure.json",
+          "sha256": "e53dae057c51e2ab7c00dc75b57f0685c2238bade0bb12b3f86b68384922d3e1",
+          "verified": true
+        },
+        {
+          "byte_length": 10614,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/ExtendedProtocol.closure.json",
+          "sha256": "45452c1a66f30a3926560890bd89382a0eb6ef9cfeffcfd17bdeda44ef7c0459",
+          "verified": true
+        },
+        {
+          "byte_length": 10603,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Float.closure.json",
+          "sha256": "6ed6cce6be477f3ab40df810e2f4bdabb2ffaef486d817c1c205a7a1360b11af",
+          "verified": true
+        },
+        {
+          "byte_length": 11663,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Foundation.View.Text.V1.Model.closure.json",
+          "sha256": "34f242552a116cdf62cf3b2a16f0069a3672285910cf08042b04312ea7313dbc",
+          "verified": true
+        },
+        {
+          "byte_length": 11663,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Foundation.View.Text.V2.Model.closure.json",
+          "sha256": "ab04bb3ce4bf993ee2447e1497f9d98876dc75b4cfbd7884d1b83a9afd0f6fbe",
+          "verified": true
+        },
+        {
+          "byte_length": 10603,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Model.closure.json",
+          "sha256": "9ab7067f649ae87edd8ff80b3a359938cbd0711b7117cea7a58e85e436d4e212",
+          "verified": true
+        },
+        {
+          "byte_length": 10606,
+          "kind": "lexicon-closure",
+          "path": "lexlean/build/lexicons/Protocol.closure.json",
+          "sha256": "76db2b25ca938f5a5c18f0abfb1c925521e48e1318a268c4350d5d94545cc8fe",
+          "verified": true
+        },
+        {
+          "byte_length": 14828,
+          "kind": "lexlean-manifest",
+          "path": "lexlean/build/manifest.json",
+          "sha256": "f11d129deb5d3a1d39c2a79e772c719a8c2d180e4a4ecacb6101b151b00dc02e",
+          "verified": true
+        },
+        {
+          "byte_length": 851,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Application.map.json",
+          "sha256": "226ab14338fd5f3a226c2a37d71a92345b7cf0afb51795731e4f84acfd2e0c24",
+          "verified": true
+        },
+        {
+          "byte_length": 825,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Atlas.map.json",
+          "sha256": "fe2eaa49db928bf1eb890b72d51ead393146c68635f53cbe0b990e0c1c935d51",
+          "verified": true
+        },
+        {
+          "byte_length": 829,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Codec.map.json",
+          "sha256": "378be84fdf14e9e7f2e92c358dea24ac9e1c4d9ec6672a70c60daea99a51ff3e",
+          "verified": true
+        },
+        {
+          "byte_length": 855,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/CodecProtocol.map.json",
+          "sha256": "5aabd7641d7ec0f64cf4e002b1c673bdeac47e301b193f507823527dd483ebb2",
+          "verified": true
+        },
+        {
+          "byte_length": 822,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Core.map.json",
+          "sha256": "e2837b6463af56d4e1421318094e4c122a9609f0747d94d71839205a0643a474",
+          "verified": true
+        },
+        {
+          "byte_length": 835,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Epilogue.map.json",
+          "sha256": "7fd255323221d09c2d9c6d13ba5c52667f3a2551419dde11694eb79a6ec98c0e",
+          "verified": true
+        },
+        {
+          "byte_length": 869,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/ExtendedProtocol.map.json",
+          "sha256": "41b79fc1531c57c632b6ac3c61fa98b39c45f5ff77f80b22db9831913fe329d6",
+          "verified": true
+        },
+        {
+          "byte_length": 825,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Float.map.json",
+          "sha256": "03581465bae6f09609f48f4ccbce8e43ff9d9d364fd548f550eda783bcfff13c",
+          "verified": true
+        },
+        {
+          "byte_length": 935,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Foundation/View/Text/V1/Model.map.json",
+          "sha256": "7405ea887afc366d46e1d369a8f3e10b76609c621ce7d33a0ecda2262dc5f58e",
+          "verified": true
+        },
+        {
+          "byte_length": 935,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Foundation/View/Text/V2/Model.map.json",
+          "sha256": "ba6f22dd4a2dcbb5a80c60cc45f491e61e32c12215eb2b4411cd5829e69d19ff",
+          "verified": true
+        },
+        {
+          "byte_length": 819,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Model.map.json",
+          "sha256": "3d96762be59af9871622b53d872a7c0d22da5ff7dedf99124ec2cad02074e55f",
+          "verified": true
+        },
+        {
+          "byte_length": 837,
+          "kind": "source-map",
+          "path": "lexlean/build/maps/LexLeanMatmul/Protocol.map.json",
+          "sha256": "ef4765fc68e0a9ea718352c360e6fced65d4383a25e9319be4a1fd02e397ada2",
+          "verified": true
+        },
+        {
+          "byte_length": 840635,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Application.lean",
+          "sha256": "62d7f2a55de746278d4df2dfe595909082b7b3537018126456a887c500d09738",
+          "verified": true
+        },
+        {
+          "byte_length": 350863,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Application.tex",
+          "sha256": "dd1558d29c80e7648a9b5a40d48e67e37ad026e2c78c5263a2f02f3c1dbc8f57",
+          "verified": true
+        },
+        {
+          "byte_length": 59632,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Atlas.lean",
+          "sha256": "a43942995aafe8dd6c1f6d952df607be66a9836f8b2faac9c4c9067b0a323499",
+          "verified": true
+        },
+        {
+          "byte_length": 60886,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Atlas.tex",
+          "sha256": "1ee63b107a2ac21133457f909334f7a0888065b3b1cafc49c80838c50900a60f",
+          "verified": true
+        },
+        {
+          "byte_length": 368316,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Codec.lean",
+          "sha256": "bf50b5c7c4cee193210312df52200f20d2638da610c935c3ed9f9ef86669ec7a",
+          "verified": true
+        },
+        {
+          "byte_length": 448877,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Codec.tex",
+          "sha256": "78c90329df585bbb38be1f1adb85eb098328a9901ea7f8f96586ef95082f1ebd",
+          "verified": true
+        },
+        {
+          "byte_length": 40200,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/CodecProtocol.lean",
+          "sha256": "7e4e36e571a0aa89206c1753cfcf023d3a19b3ed4482e07faf7522ac3561b1b6",
+          "verified": true
+        },
+        {
+          "byte_length": 30539,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/CodecProtocol.tex",
+          "sha256": "cd1d4def785b1b7b96f74136f742c2a29f42b8ba427c355054d5fb31c6482d5b",
+          "verified": true
+        },
+        {
+          "byte_length": 93523,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Core.lean",
+          "sha256": "0022ccc8a3002ea20bd73a6de585a9adeb8f65610a1fc305da1dc4d39456941b",
+          "verified": true
+        },
+        {
+          "byte_length": 104547,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Core.tex",
+          "sha256": "8a3781c6f830d33659e765da81fdc8efcff74b63220f118c83f2eca533bc6e7c",
+          "verified": true
+        },
+        {
+          "byte_length": 40211,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Epilogue.lean",
+          "sha256": "fae14325f478919366d83de12bca72047fd83748d783dcba8f4e9ee3c499139f",
+          "verified": true
+        },
+        {
+          "byte_length": 28226,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Epilogue.tex",
+          "sha256": "658d31619a6942301bad503606f2cb5259d57106287d3033ddf925840ac95b1a",
+          "verified": true
+        },
+        {
+          "byte_length": 83943,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/ExtendedProtocol.lean",
+          "sha256": "0b10cb8fe45d38cc781119c094fab503a6a7b79afc3482e4837e644b0e9e19a2",
+          "verified": true
+        },
+        {
+          "byte_length": 72782,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/ExtendedProtocol.tex",
+          "sha256": "e21888927489b5b09ef5136aa976e720c3c109f7241247046c051d97431c984e",
+          "verified": true
+        },
+        {
+          "byte_length": 85742,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Float.lean",
+          "sha256": "450fdda94e5a7b79bf3308033fb04138c9cd24f5e74d20c94dcbccfab9cbdeeb",
+          "verified": true
+        },
+        {
+          "byte_length": 94565,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Float.tex",
+          "sha256": "a0a3ebbb4e4e13d82b8af11603caa61c4989dba539826e60ad982bf52d18cc8e",
+          "verified": true
+        },
+        {
+          "byte_length": 1098,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Foundation/View/Text/V1/Model.lean",
+          "sha256": "e32dcf8e135f8c05bb333e0702ae5d607feae30e5e961144f8eb66767d455756",
+          "verified": true
+        },
+        {
+          "byte_length": 612,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Foundation/View/Text/V1/Model.tex",
+          "sha256": "f18a94dee5e0a5d48b632a838009f1b9399e98fe1c0b50e510d5da76998554c9",
+          "verified": true
+        },
+        {
+          "byte_length": 1027,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Foundation/View/Text/V2/Model.lean",
+          "sha256": "1cf387363e5be59cf6c25cbe2d5e3e54d64caf5dee95c7206a3e365ec1dff834",
+          "verified": true
+        },
+        {
+          "byte_length": 460,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Foundation/View/Text/V2/Model.tex",
+          "sha256": "51cc1b4aae650d47c23b76b42d099b8e21fa0cb563b88e28fe356422dcef6767",
+          "verified": true
+        },
+        {
+          "byte_length": 1757,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Model.lean",
+          "sha256": "7b0b9325d88af40cd9325436f1584610e3882d7d8b6fce1be0040f40d1ba106c",
+          "verified": true
+        },
+        {
+          "byte_length": 4941,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Model.tex",
+          "sha256": "433a3f487d37b21447679e69217c4ac5fa79df9920ad2baa4203d3e916d4b808",
+          "verified": true
+        },
+        {
+          "byte_length": 57782,
+          "kind": "lean",
+          "path": "lexlean/build/modules/LexLeanMatmul/Protocol.lean",
+          "sha256": "d43aaf5515450e73169f6c61fb6b67d2e2614c689312c87746840b9223fbbdbd",
+          "verified": true
+        },
+        {
+          "byte_length": 42960,
+          "kind": "latex",
+          "path": "lexlean/build/modules/LexLeanMatmul/Protocol.tex",
+          "sha256": "b0878b51e8cab268db36ce47b47c78ea7eba5367c95b63fbdd6ab8c51e6b54d3",
+          "verified": true
+        },
+        {
+          "byte_length": 7940095,
+          "kind": "semantic-snapshot",
+          "path": "lexlean/snapshot.json",
+          "sha256": "50f799e743a46635f1033a71c2accea0fff09380144d59c3644d06b484e48d46",
+          "verified": true
+        },
+        {
+          "byte_length": 231816,
+          "kind": "artifact",
+          "path": "model.prism.json",
+          "sha256": "29398547747c0ba03a0f46929592d9b7bf86e3c0137a981941c482b6b8c6a53c",
+          "verified": true
+        },
+        {
+          "byte_length": 4788,
+          "kind": "artifact",
+          "path": "view/browser-adapter/Cargo.lock",
+          "sha256": "458cd4ea33539c40b900305f48eec247450144ae455608d3f40d883c35a89cb5",
+          "verified": true
+        },
+        {
+          "byte_length": 211,
+          "kind": "artifact",
+          "path": "view/browser-adapter/Cargo.toml",
+          "sha256": "8982518b55429b5fa024b4b9e2822045399a2885b7897d004f73afc8edc5d0be",
+          "verified": true
+        },
+        {
+          "byte_length": 677,
+          "kind": "lexlean-manifest",
+          "path": "view/browser-adapter/generation-manifest.json",
+          "sha256": "0a267fca992ce825f128a0500f2bfeae8189cc149704da8091ce33b4ab2444e5",
+          "verified": true
+        },
+        {
+          "byte_length": 1016,
+          "kind": "artifact",
+          "path": "view/browser-adapter/src/lib.rs",
+          "sha256": "ca72f015f7ca42b6c29c7b5d4c6291b7fddc8aca6034f5039497b2c7db7b9106",
+          "verified": true
+        },
+        {
+          "byte_length": 804,
+          "kind": "artifact",
+          "path": "view/browser/app.css",
+          "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279",
+          "verified": true
+        },
+        {
+          "byte_length": 3621,
+          "kind": "artifact",
+          "path": "view/browser/app.js",
+          "sha256": "8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1",
+          "verified": true
+        },
+        {
+          "byte_length": 944,
+          "kind": "artifact",
+          "path": "view/browser/index.html",
+          "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad",
+          "verified": true
+        },
+        {
+          "byte_length": 6592,
+          "kind": "artifact",
+          "path": "view/browser/lexlean_matmul.js",
+          "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16",
+          "verified": true
+        },
+        {
+          "byte_length": 946431,
+          "kind": "artifact",
+          "path": "view/browser/lexlean_matmul_bg.wasm",
+          "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc",
+          "verified": true
+        },
+        {
+          "byte_length": 656,
+          "kind": "artifact",
+          "path": "view/browser/provenance.json",
+          "sha256": "3e197c022bd2a6e9c69ba92c2a80124bf715713b0e1987a93075ac46da0d212d",
+          "verified": true
+        },
+        {
+          "byte_length": 804,
+          "kind": "artifact",
+          "path": "view/hologram/app.css",
+          "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279",
+          "verified": true
+        },
+        {
+          "byte_length": 4478,
+          "kind": "artifact",
+          "path": "view/hologram/app.js",
+          "sha256": "62779c3693fb45a373dabca972795605d70e54608998c4edb1ae2f101b41d2d1",
+          "verified": true
+        },
+        {
+          "byte_length": 944,
+          "kind": "artifact",
+          "path": "view/hologram/index.html",
+          "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad",
+          "verified": true
+        },
+        {
+          "byte_length": 6313,
+          "kind": "artifact",
+          "path": "view/hologram/view.holoview",
+          "sha256": "c6dfe83d98da057893ce16d41ffea69325676c6541198ca7c730ee89bf5f5cd1",
+          "verified": true
+        },
+        {
+          "byte_length": 1501,
+          "kind": "lexlean-manifest",
+          "path": "view/view-manifest.json",
+          "sha256": "8110fc5794d411e688ad7cedd6a7374f84dd7d9f8f3a2e2c233edca70a65c621",
+          "verified": true
+        }
+      ]
+    },
+    "model": {
+      "path": "/tmp/matmul-source-maintenance-final-cache-build/.prism/build/44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4/model.prism.json",
+      "byte_length": 231816,
+      "sha256": "29398547747c0ba03a0f46929592d9b7bf86e3c0137a981941c482b6b8c6a53c"
+    },
+    "generated_artifact_identity": {
+      "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+      "result_sha256": "3fde285f66163dd1aadced73d3c881d8c7d0786f88896d79182c879e305c2804",
+      "manifest_sha256": "9034c848a47e1dc7a4730b39491c6445d50aff571bcc4a413adc96f87d4bfbdc",
+      "model_sha256": "29398547747c0ba03a0f46929592d9b7bf86e3c0137a981941c482b6b8c6a53c",
+      "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+      "wasm_bytes": 604948,
+      "verified_artifact_files": 167,
+      "verified_artifact_bytes": 28462779,
+      "application_profile": "prismpm/text-application/2",
+      "target_profile": {
+        "contract": "hologram:guest/core-wasm@1",
+        "export": "holo_run",
+        "input_allocation_cap": 32768,
+        "maximum_pages": 32767,
+        "response_maximum": 32768,
+        "schema": "lean4-prod/core-wasm-target/2",
+        "stack_bytes": 16777216
+      }
+    }
+  },
+  "resource_cases": {
+    "raw_report": {
+      "path": "/tmp/matmul-final-resource-results.json",
+      "byte_length": 256106,
+      "sha256": "bfcb42e5da0e7a1cfaa0dead74b1c47b8a84ecb6277136948b87180f870059e0"
+    },
+    "plan": {
+      "path": "/tmp/matmul-core-resource-stress-plan-40.json",
+      "byte_length": 19939,
+      "sha256": "12b54c1ddd8c60ed55c778b81ddcf0a12f5ffe462e8ae96a0dd56ce14bfef7a4"
+    },
+    "runner": {
+      "path": "/tmp/matmul-core-resource-stress-final.mjs",
+      "byte_length": 35999,
+      "sha256": "c5ca6c7f3bd097663823aa14bf10c1403b0a8bdb641882a7c57c80f7351fd38a"
+    },
+    "scope": "Fresh import-free actual Wasm instance per case; independent software BigInt/IEEE expectations; raw memory.buffer observations after dispatch. Memory observations are measured cases, not a proof of a universal upper bound.",
+    "software_reference_sha256": "4d605906ed49523426ce227e35cfd8a5b9844bf91771be0d39e4b5df6f741d67",
+    "wasm_imports": [],
+    "source_bounds": {
+      "source_root": "/tmp/matmul-source-maintenance-final-cache-build",
+      "maximum_dimension": 8,
+      "csv_scalars_maximum": 64,
+      "maximum_magnitude_digits": 64,
+      "valid_worst_table": {
+        "rows": 8,
+        "inner": 8,
+        "columns": 8,
+        "activation_cells": 64,
+        "book_entries": 64,
+        "scalar_magnitude_digits": 64,
+        "cached_scalar_products": 4096
+      },
+      "source_sha256": {
+        "Model": "f1dbff70f95f524d1bd1830c7ff2b31a5b17b1d001f7b1ddc361279b48749abe",
+        "Protocol": "51454a08ad1013fadb6073d8e1aa304af571437d54e911929552dee2d571b791",
+        "Core": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+      }
+    },
+    "case_timeout_ms": 300000,
+    "passed": 40,
+    "failed": 0,
+    "timed_out": 0,
+    "highest_observed": {
+      "label": "ieee64-8x8-distinct-dense-max-exponent-book64-table",
+      "memory_bytes": 1617297408,
+      "memory_pages": 24678,
+      "elapsed_ms": 21374.082171999995
+    },
+    "results": [
+      {
+        "label": "integer-1",
+        "request_bytes": 18,
+        "request_sha256": "89f4ed5c2c898d263627698c40b37f17f670531899cafac68a5cd6ca76514383",
+        "expected_sha256": "ea90a471e92fc13895f55678d8ff45a8582b45ce9b66aa27cb40eff927941c05",
+        "details": {},
+        "outer_elapsed_ms": 47.87806600000002,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 2.476416999999998,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "ea90a471e92fc13895f55678d8ff45a8582b45ce9b66aa27cb40eff927941c05",
+        "response_bytes": 10
+      },
+      {
+        "label": "ieee64-maximum",
+        "request_bytes": 64,
+        "request_sha256": "d8a322a54ff02011bc3d6fbe795a03f0f5f161ecf91e3a4665a68398eb77929a",
+        "expected_sha256": "359e5b1b15ac340c7162a6aeb1ed0d8ffb47bb9520fb86fa9f4b6df5871619f9",
+        "details": {},
+        "outer_elapsed_ms": 44.354870000000005,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 9.609239000000002,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 524288,
+        "memory_growth_pages": 8,
+        "memory_bytes": 17367040,
+        "memory_pages": 265,
+        "response_sha256": "359e5b1b15ac340c7162a6aeb1ed0d8ffb47bb9520fb86fa9f4b6df5871619f9",
+        "response_bytes": 28
+      },
+      {
+        "label": "ieee64-mixed-cancellation-1",
+        "request_bytes": 131,
+        "request_sha256": "14df6281c327a4cce620838583772a139609c6ed03d9e7ec7ecb076f36c0c8df",
+        "expected_sha256": "bd7074182da4b17942fcfb87956e1b85632bbb8036875d529d23b80790fb27a0",
+        "details": {
+          "rows": 1,
+          "inner": 4,
+          "columns": 1,
+          "exact_alignment_bits": 4196
+        },
+        "outer_elapsed_ms": 39.557862,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 5.737319000000014,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 1900544,
+        "memory_growth_pages": 29,
+        "memory_bytes": 18743296,
+        "memory_pages": 286,
+        "response_sha256": "bd7074182da4b17942fcfb87956e1b85632bbb8036875d529d23b80790fb27a0",
+        "response_bytes": 10
+      },
+      {
+        "label": "ieee64-mixed-cancellation-2",
+        "request_bytes": 238,
+        "request_sha256": "5c87579de1ef6e48fd7f599877cbba11c51fc68561a7598dc49256a97f99729c",
+        "expected_sha256": "ea4772061ed6842d45a7fca8dc3c7bb567cafdf7ddc1f95ee2585869f7d84b60",
+        "details": {
+          "rows": 2,
+          "inner": 4,
+          "columns": 2,
+          "exact_alignment_bits": 4196
+        },
+        "outer_elapsed_ms": 54.10494600000004,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 19.71577099999996,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 7602176,
+        "memory_growth_pages": 116,
+        "memory_bytes": 24444928,
+        "memory_pages": 373,
+        "response_sha256": "ea4772061ed6842d45a7fca8dc3c7bb567cafdf7ddc1f95ee2585869f7d84b60",
+        "response_bytes": 16
+      },
+      {
+        "label": "ieee64-mixed-cancellation-8",
+        "request_bytes": 880,
+        "request_sha256": "71dbc6e433318548fedb8fd084b43796b14c96e5b118683e9ef319c817b91797",
+        "expected_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe",
+        "details": {
+          "rows": 8,
+          "inner": 4,
+          "columns": 8,
+          "exact_alignment_bits": 4196
+        },
+        "outer_elapsed_ms": 594.7717,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 553.2024670000001,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 121110528,
+        "memory_growth_pages": 1848,
+        "memory_bytes": 137953280,
+        "memory_pages": 2105,
+        "response_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe",
+        "response_bytes": 136
+      },
+      {
+        "label": "ieee64-8x8-late-cancellation",
+        "request_bytes": 2616,
+        "request_sha256": "f3823370db23b9a36a466f69174a26e4ada7fd78d32f9f0c575814fbb65014d0",
+        "expected_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe",
+        "details": {},
+        "outer_elapsed_ms": 2170.3420849999998,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 2114.533595,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 312475648,
+        "memory_growth_pages": 4768,
+        "memory_bytes": 329318400,
+        "memory_pages": 5025,
+        "response_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe",
+        "response_bytes": 136
+      },
+      {
+        "label": "ieee64-8x8-wide-finite-encoding",
+        "request_bytes": 1024,
+        "request_sha256": "77a9a7d5fc566d24ee6a0d64bc6d60d79d6b95f184029d4bd8489c46b51f5193",
+        "expected_sha256": "7a1d5de16ba593ddbf90e000d6751adaf0b258e40d9ef1051bcba03895094d1c",
+        "details": {
+          "rows": 8,
+          "inner": 4,
+          "columns": 8,
+          "transient_alignment_bits": 4196,
+          "finite_result_bits": 3172,
+          "terminal_drop_bits": 3119,
+          "exact_each": "maxFinite+2^-2148",
+          "expected_each": "maxFinite"
+        },
+        "outer_elapsed_ms": 854.9500290000001,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 807.7399869999999,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 155779072,
+        "memory_growth_pages": 2377,
+        "memory_bytes": 172621824,
+        "memory_pages": 2634,
+        "response_sha256": "7a1d5de16ba593ddbf90e000d6751adaf0b258e40d9ef1051bcba03895094d1c",
+        "response_bytes": 1288
+      },
+      {
+        "label": "ieee64-8x8-wide-finite-64digit-gemm",
+        "request_bytes": 2440,
+        "request_sha256": "09f2f4c11507ec0f058575eab63bc389fcda08609e264032044b4084ae306f64",
+        "expected_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe",
+        "details": {
+          "rows": 8,
+          "inner": 4,
+          "columns": 8,
+          "scalar_magnitude_digits": 64,
+          "alpha": "9999999999999999999999999999999999999999999999999999999999999999",
+          "beta": "-9999999999999999999999999999999999999999999999999999999999999999",
+          "old_each": "maxFinite",
+          "exact_each": "alpha*2^-2148",
+          "expected_each": "positive-zero-after-one-terminal-round"
+        },
+        "outer_elapsed_ms": 4288.445406999999,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 4214.487455,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 621608960,
+        "memory_growth_pages": 9485,
+        "memory_bytes": 638451712,
+        "memory_pages": 9742,
+        "response_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe",
+        "response_bytes": 136
+      },
+      {
+        "label": "ieee64-8x8-alternating-significand",
+        "request_bytes": 2584,
+        "request_sha256": "f16b286fc4779daa07b48e511df06429078d5c98688b43bc554e583b2142e581",
+        "expected_sha256": "54052238f359cdcdfd1e93dffd57f57c6f8f02c18e66394c27885e8df5e5e9af",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "significand_bits": 53,
+          "nonadjacent_positive_digits": 27,
+          "atom_pairs_per_scalar_product": 729,
+          "scalar_products": 512,
+          "total_atom_pairs": 373248,
+          "source_bits": "0x3ff5555555555555",
+          "exact_each": "8*x^2-before-one-terminal-round"
+        },
+        "outer_elapsed_ms": 403.4477530000004,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 352.18625500000053,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 101384192,
+        "memory_growth_pages": 1547,
+        "memory_bytes": 118226944,
+        "memory_pages": 1804,
+        "response_sha256": "54052238f359cdcdfd1e93dffd57f57c6f8f02c18e66394c27885e8df5e5e9af",
+        "response_bytes": 1288
+      },
+      {
+        "label": "ieee64-8x8-alternating-significand-64digit-alpha",
+        "request_bytes": 2784,
+        "request_sha256": "fbe5dabc42a7bbca88e4cf10a5c903820404032794bdb56c7868f6e0a445c705",
+        "expected_sha256": "b19816c1060913e2a2416ef897a694fa2c85605875abca98bbba5946585d1fdb",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "significand_bits": 53,
+          "nonadjacent_positive_digits": 27,
+          "scalar_magnitude_digits": 64,
+          "alpha": "9999999999999999999999999999999999999999999999999999999999999999",
+          "beta": "0",
+          "old_each": "0",
+          "exact_each": "alpha*8*x^2-before-one-terminal-round"
+        },
+        "outer_elapsed_ms": 977.114857999999,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 924.9566409999989,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 181600256,
+        "memory_growth_pages": 2771,
+        "memory_bytes": 198443008,
+        "memory_pages": 3028,
+        "response_sha256": "b19816c1060913e2a2416ef897a694fa2c85605875abca98bbba5946585d1fdb",
+        "response_bytes": 1288
+      },
+      {
+        "label": "codec-grid-modulo-direct",
+        "request_bytes": 42,
+        "request_sha256": "5c3e4882004ced9a72b5d0a31e4deaf060e9b83b245caebd143a61ace0d3ea5f",
+        "expected_sha256": "50559fff214241d5788a83d32345125d854555a69facc7168fa8fb4dd409f621",
+        "details": {},
+        "outer_elapsed_ms": 49.072855000000345,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1.7913210000006075,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "50559fff214241d5788a83d32345125d854555a69facc7168fa8fb4dd409f621",
+        "response_bytes": 14
+      },
+      {
+        "label": "codec-packed-low-first-direct",
+        "request_bytes": 45,
+        "request_sha256": "b9a34cf68194824396aeb5e7ee9c830065a09ca2cad4cec60c1ee254bd3d60eb",
+        "expected_sha256": "98ed4afde95c75e36b1fa3edd463ecbfacfb578eccf153513a0b61d49274e89e",
+        "details": {},
+        "outer_elapsed_ms": 39.640237999999954,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.799258999999438,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "98ed4afde95c75e36b1fa3edd463ecbfacfb578eccf153513a0b61d49274e89e",
+        "response_bytes": 30
+      },
+      {
+        "label": "codec-runs-whole-word-direct",
+        "request_bytes": 52,
+        "request_sha256": "9357b8ece2da9474bc029901a391f6a055c14322ea7595eee2fcc38bae246168",
+        "expected_sha256": "81a6f21c2e21da96e59b5857426e4fd5e3f7dedd726505c1749a0d2a1a8f3d98",
+        "details": {},
+        "outer_elapsed_ms": 42.33750300000065,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1.39587500000016,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "81a6f21c2e21da96e59b5857426e4fd5e3f7dedd726505c1749a0d2a1a8f3d98",
+        "response_bytes": 14
+      },
+      {
+        "label": "codec-e8-zero-direct",
+        "request_bytes": 29,
+        "request_sha256": "c41aaba56a0082397a26ffa73083f29e9eae117e0dc761ce943549b169c6929c",
+        "expected_sha256": "6303d3c8d23e97dc4cef5f697038f35fdb91d20b8cf9c66d091c0881c8aa9d0b",
+        "details": {},
+        "outer_elapsed_ms": 41.41981600000145,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1.9464490000009391,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "6303d3c8d23e97dc4cef5f697038f35fdb91d20b8cf9c66d091c0881c8aa9d0b",
+        "response_bytes": 24
+      },
+      {
+        "label": "codec-grid-modulo-table",
+        "request_bytes": 41,
+        "request_sha256": "cc534e4adb2ae51cf10470e49d5713b2f50dd54bf501247895071d50da7b13a2",
+        "expected_sha256": "50559fff214241d5788a83d32345125d854555a69facc7168fa8fb4dd409f621",
+        "details": {},
+        "outer_elapsed_ms": 67.42306400000052,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1.9512460000005376,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "50559fff214241d5788a83d32345125d854555a69facc7168fa8fb4dd409f621",
+        "response_bytes": 14
+      },
+      {
+        "label": "codec-packed-low-first-table",
+        "request_bytes": 44,
+        "request_sha256": "9780b69e02e1f8f0f36f57651b33b5a5769af48f431b8a6a0ce27819287caaf8",
+        "expected_sha256": "98ed4afde95c75e36b1fa3edd463ecbfacfb578eccf153513a0b61d49274e89e",
+        "details": {},
+        "outer_elapsed_ms": 69.46722000000045,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1.1937519999992219,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "98ed4afde95c75e36b1fa3edd463ecbfacfb578eccf153513a0b61d49274e89e",
+        "response_bytes": 30
+      },
+      {
+        "label": "codec-runs-whole-word-table",
+        "request_bytes": 51,
+        "request_sha256": "bbb8520b1a3236a5ed1ac8b7fe4e50f27d83a4b58cf392d73e3951c707a3a629",
+        "expected_sha256": "81a6f21c2e21da96e59b5857426e4fd5e3f7dedd726505c1749a0d2a1a8f3d98",
+        "details": {},
+        "outer_elapsed_ms": 58.004533999999694,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.8065400000014051,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "81a6f21c2e21da96e59b5857426e4fd5e3f7dedd726505c1749a0d2a1a8f3d98",
+        "response_bytes": 14
+      },
+      {
+        "label": "codec-e8-zero-table",
+        "request_bytes": 28,
+        "request_sha256": "8a28e0cc862376cf6142a18d398b3cce011db6f7ba77adf206aeeedac9e118a7",
+        "expected_sha256": "6303d3c8d23e97dc4cef5f697038f35fdb91d20b8cf9c66d091c0881c8aa9d0b",
+        "details": {},
+        "outer_elapsed_ms": 41.6014269999996,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.848837999999887,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "6303d3c8d23e97dc4cef5f697038f35fdb91d20b8cf9c66d091c0881c8aa9d0b",
+        "response_bytes": 24
+      },
+      {
+        "label": "integer-8x8-64digits-direct",
+        "request_bytes": 8334,
+        "request_sha256": "0bc20dc4748c31d212b0774c93a90160f107ff6284394f015c0291e7e5d6fd73",
+        "expected_sha256": "879c4c7a221e3a24d859fc6634d32bc0984df8fca2aec95f7e0a26a1b0875995",
+        "details": {
+          "scalar_magnitude_digits": 64,
+          "multiplications": 512
+        },
+        "outer_elapsed_ms": 1227.9624270000004,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1174.549234,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 191561728,
+        "memory_growth_pages": 2923,
+        "memory_bytes": 208404480,
+        "memory_pages": 3180,
+        "response_sha256": "879c4c7a221e3a24d859fc6634d32bc0984df8fca2aec95f7e0a26a1b0875995",
+        "response_bytes": 8328
+      },
+      {
+        "label": "integer-8x8-64digit-book64-table",
+        "request_bytes": 8515,
+        "request_sha256": "ca521bd12c656e905494e5b3b12a8d4c5a8fd8fe9cb9ed592e50d496e4002b28",
+        "expected_sha256": "879c4c7a221e3a24d859fc6634d32bc0984df8fca2aec95f7e0a26a1b0875995",
+        "details": {
+          "scalar_magnitude_digits": 64,
+          "activation_cells": 64,
+          "book_entries": 64,
+          "cached_scalar_products": 4096,
+          "distinct_cached_product_values": 4096,
+          "activation_and_book_disjoint": true,
+          "book_parser": "Protocol.parseCsv bound64",
+          "all_book_entries_referenced": true
+        },
+        "outer_elapsed_ms": 12078.120734999999,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 11949.686875000001,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 1465122816,
+        "memory_growth_pages": 22356,
+        "memory_bytes": 1481965568,
+        "memory_pages": 22613,
+        "response_sha256": "879c4c7a221e3a24d859fc6634d32bc0984df8fca2aec95f7e0a26a1b0875995",
+        "response_bytes": 8328
+      },
+      {
+        "label": "codec-8x8-64digit-book64-direct",
+        "request_bytes": 8529,
+        "request_sha256": "df50bf8e54fb0ff9033a42eec5d856ad42a6cf2949b43470b5870c7ecd0634c0",
+        "expected_sha256": "879c4c7a221e3a24d859fc6634d32bc0984df8fca2aec95f7e0a26a1b0875995",
+        "details": {
+          "scalar_magnitude_digits": 64,
+          "book_entries": 64,
+          "distinct_stored_codes": 64,
+          "activation_cells": 64
+        },
+        "outer_elapsed_ms": 1489.6664229999988,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1438.0422990000006,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 212271104,
+        "memory_growth_pages": 3239,
+        "memory_bytes": 229113856,
+        "memory_pages": 3496,
+        "response_sha256": "879c4c7a221e3a24d859fc6634d32bc0984df8fca2aec95f7e0a26a1b0875995",
+        "response_bytes": 8328
+      },
+      {
+        "label": "codec-8x8-64digit-book64-table",
+        "request_bytes": 8528,
+        "request_sha256": "4791f390284998183352f99edbf15a0183d78cea90212b92aff1fefb691bc1cb",
+        "expected_sha256": "879c4c7a221e3a24d859fc6634d32bc0984df8fca2aec95f7e0a26a1b0875995",
+        "details": {
+          "scalar_magnitude_digits": 64,
+          "book_entries": 64,
+          "distinct_stored_codes": 64,
+          "activation_cells": 64
+        },
+        "outer_elapsed_ms": 12239.233066999997,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 12101.712579,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 1450901504,
+        "memory_growth_pages": 22139,
+        "memory_bytes": 1467744256,
+        "memory_pages": 22396,
+        "response_sha256": "879c4c7a221e3a24d859fc6634d32bc0984df8fca2aec95f7e0a26a1b0875995",
+        "response_bytes": 8328
+      },
+      {
+        "label": "integer-8x8-64digits-gemm",
+        "request_bytes": 12622,
+        "request_sha256": "0b322fe15f2048dc22cf5969361df9663395638cb0594105c4784024478f650d",
+        "expected_sha256": "ab71560e948de96349e9e763ce04de99e2ead5c27727dd8dee377a2377d0920d",
+        "details": {
+          "scalar_magnitude_digits": 64
+        },
+        "outer_elapsed_ms": 2307.4321830000044,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 2243.193361999998,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 262471680,
+        "memory_growth_pages": 4005,
+        "memory_bytes": 279314432,
+        "memory_pages": 4262,
+        "response_sha256": "ab71560e948de96349e9e763ce04de99e2ead5c27727dd8dee377a2377d0920d",
+        "response_bytes": 12424
+      },
+      {
+        "label": "complex-8x8-62digits",
+        "request_bytes": 16143,
+        "request_sha256": "daeb15c1203af53fb605e6ac19824bb298a6f7ef371bf77472cbda12c95e9d48",
+        "expected_sha256": "0ce4c796856fe1ecad3cfa22ac80a07f3bc40546f0173b96deea3a1e05f87db3",
+        "details": {
+          "scalar_magnitude_digits": 62,
+          "input_scalars": 256,
+          "next_digit_width_request_bytes": 16399,
+          "real_each": "0",
+          "imaginary_each_formula": "16*a^2"
+        },
+        "outer_elapsed_ms": 5091.404074999999,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 5007.760269999999,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 571539456,
+        "memory_growth_pages": 8721,
+        "memory_bytes": 588382208,
+        "memory_pages": 8978,
+        "response_sha256": "0ce4c796856fe1ecad3cfa22ac80a07f3bc40546f0173b96deea3a1e05f87db3",
+        "response_bytes": 8264
+      },
+      {
+        "label": "ieee64-8x8-distinct-dense-book64-table",
+        "request_bytes": 2772,
+        "request_sha256": "19a6933ac92caf64fff802d0771cc7a11107b545c94de30da34daf88ab846901",
+        "expected_sha256": "34c8faebd63d25f0b2c78f878cf5ebd132f60ea31b438467ebc2327e3a7a4c8b",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "activation_cells": 64,
+          "book_entries": 64,
+          "distinct_codes": 64,
+          "cached_scalar_products": 4096,
+          "distinct_exact_products": 4096,
+          "activation_and_book_disjoint": true,
+          "base_bits": "0x3ff5555555555555",
+          "all_book_entries_referenced": true,
+          "oracle": "Signed BigInt coefficient/exponent exact dot and one independent terminal IEEE rounding"
+        },
+        "outer_elapsed_ms": 4312.0763730000035,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 4219.929204,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 807206912,
+        "memory_growth_pages": 12317,
+        "memory_bytes": 824049664,
+        "memory_pages": 12574,
+        "response_sha256": "34c8faebd63d25f0b2c78f878cf5ebd132f60ea31b438467ebc2327e3a7a4c8b",
+        "response_bytes": 1288
+      },
+      {
+        "label": "codec-8x8-block8-fullbook64-direct",
+        "request_bytes": 15987,
+        "request_sha256": "e34023d501e06dd67fe97707eaf19d403d821e7c2f90e798276c815365a705f4",
+        "expected_sha256": "6a43f065a6a107db0ca7664ff6119f8b3bff09a451e360775f9ee4e599a82536",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "activation_digits": 64,
+          "book_digits": 22,
+          "book_words": 64,
+          "word_entries": 8,
+          "raw_book_scalars": 512,
+          "stored_codes": 8,
+          "unique_active_word_entries": 64,
+          "cached_scalar_products": 4096,
+          "distinct_cached_products": 4096,
+          "unreferenced_words": 56
+        },
+        "outer_elapsed_ms": 503.3966070000024,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 456.25981400000455,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 107347968,
+        "memory_growth_pages": 1638,
+        "memory_bytes": 124190720,
+        "memory_pages": 1895,
+        "response_sha256": "6a43f065a6a107db0ca7664ff6119f8b3bff09a451e360775f9ee4e599a82536",
+        "response_bytes": 5640
+      },
+      {
+        "label": "codec-8x8-block8-fullbook64-table",
+        "request_bytes": 15986,
+        "request_sha256": "ee272110a337c9d8700f2960d093ea71d9cedce1eee89d9328f3cff73188f2a6",
+        "expected_sha256": "6a43f065a6a107db0ca7664ff6119f8b3bff09a451e360775f9ee4e599a82536",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "activation_digits": 64,
+          "book_digits": 22,
+          "book_words": 64,
+          "word_entries": 8,
+          "raw_book_scalars": 512,
+          "stored_codes": 8,
+          "unique_active_word_entries": 64,
+          "cached_scalar_products": 4096,
+          "distinct_cached_products": 4096,
+          "unreferenced_words": 56
+        },
+        "outer_elapsed_ms": 4532.293808000002,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 4443.379959999998,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 667025408,
+        "memory_growth_pages": 10178,
+        "memory_bytes": 683868160,
+        "memory_pages": 10435,
+        "response_sha256": "6a43f065a6a107db0ca7664ff6119f8b3bff09a451e360775f9ee4e599a82536",
+        "response_bytes": 5640
+      },
+      {
+        "label": "codec-8x8-eight-stages-offset64-direct",
+        "request_bytes": 9040,
+        "request_sha256": "12b97e19eed03c30b3345093b537c032b210ce62c3b865e9b2b35155ed202399",
+        "expected_sha256": "134b3fbd7a5f1ca41056baacbb6f31a0398299d70480923bda4cdcc8a1e4e0f2",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "input_digits": 64,
+          "decoded_digits": 65,
+          "stages": 8,
+          "full_width_offset_stages": 7,
+          "unique_codes": 64,
+          "cached_scalar_products": 4096,
+          "distinct_cached_products": 4096
+        },
+        "outer_elapsed_ms": 1549.1960980000003,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1486.2338949999976,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 212336640,
+        "memory_growth_pages": 3240,
+        "memory_bytes": 229179392,
+        "memory_pages": 3497,
+        "response_sha256": "134b3fbd7a5f1ca41056baacbb6f31a0398299d70480923bda4cdcc8a1e4e0f2",
+        "response_bytes": 8392
+      },
+      {
+        "label": "codec-8x8-eight-stages-offset64-table",
+        "request_bytes": 9039,
+        "request_sha256": "c98bca630e9d0e0c02024883c3d04e441e8908d5414b6a5bde92d45b90a72b70",
+        "expected_sha256": "134b3fbd7a5f1ca41056baacbb6f31a0398299d70480923bda4cdcc8a1e4e0f2",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "input_digits": 64,
+          "decoded_digits": 65,
+          "stages": 8,
+          "full_width_offset_stages": 7,
+          "unique_codes": 64,
+          "cached_scalar_products": 4096,
+          "distinct_cached_products": 4096
+        },
+        "outer_elapsed_ms": 12724.079936999995,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 12591.424603,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 1473511424,
+        "memory_growth_pages": 22484,
+        "memory_bytes": 1490354176,
+        "memory_pages": 22741,
+        "response_sha256": "134b3fbd7a5f1ca41056baacbb6f31a0398299d70480923bda4cdcc8a1e4e0f2",
+        "response_bytes": 8392
+      },
+      {
+        "label": "codec-8x8-fullbook64-eight-offset-stages-direct",
+        "request_bytes": 15986,
+        "request_sha256": "56f53780c249f6cd8722a33bfa93c71e1b173cc8ab78cc97c6f6c3eae2cdccca",
+        "expected_sha256": "4015bf7c44cf2ea7e80dec3a8b64dd02c3a3fc73a4543f2cc2663ac4ca94ecb5",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "activation_digits": 64,
+          "raw_book_digits": 21,
+          "decoded_digits": 65,
+          "book_words": 64,
+          "word_entries": 8,
+          "raw_book_scalars": 512,
+          "stored_codes": 8,
+          "stages": 8,
+          "full_width_offset_stages": 7,
+          "cached_scalar_products": 4096,
+          "distinct_cached_products": 4096,
+          "unreferenced_words": 56
+        },
+        "outer_elapsed_ms": 1460.167318000007,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 1405.2847220000112,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 212008960,
+        "memory_growth_pages": 3235,
+        "memory_bytes": 228851712,
+        "memory_pages": 3492,
+        "response_sha256": "4015bf7c44cf2ea7e80dec3a8b64dd02c3a3fc73a4543f2cc2663ac4ca94ecb5",
+        "response_bytes": 8392
+      },
+      {
+        "label": "codec-8x8-fullbook64-eight-offset-stages-table",
+        "request_bytes": 15985,
+        "request_sha256": "0f95edb48e97223d252ba792d2aec1ee7d589a769eda72f7ec8ea801d7e84543",
+        "expected_sha256": "4015bf7c44cf2ea7e80dec3a8b64dd02c3a3fc73a4543f2cc2663ac4ca94ecb5",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "activation_digits": 64,
+          "raw_book_digits": 21,
+          "decoded_digits": 65,
+          "book_words": 64,
+          "word_entries": 8,
+          "raw_book_scalars": 512,
+          "stored_codes": 8,
+          "stages": 8,
+          "full_width_offset_stages": 7,
+          "cached_scalar_products": 4096,
+          "distinct_cached_products": 4096,
+          "unreferenced_words": 56
+        },
+        "outer_elapsed_ms": 12930.510169999994,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 12804.822885000001,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 1473118208,
+        "memory_growth_pages": 22478,
+        "memory_bytes": 1489960960,
+        "memory_pages": 22735,
+        "response_sha256": "4015bf7c44cf2ea7e80dec3a8b64dd02c3a3fc73a4543f2cc2663ac4ca94ecb5",
+        "response_bytes": 8392
+      },
+      {
+        "label": "codec-invalid-deep-packed-direct",
+        "request_bytes": 112,
+        "request_sha256": "2fe62e8d41a3bffe7f0380da599e348b52e42d860722f62c4aab3af7f5eabf34",
+        "expected_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "details": {
+          "stages": 8,
+          "computed_maximum_block": 16777216,
+          "required_refusal_before_decoded_word_allocation": true
+        },
+        "outer_elapsed_ms": 42.66639299999224,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.7210960000084015,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "response_bytes": 22
+      },
+      {
+        "label": "codec-invalid-deep-packed-zero-width-direct",
+        "request_bytes": 112,
+        "request_sha256": "0779ecddd87a0dc711985db006635aaccc3cecaa100af9f210ef41b915e981fd",
+        "expected_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "details": {
+          "stages": 8,
+          "computed_maximum_block": 16777216,
+          "required_refusal_before_decoded_word_allocation": true
+        },
+        "outer_elapsed_ms": 38.985591000004206,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.7402020000008633,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "response_bytes": 22
+      },
+      {
+        "label": "codec-valid-deep-lazy-runs-direct",
+        "request_bytes": 114,
+        "request_sha256": "756c3e226aa87978d16191c5d177ca41304689c0de8e32ea1467c1218aaefa10",
+        "expected_sha256": "f1cccee7165f2b43d7e9ff49ad7973f8fc77394b64299325c97cbc56111a419a",
+        "details": {
+          "stages": 8,
+          "child_maximum_block": 2097152,
+          "root_decode_length": 8,
+          "elementwise_lazy_decode": true
+        },
+        "outer_elapsed_ms": 40.89678900000581,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.7767679999960819,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 65536,
+        "memory_growth_pages": 1,
+        "memory_bytes": 16908288,
+        "memory_pages": 258,
+        "response_sha256": "f1cccee7165f2b43d7e9ff49ad7973f8fc77394b64299325c97cbc56111a419a",
+        "response_bytes": 28
+      },
+      {
+        "label": "codec-invalid-deep-lazy-runs-empty-direct",
+        "request_bytes": 114,
+        "request_sha256": "d5a5aaf94f8717576397b8b99ea1e308612f0a907c13d5675e83980b48560bac",
+        "expected_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "details": {
+          "stages": 8,
+          "child_maximum_block": 2097152,
+          "missing_run_index": 1,
+          "required_empty_run_refusal": true
+        },
+        "outer_elapsed_ms": 39.2620670000033,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.7407920000114245,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "response_bytes": 22
+      },
+      {
+        "label": "codec-invalid-deep-packed-table",
+        "request_bytes": 111,
+        "request_sha256": "b90bd03ad95fb911a2271c3e179d6a479f72cd27d52a0c4bd4b34e86c85758ce",
+        "expected_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "details": {
+          "stages": 8,
+          "computed_maximum_block": 16777216,
+          "required_refusal_before_decoded_word_allocation": true
+        },
+        "outer_elapsed_ms": 40.94388099999924,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.7480800000048475,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "response_bytes": 22
+      },
+      {
+        "label": "codec-invalid-deep-packed-zero-width-table",
+        "request_bytes": 111,
+        "request_sha256": "516ecdafacf8b9ebb5fb2ff4e174d41dde3e5652796493546d8c50d073370c79",
+        "expected_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "details": {
+          "stages": 8,
+          "computed_maximum_block": 16777216,
+          "required_refusal_before_decoded_word_allocation": true
+        },
+        "outer_elapsed_ms": 39.91403800000262,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.7440679999999702,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "response_bytes": 22
+      },
+      {
+        "label": "codec-valid-deep-lazy-runs-table",
+        "request_bytes": 113,
+        "request_sha256": "4b9a3094299e9b3e51aeeba8c11cea0f2954090a2760b5c39cef8f19db417664",
+        "expected_sha256": "f1cccee7165f2b43d7e9ff49ad7973f8fc77394b64299325c97cbc56111a419a",
+        "details": {
+          "stages": 8,
+          "child_maximum_block": 2097152,
+          "root_decode_length": 8,
+          "elementwise_lazy_decode": true
+        },
+        "outer_elapsed_ms": 39.671533000000636,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.8225160000001779,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 65536,
+        "memory_growth_pages": 1,
+        "memory_bytes": 16908288,
+        "memory_pages": 258,
+        "response_sha256": "f1cccee7165f2b43d7e9ff49ad7973f8fc77394b64299325c97cbc56111a419a",
+        "response_bytes": 28
+      },
+      {
+        "label": "codec-invalid-deep-lazy-runs-empty-table",
+        "request_bytes": 113,
+        "request_sha256": "076f5e30b3e35c14ce092502c125f25d9f4306d496e301a654f85607ecb1c048",
+        "expected_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "details": {
+          "stages": 8,
+          "child_maximum_block": 2097152,
+          "missing_run_index": 1,
+          "required_empty_run_refusal": true
+        },
+        "outer_elapsed_ms": 39.84943099999509,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 0.7589020000013988,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 0,
+        "memory_growth_pages": 0,
+        "memory_bytes": 16842752,
+        "memory_pages": 257,
+        "response_sha256": "453502b399739d540d7c7c4b86446c6179ad468db6b5dc84a0a4596dad00aa7d",
+        "response_bytes": 22
+      },
+      {
+        "label": "ieee64-8x8-distinct-dense-max-exponent-book64-table",
+        "request_bytes": 2772,
+        "request_sha256": "3bad21caa0645f54e53c61de1f52a55ebcd8b966f4e8e83cd970c44983b48727",
+        "expected_sha256": "f8fcc4262c9b3cb8dec7fdfe78aa8efc55cfac46065c0e2be5767365cd101c9d",
+        "details": {
+          "rows": 8,
+          "inner": 8,
+          "columns": 8,
+          "activation_cells": 64,
+          "book_entries": 64,
+          "distinct_codes": 64,
+          "cached_scalar_products": 4096,
+          "distinct_exact_products": 4096,
+          "activation_and_book_disjoint": true,
+          "base_bits": "0x7fe5555555555555",
+          "coefficient_exponent": 971,
+          "all_book_entries_referenced": true,
+          "expected_each": "positive-infinity-after-one-terminal-nearest-round",
+          "oracle": "Signed BigInt coefficient/exponent exact dot and independent terminal IEEE rounding"
+        },
+        "outer_elapsed_ms": 21531.540284999995,
+        "status": "passed",
+        "stage": "dispatch",
+        "elapsed_ms": 21374.082171999995,
+        "memory_observation": "after-return",
+        "memory_before_bytes": 16842752,
+        "memory_before_pages": 257,
+        "memory_growth_bytes": 1600454656,
+        "memory_growth_pages": 24421,
+        "memory_bytes": 1617297408,
+        "memory_pages": 24678,
+        "response_sha256": "f8fcc4262c9b3cb8dec7fdfe78aa8efc55cfac46065c0e2be5767365cd101c9d",
+        "response_bytes": 1288
+      }
+    ]
+  },
+  "independent_numerical_oracles": {
+    "passed_claims": [
+      "MM-01",
+      "MM-02",
+      "MM-03",
+      "MM-04",
+      "MM-05",
+      "MM-06",
+      "MM-07",
+      "MM-11",
+      "MM-13",
+      "MM-14",
+      "MM-15",
+      "MM-17"
+    ],
+    "total_requests": 3301,
+    "copied_source_metadata": {
+      "capture": {
+        "path": "/tmp/matmul-final-oracles/copied-oracle-sources.json",
+        "byte_length": 776,
+        "sha256": "9aa6462af8ea6e1becb9d1fbd090384b550b27373833b13157f5732c16b969eb"
+      },
+      "value": {
+        "qualified_for_release": false,
+        "changes": "Only runtime factory replaced by successful manifest-bound actual CoreWasm instance; all current independent expected-arithmetic/case bodies unchanged, all reports confined /tmp.",
+        "files": [
+          {
+            "source": "/home/alex/Desktop/lexlean-matmul/scripts/runtime-oracle.mjs",
+            "sha256": "b8ac8737386c551cbaceb5608993854db9c7334493d6100c512aad6cee366e24",
+            "diagnostic_copy": {
+              "path": "/tmp/matmul-final-oracles/runtime-oracle.mjs",
+              "byte_length": 17305,
+              "sha256": "f6a247a228c1d56dc0c8708111225b3c4b6d80234ab7045d2b27233b8b2327e7"
+            }
+          },
+          {
+            "source": "/home/alex/Desktop/lexlean-matmul/scripts/extended-oracle.mjs",
+            "sha256": "b72cc6a72089b9825cfbf83547f28576de9ba3f404d943055d474a4ae64b1545",
+            "diagnostic_copy": {
+              "path": "/tmp/matmul-final-oracles/extended-oracle.mjs",
+              "byte_length": 34395,
+              "sha256": "b72cc6a72089b9825cfbf83547f28576de9ba3f404d943055d474a4ae64b1545"
+            }
+          },
+          {
+            "source": "/home/alex/Desktop/lexlean-matmul/scripts/codec-oracle.mjs",
+            "sha256": "2c51c16928b5061686efb6247d3d4a54eb4b14f8995438f57fc27ec9fc9f8e8e",
+            "diagnostic_copy": {
+              "path": "/tmp/matmul-final-oracles/codec-oracle.mjs",
+              "byte_length": 25503,
+              "sha256": "2c51c16928b5061686efb6247d3d4a54eb4b14f8995438f57fc27ec9fc9f8e8e"
+            }
+          }
+        ]
+      }
+    },
+    "copy_changes_rechecked": "Only the runtime factory uses explicit genuine captured build-result/manifest/guest; expected arithmetic and test cases match the captured shipping sources.",
+    "harness_files": [
+      {
+        "path": "/tmp/matmul-final-oracles/codec-oracle.mjs",
+        "byte_length": 25503,
+        "sha256": "2c51c16928b5061686efb6247d3d4a54eb4b14f8995438f57fc27ec9fc9f8e8e"
+      },
+      {
+        "path": "/tmp/matmul-final-oracles/evidence.mjs",
+        "byte_length": 2058,
+        "sha256": "f82598b536f8eae38f7532421d40b56d596a5971448f22ff94319fb1f4fd8352"
+      },
+      {
+        "path": "/tmp/matmul-final-oracles/extended-oracle.mjs",
+        "byte_length": 34395,
+        "sha256": "b72cc6a72089b9825cfbf83547f28576de9ba3f404d943055d474a4ae64b1545"
+      },
+      {
+        "path": "/tmp/matmul-final-oracles/manifest-runtime.mjs",
+        "byte_length": 3592,
+        "sha256": "ce0bb96668872aaf3dbc41a4f04df59714a8d409d366e5c5e169b8236c4baf76"
+      },
+      {
+        "path": "/tmp/matmul-final-oracles/run.mjs",
+        "byte_length": 965,
+        "sha256": "6d62f45fe34108c9e7a86b1354d78cef549dbbcb545e6c828e979a4850c5e140"
+      },
+      {
+        "path": "/tmp/matmul-final-oracles/runtime-oracle.mjs",
+        "byte_length": 17305,
+        "sha256": "f6a247a228c1d56dc0c8708111225b3c4b6d80234ab7045d2b27233b8b2327e7"
+      }
+    ],
+    "results": [
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-01.json",
+          "byte_length": 557,
+          "sha256": "00c38f1cfa46726ca86dc219e88f071a78d5a21eabc1705103da84ccb622eafc"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-01",
+        "elapsed_ms": 4321.486979,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-01",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 102,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-02.json",
+          "byte_length": 557,
+          "sha256": "0452336da4acf1aa7453ccb89ba062064eeaf4a4fa5fbc75dd3753fb4955cd69"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-02",
+        "elapsed_ms": 1560.528685,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-02",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 565,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-03.json",
+          "byte_length": 558,
+          "sha256": "1a4f45da0f3be41780404bada842093b9de2d12386fb9c74af4a1059f810a4a5"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-03",
+        "elapsed_ms": 12903.299863,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-03",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 115,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-04.json",
+          "byte_length": 563,
+          "sha256": "671d6fc7b2998d6a1e0ea086aa9d3e1ec5e72a6f956196732af1b136f4221048"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-04",
+        "elapsed_ms": 216.94195599999998,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-04",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 60,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-05.json",
+          "byte_length": 563,
+          "sha256": "6e0289f6c011c5d857aad60110da6ea397e0c1bd011c0979826ce598c4744a7d"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-05",
+        "elapsed_ms": 130.36064599999997,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-05",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 45,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-06.json",
+          "byte_length": 563,
+          "sha256": "4b1bfbfe0c8680ec6c37a7410862835833fc639131cf47813256286927229eb8"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-06",
+        "elapsed_ms": 220.07668700000002,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-06",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 79,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-07.json",
+          "byte_length": 562,
+          "sha256": "fb9df89a4427b6fdce023c488b540d72a2a1a57525b8217f9435adbdeb1f73c0"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-07",
+        "elapsed_ms": 81.11693400000001,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-07",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 32,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-11.json",
+          "byte_length": 564,
+          "sha256": "88a304571e1ccc8b1c2c73e797014fae2e37db18490306107608ab27bd0514cb"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-11",
+        "elapsed_ms": 17580.099783999998,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-11",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 137,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-13.json",
+          "byte_length": 558,
+          "sha256": "5ad7ae179ccc196a5bb18a795f402832eb5bb5f4243298ab67c52ba0795d1681"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-13",
+        "elapsed_ms": 31951.093124,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-13",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 307,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-14.json",
+          "byte_length": 557,
+          "sha256": "e437650afa159213e8c4ca0d5e661ea266de1cda05786fc571e2a63257658f9a"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-14",
+        "elapsed_ms": 1380.014666,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-14",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 413,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-15.json",
+          "byte_length": 557,
+          "sha256": "bd69f3e4766c05988124abe87668d5bcf667dd8482f6279554141d9d63e3e1a9"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-15",
+        "elapsed_ms": 3185.192341,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-15",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 216,
+          "status": "passed"
+        },
+        "status": "passed"
+      },
+      {
+        "report": {
+          "path": "/tmp/matmul-final-oracles/MM-17.json",
+          "byte_length": 901,
+          "sha256": "8be2c7ba1a35cfa405ea8c5816a9d9e4d3dc2bda44bd6a7b8b50ec8f0e059987"
+        },
+        "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+        "id": "MM-17",
+        "elapsed_ms": 32772.138139999995,
+        "oracle_result": {
+          "schema": "lexlean-matmul/runtime-acceptance/1",
+          "id": "MM-17",
+          "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+          "wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+          "requests": 1230,
+          "status": "passed",
+          "codec_construction": "total-compositional-modulo-codebooks",
+          "e8_bytes_sha256": "f4a90d635c5baacf986e3fd4921bf18875b2d94555c1b6a19a078e7918ff6936",
+          "e8_source": {
+            "rows": 256,
+            "width": 8,
+            "sha256": "f4a90d635c5baacf986e3fd4921bf18875b2d94555c1b6a19a078e7918ff6936",
+            "storage": "owned-record"
+          }
+        },
+        "status": "passed"
+      }
+    ]
+  },
+  "generated_browser": {
+    "raw_report": {
+      "path": "/tmp/matmul-final-browser-artifact-diagnostic/result.json",
+      "byte_length": 8296,
+      "sha256": "e7ca22b23690e08ccc0f0b18dacaaa5985e60c9513d247871907cc5083769da6"
+    },
+    "report": {
+      "schema": "lexlean-matmul/generated-browser-artifact-diagnostic/1",
+      "qualified_for_release": false,
+      "scope": "actual-generated-binding-and-local-chromium-only-no-native-system-or-release-qualification",
+      "toolchain_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+      "inventory_sha256": "c4141b2f49367d6333b923add902677b515953684bb07b25e9200903f2474d30",
+      "node": "v22.23.2",
+      "architecture": "x64",
+      "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+      "result_sha256": "3fde285f66163dd1aadced73d3c881d8c7d0786f88896d79182c879e305c2804",
+      "manifest_sha256": "9034c848a47e1dc7a4730b39491c6445d50aff571bcc4a413adc96f87d4bfbdc",
+      "verified_artifact_files": 167,
+      "verified_artifact_bytes": 28462779,
+      "copies": {
+        "qualified_for_release": false,
+        "changes": "Only browser test deployment-data import points to captured exact model homepage. Binding/UI/corpus/transport assertions unchanged; readonly exact157 browser dependency overlay; no shippingbehavior or productreceipts.",
+        "files": [
+          {
+            "source": "/home/alex/Desktop/lexlean-matmul/scripts/browser-oracle.mjs",
+            "sha256": "133ef901bacbcf614264eb990cefc9ab8ad47142e28b497749fddebf0ec8b77e",
+            "byte_length": 15499
+          },
+          {
+            "source": "/home/alex/Desktop/lexlean-matmul/scripts/write-errors.mjs",
+            "sha256": "ac6a532184d20d220ccbe8939e4a9d5af1f766eee32b881febf1cb3fafd8779b",
+            "byte_length": 9975
+          }
+        ]
+      },
+      "harness_files": [
+        {
+          "path": "browser-oracle.mjs",
+          "bytes": 15506,
+          "sha256": "b510be0fa801bd096544ae3c629e28fc7ffb1d1d5dee29ec8df42cad37ad5d5c"
+        },
+        {
+          "path": "captured-deployment.mjs",
+          "bytes": 530,
+          "sha256": "44cee3045cce50711e29a2c99c3dd17ee509eb57346f695f75aae00cb347e849"
+        },
+        {
+          "path": "evidence.mjs",
+          "bytes": 2078,
+          "sha256": "9a1dcf1a55ae2a4bc94a596a21c4f2a10e14fd3f3c2f29e44b25f1d005d28359"
+        },
+        {
+          "path": "run.mjs",
+          "bytes": 2907,
+          "sha256": "43457e9bec3a7e0cbb212a833b23997ccaa6669154fa8ee4788d2f02e6badb8e"
+        },
+        {
+          "path": "screenshot.mjs",
+          "bytes": 5819,
+          "sha256": "6fad9e7d013bca77d3383ddb5de6ac3e7ed438920635420c11e79fd08220685e"
+        },
+        {
+          "path": "write-errors.mjs",
+          "bytes": 9975,
+          "sha256": "ac6a532184d20d220ccbe8939e4a9d5af1f766eee32b881febf1cb3fafd8779b"
+        }
+      ],
+      "project": "/tmp/matmul-source-maintenance-final-cache-build",
+      "browser_input": {
+        "report": {
+          "schema": "lexlean-matmul/source-maintenance-browser-input/1",
+          "qualified_for_release": false,
+          "version": "157.0.8099.0",
+          "source_authority": "/tmp/lexlean-matmul-sdk-refresh.F6Im9d/sdk/browser-engine/authority.json",
+          "original_archive": "/tmp/lexlean-matmul-chromium157-original.zip",
+          "archive_sha256": "9541eafbc02f85e3ec0c24b05f8bbffe88094389949860681bf6055aef668d7b",
+          "tree_sha256": "18c79a8a6f785debf08393ce22f57cf5923d996c431c5c55610e5a20109905b7",
+          "destination": "/tmp/lexlean-matmul-chromium157",
+          "scope": "Exact official SDK dependency acquired with unmodified installer; diagnostic readonly browser mount only, not SDK/product qualification."
+        },
+        "report_sha256": "643824233660eff2f4102b727249983f745eeaaef4c96bdfe4754dd01dcfa43b",
+        "scope": "exact-catalog-locked-browser-input-readonly-mounted-into-pinned-base-image"
+      },
+      "browser": {
+        "schema": "lexlean-matmul/browser-runtime-acceptance/1",
+        "id": "MM-09",
+        "status": "passed",
+        "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+        "backend": "unchanged-sdk-wasm-bindgen-text-adapter",
+        "assets": [
+          {
+            "path": "app.css",
+            "bytes": 804,
+            "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279"
+          },
+          {
+            "path": "app.js",
+            "bytes": 3621,
+            "sha256": "8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1"
+          },
+          {
+            "path": "index.html",
+            "bytes": 944,
+            "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad"
+          },
+          {
+            "path": "lexlean_matmul.js",
+            "bytes": 6592,
+            "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16"
+          },
+          {
+            "path": "lexlean_matmul_bg.wasm",
+            "bytes": 946431,
+            "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc"
+          },
+          {
+            "path": "provenance.json",
+            "bytes": 656,
+            "sha256": "3e197c022bd2a6e9c69ba92c2a80124bf715713b0e1987a93075ac46da0d212d"
+          }
+        ],
+        "wasm_sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc",
+        "binding_javascript_sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16",
+        "modeled_vectors": 158,
+        "corpus_sha256": "f7693d22dfee03a94e964c513dba2920c73e4fa8db0ffba7f9c6faaf003e1441",
+        "node": {
+          "engine": "v22.23.2",
+          "answered_vectors": 155,
+          "rejected_utf8_vectors": 1,
+          "rejected_length_vectors": 2,
+          "additional_transport_negatives": 3
+        },
+        "chromium": {
+          "engine": "chromium",
+          "version": "157.0.8099.0",
+          "playwright": "1.62.1",
+          "exact_vector_indexes": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157
+          ],
+          "textarea_normalized_vector_indexes": [],
+          "input_validation_cases": 2,
+          "recovery_submissions": 3,
+          "served_assets": [
+            "app.css",
+            "app.js",
+            "index.html",
+            "lexlean_matmul.js",
+            "lexlean_matmul_bg.wasm"
+          ],
+          "response_assets": [
+            {
+              "path": "app.css",
+              "status": 200,
+              "content_type": "text/css"
+            },
+            {
+              "path": "app.js",
+              "status": 200,
+              "content_type": "text/javascript"
+            },
+            {
+              "path": "index.html",
+              "status": 200,
+              "content_type": "text/html"
+            },
+            {
+              "path": "lexlean_matmul.js",
+              "status": 200,
+              "content_type": "text/javascript"
+            },
+            {
+              "path": "lexlean_matmul_bg.wasm",
+              "status": 200,
+              "content_type": "application/wasm"
+            }
+          ],
+          "external_requests": 0,
+          "page_errors": 0
+        }
+      },
+      "status": "passed",
+      "elapsed_ms": 8898.230142
+    },
+    "copy_changes_rechecked": "Only the deployment metadata import uses the captured model homepage; actual generated wasm-bindgen initialization, invocation, transport, corpus, and UI assertions are unchanged.",
+    "harness_files": [
+      {
+        "path": "/tmp/matmul-final-browser-artifact-diagnostic/browser-oracle.mjs",
+        "byte_length": 15506,
+        "sha256": "b510be0fa801bd096544ae3c629e28fc7ffb1d1d5dee29ec8df42cad37ad5d5c"
+      },
+      {
+        "path": "/tmp/matmul-final-browser-artifact-diagnostic/captured-deployment.mjs",
+        "byte_length": 530,
+        "sha256": "44cee3045cce50711e29a2c99c3dd17ee509eb57346f695f75aae00cb347e849"
+      },
+      {
+        "path": "/tmp/matmul-final-browser-artifact-diagnostic/evidence.mjs",
+        "byte_length": 2078,
+        "sha256": "9a1dcf1a55ae2a4bc94a596a21c4f2a10e14fd3f3c2f29e44b25f1d005d28359"
+      },
+      {
+        "path": "/tmp/matmul-final-browser-artifact-diagnostic/run.mjs",
+        "byte_length": 2907,
+        "sha256": "43457e9bec3a7e0cbb212a833b23997ccaa6669154fa8ee4788d2f02e6badb8e"
+      },
+      {
+        "path": "/tmp/matmul-final-browser-artifact-diagnostic/screenshot.mjs",
+        "byte_length": 5819,
+        "sha256": "6fad9e7d013bca77d3383ddb5de6ac3e7ed438920635420c11e79fd08220685e"
+      },
+      {
+        "path": "/tmp/matmul-final-browser-artifact-diagnostic/write-errors.mjs",
+        "byte_length": 9975,
+        "sha256": "ac6a532184d20d220ccbe8939e4a9d5af1f766eee32b881febf1cb3fafd8779b"
+      }
+    ],
+    "screenshot": {
+      "capture": {
+        "path": "/tmp/matmul-final-browser-artifact-diagnostic/screenshot-result.json",
+        "byte_length": 2646,
+        "sha256": "94c7389d60edc011b25e9f596dd5ceb44eeaf84dbf69ed79d8b0c351f51ecad3"
+      },
+      "report": {
+        "schema": "lexlean-matmul/generated-ui-screenshot-diagnostic/1",
+        "qualified_for_release": false,
+        "scope": "Actual unchanged SDK-generated browser UI successful2x2 screenshot only; no publication qualification",
+        "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+        "manifest_sha256": "9034c848a47e1dc7a4730b39491c6445d50aff571bcc4a413adc96f87d4bfbdc",
+        "model_sha256": "29398547747c0ba03a0f46929592d9b7bf86e3c0137a981941c482b6b8c6a53c",
+        "project": "/tmp/matmul-source-maintenance-final-cache-build",
+        "request": "1\tmatmul\t2\t2\t2\t1,2,3,4\t5,6,7,8",
+        "expected_response": "1\tok\t2\t2\t19,22,43,50",
+        "browser_version": "157.0.8099.0",
+        "playwright": "1.62.1",
+        "base_toolchain_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+        "browser_input": {
+          "schema": "lexlean-matmul/source-maintenance-browser-input/1",
+          "qualified_for_release": false,
+          "version": "157.0.8099.0",
+          "source_authority": "/tmp/lexlean-matmul-sdk-refresh.F6Im9d/sdk/browser-engine/authority.json",
+          "original_archive": "/tmp/lexlean-matmul-chromium157-original.zip",
+          "archive_sha256": "9541eafbc02f85e3ec0c24b05f8bbffe88094389949860681bf6055aef668d7b",
+          "tree_sha256": "18c79a8a6f785debf08393ce22f57cf5923d996c431c5c55610e5a20109905b7",
+          "destination": "/tmp/lexlean-matmul-chromium157",
+          "scope": "Exact official SDK dependency acquired with unmodified installer; diagnostic readonly browser mount only, not SDK/product qualification."
+        },
+        "screenshot_path": "/tmp/matmul-final-browser-artifact-diagnostic/ui-2x2.png",
+        "screenshot_sha256": "960547d2440e5e599aaf95dfe016a372ad572b525694d0ae253a09c912eb4174",
+        "assets": [
+          {
+            "path": "app.css",
+            "bytes": 804,
+            "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279"
+          },
+          {
+            "path": "app.js",
+            "bytes": 3621,
+            "sha256": "8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1"
+          },
+          {
+            "path": "index.html",
+            "bytes": 944,
+            "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad"
+          },
+          {
+            "path": "lexlean_matmul.js",
+            "bytes": 6592,
+            "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16"
+          },
+          {
+            "path": "lexlean_matmul_bg.wasm",
+            "bytes": 946431,
+            "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc"
+          },
+          {
+            "path": "provenance.json",
+            "bytes": 656,
+            "sha256": "3e197c022bd2a6e9c69ba92c2a80124bf715713b0e1987a93075ac46da0d212d"
+          }
+        ]
+      },
+      "png": {
+        "path": "/tmp/matmul-final-browser-artifact-diagnostic/ui-2x2.png",
+        "byte_length": 31765,
+        "sha256": "960547d2440e5e599aaf95dfe016a372ad572b525694d0ae253a09c912eb4174"
+      }
+    }
+  },
+  "execution": {
+    "driver": {
+      "path": "/tmp/run-matmul-final-diagnostics.py",
+      "byte_length": 3627,
+      "sha256": "64aeaaa616493c9093d43c4457947fe2c3802c088c89d3bfe3c9e0088fe0735f"
+    },
+    "harness_preparation": {
+      "path": "/tmp/prepare_matmul_final_diagnostics.py",
+      "byte_length": 3413,
+      "sha256": "eeefe43ebfb425455456dd86b9467a6d66e418e17ee3d49d4a9b5ff48c2fbf75"
+    },
+    "summary": {
+      "path": "/tmp/matmul-final-diagnostics/summary.json",
+      "byte_length": 6971,
+      "sha256": "6bc6182afec2be21327a8cfbedfe7ec7d33dd71a2abdf7c4c2faaf85ab6d4141"
+    },
+    "all_passed": true,
+    "commands": [
+      {
+        "label": "resource40",
+        "command": [
+          "node",
+          "/tmp/matmul-core-resource-stress-final.mjs",
+          "--root",
+          "/tmp/matmul-source-maintenance-final-cache-build",
+          "--result",
+          "/tmp/matmul-source-maintenance-final-cache-build/sdk-build-result.json",
+          "--output",
+          "/tmp/matmul-final-resource-results.json",
+          "--timeout-ms",
+          "300000"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 104.44288755598245
+      },
+      {
+        "label": "MM-01",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-01"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 4.573350782040507
+      },
+      {
+        "label": "MM-02",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-02"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 1.7674431730411015
+      },
+      {
+        "label": "MM-03",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-03"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 13.094613166991621
+      },
+      {
+        "label": "MM-04",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-04"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 0.41488398105138913
+      },
+      {
+        "label": "MM-05",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-05"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 0.31464920996222645
+      },
+      {
+        "label": "MM-06",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-06"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 0.41478463099338114
+      },
+      {
+        "label": "MM-07",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-07"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 0.26448178297141567
+      },
+      {
+        "label": "MM-11",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-11"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 17.75028358399868
+      },
+      {
+        "label": "MM-13",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-13"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 32.13444461399922
+      },
+      {
+        "label": "MM-14",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-14"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 1.5670589180081151
+      },
+      {
+        "label": "MM-15",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-15"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 3.370236622984521
+      },
+      {
+        "label": "MM-17",
+        "command": [
+          "node",
+          "--expose-gc",
+          "/tmp/matmul-final-oracles/run.mjs",
+          "MM-17"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 32.9807436800329
+      },
+      {
+        "label": "browser158",
+        "command": [
+          "docker",
+          "run",
+          "--rm",
+          "--user",
+          "1000:1000",
+          "--entrypoint",
+          "node",
+          "--network",
+          "none",
+          "--mount",
+          "type=bind,source=/tmp/matmul-source-maintenance-final-cache-build,target=/tmp/matmul-source-maintenance-final-cache-build,readonly",
+          "--mount",
+          "type=bind,source=/tmp/matmul-final-browser-artifact-diagnostic,target=/tmp/matmul-final-browser-artifact-diagnostic",
+          "--mount",
+          "type=bind,source=/tmp/lexlean-matmul-chromium157,target=/ms-playwright/chromium_headless_shell-cft-157.0.8099.0,readonly",
+          "--mount",
+          "type=bind,source=/tmp/lexlean-matmul-chromium157-acquisition.json,target=/tmp/lexlean-matmul-chromium157-acquisition.json,readonly",
+          "--env",
+          "MATMUL_DIAGNOSTIC_PROJECT=/tmp/matmul-source-maintenance-final-cache-build",
+          "--env",
+          "MATMUL_DIAGNOSTIC_RESULT=/tmp/matmul-source-maintenance-final-cache-build/sdk-build-result.json",
+          "--env",
+          "MATMUL_DIAGNOSTIC_BROWSER_INPUT=/tmp/lexlean-matmul-chromium157-acquisition.json",
+          "--workdir",
+          "/tmp/matmul-final-browser-artifact-diagnostic",
+          "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+          "run.mjs"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 9.182366991008166
+      },
+      {
+        "label": "screenshot2x2",
+        "command": [
+          "docker",
+          "run",
+          "--rm",
+          "--user",
+          "1000:1000",
+          "--entrypoint",
+          "node",
+          "--network",
+          "none",
+          "--mount",
+          "type=bind,source=/tmp/matmul-source-maintenance-final-cache-build,target=/tmp/matmul-source-maintenance-final-cache-build,readonly",
+          "--mount",
+          "type=bind,source=/tmp/matmul-final-browser-artifact-diagnostic,target=/tmp/matmul-final-browser-artifact-diagnostic",
+          "--mount",
+          "type=bind,source=/tmp/lexlean-matmul-chromium157,target=/ms-playwright/chromium_headless_shell-cft-157.0.8099.0,readonly",
+          "--mount",
+          "type=bind,source=/tmp/lexlean-matmul-chromium157-acquisition.json,target=/tmp/lexlean-matmul-chromium157-acquisition.json,readonly",
+          "--env",
+          "MATMUL_DIAGNOSTIC_PROJECT=/tmp/matmul-source-maintenance-final-cache-build",
+          "--env",
+          "MATMUL_DIAGNOSTIC_RESULT=/tmp/matmul-source-maintenance-final-cache-build/sdk-build-result.json",
+          "--env",
+          "MATMUL_DIAGNOSTIC_BROWSER_INPUT=/tmp/lexlean-matmul-chromium157-acquisition.json",
+          "--workdir",
+          "/tmp/matmul-final-browser-artifact-diagnostic",
+          "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+          "screenshot.mjs"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 0.915533865976613
+      }
+    ],
+    "logs": [
+      {
+        "label": "resource40",
+        "exit_code": 0,
+        "elapsed_seconds": 104.44288755598245,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/resource40.stdout.log",
+          "byte_length": 244871,
+          "sha256": "921d169860cb138883b3b852420b97927cdbac0ed359cd4fb9f01bad69010172"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/resource40.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-01",
+        "exit_code": 0,
+        "elapsed_seconds": 4.573350782040507,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-01.stdout.log",
+          "byte_length": 489,
+          "sha256": "e26b0c07273db8e5fd3df8aa39d7b8010a8409343318d77284c5766b3337a6b5"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-01.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-02",
+        "exit_code": 0,
+        "elapsed_seconds": 1.7674431730411015,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-02.stdout.log",
+          "byte_length": 489,
+          "sha256": "175f1f0d2c1c61fb40e31e8187bcc4820d03480db4caf793326a4a5d835e2f4e"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-02.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-03",
+        "exit_code": 0,
+        "elapsed_seconds": 13.094613166991621,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-03.stdout.log",
+          "byte_length": 490,
+          "sha256": "8d47338b1628a138daa7f481078e60328b9dc0c2714ce6eb7cc5b0b00ec4f4c8"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-03.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-04",
+        "exit_code": 0,
+        "elapsed_seconds": 0.41488398105138913,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-04.stdout.log",
+          "byte_length": 495,
+          "sha256": "8f4f6fcf9b747bf15d144d46293c3ce9b4a42b71d06ea2e73c4c592433e1f5e3"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-04.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-05",
+        "exit_code": 0,
+        "elapsed_seconds": 0.31464920996222645,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-05.stdout.log",
+          "byte_length": 495,
+          "sha256": "8ee48c6ee5e29dd53db2673fe77be948cbf8cfc226a4abb32dfd94ff54231362"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-05.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-06",
+        "exit_code": 0,
+        "elapsed_seconds": 0.41478463099338114,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-06.stdout.log",
+          "byte_length": 495,
+          "sha256": "3b05a965203218e2bee0066d6c07ca33f09b644e3e692dcd2c31f554ff45e30a"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-06.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-07",
+        "exit_code": 0,
+        "elapsed_seconds": 0.26448178297141567,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-07.stdout.log",
+          "byte_length": 494,
+          "sha256": "fcbdd2e94bdf1c7a5b73f24c526b97a74a3288e74225637038dac90d9ba85a90"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-07.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-11",
+        "exit_code": 0,
+        "elapsed_seconds": 17.75028358399868,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-11.stdout.log",
+          "byte_length": 496,
+          "sha256": "b4f77d1ad9c9d8821a489eec71b919e18e70e3f2d3d79a176646c60ab8616729"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-11.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-13",
+        "exit_code": 0,
+        "elapsed_seconds": 32.13444461399922,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-13.stdout.log",
+          "byte_length": 490,
+          "sha256": "13e3cf76515f4acc18b6c9a6d640e3748a912407702c9e45e812d00a44a57a2b"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-13.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-14",
+        "exit_code": 0,
+        "elapsed_seconds": 1.5670589180081151,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-14.stdout.log",
+          "byte_length": 489,
+          "sha256": "b3aa01ecf75a947ff4e487e316c5690b40226ef040f65cce8e3bf7540a98c03d"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-14.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-15",
+        "exit_code": 0,
+        "elapsed_seconds": 3.370236622984521,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-15.stdout.log",
+          "byte_length": 489,
+          "sha256": "eb29374c01cef0e8c498e329b7d2dcd7c5c5daeb390d8361d724b8aac6b2a81b"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-15.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "MM-17",
+        "exit_code": 0,
+        "elapsed_seconds": 32.9807436800329,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/MM-17.stdout.log",
+          "byte_length": 778,
+          "sha256": "adae82dd79785dfbcb6d5df5c141ef7781ffbbbd450aa9932bb7aff1abef4652"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/MM-17.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "browser158",
+        "exit_code": 0,
+        "elapsed_seconds": 9.182366991008166,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/browser158.stdout.log",
+          "byte_length": 1389,
+          "sha256": "1ea33fa4dbd2bc9a31c1b9adbd0475075bead6f57e0f0bff81dff9d97c05680f"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/browser158.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "label": "screenshot2x2",
+        "exit_code": 0,
+        "elapsed_seconds": 0.915533865976613,
+        "stdout": {
+          "path": "/tmp/matmul-final-diagnostics/screenshot2x2.stdout.log",
+          "byte_length": 175,
+          "sha256": "7b7dc7c5faa94fdee0251c5c6521dc738f832b8d4183904219fec2002ca2f4bd"
+        },
+        "stderr": {
+          "path": "/tmp/matmul-final-diagnostics/screenshot2x2.stderr.log",
+          "byte_length": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ]
+  }
+}
