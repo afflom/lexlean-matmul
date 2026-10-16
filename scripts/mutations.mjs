@@ -1,13 +1,16 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { freshBuild, root, run, sourceModules, canonical, writeJson, sourceDigest, verificationDigest, evidenceRoot, sha } from './evidence.mjs';
 import { copySource } from './clean-copy.mjs';
 
 freshBuild();
-const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'lexlean-matmul-falsification-'));
+// Keep complete mutation roots and their immutable authority archives on the
+// project filesystem; bootstrap /tmp has a separate 2 GiB capacity bound.
+const workRoot = path.join(evidenceRoot, 'work');
+fs.mkdirSync(workRoot, { recursive: true });
+const temporary = fs.mkdtempSync(path.join(workRoot, 'falsification-'));
 const mutations = [];
 function reject(directory, command, args, diagnostic) {
   const result = spawnSync(command, args, { cwd: directory, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, timeout: 1800000 });

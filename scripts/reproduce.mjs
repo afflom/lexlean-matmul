@@ -1,13 +1,16 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import os from 'node:os';
 import path from 'node:path';
 import { sdk, freshBuild, readJson, run, writeJson, sourceDigest, verificationDigest, evidenceRoot, files } from './evidence.mjs';
 import { copySource } from './clean-copy.mjs';
 
 sdk();
 const selected = freshBuild();
-const temporary = fs.mkdtempSync(path.join(os.tmpdir(), 'lexlean-matmul-reproduction-'));
+// Each clean root includes the locked authority archives. Their combined
+// size exceeds the bootstrap container's bounded /tmp filesystem.
+const workRoot = path.join(evidenceRoot, 'work');
+fs.mkdirSync(workRoot, { recursive: true });
+const temporary = fs.mkdtempSync(path.join(workRoot, 'reproduction-'));
 try {
   const runs = [];
   for (const name of ['first', 'different-absolute-root']) {
