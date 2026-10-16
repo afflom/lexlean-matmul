@@ -111,7 +111,8 @@ Never re-derived, vendored, or gated on.
 
 | Authority | Citation | Evidence here |
 | --- | --- | --- |
-| `UOR-MATMUL` | https://github.com/UOR-Foundation/uor-matmul/tree/3cc5882f210667f9ac00fd8c02c5b5957b493f5d | `MM-01`, `MM-02`, `MM-03`, `MM-04`, `MM-05`, `MM-06` |
+| `UOR-MATMUL` | https://github.com/UOR-Foundation/uor-matmul/tree/3cc5882f210667f9ac00fd8c02c5b5957b493f5d | `MM-01`, `MM-02`, `MM-03`, `MM-04`, `MM-05`, `MM-06`, `MM-13`, `MM-14`, `MM-15`, `MM-16`, `MM-17` |
+| `E8` | https://github.com/UOR-Foundation/uor-matmul/blob/3cc5882f210667f9ac00fd8c02c5b5957b493f5d/crates/uor-matmul-codec/src/e8.rs | `MM-17` |
 | `CALCULATOR` | https://github.com/UOR-Foundation/calculator-example/tree/5051dc6adb18e9ca2b6ae4ca7090e638329831ef | `MM-09`, `MM-10` |
 
 ## Claims that are not conformance IDs
@@ -132,6 +133,7 @@ Never re-derived, vendored, or gated on.
 | `MM-12` | `build` | The pinned SDK reproduces platform-independent application artifacts from separate clean roots. |
 | `AUTH-UOR-MATMUL` | `some-true` | The cited UOR reference specifies decoding coded operands, exact accumulation, and a single output encoding. |
 | `AUTH-CALCULATOR` | `some-true` | The cited Calculator reference declares a LexLean-authored portable Core-Wasm, Holo, and Pages application. |
+| `AUTH-E8` | `some-true` | The cited E8 source provides a 256-word, eight-coordinate integer codebook. |
 | `MM-13` | `build` | IEEE binary32 and binary64 products decode exactly and encode once with the requested rounding and non-finite semantics. |
 | `MM-14` | `build` | Signed integer output encoders wrap or saturate the exact result at the requested width without intermediate loss. |
 | `MM-15` | `build` | Bias and linear epilogues retain exact integer, complex, and tropical results until one terminal output encoding. |

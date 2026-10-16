@@ -31,6 +31,8 @@ application model. Source declarations remain authoritative.
 | `tropical-gemm` | `alpha`, `beta`, `m`, `k`, `n`, `A`, `B`, `C` |
 | `complex-encode` | `width`, `mode`, `alpha`, `beta`, `m`, `k`, `n`, `A-real`, `A-imag`, `B-real`, `B-imag`, `C-real`, `C-imag` |
 | `tropical-encode` | `width`, `mode`, `alpha`, `beta`, `m`, `k`, `n`, `A`, `B`, `C` |
+| `codec` | `route`, `plan`, `m`, `k`, `n`, `A`, `stored-B` |
+| `arena` | `format`, `width`, `mode`, `source-bits`, `m`, `k`, `n`, `A-bits`, `B-codes` |
 
 Matrices are row major: `A` has `m*k` entries, `B` has `k*n`, and `C` has
 `m*n`. Binary codes `0,1` decode to `-1,+1`; ternary codes `0,1,2` decode to
@@ -74,6 +76,39 @@ endpoints and therefore require widths 2 through 64. Their wrapping mode
 matches the reference's unsigned 128-bit offset reduction, including negative
 offsets. Input arrays must match their declared shapes even when beta makes
 the previous output irrelevant.
+
+For `codec`, `route` is `direct` or `table`. A plan has at most eight stages,
+separated by semicolons. The first stage declares a codebook; later stages
+wrap the preceding stage. Numeric fields use canonical decimal text.
+
+| Stage | Meaning |
+| --- | --- |
+| `grid:width:values` | Scalar integer table, with comma-separated values |
+| `book:width:block:words` | Fixed-width integer words separated by `/`; each word is comma-separated |
+| `sign:width:block` | Low bit first; clear is −1 and set is +1 |
+| `ternary:width:block` | Low two-bit field first; 0 → −1, 1/3 → 0, 2 → +1 |
+| `e8:width` | The reference's exact 256-word, eight-coordinate E8 table |
+| `packed:count` | Unpack 1, 2, 4, or 8 subcodes from each byte, low field first |
+| `offset:zero` | Subtract the zero point from the inner decode |
+| `transcode:width:mapping` | Relabel through a comma-separated total modulo-indexed map |
+| `runs:maximum:pairs` | Alternating run length and inner code; stored codes select runs |
+
+Base and transcode widths are 8 or 16 bits. Packed storage is eight bits;
+run indexes are 32 bits. Declared block and maximum run lengths are 1 through
+8 in this transport. Grid, book, and arena table indexes reduce modulo
+the table size. Sign and ternary ignore bits beyond their declared storage
+width. A run repeats its inner block, and an unknown run has zero decoded
+length. A matrix rejects zero-length stored symbols and requires exactly
+`n` decoded values in each of its `k` stored rows. Rows in `stored-B` are
+separated by `/`; codes within a row are comma-separated. With zero rows,
+the stored field is empty. Composition preserves the reference's distinction
+between an inner run length and a wrapper's maximum block length.
+
+`arena` first sorts and deduplicates unsigned IEEE source bit patterns.
+Positive and negative zero remain distinct entries, as do different NaN
+payloads. Stored codes at width 8 or 16 select this canonical table modulo
+its length. The exact IEEE traversal then applies the requested terminal
+encoding; arithmetic NaNs use the canonical output representation.
 
 The following code blocks contain literal tabs and can be pasted into the
 generated browser request field.

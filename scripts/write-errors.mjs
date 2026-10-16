@@ -36,7 +36,7 @@ export function renderErrors() {
   const vectors = acceptanceVectors();
   assert(vectors.length >= 12, 'The public error contract needs independent byte-level vectors.');
   const expected = vectors.map(row => row.fields.find(field => field.field === 'response').value.hex);
-  let result = '<!-- @generated from src/Protocol.lex.tex, src/Core.lex.tex, and src/Application.lex.tex. -->\n\n';
+  let result = '<!-- @generated from the typed LexLean errors, source theorems, and application vectors. -->\n\n';
   result += '# Public errors\n\nThe versioned byte interface returns `1`, `error`, and the wire code, separated by tabs.\n\n';
   result += '| Typed variant | Wire code | Modeled negative vectors |\n| --- | --- | --- |\n';
   assert.equal(errors.constructors.length, response.body.branches.length);
@@ -64,6 +64,20 @@ export function renderErrors() {
       && row.statement.right.arguments[0].constructor?.name === `MatrixError.${variant.name}`);
     assert(witnesses.length > 0, `No modeled negative theorem for MatrixError.${variant.name}`);
     result += `| \`${variant.name}\` | ${witnesses.map(row => `\`${row.name}\``).join(', ')} |\n`;
+  }
+  const codec = modules.find(module => module.module === 'Codec')?.semantic.declarations;
+  if (codec) {
+    const errors = codec.find(row => row.kind === 'inductive' && row.name === 'CodecError');
+    result += '\nChecked codec APIs return the modeled `CodecError` result type. The byte adapter maps `InvalidPlan` and `InvalidCode` to `invalid-code`, and `ShapeMismatch` and `Nonconformant` to `shape-mismatch`.\n\n| Typed variant | Negative source theorems |\n| --- | --- |\n';
+    for (const variant of errors.constructors) {
+      const witnesses = codec.filter(row => row.kind === 'theorem' && row.parameters.length === 0
+        && row.statement.kind === 'eq' && row.statement.left.kind === 'call'
+        && /^checked/.test(row.statement.left.function.name)
+        && row.statement.right.kind === 'constructor' && row.statement.right.constructor.name === 'Result.error'
+        && row.statement.right.arguments[0]?.constructor?.name === `CodecError.${variant.name}`);
+      assert(witnesses.length > 0, `No modeled negative theorem for CodecError.${variant.name}`);
+      result += `| \`${variant.name}\` | ${witnesses.map(row => `\`${row.name}\``).join(', ')} |\n`;
+    }
   }
   return result;
 }

@@ -85,6 +85,12 @@ statement = "The cited Calculator reference declares a LexLean-authored portable
 authority = "CALCULATOR"
 
 [[claim]]
+id = "AUTH-E8"
+level = "some-true"
+statement = "The cited E8 source provides a 256-word, eight-coordinate integer codebook."
+authority = "E8"
+
+[[claim]]
 id = "MM-13"
 level = "build"
 statement = "IEEE binary32 and binary64 products decode exactly and encode once with the requested rounding and non-finite semantics."
