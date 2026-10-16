@@ -32,5 +32,46 @@
     "highest_observed_pages": 24678,
     "highest_observed_bytes": 1617297408,
     "receipt": "verification/final-runtime-diagnostic.json"
+  },
+  "official_source_maintenance_check": {
+    "qualified_for_release": false,
+    "scope": "Official frozen source-maintenance API check of exact current authored Text-V2 App/Model with Model-owned resource constants; no immutable SDK/nativeSystem/runtime/release claim",
+    "command": [
+      "docker",
+      "run",
+      "--rm",
+      "--network",
+      "none",
+      "--user",
+      "1000:1000",
+      "--ulimit",
+      "stack=67108864:-1",
+      "--mount",
+      "type=bind,source=/tmp/lexlean-matmul-sdk-refresh.F6Im9d,target=/sdk-source,readonly",
+      "--mount",
+      "type=bind,source=/tmp/matmul-modeled-resources-check,target=/probe",
+      "--workdir",
+      "/probe",
+      "--entrypoint",
+      "/bin/sh",
+      "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+      "-c",
+      "/sdk-source/target/debug/lexlean --diagnostic-format json lock && /sdk-source/target/debug/prismpm --json --project /probe check"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "5f1ffb665d00a82c2fc319fd017007933a53cefe9f4633e7898526eedebf1516",
+    "sources": {
+      "Application": "c76078741dbaba2c145ec498c672f438f7c65da6adc3c41dc7f8157364406d37",
+      "Model": "5c40fa1b92531bf0b1825797c28aa077117b641c56673e167b093bbfac179884"
+    },
+    "result": {
+      "entity_count": 0,
+      "model_id": "6a75e661013aefcda62bd9b7a0ed3f554b90347e0e476a210f9ceb17850eea55",
+      "schema": "prismpm/check-result/1",
+      "semantic_id": "c7c96bf26d146e911273c86e561d28d371d276bbd7894b578e94c0e170220014",
+      "snapshot_id": "83c56f66eabde0701d06f88f32a5bdc5193317a651e21397e325a668f842693f"
+    },
+    "sdk_source_revision": "c86c7156f7a36c0a164298c3a93dfe5d264d7a64",
+    "prismpm_executable_sha256": "4d07b3dd8ec629390d223e754d043f56d113082e2b97cf0bb3b85f5c56007a28"
   }
 }
