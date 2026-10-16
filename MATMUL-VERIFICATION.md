@@ -16,7 +16,7 @@ the containing native system and does not execute generated application
 artifacts. The selected modules are Application, Atlas, Codec, CodecProtocol,
 Core, Epilogue, ExtendedProtocol, Float, Model, Protocol, and the SDK-owned Text
 V1 metadata module. Its attestation is
-`6be7e2aca4a8d45a9ec7a912aef5bd040ddd539f556fdb0654db9c91a86069fa`.
+`7bfc15908ee0e0e95556f2022ba134549b913b933074a641bd06f9163ea1ea3f`.
 
 | Mathematical module | Declarations | Theorems |
 | --- | ---: | ---: |
@@ -33,6 +33,12 @@ Digit and bit workers borrow their inputs and move append accumulators through
 tail calls. Eight additional worker theorems check prefix order, zero handling,
 low zeros, and borrow propagation. E8 rows use the same owned storage pattern;
 the independent oracle still validates every symbol against the pinned table.
+Computational definitions use distinct names across modules because the
+generated Rust package has one function namespace. The naming audit reverses
+the 101 definition renames and their references, then verifies the original
+semantic trees, all 158 byte vectors, and unchanged theorem and datatype names.
+The application roots retain the same members under their new names and are
+canonically ordered.
 
 Each theorem carries an exact observed axiom policy. Concrete examples and
 component lemmas do not establish a universal refinement theorem for every

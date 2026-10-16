@@ -294,19 +294,18 @@ async function epilogueCases(machine) {
 
 // Source ownership is checked beside execution: equal IEEE bytes alone do
 // not establish that the declared canonical Laurent construction is shipped.
-export function atlasSourceContract() {
-  const modules = sourceModules();
+export function atlasSourceContract(modules = sourceModules()) {
   const atlas = modules.find(module => module.module === 'Atlas');
   const floating = modules.find(module => module.module === 'Float');
   assert(atlas && floating, 'MM-16 requires Atlas and Float model sources');
   const definitions = module => new Map(module.semantic.declarations.filter(row => row.kind === 'definition').map(row => [row.name, row]));
   const atlasDefinitions = definitions(atlas), floatDefinitions = definitions(floating);
-  const body = floatDefinitions.get('multiply')?.body;
+  const body = floatDefinitions.get('floatMultiply')?.body;
   const finiteProduct = body?.else_value?.then_value;
   assert.equal(finiteProduct?.kind, 'call');
   assert.equal(finiteProduct.function.name, 'finiteFromAtlas');
   assert.equal(finiteProduct.arguments.length, 1);
-  assert.deepEqual(finiteProduct.arguments[0].function, { module: 'Atlas', name: 'multiply' });
+  assert.deepEqual(finiteProduct.arguments[0].function, { module: 'Atlas', name: 'atlasMultiply' });
   assert.deepEqual(finiteProduct.arguments[0].arguments.map(argument => [argument.value?.name, argument.field]),
     [['x', 'negative'], ['x', 'digits'], ['x', 'scale'], ['y', 'negative'], ['y', 'digits'], ['y', 'scale']]);
   assert(!floatDefinitions.has('productBits'), 'Finite IEEE products must not retain the binary long-multiplication route');
@@ -332,15 +331,15 @@ export function atlasSourceContract() {
     return result;
   }
   const requiredEdges = {
-    multiply: ['canonicalWord', 'multiplyWords'],
-    canonicalWord: ['normalize', 'stripValuation', 'wordFromValuation'],
+    atlasMultiply: ['canonicalWord', 'multiplyWords'],
+    canonicalWord: ['atlasNormalizeOwned', 'stripValuation', 'wordFromValuation'],
     multiplyWords: ['addGrade', 'productUnits', 'place'],
-    productUnits: ['atoms', 'contractAtoms'],
-    atoms: ['nafDigits', 'atomsAt'],
-    atomsAt: ['mu', 'nextGrade'],
+    productUnits: ['atomsOwned', 'contractAtoms'],
+    atomsOwned: ['nafDigitsOwned', 'atomsAtOwned'],
+    atomsAtOwned: ['mu', 'nextGrade'],
     contractAtoms: ['contractRow'],
     contractRow: ['offer', 'digitProduct'],
-    offer: ['addSigned', 'shiftBits'],
+    offer: ['addSigned', 'atlasShiftBitsOwned'],
   };
   for (const name of atlasDefinitions.keys()) calls(name);
   for (const [name, targets] of Object.entries(requiredEdges)) {

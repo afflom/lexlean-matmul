@@ -149,7 +149,7 @@ export function renderErrors() {
     for (const variant of errors.constructors) {
       const witnesses = codec.filter(row => row.kind === 'theorem' && row.parameters.length === 0
         && row.statement.kind === 'eq' && row.statement.left.kind === 'call'
-        && /^checked/.test(row.statement.left.function.name)
+        && /^(?:checked|codecChecked)/.test(row.statement.left.function.name)
         && row.statement.right.kind === 'constructor' && row.statement.right.constructor.name === 'Result.error'
         && row.statement.right.arguments[0]?.constructor?.name === `CodecError.${variant.name}`);
       assert(witnesses.length > 0, `No modeled negative theorem for CodecError.${variant.name}`);
