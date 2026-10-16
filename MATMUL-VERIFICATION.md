@@ -99,6 +99,12 @@ adds a valid 64-entry codebook with 64 distinct activations and 4,096 distinct
 exact products. Its actual generated guest also reaches the modeled page
 limit. MM-13 and MM-16 retain this case before any Laurent contraction change.
 
+The [composed codec table regression](verification/composed-codec-table-red.json)
+combines 64 eight-element book words with seven full-width offsets in a valid
+15,985-byte request. Its direct path returns the exact result; its table path
+reaches the page limit while repeatedly decoding the same words. MM-17 retains
+both paths and deep-composition shape and lazy-decoding checks.
+
 ## SDK and release boundary
 
 Execution uses only the immutable SDK selected by [prismpm.lock](prismpm.lock).

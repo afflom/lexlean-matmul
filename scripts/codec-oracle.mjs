@@ -158,7 +158,38 @@ async function runCase(machine, plan, rows, a, routes = ['direct', 'table']) {
     await expect(machine, input, expected, `total codec ${route}: ${plan}`);
   }
 }
+
+async function maximumCompositionCases(machine) {
+  const maximum = 10n ** 64n - 1n;
+  const activations = Array.from({ length: 64 }, (_, index) => maximum - BigInt(index));
+  const book = Array.from({ length: 64 }, (_, word) => Array.from({ length: 8 },
+    (_, cell) => 10n ** 21n - 1n - BigInt(word * 8 + cell)));
+  const selected = Array.from({ length: 8 }, (_, index) => BigInt(index * 8));
+  const decoded = selected.flatMap(code => book[Number(code)].map(value => value + 7n * maximum));
+  assert(decoded.every(value => String(value).length === 65));
+  assert.equal(new Set(activations.flatMap(value => decoded.map(word => String(value * word)))).size, 4096);
+  const plan = `book:8:8:${book.map(csv).join('/')}` + Array(7).fill(`;offset:-${maximum}`).join('');
+  assert.equal(parsePlan(plan).length, 8);
+  await runCase(machine, plan, selected.map(code => [code]), activations);
+
+  const base = 'book:8:8:1,2,3,4,5,6,7,8';
+  const packed = base + Array(7).fill(';packed:8').join('');
+  const lazy = base + Array(6).fill(';packed:8').join('') + ';runs:8:8,0';
+  assert.equal(maximumBlock(parsePlan(packed)), 16777216);
+  for (const route of ['direct', 'table']) {
+    for (const columns of [8, 0]) {
+      await expect(machine, request(1, 'codec', route, packed, 1, 1, columns, 2, 0),
+        request(1, 'error', 'shape-mismatch'), 'Deep packed rows reject shape before materializing their word');
+    }
+    await expect(machine, request(1, 'codec', route, lazy, 1, 1, 8, 2, 0),
+      success(1, 8, [2, 4, 6, 8, 10, 12, 14, 16]), 'Run root decodes only its eight requested elements');
+    await expect(machine, request(1, 'codec', route, lazy, 1, 1, 0, 2, 1),
+      request(1, 'error', 'shape-mismatch'), 'Missing deep run rejects empty decoded word');
+  }
+}
+
 async function codecCases(machine) {
+  await maximumCompositionCases(machine);
   assert.equal(e8.length, 256); assert(e8.every(word => word.length === 8));
   assert.equal(sha(Uint8Array.from(e8.flat().map(value => value & 255))), e8Digest);
   const random = seeded(0x636f6463);
