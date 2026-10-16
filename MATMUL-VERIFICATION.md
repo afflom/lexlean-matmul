@@ -23,17 +23,22 @@ bootstrap; template and SDK lock checks passed.
 
 | Observed check | Result and evidence scope |
 | --- | --- |
-| Unchanged `Core.lex.tex` | Lean, leanchecker, and exact axiom audits passed for 189 declarations, including 36 theorems. [Core receipt](verification/core-proof.json). |
+| Unchanged `Core.lex.tex` | Lean, leanchecker, and exact axiom audits passed for 193 declarations, including 40 theorems. [Core receipt](verification/core-proof.json). |
 | Actual repository `Protocol.lex.tex` | Kernel verification passed for its three-module closure. [Source diagnostics](verification/source-diagnostics.json). |
 | Ordinary application build | Failed with SDK `PP5001` after compiling Core, Protocol, and metadata; required large application fixtures exceed Lean limits. [Build failure](verification/application-build-failure.json). |
+| Complete `just vv` | Failed at `product-build` with the same `PP5001`. The preceding model, trust-root, formatting, source policy, and Clippy checks passed. Later application gates did not execute. [Observation](verification/full-gate.json), [transcript](verification/full-gate.log). |
 | Complete source graph | `prismpm --json check` passed static model projection. [Model check receipt](verification/model-check.json). |
 | Repository infrastructure | Source ownership policy, formatting, Clippy, all-feature/all-target checks, 17 infrastructure tests, four meta tests, and dependency policy checks passed. These component checks do not run product runtime conformance. |
+| Clean GitHub Actions | Both architecture bootstrap jobs and the corrected Pages acceptance job fail `PP5401` at the locked crates.io OSV generation (HTTP 404). Deployment jobs do not run. [CI observations](verification/ci.json). |
+| SDK image advisory replay | Both locked platform images were scanned using the locked database set, with zero policy rejections. This is dependency evidence only. [Summary](verification/sdk-advisory-summary.json). |
 | Arithmetic defect | Replacing `integerMultiply` with zero caused `lexlean verify` to reject arithmetic theorems with `LLV7002`. Restoring the original bytes passed and reproduced the original attestation. [Falsification record](verification/core-falsification.json). |
+| Arithmetic mutation detector | Both a false theorem and multiplication replaced with zero failed specifically at `Core.largeProduct`; the detector requires its generated source location and proof failure. This isolated probe is not the full artifact mutation gate. [Diagnostic record](verification/arithmetic-mutation-policy.json). |
+| Source/documentation defects | Handwritten product code, a stale error register, missing reachable error vectors, and missing native error proofs each failed their intended policy check; restored source passed. These are prefix checks only. [Falsification record](verification/policy-falsification.json). |
 
 The Core attestation is
-`dd282a7dce5efba5a4fb9d44913c9c4a979ce343f497a9979db73ea237171bf5`.
+`b3c14e333805689397c418dffd9c59834d38bdbb22eb7552c3c7fb1f02f0beaa`.
 The actual Protocol closure attestation is
-`4336ba3784c042e4cbab76910d504473b91d2e368e2cc68e4cc7c45392da3834`.
+`4df75f75c987eca89a23d0d438ea220ea5fb62efa9bee7f6afa106bf465add3f`.
 The receipts bind source identities and observed axiom policies; concrete
 arithmetic examples do not establish a universal refinement theorem for the
 arbitrary precision implementation.

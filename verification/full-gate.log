@@ -1,0 +1,48 @@
+cargo run -q -p xtask -- check-model
+check-model: CONFORMANCE.md equals the model, 12 ids (CM-01)
+cargo run -q -p xtask -- audit-bootstrap
+audit-dependency-updates: SDK ownership and ordinary maintenance are preserved
+audit-bootstrap: SDK and workflow trust roots are immutable and separated
+prismpm template check
+template contract passed
+prismpm lock check
+SDK lock is canonical and valid
+cargo fmt --all -- --check
+cargo run -q -p xtask -- validate
+check-model: CONFORMANCE.md equals the model, 12 ids (CM-01)
+audit-limits: no shipped crate returns an unsanctioned error (R5)
+audit-deferral: nothing is deferred (R4)
+audit-dependency-updates: SDK ownership and ordinary maintenance are preserved
+audit-bootstrap: SDK and workflow trust roots are immutable and separated
+validate: every gate passed
+node scripts/project-policy.mjs
+Pure LexLean authority: 5 modules, 41 explicit theorem policies.
+cargo clippy --workspace --all-targets -- -D warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.08s
+node scripts/build.mjs
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: prismpm --json build
+{"diagnostic":{"causes":[],"code":"PP5001","help":[],"labels":[],"message":"application-lean exited 1: stdout=\"✔ [2/7] Built LexLeanMatmul.Model (380ms)\\n✔ [3/7] Built LexLeanMatmul.Foundation.View.Text.V1.Model (468ms)\\n✔ [4/7] Built LexLeanMatmul.Core (3.6s)\\n✔ [5/7] Built LexLeanMatmul.Protocol (2.1s)\\n✖ [6/7] Building LexLeanMatmul.Application (56s)\\ntrace: .> LEAN_PATH=$APPLICATION_WORK/.lake/build/lib/lean /usr/local/elan/toolchains/leanprover--lean4---v4.32.1/bin/lean $APPLICATION_WORK/LexLeanMatmul/Application.lean -o $APPLICATION_WORK/.lake/build/lib/lean/LexLeanMatmul/Application.olean -i $APPLICATION_WORK/.lake/build/lib/lean/LexLeanMatmul/Application.ilean -c $APPLICATION_WORK/.lake/build/ir/LexLeanMatmul/Application.c --setup $APPLICATION_WORK/.lake/build/ir/LexLeanMatmul/Application.setup.json --json\\nerror: LexLeanMatmul/Application.lean:97:21: maximum recursion depth has been reached\\nuse `set_option maxRecDepth <num>` to increase limit\\nuse `set_option diagnostics true` to get diagnostic information\\nerror: LexLeanMatmul/Application.lean:99:21: (deterministic) timeout at `transform`, maximum number of heartbeats (200000) has been reached\\n\\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\\n\\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.\\nerror: LexLeanMatmul/Application.lean:133:21: failed to compile definition, consider marking it as 'noncomputable' because it depends on 'acceptanceVector45', which is 'noncomputable'\\nerror: Lean exited with code 1\\nSome required targets logged failures:\\n- LexLeanMatmul.Application\\n\"; stderr=\"info: prismpm_application: no previous manifest, creating one from scratch\\ninfo: toolchain not updated; already up-to-date\\nerror: build failed\\n\"","notes":[],"primary":null},"schema":"prismpm/error-result/1"}
+
+
+
+1 !== 0
+
+    at run (file:///home/alex/Desktop/lexlean-matmul/scripts/evidence.mjs:23:10)
+    at file:///home/alex/Desktop/lexlean-matmul/scripts/build.mjs:15:20
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.2
+error: recipe `product-build` failed on line 69 with exit code 1

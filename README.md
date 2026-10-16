@@ -1,7 +1,8 @@
 # LexLean Matmul
 
-A pure LexLean implementation of UOR matrix multiplication, modeled with
-PrismPM: **decode the code, accumulate exactly, encode once**.
+A partial pure LexLean port of UOR matrix multiplication, modeled with
+PrismPM: **decode the code, accumulate exactly, encode once**. It implements
+selected exact arithmetic domains; it is not a complete upstream replacement.
 
 The product authority is `src/*.lex.tex`. LexLean generates Lean and its
 kernel evidence; PrismPM generates the library, Core-Wasm, Holo archive, and
@@ -77,10 +78,10 @@ See [PROTOCOL.md](PROTOCOL.md) for the versioned interface and copyable inputs.
 | `features/suites/` | Acceptance scenarios for every registered capability |
 
 The SDK candidate does not implement the newer PrismPM browser-system `/2`
-projection. The containing system is therefore a project-owned typed model
-with kernel-checked validation in the source graph; it is not described as an
-SDK-generated production system release. This limitation is explicit in the
-verification record.
+projection. The containing system is therefore a project-owned typed model.
+Its validation theorem passed in an isolated diagnostic copy that omitted the
+two application fixtures blocked by the SDK; the complete source graph has
+not passed kernel verification. See the verification record for this scope.
 
 ## GitHub Pages
 

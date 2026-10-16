@@ -6,6 +6,11 @@ The README digests and exact revisions are recorded in `model/authorities.toml`.
 These citations describe imported design authority; they do not transfer proof
 or production qualification to this repository.
 
+This is a partial port of the central UOR method. The table below maps the
+implemented exact-domain operations; it does not establish complete upstream
+API or codec parity. SDK compilation and qualification blockers are separate
+from these source-level scope gaps.
+
 ## Semantic correspondence
 
 | UOR construction | LexLean construction |
@@ -46,6 +51,14 @@ bit decoding, signed zero, infinity, NaN propagation, overflow/subnormal
 rounding, and final ties-to-even encoding are outside the declared product
 contract. An exact dyadic answer alone would not justify IEEE parity.
 
+Wrapping, saturating, and rounded output codecs are absent: the current
+interface emits exact decimal integers or coefficient/scale pairs. The full
+upstream packed/grid/offset/run codec ecosystem, Atlas/NAF/octet contraction,
+canonical codec manifests, and addressing machinery are not implemented.
+Matrices use contiguous row-major lists without strided views, alias rejection,
+or a raw BLAS ABI. Each exact domain has a specialized traversal rather than
+one algebra-parametric traversal.
+
 PrismPM supplies artifact generation and platform adapters. Product arithmetic,
 parsing, protocol failures, acceptance vectors, and presentation text remain
 LexLean declarations. Host scripts inspect evidence and invoke the SDK; they
@@ -58,5 +71,6 @@ LexLean and checked by Lean plus kernel replay. Concrete arithmetic theorems
 cover representative carry/borrow, cancellation, matrix, codebook, dyadic,
 complex, and tropical cases. These are not restated as a universal proof of
 the arbitrary precision implementation's refinement to mathematical integers.
-Independent seeded and boundary oracles exercise the generated runtime.
+The independent seeded and boundary oracle harness requires a generated
+runtime; it has not executed because application compilation is blocked.
 Conformance is established only by the complete recorded gate result.

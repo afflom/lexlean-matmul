@@ -1,0 +1,31 @@
+{
+  "schema": "lexlean-matmul/sdk-advisory-observation/1",
+  "qualification": "SDK-dependency-only; not application acceptance",
+  "sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+  "platforms": [
+    {
+      "platform": "linux/amd64",
+      "subject": "sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+      "reference": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+      "database_set_digest": "sha256:8bfa30e88a60f2d45193f582464cb7a65a4385c0bb6fe35a81597335947cd2f6",
+      "result_digest": "sha256:df49b2e3dba4ff883d342260c60cb496968f50fd5451dea5c95c67f2465589e0",
+      "scanner_digest": "sha256:15314940c10d26af9c6649f150b8a47c1262e8fc7e17b1d1029b0e479e8ed8a0",
+      "package_count": 3552,
+      "finding_count": 629,
+      "rejected_count": 0,
+      "policy": "reject-vendor-high-or-critical; retain all rated and unrated findings"
+    },
+    {
+      "platform": "linux/arm64",
+      "subject": "sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+      "reference": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+      "database_set_digest": "sha256:8bfa30e88a60f2d45193f582464cb7a65a4385c0bb6fe35a81597335947cd2f6",
+      "result_digest": "sha256:80004830085d2766babe73d89a38a02b3c0cd849d0bd892764306bbf7815ff0f",
+      "scanner_digest": "sha256:15314940c10d26af9c6649f150b8a47c1262e8fc7e17b1d1029b0e479e8ed8a0",
+      "package_count": 3547,
+      "finding_count": 629,
+      "rejected_count": 0,
+      "policy": "reject-vendor-high-or-critical; retain all rated and unrated findings"
+    }
+  ]
+}
