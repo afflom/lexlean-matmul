@@ -18,14 +18,85 @@ The three honesty levels (R2):
 `cargo xtask audit-limits` fails if any code path returns an error the
 model does not sanction.
 
+## application
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-09` | `build` | One LexLean application model generates the native library, Core-Wasm, Holo archive, and accessible portable View. |
+
+## codecs
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-02` | `build` | Signed binary, ternary, and signed eight-bit codecs preserve their declared decoded values. |
+
+## exact
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-01` | `build` | Integer GEMM decodes operands, accumulates exact products, and applies the linear epilogue once. |
+| `MM-03` | `build` | Partitioned and tabulated accumulation agrees with direct accumulation, including partial blocks. |
+| `MM-04` | `build` | Complex integer products and dyadic products retain exact arithmetic through reduction. |
+
+## proofs
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-08` | `build` | LexLean generates kernel-checked arithmetic and codec theorems with explicit axiom policies. |
+
+## protocol
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-07` | `build` | Versioned matrix requests reject malformed values, incompatible shapes, and invalid codes with modeled errors. |
+
+## reproducibility
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-12` | `build` | The pinned SDK reproduces platform-independent application artifacts from separate clean roots. |
+
+## system
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-10` | `build` | The PrismPM browser system binds the application, artifact, component, controls, and GitHub Pages target. |
+
+## tropical
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-05` | `build` | Max-plus multiplication preserves negative infinity and selects the least attaining reduction index. |
+| `MM-06` | `build` | Tropical recentering preserves masked entries and yields a canonical gauge representative. |
+
+## verification
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-11` | `build` | Independent exact arithmetic oracles validate generated runtime results and representative planted defects are rejected. |
+
 ## Cited authorities
 
 Never re-derived, vendored, or gated on.
 
 | Authority | Citation | Evidence here |
 | --- | --- | --- |
+| `UOR-MATMUL` | https://github.com/UOR-Foundation/uor-matmul/tree/3cc5882f210667f9ac00fd8c02c5b5957b493f5d | `MM-01`, `MM-02`, `MM-03`, `MM-04`, `MM-05`, `MM-06` |
+| `CALCULATOR` | https://github.com/UOR-Foundation/calculator-example/tree/5051dc6adb18e9ca2b6ae4ca7090e638329831ef | `MM-09`, `MM-10` |
 
 ## Claims that are not conformance IDs
 
 | ID | Level | Claim |
 | --- | --- | --- |
+| `MM-01` | `build` | Integer GEMM decodes operands, accumulates exact products, and applies the linear epilogue once. |
+| `MM-02` | `build` | Signed binary, ternary, and signed eight-bit codecs preserve their declared decoded values. |
+| `MM-03` | `build` | Partitioned and tabulated accumulation agrees with direct accumulation, including partial blocks. |
+| `MM-04` | `build` | Complex integer products and dyadic products retain exact arithmetic through reduction. |
+| `MM-05` | `build` | Max-plus multiplication preserves negative infinity and selects the least attaining reduction index. |
+| `MM-06` | `build` | Tropical recentering preserves masked entries and yields a canonical gauge representative. |
+| `MM-07` | `build` | Versioned matrix requests reject malformed values, incompatible shapes, and invalid codes with modeled errors. |
+| `MM-08` | `build` | LexLean generates kernel-checked arithmetic and codec theorems with explicit axiom policies. |
+| `MM-09` | `build` | One LexLean application model generates the native library, Core-Wasm, Holo archive, and accessible portable View. |
+| `MM-10` | `build` | The PrismPM browser system binds the application, artifact, component, controls, and GitHub Pages target. |
+| `MM-11` | `build` | Independent exact arithmetic oracles validate generated runtime results and representative planted defects are rejected. |
+| `MM-12` | `build` | The pinned SDK reproduces platform-independent application artifacts from separate clean roots. |
