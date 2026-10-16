@@ -1,0 +1,63 @@
+{
+  "schema": "lexlean-matmul/source-diagnostics/1",
+  "sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+  "actual_root_protocol": {
+    "command": "./scripts/in-sdk.sh lexlean verify src/Protocol.lex.tex",
+    "exit_code": 0,
+    "modules": 3,
+    "attestation_id": "4336ba3784c042e4cbab76910d504473b91d2e368e2cc68e4cc7c45392da3834"
+  },
+  "diagnostic_system_probe": {
+    "root": "/tmp/matmul-system-probe",
+    "command": "lexlean verify",
+    "exit_code": 0,
+    "modules": 6,
+    "attestation_id": "dd0082eb03d3283080550eeae8ec51c3dbd9e28f3a552f3069fe57744a9ab2bb",
+    "unchanged_sources": [
+      {
+        "path": "src/Core.lex.tex",
+        "sha256": "7a484ed6cbd28841d7f5bcef96e1baaf513cd0c96a738220365537a6eaf03466"
+      },
+      {
+        "path": "src/Model.lex.tex",
+        "sha256": "841130a26d25402b715a8982c355a28536adf1eb0a8980d4291d82b8554b65c7"
+      },
+      {
+        "path": "src/Protocol.lex.tex",
+        "sha256": "39b52e121a5ca932e6213b88f7aa711f54c47a7f4c9bc2e458f4f05c45c523a8"
+      },
+      {
+        "path": "src/MatmulSystem.lex.tex",
+        "sha256": "32024ad5ba86ba0661a38c091fe481d39663def98e6d72b97b54791a1cfdd8fc"
+      }
+    ],
+    "application_modification": {
+      "purpose": "Check unchanged Protocol and MatmulSystem typing, proof and exact axiom policies with allocation-boundary application-data constants removed only in temporary diagnostic copy. This is not product application acceptance.",
+      "removed_application_constants": [
+        "acceptanceVector45",
+        "acceptanceVector46"
+      ],
+      "unchanged_files": [
+        "Core.lex.tex",
+        "Model.lex.tex",
+        "Protocol.lex.tex",
+        "MatmulSystem.lex.tex"
+      ]
+    },
+    "qualification": false
+  },
+  "complete_application_failure": {
+    "command": "./scripts/in-sdk.sh lexlean verify",
+    "code": "LLV7002",
+    "diagnostics": [
+      "maximum recursion depth has been reached at generated Application.lean:97:21",
+      "(deterministic) timeout at transform, maximum number of heartbeats (200000) reached at generated Application.lean:99:21",
+      "Application depends on noncomputable acceptanceVector45 after that declaration fails"
+    ],
+    "authoritative_large_data": [
+      "acceptanceVector45:16385 request bytes",
+      "acceptanceVector46:32768 request bytes"
+    ],
+    "qualification": false
+  }
+}

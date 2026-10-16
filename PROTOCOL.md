@@ -33,7 +33,8 @@ reports `none` as its witness.
 Ordinary success is `1`, `ok`, `rows`, `columns`, `cells`. Complex and dyadic
 success append their second component array. Tropical success appends witness
 indexes. Recenter success reports the normalized array and removed maximum.
-Failures are `1`, `error`, and the modeled error code.
+Failures are `1`, `error`, and the modeled error code. The generated
+[error register](ERRORS.md) lists every variant and its negative vector coverage.
 
 The following code blocks contain literal tabs and can be pasted into the
 generated browser request field.
