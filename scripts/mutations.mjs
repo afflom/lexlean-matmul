@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { freshBuild, root, run, sourceModules, canonical, writeJson, sourceDigest, verificationDigest, evidenceRoot } from './evidence.mjs';
+import { freshBuild, root, run, sourceModules, canonical, writeJson, sourceDigest, verificationDigest, evidenceRoot, sha } from './evidence.mjs';
 import { copySource } from './clean-copy.mjs';
 
 freshBuild();
@@ -16,21 +16,34 @@ function reject(directory, command, args, diagnostic) {
   assert.match(result.stdout + result.stderr, diagnostic, 'Mutation failed at an unrelated boundary');
   return { command: [command, ...args], exit_code: result.status, stdout: result.stdout, stderr: result.stderr };
 }
-function rejectCoreTheorem(directory, theorem) {
-  const selection = 'src/Core.lex.tex';
+function rejectGeneratedTheorem(directory, moduleName, theorem, expectedModules) {
+  const selection = `src/${moduleName}.lex.tex`;
   const build = JSON.parse(run('lexlean', ['--diagnostic-format', 'json', 'build', selection], directory));
   assert.equal(build.success, true);
-  assert.deepEqual(build.modules, ['Core']);
+  assert.deepEqual(build.modules, expectedModules);
   assert.match(build.build_id, /^[0-9a-f]{64}$/);
   const generatedRoot = path.join(directory, '.lexlean/build', build.build_id);
   const manifest = JSON.parse(fs.readFileSync(path.join(generatedRoot, 'manifest.json'), 'utf8'));
   assert.equal(manifest.build_id, build.build_id);
-  const module = manifest.modules.find(row => row.module === 'Core');
-  assert.equal(module?.source_path, selection);
+  assert.deepEqual(manifest.modules.map(row => row.module), expectedModules);
+  const selected = manifest.modules.filter(row => row.module === moduleName);
+  assert.equal(selected.length, 1);
+  const module = selected[0];
+  assert.equal(module.source_path, selection);
+  assert.equal(module.lean_module, `LexLeanMatmul.${moduleName}`);
+  const sourceBytes = fs.readFileSync(path.join(directory, selection));
+  const sourceInputs = manifest.inputs.filter(row => row.kind === 'source' && row.path === selection);
+  assert.equal(sourceInputs.length, 1);
+  assert.equal(sourceInputs[0].sha256, sha(sourceBytes));
+  assert.equal(sourceInputs[0].byte_length, sourceBytes.length);
   const relative = module.lean_module.replaceAll('.', '/') + '.lean';
   const generatedPath = `modules/${relative}`;
-  assert(manifest.outputs.some(row => row.kind === 'lean' && row.path === generatedPath));
-  const lines = fs.readFileSync(path.join(generatedRoot, generatedPath), 'utf8').split('\n');
+  const generatedOutputs = manifest.outputs.filter(row => row.kind === 'lean' && row.path === generatedPath);
+  assert.equal(generatedOutputs.length, 1);
+  const generatedBytes = fs.readFileSync(path.join(generatedRoot, generatedPath));
+  assert.equal(generatedOutputs[0].sha256, sha(generatedBytes));
+  assert.equal(generatedOutputs[0].byte_length, generatedBytes.length);
+  const lines = generatedBytes.toString('utf8').split('\n');
   const declarations = lines.flatMap((line, index) => line.startsWith(`public theorem ${theorem} `) ? [index] : []);
   assert.equal(declarations.length, 1, `Missing unique generated theorem ${theorem}`);
   const firstLine = declarations[0] + 1;
@@ -47,6 +60,8 @@ function rejectCoreTheorem(directory, theorem) {
   });
   assert(intended, `No arithmetic proof rejection at ${module.lean_module}.${theorem}`);
   return { ...rejected, theorem: `${module.lean_module}.${theorem}`,
+    selection, modules: expectedModules, build_id: build.build_id,
+    source_sha256: sha(sourceBytes), generated_sha256: sha(generatedBytes),
     generated_source: generatedPath, generated_lines: { first: firstLine, last: lastLine }, intended_diagnostic: intended };
 }
 try {
@@ -70,7 +85,7 @@ try {
   // rather than the independently enforced source-lock freshness check.
   run('lexlean', ['lock'], falseProof);
   mutations.push({ defect: 'false arithmetic theorem',
-    ...rejectCoreTheorem(falseProof, theorem.name) });
+    ...rejectGeneratedTheorem(falseProof, 'Core', theorem.name, ['Core']) });
 
   const wrongProduct = path.join(temporary, 'wrong-product-implementation');
   copySource(wrongProduct);
@@ -84,7 +99,40 @@ try {
     () => `\\semanticdata{${canonical(core.semantic)}}`));
   run('lexlean', ['lock'], wrongProduct);
   mutations.push({ defect: 'integer multiplication replaced with zero',
-    ...rejectCoreTheorem(wrongProduct, 'largeProduct') });
+    ...rejectGeneratedTheorem(wrongProduct, 'Core', 'largeProduct', ['Core']) });
+
+  const wrongRounding = path.join(temporary, 'wrong-ieee-rounding');
+  copySource(wrongRounding);
+  run('prismpm', ['fetch', '--locked'], wrongRounding);
+  const floating = sourceModules().find(module => module.module === 'Float');
+  assert(floating, 'Missing IEEE arithmetic authority');
+  const rounding = floating.semantic.declarations.find(row => row.kind === 'definition' && row.name === 'isNearest');
+  assert(rounding, 'Missing rounding implementation to falsify');
+  rounding.body = { kind: 'bool', value: false };
+  const floatPath = path.join(wrongRounding, 'src', floating.path);
+  fs.writeFileSync(floatPath, fs.readFileSync(floatPath, 'utf8').replace(/^\\semanticdata\{[^\n]*\}$/m,
+    () => `\\semanticdata{${canonical(floating.semantic)}}`));
+  run('lexlean', ['lock'], wrongRounding);
+  mutations.push({ defect: 'nearest IEEE rounding replaced with truncation',
+    ...rejectGeneratedTheorem(wrongRounding, 'Float', 'nearestEvenUp32', ['Atlas', 'Core', 'Float']) });
+
+  const wrongAtlasSign = path.join(temporary, 'wrong-atlas-atom-sign');
+  copySource(wrongAtlasSign);
+  run('prismpm', ['fetch', '--locked'], wrongAtlasSign);
+  const atlas = sourceModules().find(module => module.module === 'Atlas');
+  assert(atlas, 'Missing canonical Laurent atom authority');
+  const atomProduct = atlas.semantic.declarations.find(row => row.kind === 'definition' && row.name === 'digitProduct');
+  assert(atomProduct, 'Missing ternary lookup implementation to falsify');
+  const negativeRow = atomProduct.body.branches.find(row => row.constructor.name === 'AtlasDigit.negative');
+  const positiveColumn = negativeRow?.body.branches.find(row => row.constructor.name === 'AtlasDigit.positive');
+  assert(positiveColumn, 'Missing negative-by-positive lookup entry');
+  positiveColumn.body = { kind: 'constructor', constructor: { name: 'AtlasDigit.positive' }, arguments: [] };
+  const atlasPath = path.join(wrongAtlasSign, 'src', atlas.path);
+  fs.writeFileSync(atlasPath, fs.readFileSync(atlasPath, 'utf8').replace(/^\\semanticdata\{[^\n]*\}$/m,
+    () => `\\semanticdata{${canonical(atlas.semantic)}}`));
+  run('lexlean', ['lock'], wrongAtlasSign);
+  mutations.push({ defect: 'negative-by-positive Laurent atom product sign inverted',
+    ...rejectGeneratedTheorem(wrongAtlasSign, 'Atlas', 'lookupProductCase0', ['Atlas', 'Core']) });
 
   const foreign = path.join(temporary, 'handwritten-product-source');
   copySource(foreign);
