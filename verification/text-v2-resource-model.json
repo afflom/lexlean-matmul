@@ -1,0 +1,36 @@
+{
+  "schema": "lexlean-matmul/text-v2-resource-model-diagnostic/1",
+  "qualified_for_release": false,
+  "scope": "Measured metadata migration and exact non-metadata AST/vector preservation audit; immutable SDK and complete native release acceptance remain required",
+  "profile": "prismpm/text-application/2",
+  "maximum_pages": 32767,
+  "stack_bytes": 16777216,
+  "sources": [
+    {
+      "path": "src/Application.lex.tex",
+      "previous_sha256": "ec1d1b3c79da6b63500213aab3c160bfa02d74498cd7ba2ec5498ace3a25816a",
+      "sha256": "c76078741dbaba2c145ec498c672f438f7c65da6adc3c41dc7f8157364406d37",
+      "tested_helper_sha256": "951a1fe90b484a4c3cbf4974ebe2c99d0117c8c0159c3ec4c50f7b85cb95b9a8",
+      "all_other_semantic_asts_unchanged": true,
+      "resource_constants_evaluate_to_exact_tested_metadata": true
+    },
+    {
+      "path": "src/Model.lex.tex",
+      "previous_sha256": "5336e0af4e7f406ca4afce619cc63c89a9d6eb2138852ccb621dd3412b8b684f",
+      "sha256": "5c40fa1b92531bf0b1825797c28aa077117b641c56673e167b093bbfac179884",
+      "tested_helper_sha256": "f1dbff70f95f524d1bd1830c7ff2b31a5b17b1d001f7b1ddc361279b48749abe",
+      "all_other_semantic_asts_unchanged": true,
+      "resource_constants_evaluate_to_exact_tested_metadata": true
+    }
+  ],
+  "modeled_vectors_unchanged": 158,
+  "expanded_vector_ast_sha256": "91125f6d7e3ff607ed1848314b04fe6d4c628deaba0bf1f4c8824b8ce75770e3",
+  "observed_runtime": {
+    "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+    "core_wasm_sha256": "bac675aa26880d36b6858ff2a31fb10c2bf2a8723dd0674b5f81b8868bfb0319",
+    "cases_passed": 40,
+    "highest_observed_pages": 24678,
+    "highest_observed_bytes": 1617297408,
+    "receipt": "verification/final-runtime-diagnostic.json"
+  }
+}
