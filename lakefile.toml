@@ -1,0 +1,7 @@
+name = "LexLeanMatmul"
+version = "0.1.0"
+defaultTargets = ["LexLeanMatmul"]
+
+[[lean_lib]]
+name = "LexLeanMatmul"
+srcDir = ".lexlean/generated/lean"
