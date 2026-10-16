@@ -23,5 +23,6 @@ docker run --rm --init \
   --workdir "$repository_root" \
   --env DOCKER_CONFIG=/tmp/prismpm-credentials \
   --env BUILDX_CONFIG=/tmp/prismpm-buildx \
+  --env PRISMPM_EPHEMERAL_HOME=1 \
   --env SDK_IMAGE="$image" \
-  --entrypoint bash "$image" -c 'exec "$@"' bash "$@"
+  "$image" bash -c 'exec "$@"' bash "$@"
