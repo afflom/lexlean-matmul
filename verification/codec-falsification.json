@@ -3,7 +3,7 @@
   "qualified_for_release": false,
   "scope": "Isolated immutable-SDK selected pure LexLean source closure only. The complete application acceptance must rerun this guard after a fresh selected build; this receipt is not release qualification.",
   "image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
-  "script_sha256": "adf59127cb814f44f115942f280fe84dfb294dd8133f5f914f915b3d3ef5bd30",
+  "script_sha256": "8cf04ce86c8bf36913c9af31e3a214bc12266d6219f6890e38de4962e5ae5385",
   "binding": {
     "prismpm_lock_sha256": "69bacbf7490be421449986ab6e74527a571a0b56322f3253e31e51c8a34f1964",
     "root_sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad"
@@ -29,7 +29,7 @@
     "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
     "driver.mjs"
   ],
-  "isolated_helper_sha256": "0ac6acd5578cd20888600e2b1b636ebb159ea67c5822fbbf0c438d6522034a97",
+  "isolated_helper_sha256": "88d99d24636289d53adda005e01025e6579cc8cd2df2c644d9b3788030038b45",
   "source_sha256": {
     "Atlas": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
     "Codec": "a2c3ff47192b2609c9cdcd4d49d78944a13afa8ebe708f7a776757eb079c63a7",
