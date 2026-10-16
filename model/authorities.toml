@@ -6,7 +6,15 @@ name = "UOR-Foundation/uor-matmul"
 citation = "https://github.com/UOR-Foundation/uor-matmul/tree/3cc5882f210667f9ac00fd8c02c5b5957b493f5d"
 checksum = "sha256:c482e921c32c9a41ae691375753458918e3d76265c4e72ad0a40e8998ca4d1de"
 statement = "Decode coded operands, accumulate exactly, and encode the result once."
-realized_by = ["MM-01", "MM-02", "MM-03", "MM-04", "MM-05", "MM-06"]
+realized_by = ["MM-01", "MM-02", "MM-03", "MM-04", "MM-05", "MM-06", "MM-13", "MM-14", "MM-15", "MM-16", "MM-17"]
+
+[[authority]]
+id = "E8"
+name = "UOR reference E8 codebook"
+citation = "https://github.com/UOR-Foundation/uor-matmul/blob/3cc5882f210667f9ac00fd8c02c5b5957b493f5d/crates/uor-matmul-codec/src/e8.rs"
+checksum = "sha256:aab308efe9d95cffdeab99c8f4f3151089086b2d876498428f016f33561ef079"
+statement = "The reference supplies 256 eight-coordinate integer words, including the zero word."
+realized_by = ["MM-17"]
 
 [[authority]]
 id = "CALCULATOR"
