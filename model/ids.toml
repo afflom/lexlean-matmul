@@ -58,7 +58,7 @@ statement = "One LexLean application model generates the native library, Core-Wa
 id = "MM-10"
 level = "build"
 suite = "system"
-statement = "The PrismPM browser system binds the application, artifact, component, controls, and GitHub Pages target."
+statement = "The typed browser system model binds the application, artifact, component, controls, and GitHub Pages target."
 
 [[id]]
 id = "MM-11"
