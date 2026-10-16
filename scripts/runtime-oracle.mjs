@@ -306,6 +306,7 @@ async function protocolCases(machine) {
     ['1\tcoded\tfull8\t1\t1\t1\t1\t256', 'invalid-code'],
     ['1\tcoded\tbinary\t1\t1\t1\t1\t-1', 'invalid-code'],
     ['1\ttable\t3,4\t1\t1\t1\t1\t2', 'invalid-code'],
+    ['1\ttable\t\t1\t1\t1\t1\t0', 'invalid-code'],
     ['1\tpartitioned\t9\t1\t1\t1\t1\t1', 'invalid-dimension'],
     ['1\tdyadic\t1\t1\t1\t1\t65\t1\t0', 'invalid-scale'],
     ['1\tdyadic\t1\t1\t1\t1\t-1\t1\t0', 'invalid-scale'],
