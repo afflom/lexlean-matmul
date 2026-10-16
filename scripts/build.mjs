@@ -5,7 +5,7 @@ import { evidenceRoot, root, sdk, run, sha, sourceDigest, writeJson } from './ev
 sdk();
 fs.mkdirSync(evidenceRoot, { recursive: true });
 // Failed commands cannot leave an older success receipt available to tests.
-for (const name of ['source.json', 'build.json', 'verify.json', 'acceptance.json', 'runtime-oracle', 'checks']) {
+for (const name of ['source.json', 'build.json', 'verify.json', 'system-release.json', 'acceptance.json', 'runtime-oracle', 'checks']) {
   fs.rmSync(path.join(evidenceRoot, name), { force: true, recursive: true });
 }
 run('prismpm', ['fetch', '--locked']);
@@ -24,3 +24,4 @@ writeJson(path.join(evidenceRoot, 'source.json'), {
   verify_result_sha256: sha(Buffer.from(verifyBytes)),
 });
 console.log(`Verified generated application ${build.build_id} in ${root}`);
+run('node', ['scripts/system-release.mjs', 'build']);
