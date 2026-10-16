@@ -15,7 +15,8 @@ const initialSource = sourceDigest();
 const buildBytes = run('prismpm', ['--json', 'build']);
 const build = JSON.parse(buildBytes);
 fs.writeFileSync(path.join(evidenceRoot, 'build.json'), buildBytes);
-const verifyBytes = run('prismpm', ['--json', 'verify']);
+// Verification performs a complete build and an independent regeneration.
+const verifyBytes = run('prismpm', ['--json', 'verify'], root, { timeout: 60 * 60 * 1000 });
 fs.writeFileSync(path.join(evidenceRoot, 'verify.json'), verifyBytes);
 if (initialSource !== sourceDigest()) throw new Error('Product sources changed during build and verification.');
 writeJson(path.join(evidenceRoot, 'source.json'), {

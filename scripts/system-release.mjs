@@ -146,7 +146,10 @@ function buildRelease() {
   fs.rmSync(receiptPath, { force: true });
   // This is the SDK's locked product_build path, including system projection
   // oracles and retained source-free proof/verification evidence.
-  const releaseBytes = run('prismpm', ['--json', 'build', '--locked', '--tag', tag]);
+  // The public release owner verifies two generations, then builds the OCI
+  // subject. Keep its aggregate deadline separate from a single build budget.
+  const releaseBytes = run('prismpm', ['--json', 'build', '--locked', '--tag', tag], root,
+    { timeout: 90 * 60 * 1000 });
   const release = JSON.parse(releaseBytes);
   assert.equal(release.schema, 'prismpm/product-release-result/1');
   assert.equal(release.reference, tag);
