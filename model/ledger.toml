@@ -57,7 +57,7 @@ feature = "features/suites/application.feature"
 [[claim]]
 id = "MM-10"
 level = "build"
-statement = "The typed browser system model binds the application, artifact, component, controls, and GitHub Pages target."
+statement = "PrismPM browser-system /2 projects and verifies the bound application, artifact, component, mandatory controls, and GitHub Pages target."
 feature = "features/suites/system.feature"
 
 [[claim]]
@@ -83,3 +83,21 @@ id = "AUTH-CALCULATOR"
 level = "some-true"
 statement = "The cited Calculator reference declares a LexLean-authored portable Core-Wasm, Holo, and Pages application."
 authority = "CALCULATOR"
+
+[[claim]]
+id = "MM-13"
+level = "build"
+statement = "IEEE binary32 and binary64 products decode exactly and encode once with the requested rounding and non-finite semantics."
+feature = "features/suites/floating.feature"
+
+[[claim]]
+id = "MM-14"
+level = "build"
+statement = "Signed integer output encoders wrap or saturate the exact result at the requested width without intermediate loss."
+feature = "features/suites/floating.feature"
+
+[[claim]]
+id = "MM-15"
+level = "build"
+statement = "Bias and linear epilogues retain exact integer, complex, and tropical results until one terminal output encoding."
+feature = "features/suites/epilogues.feature"

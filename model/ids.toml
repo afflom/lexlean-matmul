@@ -58,7 +58,7 @@ statement = "One LexLean application model generates the native library, Core-Wa
 id = "MM-10"
 level = "build"
 suite = "system"
-statement = "The typed browser system model binds the application, artifact, component, controls, and GitHub Pages target."
+statement = "PrismPM browser-system /2 projects and verifies the bound application, artifact, component, mandatory controls, and GitHub Pages target."
 
 [[id]]
 id = "MM-11"
@@ -71,3 +71,21 @@ id = "MM-12"
 level = "build"
 suite = "reproducibility"
 statement = "The pinned SDK reproduces platform-independent application artifacts from separate clean roots."
+
+[[id]]
+id = "MM-13"
+level = "build"
+suite = "floating"
+statement = "IEEE binary32 and binary64 products decode exactly and encode once with the requested rounding and non-finite semantics."
+
+[[id]]
+id = "MM-14"
+level = "build"
+suite = "encoding"
+statement = "Signed integer output encoders wrap or saturate the exact result at the requested width without intermediate loss."
+
+[[id]]
+id = "MM-15"
+level = "build"
+suite = "epilogues"
+statement = "Bias and linear epilogues retain exact integer, complex, and tropical results until one terminal output encoding."
