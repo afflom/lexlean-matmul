@@ -32,6 +32,18 @@ function multiply(rows, inner, columns, left, right) {
   return output;
 }
 
+function maximumIntegerFixture() {
+  const left = Array.from({ length: 64 }, (_, index) => largestInput - BigInt(index));
+  const book = Array.from({ length: 64 }, (_, index) => largestInput - 1000n - BigInt(index));
+  const codes = Array.from({ length: 64 }, (_, index) => index);
+  assert([...left, ...book].every(value => String(value).length === 64));
+  assert.equal(new Set([...left, ...book].map(String)).size, 128,
+    'Maximum-domain activations and codebook must be individually distinct and disjoint');
+  assert.equal(new Set(left.flatMap(value => book.map(word => String(value * word)))).size, 4096,
+    'Maximum-domain table must retain all 64 × 64 distinct scalar products');
+  return { left, book, codes };
+}
+
 function seeded(seed) {
   let state = seed >>> 0;
   return (bound) => {
@@ -117,14 +129,20 @@ async function exactCases(machine) {
       Array.from({ length: rows * inner }, () => BigInt(random(41) - 20)),
       Array.from({ length: inner * columns }, () => BigInt(random(41) - 20))]);
   }
-  for (const [rows, inner, columns, left, right] of cases) {
+  const maximal = maximumIntegerFixture();
+  cases.push([8, 8, 8, maximal.left, maximal.book, maximal.left]);
+  for (const [rows, inner, columns, left, right, specifiedPrior] of cases) {
     const product = multiply(rows, inner, columns, left, right);
-    await expect(machine, request(1, 'matmul', rows, inner, columns, csv(left), csv(right)), success(rows, columns, product), 'integer product');
-    const prior = Array.from({ length: rows * columns }, () => BigInt(random(17) - 8));
+    const input = request(1, 'matmul', rows, inner, columns, csv(left), csv(right));
+    assert(Buffer.byteLength(input) <= 16384, 'Integer oracle must stay inside the modeled request bound');
+    await expect(machine, input, success(rows, columns, product), specifiedPrior ? '8×8 integer product with 64-digit operands' : 'integer product');
+    const prior = specifiedPrior ?? Array.from({ length: rows * columns }, () => BigInt(random(17) - 8));
     const alpha = -largestInput;
     const beta = largestInput;
     const epilogue = product.map((value, index) => alpha * value + beta * prior[index]);
-    await expect(machine, request(1, 'gemm', alpha, beta, rows, inner, columns, csv(left), csv(right), csv(prior)), success(rows, columns, epilogue), 'single linear epilogue');
+    const gemm = request(1, 'gemm', alpha, beta, rows, inner, columns, csv(left), csv(right), csv(prior));
+    assert(Buffer.byteLength(gemm) <= 16384, 'GEMM oracle must stay inside the modeled request bound');
+    await expect(machine, gemm, success(rows, columns, epilogue), specifiedPrior ? '8×8 GEMM with 64-digit operands, prior values, alpha and beta' : 'single linear epilogue');
   }
 }
 
@@ -165,6 +183,12 @@ async function tableCases(machine) {
     await expect(machine, request(1, 'table', csv(book), rows, inner, columns, csv(left), csv(codes)), success(rows, columns, product), 'arbitrary codebook product');
   }
   await expect(machine, request(1, 'table', '-5,7,-5,0', 1, 4, 1, '1,2,3,4', '0,1,2,3'), success(1, 1, [-6n]), 'duplicate codebook entries');
+  const maximal = maximumIntegerFixture();
+  assert.equal(new Set(maximal.codes).size, 64, 'Every maximum-domain codebook word must be referenced');
+  const input = request(1, 'table', csv(maximal.book), 8, 8, 8, csv(maximal.left), csv(maximal.codes));
+  assert(Buffer.byteLength(input) <= 16384, 'Maximum-domain table request must fit the declared byte bound');
+  const product = multiply(8, 8, 8, maximal.left, maximal.codes.map(code => maximal.book[code]));
+  await expect(machine, input, success(8, 8, product), '8×8 table with 64 distinct activations, 64 distinct words and 4096 distinct products');
 }
 
 async function partitionCases(machine) {

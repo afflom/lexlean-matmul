@@ -116,7 +116,26 @@ const floatLinear = (values, prior, alpha, beta) => values.map((value, index) =>
   return beta === 0n ? scaled : add(scaled, multiply(finite(beta), prior[index]));
 });
 
+async function wideFiniteEncodingCase(machine) {
+  const format = 'f64', f = formats[format];
+  const one = BigInt(f.bias) << BigInt(f.fraction), negative = power(f.bits - 1);
+  const maximum = (BigInt(f.maximumExponent) << BigInt(f.fraction)) - 1n;
+  const a = Array.from({ length: 8 * 4 }, (_, index) => [maximum, 1n, maximum, maximum][index % 4]);
+  const b = Array.from({ length: 4 * 8 }, (_, index) => [maximum, 1n, maximum + negative, one][Math.floor(index / 8)]);
+  const exact = floatProduct(format, 8, 4, 8, a, b);
+  const retained = add(decode(format, maximum), multiply(decode(format, 1n), decode(format, 1n)));
+  assert.equal(retained.kind, 'finite');
+  assert.equal(retained.coefficient.toString(2).length, 3172);
+  assert(exact.every(value => value.kind === 'finite' && value.coefficient === retained.coefficient && value.exponent === retained.exponent));
+  const output = floatCodes(format, 'nearest', exact);
+  assert(output.every(code => code === maximum), 'A tiny positive residual must retain the largest finite binary64 output');
+  const input = request(1, 'ieee', format, 'nearest', 8, 4, 8, csv(a), csv(b));
+  assert(Buffer.byteLength(input) <= 16384, 'Wide finite IEEE request must fit the declared byte bound');
+  await expect(machine, input, success(8, 8, output), 'binary64 8×8 wide finite encoding with a retained smallest-product sticky bit');
+}
+
 async function ieeeCases(machine) {
+  await wideFiniteEncodingCase(machine);
   const random = seeded(0x69656565);
   for (const [format, f] of Object.entries(formats)) {
     const one = BigInt(f.bias) << BigInt(f.fraction), negative = power(f.bits - 1);
