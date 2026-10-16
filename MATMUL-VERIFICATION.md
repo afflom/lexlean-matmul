@@ -1,96 +1,88 @@
 # Matmul verification record
 
-The unchanged mathematical core and protocol have passed kernel verification.
-The complete application has not been accepted. **Application build is blocked
-by the pinned SDK.** A component result below does not establish generated
-runtime, reproducibility, or deployment acceptance.
+The complete selected application source closure has passed Lean and
+leanchecker verification, including all 158 modeled byte vectors. The five
+mathematical modules contain 210 kernel-checked theorems. **Full generated
+application acceptance and GitHub Pages deployment remain pending.** Source
+verification is not a substitute for the repository's complete `just vv` gate.
 
-Execution uses the development SDK selected by [prismpm.lock](prismpm.lock):
+## Current source evidence
 
-```text
-ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21
-```
+[Application source evidence](verification/application-source-proof.json)
+retains the actual command result, build manifest, source hashes, declaration
+axiom audits, and process evidence for the unchanged application selection.
+It explicitly records `qualified_for_release: false`: this diagnostic excludes
+the containing native system and does not execute generated application
+artifacts. The selected modules are Application, Atlas, Codec, CodecProtocol,
+Core, Epilogue, ExtendedProtocol, Float, Model, Protocol, and the SDK-owned Text
+V1 metadata module. Its attestation is
+`cefa1895982a5b9c0394aaf03c0d662e2c1c54f8b7d3a64f369b9aa671dc7b84`.
 
-It contains PrismPM 0.3.0, LexLean 0.3.0 with language 1.1 support, and Lean
-4.32.1. Its own release status identifies it as an unaccepted development
-candidate. The observed runs used Linux AMD64.
-[template.lock](template.lock) binds the actual
-[template policy revision `1bea460bac6ea50bae53a7eeb674589d7900e6cb`](https://github.com/UOR-Foundation/template/tree/1bea460bac6ea50bae53a7eeb674589d7900e6cb).
-The shared Action is pinned to
-`UOR-Foundation/PrismPM/action@f785ee46d794886c29b7efe80c2b261e48733a15`.
-Both SDK platform inventories were extracted by the unchanged upstream
-bootstrap; template and SDK lock checks passed.
+| Mathematical module | Declarations | Theorems |
+| --- | ---: | ---: |
+| Core | 212 | 55 |
+| Atlas | 105 | 43 |
+| Float | 173 | 61 |
+| Epilogue | 49 | 16 |
+| Codec | 370 | 35 |
 
-| Observed check | Result and evidence scope |
-| --- | --- |
-| Unchanged `Core.lex.tex` | Lean, leanchecker, and exact axiom audits passed for 193 declarations, including 40 theorems. [Core receipt](verification/core-proof.json). |
-| Actual repository `Protocol.lex.tex` | Kernel verification passed for its three-module closure. [Source diagnostics](verification/source-diagnostics.json). |
-| Ordinary application build | Failed with SDK `PP5001` after compiling Core, Protocol, and metadata; required large application fixtures exceed Lean limits. [Build failure](verification/application-build-failure.json). |
-| Complete `just vv` | Failed at `product-build` with the same `PP5001`. The preceding model, trust-root, formatting, source policy, and Clippy checks passed. Later application gates did not execute. [Observation](verification/full-gate.json), [transcript](verification/full-gate.log). |
-| Complete source graph | `prismpm --json check` passed static model projection. [Model check receipt](verification/model-check.json). |
-| Repository infrastructure | Source ownership policy, formatting, Clippy, all-feature/all-target checks, 17 infrastructure tests, four meta tests, and dependency policy checks passed. These component checks do not run product runtime conformance. |
-| Clean GitHub Actions | Both architecture bootstrap jobs and the corrected Pages acceptance job fail `PP5401` at the locked crates.io OSV generation (HTTP 404). Deployment jobs do not run. [CI observations](verification/ci.json). |
-| SDK image advisory replay | Both locked platform images were scanned using the locked database set, with zero policy rejections. This is dependency evidence only. [Summary](verification/sdk-advisory-summary.json). |
-| Arithmetic defect | Replacing `integerMultiply` with zero caused `lexlean verify` to reject arithmetic theorems with `LLV7002`. Restoring the original bytes passed and reproduced the original attestation. [Falsification record](verification/core-falsification.json). |
-| Arithmetic mutation detector | Both a false theorem and multiplication replaced with zero failed specifically at `Core.largeProduct`; the detector requires its generated source location and proof failure. This isolated probe is not the full artifact mutation gate. [Diagnostic record](verification/arithmetic-mutation-policy.json). |
-| Source/documentation defects | Handwritten product code, a stale error register, missing reachable error vectors, and missing native error proofs each failed their intended policy check; restored source passed. These are prefix checks only. [Falsification record](verification/policy-falsification.json). |
+Each theorem carries an exact observed axiom policy. Concrete examples and
+component lemmas do not establish a universal refinement theorem for every
+arbitrary precision operation. Runtime agreement, kernel evidence, imported
+reference facts, and release integrity remain separate claims.
 
-The Core attestation is
-`b3c14e333805689397c418dffd9c59834d38bdbb22eb7552c3c7fb1f02f0beaa`.
-The actual Protocol closure attestation is
-`4df75f75c987eca89a23d0d438ea220ea5fb62efa9bee7f6afa106bf465add3f`.
-The receipts bind source identities and observed axiom policies; concrete
-arithmetic examples do not establish a universal refinement theorem for the
-arbitrary precision implementation.
+The source corpus retains the original 62 cases, including the 16,385-byte and
+32,768-byte requests. It adds 47 IEEE, terminal-encoding, and epilogue cases,
+plus 49 compositional-codec, arena, and invalid-complex-input cases. Closed
+list aliases group these vectors without reducing their original bytes.
 
-The System proof has a narrower observation. An isolated temporary copy
-verified six modules while preserving Core, Model, Protocol, and MatmulSystem
-bytes and removing application constants `acceptanceVector45` and
-`acceptanceVector46`. Its [record](verification/source-diagnostics.json)
-explicitly sets `qualification: false`. This localizes the application-data
-failure; it does not verify the complete repository application. The
-authoritative application retains both required vectors.
+## Falsification and runtime gates
 
-Complete `lexlean verify` failed with `LLV7002` on the generated application:
-the 16,385-byte and 32,768-byte request fixtures reached Lean's recursion depth
-512 and heartbeat limit 200,000. A separate temporary dispatch-proof probe
-also found that imported byte/string wrappers prevented the supported
-`decide` and reflexivity proofs from reducing even a small request; its
-[diagnostic record](verification/corpus-sdk-limit.json) carries no product
-qualification. Generated native/Core-Wasm/Holo runtime acceptance, independent
-runtime oracles, two-root reproduction, and GitHub Pages acceptance remain
-unexecuted.
+The complete mutation gate plants source-policy defects, a false Core theorem,
+zero integer multiplication, incorrect IEEE nearest rounding, an Atlas ternary
+sign defect, and reversed packed-code fields. It requires the intended generated
+proof failure, restores exact bytes, and verifies the restored result. The
+scoped [Core](verification/core-falsification.json),
+[Float](verification/float-falsification.json),
+[Atlas](verification/atlas-falsification.json), and
+[Codec](verification/codec-falsification.json) receipts demonstrate those
+mathematical gates in isolation; each remains explicitly unqualified for release.
 
-Cold acquisition of the locked OSV GCS generations returned HTTP 404. The five
-original snapshots were recovered from existing local content-addressed
-caches, checked against their exact SHA-256 values in
-[standards.lock](standards.lock), and placed in the ignored authority cache.
-The SDK continues to validate those locked bytes. This recovery supplies exact
-dependencies for local verification; the public cold-fetch URLs remain broken.
-No standards binding was replaced with a newer snapshot.
+Independent runtime oracles check the actual manifest-bound Core-Wasm against
+software integer and IEEE references, all E8 symbols, codec compositions,
+geometry limits, and typed failures. Browser acceptance loads the unchanged
+SDK-generated wasm-bindgen JS/Wasm, checks the modeled corpus and transport
+failures, then drives the generated UI in the SDK-pinned Chromium. These gates
+must execute successfully against the final SDK before runtime acceptance is
+claimed.
 
-The installed candidate also lacks the newer `Production.BrowserSystem` `/2`
-profile. [MatmulSystem.lex.tex](src/MatmulSystem.lex.tex) therefore declares a
-project-owned typed architecture and validator. There is no accepted
-SDK-generated browser-system `/2` release or observed Pages deployment.
-SDK behavior remains inside the locked image; there is no host, vendored, or
-handwritten product fallback.
+## SDK and release boundary
 
-Run the diagnostic mathematical check with:
+Execution uses only the immutable SDK selected by [prismpm.lock](prismpm.lock).
+The in-progress SDK maintenance refreshes the exact OSV inputs and addresses
+large byte-literal compilation, closed acceptance-list aliases, native compiler
+stack setup, and explicitly modeled Core-Wasm resources. Its component tests
+are dependency-maintenance evidence, not application qualification. No host,
+vendored, handwritten, or reduced-fixture product implementation is admitted.
 
-```console
-./scripts/in-sdk.sh just core-proof
-```
+The containing native browser-system `/2` binds the application model digest,
+generated artifact closure, mandatory controls, locked SPDX oracle, and Pages
+target. Its release gate builds and inspects the native OCI artifact, exports
+six browser files from a separate source-free root, and compares them with the
+ordinary application build. Publication uses the captured accepted release
+bundle, then checks HTTPS bytes and the live Chromium UI without rebuilding.
 
-This checks the identical Core source in isolation and writes
-`.prism/matmul/core-proof.json`. The complete acceptance command remains:
+Historical receipts for older SDK failures remain under `verification/` as
+bounded observations; they do not describe the current source coverage or
+supply release acceptance.
+
+The complete acceptance and publication staging commands are:
 
 ```console
 ./scripts/in-sdk.sh just vv
+./scripts/in-sdk.sh just pages
 ```
 
-`core-proof` cannot qualify an application or substitute for `vv`. The complete
-gate retains application boundary fixtures, generated artifact checks,
-independent runtime tests, reproduction, and planted defects. Pages staging
-requires the complete accepted evidence; this verification record supplies no
-reduced release path.
+The diagnostic `just core-proof` checks identical Core source in isolation. It
+cannot qualify application artifacts, skip acceptance vectors, or authorize a
+Pages deployment.
