@@ -1,0 +1,186 @@
+name: Canonically bind original c150 SDK and reviewed Action scratch fix
+
+on:
+  push:
+    branches: [ci/sdk-c150-action-binding-2026-10-16]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+  packages: read
+
+concurrency:
+  group: matrix-sdk-c150-action-binding
+  cancel-in-progress: false
+
+jobs:
+  bind:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 220
+    env:
+      SOURCE_REVISION: c1507505fa9a536dbc94656f80b9e438ebe7431c
+      TEMPLATE_REVISION: 1c7ee5150b65bfadfe8b8b54c0e1051f68b40394
+      ACTION_REVISION: dd693ec8d3a1eac2e1d94c5c9731f6ab5ad507e8
+      TARGET_REPOSITORY: ghcr.io/afflom/lexlean-matmul-sdk
+      TARGET_TAG: sdk-c1507505fa9a536dbc94656f80b9e438ebe7431c
+    steps:
+      - name: Await the exact original transport and canonical public index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PYWAIT'
+          import json, os, time, urllib.request
+          endpoint = 'https://api.github.com/repos/afflom/lexlean-matmul/actions/runs/38919099291'
+          deadline = time.monotonic() + 190 * 60
+          while True:
+              assert time.monotonic() < deadline, 'original public transport exceeded bounded wait'
+              request = urllib.request.Request(endpoint, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'})
+              with urllib.request.urlopen(request, timeout=60) as response:
+                  record = json.load(response)
+              assert record['head_sha'] == '444efa9f108eeade7ff7b8d7ab6b9d57296e91f9'
+              assert record['head_branch'] == 'ci/sdk-construction-transport-2026-10-16'
+              assert record['run_attempt'] == 1 and record['event'] == 'push'
+              assert record['path'] == '.github/workflows/sdk-construction-transport.yml'
+              if record['status'] == 'completed':
+                  assert record['conclusion'] == 'success', 'original transport failed; no substitute binding is permitted'
+                  print('Exact original dual-native transport completed successfully', flush=True)
+                  break
+              print('Waiting for exact original c150 public transport', flush=True)
+              time.sleep(30)
+          PYWAIT
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: UOR-Foundation/PrismPM
+          ref: c1507505fa9a536dbc94656f80b9e438ebe7431c
+          persist-credentials: false
+          path: sdk-source
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: UOR-Foundation/template
+          ref: 1c7ee5150b65bfadfe8b8b54c0e1051f68b40394
+          persist-credentials: false
+          path: template
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+        with:
+          version: v0.28.0
+          driver-opts: image=docker.io/moby/buildkit@sha256:de10faf919fc71ba4eb1dd7bd6449566d012b0c9436b1c61bfee21d621b009aa
+      - name: Install exact official OCI transport
+        run: |
+          bash sdk-source/scripts/sdk-candidate.sh install-oras "$RUNNER_TEMP/oras"
+          echo "$RUNNER_TEMP/oras" >> "$GITHUB_PATH"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: original-sdk-construction-transport-*
+          path: transport-artifacts
+          github-token: ${{ github.token }}
+          repository: afflom/lexlean-matmul
+          run-id: 38919099291
+      - name: Check both genuine original public native transport results
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, re
+          source = 'c1507505fa9a536dbc94656f80b9e438ebe7431c'
+          repository = 'ghcr.io/afflom/lexlean-matmul-sdk'
+          digests = []
+          with open(os.environ['GITHUB_ENV'], 'a') as environment:
+              for architecture in ['amd64', 'arm64']:
+                  root = pathlib.Path('transport-artifacts') / ('original-sdk-construction-transport-' + architecture)
+                  record = json.loads((root / 'result.json').read_bytes())
+                  assert record['schema'] == 'lexlean-matmul/sdk-construction-transport/1'
+                  assert record['scope'] == 'original-unpublished-sdk-construction-transport'
+                  assert record['source_revision'] == source
+                  assert record['platform'] == 'linux/' + architecture
+                  assert record['tag'] == 'sdk-' + source + '-' + architecture
+                  assert record['qualification'] is False and record['anonymous_read'] == 'public'
+                  assert re.fullmatch(re.escape(repository) + r'@sha256:[0-9a-f]{64}', record['image'])
+                  original = json.loads((root / 'original-artifact.json').read_bytes())
+                  assert str(original['id']) == record['original_artifact_id']
+                  assert original['digest'] == 'sha256:' + record['original_archive_sha256']
+                  assert original['workflow_run']['id'] == 38916005017
+                  assert original['workflow_run']['head_sha'] == source
+                  digest = record['image'].split('@', 1)[1]
+                  digests.append(digest)
+                  environment.write(architecture.upper() + '_DIGEST=' + digest + '\n')
+          assert digests[0] != digests[1]
+          PY
+      - name: Compose and independently validate the original native index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$(git -C sdk-source rev-parse HEAD)" = "$SOURCE_REVISION"
+          test "$(git -C template rev-parse HEAD)" = "$TEMPLATE_REVISION"
+          test -z "$(git -C template status --porcelain)"
+          mkdir binding-evidence
+          printf '{"auths":{}}\n' > "$RUNNER_TEMP/anonymous-registry.json"
+          for digest in "$AMD64_DIGEST" "$ARM64_DIGEST"; do
+            test "$(oras resolve --registry-config "$RUNNER_TEMP/anonymous-registry.json" "$TARGET_REPOSITORY@$digest")" = "$digest"
+          done
+          oras manifest index create "$TARGET_REPOSITORY" "$AMD64_DIGEST" "$ARM64_DIGEST" --output binding-evidence/sdk-index.json
+          node sdk-source/scripts/sdk-candidate.mjs index binding-evidence/sdk-index.json "$AMD64_DIGEST" "$ARM64_DIGEST"
+          digest="sha256:$(sha256sum binding-evidence/sdk-index.json | cut -d' ' -f1)"
+          target="$TARGET_REPOSITORY:$TARGET_TAG"
+          # Preserve the already-published exact index; this job never publishes image bytes.
+          test "$(oras resolve --registry-config "$RUNNER_TEMP/anonymous-registry.json" "$target")" = "$digest"
+          test "$(oras resolve "$target")" = "$digest"
+          test "$(oras resolve --registry-config "$RUNNER_TEMP/anonymous-registry.json" "$TARGET_REPOSITORY@$digest")" = "$digest"
+          oras manifest fetch --registry-config "$RUNNER_TEMP/anonymous-registry.json" --output binding-evidence/public-index.json "$TARGET_REPOSITORY@$digest"
+          cmp binding-evidence/sdk-index.json binding-evidence/public-index.json
+          printf 'SDK_IMAGE=%s@%s\n' "$TARGET_REPOSITORY" "$digest" >> "$GITHUB_ENV"
+      - name: Run the unchanged canonical template renderer with both original native inventories
+        run: |
+          bash template/bootstrap/render.sh "$SDK_IMAGE" "UOR-Foundation/PrismPM/action@$ACTION_REVISION" "$TEMPLATE_REVISION"
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, shutil, subprocess
+          template = pathlib.Path('template')
+          output = pathlib.Path('binding-evidence')
+          paths = [
+              '.devcontainer/devcontainer.json',
+              '.github/workflows/bootstrap.yml',
+              '.github/workflows/prismpm.yml',
+              '.github/workflows/template-update.yml',
+              'prismpm.lock', 'standards.lock', 'template.lock',
+          ]
+          rows = []
+          for name in paths:
+              source = template / name
+              assert source.is_file() and not source.is_symlink()
+              destination = output / 'bound' / name
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(source, destination)
+              data = destination.read_bytes()
+              rows.append({'path': name, 'byte_length': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+          sdk = json.loads((template / 'prismpm.lock').read_bytes())
+          policy = json.loads((template / 'template.lock').read_bytes())
+          assert sdk['schema'] == 'prismpm/sdk-lock/2' and sdk['sdk_image'] == os.environ['SDK_IMAGE']
+          assert {p['platform'] for p in sdk['platforms']} == {'linux/amd64', 'linux/arm64'}
+          assert {p['manifest_digest'] for p in sdk['platforms']} == {os.environ['AMD64_DIGEST'], os.environ['ARM64_DIGEST']}
+          assert policy['template_revision'] == os.environ['TEMPLATE_REVISION'] and policy['sdk_image'] == os.environ['SDK_IMAGE']
+          for row in policy['policy_files']:
+              assert 'sha256:' + hashlib.sha256((template / row['path']).read_bytes()).hexdigest() == row['sha256']
+          renderers = []
+          for name in ['bootstrap/render.sh', 'bootstrap/render.mjs', 'bootstrap/standards-lock.mjs']:
+              data = (template / name).read_bytes()
+              renderers.append({'path': name, 'byte_length': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+          result = {
+              'schema': 'lexlean-matmul/original-sdk-template-binding/1',
+              'scope': 'canonical-renderer-and-original-dual-native-input-binding',
+              'sdk_image': os.environ['SDK_IMAGE'], 'source_revision': os.environ['SOURCE_REVISION'],
+              'template_revision': os.environ['TEMPLATE_REVISION'],
+              'action_reference': 'UOR-Foundation/PrismPM/action@' + os.environ['ACTION_REVISION'],
+              'platforms': [{ 'platform': p['platform'], 'manifest_digest': p['manifest_digest'] } for p in sdk['platforms']],
+              'renderer_inputs': renderers, 'bound_files': rows, 'qualification': False,
+              'unclaimed': ['sdk-production-acceptance', 'product-full-vv', 'release', 'deployment'],
+          }
+          (output / 'result.json').write_text(json.dumps(result, sort_keys=True, indent=2) + '\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('Canonical dual-native binding: `' + result['sdk_image'] + '`.\n\nOriginal source `' + result['source_revision'] + '`; template `' + result['template_revision'] + '`.\n\nThis binding grants no SDK production or product acceptance.\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: canonical-original-sdk-binding
+          include-hidden-files: true
+          path: binding-evidence/
+          if-no-files-found: warn
+          retention-days: 14
