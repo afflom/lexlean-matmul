@@ -24,6 +24,18 @@ model does not sanction.
 | --- | --- | --- |
 | `MM-09` | `build` | One LexLean application model generates the native library, Core-Wasm, Holo archive, and accessible portable View. |
 
+## atlas
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-16` | `build` | Finite IEEE products normalize into canonical non-adjacent Laurent atoms and contract a ternary lookup before one encoding. |
+
+## codec
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-17` | `build` | Total scalar and compositional codebooks decode stored symbols before the shared exact direct or tabulated matrix traversal. |
+
 ## codecs
 
 | ID | Level | Statement |
@@ -123,3 +135,5 @@ Never re-derived, vendored, or gated on.
 | `MM-13` | `build` | IEEE binary32 and binary64 products decode exactly and encode once with the requested rounding and non-finite semantics. |
 | `MM-14` | `build` | Signed integer output encoders wrap or saturate the exact result at the requested width without intermediate loss. |
 | `MM-15` | `build` | Bias and linear epilogues retain exact integer, complex, and tropical results until one terminal output encoding. |
+| `MM-16` | `build` | Finite IEEE products normalize into canonical non-adjacent Laurent atoms and contract a ternary lookup before one encoding. |
+| `MM-17` | `build` | Total scalar and compositional codebooks decode stored symbols before the shared exact direct or tabulated matrix traversal. |

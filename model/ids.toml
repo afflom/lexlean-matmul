@@ -89,3 +89,15 @@ id = "MM-15"
 level = "build"
 suite = "epilogues"
 statement = "Bias and linear epilogues retain exact integer, complex, and tropical results until one terminal output encoding."
+
+[[id]]
+id = "MM-16"
+level = "build"
+suite = "atlas"
+statement = "Finite IEEE products normalize into canonical non-adjacent Laurent atoms and contract a ternary lookup before one encoding."
+
+[[id]]
+id = "MM-17"
+level = "build"
+suite = "codec"
+statement = "Total scalar and compositional codebooks decode stored symbols before the shared exact direct or tabulated matrix traversal."
