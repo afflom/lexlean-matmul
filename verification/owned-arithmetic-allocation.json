@@ -1,0 +1,472 @@
+{
+  "schema": "lexlean-matmul/owned-arithmetic-allocation-diagnostic/1",
+  "qualified_for_release": false,
+  "scope": "Project pure LexLean source optimization, exact inverse-expression audit and immutable-SDK kernel proofs, plus official SDK cold-source maintenance export/native allocation observation. This is not immutable final SDK, complete runtime, source-free release or Pages qualification.",
+  "source": {
+    "Core": {
+      "source_sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+      "declarations": 262,
+      "theorems": 59
+    },
+    "Atlas": {
+      "source_sha256": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
+      "declarations": 134,
+      "theorems": 47
+    },
+    "Float": {
+      "source_sha256": "e4989f77d8c4fe35888178a8e870f7b702e5666816a2ce9533d90a5c9448a0e2",
+      "declarations": 218,
+      "theorems": 67
+    }
+  },
+  "changes": [
+    "Factor subtraction borrow/digit scalar decisions out of the single owned recursive worker call in Core, Atlas and Float.",
+    "Use the existing owned copy worker for bounded low-bit prefixes in Float; preserve all previous theorem statements and add two prefix boundary proofs."
+  ],
+  "inverse_audits": {
+    "Core": {
+      "before_source_sha256": "339cfe4eb5d59ce480ef4483603937f8c47bcc3e57caf5ee7f28b35e5648d07d",
+      "after_source_sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+      "all_original_declarations_exact_after_inverse_expansion": true,
+      "unchanged_theorems": 59,
+      "raw_audit": {
+        "path": "/tmp/matmul-core-subtract-step-audit.json",
+        "byte_length": 52816,
+        "sha256": "5e2c2f6cd616e62b7c3c3e512b53d04d01afb6b1bb3725104575c66c8f34606d"
+      }
+    },
+    "Atlas_Float_step_only": {
+      "result": {
+        "schema": "lexlean-matmul/subtract-step-alpha-expansion-audit/1",
+        "qualified_for_release": false,
+        "scope": "Pure helper factoring equivalence by exact inverse AST expansion; separate selected immutable-SDK kernel check supplies proof evidence.",
+        "modules": [
+          {
+            "module": "Atlas",
+            "original_sha256": "085c03b5bce3a44bb6769abba1be81f7593af56cb955fc6deebc7e7c2b271e17",
+            "current_sha256": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
+            "new_scalar_helpers": [
+              "atlasSubtractBorrow",
+              "atlasSubtractDigit"
+            ],
+            "helper_call_expansions": 2,
+            "original_declarations_preserved_by_exact_inverse_expansion": true,
+            "original_theorem_asts_unchanged": true,
+            "theorems": 47
+          },
+          {
+            "module": "Float",
+            "original_sha256": "edb61f019e9842de58ce5262f01b93f95e785b06039f9d8cd197447cd91a5e0e",
+            "current_sha256": "72960046781d1a1cb0bef8d3a0013aae72efa9ec048661b64744a3b2bbd7465f",
+            "new_scalar_helpers": [
+              "floatSubtractBorrow",
+              "floatSubtractDigit"
+            ],
+            "helper_call_expansions": 2,
+            "original_declarations_preserved_by_exact_inverse_expansion": true,
+            "original_theorem_asts_unchanged": true,
+            "theorems": 65
+          }
+        ]
+      },
+      "raw_audit": {
+        "path": "/tmp/matmul-float-atlas-subtract-step-audit.json",
+        "byte_length": 1272,
+        "sha256": "8e081c2c5bb4bdb97defc56db4f29fc1554a922c0fcd0a901768e1573973f6a0"
+      },
+      "note": "The step-only Float audit precedes the separately kernel-verified prefix implementation change."
+    }
+  },
+  "kernel": [
+    {
+      "scope": "Core, Atlas and Float",
+      "immutable_sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
+      "result": {
+        "artifacts": [
+          ".lexlean/verified/64eb2c05c339c30e2fa05123954392d098e0e2a24e3ae4184965491b2d9c2aa5"
+        ],
+        "attestation_id": "64eb2c05c339c30e2fa05123954392d098e0e2a24e3ae4184965491b2d9c2aa5",
+        "build_id": "7aec983f39e02f6683d954e038c148cfc22909da065c5d692eb205e972b7eb60",
+        "command": "verify",
+        "diagnostics": [],
+        "exit_code": 0,
+        "modules": [
+          "Atlas",
+          "Core",
+          "Float"
+        ],
+        "semantic_id": "4bef0e40db1bfd8e1349addd0dbe27afa3730c0506f72fcbfa00e01af850556f",
+        "source_id": "0ac4e5684436ed03812e35b72f532a46350aa5935ba068c7467d5e73087a50f4",
+        "spec": "lexlean/command-result/1",
+        "success": true
+      },
+      "raw_command_output": {
+        "path": "/tmp/matmul-subtract-step-final-proof.log",
+        "byte_length": 684,
+        "sha256": "5a213893a5f5e83b92c74e4f02ffb6870146b702b4426f4d3ef6ddb60e380a84"
+      },
+      "attestation": {
+        "path": "/tmp/matmul-subtract-step-final-proof/.lexlean/verified/64eb2c05c339c30e2fa05123954392d098e0e2a24e3ae4184965491b2d9c2aa5/attestation.json",
+        "byte_length": 118634,
+        "sha256": "7cc72803b753cb29e0fabcd1ca178e596566a7261a957324ed26d04d7e4a6651"
+      }
+    },
+    {
+      "scope": "Full Application source closure,158vectors",
+      "immutable_sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
+      "result": {
+        "artifacts": [
+          ".lexlean/verified/37fa92d510af8dea00b5020ff1ee1f7f745124082b313cd3a7a719ae9d8e97d8"
+        ],
+        "attestation_id": "37fa92d510af8dea00b5020ff1ee1f7f745124082b313cd3a7a719ae9d8e97d8",
+        "build_id": "367ac910d30c75b0f5a0b9dc765125a2ea99327e241a10930e13e72c9a6acaf1",
+        "command": "verify",
+        "diagnostics": [],
+        "exit_code": 0,
+        "modules": [
+          "Application",
+          "Atlas",
+          "Codec",
+          "CodecProtocol",
+          "Core",
+          "Epilogue",
+          "ExtendedProtocol",
+          "Float",
+          "Foundation.View.Text.V1.Model",
+          "Model",
+          "Protocol"
+        ],
+        "semantic_id": "33c660cb0b6d7b5b97474079e8c9827abc9cc2104bcbe8c1edc7f49a6aa3d896",
+        "source_id": "9f9614148bb0819fd2ab236776ac3663bca6265822e8196adc6e5997eec2ae6f",
+        "spec": "lexlean/command-result/1",
+        "success": true
+      },
+      "raw_command_output": {
+        "path": "/tmp/matmul-subtract-application-proof.log",
+        "byte_length": 803,
+        "sha256": "b4684281090292302ab6f0e32e50e65ed2dc9ed3f7dde92b83fd74b9fbaff90f"
+      },
+      "attestation": {
+        "path": "/tmp/matmul-subtract-application-proof/.lexlean/verified/37fa92d510af8dea00b5020ff1ee1f7f745124082b313cd3a7a719ae9d8e97d8/attestation.json",
+        "byte_length": 324997,
+        "sha256": "55dd53dc9425ee746e2427c482211ed07a3eb2649349010d772d4de76bf2f784"
+      }
+    }
+  ],
+  "actual_normal_sdk_helper_export": {
+    "fixture_scope": "Separate1-byte identity/boundary metadata fixture, unchanged Core/Atlas/Float source copies, explicitly selected worker library roots. Full158productfixtures were retained unchanged in their separate complete Application source proof and full-build diagnostics.",
+    "result": {
+      "build_id": "5d7aeaa3cb831d15b257108c8d2be0d89a5cee1e64604d60ef953675d0f126ea",
+      "manifest_path": ".prism/build/5d7aeaa3cb831d15b257108c8d2be0d89a5cee1e64604d60ef953675d0f126ea/manifest.json",
+      "model_path": ".prism/build/5d7aeaa3cb831d15b257108c8d2be0d89a5cee1e64604d60ef953675d0f126ea/model.prism.json",
+      "schema": "prismpm/build-result/1",
+      "semantic_id": "9a03245b6ee6820442670f8865b68ef5bb317db9a0b6a4bad821c00f523b304f",
+      "source_id": "da473402098eeb03626da89529b0dbdcc0bd1c791007aff55c91662b44e1bea4"
+    },
+    "maintenance_result": {
+      "path": "/tmp/matmul-subtract-maintenance-build/maintenance-result.json",
+      "byte_length": 4582,
+      "sha256": "e484a9a140e02f117c6fd9ae9494e780d9cacf0efb4b1ed0c846ed67a23f94b9"
+    },
+    "input_inventory": {
+      "schema": "lexlean-matmul/source-maintenance-inputs/1",
+      "qualified_for_release": false,
+      "scope": "Explicit authorized SDK source-maintenance helper to observe actual LLVM IR/codegen lowering of unchanged pure math workers. This fixture is separate from complete158-vector product and is not product or release acceptance.",
+      "helper_roots": [
+        "LexLeanMatmul.Application.allocationIdentity",
+        "LexLeanMatmul.Atlas.atlasSubtractBitWorker",
+        "LexLeanMatmul.Core.ownedDigitSubtractLoop",
+        "LexLeanMatmul.Float.floatSubtractBitWorker"
+      ],
+      "math_unchanged": true,
+      "files": [
+        {
+          "path": "src/Application.lex.tex",
+          "byte_length": 4425,
+          "sha256": "3ef80486a03b184578062566bf1a5dcf6d120932b62fc51e19ed72654d47f782"
+        },
+        {
+          "path": "src/Atlas.lex.tex",
+          "byte_length": 123076,
+          "sha256": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650"
+        },
+        {
+          "path": "src/Core.lex.tex",
+          "byte_length": 304177,
+          "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+        },
+        {
+          "path": "src/Float.lex.tex",
+          "byte_length": 246670,
+          "sha256": "e4989f77d8c4fe35888178a8e870f7b702e5666816a2ce9533d90a5c9448a0e2"
+        },
+        {
+          "path": "src/Model.lex.tex",
+          "byte_length": 3475,
+          "sha256": "f1dbff70f95f524d1bd1830c7ff2b31a5b17b1d001f7b1ddc361279b48749abe"
+        }
+      ],
+      "core_memory_pages": 16384,
+      "core_stack_bytes": 16777216,
+      "consumer_sdk_lock_copied": false
+    },
+    "normal_owner_command": [
+      "docker",
+      "run",
+      "--rm",
+      "--name",
+      "matmul-subtract-maintenance-diagnostic",
+      "--network",
+      "none",
+      "--user",
+      "0:0",
+      "--ulimit",
+      "stack=67108864:-1",
+      "--mount",
+      "type=bind,source=/tmp/lexlean-matmul-sdk-refresh.F6Im9d,target=/sdk-source,readonly",
+      "--mount",
+      "type=bind,source=/tmp/matmul-subtract-maintenance-build,target=/probe",
+      "--workdir",
+      "/probe",
+      "--entrypoint",
+      "timeout",
+      "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+      "--signal=TERM",
+      "--kill-after=5",
+      "1800",
+      "/sdk-source/target/debug/prismpm",
+      "--json",
+      "--project",
+      "/probe",
+      "build"
+    ],
+    "source_sdk_head": "ba54daea361a275d5413cd55ec687131cf0b1ae1",
+    "tools": {
+      "prismpm_sha256": "76bee59b7538a01093f1b8b35464aabff6b37202f4c471fedc87d965c71dcf94",
+      "lexlean_sha256": "7d358efeb80e89a5f9e3a0245fe33ca4d97450096c6ba1e2f895bf78d74df73b",
+      "cargo_lock_sha256": "d040dbea701952f379d6cc8c2a4c2525c7812dace22635320d894458e6ccf4d0",
+      "application_build_rs_sha256": "1ad3ac1cc470a1c3d97769f43eaa8cfdcf630e2ded4e2160b82981f3ae7e3fd2",
+      "verification_rs_sha256": "0b2429c7ea2380bb0c8e2641d4d2171143c8af59da12926621cf41a196a33e20",
+      "lean_project_rs_sha256": "ee569ec185b17d455dc8adf60e0f98ae36ce5a789a7043c2bc858d0f9a4ebe58",
+      "exporter_archive_sha256": "7a1a716a57040ea2307f7a34e895a75ebdca7438cf9d5d0364007acb594366bf"
+    },
+    "manifest": {
+      "path": "/tmp/matmul-subtract-maintenance-build/.prism/build/5d7aeaa3cb831d15b257108c8d2be0d89a5cee1e64604d60ef953675d0f126ea/manifest.json",
+      "byte_length": 21127,
+      "sha256": "e95dff07c1178dc51a1402b4dae01adfaab440746a4e09a82a13442e794c69cc"
+    },
+    "verified_manifest_files": 117,
+    "actual_artifacts": {
+      "cargo/kernel.ir": {
+        "byte_length": 6909,
+        "kind": "artifact",
+        "path": "cargo/kernel.ir",
+        "sha256": "617f9b53f6bedac1476cfac3bf9eeebd05c213230c2dbec545e40b4b12b5a8a5"
+      },
+      "cargo/roots.json": {
+        "byte_length": 938,
+        "kind": "artifact",
+        "path": "cargo/roots.json",
+        "sha256": "a29aced4cc4cfb6e4e65770d5444f82978d25056a8367cec17e903bd3324ac52"
+      },
+      "cargo/coverage.json": {
+        "byte_length": 1011,
+        "kind": "artifact",
+        "path": "cargo/coverage.json",
+        "sha256": "fa3ac3691d5f7ae8db923e52dbf1457183c207a7a8be80c300affb9eeb10093f"
+      },
+      "cargo/package/src/lib.rs": {
+        "byte_length": 8957,
+        "kind": "artifact",
+        "path": "cargo/package/src/lib.rs",
+        "sha256": "f28c04822af0c5adeac2c91dfd080175601f722ef7947baffb59b09c2b6e4764"
+      },
+      "core-wasm/lexlean_matmul_core_wasm.wasm": {
+        "byte_length": 595,
+        "kind": "artifact",
+        "path": "core-wasm/lexlean_matmul_core_wasm.wasm",
+        "sha256": "7569a1c6da8d57e0800c3fe00432cb53371f11222343a19a05afda74447f68d0"
+      },
+      "application/target-profile.json": {
+        "byte_length": 193,
+        "kind": "artifact",
+        "path": "application/target-profile.json",
+        "sha256": "7662aee5cfc0a4e5d5ba1e960875c46bd83fc4eeb32c094f35f4fa0d55f14390"
+      },
+      "model.prism.json": {
+        "byte_length": 2233,
+        "kind": "artifact",
+        "path": "model.prism.json",
+        "sha256": "a5133b619eb903a82302660e60d6658a1ea6aa4ee1b1cce7d6ae4cce29f0719a"
+      }
+    },
+    "actual_exported_definitions": 16,
+    "actual_worker_lowering": [
+      {
+        "function": "atlasSubtractBitWorker",
+        "actual_emitted_owned_worker": "__prod_owned_22_atlasSubtractBitWorker",
+        "fixed_list_inputs_borrowed": true,
+        "accumulator_moved_into_append": true,
+        "per_iteration_accumulator_clone": false
+      },
+      {
+        "function": "ownedDigitSubtractLoop",
+        "actual_emitted_owned_worker": "__prod_owned_22_ownedDigitSubtractLoop",
+        "fixed_list_inputs_borrowed": true,
+        "accumulator_moved_into_append": true,
+        "per_iteration_accumulator_clone": false
+      },
+      {
+        "function": "floatSubtractBitWorker",
+        "actual_emitted_owned_worker": "__prod_owned_22_floatSubtractBitWorker",
+        "fixed_list_inputs_borrowed": true,
+        "accumulator_moved_into_append": true,
+        "per_iteration_accumulator_clone": false
+      }
+    ]
+  },
+  "native_allocation": {
+    "qualification": "Native source-maintenance counter, not CoreWasm or browser resource qualification. System allocator cumulative requested-byte count includes all allocations/reallocations and resets around each call.",
+    "maintenance_container": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+    "test": "Full4196-digit borrow propagation for bases2and10; fixed borrowed inputs and initially empty accumulator.",
+    "before": [
+      {
+        "function": "atlasSubtractBitWorker",
+        "elements": 4196,
+        "allocated_bytes": 211293824,
+        "borrow_chain_correct": true
+      },
+      {
+        "function": "floatSubtractBitWorker",
+        "elements": 4196,
+        "allocated_bytes": 211293824,
+        "borrow_chain_correct": true
+      },
+      {
+        "function": "ownedDigitSubtractLoop",
+        "elements": 4196,
+        "allocated_bytes": 211293824,
+        "borrow_chain_correct": true
+      }
+    ],
+    "after": [
+      {
+        "function": "atlasSubtractBitWorker",
+        "elements": 4196,
+        "allocated_bytes": 164608,
+        "borrow_chain_correct": true
+      },
+      {
+        "function": "floatSubtractBitWorker",
+        "elements": 4196,
+        "allocated_bytes": 164608,
+        "borrow_chain_correct": true
+      },
+      {
+        "function": "ownedDigitSubtractLoop",
+        "elements": 4196,
+        "allocated_bytes": 164608,
+        "borrow_chain_correct": true
+      }
+    ],
+    "before_counter_source": {
+      "path": "/tmp/matmul-subtract-before-allocation/measured.rs",
+      "byte_length": 1205472,
+      "sha256": "9392637c262044f914c03f4fab0de10d56c1dcf39a9a87fd81609829410c3ab4"
+    },
+    "after_counter_source": {
+      "path": "/tmp/matmul-subtract-actual-allocation/measured.rs",
+      "byte_length": 10412,
+      "sha256": "cb5b6b7c06ac980552851d0775f2d5c9f9404e231f8b210396c88934e206207b"
+    },
+    "before_output": {
+      "path": "/tmp/matmul-subtract-before-allocation/result.log",
+      "byte_length": 330,
+      "sha256": "5b3786581381ccf97104cb292982beff01cd913bdf6a69602958ef9691732085"
+    },
+    "after_output": {
+      "path": "/tmp/matmul-subtract-actual-allocation/result.log",
+      "byte_length": 321,
+      "sha256": "4af456a9bf1ca41620ab87614605602844115527138feef7c43cff7ec3625d7f"
+    },
+    "before_compiler_arguments": [
+      "rustc",
+      "--edition=2021",
+      "-Awarnings",
+      "measured.rs",
+      "-o",
+      "measured"
+    ],
+    "after_compiler_arguments": [
+      "rustc",
+      "--edition=2021",
+      "--cfg",
+      "feature=\"std\"",
+      "-Awarnings",
+      "measured.rs",
+      "-o",
+      "measured"
+    ]
+  },
+  "prefix_path": {
+    "observed_before": [
+      {
+        "function": "normalize",
+        "elements": 4196,
+        "allocated_bytes": 164608,
+        "output": "Ok(4196)"
+      },
+      {
+        "function": "addFinite",
+        "elements": 4196,
+        "allocated_bytes": 362808,
+        "output": "Ok((4197, 2148))"
+      },
+      {
+        "function": "subtractFinite",
+        "elements": 4196,
+        "allocated_bytes": 211492000,
+        "output": "Ok((4196, 2148))"
+      },
+      {
+        "function": "takeBits",
+        "elements": 4196,
+        "allocated_bytes": 68641224,
+        "output": "4142"
+      },
+      {
+        "function": "roundedDrop",
+        "elements": 4196,
+        "allocated_bytes": 68644496,
+        "output": "Ok(54)"
+      },
+      {
+        "function": "encodeFinite",
+        "elements": 4196,
+        "allocated_bytes": 68644920,
+        "output": "Ok(9218868437227405312)"
+      }
+    ],
+    "before_counter_source": {
+      "path": "/tmp/matmul-float-wide-actual-allocation/measured.rs",
+      "byte_length": 1205559,
+      "sha256": "d99e6cab6938c7fc06d0ca7f1b6288a8baf025c8bda834b0947e89cfc52a318d"
+    },
+    "implementation": "takeBitsOwned delegates to the existing moved floatCopyBitWorker with fuel=min(count,floatWorkerBitLength(xs)), source index0 and empty accumulator.",
+    "new_kernel_theorems": [
+      "LexLeanMatmul.Float.takePrefixZero",
+      "LexLeanMatmul.Float.takePrefixCapsCount"
+    ],
+    "after_complete_export_native_allocation_measured": false,
+    "after_complete_product_guest_measurement": "Pending full updated158-vector normal SDK build and independent maximum-domain CoreWasm stress."
+  },
+  "complete_build_status": {
+    "full158_old_math_fixed_resource_owner": "Advanced through actual resource-validated CoreWasm; failed PP5203 at generic browser adapter handling of fallible Result<Vec<u8>,ComputeError> entry.",
+    "diagnostic_result": {
+      "path": "/tmp/matmul-source-maintenance-resource-build/maintenance-result.json",
+      "byte_length": 9806,
+      "sha256": "af535ecf5496587b86e3dfedfc1dfff3ae9dd95310c8163ef7c0fa692e3a9125"
+    },
+    "updated_math_full158": "Pending tested generic SDK browser fallibility fix and new normal API run at32767pages/16MiB stack."
+  }
+}

@@ -2,7 +2,7 @@
 
 The complete selected application source closure has passed Lean and
 leanchecker verification, including all 158 modeled byte vectors. The five
-mathematical modules contain 222 kernel-checked theorems. **Full generated
+mathematical modules contain 224 kernel-checked theorems. **Full generated
 application acceptance and GitHub Pages deployment remain pending.** Source
 verification is not a substitute for the repository's complete `just vv` gate.
 
@@ -16,13 +16,13 @@ the containing native system and does not execute generated application
 artifacts. The selected modules are Application, Atlas, Codec, CodecProtocol,
 Core, Epilogue, ExtendedProtocol, Float, Model, Protocol, and the SDK-owned Text
 V1 metadata module. Its attestation is
-`7bfc15908ee0e0e95556f2022ba134549b913b933074a641bd06f9163ea1ea3f`.
+`37fa92d510af8dea00b5020ff1ee1f7f745124082b313cd3a7a719ae9d8e97d8`.
 
 | Mathematical module | Declarations | Theorems |
 | --- | ---: | ---: |
-| Core | 260 | 59 |
-| Atlas | 132 | 47 |
-| Float | 214 | 65 |
+| Core | 262 | 59 |
+| Atlas | 134 | 47 |
+| Float | 218 | 67 |
 | Epilogue | 60 | 16 |
 | Codec | 656 | 35 |
 
@@ -30,8 +30,12 @@ Owned records hold eager intermediate lists while public list facades retain
 their original types. Four additional induction lemmas establish the owned
 views used by the existing public preservation theorems.
 Digit and bit workers borrow their inputs and move append accumulators through
-tail calls. Eight additional worker theorems check prefix order, zero handling,
-low zeros, and borrow propagation. E8 rows use the same owned storage pattern;
+tail calls. Ten additional worker theorems check prefix order, zero handling,
+low zeros, borrow propagation, and prefix limits. Subtraction computes its
+borrow and digit in scalar helpers before the recursive call, allowing the
+actual Lean exporter and Rust generator to preserve the moved accumulator.
+IEEE sticky-bit prefixes use the same bounded copy worker.
+E8 rows use the same owned storage pattern;
 the independent oracle still validates every symbol against the pinned table.
 Computational definitions use distinct names across modules because the
 generated Rust package has one function namespace. The naming audit reverses
@@ -70,12 +74,20 @@ failures, then drives the generated UI in the SDK-pinned Chromium. These gates
 must execute successfully against the final SDK before runtime acceptance is
 claimed.
 
+The [maximum-domain regression record](verification/resource-regression-red.json)
+retains observed failures from a captured earlier compiler output: 8-by-8
+tables with 4,096 distinct products and a wide finite binary64 result exhausted
+its 1 GiB allocator. These cases now belong to the ordinary numerical oracles.
+Their captured diagnostics do not supply release acceptance.
+
 ## SDK and release boundary
 
 Execution uses only the immutable SDK selected by [prismpm.lock](prismpm.lock).
 The in-progress SDK maintenance refreshes the exact OSV inputs and addresses
-large byte-literal compilation, closed acceptance-list aliases, native compiler
-stack setup, and explicitly modeled Core-Wasm resources. Its component tests
+native compilation budgets, closed acceptance-list aliases, native compiler
+stack setup, and explicitly modeled Core-Wasm resources. The normal Cargo
+owner preserves generated resource flags when adding source-path remaps.
+Its component tests
 are dependency-maintenance evidence, not application qualification. No host,
 vendored, handwritten, or reduced-fixture product implementation is admitted.
 
