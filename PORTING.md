@@ -110,7 +110,7 @@ rounding, and atom-sign defects must be rejected by the intended theorem
 checks. These certificates are not a claim
 that every implementation function has a universal refinement proof.
 
-The complete `just vv` gate and public Pages publication have not passed.
-SDK fixes, a fresh locked catalog, and full application builds are in progress.
+The complete `just vv` gate and protected Pages publication checks establish
+release qualification for each revision.
 Isolated source proofs and diagnostic receipts retain their stated scope;
 release and deployment claims require the complete recorded acceptance result.

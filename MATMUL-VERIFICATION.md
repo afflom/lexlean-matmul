@@ -2,9 +2,10 @@
 
 The complete selected application source closure has passed Lean and
 leanchecker verification, including all 158 modeled byte vectors. The five
-mathematical modules contain 241 kernel-checked theorems. **Full generated
-application acceptance and GitHub Pages deployment remain pending.** Source
-verification is not a substitute for the repository's complete `just vv` gate.
+mathematical modules contain 241 kernel-checked theorems. Full generated
+application and deployment qualification require the complete `just vv` gate
+and protected publication checks. Source verification establishes its recorded
+scope independently of those release results.
 
 ## Current source evidence
 
@@ -41,7 +42,7 @@ Atlas multiplication path for matrix operands and the existing non-finite and
 fractional-scalar behavior. The [source audit](verification/integer-ieee-epilogue-source-audit.json)
 checks that all 224 preceding mathematical theorems remain unchanged and the
 five new scalar certificates have no axioms. Actual resource acceptance of
-this optimization remains pending.
+this optimization belongs to the complete release gate.
 Laurent contraction merges signed digit products into a sorted grade ledger,
 propagates coefficient carries, and performs one final signed subtraction.
 Valuation counts a borrowed zero prefix before copying the unit once. IEEE
@@ -87,8 +88,7 @@ software integer and IEEE references, all E8 symbols, codec compositions,
 geometry limits, and typed failures. Browser acceptance loads the unchanged
 SDK-generated wasm-bindgen JS/Wasm, checks the modeled corpus and transport
 failures, then drives the generated UI in the SDK-pinned Chromium. These gates
-must execute successfully against the final SDK before runtime acceptance is
-claimed.
+execute against the final SDK as part of complete acceptance.
 
 The [maximum-domain regression record](verification/resource-regression-red.json)
 retains observed failures from a captured earlier compiler output: 8-by-8
@@ -113,6 +113,28 @@ combines 64 eight-element book words with seven full-width offsets in a valid
 15,985-byte request. Its direct path returns the exact result; its table path
 reaches the page limit while repeatedly decoding the same words. MM-17 retains
 both paths and deep-composition shape and lazy-decoding checks.
+
+The [final runtime diagnostic](verification/final-runtime-diagnostic.json)
+records a successful normal upstream build of the complete 158-vector
+application, with unchanged math and protocol sources. Only Text-V2 resource
+metadata differs from the preceding source-proof selection: 32,767 maximum
+pages and a 16 MiB stack. All 167 artifact hashes were checked before testing.
+The resulting Core-Wasm passes 40 resource cases and 3,301 independent numerical
+requests. The unchanged generated Node binding passes all 158 vectors, and
+Chromium 157 passes the UI, transport recovery, asset, and MIME checks with no
+external requests or page errors.
+
+| Generated Core-Wasm diagnostic | Seconds | Observed memory pages |
+| --- | ---: | ---: |
+| Wide finite IEEE integer epilogue | 4.21 | 9,742 |
+| Dense significand integer epilogue | 0.93 | 3,028 |
+| Full dense IEEE product table | 4.22 | 12,574 |
+| Maximum-exponent IEEE product table | 21.37 | 24,678 |
+| Eight-stage composed codec table | 12.80 | 22,735 |
+
+These measurements use the actual normal source-maintenance compiler output.
+They remain explicitly unqualified for release and do not replace the final
+immutable SDK, native system, complete acceptance, or publication gates.
 
 ## SDK and release boundary
 
