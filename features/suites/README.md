@@ -1,25 +1,25 @@
 # Suites
 
-One Gherkin file per suite, one scenario per conformance ID (R3).
+The Gherkin suites cover the 17 registered matrix multiplication capabilities,
+with one scenario per conformance ID (R3).
 
 A scenario is tagged with its ID and its honesty level:
 
 ```gherkin
-Feature: <suite name>
+Feature: exact
 
-  <what the suite is about, in a sentence.>
-
-  @CX-01 @build
-  Scenario: <the statement, copied from model/ids.toml>
-    Given <the fixture>
-    When the suite exercises CX-01
-    Then <the assertion, in the register's words>
+  @MM-01 @build
+  Scenario: Integer GEMM decodes operands, accumulates exact products, and applies the linear epilogue once.
+    Given the locked LexLean and PrismPM model sources
+    When the generated implementation is checked for MM-01
+    Then its independent acceptance oracle succeeds
 ```
 
-The `suite` field of a row in `model/ids.toml` names the file its scenario
-lives in, and `just bdd` fails if an ID has no scenario, a scenario has no ID,
-or an ID has no test whose name ends in it lowercased with underscores.
+The capability register is `model/ids.toml`. The scenarios connect its claims
+to the conformance tests and their generated-artifact oracles. `just bdd`
+fails if an ID has no scenario, a scenario has no registered ID, or an ID has
+no test whose name ends in it lowercased with underscores.
 
-Empty. The first capability this repository builds starts with a row in
-`model/ids.toml`, then a scenario here, then a failing test --- in that order,
-because the order is the discipline (`AGENTS.md`).
+Add a capability as a register row, then a scenario here, then a failing
+test before implementing it, as required by `AGENTS.md`. Full release
+qualification requires `just vv` in the locked SDK.
