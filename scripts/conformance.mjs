@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { freshBuild, evidenceRoot, root, readJson, confined, sha, sourceModules, files, sourceDigest, verificationDigest, writeJson } from './evidence.mjs';
 import { runRuntimeChecks } from './runtime-oracle.mjs';
+import { acceptanceVectors } from './write-errors.mjs';
 
 const id = process.argv[2];
 let runtimeReport;
@@ -29,7 +30,10 @@ if (['MM-01', 'MM-02', 'MM-03', 'MM-04', 'MM-05', 'MM-06', 'MM-07', 'MM-11'].inc
   const verify = JSON.parse(verifyBytes);
   assert.equal(verify.schema, 'prismpm/verify-result/1');
   assert.equal(verify.build_id, build.build_id);
+  assert.match(verify.attestation_id, /^[0-9a-f]{64}$/);
+  assert.equal(verify.verified_root, `.prism/verified/${verify.attestation_id}`);
   const verified = confined(verify.verified_root);
+  assert.equal(sha(fs.readFileSync(path.join(verified, 'manifest.json'))), verify.attestation_id);
   const receipt = readJson(path.join(verified, 'manifest.json'));
   const acceptanceBytes = fs.readFileSync(path.join(verified, 'application-acceptance.json'));
   const acceptance = JSON.parse(acceptanceBytes);
@@ -39,13 +43,26 @@ if (['MM-01', 'MM-02', 'MM-03', 'MM-04', 'MM-05', 'MM-06', 'MM-07', 'MM-11'].inc
   assert.equal(receipt.build_id, build.build_id);
   assert.equal(receipt.acceptance_sha256, sha(acceptanceBytes));
   assert.equal(receipt.lexlean_attestation_sha256, sha(lexleanBytes));
+  assert.equal(receipt.model_sha256, sha(fs.readFileSync(confined(build.model_path))));
+  assert.equal(acceptance.schema, 'prismpm/application-acceptance/1');
   assert.equal(acceptance.status, 'verified');
+  assert.equal(acceptance.build_id, build.build_id);
   assert.equal(acceptance.source_id, build.source_id);
+  assert.equal(lexlean.spec, 'lexlean/attestation/1');
   assert.equal(lexlean.status, 'verified');
+  assert.equal(acceptance.lexlean_attestation_id, lexlean.attestation_id);
   assert.equal(lexlean.source_id, build.source_id);
   assert.equal(lexlean.semantic_id, build.semantic_id);
-  assert(receipt.processes.length > 0);
-  for (const process of receipt.processes) assert.equal(process.exit_code, 0, process.tool);
+  const required = ['lean-version', 'lake-version', 'rustfmt-version', 'rustc-version', 'timeout-version',
+    'hologram-oracle-build', 'hologram-oracle', 'core-wasm-validate', 'core-wasm-inspect',
+    'application-package-test', 'application-package-no-std', 'application-consumer-lock', 'application-generated-rust-corpus'];
+  assert.equal(receipt.processes.length, required.length);
+  for (const name of required) assert.equal(receipt.processes.filter(row => row.tool === name).length, 1, name);
+  for (const process of receipt.processes) {
+    assert.equal(process.exit_code, 0, process.tool);
+    assert.match(process.executable_sha256, /^[0-9a-f]{64}$/);
+    assert(Array.isArray(process.argv) && process.argv.every(argument => typeof argument === 'string'));
+  }
   if (id === 'MM-08') {
     const proofs = sourceModules().flatMap(module => module.semantic.declarations
       .filter(declaration => declaration.kind === 'theorem').map(declaration => ({ ...declaration, qualifiedName: `${module.module}.${declaration.name}` })));
@@ -70,7 +87,7 @@ if (['MM-01', 'MM-02', 'MM-03', 'MM-04', 'MM-05', 'MM-06', 'MM-07', 'MM-11'].inc
     assert.equal(acceptance.browser_projection, 'verified');
     assert.equal(acceptance.core_wasm.status, 'verified');
     assert.equal(acceptance.hologram_oracle, 'verified');
-    assert(acceptance.modeled_vectors >= 12);
+    assert.equal(acceptance.modeled_vectors, acceptanceVectors().length);
     assert.equal(files(path.join(buildRoot, 'view/browser')).length, 6);
   } else if (id === 'MM-10') {
     // The system is a project-owned typed architecture in this SDK version.

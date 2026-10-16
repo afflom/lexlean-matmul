@@ -4,15 +4,38 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { root, sourceModules } from './evidence.mjs';
 
+export function acceptanceVectors() {
+  const application = sourceModules().find(module => module.module === 'Application').semantic.declarations;
+  function resolve(term) {
+    if (term.kind !== 'call') return term;
+    assert.equal(term.arguments.length, 0);
+    assert(!term.function.module || term.function.module === 'Application');
+    const constant = application.find(row => row.kind === 'definition' && row.name === term.function.name);
+    assert(constant && constant.parameters.length === 0);
+    return resolve(constant.body);
+  }
+  const declaration = application.find(row => row.name === 'application');
+  let list = resolve(declaration.body.fields.find(field => field.field === 'acceptanceVectors').value);
+  const vectors = [];
+  while (list.kind === 'cons') {
+    const vector = resolve(list.head);
+    assert.equal(vector.kind, 'record');
+    assert.equal(vector.type.name, 'AcceptanceVector');
+    vectors.push(vector);
+    list = resolve(list.tail);
+  }
+  assert.equal(list.kind, 'nil');
+  return vectors;
+}
+
 export function renderErrors() {
   const modules = sourceModules();
   const protocol = modules.find(module => module.module === 'Protocol').semantic.declarations;
   const errors = protocol.find(row => row.kind === 'inductive' && row.name === 'ProtocolError');
   const response = protocol.find(row => row.name === 'errorResponse');
-  const vectors = modules.find(module => module.module === 'Application').semantic.declarations
-    .filter(row => row.body?.kind === 'record' && row.body.type.name === 'AcceptanceVector');
+  const vectors = acceptanceVectors();
   assert(vectors.length >= 12, 'The public error contract needs independent byte-level vectors.');
-  const expected = vectors.map(row => row.body.fields.find(field => field.field === 'response').value.hex);
+  const expected = vectors.map(row => row.fields.find(field => field.field === 'response').value.hex);
   let result = '<!-- @generated from src/Protocol.lex.tex, src/Core.lex.tex, and src/Application.lex.tex. -->\n\n';
   result += '# Public errors\n\nThe versioned byte interface returns `1`, `error`, and the wire code, separated by tabs.\n\n';
   result += '| Typed variant | Wire code | Modeled negative vectors |\n| --- | --- | --- |\n';
