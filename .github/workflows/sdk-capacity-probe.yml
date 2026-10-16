@@ -1,0 +1,99 @@
+name: Measure original SDK native runner disk
+
+on:
+  push:
+    branches: [ci/sdk-capacity-probe-2026-10-16]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capacity:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ubuntu-24.04, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 60
+    steps:
+      - name: Measure both immutable images and real serial export peaks
+        env:
+          OBSERVED_RUNNER: ${{ matrix.runner }}
+        run: |
+          python3 - <<'PY'
+          import datetime, json, os, pathlib, subprocess
+          source = '0984474e0208207383c3f9779451d07b2c57b91b'
+          repository = 'ghcr.io/afflom/lexlean-matmul-sdk'
+          images = [
+              ('amd64', 'sha256:39ec2fbe7819fb21e3c255e633a6d37568a250cefdd4aa12c5f612ff9884bd74'),
+              ('arm64', 'sha256:1ff6ef0bd1ee9fb1e3f643d8a520bcd417e4b466645ceb2051e2120a1fd783f0'),
+          ]
+          evidence = pathlib.Path('capacity-evidence')
+          evidence.mkdir()
+          work = pathlib.Path(os.environ['RUNNER_TEMP']) / 'original-sdk-capacity-probe'
+          work.mkdir()
+          report = {
+              'schema': 'lexlean-matmul/sdk-runner-capacity-diagnostic/1',
+              'scope': 'original-images-and-serial-export-space-only',
+              'source_revision': source, 'runner': os.environ['OBSERVED_RUNNER'],
+              'qualification': False, 'snapshots': [], 'images': [], 'exports': [],
+              'unclaimed': ['sdk-fetch', 'authority-byte-validation', 'application-build', 'full-vv', 'release', 'deployment'],
+          }
+          def persist():
+              (evidence / 'result.json').write_text(json.dumps(report, indent=2) + '\n')
+          def snapshot(stage):
+              mounts = []
+              for name in ['/', str(work)]:
+                  s = os.statvfs(name)
+                  mounts.append({'path': name, 'total_bytes': s.f_blocks * s.f_frsize,
+                      'available_bytes': s.f_bavail * s.f_frsize, 'free_bytes': s.f_bfree * s.f_frsize})
+              report['snapshots'].append({'stage': stage, 'observed_at': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'mounts': mounts})
+              persist()
+              print(json.dumps(report['snapshots'][-1]), flush=True)
+          def command(name, args):
+              started = datetime.datetime.now(datetime.timezone.utc)
+              result = subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=900)
+              (evidence / (name + '.stdout')).write_text(result.stdout)
+              (evidence / (name + '.stderr')).write_text(result.stderr)
+              assert result.returncode == 0, name + ' failed with exit ' + str(result.returncode)
+              print(name + ' succeeded in ' + str((datetime.datetime.now(datetime.timezone.utc) - started).total_seconds()) + ' seconds', flush=True)
+              return result.stdout
+          try:
+              info = json.loads(command('docker-info', ['docker', 'info', '--format', '{{json .}}']))
+              report['docker'] = {k: info[k] for k in ['Driver', 'DriverStatus', 'DockerRootDir', 'ServerVersion'] if k in info}
+              snapshot('baseline')
+              for architecture, digest in images:
+                  reference = repository + '@' + digest
+                  command('pull-' + architecture, ['docker', 'image', 'pull', '--platform', 'linux/' + architecture, reference])
+                  image = json.loads(command('inspect-' + architecture, ['docker', 'image', 'inspect', reference, '--format', '{{json .}}']))
+                  assert image['Architecture'] == architecture and reference in image['RepoDigests']
+                  assert image['Config']['Labels']['org.opencontainers.image.revision'] == source
+                  report['images'].append({'platform': 'linux/' + architecture, 'reference': reference, 'inspect_size_bytes': image['Size']})
+                  snapshot('pulled-' + architecture)
+              for architecture, digest in images:
+                  archive = work / (architecture + '.tar')
+                  assert not archive.exists()
+                  try:
+                      command('save-' + architecture, ['docker', 'image', 'save', '--output', str(archive), repository + '@' + digest])
+                      report['exports'].append({'platform': 'linux/' + architecture, 'archive_bytes': archive.stat().st_size})
+                      snapshot('both-images-and-export-' + architecture)
+                  finally:
+                      if archive.exists():
+                          archive.unlink()
+                      snapshot('removed-own-export-' + architecture)
+              report['outcome'] = 'completed'
+              persist()
+          except BaseException as error:
+              report['outcome'] = 'failed'
+              report['error'] = type(error).__name__ + ': ' + str(error)
+              snapshot('failure')
+              raise
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: original-sdk-capacity-${{ matrix.runner }}
+          path: capacity-evidence/
+          if-no-files-found: error
+          retention-days: 7
