@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { freshBuild, confined, root, run, files, writeJson, readJson, sourceDigest, verificationDigest, sha, evidenceRoot } from './evidence.mjs';
 import { deploymentMetadata } from './system-model.mjs';
+import { readSystemRelease } from './system-release.mjs';
 
 const build = freshBuild();
 const acceptance = readJson(path.join(evidenceRoot, 'acceptance.json'));
@@ -13,7 +14,8 @@ assert.equal(acceptance.verification_digest, verificationDigest());
 for (const item of acceptance.evidence) assert.equal(sha(fs.readFileSync(confined(item.path, evidenceRoot))), item.sha256);
 run('node', ['scripts/conformance.mjs', 'MM-09']);
 run('node', ['scripts/conformance.mjs', 'MM-10']);
-const directory = path.join(path.dirname(confined(build.manifest_path)), 'view/browser');
+const release = readSystemRelease(build);
+const directory = confined(release.export_directory);
 const inventory = files(directory);
 assert.equal(inventory.length, 6);
 const target = deploymentMetadata();
@@ -25,5 +27,6 @@ fs.cpSync(directory, output, { recursive: true });
 assert.deepEqual(files(output), inventory);
 writeJson(path.join(evidenceRoot, 'pages.json'), {
   schema: 'lexlean-matmul/pages-projection/1', build_id: build.build_id, assets: inventory,
+  release_reference: release.reference, export_tree_digest: release.export.tree_digest,
 });
-console.log(`Staged the exact six-file verified browser projection in ${target.directory}/.`);
+console.log(`Staged the six SDK source-free release assets in ${target.directory}/.`);

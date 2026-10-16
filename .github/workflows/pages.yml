@@ -27,6 +27,16 @@ jobs:
         run: ./scripts/in-sdk.sh just vv
       - name: Stage the exact verified browser projection
         run: ./scripts/in-sdk.sh just pages
+      - name: Capture accepted native OCI and source-free publication evidence
+        run: ./scripts/in-sdk.sh node scripts/system-release.mjs bundle
+      - name: Retain the inert native release bundle
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: lexlean-matmul-native-release
+          path: .prism/matmul/browser-release-bundle
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 1
       - name: Upload the unchanged Pages artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
         with:
@@ -64,6 +74,14 @@ jobs:
         with:
           name: github-pages
           path: .prism/pages-publication
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: lexlean-matmul-native-release
+          path: .prism/matmul/browser-release-bundle
+      - name: Verify the accepted OCI browser closure through the source-free SDK API
+        env:
+          DEPLOYED_URL: ${{ needs.deploy.outputs.url }}
+        run: ./scripts/in-sdk.sh node scripts/system-release.mjs verify-bundle .prism/matmul/browser-release-bundle "$DEPLOYED_URL"
       - name: Verify every published HTTPS byte against the uploaded archive
         env:
           DEPLOYED_URL: ${{ needs.deploy.outputs.url }}

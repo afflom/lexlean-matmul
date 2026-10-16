@@ -27,7 +27,7 @@ function moduleSource(root, name) {
 
 // This reads closed deployment data. The SDK remains the authority for typing,
 // kernel proof replay, generation, and application acceptance.
-export function systemModel(root = repositoryRoot) {
+function sourceReader(root) {
   const modules = new Map();
   const active = new Set();
   const declaration = (module, name) => {
@@ -75,6 +75,11 @@ export function systemModel(root = repositoryRoot) {
       default: throw new Error(`unsupported deployment metadata expression ${value.kind}`);
     }
   };
+  return { evaluate, declaration };
+}
+
+export function systemModel(root = repositoryRoot) {
+  const { evaluate, declaration } = sourceReader(root);
   const result = evaluate({ kind: 'call', function: { module: 'MatmulSystem', name: 'browserSystem' }, arguments: [] }, 'MatmulSystem');
   const application = evaluate({ kind: 'call', function: { module: 'Application', name: 'application' }, arguments: [] }, 'Application');
   for (const [field, applicationField] of [
@@ -94,8 +99,61 @@ export function systemModel(root = repositoryRoot) {
   return result;
 }
 
+export function nativeSystemModel(root = repositoryRoot) {
+  const { evaluate, declaration } = sourceReader(root);
+  const read = name => evaluate({ kind: 'call', function: { module: 'MatmulSystem', name }, arguments: [] }, 'MatmulSystem');
+  for (const [name, type] of [['systemModel', 'SystemModel'], ['systemManifest', 'SystemManifest']]) {
+    const value = declaration('MatmulSystem', name);
+    assert.equal(value.result.member.module, 'Production.BrowserSystem');
+    assert.equal(value.result.member.name, type);
+    assert.equal(value.body.kind, 'record');
+    assert.equal(value.body.type.module, 'Production.BrowserSystem');
+  }
+  const model = read('systemModel'), manifest = read('systemManifest');
+  const project = systemModel(root);
+  assert.equal(model.product.id, project.id);
+  assert.equal(model.product.owner, project.owner);
+  assert.equal(model.product.version, project.version);
+  assert.equal(model.product.sourcePolicy, project.sourcePolicy);
+  assert.deepEqual(model.product.supportedPlatforms, ['browser']);
+  assert.equal(model.applicationProfile.execution, project.execution);
+  assert.equal(model.applicationProfile.persistentStorage, project.storage);
+  assert.equal(model.applicationProfile.externalServices, project.externalServices);
+  assert.deepEqual(model.applicationProfile.resources, project.resources);
+  assert.match(model.applicationProfile.applicationModelDigest, /^sha256:[0-9a-f]{64}$/);
+  assert.equal(model.artifacts.length, 1);
+  assert.equal(model.artifacts[0].id, project.artifactId);
+  assert.equal(model.artifacts[0].licenseExpression, project.artifactLicense);
+  assert.equal(model.components.length, 1);
+  assert.equal(model.components[0].id, project.nodes.find(node => node.index === 2).id);
+  assert.equal(model.components[0].artifact, project.artifactId);
+  assert.equal(model.components[0].version, project.version);
+  assert.equal(model.targets.length, 1);
+  assert.equal(model.targets[0].id, project.target.id);
+  assert.equal(manifest.applicationModelDigest, model.applicationProfile.applicationModelDigest);
+  assert.equal(manifest.productId, model.product.id);
+  assert.equal(manifest.productVersion, model.product.version);
+  assert.equal(manifest.componentId, model.components[0].id);
+  assert.equal(manifest.artifactId, model.artifacts[0].id);
+  assert.equal(manifest.targetId, model.targets[0].id);
+  assert.deepEqual(manifest.controls, model.controls);
+  const release = declaration('MatmulSystem', 'matmulSystemReleaseReady');
+  assert.deepEqual(release.axioms, []);
+  assert.equal(release.proof.kind, 'decide');
+  assert.equal(release.statement.left.function.module, 'Production.BrowserSystem');
+  assert.equal(release.statement.left.function.name, 'validateManifest');
+  assert.deepEqual(release.statement.left.arguments.map(value => value.function.name), ['systemModel', 'systemManifest']);
+  assert.deepEqual(release.statement.right, { kind: 'bool', value: true });
+  const consistency = declaration('MatmulSystem', 'nativeSystemMetadataConsistent');
+  assert.deepEqual(consistency.axioms, []);
+  assert.equal(consistency.proof.kind, 'decide');
+  assert.equal(consistency.statement.left.function.name, 'nativeMetadataValid');
+  return { model, manifest };
+}
+
 export function deploymentMetadata(root = repositoryRoot) {
   const model = systemModel(root);
+  const native = nativeSystemModel(root);
   return {
     ...model.target,
     url: new URL(model.target.basePath, model.target.origin).href,
@@ -103,6 +161,7 @@ export function deploymentMetadata(root = repositoryRoot) {
     applicationName: model.applicationName,
     artifactId: model.artifactId,
     controls: model.controls,
+    nativeSystem: native.model,
   };
 }
 
@@ -112,6 +171,16 @@ export function validateWorkflow(root = repositoryRoot) {
   for (const action of [target.uploadAction, target.deployAction]) {
     assert.equal(workflow.split(`uses: ${action}`).length - 1, 1, `Pages workflow must bind ${action}`);
   }
+  assert.equal(workflow.split(`uses: ${target.bundleUploadAction}`).length - 1, 1,
+    'Native release bundle must use the modeled pinned upload action');
+  const bundleUpload = workflow.split(`uses: ${target.bundleUploadAction}`)[1].split('      - ')[0];
+  assert(bundleUpload.includes('include-hidden-files: true'), 'Native OCI/evidence bundle upload must include hidden files');
+  assert(workflow.includes(`uses: ${target.bundleDownloadAction}`), 'Native release bundle download action differs');
+  assert(workflow.includes(`name: ${target.bundleName}`), 'Native release bundle name differs');
+  assert(workflow.includes(`path: ${target.bundleDirectory}`), 'Native release bundle directory differs');
+  assert(workflow.includes('scripts/system-release.mjs bundle'), 'Pages workflow must retain accepted native OCI evidence');
+  assert(workflow.includes(`scripts/system-release.mjs verify-bundle ${target.bundleDirectory}`),
+    'Live publication must replay the accepted native release through the SDK source-free API');
   assert(workflow.includes(`path: ${target.directory}`), 'Pages artifact directory differs from the source model');
   assert(workflow.includes(`refs/heads/${target.branch}`), 'Pages publication branch differs from the source model');
   assert(workflow.includes(`name: ${target.environment}`), 'Pages environment differs from the source model');
