@@ -31,9 +31,9 @@
   ],
   "isolated_helper_sha256": "8f29a61bef3327a87d480c00a1b152accbf78bf535da395d63a2e48e4577cfad",
   "source_sha256": {
-    "Atlas": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
+    "Atlas": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b",
     "Core": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
-    "Float": "e4989f77d8c4fe35888178a8e870f7b702e5666816a2ce9533d90a5c9448a0e2"
+    "Float": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6"
   },
   "steps": [
     {
@@ -65,10 +65,10 @@
       ],
       "result": {
         "artifacts": [
-          ".lexlean/verified/71e58598ebd1f10964342514df090f755496124648f89e913c53b6c3ccda8d46"
+          ".lexlean/verified/136ed2317b1accb3e751a379259306456d5f7a2b2baf783d5da62a86d23eb1be"
         ],
-        "attestation_id": "71e58598ebd1f10964342514df090f755496124648f89e913c53b6c3ccda8d46",
-        "build_id": "2d3e9160b990ea06991f1e2d3bd3a60efe449cb9d9741b441a4d37c8c82d48b0",
+        "attestation_id": "136ed2317b1accb3e751a379259306456d5f7a2b2baf783d5da62a86d23eb1be",
+        "build_id": "a4b8547151f53bdeceb830e32a70a672700338d073cee65ef95efe69c2cd4c56",
         "command": "verify",
         "diagnostics": [],
         "exit_code": 0,
@@ -77,8 +77,8 @@
           "Core",
           "Float"
         ],
-        "semantic_id": "4bef0e40db1bfd8e1349addd0dbe27afa3730c0506f72fcbfa00e01af850556f",
-        "source_id": "9bbeb40b8f6444331bf1caf3777527cdcb7fea0cc8c745e7f99808fba0ed8af0",
+        "semantic_id": "f878e5aafb54131b257e81118f7699b2cc9a59acdace210f2d50359d46032de0",
+        "source_id": "19be0d82c9fcd71f9be4b8158f5c49e93a90045b9927e2cfac3dcd8fa44a41d9",
         "spec": "lexlean/command-result/1",
         "success": true
       }
@@ -148,10 +148,10 @@
       ],
       "result": {
         "artifacts": [
-          ".lexlean/verified/71e58598ebd1f10964342514df090f755496124648f89e913c53b6c3ccda8d46"
+          ".lexlean/verified/136ed2317b1accb3e751a379259306456d5f7a2b2baf783d5da62a86d23eb1be"
         ],
-        "attestation_id": "71e58598ebd1f10964342514df090f755496124648f89e913c53b6c3ccda8d46",
-        "build_id": "2d3e9160b990ea06991f1e2d3bd3a60efe449cb9d9741b441a4d37c8c82d48b0",
+        "attestation_id": "136ed2317b1accb3e751a379259306456d5f7a2b2baf783d5da62a86d23eb1be",
+        "build_id": "a4b8547151f53bdeceb830e32a70a672700338d073cee65ef95efe69c2cd4c56",
         "command": "verify",
         "diagnostics": [],
         "exit_code": 0,
@@ -160,8 +160,8 @@
           "Core",
           "Float"
         ],
-        "semantic_id": "4bef0e40db1bfd8e1349addd0dbe27afa3730c0506f72fcbfa00e01af850556f",
-        "source_id": "9bbeb40b8f6444331bf1caf3777527cdcb7fea0cc8c745e7f99808fba0ed8af0",
+        "semantic_id": "f878e5aafb54131b257e81118f7699b2cc9a59acdace210f2d50359d46032de0",
+        "source_id": "19be0d82c9fcd71f9be4b8158f5c49e93a90045b9927e2cfac3dcd8fa44a41d9",
         "spec": "lexlean/command-result/1",
         "success": true
       }
@@ -169,10 +169,10 @@
   ],
   "baseline": {
     "artifacts": [
-      ".lexlean/verified/71e58598ebd1f10964342514df090f755496124648f89e913c53b6c3ccda8d46"
+      ".lexlean/verified/136ed2317b1accb3e751a379259306456d5f7a2b2baf783d5da62a86d23eb1be"
     ],
-    "attestation_id": "71e58598ebd1f10964342514df090f755496124648f89e913c53b6c3ccda8d46",
-    "build_id": "2d3e9160b990ea06991f1e2d3bd3a60efe449cb9d9741b441a4d37c8c82d48b0",
+    "attestation_id": "136ed2317b1accb3e751a379259306456d5f7a2b2baf783d5da62a86d23eb1be",
+    "build_id": "a4b8547151f53bdeceb830e32a70a672700338d073cee65ef95efe69c2cd4c56",
     "command": "verify",
     "diagnostics": [],
     "exit_code": 0,
@@ -181,17 +181,17 @@
       "Core",
       "Float"
     ],
-    "semantic_id": "4bef0e40db1bfd8e1349addd0dbe27afa3730c0506f72fcbfa00e01af850556f",
-    "source_id": "9bbeb40b8f6444331bf1caf3777527cdcb7fea0cc8c745e7f99808fba0ed8af0",
+    "semantic_id": "f878e5aafb54131b257e81118f7699b2cc9a59acdace210f2d50359d46032de0",
+    "source_id": "19be0d82c9fcd71f9be4b8158f5c49e93a90045b9927e2cfac3dcd8fa44a41d9",
     "spec": "lexlean/command-result/1",
     "success": true
   },
   "restored": {
     "artifacts": [
-      ".lexlean/verified/71e58598ebd1f10964342514df090f755496124648f89e913c53b6c3ccda8d46"
+      ".lexlean/verified/136ed2317b1accb3e751a379259306456d5f7a2b2baf783d5da62a86d23eb1be"
     ],
-    "attestation_id": "71e58598ebd1f10964342514df090f755496124648f89e913c53b6c3ccda8d46",
-    "build_id": "2d3e9160b990ea06991f1e2d3bd3a60efe449cb9d9741b441a4d37c8c82d48b0",
+    "attestation_id": "136ed2317b1accb3e751a379259306456d5f7a2b2baf783d5da62a86d23eb1be",
+    "build_id": "a4b8547151f53bdeceb830e32a70a672700338d073cee65ef95efe69c2cd4c56",
     "command": "verify",
     "diagnostics": [],
     "exit_code": 0,
@@ -200,8 +200,8 @@
       "Core",
       "Float"
     ],
-    "semantic_id": "4bef0e40db1bfd8e1349addd0dbe27afa3730c0506f72fcbfa00e01af850556f",
-    "source_id": "9bbeb40b8f6444331bf1caf3777527cdcb7fea0cc8c745e7f99808fba0ed8af0",
+    "semantic_id": "f878e5aafb54131b257e81118f7699b2cc9a59acdace210f2d50359d46032de0",
+    "source_id": "19be0d82c9fcd71f9be4b8158f5c49e93a90045b9927e2cfac3dcd8fa44a41d9",
     "spec": "lexlean/command-result/1",
     "success": true
   },
@@ -214,7 +214,7 @@
     ],
     "exit_code": 1,
     "stdout": "",
-    "stderr": "error[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest\n    { kind := 0, negative := false,\n      digits := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], scale := 24 }\nis not definitionally equal to the right-hand side\n  1065353218\n\u22a2 encode Format.binary32 EncodeMode.nearest\n      { kind := 0, negative := false,\n        digits := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], scale := 24 } =\n    1065353218\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:704:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest\n    { kind := 0, negative := false, digits := [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],\n      scale := 150 }\nis not definitionally equal to the right-hand side\n  8388608\n\u22a2 encode Format.binary32 EncodeMode.nearest\n      { kind := 0, negative := false,\n        digits := [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], scale := 150 } =\n    8388608\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:722:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest\n    { kind := 0, negative := false, digits := floatShiftBits 128 [1], scale := 0 }\nis not definitionally equal to the right-hand side\n  2139095040\n\u22a2 encode Format.binary32 EncodeMode.nearest\n      { kind := 0, negative := false, digits := floatShiftBits 128 [1], scale := 0 } =\n    2139095040\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:725:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest { kind := 0, negative := false, digits := [1, 1], scale := 150 }\nis not definitionally equal to the right-hand side\n  2\n\u22a2 encode Format.binary32 EncodeMode.nearest { kind := 0, negative := false, digits := [1, 1], scale := 150 } = 2\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:716:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary64 EncodeMode.nearest\n    { kind := 0, negative := false,\n      digits :=\n        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],\n      scale := 53 }\nis not definitionally equal to the right-hand side\n  4607182418800017410\n\u22a2 encode Format.binary64 EncodeMode.nearest\n      { kind := 0, negative := false,\n        digits :=\n          [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],\n        scale := 53 } =\n    4607182418800017410\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:710:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary64 EncodeMode.nearest { kind := 0, negative := false, digits := [1, 1], scale := 1075 }\nis not definitionally equal to the right-hand side\n  2\n\u22a2 encode Format.binary64 EncodeMode.nearest { kind := 0, negative := false, digits := [1, 1], scale := 1075 } = 2\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:719:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encodeDyadicInteger 8 EncodeMode.nearest { coefficient := { negative := false, digits := [7] }, scale := 1 }\nis not definitionally equal to the right-hand side\n  { negative := false, digits := [4] }\n\u22a2 encodeDyadicInteger 8 EncodeMode.nearest { coefficient := { negative := false, digits := [7] }, scale := 1 } =\n    { negative := false, digits := [4] }\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:773:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (warning): Variable name `mode` is not explicitly referenced.\nThe binding can be removed (if unused) or named `_` (if used implicitly).\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:343:32\n",
+    "stderr": "error[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest\n    { kind := 0, negative := false,\n      digits := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], scale := 24 }\nis not definitionally equal to the right-hand side\n  1065353218\n\u22a2 encode Format.binary32 EncodeMode.nearest\n      { kind := 0, negative := false,\n        digits := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], scale := 24 } =\n    1065353218\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:736:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest\n    { kind := 0, negative := false, digits := [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],\n      scale := 150 }\nis not definitionally equal to the right-hand side\n  8388608\n\u22a2 encode Format.binary32 EncodeMode.nearest\n      { kind := 0, negative := false,\n        digits := [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], scale := 150 } =\n    8388608\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:754:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest\n    { kind := 0, negative := false, digits := floatShiftBits 128 [1], scale := 0 }\nis not definitionally equal to the right-hand side\n  2139095040\n\u22a2 encode Format.binary32 EncodeMode.nearest\n      { kind := 0, negative := false, digits := floatShiftBits 128 [1], scale := 0 } =\n    2139095040\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:757:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest { kind := 0, negative := false, digits := [1, 1], scale := 150 }\nis not definitionally equal to the right-hand side\n  2\n\u22a2 encode Format.binary32 EncodeMode.nearest { kind := 0, negative := false, digits := [1, 1], scale := 150 } = 2\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:748:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary64 EncodeMode.nearest\n    { kind := 0, negative := false,\n      digits :=\n        [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],\n      scale := 53 }\nis not definitionally equal to the right-hand side\n  4607182418800017410\n\u22a2 encode Format.binary64 EncodeMode.nearest\n      { kind := 0, negative := false,\n        digits :=\n          [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\n            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],\n        scale := 53 } =\n    4607182418800017410\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:742:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary64 EncodeMode.nearest { kind := 0, negative := false, digits := [1, 1], scale := 1075 }\nis not definitionally equal to the right-hand side\n  2\n\u22a2 encode Format.binary64 EncodeMode.nearest { kind := 0, negative := false, digits := [1, 1], scale := 1075 } = 2\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:751:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encodeDyadicInteger 8 EncodeMode.nearest { coefficient := { negative := false, digits := [7] }, scale := 1 }\nis not definitionally equal to the right-hand side\n  { negative := false, digits := [4] }\n\u22a2 encodeDyadicInteger 8 EncodeMode.nearest { coefficient := { negative := false, digits := [7] }, scale := 1 } =\n    { negative := false, digits := [4] }\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:805:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Float` (warning): Variable name `mode` is not explicitly referenced.\nThe binding can be removed (if unused) or named `_` (if used implicitly).\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:343:32\n",
     "theorem": "LexLeanMatmul.Float.nearestEvenUp32",
     "selection": "src/Float.lex.tex",
     "modules": [
@@ -222,14 +222,14 @@
       "Core",
       "Float"
     ],
-    "build_id": "811ef49a64518f3464df7f2fb2a6b8a68f5b896268951e0c2cbd3187ec02d52d",
-    "source_sha256": "126f99f7a7a7db3d0f05c77fecaeae9ad03f178933967686e15ad0f6e4c26212",
-    "generated_sha256": "1f55b12f8cdac7aa7225aac7815d7e946d05c33c498aeced630f2ea594fc8bbe",
+    "build_id": "8e5eadf18eed87d8b4f1234c84ad2bed0a7397b8ab1a388ed51a886322ede205",
+    "source_sha256": "e944cce3b05b13d36ccb3d29a7cbcd0dc6b5f78fdbf7f0db6af6cbe3a183f1db",
+    "generated_sha256": "f780b639b080be87b6da9fcd99c50ae72cbc69d63824f4fbfd609303013287c4",
     "generated_source": "modules/LexLeanMatmul/Float.lean",
     "generated_lines": {
-      "first": 703,
-      "last": 705
+      "first": 735,
+      "last": 737
     },
-    "intended_diagnostic": "error[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest\n    { kind := 0, negative := false,\n      digits := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], scale := 24 }\nis not definitionally equal to the right-hand side\n  1065353218\n\u22a2 encode Format.binary32 EncodeMode.nearest\n      { kind := 0, negative := false,\n        digits := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], scale := 24 } =\n    1065353218\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:704:2\n"
+    "intended_diagnostic": "error[LLV7002]: Lean rejected `LexLeanMatmul.Float` (error): Tactic `rfl` failed: The left-hand side\n  encode Format.binary32 EncodeMode.nearest\n    { kind := 0, negative := false,\n      digits := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], scale := 24 }\nis not definitionally equal to the right-hand side\n  1065353218\n\u22a2 encode Format.binary32 EncodeMode.nearest\n      { kind := 0, negative := false,\n        digits := [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], scale := 24 } =\n    1065353218\n  --> src/Float.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Float.lean:736:2\n"
   }
 }
