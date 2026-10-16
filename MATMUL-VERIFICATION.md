@@ -16,13 +16,13 @@ the containing native system and does not execute generated application
 artifacts. The selected modules are Application, Atlas, Codec, CodecProtocol,
 Core, Epilogue, ExtendedProtocol, Float, Model, Protocol, and the SDK-owned Text
 V1 metadata module. Its attestation is
-`40a791c11ab6408f7f03225245075e3f8ca625bf932c8972b5777872df686f07`.
+`36550bb57cd2acb454bd6f1f00f083b4b0648a6d4c65e4710aa72f3b75127a2d`.
 
 | Mathematical module | Declarations | Theorems |
 | --- | ---: | ---: |
 | Core | 262 | 59 |
 | Atlas | 134 | 47 |
-| Float | 228 | 72 |
+| Float | 230 | 72 |
 | Epilogue | 60 | 16 |
 | Codec | 656 | 35 |
 
@@ -35,8 +35,8 @@ low zeros, borrow propagation, and prefix limits. Subtraction computes its
 borrow and digit in scalar helpers before the recursive call, allowing the
 actual Lean exporter and Rust generator to preserve the moved accumulator.
 IEEE sticky-bit prefixes use the same bounded copy worker.
-Integer IEEE epilogues decompose only their scalar into canonical signed NAF
-atoms, then shift and add the existing exact aggregate. They preserve the
+Integer IEEE epilogues compare canonical signed NAF expansions and apply the
+shorter atom list to the other exact operand through shifts and additions. They preserve the
 Atlas multiplication path for matrix operands and the existing non-finite and
 fractional-scalar behavior. The [source audit](verification/integer-ieee-epilogue-source-audit.json)
 checks that all 224 preceding mathematical theorems remain unchanged and the
