@@ -3,12 +3,71 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { runtime, expect, request, success, csv } from './runtime-oracle.mjs';
 import { ieeeOracle } from './extended-oracle.mjs';
-import { evidenceRoot, sha, writeJson } from './evidence.mjs';
+import { evidenceRoot, sha, sourceModules, writeJson } from './evidence.mjs';
 
 // Independent expected E8 bytes from the pinned upstream e8.rs table. They
 // are never read from the product's LexLean source or generated artifacts.
 const e8 = [[0,0,0,0,0,0,0,0],[-32,-32,0,0,0,0,0,0],[-32,0,-32,0,0,0,0,0],[-32,0,0,-32,0,0,0,0],[-32,0,0,0,-32,0,0,0],[-32,0,0,0,0,-32,0,0],[-32,0,0,0,0,0,-32,0],[-32,0,0,0,0,0,0,-32],[-32,0,0,0,0,0,0,32],[-32,0,0,0,0,0,32,0],[-32,0,0,0,0,32,0,0],[-32,0,0,0,32,0,0,0],[-32,0,0,32,0,0,0,0],[-32,0,32,0,0,0,0,0],[-32,32,0,0,0,0,0,0],[-16,-16,-16,-16,-16,-16,-16,-16],[-16,-16,-16,-16,-16,-16,16,16],[-16,-16,-16,-16,-16,16,-16,16],[-16,-16,-16,-16,-16,16,16,-16],[-16,-16,-16,-16,16,-16,-16,16],[-16,-16,-16,-16,16,-16,16,-16],[-16,-16,-16,-16,16,16,-16,-16],[-16,-16,-16,-16,16,16,16,16],[-16,-16,-16,16,-16,-16,-16,16],[-16,-16,-16,16,-16,-16,16,-16],[-16,-16,-16,16,-16,16,-16,-16],[-16,-16,-16,16,-16,16,16,16],[-16,-16,-16,16,16,-16,-16,-16],[-16,-16,-16,16,16,-16,16,16],[-16,-16,-16,16,16,16,-16,16],[-16,-16,-16,16,16,16,16,-16],[-16,-16,16,-16,-16,-16,-16,16],[-16,-16,16,-16,-16,-16,16,-16],[-16,-16,16,-16,-16,16,-16,-16],[-16,-16,16,-16,-16,16,16,16],[-16,-16,16,-16,16,-16,-16,-16],[-16,-16,16,-16,16,-16,16,16],[-16,-16,16,-16,16,16,-16,16],[-16,-16,16,-16,16,16,16,-16],[-16,-16,16,16,-16,-16,-16,-16],[-16,-16,16,16,-16,-16,16,16],[-16,-16,16,16,-16,16,-16,16],[-16,-16,16,16,-16,16,16,-16],[-16,-16,16,16,16,-16,-16,16],[-16,-16,16,16,16,-16,16,-16],[-16,-16,16,16,16,16,-16,-16],[-16,-16,16,16,16,16,16,16],[-16,16,-16,-16,-16,-16,-16,16],[-16,16,-16,-16,-16,-16,16,-16],[-16,16,-16,-16,-16,16,-16,-16],[-16,16,-16,-16,-16,16,16,16],[-16,16,-16,-16,16,-16,-16,-16],[-16,16,-16,-16,16,-16,16,16],[-16,16,-16,-16,16,16,-16,16],[-16,16,-16,-16,16,16,16,-16],[-16,16,-16,16,-16,-16,-16,-16],[-16,16,-16,16,-16,-16,16,16],[-16,16,-16,16,-16,16,-16,16],[-16,16,-16,16,-16,16,16,-16],[-16,16,-16,16,16,-16,-16,16],[-16,16,-16,16,16,-16,16,-16],[-16,16,-16,16,16,16,-16,-16],[-16,16,-16,16,16,16,16,16],[-16,16,16,-16,-16,-16,-16,-16],[-16,16,16,-16,-16,-16,16,16],[-16,16,16,-16,-16,16,-16,16],[-16,16,16,-16,-16,16,16,-16],[-16,16,16,-16,16,-16,-16,16],[-16,16,16,-16,16,-16,16,-16],[-16,16,16,-16,16,16,-16,-16],[-16,16,16,-16,16,16,16,16],[-16,16,16,16,-16,-16,-16,16],[-16,16,16,16,-16,-16,16,-16],[-16,16,16,16,-16,16,-16,-16],[-16,16,16,16,-16,16,16,16],[-16,16,16,16,16,-16,-16,-16],[-16,16,16,16,16,-16,16,16],[-16,16,16,16,16,16,-16,16],[-16,16,16,16,16,16,16,-16],[0,-32,-32,0,0,0,0,0],[0,-32,0,-32,0,0,0,0],[0,-32,0,0,-32,0,0,0],[0,-32,0,0,0,-32,0,0],[0,-32,0,0,0,0,-32,0],[0,-32,0,0,0,0,0,-32],[0,-32,0,0,0,0,0,32],[0,-32,0,0,0,0,32,0],[0,-32,0,0,0,32,0,0],[0,-32,0,0,32,0,0,0],[0,-32,0,32,0,0,0,0],[0,-32,32,0,0,0,0,0],[0,0,-32,-32,0,0,0,0],[0,0,-32,0,-32,0,0,0],[0,0,-32,0,0,-32,0,0],[0,0,-32,0,0,0,-32,0],[0,0,-32,0,0,0,0,-32],[0,0,-32,0,0,0,0,32],[0,0,-32,0,0,0,32,0],[0,0,-32,0,0,32,0,0],[0,0,-32,0,32,0,0,0],[0,0,-32,32,0,0,0,0],[0,0,0,-32,-32,0,0,0],[0,0,0,-32,0,-32,0,0],[0,0,0,-32,0,0,-32,0],[0,0,0,-32,0,0,0,-32],[0,0,0,-32,0,0,0,32],[0,0,0,-32,0,0,32,0],[0,0,0,-32,0,32,0,0],[0,0,0,-32,32,0,0,0],[0,0,0,0,-32,-32,0,0],[0,0,0,0,-32,0,-32,0],[0,0,0,0,-32,0,0,-32],[0,0,0,0,-32,0,0,32],[0,0,0,0,-32,0,32,0],[0,0,0,0,-32,32,0,0],[0,0,0,0,0,-32,-32,0],[0,0,0,0,0,-32,0,-32],[0,0,0,0,0,-32,0,32],[0,0,0,0,0,-32,32,0],[0,0,0,0,0,0,-32,-32],[0,0,0,0,0,0,-32,32],[0,0,0,0,0,0,32,-32],[0,0,0,0,0,0,32,32],[0,0,0,0,0,32,-32,0],[0,0,0,0,0,32,0,-32],[0,0,0,0,0,32,0,32],[0,0,0,0,0,32,32,0],[0,0,0,0,32,-32,0,0],[0,0,0,0,32,0,-32,0],[0,0,0,0,32,0,0,-32],[0,0,0,0,32,0,0,32],[0,0,0,0,32,0,32,0],[0,0,0,0,32,32,0,0],[0,0,0,32,-32,0,0,0],[0,0,0,32,0,-32,0,0],[0,0,0,32,0,0,-32,0],[0,0,0,32,0,0,0,-32],[0,0,0,32,0,0,0,32],[0,0,0,32,0,0,32,0],[0,0,0,32,0,32,0,0],[0,0,0,32,32,0,0,0],[0,0,32,-32,0,0,0,0],[0,0,32,0,-32,0,0,0],[0,0,32,0,0,-32,0,0],[0,0,32,0,0,0,-32,0],[0,0,32,0,0,0,0,-32],[0,0,32,0,0,0,0,32],[0,0,32,0,0,0,32,0],[0,0,32,0,0,32,0,0],[0,0,32,0,32,0,0,0],[0,0,32,32,0,0,0,0],[0,32,-32,0,0,0,0,0],[0,32,0,-32,0,0,0,0],[0,32,0,0,-32,0,0,0],[0,32,0,0,0,-32,0,0],[0,32,0,0,0,0,-32,0],[0,32,0,0,0,0,0,-32],[0,32,0,0,0,0,0,32],[0,32,0,0,0,0,32,0],[0,32,0,0,0,32,0,0],[0,32,0,0,32,0,0,0],[0,32,0,32,0,0,0,0],[0,32,32,0,0,0,0,0],[16,-16,-16,-16,-16,-16,-16,16],[16,-16,-16,-16,-16,-16,16,-16],[16,-16,-16,-16,-16,16,-16,-16],[16,-16,-16,-16,-16,16,16,16],[16,-16,-16,-16,16,-16,-16,-16],[16,-16,-16,-16,16,-16,16,16],[16,-16,-16,-16,16,16,-16,16],[16,-16,-16,-16,16,16,16,-16],[16,-16,-16,16,-16,-16,-16,-16],[16,-16,-16,16,-16,-16,16,16],[16,-16,-16,16,-16,16,-16,16],[16,-16,-16,16,-16,16,16,-16],[16,-16,-16,16,16,-16,-16,16],[16,-16,-16,16,16,-16,16,-16],[16,-16,-16,16,16,16,-16,-16],[16,-16,-16,16,16,16,16,16],[16,-16,16,-16,-16,-16,-16,-16],[16,-16,16,-16,-16,-16,16,16],[16,-16,16,-16,-16,16,-16,16],[16,-16,16,-16,-16,16,16,-16],[16,-16,16,-16,16,-16,-16,16],[16,-16,16,-16,16,-16,16,-16],[16,-16,16,-16,16,16,-16,-16],[16,-16,16,-16,16,16,16,16],[16,-16,16,16,-16,-16,-16,16],[16,-16,16,16,-16,-16,16,-16],[16,-16,16,16,-16,16,-16,-16],[16,-16,16,16,-16,16,16,16],[16,-16,16,16,16,-16,-16,-16],[16,-16,16,16,16,-16,16,16],[16,-16,16,16,16,16,-16,16],[16,-16,16,16,16,16,16,-16],[16,16,-16,-16,-16,-16,-16,-16],[16,16,-16,-16,-16,-16,16,16],[16,16,-16,-16,-16,16,-16,16],[16,16,-16,-16,-16,16,16,-16],[16,16,-16,-16,16,-16,-16,16],[16,16,-16,-16,16,-16,16,-16],[16,16,-16,-16,16,16,-16,-16],[16,16,-16,-16,16,16,16,16],[16,16,-16,16,-16,-16,-16,16],[16,16,-16,16,-16,-16,16,-16],[16,16,-16,16,-16,16,-16,-16],[16,16,-16,16,-16,16,16,16],[16,16,-16,16,16,-16,-16,-16],[16,16,-16,16,16,-16,16,16],[16,16,-16,16,16,16,-16,16],[16,16,-16,16,16,16,16,-16],[16,16,16,-16,-16,-16,-16,16],[16,16,16,-16,-16,-16,16,-16],[16,16,16,-16,-16,16,-16,-16],[16,16,16,-16,-16,16,16,16],[16,16,16,-16,16,-16,-16,-16],[16,16,16,-16,16,-16,16,16],[16,16,16,-16,16,16,-16,16],[16,16,16,-16,16,16,16,-16],[16,16,16,16,-16,-16,-16,-16],[16,16,16,16,-16,-16,16,16],[16,16,16,16,-16,16,-16,16],[16,16,16,16,-16,16,16,-16],[16,16,16,16,16,-16,-16,16],[16,16,16,16,16,-16,16,-16],[16,16,16,16,16,16,-16,-16],[16,16,16,16,16,16,16,16],[32,-32,0,0,0,0,0,0],[32,0,-32,0,0,0,0,0],[32,0,0,-32,0,0,0,0],[32,0,0,0,-32,0,0,0],[32,0,0,0,0,-32,0,0],[32,0,0,0,0,0,-32,0],[32,0,0,0,0,0,0,-32],[32,0,0,0,0,0,0,32],[32,0,0,0,0,0,32,0],[32,0,0,0,0,32,0,0],[32,0,0,0,32,0,0,0],[32,0,0,32,0,0,0,0],[32,0,32,0,0,0,0,0],[32,32,0,0,0,0,0,0],[-32,-32,-32,-32,0,0,0,0],[-32,-32,-32,0,-32,0,0,0],[-32,-32,-32,0,0,-32,0,0],[-32,-32,-32,0,0,0,-32,0],[-32,-32,-32,0,0,0,0,-32],[-32,-32,-32,0,0,0,0,32],[-32,-32,-32,0,0,0,32,0],[-32,-32,-32,0,0,32,0,0],[-32,-32,-32,0,32,0,0,0],[-32,-32,-32,32,0,0,0,0],[-32,-32,0,-32,-32,0,0,0],[-32,-32,0,-32,0,-32,0,0],[-32,-32,0,-32,0,0,-32,0],[-32,-32,0,-32,0,0,0,-32],[-32,-32,0,-32,0,0,0,32]];
 const e8Digest = 'f4a90d635c5baacf986e3fd4921bf18875b2d94555c1b6a19a078e7918ff6936';
+export function validateE8Source(declarations = sourceModules().find(module => module.module === 'Codec').semantic.declarations) {
+  const names = new Map(declarations.map(declaration => [declaration.name, declaration]));
+  assert.equal(names.size, declarations.length, 'Codec declaration names must be unique');
+  const integer = { kind: 'named', member: { module: 'Core', name: 'BigInt' }, arguments: [] };
+  const list = { kind: 'list', element: integer };
+  const owned = { kind: 'named', member: { name: 'CodecOwnedList1' }, arguments: [] };
+  assert.deepEqual(names.get('CodecOwnedList1'), { kind: 'structure', name: 'CodecOwnedList1', parameters: [], type_parameters: [],
+    fields: [{ name: 'values', type: list }] });
+  function literalList(term, element) {
+    const result = [];
+    while (term.kind === 'cons') {
+      assert.deepEqual(Object.keys(term).sort(), ['head', 'kind', 'tail']);
+      result.push(term.head);
+      term = term.tail;
+    }
+    assert.deepEqual(term, { kind: 'nil', element });
+    return result;
+  }
+  const rows = Array.from({ length: 256 }, (_, index) => {
+    const name = `e8Row${index}`, facade = names.get(name), storage = names.get(`${name}Owned`);
+    assert.deepEqual(facade, { kind: 'definition', name, parameters: [], result: list, axioms: [],
+      body: { kind: 'project', value: { kind: 'call', function: { name: `${name}Owned` }, arguments: [] }, field: 'values' } });
+    assert(storage && storage.kind === 'definition' && storage.parameters.length === 0);
+    assert.deepEqual(Object.keys(storage).sort(), ['axioms', 'body', 'kind', 'name', 'parameters', 'result']);
+    assert.deepEqual(storage.axioms, []);
+    assert.deepEqual(storage.result, owned);
+    assert.deepEqual(Object.keys(storage.body).sort(), ['fields', 'kind', 'type']);
+    assert.equal(storage.body.kind, 'record');
+    assert.deepEqual(storage.body.type, { name: 'CodecOwnedList1' });
+    assert.equal(storage.body.fields.length, 1);
+    assert.equal(storage.body.fields[0].field, 'values');
+    const values = literalList(storage.body.fields[0].value, integer).map(value => {
+      assert.deepEqual(Object.keys(value).sort(), ['fields', 'kind', 'type']);
+      assert.equal(value.kind, 'record');
+      assert.deepEqual(value.type, { module: 'Core', name: 'BigInt' });
+      assert.deepEqual(value.fields.map(field => field.field), ['negative', 'digits']);
+      const [sign, digits] = value.fields.map(field => field.value);
+      assert.equal(sign.kind, 'bool');
+      assert.equal(typeof sign.value, 'boolean');
+      const decimal = literalList(digits, { kind: 'nat' }).map(digit => {
+        assert.deepEqual(Object.keys(digit).sort(), ['kind', 'value']);
+        assert.equal(digit.kind, 'nat');
+        assert.match(digit.value, /^[0-9]$/);
+        return Number(digit.value);
+      });
+      if (decimal.length) assert(decimal.at(-1) > 0, 'Canonical E8 integers cannot have leading zero digits');
+      else assert.equal(sign.value, false, 'Canonical E8 zero must have positive sign');
+      const magnitude = decimal.reduceRight((sum, digit) => sum * 10 + digit, 0);
+      const result = sign.value ? -magnitude : magnitude;
+      assert(Number.isInteger(result) && result >= -128 && result <= 127);
+      return result;
+    });
+    assert.equal(values.length, 8);
+    return values;
+  });
+  assert.deepEqual(rows, e8, 'Modeled E8 rows must equal the independent pinned upstream table');
+  assert.equal(sha(Uint8Array.from(rows.flat().map(value => value & 255))), e8Digest);
+  return { rows: rows.length, width: 8, sha256: e8Digest, storage: 'owned-record' };
+}
 const modes = ['nearest', 'toward-zero', 'saturating', 'wrapping'];
 const natural = text => BigInt(text);
 const parseCsv = text => text === '' ? [] : text.split(',').map(natural);
@@ -182,6 +241,7 @@ async function arenaCases(machine) {
 }
 export async function runCodecChecks(id = 'MM-17') {
   assert.equal(id, 'MM-17');
+  const e8Source = validateE8Source();
   const machine = await runtime();
   try { await codecCases(machine); await arenaCases(machine); }
   catch (error) {
@@ -192,5 +252,5 @@ export async function runCodecChecks(id = 'MM-17') {
   }
   assert(machine.calls > 0);
   return { schema: 'lexlean-matmul/runtime-acceptance/1', id, build_id: machine.buildId, wasm_sha256: machine.wasmSha256,
-    requests: machine.calls, status: 'passed', codec_construction: 'total-compositional-modulo-codebooks', e8_bytes_sha256: e8Digest };
+    requests: machine.calls, status: 'passed', codec_construction: 'total-compositional-modulo-codebooks', e8_bytes_sha256: e8Digest, e8_source: e8Source };
 }
