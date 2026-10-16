@@ -2,7 +2,7 @@
 
 The complete selected application source closure has passed Lean and
 leanchecker verification, including all 158 modeled byte vectors. The five
-mathematical modules contain 214 kernel-checked theorems. **Full generated
+mathematical modules contain 222 kernel-checked theorems. **Full generated
 application acceptance and GitHub Pages deployment remain pending.** Source
 verification is not a substitute for the repository's complete `just vv` gate.
 
@@ -16,19 +16,23 @@ the containing native system and does not execute generated application
 artifacts. The selected modules are Application, Atlas, Codec, CodecProtocol,
 Core, Epilogue, ExtendedProtocol, Float, Model, Protocol, and the SDK-owned Text
 V1 metadata module. Its attestation is
-`1a7e17d45e259c460f78939551d368570777009b2c42c17c2a1279800cf422b7`.
+`6be7e2aca4a8d45a9ec7a912aef5bd040ddd539f556fdb0654db9c91a86069fa`.
 
 | Mathematical module | Declarations | Theorems |
 | --- | ---: | ---: |
-| Core | 251 | 59 |
-| Atlas | 119 | 43 |
-| Float | 201 | 61 |
+| Core | 260 | 59 |
+| Atlas | 132 | 47 |
+| Float | 214 | 65 |
 | Epilogue | 60 | 16 |
-| Codec | 400 | 35 |
+| Codec | 656 | 35 |
 
 Owned records hold eager intermediate lists while public list facades retain
 their original types. Four additional induction lemmas establish the owned
 views used by the existing public preservation theorems.
+Digit and bit workers borrow their inputs and move append accumulators through
+tail calls. Eight additional worker theorems check prefix order, zero handling,
+low zeros, and borrow propagation. E8 rows use the same owned storage pattern;
+the independent oracle still validates every symbol against the pinned table.
 
 Each theorem carries an exact observed axiom policy. Concrete examples and
 component lemmas do not establish a universal refinement theorem for every
