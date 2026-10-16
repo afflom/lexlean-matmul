@@ -1,17 +1,17 @@
-# model/authorities.toml --- what this repository cites rather than proves.
-#
-# A `some-true` claim is reproduced from an authority and is not established
-# here. This file is where the authority is named well enough for a third party
-# to find it, with a checksum over the committed artifact when there is one and
-# a stated reason when there is not.
-#
-# `realized_by` lists the conformance IDs that are *evidence* this repository
-# realizes the cited fact. Evidence is not proof, and the meta-gate fails the
-# build if any document blurs the two registers.
-#
-# Empty. The first authority this repository cites goes here, before any claim
-# is allowed to say `some-true`.
-
 spec = "template/1"
 
-authority = []
+[[authority]]
+id = "UOR-MATMUL"
+name = "UOR-Foundation/uor-matmul"
+citation = "https://github.com/UOR-Foundation/uor-matmul/tree/3cc5882f210667f9ac00fd8c02c5b5957b493f5d"
+checksum = "sha256:c482e921c32c9a41ae691375753458918e3d76265c4e72ad0a40e8998ca4d1de"
+statement = "Decode coded operands, accumulate exactly, and encode the result once."
+realized_by = ["MM-01", "MM-02", "MM-03", "MM-04", "MM-05", "MM-06"]
+
+[[authority]]
+id = "CALCULATOR"
+name = "UOR-Foundation/calculator-example"
+citation = "https://github.com/UOR-Foundation/calculator-example/tree/5051dc6adb18e9ca2b6ae4ca7090e638329831ef"
+checksum = "sha256:84480ed580eaf1200baa718d493770458c2a34a76f2652022d790baa16bc6db9"
+statement = "An application model generates portable Core-Wasm, Holo, and GitHub Pages artifacts."
+realized_by = ["MM-09", "MM-10"]

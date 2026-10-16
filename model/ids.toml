@@ -1,23 +1,73 @@
-# model/ids.toml --- the conformance ID register.
-#
-# Every ID this repository claims, in one place, so that nothing is referenced
-# without being defined. `CONFORMANCE.md` is generated from this file. A test
-# whose name ends in an ID not listed here fails `check-model`, and an ID listed
-# here with no scenario and no test fails it too (CM-02).
-#
-# `level` is the honesty level (R2):
-#   some-true  a fact reproduced from an authority; not established here
-#   build      constructed here and validated against its oracle
-#   open       measured and reported, never asserted
-#
-# Every row here has a scenario in `features/suites/` and a test whose name ends
-# in the ID, lowercased with underscores (R3, CM-02). There is no "pending"
-# state: a capability that is not built does not get a row, and every row in this
-# file is built.
-#
-# The register is empty. This repository has no claims yet; adding one starts
-# with a row here, in the order `AGENTS.md` sets out.
-
 spec = "template/1"
 
-id = []
+[[id]]
+id = "MM-01"
+level = "build"
+suite = "exact"
+statement = "Integer GEMM decodes operands, accumulates exact products, and applies the linear epilogue once."
+
+[[id]]
+id = "MM-02"
+level = "build"
+suite = "codecs"
+statement = "Signed binary, ternary, and signed eight-bit codecs preserve their declared decoded values."
+
+[[id]]
+id = "MM-03"
+level = "build"
+suite = "exact"
+statement = "Partitioned and tabulated accumulation agrees with direct accumulation, including partial blocks."
+
+[[id]]
+id = "MM-04"
+level = "build"
+suite = "exact"
+statement = "Complex integer products and dyadic products retain exact arithmetic through reduction."
+
+[[id]]
+id = "MM-05"
+level = "build"
+suite = "tropical"
+statement = "Max-plus multiplication preserves negative infinity and selects the least attaining reduction index."
+
+[[id]]
+id = "MM-06"
+level = "build"
+suite = "tropical"
+statement = "Tropical recentering preserves masked entries and yields a canonical gauge representative."
+
+[[id]]
+id = "MM-07"
+level = "build"
+suite = "protocol"
+statement = "Versioned matrix requests reject malformed values, incompatible shapes, and invalid codes with modeled errors."
+
+[[id]]
+id = "MM-08"
+level = "build"
+suite = "proofs"
+statement = "LexLean generates kernel-checked arithmetic and codec theorems with explicit axiom policies."
+
+[[id]]
+id = "MM-09"
+level = "build"
+suite = "application"
+statement = "One LexLean application model generates the native library, Core-Wasm, Holo archive, and accessible portable View."
+
+[[id]]
+id = "MM-10"
+level = "build"
+suite = "system"
+statement = "The PrismPM browser system binds the application, artifact, component, controls, and GitHub Pages target."
+
+[[id]]
+id = "MM-11"
+level = "build"
+suite = "verification"
+statement = "Independent exact arithmetic oracles validate generated runtime results and representative planted defects are rejected."
+
+[[id]]
+id = "MM-12"
+level = "build"
+suite = "reproducibility"
+statement = "The pinned SDK reproduces platform-independent application artifacts from separate clean roots."
