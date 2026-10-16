@@ -31,10 +31,10 @@
   ],
   "isolated_helper_sha256": "88d99d24636289d53adda005e01025e6579cc8cd2df2c644d9b3788030038b45",
   "source_sha256": {
-    "Atlas": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
-    "Codec": "a2c3ff47192b2609c9cdcd4d49d78944a13afa8ebe708f7a776757eb079c63a7",
+    "Atlas": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b",
+    "Codec": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88",
     "Core": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
-    "Float": "e4989f77d8c4fe35888178a8e870f7b702e5666816a2ce9533d90a5c9448a0e2"
+    "Float": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6"
   },
   "steps": [
     {
@@ -66,10 +66,10 @@
       ],
       "result": {
         "artifacts": [
-          ".lexlean/verified/9fea892e5819048e5b2a5cb5b8a6191a29e2797f06158b456f39fa3c792dc8c1"
+          ".lexlean/verified/fd8d35f27f527df453da096ba7f75270116929be1bbb6bd8e042da2865a06674"
         ],
-        "attestation_id": "9fea892e5819048e5b2a5cb5b8a6191a29e2797f06158b456f39fa3c792dc8c1",
-        "build_id": "85668ba2979570d857aaecdbc2f66393c78ffd217b90b83aeba80a8f72498d12",
+        "attestation_id": "fd8d35f27f527df453da096ba7f75270116929be1bbb6bd8e042da2865a06674",
+        "build_id": "02bd21ec75bdf87c09a95ca0e6f88a7b2a1197ff64de077a39a5abb27d1baae1",
         "command": "verify",
         "diagnostics": [],
         "exit_code": 0,
@@ -79,8 +79,8 @@
           "Core",
           "Float"
         ],
-        "semantic_id": "d730e79ab377bbefd34b144533c0e17f9eaf694e578bf8d13065f959719d849e",
-        "source_id": "81343e906469394b76f3c9a35218221e93a5e524a4d971034dade7dc9b8c567a",
+        "semantic_id": "add3338025a65623538895258b8c64d1da47529ad2e716e3d803f6b42060bf9b",
+        "source_id": "c842161daa0de8209a3009bc2935e9cb39b9528f1c3b3d8009e88f6ebb91f8b5",
         "spec": "lexlean/command-result/1",
         "success": true
       }
@@ -132,10 +132,10 @@
       ],
       "result": {
         "artifacts": [
-          ".lexlean/verified/9fea892e5819048e5b2a5cb5b8a6191a29e2797f06158b456f39fa3c792dc8c1"
+          ".lexlean/verified/fd8d35f27f527df453da096ba7f75270116929be1bbb6bd8e042da2865a06674"
         ],
-        "attestation_id": "9fea892e5819048e5b2a5cb5b8a6191a29e2797f06158b456f39fa3c792dc8c1",
-        "build_id": "85668ba2979570d857aaecdbc2f66393c78ffd217b90b83aeba80a8f72498d12",
+        "attestation_id": "fd8d35f27f527df453da096ba7f75270116929be1bbb6bd8e042da2865a06674",
+        "build_id": "02bd21ec75bdf87c09a95ca0e6f88a7b2a1197ff64de077a39a5abb27d1baae1",
         "command": "verify",
         "diagnostics": [],
         "exit_code": 0,
@@ -145,8 +145,8 @@
           "Core",
           "Float"
         ],
-        "semantic_id": "d730e79ab377bbefd34b144533c0e17f9eaf694e578bf8d13065f959719d849e",
-        "source_id": "81343e906469394b76f3c9a35218221e93a5e524a4d971034dade7dc9b8c567a",
+        "semantic_id": "add3338025a65623538895258b8c64d1da47529ad2e716e3d803f6b42060bf9b",
+        "source_id": "c842161daa0de8209a3009bc2935e9cb39b9528f1c3b3d8009e88f6ebb91f8b5",
         "spec": "lexlean/command-result/1",
         "success": true
       }
@@ -162,7 +162,7 @@
       ],
       "exit_code": 1,
       "stdout": "",
-      "stderr": "error[LLV7002]: Lean rejected `LexLeanMatmul.Codec` (error): Tactic `rfl` failed: The left-hand side\n  decodeWord\n    {\n      nodes :=\n        [{ kind := CodecKind.grid, width := 8, block := 1, child := 0, parameter := 0,\n            zeroPoint := { negative := false, digits := [] },\n            table := [[{ negative := true, digits := [1] }], [{ negative := false, digits := [1] }]], runs := [],\n            mapping := [] },\n          { kind := CodecKind.packed, width := 8, block := 1, child := 0, parameter := 8,\n            zeroPoint := { negative := false, digits := [] }, table := [], runs := [], mapping := [] }],\n      root := 1 }\n    5\nis not definitionally equal to the right-hand side\n  [{ negative := false, digits := [1] }, { negative := true, digits := [1] }, { negative := false, digits := [1] },\n    { negative := true, digits := [1] }, { negative := true, digits := [1] }, { negative := true, digits := [1] },\n    { negative := true, digits := [1] }, { negative := true, digits := [1] }]\n\u22a2 decodeWord\n      {\n        nodes :=\n          [{ kind := CodecKind.grid, width := 8, block := 1, child := 0, parameter := 0,\n              zeroPoint := { negative := false, digits := [] },\n              table := [[{ negative := true, digits := [1] }], [{ negative := false, digits := [1] }]], runs := [],\n              mapping := [] },\n            { kind := CodecKind.packed, width := 8, block := 1, child := 0, parameter := 8,\n              zeroPoint := { negative := false, digits := [] }, table := [], runs := [], mapping := [] }],\n        root := 1 }\n      5 =\n    [{ negative := false, digits := [1] }, { negative := true, digits := [1] }, { negative := false, digits := [1] },\n      { negative := true, digits := [1] }, { negative := true, digits := [1] }, { negative := true, digits := [1] },\n      { negative := true, digits := [1] }, { negative := true, digits := [1] }]\n  --> src/Codec.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Codec.lean:1655:2\n",
+      "stderr": "error[LLV7002]: Lean rejected `LexLeanMatmul.Codec` (error): Tactic `rfl` failed: The left-hand side\n  decodeWord\n    {\n      nodes :=\n        [{ kind := CodecKind.grid, width := 8, block := 1, child := 0, parameter := 0,\n            zeroPoint := { negative := false, digits := [] },\n            table := [[{ negative := true, digits := [1] }], [{ negative := false, digits := [1] }]], runs := [],\n            mapping := [] },\n          { kind := CodecKind.packed, width := 8, block := 1, child := 0, parameter := 8,\n            zeroPoint := { negative := false, digits := [] }, table := [], runs := [], mapping := [] }],\n      root := 1 }\n    5\nis not definitionally equal to the right-hand side\n  [{ negative := false, digits := [1] }, { negative := true, digits := [1] }, { negative := false, digits := [1] },\n    { negative := true, digits := [1] }, { negative := true, digits := [1] }, { negative := true, digits := [1] },\n    { negative := true, digits := [1] }, { negative := true, digits := [1] }]\n\u22a2 decodeWord\n      {\n        nodes :=\n          [{ kind := CodecKind.grid, width := 8, block := 1, child := 0, parameter := 0,\n              zeroPoint := { negative := false, digits := [] },\n              table := [[{ negative := true, digits := [1] }], [{ negative := false, digits := [1] }]], runs := [],\n              mapping := [] },\n            { kind := CodecKind.packed, width := 8, block := 1, child := 0, parameter := 8,\n              zeroPoint := { negative := false, digits := [] }, table := [], runs := [], mapping := [] }],\n        root := 1 }\n      5 =\n    [{ negative := false, digits := [1] }, { negative := true, digits := [1] }, { negative := false, digits := [1] },\n      { negative := true, digits := [1] }, { negative := true, digits := [1] }, { negative := true, digits := [1] },\n      { negative := true, digits := [1] }, { negative := true, digits := [1] }]\n  --> src/Codec.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Codec.lean:1690:2\n",
       "theorem": "LexLeanMatmul.Codec.packedLowFirst",
       "selection": "src/Codec.lex.tex",
       "modules": [
@@ -171,23 +171,23 @@
         "Core",
         "Float"
       ],
-      "build_id": "4e721ae68fe6fdcaec078e1b740767b904d46115b5784c9bd84a5f2411dbc955",
-      "source_sha256": "87ace94d576cd4aa695d47997698a203d7297a1f3fe0ace00295be9bb6abd109",
-      "generated_sha256": "06a58473dd99f36413b0360a7ffc34294d862b99b6e2b693118606e6696a6e60",
+      "build_id": "adad5b51fa903d14c2322e3e44be3c6e65a7f08c06cbee1bea22bbb37c2b7642",
+      "source_sha256": "7e1a6c51bedc015a700c92b6842726c5bf8ecfc60b64414fea272c6facc16e5d",
+      "generated_sha256": "7006a5114e9b3a1551fc22877d2795a7fa7267fe66ceb35e87fe1a15481c1d21",
       "generated_source": "modules/LexLeanMatmul/Codec.lean",
       "generated_lines": {
-        "first": 1654,
-        "last": 1656
+        "first": 1689,
+        "last": 1691
       },
-      "intended_diagnostic": "error[LLV7002]: Lean rejected `LexLeanMatmul.Codec` (error): Tactic `rfl` failed: The left-hand side\n  decodeWord\n    {\n      nodes :=\n        [{ kind := CodecKind.grid, width := 8, block := 1, child := 0, parameter := 0,\n            zeroPoint := { negative := false, digits := [] },\n            table := [[{ negative := true, digits := [1] }], [{ negative := false, digits := [1] }]], runs := [],\n            mapping := [] },\n          { kind := CodecKind.packed, width := 8, block := 1, child := 0, parameter := 8,\n            zeroPoint := { negative := false, digits := [] }, table := [], runs := [], mapping := [] }],\n      root := 1 }\n    5\nis not definitionally equal to the right-hand side\n  [{ negative := false, digits := [1] }, { negative := true, digits := [1] }, { negative := false, digits := [1] },\n    { negative := true, digits := [1] }, { negative := true, digits := [1] }, { negative := true, digits := [1] },\n    { negative := true, digits := [1] }, { negative := true, digits := [1] }]\n\u22a2 decodeWord\n      {\n        nodes :=\n          [{ kind := CodecKind.grid, width := 8, block := 1, child := 0, parameter := 0,\n              zeroPoint := { negative := false, digits := [] },\n              table := [[{ negative := true, digits := [1] }], [{ negative := false, digits := [1] }]], runs := [],\n              mapping := [] },\n            { kind := CodecKind.packed, width := 8, block := 1, child := 0, parameter := 8,\n              zeroPoint := { negative := false, digits := [] }, table := [], runs := [], mapping := [] }],\n        root := 1 }\n      5 =\n    [{ negative := false, digits := [1] }, { negative := true, digits := [1] }, { negative := false, digits := [1] },\n      { negative := true, digits := [1] }, { negative := true, digits := [1] }, { negative := true, digits := [1] },\n      { negative := true, digits := [1] }, { negative := true, digits := [1] }]\n  --> src/Codec.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Codec.lean:1655:2\n"
+      "intended_diagnostic": "error[LLV7002]: Lean rejected `LexLeanMatmul.Codec` (error): Tactic `rfl` failed: The left-hand side\n  decodeWord\n    {\n      nodes :=\n        [{ kind := CodecKind.grid, width := 8, block := 1, child := 0, parameter := 0,\n            zeroPoint := { negative := false, digits := [] },\n            table := [[{ negative := true, digits := [1] }], [{ negative := false, digits := [1] }]], runs := [],\n            mapping := [] },\n          { kind := CodecKind.packed, width := 8, block := 1, child := 0, parameter := 8,\n            zeroPoint := { negative := false, digits := [] }, table := [], runs := [], mapping := [] }],\n      root := 1 }\n    5\nis not definitionally equal to the right-hand side\n  [{ negative := false, digits := [1] }, { negative := true, digits := [1] }, { negative := false, digits := [1] },\n    { negative := true, digits := [1] }, { negative := true, digits := [1] }, { negative := true, digits := [1] },\n    { negative := true, digits := [1] }, { negative := true, digits := [1] }]\n\u22a2 decodeWord\n      {\n        nodes :=\n          [{ kind := CodecKind.grid, width := 8, block := 1, child := 0, parameter := 0,\n              zeroPoint := { negative := false, digits := [] },\n              table := [[{ negative := true, digits := [1] }], [{ negative := false, digits := [1] }]], runs := [],\n              mapping := [] },\n            { kind := CodecKind.packed, width := 8, block := 1, child := 0, parameter := 8,\n              zeroPoint := { negative := false, digits := [] }, table := [], runs := [], mapping := [] }],\n        root := 1 }\n      5 =\n    [{ negative := false, digits := [1] }, { negative := true, digits := [1] }, { negative := false, digits := [1] },\n      { negative := true, digits := [1] }, { negative := true, digits := [1] }, { negative := true, digits := [1] },\n      { negative := true, digits := [1] }, { negative := true, digits := [1] }]\n  --> src/Codec.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Codec.lean:1690:2\n"
     }
   ],
   "baseline": {
     "artifacts": [
-      ".lexlean/verified/9fea892e5819048e5b2a5cb5b8a6191a29e2797f06158b456f39fa3c792dc8c1"
+      ".lexlean/verified/fd8d35f27f527df453da096ba7f75270116929be1bbb6bd8e042da2865a06674"
     ],
-    "attestation_id": "9fea892e5819048e5b2a5cb5b8a6191a29e2797f06158b456f39fa3c792dc8c1",
-    "build_id": "85668ba2979570d857aaecdbc2f66393c78ffd217b90b83aeba80a8f72498d12",
+    "attestation_id": "fd8d35f27f527df453da096ba7f75270116929be1bbb6bd8e042da2865a06674",
+    "build_id": "02bd21ec75bdf87c09a95ca0e6f88a7b2a1197ff64de077a39a5abb27d1baae1",
     "command": "verify",
     "diagnostics": [],
     "exit_code": 0,
@@ -197,17 +197,17 @@
       "Core",
       "Float"
     ],
-    "semantic_id": "d730e79ab377bbefd34b144533c0e17f9eaf694e578bf8d13065f959719d849e",
-    "source_id": "81343e906469394b76f3c9a35218221e93a5e524a4d971034dade7dc9b8c567a",
+    "semantic_id": "add3338025a65623538895258b8c64d1da47529ad2e716e3d803f6b42060bf9b",
+    "source_id": "c842161daa0de8209a3009bc2935e9cb39b9528f1c3b3d8009e88f6ebb91f8b5",
     "spec": "lexlean/command-result/1",
     "success": true
   },
   "restored": {
     "artifacts": [
-      ".lexlean/verified/9fea892e5819048e5b2a5cb5b8a6191a29e2797f06158b456f39fa3c792dc8c1"
+      ".lexlean/verified/fd8d35f27f527df453da096ba7f75270116929be1bbb6bd8e042da2865a06674"
     ],
-    "attestation_id": "9fea892e5819048e5b2a5cb5b8a6191a29e2797f06158b456f39fa3c792dc8c1",
-    "build_id": "85668ba2979570d857aaecdbc2f66393c78ffd217b90b83aeba80a8f72498d12",
+    "attestation_id": "fd8d35f27f527df453da096ba7f75270116929be1bbb6bd8e042da2865a06674",
+    "build_id": "02bd21ec75bdf87c09a95ca0e6f88a7b2a1197ff64de077a39a5abb27d1baae1",
     "command": "verify",
     "diagnostics": [],
     "exit_code": 0,
@@ -217,8 +217,8 @@
       "Core",
       "Float"
     ],
-    "semantic_id": "d730e79ab377bbefd34b144533c0e17f9eaf694e578bf8d13065f959719d849e",
-    "source_id": "81343e906469394b76f3c9a35218221e93a5e524a4d971034dade7dc9b8c567a",
+    "semantic_id": "add3338025a65623538895258b8c64d1da47529ad2e716e3d803f6b42060bf9b",
+    "source_id": "c842161daa0de8209a3009bc2935e9cb39b9528f1c3b3d8009e88f6ebb91f8b5",
     "spec": "lexlean/command-result/1",
     "success": true
   }
