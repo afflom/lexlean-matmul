@@ -1,17 +1,18 @@
 # Matmul verification record
 
-The complete selected application source closure has passed Lean and
-leanchecker verification, including all 158 modeled byte vectors. The five
+The recorded application source selection passed Lean and leanchecker
+verification before the explicit resource-profile migration, including all
+158 modeled byte vectors. The unchanged five
 mathematical modules contain 241 kernel-checked theorems. Full generated
 application and deployment qualification require the complete `just vv` gate
 and protected publication checks. Source verification establishes its recorded
 scope independently of those release results.
 
-## Current source evidence
+## Recorded source evidence
 
 [Application source evidence](verification/application-source-proof.json)
 retains the actual command result, build manifest, source hashes, declaration
-axiom audits, and process evidence for the unchanged application selection.
+axiom audits, and process evidence for that application selection.
 It explicitly records `qualified_for_release: false`: this diagnostic excludes
 the containing native system and does not execute generated application
 artifacts. The selected modules are Application, Atlas, Codec, CodecProtocol,
@@ -52,6 +53,10 @@ The [combined source audit](verification/owned-product-caches-source-audit.json)
 preserves all 224 preceding theorem statements and proof trees and checks the
 17 new certificates against the actual application attestation. Each new
 certificate declares an empty axiom policy. The original policies remain exact.
+The [resource-model audit](verification/text-v2-resource-model.json) checks that
+the subsequent Text-V2 migration preserves all other semantic trees and all
+158 vectors. `Model.lex.tex` owns its memory and stack constants; their closed
+values equal the metadata used by the successful runtime diagnostic.
 E8 rows use the same owned storage pattern;
 the independent oracle still validates every symbol against the pinned table.
 Computational definitions use distinct names across modules because the
