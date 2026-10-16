@@ -153,6 +153,7 @@ async function runCase(machine, plan, rows, a, routes = ['direct', 'table']) {
   const expected = success(m, columns, multiply(m, inner, columns, a, decoded.flat()));
   for (const route of routes) {
     const input = request(1, 'codec', route, plan, m, inner, columns, csv(a), rows.map(csv).join('/'));
+    assert(Buffer.byteLength(input) <= 16384, 'Valid codec requests must fit the declared byte bound');
     currentCase = { plan, route, request_sha256: sha(input), request_bytes: Buffer.byteLength(input) };
     await expect(machine, input, expected, `total codec ${route}: ${plan}`);
   }
@@ -205,6 +206,18 @@ async function codecCases(machine) {
     await expect(machine, request(1, 'codec', route, 'grid:8:-3,0,7', 2, 0, 3, '', ''), success(2, 3, Array(6).fill(0n)), 'zero reduction preserves declared output shape');
   }
   const maximumMagnitude = 10n ** 64n - 1n;
+  const maximumActivations = Array.from({ length: 64 }, (_, index) => maximumMagnitude - BigInt(index));
+  const maximumBook = Array.from({ length: 64 }, (_, index) => maximumMagnitude - 1000n - BigInt(index));
+  const maximumStoredRows = Array.from({ length: 8 }, (_, row) =>
+    Array.from({ length: 8 }, (_, column) => BigInt(row * 8 + column)));
+  assert([...maximumActivations, ...maximumBook].every(value => String(value).length === 64));
+  assert.equal(new Set([...maximumActivations, ...maximumBook].map(String)).size, 128,
+    'Maximum-domain codec activations and words must be individually distinct and disjoint');
+  assert.equal(new Set(maximumStoredRows.flat().map(String)).size, 64,
+    'All 64 stored codes must be distinct and reference the entire codebook');
+  assert.equal(new Set(maximumActivations.flatMap(value => maximumBook.map(word => String(value * word)))).size, 4096,
+    'Maximum-domain codec must retain all 64 × 64 distinct scalar products');
+  await runCase(machine, `grid:8:${csv(maximumBook)}`, maximumStoredRows, maximumActivations);
   await runCase(machine, `grid:8:${maximumMagnitude},-${maximumMagnitude}`, [[0n, 1n]], [-maximumMagnitude]);
   await runCase(machine, `grid:8:${maximumMagnitude};offset:-${maximumMagnitude}`, [[0n]], [maximumMagnitude]);
   const negatives = [
