@@ -140,6 +140,12 @@ external requests or page errors.
 These measurements use the actual normal source-maintenance compiler output.
 They remain explicitly unqualified for release and do not replace the final
 immutable SDK, native system, complete acceptance, or publication gates.
+The [browser boundary diagnostic](verification/browser-boundary-diagnostic.json)
+also executes the wide and dense epilogues, composed codec table, and
+maximum-exponent table through the unchanged generated Node binding and fresh
+Chromium UI instances. All eight probes pass. The browser allocator's largest
+observed memory size is 1,076 pages, about 70.5 MB; its memory behavior differs
+from the Core-Wasm allocator measured above.
 
 ## SDK and release boundary
 

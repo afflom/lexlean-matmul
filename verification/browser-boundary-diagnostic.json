@@ -1,0 +1,489 @@
+{
+  "schema": "lexlean-matmul/generated-browser-boundary-diagnostic/1",
+  "qualified_for_release": false,
+  "scope": "Four focused maximum-domain requests on actual unchanged generated wasm-bindgen Node and local Chromium UI. Source-maintenance artifact only; no immutable SDK, native system, full just vv, or live Pages qualification.",
+  "created_at": "2026-10-16T12:00:08.664Z",
+  "artifact": {
+    "build_id": "44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4",
+    "result": {
+      "path": "/tmp/matmul-source-maintenance-final-cache-build/sdk-build-result.json",
+      "byte_length": 519,
+      "sha256": "3fde285f66163dd1aadced73d3c881d8c7d0786f88896d79182c879e305c2804"
+    },
+    "manifest": {
+      "path": "/tmp/matmul-source-maintenance-final-cache-build/.prism/build/44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4/manifest.json",
+      "byte_length": 30359,
+      "sha256": "9034c848a47e1dc7a4730b39491c6445d50aff571bcc4a413adc96f87d4bfbdc"
+    },
+    "model": {
+      "path": "/tmp/matmul-source-maintenance-final-cache-build/.prism/build/44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4/model.prism.json",
+      "byte_length": 231816,
+      "sha256": "29398547747c0ba03a0f46929592d9b7bf86e3c0137a981941c482b6b8c6a53c"
+    },
+    "verified_artifact_files": 167,
+    "verified_artifact_bytes": 28462779,
+    "browser_wasm": {
+      "path": "/tmp/matmul-source-maintenance-final-cache-build/.prism/build/44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4/view/browser/lexlean_matmul_bg.wasm",
+      "byte_length": 946431,
+      "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc"
+    },
+    "generated_binding": {
+      "path": "/tmp/matmul-source-maintenance-final-cache-build/.prism/build/44cacbb158495a419b1ae47bb20f8f0a41f89f6bf493b022e57b0920ffd261d4/view/browser/lexlean_matmul.js",
+      "byte_length": 6592,
+      "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16"
+    },
+    "browser_assets": [
+      {
+        "byte_length": 804,
+        "kind": "artifact",
+        "path": "view/browser/app.css",
+        "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279"
+      },
+      {
+        "byte_length": 3621,
+        "kind": "artifact",
+        "path": "view/browser/app.js",
+        "sha256": "8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1"
+      },
+      {
+        "byte_length": 944,
+        "kind": "artifact",
+        "path": "view/browser/index.html",
+        "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad"
+      },
+      {
+        "byte_length": 6592,
+        "kind": "artifact",
+        "path": "view/browser/lexlean_matmul.js",
+        "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16"
+      },
+      {
+        "byte_length": 946431,
+        "kind": "artifact",
+        "path": "view/browser/lexlean_matmul_bg.wasm",
+        "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc"
+      },
+      {
+        "byte_length": 656,
+        "kind": "artifact",
+        "path": "view/browser/provenance.json",
+        "sha256": "3e197c022bd2a6e9c69ba92c2a80124bf715713b0e1987a93075ac46da0d212d"
+      }
+    ],
+    "modeled_core_memory_pages": 32767,
+    "memory_scope": "Core memory/stack model fields do not establish the separate wasm-bindgen artifact allocator limits; browser memory is measured below."
+  },
+  "request_timeout_ms": 300000,
+  "base_toolchain_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+  "toolchain_inventory": {
+    "path": "/opt/prismpm/share/inventory.json",
+    "byte_length": 103287,
+    "sha256": "c4141b2f49367d6333b923add902677b515953684bb07b25e9200903f2474d30"
+  },
+  "node": "v22.23.2",
+  "playwright": "1.62.1",
+  "browser_input": {
+    "capture": {
+      "path": "/tmp/lexlean-matmul-chromium157-acquisition.json",
+      "byte_length": 675,
+      "sha256": "643824233660eff2f4102b727249983f745eeaaef4c96bdfe4754dd01dcfa43b"
+    },
+    "report": {
+      "schema": "lexlean-matmul/source-maintenance-browser-input/1",
+      "qualified_for_release": false,
+      "version": "157.0.8099.0",
+      "source_authority": "/tmp/lexlean-matmul-sdk-refresh.F6Im9d/sdk/browser-engine/authority.json",
+      "original_archive": "/tmp/lexlean-matmul-chromium157-original.zip",
+      "archive_sha256": "9541eafbc02f85e3ec0c24b05f8bbffe88094389949860681bf6055aef668d7b",
+      "tree_sha256": "18c79a8a6f785debf08393ce22f57cf5923d996c431c5c55610e5a20109905b7",
+      "destination": "/tmp/lexlean-matmul-chromium157",
+      "scope": "Exact official SDK dependency acquired with unmodified installer; diagnostic readonly browser mount only, not SDK/product qualification."
+    }
+  },
+  "software_reference": {
+    "capture": {
+      "path": "/tmp/matmul-final-browser-boundary-diagnostic/software-reference-custody.json",
+      "byte_length": 440,
+      "sha256": "8ab77359af917e8b89fbb23bf62af34c1d1350c0496218727c9394eaafb31c43"
+    },
+    "report": {
+      "qualified_for_release": false,
+      "source": "/tmp/matmul-core-resource-stress-final.mjs",
+      "source_sha256": "c5ca6c7f3bd097663823aa14bf10c1403b0a8bdb641882a7c57c80f7351fd38a",
+      "copy_sha256": "cbe33dcb672c1dbfb204cecdc493fd36a77faa0474cefbdf7f97bc742f0473db",
+      "changes": "Replace only final main/worker invocation with export of unchanged pure cases() software-reference builder. Product sources and browser artifacts unchanged."
+    }
+  },
+  "runner": {
+    "path": "/tmp/matmul-final-browser-boundary-diagnostic/run.mjs",
+    "byte_length": 17597,
+    "sha256": "9aa8739cffbc03b8b008231b3ce0eed1e3b083ac9143da55e7560c514e13dcfe"
+  },
+  "prior_core_report": {
+    "path": "/tmp/matmul-final-resource-results.json",
+    "byte_length": 256106,
+    "sha256": "bfcb42e5da0e7a1cfaa0dead74b1c47b8a84ecb6277136948b87180f870059e0"
+  },
+  "cases": [
+    {
+      "label": "ieee64-8x8-wide-finite-64digit-gemm",
+      "request_bytes": 2440,
+      "request_sha256": "09f2f4c11507ec0f058575eab63bc389fcda08609e264032044b4084ae306f64",
+      "expected_bytes": 136,
+      "expected_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe",
+      "details": {
+        "rows": 8,
+        "inner": 4,
+        "columns": 8,
+        "scalar_magnitude_digits": 64,
+        "alpha": "9999999999999999999999999999999999999999999999999999999999999999",
+        "beta": "-9999999999999999999999999999999999999999999999999999999999999999",
+        "old_each": "maxFinite",
+        "exact_each": "alpha*2^-2148",
+        "expected_each": "positive-zero-after-one-terminal-round"
+      }
+    },
+    {
+      "label": "ieee64-8x8-alternating-significand-64digit-alpha",
+      "request_bytes": 2784,
+      "request_sha256": "fbe5dabc42a7bbca88e4cf10a5c903820404032794bdb56c7868f6e0a445c705",
+      "expected_bytes": 1288,
+      "expected_sha256": "b19816c1060913e2a2416ef897a694fa2c85605875abca98bbba5946585d1fdb",
+      "details": {
+        "rows": 8,
+        "inner": 8,
+        "columns": 8,
+        "significand_bits": 53,
+        "nonadjacent_positive_digits": 27,
+        "scalar_magnitude_digits": 64,
+        "alpha": "9999999999999999999999999999999999999999999999999999999999999999",
+        "beta": "0",
+        "old_each": "0",
+        "exact_each": "alpha*8*x^2-before-one-terminal-round"
+      }
+    },
+    {
+      "label": "codec-8x8-fullbook64-eight-offset-stages-table",
+      "request_bytes": 15985,
+      "request_sha256": "0f95edb48e97223d252ba792d2aec1ee7d589a769eda72f7ec8ea801d7e84543",
+      "expected_bytes": 8392,
+      "expected_sha256": "4015bf7c44cf2ea7e80dec3a8b64dd02c3a3fc73a4543f2cc2663ac4ca94ecb5",
+      "details": {
+        "rows": 8,
+        "inner": 8,
+        "columns": 8,
+        "activation_digits": 64,
+        "raw_book_digits": 21,
+        "decoded_digits": 65,
+        "book_words": 64,
+        "word_entries": 8,
+        "raw_book_scalars": 512,
+        "stored_codes": 8,
+        "stages": 8,
+        "full_width_offset_stages": 7,
+        "cached_scalar_products": 4096,
+        "distinct_cached_products": 4096,
+        "unreferenced_words": 56
+      }
+    },
+    {
+      "label": "ieee64-8x8-distinct-dense-max-exponent-book64-table",
+      "request_bytes": 2772,
+      "request_sha256": "3bad21caa0645f54e53c61de1f52a55ebcd8b966f4e8e83cd970c44983b48727",
+      "expected_bytes": 1288,
+      "expected_sha256": "f8fcc4262c9b3cb8dec7fdfe78aa8efc55cfac46065c0e2be5767365cd101c9d",
+      "details": {
+        "rows": 8,
+        "inner": 8,
+        "columns": 8,
+        "activation_cells": 64,
+        "book_entries": 64,
+        "distinct_codes": 64,
+        "cached_scalar_products": 4096,
+        "distinct_exact_products": 4096,
+        "activation_and_book_disjoint": true,
+        "base_bits": "0x7fe5555555555555",
+        "coefficient_exponent": 971,
+        "all_book_entries_referenced": true,
+        "expected_each": "positive-infinity-after-one-terminal-nearest-round",
+        "oracle": "Signed BigInt coefficient/exponent exact dot and independent terminal IEEE rounding"
+      }
+    }
+  ],
+  "results": [
+    {
+      "label": "ieee64-8x8-wide-finite-64digit-gemm",
+      "backend": "unchanged-generated-wasm-bindgen-node",
+      "fresh_instance": "new-worker-and-generated-initSync-per-case",
+      "outer_elapsed_ms": 1354.169114,
+      "status": "passed",
+      "elapsed_ms": 1293.4234259999998,
+      "total_elapsed_ms": 1299.460184,
+      "memory_before": {
+        "memory_bytes": 1114112,
+        "memory_pages": 17
+      },
+      "memory_after": {
+        "memory_bytes": 1769472,
+        "memory_pages": 27
+      },
+      "response_bytes": 136,
+      "response_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe"
+    },
+    {
+      "label": "ieee64-8x8-alternating-significand-64digit-alpha",
+      "backend": "unchanged-generated-wasm-bindgen-node",
+      "fresh_instance": "new-worker-and-generated-initSync-per-case",
+      "outer_elapsed_ms": 287.0750519999999,
+      "status": "passed",
+      "elapsed_ms": 233.59813399999985,
+      "total_elapsed_ms": 238.55099100000007,
+      "memory_before": {
+        "memory_bytes": 1114112,
+        "memory_pages": 17
+      },
+      "memory_after": {
+        "memory_bytes": 1703936,
+        "memory_pages": 26
+      },
+      "response_bytes": 1288,
+      "response_sha256": "b19816c1060913e2a2416ef897a694fa2c85605875abca98bbba5946585d1fdb"
+    },
+    {
+      "label": "codec-8x8-fullbook64-eight-offset-stages-table",
+      "backend": "unchanged-generated-wasm-bindgen-node",
+      "fresh_instance": "new-worker-and-generated-initSync-per-case",
+      "outer_elapsed_ms": 4527.0352060000005,
+      "status": "passed",
+      "elapsed_ms": 4471.811307999999,
+      "total_elapsed_ms": 4477.517949,
+      "memory_before": {
+        "memory_bytes": 1114112,
+        "memory_pages": 17
+      },
+      "memory_after": {
+        "memory_bytes": 2621440,
+        "memory_pages": 40
+      },
+      "response_bytes": 8392,
+      "response_sha256": "4015bf7c44cf2ea7e80dec3a8b64dd02c3a3fc73a4543f2cc2663ac4ca94ecb5"
+    },
+    {
+      "label": "ieee64-8x8-distinct-dense-max-exponent-book64-table",
+      "backend": "unchanged-generated-wasm-bindgen-node",
+      "fresh_instance": "new-worker-and-generated-initSync-per-case",
+      "outer_elapsed_ms": 8972.805153,
+      "status": "passed",
+      "elapsed_ms": 8907.157425,
+      "total_elapsed_ms": 8912.581944,
+      "memory_before": {
+        "memory_bytes": 1114112,
+        "memory_pages": 17
+      },
+      "memory_after": {
+        "memory_bytes": 70516736,
+        "memory_pages": 1076
+      },
+      "response_bytes": 1288,
+      "response_sha256": "f8fcc4262c9b3cb8dec7fdfe78aa8efc55cfac46065c0e2be5767365cd101c9d"
+    },
+    {
+      "label": "ieee64-8x8-wide-finite-64digit-gemm",
+      "backend": "unchanged-generated-chromium-form",
+      "fresh_instance": "new-browser-process-and-page-per-case",
+      "chromium_version": "157.0.8099.0",
+      "elapsed_ms": 959.3191659999993,
+      "response_sha256": "9f2256f8350421b644d0a650591de75f9aaa8df49294919a2a8fb05b77f92afe",
+      "response_bytes": 136,
+      "status": "passed",
+      "memory_before": {
+        "memory_bytes": 1114112,
+        "memory_pages": 17
+      },
+      "memory_after": {
+        "memory_bytes": 1769472,
+        "memory_pages": 27
+      },
+      "total_elapsed_ms": 1413.0261090000004,
+      "page_errors": [],
+      "external_requests": [],
+      "response_errors": [],
+      "received_assets": [
+        {
+          "path": "app.css",
+          "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279",
+          "content_type": "text/css"
+        },
+        {
+          "path": "app.js",
+          "sha256": "8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1",
+          "content_type": "text/javascript"
+        },
+        {
+          "path": "index.html",
+          "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad",
+          "content_type": "text/html"
+        },
+        {
+          "path": "lexlean_matmul_bg.wasm",
+          "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc",
+          "content_type": "application/wasm"
+        },
+        {
+          "path": "lexlean_matmul.js",
+          "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16",
+          "content_type": "text/javascript"
+        }
+      ]
+    },
+    {
+      "label": "ieee64-8x8-alternating-significand-64digit-alpha",
+      "backend": "unchanged-generated-chromium-form",
+      "fresh_instance": "new-browser-process-and-page-per-case",
+      "chromium_version": "157.0.8099.0",
+      "elapsed_ms": 222.93874000000142,
+      "response_sha256": "b19816c1060913e2a2416ef897a694fa2c85605875abca98bbba5946585d1fdb",
+      "response_bytes": 1288,
+      "status": "passed",
+      "memory_before": {
+        "memory_bytes": 1114112,
+        "memory_pages": 17
+      },
+      "memory_after": {
+        "memory_bytes": 1703936,
+        "memory_pages": 26
+      },
+      "total_elapsed_ms": 380.24067099999957,
+      "page_errors": [],
+      "external_requests": [],
+      "response_errors": [],
+      "received_assets": [
+        {
+          "path": "app.css",
+          "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279",
+          "content_type": "text/css"
+        },
+        {
+          "path": "app.js",
+          "sha256": "8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1",
+          "content_type": "text/javascript"
+        },
+        {
+          "path": "index.html",
+          "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad",
+          "content_type": "text/html"
+        },
+        {
+          "path": "lexlean_matmul_bg.wasm",
+          "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc",
+          "content_type": "application/wasm"
+        },
+        {
+          "path": "lexlean_matmul.js",
+          "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16",
+          "content_type": "text/javascript"
+        }
+      ]
+    },
+    {
+      "label": "codec-8x8-fullbook64-eight-offset-stages-table",
+      "backend": "unchanged-generated-chromium-form",
+      "fresh_instance": "new-browser-process-and-page-per-case",
+      "chromium_version": "157.0.8099.0",
+      "elapsed_ms": 3448.032582,
+      "response_sha256": "4015bf7c44cf2ea7e80dec3a8b64dd02c3a3fc73a4543f2cc2663ac4ca94ecb5",
+      "response_bytes": 8392,
+      "status": "passed",
+      "memory_before": {
+        "memory_bytes": 1114112,
+        "memory_pages": 17
+      },
+      "memory_after": {
+        "memory_bytes": 2621440,
+        "memory_pages": 40
+      },
+      "total_elapsed_ms": 3598.753079000002,
+      "page_errors": [],
+      "external_requests": [],
+      "response_errors": [],
+      "received_assets": [
+        {
+          "path": "app.css",
+          "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279",
+          "content_type": "text/css"
+        },
+        {
+          "path": "app.js",
+          "sha256": "8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1",
+          "content_type": "text/javascript"
+        },
+        {
+          "path": "index.html",
+          "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad",
+          "content_type": "text/html"
+        },
+        {
+          "path": "lexlean_matmul_bg.wasm",
+          "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc",
+          "content_type": "application/wasm"
+        },
+        {
+          "path": "lexlean_matmul.js",
+          "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16",
+          "content_type": "text/javascript"
+        }
+      ]
+    },
+    {
+      "label": "ieee64-8x8-distinct-dense-max-exponent-book64-table",
+      "backend": "unchanged-generated-chromium-form",
+      "fresh_instance": "new-browser-process-and-page-per-case",
+      "chromium_version": "157.0.8099.0",
+      "elapsed_ms": 5877.1562269999995,
+      "response_sha256": "f8fcc4262c9b3cb8dec7fdfe78aa8efc55cfac46065c0e2be5767365cd101c9d",
+      "response_bytes": 1288,
+      "status": "passed",
+      "memory_before": {
+        "memory_bytes": 1114112,
+        "memory_pages": 17
+      },
+      "memory_after": {
+        "memory_bytes": 70516736,
+        "memory_pages": 1076
+      },
+      "total_elapsed_ms": 6044.08137,
+      "page_errors": [],
+      "external_requests": [],
+      "response_errors": [],
+      "received_assets": [
+        {
+          "path": "app.css",
+          "sha256": "93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279",
+          "content_type": "text/css"
+        },
+        {
+          "path": "app.js",
+          "sha256": "8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1",
+          "content_type": "text/javascript"
+        },
+        {
+          "path": "index.html",
+          "sha256": "335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad",
+          "content_type": "text/html"
+        },
+        {
+          "path": "lexlean_matmul_bg.wasm",
+          "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc",
+          "content_type": "application/wasm"
+        },
+        {
+          "path": "lexlean_matmul.js",
+          "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16",
+          "content_type": "text/javascript"
+        }
+      ]
+    }
+  ],
+  "completed": true,
+  "passed": true
+}
