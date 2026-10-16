@@ -132,6 +132,15 @@ six browser files from a separate source-free root, and compares them with the
 ordinary application build. Publication uses the captured accepted release
 bundle, then checks HTTPS bytes and the live Chromium UI without rebuilding.
 
+The native bundle regression distinguishes the full source graph from the
+selected application snapshot. Its valid fixture failed the former equality
+check between those different identities. `node --test
+scripts/bundle-provenance.test.mjs` now accepts the valid case and rejects four
+changes to the captured graph, manifest, snapshot, or model provenance. MM-10
+runs these checks, and the release reader applies the same bindings to actual
+SDK artifacts. The bundle retains the release-bound build manifest and its
+selected application snapshot for source-free verification.
+
 Historical receipts for older SDK failures remain under `verification/` as
 bounded observations; they do not describe the current source coverage or
 supply release acceptance.

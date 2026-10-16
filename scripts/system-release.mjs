@@ -11,6 +11,33 @@ const receiptPath = path.join(evidenceRoot, 'system-release.json');
 const sourceFreePath = path.join(evidenceRoot, 'source-free-release');
 const validationType = 'application/vnd.prismpm.validation.v1+json';
 const digest = bytes => `sha256:${sha(bytes)}`;
+
+export function validateCapturedBuild({ modelBytes, manifestBytes, applicationSnapshotBytes,
+  capturedBuild, buildId, modelDigest, buildDigest }) {
+  assert.equal(digest(modelBytes), modelDigest);
+  assert.equal(digest(manifestBytes), buildDigest);
+  const model = JSON.parse(modelBytes), manifest = JSON.parse(manifestBytes);
+  assert.equal(capturedBuild.schema, 'prismpm/build-result/1');
+  assert.equal(manifest.schema, 'prismpm/build-manifest/1');
+  assert.equal(capturedBuild.build_id, buildId);
+  assert.equal(sha(canonical(manifest.inputs)), buildId);
+  assert.equal(manifest.inputs.model_id, sha(modelBytes));
+  // The build covers the containing system; the application model covers its
+  // selected source closure. Bind each identity to its own captured authority.
+  assert.equal(manifest.inputs.lexlean_source_id, capturedBuild.source_id);
+  assert.equal(manifest.inputs.lexlean_semantic_id, capturedBuild.semantic_id);
+  const snapshots = manifest.files.filter(row => row.path === 'application/lexlean-snapshot.json');
+  assert.equal(snapshots.length, 1);
+  assert.equal(snapshots[0].byte_length, applicationSnapshotBytes.length);
+  assert.equal(snapshots[0].sha256, sha(applicationSnapshotBytes));
+  const snapshot = JSON.parse(applicationSnapshotBytes);
+  assert.equal(snapshot.spec, 'lexlean/semantic-snapshot/1');
+  for (const name of ['source_id', 'semantic_id', 'compiler_semantics_id']) {
+    assert.match(snapshot[name], /^[0-9a-f]{64}$/);
+    assert.equal(model.provenance[name], snapshot[name]);
+  }
+  return model;
+}
 const expectedFiles = directory => files(directory).map(row => ({
   path: row.path, size: row.bytes, digest: `sha256:${row.sha256}`,
 }));
@@ -95,6 +122,10 @@ export function readSystemRelease(build = readBuild()) {
   assert.deepEqual(fs.readdirSync(path.join(sourceFree, '.prism')).sort(), ['oci']);
   const inventory = expectedFiles(confined(receipt.export_directory));
   const buildRoot = path.dirname(confined(build.manifest_path));
+  validateCapturedBuild({ modelBytes: fs.readFileSync(confined(build.model_path)),
+    manifestBytes: fs.readFileSync(confined(build.manifest_path)),
+    applicationSnapshotBytes: fs.readFileSync(path.join(buildRoot, 'application/lexlean-snapshot.json')),
+    capturedBuild: build, buildId: build.build_id, modelDigest: release.model_digest, buildDigest: release.build_digest });
   assert.deepEqual(inventory, expectedFiles(path.join(buildRoot, 'view/browser')));
   validateExport(receipt.export, release, inventory);
   assert.equal(receipt.export.reference, receipt.reference);
@@ -221,6 +252,9 @@ function bundleRelease() {
   const modelBytes = fs.readFileSync(confined(readBuild().model_path));
   assert.equal(digest(modelBytes), release.release.model_digest);
   fs.writeFileSync(path.join(output, 'model.prism.json'), modelBytes);
+  const build = readBuild(), buildRoot = path.dirname(confined(build.manifest_path));
+  fs.copyFileSync(confined(build.manifest_path), path.join(output, 'build-manifest.json'));
+  fs.copyFileSync(path.join(buildRoot, 'application/lexlean-snapshot.json'), path.join(output, 'application-snapshot.json'));
   const retained = new Set(['acceptance.json', 'pages.json', 'build.json', 'verify.json', 'source.json',
     ...acceptance.evidence.map(row => row.path), ...release.evidence.map(row => row.path)]);
   for (const relative of retained) {
@@ -280,10 +314,12 @@ async function verifyBundle(relative, url) {
   assert.equal(bundle.model_digest, nativeSystemModel().manifest.applicationModelDigest);
   const modelBytes = fs.readFileSync(confined('model.prism.json', bundleRoot));
   assert.equal(digest(modelBytes), bundle.model_digest);
-  const model = JSON.parse(modelBytes), capturedBuild = JSON.parse(readEvidence('build.json'));
+  const capturedBuild = JSON.parse(readEvidence('build.json'));
+  const model = validateCapturedBuild({ modelBytes,
+    manifestBytes: fs.readFileSync(confined('build-manifest.json', bundleRoot)),
+    applicationSnapshotBytes: fs.readFileSync(confined('application-snapshot.json', bundleRoot)),
+    capturedBuild, buildId: bundle.build_id, modelDigest: bundle.model_digest, buildDigest: bundle.build_digest });
   const capturedSource = JSON.parse(readEvidence('source.json'));
-  assert.equal(model.provenance.source_id, capturedBuild.source_id);
-  assert.equal(model.provenance.semantic_id, capturedBuild.semantic_id);
   assert.equal(capturedSource.build_id, bundle.build_id);
   assert.equal(capturedSource.source_digest, bundle.source_digest);
   assert.equal(capturedSource.build_result_sha256, sha(readEvidence('build.json')));
