@@ -25,4 +25,6 @@ writeJson(path.join(evidenceRoot, 'source.json'), {
   verify_result_sha256: sha(Buffer.from(verifyBytes)),
 });
 console.log(`Verified generated application ${build.build_id} in ${root}`);
-run('node', ['scripts/system-release.mjs', 'build']);
+// Preserve the native release owner's 90-minute aggregate build budget, plus
+// the bounded inspection and source-free export performed by its launcher.
+run('node', ['scripts/system-release.mjs', 'build'], root, { timeout: 100 * 60 * 1000 });
