@@ -158,6 +158,19 @@ async function denseSignificandCases(machine) {
     assert(Buffer.byteLength(input) <= 16384, 'Dense significand request must fit the declared byte bound');
     await expect(machine, input, success(8, 8, output), `binary64 8×8 dense significands with ${alpha === 1n ? 'direct reduction' : '64-digit integer epilogue'}`);
   }
+  const activations = Array.from({ length: 64 }, (_, index) => code - BigInt(index));
+  const book = Array.from({ length: 64 }, (_, index) => code - 1000n - BigInt(index));
+  const codes = Array.from({ length: 64 }, (_, index) => index);
+  assert.equal(new Set([...activations, ...book].map(String)).size, 128);
+  const coefficients = [...activations, ...book].map(value => decode('f64', value));
+  assert(coefficients.every(value => value.kind === 'finite' && value.coefficient > 0n && value.exponent === -52));
+  assert.equal(new Set(activations.flatMap(value => book.map(word =>
+    String(decode('f64', value).coefficient * decode('f64', word).coefficient)))).size, 4096,
+  'Dense IEEE table must contain all 64 × 64 distinct exact products');
+  const tableOutput = floatCodes('f64', 'nearest', floatProduct('f64', 8, 8, 8, activations, codes.map(index => book[index])));
+  const tableInput = request(1, 'ieee-table', 'f64', 'nearest', csv(book), 8, 8, 8, csv(activations), csv(codes));
+  assert(Buffer.byteLength(tableInput) <= 16384, 'Full dense IEEE product table must fit the declared byte bound');
+  await expect(machine, tableInput, success(8, 8, tableOutput), 'binary64 8×8 dense table with 4,096 distinct exact products');
 }
 
 async function ieeeCases(machine) {
