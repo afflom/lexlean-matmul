@@ -14,7 +14,7 @@ try {
     const directory = path.join(temporary, name);
     copySource(directory);
     run('prismpm', ['fetch', '--locked'], directory);
-    const build = JSON.parse(run('prismpm', ['--json', 'build', '--locked'], directory));
+    const build = JSON.parse(run('prismpm', ['--json', 'build'], directory));
     assert.equal(build.build_id, selected.build_id, 'Clean root changed the product build identity');
     const output = path.dirname(path.join(directory, build.manifest_path));
     const manifest = readJson(path.join(output, 'manifest.json'));
