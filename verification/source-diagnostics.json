@@ -2,21 +2,40 @@
   "schema": "lexlean-matmul/source-diagnostics/1",
   "sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
   "actual_root_protocol": {
-    "command": "./scripts/in-sdk.sh lexlean verify src/Protocol.lex.tex",
+    "command": "./scripts/in-sdk.sh lexlean --diagnostic-format json verify src/Protocol.lex.tex",
     "exit_code": 0,
     "modules": 3,
-    "attestation_id": "4336ba3784c042e4cbab76910d504473b91d2e368e2cc68e4cc7c45392da3834"
+    "attestation_id": "4df75f75c987eca89a23d0d438ea220ea5fb62efa9bee7f6afa106bf465add3f",
+    "result": {
+      "artifacts": [
+        ".lexlean/verified/4df75f75c987eca89a23d0d438ea220ea5fb62efa9bee7f6afa106bf465add3f"
+      ],
+      "attestation_id": "4df75f75c987eca89a23d0d438ea220ea5fb62efa9bee7f6afa106bf465add3f",
+      "build_id": "3a0f7a10769282ba409abf53c9055bce565b54ddb9b8ba26802f097fbec48c4e",
+      "command": "verify",
+      "diagnostics": [],
+      "exit_code": 0,
+      "modules": [
+        "Core",
+        "Model",
+        "Protocol"
+      ],
+      "semantic_id": "c216620a94b4e60aae7db799b177de6b9ba24b4df50501f4541a3b728882b200",
+      "source_id": "936ce81b1a23d24e28610558a7b96dbc2a25a0ef07d605c3dbe287b0f5fb6917",
+      "spec": "lexlean/command-result/1",
+      "success": true
+    }
   },
   "diagnostic_system_probe": {
     "root": "/tmp/matmul-system-probe",
-    "command": "lexlean verify",
+    "command": "docker run --rm --network none --user 1000:1000 -v /tmp/matmul-system-probe:/workspace -w /workspace --entrypoint lexlean ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21 --diagnostic-format json verify",
     "exit_code": 0,
     "modules": 6,
-    "attestation_id": "dd0082eb03d3283080550eeae8ec51c3dbd9e28f3a552f3069fe57744a9ab2bb",
+    "attestation_id": "8449ee4d9d2abb66daa24e2d7e901909f7531315257ce28a2dfb0583141becc8",
     "unchanged_sources": [
       {
         "path": "src/Core.lex.tex",
-        "sha256": "7a484ed6cbd28841d7f5bcef96e1baaf513cd0c96a738220365537a6eaf03466"
+        "sha256": "518d387a4b88ee6cdc5061f68b6b9cec5382c445f2a25950b4925612fe214a02"
       },
       {
         "path": "src/Model.lex.tex",
@@ -42,22 +61,127 @@
         "Model.lex.tex",
         "Protocol.lex.tex",
         "MatmulSystem.lex.tex"
-      ]
+      ],
+      "authoritative_source_sha256": "8166a3c7553733113c302f91521f2832a986f2a72dd8eeeb7197fba3993f2dd3",
+      "diagnostic_source_sha256": "6049533384320207fd499a8176118fa7817858ac86e651f03df30dfdc393099f"
     },
-    "qualification": false
+    "qualification": false,
+    "result": {
+      "artifacts": [
+        ".lexlean/verified/8449ee4d9d2abb66daa24e2d7e901909f7531315257ce28a2dfb0583141becc8"
+      ],
+      "attestation_id": "8449ee4d9d2abb66daa24e2d7e901909f7531315257ce28a2dfb0583141becc8",
+      "build_id": "39b36572324534352a79a90eb3c393c636b25375d7cade88876627e25beba46e",
+      "command": "verify",
+      "diagnostics": [],
+      "exit_code": 0,
+      "modules": [
+        "Application",
+        "Core",
+        "Foundation.View.Text.V1.Model",
+        "MatmulSystem",
+        "Model",
+        "Protocol"
+      ],
+      "semantic_id": "89013278c6c972a745f0dbda754b8fc57e00c32118d47e0bf66a3831bba9e75a",
+      "source_id": "4f864cb5ba24fa8a48c011741f2e07110cdcdc58388af1e7a8a120ed40a7bc96",
+      "spec": "lexlean/command-result/1",
+      "success": true
+    }
   },
   "complete_application_failure": {
-    "command": "./scripts/in-sdk.sh lexlean verify",
+    "command": "./scripts/in-sdk.sh lexlean --diagnostic-format json verify",
+    "exit_code": 1,
     "code": "LLV7002",
     "diagnostics": [
-      "maximum recursion depth has been reached at generated Application.lean:97:21",
-      "(deterministic) timeout at transform, maximum number of heartbeats (200000) reached at generated Application.lean:99:21",
-      "Application depends on noncomputable acceptanceVector45 after that declaration fails"
+      "Lean rejected `LexLeanMatmul.Application` (error lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'acceptanceVector45', which is 'noncomputable'",
+      "Lean rejected `LexLeanMatmul.Application` (error): (deterministic) timeout at `transform`, maximum number of heartbeats (200000) has been reached\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+      "Lean rejected `LexLeanMatmul.Application` (error): maximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information"
     ],
     "authoritative_large_data": [
       "acceptanceVector45:16385 request bytes",
       "acceptanceVector46:32768 request bytes"
     ],
+    "source_sha256": "8166a3c7553733113c302f91521f2832a986f2a72dd8eeeb7197fba3993f2dd3",
+    "result": {
+      "artifacts": [],
+      "command": "verify",
+      "diagnostics": [
+        {
+          "causes": [],
+          "code": "LLV7002",
+          "help": [],
+          "labels": [],
+          "message": "Lean rejected `LexLeanMatmul.Application` (error lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'acceptanceVector45', which is 'noncomputable'",
+          "notes": [
+            {
+              "message": "generated location: $STAGING/lean-src/LexLeanMatmul/Application.lean:133:21"
+            }
+          ],
+          "primary": {
+            "byte_end": 139776,
+            "byte_start": 0,
+            "column_end": 1,
+            "column_start": 1,
+            "line_end": 13,
+            "line_start": 1,
+            "path": "src/Application.lex.tex"
+          },
+          "severity": "error",
+          "spec": "lexlean/diagnostic/1"
+        },
+        {
+          "causes": [],
+          "code": "LLV7002",
+          "help": [],
+          "labels": [],
+          "message": "Lean rejected `LexLeanMatmul.Application` (error): (deterministic) timeout at `transform`, maximum number of heartbeats (200000) has been reached\nNote: Use `set_option maxHeartbeats <num>` to set the limit.\nHint: Additional diagnostic information may be available using the `set_option diagnostics true` command.",
+          "notes": [
+            {
+              "message": "generated location: $STAGING/lean-src/LexLeanMatmul/Application.lean:99:21"
+            }
+          ],
+          "primary": {
+            "byte_end": 139776,
+            "byte_start": 0,
+            "column_end": 1,
+            "column_start": 1,
+            "line_end": 13,
+            "line_start": 1,
+            "path": "src/Application.lex.tex"
+          },
+          "severity": "error",
+          "spec": "lexlean/diagnostic/1"
+        },
+        {
+          "causes": [],
+          "code": "LLV7002",
+          "help": [],
+          "labels": [],
+          "message": "Lean rejected `LexLeanMatmul.Application` (error): maximum recursion depth has been reached\nuse `set_option maxRecDepth <num>` to increase limit\nuse `set_option diagnostics true` to get diagnostic information",
+          "notes": [
+            {
+              "message": "generated location: $STAGING/lean-src/LexLeanMatmul/Application.lean:97:21"
+            }
+          ],
+          "primary": {
+            "byte_end": 139776,
+            "byte_start": 0,
+            "column_end": 1,
+            "column_start": 1,
+            "line_end": 13,
+            "line_start": 1,
+            "path": "src/Application.lex.tex"
+          },
+          "severity": "error",
+          "spec": "lexlean/diagnostic/1"
+        }
+      ],
+      "exit_code": 1,
+      "modules": [],
+      "spec": "lexlean/command-result/1",
+      "success": false
+    },
     "qualification": false
   }
 }

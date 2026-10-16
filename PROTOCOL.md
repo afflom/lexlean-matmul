@@ -76,4 +76,5 @@ Expected response:
 For zero-depth multiplication, both operand fields are empty, so preserve both
 trailing tabs when copying a request. Negative fixtures, every error variant,
 and exact byte-boundary requests are registered as application acceptance
-vectors and exercised independently by the runtime oracle.
+vectors. An independent runtime oracle is implemented, but has not executed
+because the SDK cannot yet compile the complete application.

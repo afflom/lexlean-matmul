@@ -1,0 +1,46 @@
+{
+  "schema": "lexlean-matmul/ci-observation/1",
+  "head_sha": "6625c0d41d26192270b33415810f72f66f60907c",
+  "checks": [
+    {
+      "name": "Pages acceptance",
+      "url": "https://github.com/afflom/lexlean-matmul/actions/runs/38855129567/job/116824776291",
+      "conclusion": "failure",
+      "diagnostic": "authority download failed for https://osv-vulnerabilities.storage.googleapis.com/crates.io/all.zip?generation=1788555739396732",
+      "code": "PP5401"
+    },
+    {
+      "name": "Bootstrap AMD64",
+      "url": "https://github.com/afflom/lexlean-matmul/actions/runs/38855129576/job/116824775917",
+      "conclusion": "failure",
+      "diagnostic": "authority download failed for https://osv-vulnerabilities.storage.googleapis.com/crates.io/all.zip?generation=1788555739396732",
+      "code": "PP5401"
+    },
+    {
+      "name": "Bootstrap ARM64",
+      "url": "https://github.com/afflom/lexlean-matmul/actions/runs/38855129576/job/116824776382",
+      "conclusion": "failure",
+      "diagnostic": "authority download failed for https://osv-vulnerabilities.storage.googleapis.com/crates.io/all.zip?generation=1788555739396732",
+      "code": "PP5401"
+    }
+  ],
+  "deployment": "not executed; acceptance failed",
+  "subsequent_code_checks": [
+    {
+      "name": "Pages acceptance",
+      "head_sha": "96767d2f8125213895a0350b31e3975289bc8717",
+      "url": "https://github.com/afflom/lexlean-matmul/actions/runs/38856653483/job/116829515781",
+      "conclusion": "failure",
+      "code": "PP5401",
+      "diagnostic": "authority download failed for https://osv-vulnerabilities.storage.googleapis.com/crates.io/all.zip?generation=1788555739396732"
+    },
+    {
+      "name": "Bootstrap AMD64",
+      "head_sha": "96767d2f8125213895a0350b31e3975289bc8717",
+      "url": "https://github.com/afflom/lexlean-matmul/actions/runs/38856653498/job/116829515413",
+      "conclusion": "failure",
+      "code": "PP5401",
+      "diagnostic": "authority download failed for https://osv-vulnerabilities.storage.googleapis.com/crates.io/all.zip?generation=1788555739396732"
+    }
+  ]
+}
