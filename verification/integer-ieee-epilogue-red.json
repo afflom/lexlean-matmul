@@ -205,5 +205,27 @@
       }
     }
   ],
-  "interpretation": "Both exact integer epilogue cases trap at the modeled page maximum; no typed ComputeError or universal cause is inferred from that correlation. The corresponding unscaled cases return the independent expected bytes."
+  "interpretation": "Both exact integer epilogue cases trap at the modeled page maximum; no typed ComputeError or universal cause is inferred from that correlation. The corresponding unscaled cases return the independent expected bytes.",
+  "canonical_MM13_rejection": {
+    "result": {
+      "schema": "lexlean-matmul/manifest-core-oracle-diagnostic/1",
+      "qualified_for_release": false,
+      "scope": "unchanged-independent-oracle-bodies-genuine-build-guest-only",
+      "id": "MM-13",
+      "elapsed_ms": 97709.024131,
+      "status": "failed",
+      "error": {
+        "name": "RuntimeError",
+        "message": "unreachable",
+        "stack": "RuntimeError: unreachable\n    at wasm://wasm/0024a89e:wasm-function[1]:0x76f\n    at wasm://wasm/0024a89e:wasm-function[28]:0x2f56\n    at wasm://wasm/0024a89e:wasm-function[133]:0x11355\n    at wasm://wasm/0024a89e:wasm-function[133]:0x1124c\n    at wasm://wasm/0024a89e:wasm-function[133]:0x1124c\n    at wasm://wasm/0024a89e:wasm-function[133]:0x1124c\n    at wasm://wasm/0024a89e:wasm-function[133]:0x1124c\n    at wasm://wasm/0024a89e:wasm-function[133]:0x1124c\n    at wasm://wasm/0024a89e:wasm-function[133]:0x1124c\n    at wasm://wasm/0024a89e:wasm-function[133]:0x1124c"
+      }
+    },
+    "result_sha256": "beaf37189450c19b9304d16b5c3cd4c955aaa300cdf08a02b0057732c718b8d0",
+    "trap_sha256": "7a5ef5c5cb43e5f3665d07e57fdc72e4e599a6c8933663f1b5f2993b3b84f76d",
+    "request_sha256": "09f2f4c11507ec0f058575eab63bc389fcda08609e264032044b4084ae306f64",
+    "request_bytes": 2440,
+    "memory_pages": 32767,
+    "unchanged_canonical_oracle_sha256": "c4c6efb72f829436e0f3d16431e089c93842eacdf4a0ecffae0d3f13fa7a416c",
+    "scope": "Actual unchanged MM13 numerical oracle body executed against manifest-bound guest through an isolated diagnostic runtime adapter; this is an intended rejection, not full canonical immutable-SDK gate qualification."
+  }
 }
