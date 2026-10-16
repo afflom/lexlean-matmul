@@ -10,7 +10,9 @@ for (const name of ['source.json', 'build.json', 'verify.json', 'acceptance.json
 }
 run('prismpm', ['fetch', '--locked']);
 const initialSource = sourceDigest();
-const buildBytes = run('prismpm', ['--json', 'build', '--locked']);
+// The SDK reserves build --locked for tagged OCI releases. Portable
+// application builds consume the source and authority locks checked above.
+const buildBytes = run('prismpm', ['--json', 'build']);
 const build = JSON.parse(buildBytes);
 fs.writeFileSync(path.join(evidenceRoot, 'build.json'), buildBytes);
 const verifyBytes = run('prismpm', ['--json', 'verify']);
