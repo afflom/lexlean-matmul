@@ -18,6 +18,19 @@ application model. Source declarations remain authoritative.
 | `dyadic` | `m`, `k`, `n`, `A-coefficients`, `A-scales`, `B-coefficients`, `B-scales` |
 | `tropical` | `m`, `k`, `n`, `A`, `B` |
 | `recenter` | `values` |
+| `ieee` | `format`, `mode`, `m`, `k`, `n`, `A-bits`, `B-bits` |
+| `ieee-gemm` | `format`, `mode`, `alpha`, `beta`, `m`, `k`, `n`, `A-bits`, `B-bits`, `C-bits` |
+| `ieee-table` | `format`, `mode`, `codebook-bits`, `m`, `k`, `n`, `A-bits`, `B-codes` |
+| `encode` | `width`, `mode`, `m`, `k`, `n`, `A`, `B` |
+| `encode-dyadic` | `width`, `mode`, `m`, `k`, `n`, `A-coefficients`, `A-scales`, `B-coefficients`, `B-scales` |
+| `bias` | `m`, `k`, `n`, `bias`, `A`, `B` |
+| `bias-gemm` | `alpha`, `beta`, `m`, `k`, `n`, `bias`, `A`, `B`, `C` |
+| `complex-gemm` | `alpha`, `beta`, `m`, `k`, `n`, `A-real`, `A-imag`, `B-real`, `B-imag`, `C-real`, `C-imag` |
+| `complex-bias` | `m`, `k`, `n`, `bias`, `A-real`, `A-imag`, `B-real`, `B-imag` |
+| `complex-bias-gemm` | `alpha`, `beta`, `m`, `k`, `n`, `bias`, `A-real`, `A-imag`, `B-real`, `B-imag`, `C-real`, `C-imag` |
+| `tropical-gemm` | `alpha`, `beta`, `m`, `k`, `n`, `A`, `B`, `C` |
+| `complex-encode` | `width`, `mode`, `alpha`, `beta`, `m`, `k`, `n`, `A-real`, `A-imag`, `B-real`, `B-imag`, `C-real`, `C-imag` |
+| `tropical-encode` | `width`, `mode`, `alpha`, `beta`, `m`, `k`, `n`, `A`, `B`, `C` |
 
 Matrices are row major: `A` has `m*k` entries, `B` has `k*n`, and `C` has
 `m*n`. Binary codes `0,1` decode to `-1,+1`; ternary codes `0,1,2` decode to
@@ -31,10 +44,36 @@ finite integers. Equal maxima select the smallest index; an empty reduction
 reports `none` as its witness.
 
 Ordinary success is `1`, `ok`, `rows`, `columns`, `cells`. Complex and dyadic
-success append their second component array. Tropical success appends witness
-indexes. Recenter success reports the normalized array and removed maximum.
+success append their second component array. The `tropical` operation appends
+witness indexes; `tropical-gemm` and `tropical-encode` return cells only. Recenter success reports the normalized array and removed maximum.
 Failures are `1`, `error`, and the modeled error code. The generated
 [error register](ERRORS.md) lists every variant and its negative vector coverage.
+
+IEEE `format` is `f32` or `f64`. Inputs and outputs are unsigned decimal bit
+patterns, not decimal floating-point text. All products and sums are exact
+before one output encoding. NaNs become the canonical quiet NaN; opposite
+infinities and zero times infinity produce NaN. Exact cancellation returns
+positive zero, and underflow of a negative nonzero result preserves negative
+zero. IEEE GEMM uses signed integer `alpha` and `beta`, as in the UOR reference.
+Unused NaN entries in a codebook do not affect a table product.
+
+`mode` is `nearest`, `toward-zero`, `saturating`, or `wrapping`. IEEE `nearest`
+uses ties to even and overflows to infinity. The other IEEE modes truncate
+and clamp to the largest finite magnitude. Signed integer output widths are
+1 through 64 bits: `wrapping` uses modular two's-complement encoding, while
+the other modes clamp to the signed interval. Dyadic `nearest` rounds ties
+to even before clamping; the remaining non-wrapping modes truncate toward
+zero before clamping. Complex encoding applies the selected integer codec
+to each component independently.
+
+Bias has one integer per output column and is added after the GEMM linear
+epilogue. Complex bias changes the real component. Tropical GEMM uses max
+for addition and finite integer addition for multiplication; `-inf` is its
+additive identity. Tropical finite encodings reserve the signed interval's
+endpoints and therefore require widths 2 through 64. Their wrapping mode
+matches the reference's unsigned 128-bit offset reduction, including negative
+offsets. Input arrays must match their declared shapes even when beta makes
+the previous output irrelevant.
 
 The following code blocks contain literal tabs and can be pasted into the
 generated browser request field.
@@ -76,5 +115,29 @@ Expected response:
 For zero-depth multiplication, both operand fields are empty, so preserve both
 trailing tabs when copying a request. Negative fixtures, every error variant,
 and exact byte-boundary requests are registered as application acceptance
-vectors. An independent runtime oracle is implemented, but has not executed
-because the SDK cannot yet compile the complete application.
+vectors. Independent runtime oracles cover all operation families; the complete
+`just vv` result determines release qualification.
+
+A binary64 product of 1 and 2, expressed as IEEE bit patterns:
+
+```text
+1	ieee	f64	nearest	1	1	1	4607182418800017408	4611686018427387904
+```
+
+Expected response:
+
+```text
+1	ok	1	1	4611686018427387904
+```
+
+An eight-bit wrapping output codec applied after the exact product 200 × 2:
+
+```text
+1	encode	8	wrapping	1	1	1	200	2
+```
+
+Expected response:
+
+```text
+1	ok	1	1	-112
+```
