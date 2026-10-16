@@ -100,3 +100,5 @@ Never re-derived, vendored, or gated on.
 | `MM-10` | `build` | The PrismPM browser system binds the application, artifact, component, controls, and GitHub Pages target. |
 | `MM-11` | `build` | Independent exact arithmetic oracles validate generated runtime results and representative planted defects are rejected. |
 | `MM-12` | `build` | The pinned SDK reproduces platform-independent application artifacts from separate clean roots. |
+| `AUTH-UOR-MATMUL` | `some-true` | The cited UOR reference specifies decoding coded operands, exact accumulation, and a single output encoding. |
+| `AUTH-CALCULATOR` | `some-true` | The cited Calculator reference declares a LexLean-authored portable Core-Wasm, Holo, and Pages application. |

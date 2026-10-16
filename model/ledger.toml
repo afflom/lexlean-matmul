@@ -71,3 +71,15 @@ id = "MM-12"
 level = "build"
 statement = "The pinned SDK reproduces platform-independent application artifacts from separate clean roots."
 feature = "features/suites/reproducibility.feature"
+
+[[claim]]
+id = "AUTH-UOR-MATMUL"
+level = "some-true"
+statement = "The cited UOR reference specifies decoding coded operands, exact accumulation, and a single output encoding."
+authority = "UOR-MATMUL"
+
+[[claim]]
+id = "AUTH-CALCULATOR"
+level = "some-true"
+statement = "The cited Calculator reference declares a LexLean-authored portable Core-Wasm, Holo, and Pages application."
+authority = "CALCULATOR"
