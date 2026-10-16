@@ -1,0 +1,83 @@
+{
+  "schema": "lexlean-matmul/native-system-binding-source-diagnostic/1",
+  "qualified_for_release": false,
+  "scope": "Official public source-maintenance check on isolated exact App/Model and full native-System graph; explicit current application owner import then typed stale binding and stable corrected binding. No shipping SDK substitution or native release qualification.",
+  "sdk_source_revision": "c86c7156f7a36c0a164298c3a93dfe5d264d7a64",
+  "prismpm_sha256": "4d07b3dd8ec629390d223e754d043f56d113082e2b97cf0bb3b85f5c56007a28",
+  "command_prefix": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--user",
+    "1000:1000",
+    "--ulimit",
+    "stack=67108864:-1",
+    "--mount",
+    "type=bind,source=/tmp/lexlean-matmul-sdk-refresh.F6Im9d,target=/sdk-source,readonly",
+    "--mount",
+    "type=bind,source=/tmp/matmul-native-binding-rehearsal,target=/probe",
+    "--workdir",
+    "/probe",
+    "--entrypoint",
+    "/bin/sh",
+    "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d"
+  ],
+  "input_source_sha256": {
+    "Application": "c76078741dbaba2c145ec498c672f438f7c65da6adc3c41dc7f8157364406d37",
+    "Model": "5c40fa1b92531bf0b1825797c28aa077117b641c56673e167b093bbfac179884",
+    "MatmulSystem": "8d08d9a87ab14767d5743244eade7391b074e1ccaaf8c8af3718ab5fef8ab3d5"
+  },
+  "before_current_owner_import": {
+    "diagnostic": {
+      "causes": [
+        {
+          "code": "LLT4001",
+          "help": [],
+          "labels": [],
+          "message": "phase link: projection owner `Foundation.View.Text.V2.Model::TextApplication` is missing",
+          "notes": [],
+          "primary": {
+            "byte_end": 58306,
+            "byte_start": 320,
+            "column_end": 58001,
+            "column_start": 15,
+            "line_end": 11,
+            "line_start": 11,
+            "path": "src/MatmulSystem.lex.tex"
+          },
+          "subsystem": "lexlean"
+        }
+      ],
+      "code": "PP2001",
+      "help": [],
+      "labels": [],
+      "message": "LexLean snapshot failed",
+      "notes": [],
+      "primary": null
+    },
+    "schema": "prismpm/error-result/1"
+  },
+  "stale_binding": {
+    "diagnostic": {
+      "causes": [],
+      "code": "PP2101",
+      "help": [],
+      "labels": [],
+      "message": "system release binds application model \"sha256:d7ca9aa07201acccae74354441d213fe1e4620ceafeb8d28cc1dc21f50915730\", but the imported application model is sha256:8bf8366271a855e9612a1dd75150639364c0cd27acf065432ac94fedcc29c7a8",
+      "notes": [],
+      "primary": null
+    },
+    "schema": "prismpm/error-result/1"
+  },
+  "rebound_check": {
+    "entity_count": 0,
+    "model_id": "8bf8366271a855e9612a1dd75150639364c0cd27acf065432ac94fedcc29c7a8",
+    "schema": "prismpm/check-result/1",
+    "semantic_id": "7e92d49f146b5baecc646b0af56137f6ee30e38b71da1780f24deca01358b164",
+    "snapshot_id": "9845717d0fcb77425041453a42c0a6247185bdeb2b916c12b539e3a566f905a1"
+  },
+  "rebound_model_digest": "sha256:8bf8366271a855e9612a1dd75150639364c0cd27acf065432ac94fedcc29c7a8",
+  "rebound_system_source_sha256": "c83efa3f20773c88b27b7818a09e0335c0a47a0d43f9e64e7fb7615cc1543895"
+}
