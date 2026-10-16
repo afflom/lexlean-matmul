@@ -73,7 +73,7 @@ The browser protocol declares dimensions from zero through eight, at most 64
 magnitude digits per input coefficient, and explicit byte budgets. These are
 transport bounds. See [PROTOCOL.md](PROTOCOL.md) for requests and examples, and
 [PORTING.md](PORTING.md) for the reference correspondence and substrate choices.
-The Text-V2 application model also declares a maximum of 32,767 Wasm memory
+The Text-V2 application model also declares a maximum of 32,767 Core-Wasm memory
 pages and a 16 MiB stack; actual memory grows with the request.
 
 ## Model and source map
