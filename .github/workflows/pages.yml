@@ -1,0 +1,73 @@
+name: verified LexLean GitHub Pages
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: matmul-pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Execute the complete acceptance boundary in the immutable SDK
+        run: ./scripts/in-sdk.sh just vv
+      - name: Stage the exact verified browser projection
+        run: ./scripts/in-sdk.sh just pages
+      - name: Upload the unchanged Pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9
+        with:
+          path: public
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.ref_protected && github.event_name != 'pull_request'
+    needs: acceptance
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the accepted artifact without rebuilding
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346
+
+  verify-publication:
+    needs: [acceptance, deploy]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: github-pages
+          path: .prism/pages-publication
+      - name: Verify every published HTTPS byte against the uploaded archive
+        env:
+          DEPLOYED_URL: ${{ needs.deploy.outputs.url }}
+        run: |
+          mkdir -p public
+          tar -xf .prism/pages-publication/artifact.tar -C public
+          ./scripts/in-sdk.sh node scripts/verify-publication.mjs "$DEPLOYED_URL"
