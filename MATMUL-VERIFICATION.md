@@ -94,6 +94,11 @@ page limit when applying 64-digit integer scalars. Their unscaled cases return
 the independent expected bytes. The exact request and expected hashes now
 belong to MM-13 and MM-16; the diagnostic record does not qualify those gates.
 
+The [dense IEEE table regression](verification/dense-ieee-table-red.json)
+adds a valid 64-entry codebook with 64 distinct activations and 4,096 distinct
+exact products. Its actual generated guest also reaches the modeled page
+limit. MM-13 and MM-16 retain this case before any Laurent contraction change.
+
 ## SDK and release boundary
 
 Execution uses only the immutable SDK selected by [prismpm.lock](prismpm.lock).

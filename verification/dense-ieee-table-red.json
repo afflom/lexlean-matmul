@@ -1,0 +1,78 @@
+{
+  "schema": "lexlean-matmul/dense-ieee-table-regression/1",
+  "qualified_for_release": false,
+  "scope": "R3 actual guest rejection before the Laurent contraction optimization. Unchanged full158 normal source-maintenance build and strict successful manifest validated. Canonical MM13/MM16 request/expected hashes match the actual independent guest stress case. Fixture capture captures test bytes and evaluates independent expectations only, not release acceptance.",
+  "artifact": {
+    "build_id": "c7e3523498701c201146e9c7f9bb3f47ce4e6d774032bc9596ca73f550ae6c7d",
+    "result_sha256": "5bf77661472e9c134e7a5f17b21722debefcbc5e628528c012aab66be8c77ead",
+    "manifest_sha256": "b434bd8bca1b1765117ea5093c5407e2659f5676fdfd909ef50d24cdf5e0fbc8",
+    "model_sha256": "fb7fb2dbe01ed38378ce814098ca553d668991b86cdfbf1da8f698bb2fa61685",
+    "wasm_sha256": "aa16de874dcc414e52ffe01ff7b29b41b53d058a30491adc149f2207bcd48918",
+    "wasm_bytes": 602572,
+    "verified_artifact_files": 167,
+    "verified_artifact_bytes": 27847663,
+    "application_profile": "prismpm/text-application/2",
+    "target_profile": {
+      "contract": "hologram:guest/core-wasm@1",
+      "export": "holo_run",
+      "input_allocation_cap": 32768,
+      "maximum_pages": 32767,
+      "response_maximum": 32768,
+      "schema": "lean4-prod/core-wasm-target/2",
+      "stack_bytes": 16777216
+    }
+  },
+  "canonical_case": {
+    "label": "binary64 8\u00d78 dense table with 4,096 distinct exact products",
+    "request_sha256": "19a6933ac92caf64fff802d0771cc7a11107b545c94de30da34daf88ab846901",
+    "request_bytes": 2772,
+    "expected_sha256": "34c8faebd63d25f0b2c78f878cf5ebd132f60ea31b438467ebc2327e3a7a4c8b"
+  },
+  "canonical_oracle_sha256": "ff29c888cca00f43f60e4d9708d2e81b6326a0842e2957beb0dfcbec39875eb6",
+  "capture_helper_sha256": "7d68737c62dc35855fcede3cf182e1d732cb06c61de628e65776dc287fac04f9",
+  "actual_runner_sha256": "7e035a14d083d60879eda0fdc71ade198a35d9dc3135f6d25c36bb81ae730448",
+  "source_sha256": {
+    "Core": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+    "Atlas": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
+    "Float": "432370e5c9905fe4bb5ced939c346d289d35d681289b0026bb10f1aa250aca4c",
+    "Application": "951a1fe90b484a4c3cbf4974ebe2c99d0117c8c0159c3ec4c50f7b85cb95b9a8"
+  },
+  "actual_guest_observation": {
+    "label": "ieee64-8x8-distinct-dense-book64-table",
+    "request_bytes": 2772,
+    "request_sha256": "19a6933ac92caf64fff802d0771cc7a11107b545c94de30da34daf88ab846901",
+    "expected_sha256": "34c8faebd63d25f0b2c78f878cf5ebd132f60ea31b438467ebc2327e3a7a4c8b",
+    "expected_response": "1\tok\t8\t8\t4624196017392304572,4624196017392304571,4624196017392304570,4624196017392304568,4624196017392304567,4624196017392304566,4624196017392304564,4624196017392304563,4624196017392304562,4624196017392304560,4624196017392304559,4624196017392304558,4624196017392304556,4624196017392304555,4624196017392304554,4624196017392304552,4624196017392304551,4624196017392304550,4624196017392304548,4624196017392304547,4624196017392304546,4624196017392304544,4624196017392304543,4624196017392304542,4624196017392304540,4624196017392304539,4624196017392304538,4624196017392304536,4624196017392304535,4624196017392304534,4624196017392304532,4624196017392304531,4624196017392304530,4624196017392304528,4624196017392304527,4624196017392304526,4624196017392304524,4624196017392304523,4624196017392304522,4624196017392304520,4624196017392304519,4624196017392304518,4624196017392304516,4624196017392304515,4624196017392304514,4624196017392304512,4624196017392304511,4624196017392304510,4624196017392304508,4624196017392304507,4624196017392304506,4624196017392304504,4624196017392304503,4624196017392304502,4624196017392304500,4624196017392304499,4624196017392304498,4624196017392304496,4624196017392304495,4624196017392304494,4624196017392304492,4624196017392304491,4624196017392304490,4624196017392304488",
+    "details": {
+      "rows": 8,
+      "inner": 8,
+      "columns": 8,
+      "activation_cells": 64,
+      "book_entries": 64,
+      "distinct_codes": 64,
+      "cached_scalar_products": 4096,
+      "distinct_exact_products": 4096,
+      "activation_and_book_disjoint": true,
+      "base_bits": "0x3ff5555555555555",
+      "all_book_entries_referenced": true,
+      "oracle": "Signed BigInt coefficient/exponent exact dot and one independent terminal IEEE rounding"
+    },
+    "outer_elapsed_ms": 16904.757223,
+    "status": "wasm-trap",
+    "stage": "dispatch",
+    "elapsed_ms": 16680.263861,
+    "memory_observation": "after-error",
+    "memory_before_bytes": 16842752,
+    "memory_before_pages": 257,
+    "memory_growth_bytes": 2130575360,
+    "memory_growth_pages": 32510,
+    "memory_bytes": 2147418112,
+    "memory_pages": 32767,
+    "error": {
+      "name": "RuntimeError",
+      "message": "unreachable",
+      "stack": "RuntimeError: unreachable\n    at wasm://wasm/0024c732:wasm-function[1]:0x784\n    at wasm://wasm/0024c732:wasm-function[299]:0x91b80\n    at wasm://wasm/0024c732:wasm-function[75]:0xb120\n    at wasm://wasm/0024c732:wasm-function[73]:0xacd4\n    at wasm://wasm/0024c732:wasm-function[73]:0xadf2\n    at wasm://wasm/0024c732:wasm-function[73]:0xadf2\n    at wasm://wasm/0024c732:wasm-function[73]:0xadf2\n    at wasm://wasm/0024c732:wasm-function[73]:0xadf2\n    at wasm://wasm/0024c732:wasm-function[73]:0xadf2\n    at wasm://wasm/0024c732:wasm-function[73]:0xadf2"
+    }
+  },
+  "interpretation": "The full 64activation\u00d764book dense IEEE table traps at the modeled maximum. This is not a typed ComputeError or a universal allocation proof."
+}
