@@ -1,0 +1,494 @@
+{
+  "schema": "lexlean-matmul/decoded-codec-cache-diagnostic/1",
+  "qualified_for_release": false,
+  "scope": "Pure source preservation, immutable-SDK selected closure proof, actual normal-export ownership, and native allocation observations only. The complete final Core-Wasm and just vv release boundary remain required.",
+  "source_audit": {
+    "qualified_for_release": false,
+    "scope": "Source adaptation proof-preservation audit only; kernel and actual runtime remain required",
+    "input": "/tmp/matmul-source-maintenance-epilogue-build/src/Codec.lex.tex",
+    "input_sha256": "a2c3ff47192b2609c9cdcd4d49d78944a13afa8ebe708f7a776757eb079c63a7",
+    "output": "/tmp/Codec.decode-cache-owned.lex.tex",
+    "output_sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88",
+    "changed_existing_definitions": [
+      "codecTableMultiply"
+    ],
+    "added_declarations": [
+      "CodecDecodedWord",
+      "CodecDecodedWords",
+      "codecDecodedWord",
+      "codecDecodeWordsWorker",
+      "codecDecodeWordsOwned",
+      "codecScaleDecodedWord",
+      "codecScaleDecodedAt",
+      "codecScaleDecodedWordsWorker",
+      "codecScaleDecodedWordsOwned",
+      "codecWeightedDecodedRowsOwned",
+      "codecTableDecodedCellsOwned",
+      "codecPreparedWordModulo",
+      "codecPreparedWordsEmpty",
+      "codecPreparedWordProducts"
+    ],
+    "old_proof_asts_unchanged": 35,
+    "e8_declarations_unchanged": 541
+  },
+  "kernel_sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
+  "kernel_result": {
+    "artifacts": [
+      ".lexlean/verified/ca3b794a3119cebb1cb8d35c499ced7ed6f4756b73d82a7852527196df3078f0"
+    ],
+    "attestation_id": "ca3b794a3119cebb1cb8d35c499ced7ed6f4756b73d82a7852527196df3078f0",
+    "build_id": "a560a085c6d119b9439ca22cbaf0e6203da9a71909b3afe7ad0232abae660d58",
+    "command": "verify",
+    "diagnostics": [],
+    "exit_code": 0,
+    "modules": [
+      "Atlas",
+      "Codec",
+      "Core",
+      "Float"
+    ],
+    "semantic_id": "2848560ae417ce6bad34e7325293632a33145a5eaedcf2963398bfbd60d9c686",
+    "source_id": "82563bad62075938bf7a126a76a2c8142a05874baa87693ba7f4f2d4ac655182",
+    "spec": "lexlean/command-result/1",
+    "success": true
+  },
+  "kernel_attestation_sha256": "7cfd891c41b3c65e4cf967577267c144508ca6feaf90b0051138d81ef4db1963",
+  "kernel_codec_declarations": [
+    {
+      "name": "LexLeanMatmul.Codec.gridModulo",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.bookModulo",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.signLowBits",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.ternaryDeadDigit",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.packedLowFirst",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.runsRepeatWholeWord",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.runsPastEndEmpty",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.transcodeTotalModulo",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.offsetArithmeticBoundary",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.offsetExact",
+      "observed": [
+        "propext"
+      ],
+      "policy": {
+        "axioms": [
+          "propext"
+        ],
+        "kind": "exact"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.e8ExactShape",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.e8ZeroOrigin",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.codecDirectArithmeticBoundary",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.codecDirectExact",
+      "observed": [
+        "propext"
+      ],
+      "policy": {
+        "axioms": [
+          "propext"
+        ],
+        "kind": "exact"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.codecTableArithmeticBoundary",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.codecTableExact",
+      "observed": [
+        "propext"
+      ],
+      "policy": {
+        "axioms": [
+          "propext"
+        ],
+        "kind": "exact"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsInvalidPlan",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsInvalidCode",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsShapeMismatch",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsNonconformant",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsForwardReference",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsPackedParameter",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsEmptyRunSymbol",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsPartialFixedRow",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsZeroRun",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsLongRun",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsTranscodeRange",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.canonicalArenaPreservesPatterns",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.arenaLookupModulo",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsOutputCapacityOverflow",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsTableOutputCapacityOverflow",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsBlockOverflow",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.rejectsHugeDecodedWordBeforeAllocation",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.signClearsBeyondCodeWidth",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.ternaryClearsBeyondCodeWidth",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.codecPreparedWordModulo",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.codecPreparedWordsEmpty",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    },
+    {
+      "name": "LexLeanMatmul.Codec.codecPreparedWordProducts",
+      "observed": [],
+      "policy": {
+        "axioms": [],
+        "kind": "none"
+      },
+      "result": "ok"
+    }
+  ],
+  "actual_export_ownership": {
+    "qualified_for_release": false,
+    "scope": "Actual normal SDK emitted Rust ownership observation only; full CoreWasm runtime remains required",
+    "codec_source_sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88",
+    "generated_rust_sha256": "a7546f4b47f3c6dea014486fe9c2e4e32d2d25d593aa1111b3892ca888f6c7a0",
+    "workers": [
+      {
+        "name": "codecDecodeWordsWorker",
+        "owned_worker": true,
+        "loop": true,
+        "loop_accumulator_clones": 0
+      },
+      {
+        "name": "codecScaleDecodedWordsWorker",
+        "owned_worker": true,
+        "loop": true,
+        "loop_accumulator_clones": 0
+      }
+    ],
+    "decoded_word_reads": "borrowed input slices; no ToOwned inside scalar lookup"
+  },
+  "native_counter": {
+    "schema": "lexlean-matmul/codec-cache-native-diagnostic/1",
+    "qualified_for_release": false,
+    "scope": "Exact normal SDK generated native code and independent expected64-cell comparison; source-maintenance only, finalCoreWasm required",
+    "request_sha256": "0f95edb48e97223d252ba792d2aec1ee7d589a769eda72f7ec8ea801d7e84543",
+    "request_bytes": 15985,
+    "codec_source_sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88",
+    "baseline": {
+      "qualified_for_release": false,
+      "status": "passed",
+      "scope": "Actual generated native Codec allocation observation only; final generated CoreWasm remains required",
+      "cells": 64,
+      "total_allocated_bytes": 2172845424,
+      "allocation_events": 55571731,
+      "peak_live_bytes": 1319528,
+      "retained_bytes": 68608,
+      "elapsed_ms": 4614.53751
+    },
+    "cached": {
+      "qualified_for_release": false,
+      "status": "passed",
+      "scope": "Actual generated native Codec allocation observation only; final generated CoreWasm remains required",
+      "cells": 64,
+      "total_allocated_bytes": 1462407152,
+      "allocation_events": 46866277,
+      "peak_live_bytes": 1280264,
+      "retained_bytes": 68608,
+      "elapsed_ms": 3795.834401
+    },
+    "cumulative_allocated_bytes_saved": 710438272,
+    "source_provenance": {
+      "qualified_for_release": false,
+      "scope": "Actual generated Rust byte custody for native diagnostic only; final CoreWasm remains mandatory",
+      "baseline": {
+        "build_id": "c7e3523498701c201146e9c7f9bb3f47ce4e6d774032bc9596ca73f550ae6c7d",
+        "source_path": "/tmp/matmul-source-maintenance-epilogue-build/.prism/build/c7e3523498701c201146e9c7f9bb3f47ce4e6d774032bc9596ca73f550ae6c7d/cargo/package/src/lib.rs",
+        "sha256": "fbd8e7bf4ad6923bf612338a98d1179911461e5a2a71862fbdf5ccdb142747a6"
+      },
+      "record_accumulator": {
+        "source_path": "/tmp/matmul-codec-cache-maintenance-build/observed-intermediates/generated-package-lib.rs",
+        "sha256": "c2c79e3f36c53eca7899a76db60025e90654a0101fa2c47655ac22d4e26d9a4d",
+        "scope": "Real publicSDK normal-owner intermediate; no successful-build/release claim yet"
+      },
+      "owned_accumulator": {
+        "source_path": "/tmp/matmul-codec-cache-owned-maintenance-build/observed-intermediates/generated-package-lib.rs",
+        "sha256": "a7546f4b47f3c6dea014486fe9c2e4e32d2d25d593aa1111b3892ca888f6c7a0"
+      }
+    },
+    "rustc_version": "rustc 1.97.1 (8bab26f4f 2026-07-14)",
+    "counter_source_sha256": "1bb87624b9bc87f3b0b3dd86107c95414d3a1a8cf9121f911767c233a985b3c5",
+    "toolchain_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:46cf404780a7f05fe2bc667690320198fbed1ffadf4bb1899fd0472c6171e44d",
+    "successful_normal_tiny_fixture": {
+      "build_id": "6c2356c30d5c19a5ff1a08af36345fd1024af300ef1eaec19a01c8a3365b18db",
+      "result_sha256": "80e6c49104606dff751d9fbccbc2c3ae555e79dcfa26b9ada0e90969dcfd1fa8",
+      "manifest_sha256": "272f56e635078defd48569c2829cd3e06284d7764b5de886d2108d36620b3fe6",
+      "published_native_source_path": "/tmp/matmul-codec-cache-owned-maintenance-build/.prism/build/6c2356c30d5c19a5ff1a08af36345fd1024af300ef1eaec19a01c8a3365b18db/cargo/package/src/lib.rs",
+      "published_native_source_sha256": "a7546f4b47f3c6dea014486fe9c2e4e32d2d25d593aa1111b3892ca888f6c7a0",
+      "observed_native_source_matches_published_bytes": true,
+      "scope": "TinyV2 identity fixture selects actualcheckedCodec library roots; this validates normalowner/compilertransport and nativecountercustody, notfull158CoreWasm"
+    }
+  }
+}
