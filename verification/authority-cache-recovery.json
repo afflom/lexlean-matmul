@@ -1,0 +1,40 @@
+{
+  "schema": "lexlean-matmul/exact-authority-cache-restoration/1",
+  "objects": [
+    {
+      "authority": "OSV-CRATES-DB-G1788555739396732",
+      "sha256": "03f56153d83125941b4b6990be1fb767b968dc97e73459f933464c832362882c",
+      "source": "/home/alex/Desktop/PrismPM/.prism/cache/authorities/sha256/03f56153d83125941b4b6990be1fb767b968dc97e73459f933464c832362882c",
+      "destination": "/home/alex/Desktop/lexlean-matmul/.prism/cache/authorities/sha256/03f56153d83125941b4b6990be1fb767b968dc97e73459f933464c832362882c",
+      "byte_length": 3505304
+    },
+    {
+      "authority": "OSV-DEBIAN-DB-G1788649357114367",
+      "sha256": "6650acb40d4c877edbf742e3f983430ca71b732267bfe7e9bc4e51be301b5465",
+      "source": "/home/alex/Desktop/PrismPM/.prism/cache/authorities/sha256/6650acb40d4c877edbf742e3f983430ca71b732267bfe7e9bc4e51be301b5465",
+      "destination": "/home/alex/Desktop/lexlean-matmul/.prism/cache/authorities/sha256/6650acb40d4c877edbf742e3f983430ca71b732267bfe7e9bc4e51be301b5465",
+      "byte_length": 69150263
+    },
+    {
+      "authority": "OSV-GO-DB-G1788665539029532",
+      "sha256": "798f6e5e177c1717488af7cca5dcc4f9c04ebe703ec7fadee49b13bf2a14d05f",
+      "source": "/home/alex/Desktop/PrismPM/.prism/cache/authorities/sha256/798f6e5e177c1717488af7cca5dcc4f9c04ebe703ec7fadee49b13bf2a14d05f",
+      "destination": "/home/alex/Desktop/lexlean-matmul/.prism/cache/authorities/sha256/798f6e5e177c1717488af7cca5dcc4f9c04ebe703ec7fadee49b13bf2a14d05f",
+      "byte_length": 11701512
+    },
+    {
+      "authority": "OSV-NPM-DB-G1788643998508450",
+      "sha256": "2b91963d5260533f103ff8d688cd8da4774d2007ecb2a4ab2d44ca2f5d2bed09",
+      "source": "/home/alex/Desktop/PrismPM/.prism/cache/authorities/sha256/2b91963d5260533f103ff8d688cd8da4774d2007ecb2a4ab2d44ca2f5d2bed09",
+      "destination": "/home/alex/Desktop/lexlean-matmul/.prism/cache/authorities/sha256/2b91963d5260533f103ff8d688cd8da4774d2007ecb2a4ab2d44ca2f5d2bed09",
+      "byte_length": 222323938
+    },
+    {
+      "authority": "OSV-UBUNTU-DB-G1788590024186212",
+      "sha256": "08dfd146b67a608e3c2b9b8f4b14c01f30625de61fa59f4dc5b047fac19e415e",
+      "source": "/home/alex/Desktop/PrismPM/.prism/cache/authorities/sha256/08dfd146b67a608e3c2b9b8f4b14c01f30625de61fa59f4dc5b047fac19e415e",
+      "destination": "/home/alex/Desktop/lexlean-matmul/.prism/cache/authorities/sha256/08dfd146b67a608e3c2b9b8f4b14c01f30625de61fa59f4dc5b047fac19e415e",
+      "byte_length": 673252574
+    }
+  ]
+}

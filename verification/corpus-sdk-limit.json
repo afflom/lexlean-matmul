@@ -1,0 +1,69 @@
+{
+  "generated_wrapper_emission": [
+    "@[expose] public def length {\u03b1 : Type} [Lengthable \u03b1] (value : \u03b1) : Nat := Lengthable.length value",
+    "@[noinline] public def index {\u03b1 \u03b2 : Type} [Indexable \u03b1 \u03b2] (value : \u03b1) (offset : Nat) : Option \u03b2 := Indexable.index value offset",
+    "@[noinline] public def slice {\u03b1 : Type} [Sliceable \u03b1] (value : \u03b1) (start count : Nat) : Option \u03b1 := Sliceable.slice value start count",
+    "@[noinline] public def utf8Encode (value : String) : ByteArray := value.toUTF8",
+    "@[noinline] public def utf8Decode (value : ByteArray) : Option String := String.fromUTF8? value",
+    "@[expose] public def equal {\u03b1 : Type} [BEq \u03b1] (left right : \u03b1) : Bool := left == right",
+    "@[noinline] public def splitExact (value delimiter : String) (maximum : UInt32) : Option (List String) :=",
+    "@[noinline] public def join (values : List String) (delimiter : String) : String := delimiter.intercalate values"
+  ],
+  "inference": "Imported dispatch reaches primitive wrapper bodies emitted without expose; the supported pure semantic proof language cannot reduce this closed source behavior across the module boundary. Both decide and reflexivity fail on the first vector.",
+  "request": "1\tmatmul\t1\t1\t1\t6\t7",
+  "response": "1\tok\t1\t1\t42",
+  "root_repository_modified": false,
+  "runs": [
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--user",
+        "1000:1000",
+        "-v",
+        "/tmp/lexlean-dispatch-probe:/workspace",
+        "-w",
+        "/workspace",
+        "--entrypoint",
+        "lexlean",
+        "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+        "verify"
+      ],
+      "elapsed_seconds": 6.808,
+      "exit_code": 1,
+      "proof": "decide",
+      "stderr": "error[LLV7002]: Lean rejected `LexLeanMatmul.Corpus` (error): Tactic `decide` failed for proposition\n  LexLeanRuntime.equal\n      (Protocol.dispatch { data := #[49, 9, 109, 97, 116, 109, 117, 108, 9, 49, 9, 49, 9, 49, 9, 54, 9, 55] })\n      { data := #[49, 9, 111, 107, 9, 49, 9, 49, 9, 52, 50] } =\n    true\nbecause its `Decidable` instance\n  instDecidableEqBool\n    (LexLeanRuntime.equal\n      (Protocol.dispatch { data := #[49, 9, 109, 97, 116, 109, 117, 108, 9, 49, 9, 49, 9, 49, 9, 54, 9, 55] })\n      { data := #[49, 9, 111, 107, 9, 49, 9, 49, 9, 52, 50] })\n    true\ndid not reduce to `isTrue` or `isFalse`.\nAfter unfolding the instances `instDecidableEqBool` and `Bool.decEq`, reduction got stuck at the `Decidable` instance\n  match\n    LexLeanRuntime.equal\n      (Protocol.dispatch { data := #[49, 9, 109, 97, 116, 109, 117, 108, 9, 49, 9, 49, 9, 49, 9, 54, 9, 55] })\n      { data := #[49, 9, 111, 107, 9, 49, 9, 49, 9, 52, 50] },\n    true with\n  | false, false => isTrue \u22ef\n  | false, true => isFalse \u22ef\n  | true, false => isFalse \u22ef\n  | true, true => isTrue \u22ef\n  --> src/Corpus.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Corpus.lean:291:2\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--user",
+        "1000:1000",
+        "-v",
+        "/tmp/lexlean-dispatch-probe:/workspace",
+        "-w",
+        "/workspace",
+        "--entrypoint",
+        "lexlean",
+        "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+        "verify"
+      ],
+      "elapsed_seconds": 6.794,
+      "exit_code": 1,
+      "proof": "reflexivity",
+      "stderr": "error[LLV7002]: Lean rejected `LexLeanMatmul.Corpus` (error): Tactic `rfl` failed: The left-hand side\n  LexLeanRuntime.equal\n    (Protocol.dispatch { data := #[49, 9, 109, 97, 116, 109, 117, 108, 9, 49, 9, 49, 9, 49, 9, 54, 9, 55] })\n    { data := #[49, 9, 111, 107, 9, 49, 9, 49, 9, 52, 50] }\nis not definitionally equal to the right-hand side\n  true\n\u22a2 LexLeanRuntime.equal\n      (Protocol.dispatch { data := #[49, 9, 109, 97, 116, 109, 117, 108, 9, 49, 9, 49, 9, 49, 9, 54, 9, 55] })\n      { data := #[49, 9, 111, 107, 9, 49, 9, 49, 9, 52, 50] } =\n    true\n  --> src/Corpus.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Corpus.lean:291:2\n",
+      "stdout": ""
+    }
+  ],
+  "schema": "lexlean-matmul/corpus-blocker/1",
+  "sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:60226bc791d4c0e5613402a6be7e63f4963d3faf7f327befcf56fc0e41d0ce21",
+  "source_module": "/tmp/lexlean-dispatch-probe/src/Corpus.lex.tex"
+}
