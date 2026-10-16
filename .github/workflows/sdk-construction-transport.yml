@@ -1,4 +1,4 @@
-name: Transport original matrix SDK construction
+name: Publish and canonically bind original dual-native matrix SDK
 
 on:
   push:
@@ -17,29 +17,83 @@ concurrency:
 jobs:
   transport:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        architecture: [amd64, arm64]
     env:
-      SOURCE_REVISION: 366b48e142cd9a6ea9dc01abc970f536a5fb931a
-      ARTIFACT_ID: '11953742351'
-      ARTIFACT_BYTES: '5334345317'
-      ARTIFACT_SHA256: bf7459038ee892e434c1ce501d62c10416b36daca7962179de041db6706f75cf
+      SOURCE_REVISION: 0984474e0208207383c3f9779451d07b2c57b91b
       TARGET_REPOSITORY: ghcr.io/afflom/lexlean-matmul-sdk
-      TARGET_TAG: sdk-366b48e142cd9a6ea9dc01abc970f536a5fb931a-amd64
+      TARGET_TAG: sdk-0984474e0208207383c3f9779451d07b2c57b91b-${{ matrix.architecture }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           repository: UOR-Foundation/PrismPM
-          ref: 366b48e142cd9a6ea9dc01abc970f536a5fb931a
+          ref: 0984474e0208207383c3f9779451d07b2c57b91b
           persist-credentials: false
           path: sdk-source
       - name: Install exact official OCI transport
         run: |
           bash sdk-source/scripts/sdk-candidate.sh install-oras "$RUNNER_TEMP/oras"
           echo "$RUNNER_TEMP/oras" >> "$GITHUB_PATH"
+      - name: Await only the exact successful original native construction
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, re, time, urllib.request
+          source = '0984474e0208207383c3f9779451d07b2c57b91b'
+          run = 38899514144
+          architecture = '${{ matrix.architecture }}'
+          expected_job = {'amd64': 116968029684, 'arm64': 116968029739}[architecture]
+          endpoint = 'https://api.github.com/repos/UOR-Foundation/PrismPM/actions/'
+          def read(path):
+              request = urllib.request.Request(endpoint + path, headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'})
+              with urllib.request.urlopen(request, timeout=60) as response:
+                  return json.load(response)
+          output = pathlib.Path('transport-evidence')
+          output.mkdir()
+          deadline = time.monotonic() + 95 * 60
+          while True:
+              assert time.monotonic() < deadline, 'original native construction did not finish inside this bounded transport wait'
+              workflow = read('runs/' + str(run))
+              assert workflow['head_sha'] == source
+              assert workflow['head_branch'] == 'chore/lexlean-matmul-sdk-osv-2026-10-16'
+              assert workflow['event'] == 'workflow_dispatch'
+              assert workflow['path'] == '.github/workflows/sdk-candidate.yml'
+              assert workflow['run_attempt'] == 1
+              jobs = read('runs/' + str(run) + '/jobs?per_page=100')['jobs']
+              selected = [job for job in jobs if job['id'] == expected_job]
+              assert len(selected) == 1
+              job = selected[0]
+              assert job['name'] == 'Unpublished native SDK construction (' + architecture + ')'
+              if job['status'] == 'completed':
+                  assert job['conclusion'] == 'success', 'original native construction failed; no image transport is permitted'
+                  matches = [row for row in read('runs/' + str(run) + '/artifacts?per_page=100')['artifacts'] if row['name'] == 'unpublished-sdk-construction-' + architecture + '-' + source]
+                  assert len(matches) == 1
+                  artifact = matches[0]
+                  assert artifact['expired'] is False
+                  assert artifact['workflow_run']['id'] == run
+                  assert artifact['workflow_run']['head_sha'] == source
+                  assert artifact['workflow_run']['head_branch'] == workflow['head_branch']
+                  assert type(artifact['id']) is int and artifact['id'] > 0
+                  assert type(artifact['size_in_bytes']) is int and 1_000_000_000 < artifact['size_in_bytes'] < 8_000_000_000
+                  assert re.fullmatch(r'sha256:[0-9a-f]{64}', artifact['digest'])
+                  for name, record in [('original-artifact.json', artifact), ('original-run.json', workflow), ('original-job.json', job)]:
+                      (output / name).write_text(json.dumps(record, sort_keys=True, indent=2) + '\n')
+                  with open(os.environ['GITHUB_ENV'], 'a') as environment:
+                      environment.write('ARTIFACT_ID=' + str(artifact['id']) + '\n')
+                      environment.write('ARTIFACT_BYTES=' + str(artifact['size_in_bytes']) + '\n')
+                      environment.write('ARTIFACT_SHA256=' + artifact['digest'].removeprefix('sha256:') + '\n')
+                  print('Verified successful original source/platform-bound construction artifact:', artifact['id'], artifact['digest'], flush=True)
+                  break
+              print('Waiting for unchanged original ' + architecture + ' construction job ' + str(expected_job), flush=True)
+              time.sleep(30)
+          PY
       - name: Acquire and verify the original construction archive
         env:
           GH_TOKEN: ${{ github.token }}
-          DOWNLOAD_URL: ${{ secrets.PRISMPM_SDK_CONSTRUCTION_DOWNLOAD_URL }}
         run: |
           python3 - <<'PY'
           import hashlib, json, os, pathlib, stat, urllib.error, urllib.parse, urllib.request, zipfile
@@ -54,9 +108,6 @@ jobs:
           except urllib.error.HTTPError as error:
               if error.code in (301, 302, 303, 307, 308):
                   location = error.headers['Location']
-              elif error.code in (403, 404) and os.environ.get('DOWNLOAD_URL'):
-                  print('Using the separately authorized short-lived original artifact download location; no token is forwarded.')
-                  location = os.environ['DOWNLOAD_URL']
               else:
                   raise RuntimeError('original artifact redirect refused with HTTP ' + str(error.code)) from None
           parsed = urllib.parse.urlsplit(location)
@@ -88,7 +139,7 @@ jobs:
           assert record['schema'] == 'prismpm/unpublished-sdk-construction/1'
           assert record['scope'] == 'construction-only-not-acceptance'
           assert record['source_revision'] == record['workflow_revision'] == os.environ['SOURCE_REVISION']
-          assert record['run_id'] == '38675824184' and record['platform'] == 'linux/amd64'
+          assert record['run_id'] == '38899514144' and record['platform'] == 'linux/${{ matrix.architecture }}'
           image = root / 'sdk.oci.tar'
           with image.open('rb') as source:
               image_digest = hashlib.file_digest(source, 'sha256').hexdigest()
@@ -103,12 +154,12 @@ jobs:
       - name: Verify exact OCI metadata and original smoke evidence
         run: |
           construction="$RUNNER_TEMP/original-construction"
-          bash sdk-source/scripts/sdk-candidate.sh inspect "$construction/sdk.oci.tar" amd64 "$SOURCE_REVISION" "$RUNNER_TEMP/inspection"
+          bash sdk-source/scripts/sdk-candidate.sh inspect "$construction/sdk.oci.tar" ${{ matrix.architecture }} "$SOURCE_REVISION" "$RUNNER_TEMP/inspection"
           digest=$(cat "$RUNNER_TEMP/inspection/digest.txt")
           test "$digest" = "$(cat "$construction/evidence/digest.txt")"
           cmp "$RUNNER_TEMP/inspection/manifest.json" "$construction/evidence/manifest.json"
           cmp "$RUNNER_TEMP/inspection/config.json" "$construction/evidence/config.json"
-          node sdk-source/scripts/sdk-candidate.mjs verify "$construction/evidence" amd64 "$SOURCE_REVISION" "$digest"
+          node sdk-source/scripts/sdk-candidate.mjs verify "$construction/evidence" ${{ matrix.architecture }} "$SOURCE_REVISION" "$digest"
       - name: Publish unchanged original construction to the dedicated SDK package
         env:
           GH_TOKEN: ${{ github.token }}
@@ -139,18 +190,164 @@ jobs:
           python3 - <<'PY'
           import json, os, pathlib
           result = {'schema': 'lexlean-matmul/sdk-construction-transport/1', 'scope': 'original-unpublished-sdk-construction-transport',
-              'source_revision': os.environ['SOURCE_REVISION'], 'platform': 'linux/amd64', 'image': os.environ['TARGET_REPOSITORY'] + '@' + os.environ['TRANSPORT_DIGEST'],
+              'source_revision': os.environ['SOURCE_REVISION'], 'platform': 'linux/${{ matrix.architecture }}', 'image': os.environ['TARGET_REPOSITORY'] + '@' + os.environ['TRANSPORT_DIGEST'],
               'tag': os.environ['TARGET_TAG'], 'original_artifact_id': os.environ['ARTIFACT_ID'], 'original_archive_sha256': os.environ['ARTIFACT_SHA256'],
               'anonymous_read': os.environ['ANONYMOUS_READ'], 'qualification': False,
-              'unclaimed': ['fresh-sdk-construction', 'full-vv', 'installed-dual-native-sdk-qualification', 'sdk-release', 'product-acceptance', 'deployment']}
+              'unclaimed': ['full-vv', 'installed-dual-native-sdk-qualification', 'sdk-release', 'product-acceptance', 'deployment']}
           pathlib.Path('transport-evidence/result.json').write_text(json.dumps(result, sort_keys=True) + '\n')
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
-              summary.write('Published the unchanged official source366 construction as `' + result['image'] + '`.\n\nThis transport grants no SDK or product acceptance. Anonymous read: ' + result['anonymous_read'] + '.\n')
+              summary.write('Published the unchanged official construction at source `' + result['source_revision'] + '` as `' + result['image'] + '`.\n\nThis transport grants no SDK or product acceptance. Anonymous read: ' + result['anonymous_read'] + '.\n')
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: original-sdk-construction-transport
+          name: original-sdk-construction-transport-${{ matrix.architecture }}
           path: transport-evidence/
           if-no-files-found: warn
           retention-days: 7
+
+  bind:
+    needs: transport
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      SOURCE_REVISION: 0984474e0208207383c3f9779451d07b2c57b91b
+      TEMPLATE_REVISION: 1c7ee5150b65bfadfe8b8b54c0e1051f68b40394
+      TARGET_REPOSITORY: ghcr.io/afflom/lexlean-matmul-sdk
+      TARGET_TAG: sdk-0984474e0208207383c3f9779451d07b2c57b91b
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: UOR-Foundation/PrismPM
+          ref: 0984474e0208207383c3f9779451d07b2c57b91b
+          persist-credentials: false
+          path: sdk-source
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: UOR-Foundation/template
+          ref: 1c7ee5150b65bfadfe8b8b54c0e1051f68b40394
+          persist-credentials: false
+          path: template
+      - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f
+        with:
+          version: v0.28.0
+          driver-opts: image=docker.io/moby/buildkit@sha256:de10faf919fc71ba4eb1dd7bd6449566d012b0c9436b1c61bfee21d621b009aa
+      - name: Install exact official OCI transport
+        run: |
+          bash sdk-source/scripts/sdk-candidate.sh install-oras "$RUNNER_TEMP/oras"
+          echo "$RUNNER_TEMP/oras" >> "$GITHUB_PATH"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: original-sdk-construction-transport-*
+          path: transport-artifacts
+      - name: Check both genuine original public native transport results
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, re
+          source = '0984474e0208207383c3f9779451d07b2c57b91b'
+          repository = 'ghcr.io/afflom/lexlean-matmul-sdk'
+          digests = []
+          with open(os.environ['GITHUB_ENV'], 'a') as environment:
+              for architecture in ['amd64', 'arm64']:
+                  root = pathlib.Path('transport-artifacts') / ('original-sdk-construction-transport-' + architecture)
+                  record = json.loads((root / 'result.json').read_bytes())
+                  assert record['schema'] == 'lexlean-matmul/sdk-construction-transport/1'
+                  assert record['scope'] == 'original-unpublished-sdk-construction-transport'
+                  assert record['source_revision'] == source
+                  assert record['platform'] == 'linux/' + architecture
+                  assert record['tag'] == 'sdk-' + source + '-' + architecture
+                  assert record['qualification'] is False and record['anonymous_read'] == 'public'
+                  assert re.fullmatch(re.escape(repository) + r'@sha256:[0-9a-f]{64}', record['image'])
+                  original = json.loads((root / 'original-artifact.json').read_bytes())
+                  assert str(original['id']) == record['original_artifact_id']
+                  assert original['digest'] == 'sha256:' + record['original_archive_sha256']
+                  assert original['workflow_run']['id'] == 38899514144
+                  assert original['workflow_run']['head_sha'] == source
+                  digest = record['image'].split('@', 1)[1]
+                  digests.append(digest)
+                  environment.write(architecture.upper() + '_DIGEST=' + digest + '\n')
+          assert digests[0] != digests[1]
+          PY
+      - name: Compose and independently validate the original native index
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test "$(git -C sdk-source rev-parse HEAD)" = "$SOURCE_REVISION"
+          test "$(git -C template rev-parse HEAD)" = "$TEMPLATE_REVISION"
+          test -z "$(git -C template status --porcelain)"
+          printf '%s' "$GH_TOKEN" | oras login ghcr.io --username "$GITHUB_ACTOR" --password-stdin
+          mkdir binding-evidence
+          printf '{"auths":{}}\n' > "$RUNNER_TEMP/anonymous-registry.json"
+          for digest in "$AMD64_DIGEST" "$ARM64_DIGEST"; do
+            test "$(oras resolve --registry-config "$RUNNER_TEMP/anonymous-registry.json" "$TARGET_REPOSITORY@$digest")" = "$digest"
+          done
+          oras manifest index create "$TARGET_REPOSITORY" "$AMD64_DIGEST" "$ARM64_DIGEST" --output binding-evidence/sdk-index.json
+          node sdk-source/scripts/sdk-candidate.mjs index binding-evidence/sdk-index.json "$AMD64_DIGEST" "$ARM64_DIGEST"
+          digest="sha256:$(sha256sum binding-evidence/sdk-index.json | cut -d' ' -f1)"
+          target="$TARGET_REPOSITORY:$TARGET_TAG"
+          if existing=$(oras resolve "$target" 2> "$RUNNER_TEMP/resolve-error"); then
+            test "$existing" = "$digest"
+          else
+            oras manifest push "$target" binding-evidence/sdk-index.json
+          fi
+          test "$(oras resolve "$target")" = "$digest"
+          test "$(oras resolve --registry-config "$RUNNER_TEMP/anonymous-registry.json" "$TARGET_REPOSITORY@$digest")" = "$digest"
+          oras manifest fetch --registry-config "$RUNNER_TEMP/anonymous-registry.json" --output binding-evidence/public-index.json "$TARGET_REPOSITORY@$digest"
+          cmp binding-evidence/sdk-index.json binding-evidence/public-index.json
+          printf 'SDK_IMAGE=%s@%s\n' "$TARGET_REPOSITORY" "$digest" >> "$GITHUB_ENV"
+      - name: Run the unchanged canonical template renderer with both original native inventories
+        run: |
+          bash template/bootstrap/render.sh "$SDK_IMAGE" "UOR-Foundation/PrismPM/action@$SOURCE_REVISION" "$TEMPLATE_REVISION"
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, shutil, subprocess
+          template = pathlib.Path('template')
+          output = pathlib.Path('binding-evidence')
+          paths = [
+              '.devcontainer/devcontainer.json',
+              '.github/workflows/bootstrap.yml',
+              '.github/workflows/prismpm.yml',
+              '.github/workflows/template-update.yml',
+              'prismpm.lock', 'standards.lock', 'template.lock',
+          ]
+          rows = []
+          for name in paths:
+              source = template / name
+              assert source.is_file() and not source.is_symlink()
+              destination = output / 'bound' / name
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(source, destination)
+              data = destination.read_bytes()
+              rows.append({'path': name, 'byte_length': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+          sdk = json.loads((template / 'prismpm.lock').read_bytes())
+          policy = json.loads((template / 'template.lock').read_bytes())
+          assert sdk['schema'] == 'prismpm/sdk-lock/2' and sdk['sdk_image'] == os.environ['SDK_IMAGE']
+          assert {p['platform'] for p in sdk['platforms']} == {'linux/amd64', 'linux/arm64'}
+          assert {p['manifest_digest'] for p in sdk['platforms']} == {os.environ['AMD64_DIGEST'], os.environ['ARM64_DIGEST']}
+          assert policy['template_revision'] == os.environ['TEMPLATE_REVISION'] and policy['sdk_image'] == os.environ['SDK_IMAGE']
+          for row in policy['policy_files']:
+              assert 'sha256:' + hashlib.sha256((template / row['path']).read_bytes()).hexdigest() == row['sha256']
+          renderers = []
+          for name in ['bootstrap/render.sh', 'bootstrap/render.mjs', 'bootstrap/standards-lock.mjs']:
+              data = (template / name).read_bytes()
+              renderers.append({'path': name, 'byte_length': len(data), 'sha256': hashlib.sha256(data).hexdigest()})
+          result = {
+              'schema': 'lexlean-matmul/original-sdk-template-binding/1',
+              'scope': 'canonical-renderer-and-original-dual-native-input-binding',
+              'sdk_image': os.environ['SDK_IMAGE'], 'source_revision': os.environ['SOURCE_REVISION'],
+              'template_revision': os.environ['TEMPLATE_REVISION'],
+              'action_reference': 'UOR-Foundation/PrismPM/action@' + os.environ['SOURCE_REVISION'],
+              'platforms': [{ 'platform': p['platform'], 'manifest_digest': p['manifest_digest'] } for p in sdk['platforms']],
+              'renderer_inputs': renderers, 'bound_files': rows, 'qualification': False,
+              'unclaimed': ['sdk-production-acceptance', 'product-full-vv', 'release', 'deployment'],
+          }
+          (output / 'result.json').write_text(json.dumps(result, sort_keys=True, indent=2) + '\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('Canonical dual-native binding: `' + result['sdk_image'] + '`.\n\nOriginal source `' + result['source_revision'] + '`; template `' + result['template_revision'] + '`.\n\nThis binding grants no SDK production or product acceptance.\n')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: canonical-original-sdk-binding
+          path: binding-evidence/
+          if-no-files-found: warn
+          retention-days: 14
