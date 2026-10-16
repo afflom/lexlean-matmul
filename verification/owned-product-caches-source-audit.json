@@ -1,0 +1,165 @@
+{
+  "schema": "lexlean-matmul/owned-product-cache-source-audit/1",
+  "qualified_for_release": false,
+  "scope": "Semantic source preservation and actual immutable-SDK kernel attestation only; runtime and the full release gate remain required",
+  "baseline_commit": "ee447fe22249f88782da99b4eb737cdf2dbe42f6",
+  "modules": {
+    "Core": {
+      "source_sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+      "baseline_sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+      "original_theorem_asts_preserved": 59,
+      "current_theorems": 59,
+      "changed_existing_declarations": [],
+      "added_declarations": [],
+      "added_theorems": [],
+      "new_theorem_axiom_policies_empty": true
+    },
+    "Atlas": {
+      "source_sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b",
+      "baseline_sha256": "10313dffa9440067781eaf56d50fc6088741cc564924de90b939da2e65071650",
+      "original_theorem_asts_preserved": 47,
+      "current_theorems": 54,
+      "changed_existing_declarations": [
+        "stripValuation",
+        "productUnits"
+      ],
+      "added_declarations": [
+        "atlasValuationPrefix",
+        "atlasValuationFromOffset",
+        "AtlasCoefficient",
+        "AtlasCoefficientList",
+        "AtlasMergeDecision",
+        "atlasCoefficientLength",
+        "atlasCoefficientAtomCount",
+        "atlasCoefficientAt",
+        "atlasCoefficientAtomAt",
+        "atlasRowCoefficient",
+        "atlasMergePresent",
+        "atlasMergeDecision",
+        "atlasMergeFinished",
+        "atlasMergeCoefficientWorker",
+        "atlasMergeCoefficientRow",
+        "atlasMergeCoefficientRows",
+        "atlasCoefficientMass",
+        "atlasCoefficientExtentStep",
+        "atlasCoefficientExtent",
+        "atlasCarryCoefficientTerm",
+        "atlasCarryCoefficientIndex",
+        "atlasCoefficientHalfWorker",
+        "atlasCoefficientHalf",
+        "atlasCoefficientParity",
+        "atlasCarryFinished",
+        "atlasCarryCoefficientWorker",
+        "atlasCarryCoefficients",
+        "atlasCoefficientAccumulator",
+        "atlasCoefficientProduct",
+        "gradeLedgerEmpty",
+        "gradeLedgerCombinesEqualPositions",
+        "gradeLedgerSignedCancellation",
+        "gradeLedgerPropagatesCarry",
+        "gradeLedgerPreservesSparseGap",
+        "valuationPreservesUnitTrailingZero",
+        "valuationAllZeroKeepsExtent"
+      ],
+      "added_theorems": [
+        "gradeLedgerEmpty",
+        "gradeLedgerCombinesEqualPositions",
+        "gradeLedgerSignedCancellation",
+        "gradeLedgerPropagatesCarry",
+        "gradeLedgerPreservesSparseGap",
+        "valuationPreservesUnitTrailingZero",
+        "valuationAllZeroKeepsExtent"
+      ],
+      "new_theorem_axiom_policies_empty": true
+    },
+    "Float": {
+      "source_sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6",
+      "baseline_sha256": "e4989f77d8c4fe35888178a8e870f7b702e5666816a2ce9533d90a5c9448a0e2",
+      "original_theorem_asts_preserved": 67,
+      "current_theorems": 74,
+      "changed_existing_declarations": [
+        "linear",
+        "floatProductTableOwned",
+        "gatherCell"
+      ],
+      "added_declarations": [
+        "floatIntegerAtomValue",
+        "floatIntegerScaleAtom",
+        "floatIntegerScaleAtoms",
+        "floatIntegerAtomCount",
+        "floatIntegerScaleChoices",
+        "floatIntegerScale",
+        "floatEpilogueMultiply",
+        "floatDecodedBookOwned",
+        "floatProductValuesOwned",
+        "floatDecodedProductTableOwned",
+        "floatTableValueAt",
+        "integerScaleEmptyAtoms",
+        "integerScaleNegativeFraction64",
+        "integerScaleSubnormal64",
+        "fractionalScaleRetainsAtlas32",
+        "integerScaleZeroInfinity32",
+        "decodedBookEmpty",
+        "tableValueAtSkipsRows"
+      ],
+      "added_theorems": [
+        "integerScaleEmptyAtoms",
+        "integerScaleNegativeFraction64",
+        "integerScaleSubnormal64",
+        "fractionalScaleRetainsAtlas32",
+        "integerScaleZeroInfinity32",
+        "decodedBookEmpty",
+        "tableValueAtSkipsRows"
+      ],
+      "new_theorem_axiom_policies_empty": true
+    },
+    "Epilogue": {
+      "source_sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87",
+      "baseline_sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87",
+      "original_theorem_asts_preserved": 16,
+      "current_theorems": 16,
+      "changed_existing_declarations": [],
+      "added_declarations": [],
+      "added_theorems": [],
+      "new_theorem_axiom_policies_empty": true
+    },
+    "Codec": {
+      "source_sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88",
+      "baseline_sha256": "a2c3ff47192b2609c9cdcd4d49d78944a13afa8ebe708f7a776757eb079c63a7",
+      "original_theorem_asts_preserved": 35,
+      "current_theorems": 38,
+      "changed_existing_declarations": [
+        "codecTableMultiply"
+      ],
+      "added_declarations": [
+        "CodecDecodedWord",
+        "CodecDecodedWords",
+        "codecDecodedWord",
+        "codecDecodeWordsWorker",
+        "codecDecodeWordsOwned",
+        "codecScaleDecodedWord",
+        "codecScaleDecodedAt",
+        "codecScaleDecodedWordsWorker",
+        "codecScaleDecodedWordsOwned",
+        "codecWeightedDecodedRowsOwned",
+        "codecTableDecodedCellsOwned",
+        "codecPreparedWordModulo",
+        "codecPreparedWordsEmpty",
+        "codecPreparedWordProducts"
+      ],
+      "added_theorems": [
+        "codecPreparedWordModulo",
+        "codecPreparedWordsEmpty",
+        "codecPreparedWordProducts"
+      ],
+      "new_theorem_axiom_policies_empty": true
+    }
+  },
+  "original_theorems_preserved": 224,
+  "current_theorems": 241,
+  "finite_float_product_ast_unchanged": true,
+  "all_158_application_vectors_unchanged": true,
+  "kernel_attestation_id": "ea837f70e39397fdd44c2708dd168c6f2186edbefe1e7d8c2717786fb60e12e3",
+  "kernel_sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
+  "kernel_attestation_sha256": "3fea75d4c4d8c78ee34b8d278a5005a826f8a7fdc0250d5ad949a1eec1be0633"
+}

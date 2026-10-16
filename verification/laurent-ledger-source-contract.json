@@ -1,0 +1,93 @@
+{
+  "schema": "lexlean-matmul/ledger-source-contract-diagnostic/1",
+  "qualified_for_release": false,
+  "scope": "Static source-ownership guard with concrete bypass and certificate-omission negatives only; no generated runtime or immutable-SDK gate qualification.",
+  "guard_sha256": "b72cc6a72089b9825cfbf83547f28576de9ba3f404d943055d474a4ae64b1545",
+  "runner_sha256": "f6e486a1c589e45b7d94a864b5b8aca97a90d7ce4785e8028ab463d80c17e1e0",
+  "atlas_sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b",
+  "float_sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6",
+  "required_edges": {
+    "atlasMultiply": [
+      "canonicalWord",
+      "multiplyWords"
+    ],
+    "canonicalWord": [
+      "atlasNormalizeOwned",
+      "stripValuation",
+      "wordFromValuation"
+    ],
+    "multiplyWords": [
+      "addGrade",
+      "productUnits",
+      "place"
+    ],
+    "productUnits": [
+      "atomsOwned",
+      "atlasCoefficientProduct"
+    ],
+    "atomsOwned": [
+      "nafDigitsOwned",
+      "atomsAtOwned"
+    ],
+    "atomsAtOwned": [
+      "mu",
+      "nextGrade"
+    ],
+    "stripValuation": [
+      "atlasValuationPrefix",
+      "atlasValuationFromOffset"
+    ],
+    "atlasCoefficientProduct": [
+      "atlasMergeCoefficientRows",
+      "atlasCoefficientAccumulator"
+    ],
+    "atlasMergeCoefficientRows": [
+      "atlasMergeCoefficientRow"
+    ],
+    "atlasMergeCoefficientRow": [
+      "atlasMergeCoefficientWorker"
+    ],
+    "atlasMergeCoefficientWorker": [
+      "atlasMergeFinished",
+      "atlasMergeDecision"
+    ],
+    "atlasMergeDecision": [
+      "atlasRowCoefficient"
+    ],
+    "atlasRowCoefficient": [
+      "digitProduct"
+    ],
+    "atlasCoefficientAccumulator": [
+      "atlasCarryCoefficients",
+      "addSigned"
+    ],
+    "atlasCarryCoefficients": [
+      "atlasCarryCoefficientWorker"
+    ],
+    "atlasCarryCoefficientWorker": [
+      "atlasCarryFinished",
+      "atlasCarryCoefficientTerm",
+      "atlasCarryCoefficientIndex",
+      "atlasCoefficientHalf",
+      "atlasCoefficientParity"
+    ],
+    "contractAtoms": [
+      "contractRow"
+    ],
+    "contractRow": [
+      "offer",
+      "digitProduct"
+    ],
+    "offer": [
+      "addSigned",
+      "atlasShiftBitsOwned"
+    ]
+  },
+  "observed_atlas_certificates": 54,
+  "positive": "passed",
+  "negatives_rejected": [
+    "production path returns to repeated binary contraction",
+    "equivalent primitive multiplication replaces table-owned grade arithmetic",
+    "required carry certificate omitted"
+  ]
+}

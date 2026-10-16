@@ -158,19 +158,24 @@ async function denseSignificandCases(machine) {
     assert(Buffer.byteLength(input) <= 16384, 'Dense significand request must fit the declared byte bound');
     await expect(machine, input, success(8, 8, output), `binary64 8×8 dense significands with ${alpha === 1n ? 'direct reduction' : '64-digit integer epilogue'}`);
   }
-  const activations = Array.from({ length: 64 }, (_, index) => code - BigInt(index));
-  const book = Array.from({ length: 64 }, (_, index) => code - 1000n - BigInt(index));
-  const codes = Array.from({ length: 64 }, (_, index) => index);
-  assert.equal(new Set([...activations, ...book].map(String)).size, 128);
-  const coefficients = [...activations, ...book].map(value => decode('f64', value));
-  assert(coefficients.every(value => value.kind === 'finite' && value.coefficient > 0n && value.exponent === -52));
-  assert.equal(new Set(activations.flatMap(value => book.map(word =>
-    String(decode('f64', value).coefficient * decode('f64', word).coefficient)))).size, 4096,
-  'Dense IEEE table must contain all 64 × 64 distinct exact products');
-  const tableOutput = floatCodes('f64', 'nearest', floatProduct('f64', 8, 8, 8, activations, codes.map(index => book[index])));
-  const tableInput = request(1, 'ieee-table', 'f64', 'nearest', csv(book), 8, 8, 8, csv(activations), csv(codes));
-  assert(Buffer.byteLength(tableInput) <= 16384, 'Full dense IEEE product table must fit the declared byte bound');
-  await expect(machine, tableInput, success(8, 8, tableOutput), 'binary64 8×8 dense table with 4,096 distinct exact products');
+  for (const base of [code, 0x7fe5555555555555n]) {
+    const activations = Array.from({ length: 64 }, (_, index) => base - BigInt(index));
+    const book = Array.from({ length: 64 }, (_, index) => base - 1000n - BigInt(index));
+    const codes = Array.from({ length: 64 }, (_, index) => index);
+    assert.equal(new Set([...activations, ...book].map(String)).size, 128);
+    const coefficients = [...activations, ...book].map(value => decode('f64', value));
+    assert(coefficients.every(value => value.kind === 'finite' && value.coefficient > 0n
+      && value.exponent === (base === code ? -52 : 971)));
+    assert.equal(new Set(activations.flatMap(value => book.map(word =>
+      String(decode('f64', value).coefficient * decode('f64', word).coefficient)))).size, 4096,
+      'Dense IEEE table must contain all 64 × 64 distinct exact products');
+    const tableOutput = floatCodes('f64', 'nearest', floatProduct('f64', 8, 8, 8, activations, codes.map(index => book[index])));
+    if (base !== code) assert(tableOutput.every(value => value === 0x7ff0000000000000n));
+    const tableInput = request(1, 'ieee-table', 'f64', 'nearest', csv(book), 8, 8, 8, csv(activations), csv(codes));
+    assert(Buffer.byteLength(tableInput) <= 16384, 'Full dense IEEE product table must fit the declared byte bound');
+    await expect(machine, tableInput, success(8, 8, tableOutput),
+      `binary64 8×8 dense table with 4,096 distinct exact products at ${base === code ? 'unit' : 'maximum'} exponent`);
+  }
 }
 
 async function ieeeCases(machine) {
@@ -393,9 +398,20 @@ export function atlasSourceContract(modules = sourceModules()) {
     atlasMultiply: ['canonicalWord', 'multiplyWords'],
     canonicalWord: ['atlasNormalizeOwned', 'stripValuation', 'wordFromValuation'],
     multiplyWords: ['addGrade', 'productUnits', 'place'],
-    productUnits: ['atomsOwned', 'contractAtoms'],
+    productUnits: ['atomsOwned', 'atlasCoefficientProduct'],
     atomsOwned: ['nafDigitsOwned', 'atomsAtOwned'],
     atomsAtOwned: ['mu', 'nextGrade'],
+    stripValuation: ['atlasValuationPrefix', 'atlasValuationFromOffset'],
+    atlasCoefficientProduct: ['atlasMergeCoefficientRows', 'atlasCoefficientAccumulator'],
+    atlasMergeCoefficientRows: ['atlasMergeCoefficientRow'],
+    atlasMergeCoefficientRow: ['atlasMergeCoefficientWorker'],
+    atlasMergeCoefficientWorker: ['atlasMergeFinished', 'atlasMergeDecision'],
+    atlasMergeDecision: ['atlasRowCoefficient'],
+    atlasRowCoefficient: ['digitProduct'],
+    atlasCoefficientAccumulator: ['atlasCarryCoefficients', 'addSigned'],
+    atlasCarryCoefficients: ['atlasCarryCoefficientWorker'],
+    atlasCarryCoefficientWorker: ['atlasCarryFinished', 'atlasCarryCoefficientTerm', 'atlasCarryCoefficientIndex',
+      'atlasCoefficientHalf', 'atlasCoefficientParity'],
     contractAtoms: ['contractRow'],
     contractRow: ['offer', 'digitProduct'],
     offer: ['addSigned', 'atlasShiftBitsOwned'],
@@ -412,7 +428,9 @@ export function atlasSourceContract(modules = sourceModules()) {
     'addressRoundTripNegative1', 'addressRoundTripPositive0', 'addressRoundTripPositive31',
     'addressRoundTripPositive32', 'addressRoundTripPositive33', 'addressRoundTripPositive65',
     'negativeGradeAddress', 'reconstructPositive3Scale2', 'reconstructNegative3Scale2',
-    'lookupProductCase0', 'lookupProductCase6']) {
+    'lookupProductCase0', 'lookupProductCase6', 'gradeLedgerEmpty', 'gradeLedgerCombinesEqualPositions',
+    'gradeLedgerSignedCancellation', 'gradeLedgerPropagatesCarry', 'gradeLedgerPreservesSparseGap',
+    'valuationPreservesUnitTrailingZero', 'valuationAllZeroKeepsExtent']) {
     assert(proofs.some(proof => proof.name === name), `Missing canonical Atlas certificate ${name}`);
   }
   return { atlas, floating, proofs, requiredEdges };

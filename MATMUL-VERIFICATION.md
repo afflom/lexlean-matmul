@@ -2,7 +2,7 @@
 
 The complete selected application source closure has passed Lean and
 leanchecker verification, including all 158 modeled byte vectors. The five
-mathematical modules contain 229 kernel-checked theorems. **Full generated
+mathematical modules contain 241 kernel-checked theorems. **Full generated
 application acceptance and GitHub Pages deployment remain pending.** Source
 verification is not a substitute for the repository's complete `just vv` gate.
 
@@ -16,15 +16,15 @@ the containing native system and does not execute generated application
 artifacts. The selected modules are Application, Atlas, Codec, CodecProtocol,
 Core, Epilogue, ExtendedProtocol, Float, Model, Protocol, and the SDK-owned Text
 V1 metadata module. Its attestation is
-`36550bb57cd2acb454bd6f1f00f083b4b0648a6d4c65e4710aa72f3b75127a2d`.
+`ea837f70e39397fdd44c2708dd168c6f2186edbefe1e7d8c2717786fb60e12e3`.
 
 | Mathematical module | Declarations | Theorems |
 | --- | ---: | ---: |
 | Core | 262 | 59 |
-| Atlas | 134 | 47 |
-| Float | 230 | 72 |
+| Atlas | 170 | 54 |
+| Float | 236 | 74 |
 | Epilogue | 60 | 16 |
-| Codec | 656 | 35 |
+| Codec | 670 | 38 |
 
 Owned records hold eager intermediate lists while public list facades retain
 their original types. Four additional induction lemmas establish the owned
@@ -42,6 +42,15 @@ fractional-scalar behavior. The [source audit](verification/integer-ieee-epilogu
 checks that all 224 preceding mathematical theorems remain unchanged and the
 five new scalar certificates have no axioms. Actual resource acceptance of
 this optimization remains pending.
+Laurent contraction merges signed digit products into a sorted grade ledger,
+propagates coefficient carries, and performs one final signed subtraction.
+Valuation counts a borrowed zero prefix before copying the unit once. IEEE
+tables decode each book value once and select one cached product without
+copying its entire row. Codec tables similarly decode each stored word once.
+The [combined source audit](verification/owned-product-caches-source-audit.json)
+preserves all 224 preceding theorem statements and proof trees and checks the
+17 new certificates against the actual application attestation. Each new
+certificate declares an empty axiom policy. The original policies remain exact.
 E8 rows use the same owned storage pattern;
 the independent oracle still validates every symbol against the pinned table.
 Computational definitions use distinct names across modules because the
