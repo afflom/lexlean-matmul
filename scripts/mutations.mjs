@@ -16,6 +16,39 @@ function reject(directory, command, args, diagnostic) {
   assert.match(result.stdout + result.stderr, diagnostic, 'Mutation failed at an unrelated boundary');
   return { command: [command, ...args], exit_code: result.status, stdout: result.stdout, stderr: result.stderr };
 }
+function rejectCoreTheorem(directory, theorem) {
+  const selection = 'src/Core.lex.tex';
+  const build = JSON.parse(run('lexlean', ['--diagnostic-format', 'json', 'build', selection], directory));
+  assert.equal(build.success, true);
+  assert.deepEqual(build.modules, ['Core']);
+  assert.match(build.build_id, /^[0-9a-f]{64}$/);
+  const generatedRoot = path.join(directory, '.lexlean/build', build.build_id);
+  const manifest = JSON.parse(fs.readFileSync(path.join(generatedRoot, 'manifest.json'), 'utf8'));
+  assert.equal(manifest.build_id, build.build_id);
+  const module = manifest.modules.find(row => row.module === 'Core');
+  assert.equal(module?.source_path, selection);
+  const relative = module.lean_module.replaceAll('.', '/') + '.lean';
+  const generatedPath = `modules/${relative}`;
+  assert(manifest.outputs.some(row => row.kind === 'lean' && row.path === generatedPath));
+  const lines = fs.readFileSync(path.join(generatedRoot, generatedPath), 'utf8').split('\n');
+  const declarations = lines.flatMap((line, index) => line.startsWith(`public theorem ${theorem} `) ? [index] : []);
+  assert.equal(declarations.length, 1, `Missing unique generated theorem ${theorem}`);
+  const firstLine = declarations[0] + 1;
+  const next = lines.findIndex((line, index) => index >= firstLine && /^public (?:theorem|def|structure|inductive|class|instance)\b/.test(line));
+  const lastLine = next < 0 ? lines.length : next;
+  const rejected = reject(directory, 'lexlean', ['verify', selection], /LLV7002/);
+  // A failure in Application, a different theorem, or a compiler resource limit
+  // cannot establish that the planted arithmetic defect was detected.
+  const intended = (rejected.stdout + rejected.stderr).split(/(?=^error\[)/mu).find(block => {
+    const location = /generated location: \$STAGING\/lean-src\/([^:\n]+):([0-9]+):[0-9]+/.exec(block);
+    return block.startsWith(`error[LLV7002]: Lean rejected \`${module.lean_module}\` (error):`)
+      && block.includes('Tactic `rfl` failed') && location?.[1] === relative
+      && Number(location[2]) >= firstLine && Number(location[2]) <= lastLine;
+  });
+  assert(intended, `No arithmetic proof rejection at ${module.lean_module}.${theorem}`);
+  return { ...rejected, theorem: `${module.lean_module}.${theorem}`,
+    generated_source: generatedPath, generated_lines: { first: firstLine, last: lastLine }, intended_diagnostic: intended };
+}
 try {
   const stale = path.join(temporary, 'stale-conformance');
   copySource(stale);
@@ -25,9 +58,10 @@ try {
   const falseProof = path.join(temporary, 'false-source-proof');
   copySource(falseProof);
   run('prismpm', ['fetch', '--locked'], falseProof);
-  const module = sourceModules().find(module => module.semantic.declarations.some(row => row.kind === 'theorem' && row.parameters.length === 0));
-  assert(module, 'A concrete theorem is required to falsify kernel verification');
-  const theorem = module.semantic.declarations.find(row => row.kind === 'theorem' && row.parameters.length === 0);
+  const module = sourceModules().find(module => module.module === 'Core');
+  assert(module, 'Missing Core arithmetic authority');
+  const theorem = module.semantic.declarations.find(row => row.kind === 'theorem' && row.name === 'largeProduct' && row.parameters.length === 0);
+  assert(theorem, 'The large-product theorem is required to falsify arithmetic verification');
   theorem.statement = { kind: 'eq', left: { kind: 'nat', value: '0' }, right: { kind: 'nat', value: '1' } };
   const source = path.join(falseProof, 'src', module.path);
   const bytes = fs.readFileSync(source, 'utf8');
@@ -35,8 +69,8 @@ try {
   // Regenerate the source lock so the intended failure is proof checking,
   // rather than the independently enforced source-lock freshness check.
   run('lexlean', ['lock'], falseProof);
-  mutations.push({ defect: 'false arithmetic theorem', theorem: `${module.module}.${theorem.name}`,
-    ...reject(falseProof, 'lexlean', ['verify'], /LLV7002/) });
+  mutations.push({ defect: 'false arithmetic theorem',
+    ...rejectCoreTheorem(falseProof, theorem.name) });
 
   const wrongProduct = path.join(temporary, 'wrong-product-implementation');
   copySource(wrongProduct);
@@ -50,7 +84,7 @@ try {
     () => `\\semanticdata{${canonical(core.semantic)}}`));
   run('lexlean', ['lock'], wrongProduct);
   mutations.push({ defect: 'integer multiplication replaced with zero',
-    ...reject(wrongProduct, 'lexlean', ['verify'], /LLV7002/) });
+    ...rejectCoreTheorem(wrongProduct, 'largeProduct') });
 
   const foreign = path.join(temporary, 'handwritten-product-source');
   copySource(foreign);

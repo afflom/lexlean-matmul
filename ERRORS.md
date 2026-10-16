@@ -19,9 +19,9 @@ The versioned byte interface returns `1`, `error`, and the wire code, separated 
 
 Checked native matrix APIs return the modeled `MatrixError` result type.
 
-| Typed variant |
-| --- |
-| `MalformedMatrix` |
-| `Nonconformant` |
-| `InvalidCodebook` |
-| `InvalidCode` |
+| Typed variant | Negative source theorems |
+| --- | --- |
+| `MalformedMatrix` | `rejectsMalformedMatrix` |
+| `Nonconformant` | `rejectsNonconformantProduct` |
+| `InvalidCodebook` | `rejectsEmptyTableCodebook`, `rejectsEmptyBlockCodebook`, `rejectsMalformedBlockWord`, `rejectsZeroWidthBlockCodebook` |
+| `InvalidCode` | `rejectsOutOfBookCode` |

@@ -53,8 +53,18 @@ export function renderErrors() {
   }
   const core = modules.find(module => module.module === 'Core').semantic.declarations;
   const matrix = core.find(row => row.kind === 'inductive' && row.name === 'MatrixError');
-  result += '\nChecked native matrix APIs return the modeled `MatrixError` result type.\n\n| Typed variant |\n| --- |\n';
-  for (const variant of matrix.constructors) result += `| \`${variant.name}\` |\n`;
+  result += '\nChecked native matrix APIs return the modeled `MatrixError` result type.\n\n| Typed variant | Negative source theorems |\n| --- | --- |\n';
+  for (const variant of matrix.constructors) {
+    const witnesses = core.filter(row => row.kind === 'theorem' && row.parameters.length === 0
+      && row.statement.kind === 'eq' && row.statement.left.kind === 'call'
+      && /^checked/.test(row.statement.left.function.name)
+      && row.statement.right.kind === 'constructor'
+      && row.statement.right.constructor.name === 'Result.error'
+      && row.statement.right.arguments.length === 1
+      && row.statement.right.arguments[0].constructor?.name === `MatrixError.${variant.name}`);
+    assert(witnesses.length > 0, `No modeled negative theorem for MatrixError.${variant.name}`);
+    result += `| \`${variant.name}\` | ${witnesses.map(row => `\`${row.name}\``).join(', ')} |\n`;
+  }
   return result;
 }
 export function checkErrors() {
