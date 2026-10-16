@@ -57,7 +57,7 @@ feature = "features/suites/application.feature"
 [[claim]]
 id = "MM-10"
 level = "build"
-statement = "The PrismPM browser system binds the application, artifact, component, controls, and GitHub Pages target."
+statement = "The typed browser system model binds the application, artifact, component, controls, and GitHub Pages target."
 feature = "features/suites/system.feature"
 
 [[claim]]

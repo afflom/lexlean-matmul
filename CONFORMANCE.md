@@ -60,7 +60,7 @@ model does not sanction.
 
 | ID | Level | Statement |
 | --- | --- | --- |
-| `MM-10` | `build` | The PrismPM browser system binds the application, artifact, component, controls, and GitHub Pages target. |
+| `MM-10` | `build` | The typed browser system model binds the application, artifact, component, controls, and GitHub Pages target. |
 
 ## tropical
 
@@ -97,7 +97,7 @@ Never re-derived, vendored, or gated on.
 | `MM-07` | `build` | Versioned matrix requests reject malformed values, incompatible shapes, and invalid codes with modeled errors. |
 | `MM-08` | `build` | LexLean generates kernel-checked arithmetic and codec theorems with explicit axiom policies. |
 | `MM-09` | `build` | One LexLean application model generates the native library, Core-Wasm, Holo archive, and accessible portable View. |
-| `MM-10` | `build` | The PrismPM browser system binds the application, artifact, component, controls, and GitHub Pages target. |
+| `MM-10` | `build` | The typed browser system model binds the application, artifact, component, controls, and GitHub Pages target. |
 | `MM-11` | `build` | Independent exact arithmetic oracles validate generated runtime results and representative planted defects are rejected. |
 | `MM-12` | `build` | The pinned SDK reproduces platform-independent application artifacts from separate clean roots. |
 | `AUTH-UOR-MATMUL` | `some-true` | The cited UOR reference specifies decoding coded operands, exact accumulation, and a single output encoding. |
