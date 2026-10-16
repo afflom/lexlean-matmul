@@ -1,1 +1,207 @@
-{"baseline":{"artifacts":[".lexlean/verified/b47315402d9416898c17513970f0494d8028a7ea788223468677dc260706d3b2"],"attestation_id":"b47315402d9416898c17513970f0494d8028a7ea788223468677dc260706d3b2","build_id":"f854d94b9934f6ecb6b1c12c91863f039914b470222d79dda829e707c6875264","command":"verify","diagnostics":[],"exit_code":0,"modules":["Core"],"semantic_id":"5dbc6541bc9cae6b6021a3232af061c8431ca96a90b815f7e4ff338d254a0e8e","source_id":"629b3d99f686420702138e7c4d98095adb1606cbb70136a95958a7cbd306db25","spec":"lexlean/command-result/1","success":true},"binding":{"prismpm_lock_sha256":"69bacbf7490be421449986ab6e74527a571a0b56322f3253e31e51c8a34f1964","root_sdk_image":"ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad"},"image":"ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad","invocation":["docker","run","--rm","--network","none","--user","1000:1000","--cap-drop","ALL","--security-opt","no-new-privileges","-v","/tmp/lexlean-core-owned-falsification:/workspace","-w","/workspace","--entrypoint","node","ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad","driver.mjs"],"isolated_helper_sha256":"ef778e66dd3500b38fdf75f09759726603dc578b2ce8d738179bc317a44d38b6","mutations":[{"build_id":"ad21796b8027747cef31b1c96045bbb668b5a83aa696887f531bfd7a795a5863","command":["lexlean","verify","src/Core.lex.tex"],"defect":"integer multiplication replaced with zero","exit_code":1,"generated_lines":{"first":877,"last":879},"generated_sha256":"578deed0aa5ee831e6f2caa62dadb8a1cf27502b371ca6be701b94416d73f373","generated_source":"modules/LexLeanMatmul/Core.lean","intended_diagnostic":"error[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  integerMultiply\n    { negative := false,\n      digits := [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1] }\n    { negative := true, digits := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }\nis not definitionally equal to the right-hand side\n  { negative := true,\n    digits :=\n      [0, 0, 9, 6, 2, 5, 3, 6, 2, 1, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 3, 6, 2, 3, 9, 1,\n        2, 1] }\n⊢ integerMultiply\n      { negative := false,\n        digits := [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1] }\n      { negative := true, digits := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] } =\n    { negative := true,\n      digits :=\n        [0, 0, 9, 6, 2, 5, 3, 6, 2, 1, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 3, 6, 2, 3, 9,\n          1, 2, 1] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:878:2\n","modules":["Core"],"selection":"src/Core.lex.tex","source_sha256":"5cf52083590e31951e9b99bd5def8842024ca40eaf528b204ea63cd2eac154b8","stderr":"error[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  blockTableMultiply\n    { block := 2,\n      words :=\n        [[{ negative := true, digits := [2] }, { negative := false, digits := [3] }],\n          [{ negative := false, digits := [5] }, { negative := true, digits := [1] }]] }\n    { rows := 1, cols := 3,\n      cells :=\n        [{ negative := false, digits := [2] }, { negative := true, digits := [3] },\n          { negative := false, digits := [4] }] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [] }, { negative := false, digits := [1] },\n          { negative := false, digits := [1] }, { negative := false, digits := [] }] }\nis not definitionally equal to the right-hand side\n  { rows := 1, cols := 2, cells := [{ negative := false, digits := [7] }, { negative := false, digits := [5] }] }\n⊢ blockTableMultiply\n      { block := 2,\n        words :=\n          [[{ negative := true, digits := [2] }, { negative := false, digits := [3] }],\n            [{ negative := false, digits := [5] }, { negative := true, digits := [1] }]] }\n      { rows := 1, cols := 3,\n        cells :=\n          [{ negative := false, digits := [2] }, { negative := true, digits := [3] },\n            { negative := false, digits := [4] }] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [] }, { negative := false, digits := [1] },\n            { negative := false, digits := [1] }, { negative := false, digits := [] }] } =\n    { rows := 1, cols := 2, cells := [{ negative := false, digits := [7] }, { negative := false, digits := [5] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:902:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  complexMultiply { real := { negative := false, digits := [3] }, imaginary := { negative := false, digits := [4] } }\n    { real := { negative := true, digits := [2] }, imaginary := { negative := false, digits := [5] } }\nis not definitionally equal to the right-hand side\n  { real := { negative := true, digits := [6, 2] }, imaginary := { negative := false, digits := [7] } }\n⊢ complexMultiply { real := { negative := false, digits := [3] }, imaginary := { negative := false, digits := [4] } }\n      { real := { negative := true, digits := [2] }, imaginary := { negative := false, digits := [5] } } =\n    { real := { negative := true, digits := [6, 2] }, imaginary := { negative := false, digits := [7] } }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:914:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  dyadicDot [{ coefficient := { negative := false, digits := [3] }, scale := 1 }]\n    [{ coefficient := { negative := true, digits := [5] }, scale := 2 }]\nis not definitionally equal to the right-hand side\n  { coefficient := { negative := true, digits := [5, 1] }, scale := 3 }\n⊢ dyadicDot [{ coefficient := { negative := false, digits := [3] }, scale := 1 }]\n      [{ coefficient := { negative := true, digits := [5] }, scale := 2 }] =\n    { coefficient := { negative := true, digits := [5, 1] }, scale := 3 }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:920:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  gemm { negative := false, digits := [3] } { negative := true, digits := [1] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [1] }, { negative := false, digits := [2] },\n          { negative := false, digits := [3] }, { negative := false, digits := [4] }] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n          { negative := false, digits := [7] }, { negative := false, digits := [8] }] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [9, 1] }, { negative := false, digits := [2, 2] },\n          { negative := false, digits := [3, 4] }, { negative := false, digits := [0, 5] }] }\nis not definitionally equal to the right-hand side\n  { rows := 2, cols := 2,\n    cells :=\n      [{ negative := false, digits := [8, 3] }, { negative := false, digits := [4, 4] },\n        { negative := false, digits := [6, 8] }, { negative := false, digits := [0, 0, 1] }] }\n⊢ gemm { negative := false, digits := [3] } { negative := true, digits := [1] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [1] }, { negative := false, digits := [2] },\n            { negative := false, digits := [3] }, { negative := false, digits := [4] }] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n            { negative := false, digits := [7] }, { negative := false, digits := [8] }] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [9, 1] }, { negative := false, digits := [2, 2] },\n            { negative := false, digits := [3, 4] }, { negative := false, digits := [0, 5] }] } =\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [8, 3] }, { negative := false, digits := [4, 4] },\n          { negative := false, digits := [6, 8] }, { negative := false, digits := [0, 0, 1] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:884:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  integerMultiply\n    { negative := false,\n      digits := [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1] }\n    { negative := true, digits := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }\nis not definitionally equal to the right-hand side\n  { negative := true,\n    digits :=\n      [0, 0, 9, 6, 2, 5, 3, 6, 2, 1, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 3, 6, 2, 3, 9, 1,\n        2, 1] }\n⊢ integerMultiply\n      { negative := false,\n        digits := [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1] }\n      { negative := true, digits := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] } =\n    { negative := true,\n      digits :=\n        [0, 0, 9, 6, 2, 5, 3, 6, 2, 1, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 3, 6, 2, 3, 9,\n          1, 2, 1] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:878:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  matrixMultiply\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [1] }, { negative := false, digits := [2] },\n          { negative := false, digits := [3] }, { negative := false, digits := [4] }] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n          { negative := false, digits := [7] }, { negative := false, digits := [8] }] }\nis not definitionally equal to the right-hand side\n  { rows := 2, cols := 2,\n    cells :=\n      [{ negative := false, digits := [9, 1] }, { negative := false, digits := [2, 2] },\n        { negative := false, digits := [3, 4] }, { negative := false, digits := [0, 5] }] }\n⊢ matrixMultiply\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [1] }, { negative := false, digits := [2] },\n            { negative := false, digits := [3] }, { negative := false, digits := [4] }] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n            { negative := false, digits := [7] }, { negative := false, digits := [8] }] } =\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [9, 1] }, { negative := false, digits := [2, 2] },\n          { negative := false, digits := [3, 4] }, { negative := false, digits := [0, 5] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:881:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  partitionedMultiply 2\n    { rows := 1, cols := 3,\n      cells :=\n        [{ negative := false, digits := [2] }, { negative := true, digits := [3] },\n          { negative := false, digits := [4] }] }\n    { rows := 3, cols := 1,\n      cells :=\n        [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n          { negative := false, digits := [7] }] }\nis not definitionally equal to the right-hand side\n  { rows := 1, cols := 1, cells := [{ negative := false, digits := [0, 2] }] }\n⊢ partitionedMultiply 2\n      { rows := 1, cols := 3,\n        cells :=\n          [{ negative := false, digits := [2] }, { negative := true, digits := [3] },\n            { negative := false, digits := [4] }] }\n      { rows := 3, cols := 1,\n        cells :=\n          [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n            { negative := false, digits := [7] }] } =\n    { rows := 1, cols := 1, cells := [{ negative := false, digits := [0, 2] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:887:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  tableMultiply [{ negative := true, digits := [2] }, { negative := false, digits := [3] }]\n    { rows := 2, cols := 3,\n      cells :=\n        [{ negative := false, digits := [2] }, { negative := true, digits := [1] },\n          { negative := false, digits := [4] }, { negative := true, digits := [3] },\n          { negative := false, digits := [5] }, { negative := false, digits := [7] }] }\n    { rows := 3, cols := 2,\n      cells :=\n        [{ negative := false, digits := [] }, { negative := false, digits := [1] },\n          { negative := false, digits := [1] }, { negative := false, digits := [] },\n          { negative := false, digits := [] }, { negative := false, digits := [1] }] }\nis not definitionally equal to the right-hand side\n  { rows := 2, cols := 2,\n    cells :=\n      [{ negative := true, digits := [5, 1] }, { negative := false, digits := [0, 2] },\n        { negative := false, digits := [7] }, { negative := false, digits := [2] }] }\n⊢ tableMultiply [{ negative := true, digits := [2] }, { negative := false, digits := [3] }]\n      { rows := 2, cols := 3,\n        cells :=\n          [{ negative := false, digits := [2] }, { negative := true, digits := [1] },\n            { negative := false, digits := [4] }, { negative := true, digits := [3] },\n            { negative := false, digits := [5] }, { negative := false, digits := [7] }] }\n      { rows := 3, cols := 2,\n        cells :=\n          [{ negative := false, digits := [] }, { negative := false, digits := [1] },\n            { negative := false, digits := [1] }, { negative := false, digits := [] },\n            { negative := false, digits := [] }, { negative := false, digits := [1] }] } =\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := true, digits := [5, 1] }, { negative := false, digits := [0, 2] },\n          { negative := false, digits := [7] }, { negative := false, digits := [2] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:899:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (warning): Variable name `x` is not explicitly referenced.\nThe binding can be removed (if unused) or named `_` (if used implicitly).\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:408:38\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (warning): Variable name `y` is not explicitly referenced.\nThe binding can be removed (if unused) or named `_` (if used implicitly).\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:408:51\n","stdout":"","theorem":"LexLeanMatmul.Core.largeProduct"}],"qualified_for_release":false,"restored":{"artifacts":[".lexlean/verified/b47315402d9416898c17513970f0494d8028a7ea788223468677dc260706d3b2"],"attestation_id":"b47315402d9416898c17513970f0494d8028a7ea788223468677dc260706d3b2","build_id":"f854d94b9934f6ecb6b1c12c91863f039914b470222d79dda829e707c6875264","command":"verify","diagnostics":[],"exit_code":0,"modules":["Core"],"semantic_id":"5dbc6541bc9cae6b6021a3232af061c8431ca96a90b815f7e4ff338d254a0e8e","source_id":"629b3d99f686420702138e7c4d98095adb1606cbb70136a95958a7cbd306db25","spec":"lexlean/command-result/1","success":true},"schema":"lexlean-matmul/core-falsification/1","scope":"Isolated immutable-SDK selected pure LexLean source closure only. The complete application acceptance must rerun this guard after a fresh selected build; this receipt is not release qualification.","script_sha256":"adf59127cb814f44f115942f280fe84dfb294dd8133f5f914f915b3d3ef5bd30","source_sha256":{"Core":"339cfe4eb5d59ce480ef4483603937f8c47bcc3e57caf5ee7f28b35e5648d07d"},"steps":[{"command":["lexlean","--diagnostic-format","json","lock"],"phase":"baseline","result":{"artifacts":[],"command":"lock","diagnostics":[],"exit_code":0,"modules":[],"spec":"lexlean/command-result/1","success":true}},{"command":["lexlean","--diagnostic-format","json","verify","src/Core.lex.tex"],"phase":"baseline","result":{"artifacts":[".lexlean/verified/b47315402d9416898c17513970f0494d8028a7ea788223468677dc260706d3b2"],"attestation_id":"b47315402d9416898c17513970f0494d8028a7ea788223468677dc260706d3b2","build_id":"f854d94b9934f6ecb6b1c12c91863f039914b470222d79dda829e707c6875264","command":"verify","diagnostics":[],"exit_code":0,"modules":["Core"],"semantic_id":"5dbc6541bc9cae6b6021a3232af061c8431ca96a90b815f7e4ff338d254a0e8e","source_id":"629b3d99f686420702138e7c4d98095adb1606cbb70136a95958a7cbd306db25","spec":"lexlean/command-result/1","success":true}},{"command":["lexlean","--diagnostic-format","json","lock"],"phase":"core-mutant","result":{"artifacts":[],"command":"lock","diagnostics":[],"exit_code":0,"modules":[],"spec":"lexlean/command-result/1","success":true}},{"command":["lexlean","--diagnostic-format","json","lock"],"phase":"restored","result":{"artifacts":[],"command":"lock","diagnostics":[],"exit_code":0,"modules":[],"spec":"lexlean/command-result/1","success":true}},{"command":["lexlean","--diagnostic-format","json","verify","src/Core.lex.tex"],"phase":"restored","result":{"artifacts":[".lexlean/verified/b47315402d9416898c17513970f0494d8028a7ea788223468677dc260706d3b2"],"attestation_id":"b47315402d9416898c17513970f0494d8028a7ea788223468677dc260706d3b2","build_id":"f854d94b9934f6ecb6b1c12c91863f039914b470222d79dda829e707c6875264","command":"verify","diagnostics":[],"exit_code":0,"modules":["Core"],"semantic_id":"5dbc6541bc9cae6b6021a3232af061c8431ca96a90b815f7e4ff338d254a0e8e","source_id":"629b3d99f686420702138e7c4d98095adb1606cbb70136a95958a7cbd306db25","spec":"lexlean/command-result/1","success":true}}]}
+{
+  "schema": "lexlean-matmul/core-falsification/1",
+  "qualified_for_release": false,
+  "scope": "Isolated immutable-SDK selected pure LexLean source closure only. The complete application acceptance must rerun this guard after a fresh selected build; this receipt is not release qualification.",
+  "image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
+  "script_sha256": "adf59127cb814f44f115942f280fe84dfb294dd8133f5f914f915b3d3ef5bd30",
+  "binding": {
+    "prismpm_lock_sha256": "69bacbf7490be421449986ab6e74527a571a0b56322f3253e31e51c8a34f1964",
+    "root_sdk_image": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad"
+  },
+  "invocation": [
+    "docker",
+    "run",
+    "--rm",
+    "--network",
+    "none",
+    "--user",
+    "1000:1000",
+    "--cap-drop",
+    "ALL",
+    "--security-opt",
+    "no-new-privileges",
+    "-v",
+    "/tmp/lexlean-core-owned-falsification:/workspace",
+    "-w",
+    "/workspace",
+    "--entrypoint",
+    "node",
+    "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:8715ad3a8ef7b1478ff7a6f432b15733e6ee3848cafac328d1ce503a0481a9ad",
+    "driver.mjs"
+  ],
+  "isolated_helper_sha256": "ef778e66dd3500b38fdf75f09759726603dc578b2ce8d738179bc317a44d38b6",
+  "source_sha256": {
+    "Core": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+  },
+  "steps": [
+    {
+      "phase": "baseline",
+      "command": [
+        "lexlean",
+        "--diagnostic-format",
+        "json",
+        "lock"
+      ],
+      "result": {
+        "artifacts": [],
+        "command": "lock",
+        "diagnostics": [],
+        "exit_code": 0,
+        "modules": [],
+        "spec": "lexlean/command-result/1",
+        "success": true
+      }
+    },
+    {
+      "phase": "baseline",
+      "command": [
+        "lexlean",
+        "--diagnostic-format",
+        "json",
+        "verify",
+        "src/Core.lex.tex"
+      ],
+      "result": {
+        "artifacts": [
+          ".lexlean/verified/4f5b0d0990391e63fe171bc2065ffd694af666efb7da4849ef831581685d8850"
+        ],
+        "attestation_id": "4f5b0d0990391e63fe171bc2065ffd694af666efb7da4849ef831581685d8850",
+        "build_id": "7031d5f7872a0a242e8d64a6ad3f054c9e9d1a770b2d21bed8ac06d663af86da",
+        "command": "verify",
+        "diagnostics": [],
+        "exit_code": 0,
+        "modules": [
+          "Core"
+        ],
+        "semantic_id": "06bd4583d97baee7a0070445e91f684e5e4d526f56216e06d25f793ad6eeb5e1",
+        "source_id": "d259a0b8aed7c80b71a8ade3cdf79e64976e8d624487d7a73c35cfe920155a39",
+        "spec": "lexlean/command-result/1",
+        "success": true
+      }
+    },
+    {
+      "phase": "core-mutant",
+      "command": [
+        "lexlean",
+        "--diagnostic-format",
+        "json",
+        "lock"
+      ],
+      "result": {
+        "artifacts": [],
+        "command": "lock",
+        "diagnostics": [],
+        "exit_code": 0,
+        "modules": [],
+        "spec": "lexlean/command-result/1",
+        "success": true
+      }
+    },
+    {
+      "phase": "restored",
+      "command": [
+        "lexlean",
+        "--diagnostic-format",
+        "json",
+        "lock"
+      ],
+      "result": {
+        "artifacts": [],
+        "command": "lock",
+        "diagnostics": [],
+        "exit_code": 0,
+        "modules": [],
+        "spec": "lexlean/command-result/1",
+        "success": true
+      }
+    },
+    {
+      "phase": "restored",
+      "command": [
+        "lexlean",
+        "--diagnostic-format",
+        "json",
+        "verify",
+        "src/Core.lex.tex"
+      ],
+      "result": {
+        "artifacts": [
+          ".lexlean/verified/4f5b0d0990391e63fe171bc2065ffd694af666efb7da4849ef831581685d8850"
+        ],
+        "attestation_id": "4f5b0d0990391e63fe171bc2065ffd694af666efb7da4849ef831581685d8850",
+        "build_id": "7031d5f7872a0a242e8d64a6ad3f054c9e9d1a770b2d21bed8ac06d663af86da",
+        "command": "verify",
+        "diagnostics": [],
+        "exit_code": 0,
+        "modules": [
+          "Core"
+        ],
+        "semantic_id": "06bd4583d97baee7a0070445e91f684e5e4d526f56216e06d25f793ad6eeb5e1",
+        "source_id": "d259a0b8aed7c80b71a8ade3cdf79e64976e8d624487d7a73c35cfe920155a39",
+        "spec": "lexlean/command-result/1",
+        "success": true
+      }
+    }
+  ],
+  "mutations": [
+    {
+      "defect": "integer multiplication replaced with zero",
+      "command": [
+        "lexlean",
+        "verify",
+        "src/Core.lex.tex"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "error[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  blockTableMultiply\n    { block := 2,\n      words :=\n        [[{ negative := true, digits := [2] }, { negative := false, digits := [3] }],\n          [{ negative := false, digits := [5] }, { negative := true, digits := [1] }]] }\n    { rows := 1, cols := 3,\n      cells :=\n        [{ negative := false, digits := [2] }, { negative := true, digits := [3] },\n          { negative := false, digits := [4] }] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [] }, { negative := false, digits := [1] },\n          { negative := false, digits := [1] }, { negative := false, digits := [] }] }\nis not definitionally equal to the right-hand side\n  { rows := 1, cols := 2, cells := [{ negative := false, digits := [7] }, { negative := false, digits := [5] }] }\n\u22a2 blockTableMultiply\n      { block := 2,\n        words :=\n          [[{ negative := true, digits := [2] }, { negative := false, digits := [3] }],\n            [{ negative := false, digits := [5] }, { negative := true, digits := [1] }]] }\n      { rows := 1, cols := 3,\n        cells :=\n          [{ negative := false, digits := [2] }, { negative := true, digits := [3] },\n            { negative := false, digits := [4] }] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [] }, { negative := false, digits := [1] },\n            { negative := false, digits := [1] }, { negative := false, digits := [] }] } =\n    { rows := 1, cols := 2, cells := [{ negative := false, digits := [7] }, { negative := false, digits := [5] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:906:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  complexMultiply { real := { negative := false, digits := [3] }, imaginary := { negative := false, digits := [4] } }\n    { real := { negative := true, digits := [2] }, imaginary := { negative := false, digits := [5] } }\nis not definitionally equal to the right-hand side\n  { real := { negative := true, digits := [6, 2] }, imaginary := { negative := false, digits := [7] } }\n\u22a2 complexMultiply { real := { negative := false, digits := [3] }, imaginary := { negative := false, digits := [4] } }\n      { real := { negative := true, digits := [2] }, imaginary := { negative := false, digits := [5] } } =\n    { real := { negative := true, digits := [6, 2] }, imaginary := { negative := false, digits := [7] } }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:918:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  dyadicDot [{ coefficient := { negative := false, digits := [3] }, scale := 1 }]\n    [{ coefficient := { negative := true, digits := [5] }, scale := 2 }]\nis not definitionally equal to the right-hand side\n  { coefficient := { negative := true, digits := [5, 1] }, scale := 3 }\n\u22a2 dyadicDot [{ coefficient := { negative := false, digits := [3] }, scale := 1 }]\n      [{ coefficient := { negative := true, digits := [5] }, scale := 2 }] =\n    { coefficient := { negative := true, digits := [5, 1] }, scale := 3 }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:924:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  gemm { negative := false, digits := [3] } { negative := true, digits := [1] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [1] }, { negative := false, digits := [2] },\n          { negative := false, digits := [3] }, { negative := false, digits := [4] }] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n          { negative := false, digits := [7] }, { negative := false, digits := [8] }] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [9, 1] }, { negative := false, digits := [2, 2] },\n          { negative := false, digits := [3, 4] }, { negative := false, digits := [0, 5] }] }\nis not definitionally equal to the right-hand side\n  { rows := 2, cols := 2,\n    cells :=\n      [{ negative := false, digits := [8, 3] }, { negative := false, digits := [4, 4] },\n        { negative := false, digits := [6, 8] }, { negative := false, digits := [0, 0, 1] }] }\n\u22a2 gemm { negative := false, digits := [3] } { negative := true, digits := [1] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [1] }, { negative := false, digits := [2] },\n            { negative := false, digits := [3] }, { negative := false, digits := [4] }] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n            { negative := false, digits := [7] }, { negative := false, digits := [8] }] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [9, 1] }, { negative := false, digits := [2, 2] },\n            { negative := false, digits := [3, 4] }, { negative := false, digits := [0, 5] }] } =\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [8, 3] }, { negative := false, digits := [4, 4] },\n          { negative := false, digits := [6, 8] }, { negative := false, digits := [0, 0, 1] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:888:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  integerMultiply\n    { negative := false,\n      digits := [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1] }\n    { negative := true, digits := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }\nis not definitionally equal to the right-hand side\n  { negative := true,\n    digits :=\n      [0, 0, 9, 6, 2, 5, 3, 6, 2, 1, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 3, 6, 2, 3, 9, 1,\n        2, 1] }\n\u22a2 integerMultiply\n      { negative := false,\n        digits := [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1] }\n      { negative := true, digits := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] } =\n    { negative := true,\n      digits :=\n        [0, 0, 9, 6, 2, 5, 3, 6, 2, 1, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 3, 6, 2, 3, 9,\n          1, 2, 1] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:882:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  matrixMultiply\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [1] }, { negative := false, digits := [2] },\n          { negative := false, digits := [3] }, { negative := false, digits := [4] }] }\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n          { negative := false, digits := [7] }, { negative := false, digits := [8] }] }\nis not definitionally equal to the right-hand side\n  { rows := 2, cols := 2,\n    cells :=\n      [{ negative := false, digits := [9, 1] }, { negative := false, digits := [2, 2] },\n        { negative := false, digits := [3, 4] }, { negative := false, digits := [0, 5] }] }\n\u22a2 matrixMultiply\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [1] }, { negative := false, digits := [2] },\n            { negative := false, digits := [3] }, { negative := false, digits := [4] }] }\n      { rows := 2, cols := 2,\n        cells :=\n          [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n            { negative := false, digits := [7] }, { negative := false, digits := [8] }] } =\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := false, digits := [9, 1] }, { negative := false, digits := [2, 2] },\n          { negative := false, digits := [3, 4] }, { negative := false, digits := [0, 5] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:885:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  partitionedMultiply 2\n    { rows := 1, cols := 3,\n      cells :=\n        [{ negative := false, digits := [2] }, { negative := true, digits := [3] },\n          { negative := false, digits := [4] }] }\n    { rows := 3, cols := 1,\n      cells :=\n        [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n          { negative := false, digits := [7] }] }\nis not definitionally equal to the right-hand side\n  { rows := 1, cols := 1, cells := [{ negative := false, digits := [0, 2] }] }\n\u22a2 partitionedMultiply 2\n      { rows := 1, cols := 3,\n        cells :=\n          [{ negative := false, digits := [2] }, { negative := true, digits := [3] },\n            { negative := false, digits := [4] }] }\n      { rows := 3, cols := 1,\n        cells :=\n          [{ negative := false, digits := [5] }, { negative := false, digits := [6] },\n            { negative := false, digits := [7] }] } =\n    { rows := 1, cols := 1, cells := [{ negative := false, digits := [0, 2] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:891:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  tableMultiply [{ negative := true, digits := [2] }, { negative := false, digits := [3] }]\n    { rows := 2, cols := 3,\n      cells :=\n        [{ negative := false, digits := [2] }, { negative := true, digits := [1] },\n          { negative := false, digits := [4] }, { negative := true, digits := [3] },\n          { negative := false, digits := [5] }, { negative := false, digits := [7] }] }\n    { rows := 3, cols := 2,\n      cells :=\n        [{ negative := false, digits := [] }, { negative := false, digits := [1] },\n          { negative := false, digits := [1] }, { negative := false, digits := [] },\n          { negative := false, digits := [] }, { negative := false, digits := [1] }] }\nis not definitionally equal to the right-hand side\n  { rows := 2, cols := 2,\n    cells :=\n      [{ negative := true, digits := [5, 1] }, { negative := false, digits := [0, 2] },\n        { negative := false, digits := [7] }, { negative := false, digits := [2] }] }\n\u22a2 tableMultiply [{ negative := true, digits := [2] }, { negative := false, digits := [3] }]\n      { rows := 2, cols := 3,\n        cells :=\n          [{ negative := false, digits := [2] }, { negative := true, digits := [1] },\n            { negative := false, digits := [4] }, { negative := true, digits := [3] },\n            { negative := false, digits := [5] }, { negative := false, digits := [7] }] }\n      { rows := 3, cols := 2,\n        cells :=\n          [{ negative := false, digits := [] }, { negative := false, digits := [1] },\n            { negative := false, digits := [1] }, { negative := false, digits := [] },\n            { negative := false, digits := [] }, { negative := false, digits := [1] }] } =\n    { rows := 2, cols := 2,\n      cells :=\n        [{ negative := true, digits := [5, 1] }, { negative := false, digits := [0, 2] },\n          { negative := false, digits := [7] }, { negative := false, digits := [2] }] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:903:2\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (warning): Variable name `x` is not explicitly referenced.\nThe binding can be removed (if unused) or named `_` (if used implicitly).\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:412:38\nerror[LLV7002]: Lean rejected `LexLeanMatmul.Core` (warning): Variable name `y` is not explicitly referenced.\nThe binding can be removed (if unused) or named `_` (if used implicitly).\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:412:51\n",
+      "theorem": "LexLeanMatmul.Core.largeProduct",
+      "selection": "src/Core.lex.tex",
+      "modules": [
+        "Core"
+      ],
+      "build_id": "c54b5e89ea841b430dc5e7613ac316079fee4dd514331353680d0515992f97af",
+      "source_sha256": "6a46903332a29470965feca49b8e28aeb7d82b60152fe5bc56f8bbfdfcbac6d6",
+      "generated_sha256": "77425a8845dcb9a5a5537ec2c924f9110dce54a45411e57e97f93eaa4d6e7c32",
+      "generated_source": "modules/LexLeanMatmul/Core.lean",
+      "generated_lines": {
+        "first": 881,
+        "last": 883
+      },
+      "intended_diagnostic": "error[LLV7002]: Lean rejected `LexLeanMatmul.Core` (error): Tactic `rfl` failed: The left-hand side\n  integerMultiply\n    { negative := false,\n      digits := [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1] }\n    { negative := true, digits := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }\nis not definitionally equal to the right-hand side\n  { negative := true,\n    digits :=\n      [0, 0, 9, 6, 2, 5, 3, 6, 2, 1, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 3, 6, 2, 3, 9, 1,\n        2, 1] }\n\u22a2 integerMultiply\n      { negative := false,\n        digits := [0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1] }\n      { negative := true, digits := [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] } =\n    { negative := true,\n      digits :=\n        [0, 0, 9, 6, 2, 5, 3, 6, 2, 1, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 2, 3, 5, 8, 2, 8, 4, 2, 1, 1, 3, 6, 2, 3, 9,\n          1, 2, 1] }\n  --> src/Core.lex.tex:1:1\n  note: generated location: $STAGING/lean-src/LexLeanMatmul/Core.lean:882:2\n"
+    }
+  ],
+  "baseline": {
+    "artifacts": [
+      ".lexlean/verified/4f5b0d0990391e63fe171bc2065ffd694af666efb7da4849ef831581685d8850"
+    ],
+    "attestation_id": "4f5b0d0990391e63fe171bc2065ffd694af666efb7da4849ef831581685d8850",
+    "build_id": "7031d5f7872a0a242e8d64a6ad3f054c9e9d1a770b2d21bed8ac06d663af86da",
+    "command": "verify",
+    "diagnostics": [],
+    "exit_code": 0,
+    "modules": [
+      "Core"
+    ],
+    "semantic_id": "06bd4583d97baee7a0070445e91f684e5e4d526f56216e06d25f793ad6eeb5e1",
+    "source_id": "d259a0b8aed7c80b71a8ade3cdf79e64976e8d624487d7a73c35cfe920155a39",
+    "spec": "lexlean/command-result/1",
+    "success": true
+  },
+  "restored": {
+    "artifacts": [
+      ".lexlean/verified/4f5b0d0990391e63fe171bc2065ffd694af666efb7da4849ef831581685d8850"
+    ],
+    "attestation_id": "4f5b0d0990391e63fe171bc2065ffd694af666efb7da4849ef831581685d8850",
+    "build_id": "7031d5f7872a0a242e8d64a6ad3f054c9e9d1a770b2d21bed8ac06d663af86da",
+    "command": "verify",
+    "diagnostics": [],
+    "exit_code": 0,
+    "modules": [
+      "Core"
+    ],
+    "semantic_id": "06bd4583d97baee7a0070445e91f684e5e4d526f56216e06d25f793ad6eeb5e1",
+    "source_id": "d259a0b8aed7c80b71a8ade3cdf79e64976e8d624487d7a73c35cfe920155a39",
+    "spec": "lexlean/command-result/1",
+    "success": true
+  }
+}
