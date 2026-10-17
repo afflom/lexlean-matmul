@@ -7,6 +7,7 @@ import { pathToFileURL } from 'node:url';
 import { acceptanceVectors } from './write-errors.mjs';
 import { deploymentMetadata } from './system-model.mjs';
 import { canonical, confined, evidenceRoot, files, freshBuild, readJson, sha, writeJson } from './evidence.mjs';
+import { assertRenderedResult, fillUiVector, prepareUiVector } from './workbench-test.mjs';
 
 const encoder = new TextEncoder();
 const decoder = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true });
@@ -22,12 +23,12 @@ export function capturedBrowserRequest(address, origin, basePath, assetPaths) {
     || assetPaths.some(asset => address === `${origin}${basePath}${asset}`);
 }
 
-function browserArtifacts(build) {
+export function browserArtifacts(build) {
   const buildRoot = path.dirname(confined(build.manifest_path));
   const manifest = readJson(confined(build.manifest_path));
   const model = readJson(confined(build.model_path));
   const application = model.application;
-  assert(['prismpm/text-application/1', 'prismpm/text-application/2'].includes(application.profile));
+  assert(['prismpm/text-application/1', 'prismpm/text-application/2', 'prismpm/text-application/3'].includes(application.profile));
   const directory = path.join(buildRoot, 'view/browser');
   const assets = files(directory);
   assert.equal(assets.length, 6);
@@ -86,6 +87,8 @@ async function nodeBinding(artifacts, build) {
 }
 
 async function chromiumUi(artifacts, publicationUrl = null) {
+  const workbench = artifacts.application.profile === 'prismpm/text-application/3';
+  const inputError = workbench ? artifacts.application.view.statuses.input_error : artifacts.application.view.input_error;
   // The toolchain comes from the executing immutable SDK, whose inventory is
   // checked by freshBuild and whose browser trees the SDK verifier has checked.
   const require = createRequire('/opt/prismpm/oracles/package.json');
@@ -142,18 +145,46 @@ async function chromiumUi(artifacts, publicationUrl = null) {
       assert.equal(await page.title(), artifacts.application.view.title);
       assert.equal(await page.locator('h1').textContent(), artifacts.application.view.heading);
     }
-    async function submit(value, expected) {
-      await page.locator('#request').fill(value);
-      await page.locator('#submit').click();
-      await page.waitForFunction(expected => document.getElementById('result').textContent === expected
-        && !document.getElementById('submit').disabled && !document.getElementById('application-form').hasAttribute('aria-busy'), expected);
+    async function submit(value, expected, { transport = false, prepared = null } = {}) {
+      if (workbench) await fillUiVector(page, prepared ?? { kind: 'raw', input: value });
+      else await page.locator('#request').fill(value);
+      await page.locator(prepared?.kind === 'guided' ? '#guided-submit' : '#submit').click();
+      await page.waitForFunction(({ expected, selector }) => document.querySelector(selector).textContent === expected
+        && !document.getElementById('submit').disabled && !document.getElementById('application-form').hasAttribute('aria-busy'),
+      { expected, selector: transport && workbench ? '#status' : '#result' });
       assert.equal(page.url(), url, 'Generated form must not navigate');
     }
     await ready();
-    const uiIndexes = [], normalizedIndexes = [];
+    const uiIndexes = [], normalizedIndexes = [], uiExceptions = [], transportIndexes = [];
     for (const vector of artifacts.vectors) {
       const input = decode(vector.request);
-      if (input === null || vector.request.length > artifacts.application.request_maximum) continue;
+      if (workbench) {
+        const prepared = prepareUiVector(artifacts.application, vector);
+        if (prepared.exception) {
+          uiExceptions.push({ index: vector.index, reason: prepared.exception });
+          if (['reserved-separator', 'required-input', 'framed-byte-limit'].includes(prepared.exception)) {
+            await submit(prepared.input, inputError, { transport: true, prepared });
+            transportIndexes.push(vector.index);
+          } else if (prepared.exception === 'html-normalization') {
+            await fillUiVector(page, prepared);
+            const actual = prepared.kind === 'raw' ? [await page.locator('#request').inputValue()]
+              : await Promise.all(prepared.operation.fields.map(field => page.locator('#field-' + field.id).inputValue()));
+            assert.notDeepEqual(actual, prepared.kind === 'raw' ? [prepared.input] : prepared.values);
+            normalizedIndexes.push(vector.index);
+          }
+          continue;
+        }
+        await submit(prepared.input, prepared.wire, { prepared });
+        if (prepared.result) await assertRenderedResult(page, prepared.result, artifacts.application.view);
+        if (prepared.kind === 'raw') assert.equal(await page.locator('#request').getAttribute('aria-invalid'),
+          prepared.wire.startsWith('1\terror\t') || prepared.result?.status === 'error' ? 'true' : null);
+        uiIndexes.push(vector.index);
+        continue;
+      }
+      if (input === null || vector.request.length > artifacts.application.request_maximum) {
+        uiExceptions.push({ index: vector.index, reason: input === null ? 'invalid-utf8' : 'input-byte-limit' });
+        continue;
+      }
       await page.locator('#request').fill(input);
       const value = await page.locator('#request').inputValue();
       if (!Buffer.from(encoder.encode(value)).equals(vector.request)) {
@@ -165,24 +196,31 @@ async function chromiumUi(artifacts, publicationUrl = null) {
       assert.equal(await page.locator('#request').getAttribute('aria-invalid'), null);
       uiIndexes.push(vector.index);
     }
+    assert.deepEqual([...uiIndexes, ...uiExceptions.map(row => row.index),
+      ...(!workbench ? normalizedIndexes : [])].sort((a, b) => a - b), artifacts.vectors.map(row => row.index),
+    'Every source vector must have an executed UI journey or an explicit, bound transport/normalization exception');
     assert(uiIndexes.length > 0);
-    const recovery = artifacts.vectors.find(vector => uiIndexes.includes(vector.index) && decode(vector.response).startsWith('1\tok\t'));
+    const recovery = artifacts.vectors.find(vector => uiIndexes.includes(vector.index)
+      && (!workbench || prepareUiVector(artifacts.application, vector).kind === 'raw')
+      && (workbench ? prepareUiVector(artifacts.application, vector).wire : decode(vector.response)).startsWith('1\tok\t'));
     assert(recovery, 'Browser smoke needs a successful mathematical response');
-    await submit('x'.repeat(artifacts.application.request_maximum + 1), artifacts.application.view.input_error);
+    const recoveryInput = workbench ? prepareUiVector(artifacts.application, recovery).input : decode(recovery.request);
+    const recoveryWire = workbench ? prepareUiVector(artifacts.application, recovery).wire : decode(recovery.response);
+    await submit('x'.repeat(artifacts.application.request_maximum + 1), inputError, { transport: true });
     assert.equal(await page.locator('#request').getAttribute('aria-invalid'), 'true');
-    await submit(decode(recovery.request), decode(recovery.response));
+    await submit(recoveryInput, recoveryWire);
     assert.equal(await page.locator('#request').getAttribute('aria-invalid'), null);
     await page.locator('#request').evaluate(element => { element.value = '\ud800'; });
     await page.locator('#submit').click();
-    await page.waitForFunction(expected => document.getElementById('result').textContent === expected,
-      artifacts.application.view.input_error);
+    await page.waitForFunction(({ expected, selector }) => document.querySelector(selector).textContent === expected,
+      { expected: inputError, selector: workbench ? '#status' : '#result' });
     assert.equal(await page.locator('#request').getAttribute('aria-invalid'), 'true');
-    await submit(decode(recovery.request), decode(recovery.response));
+    await submit(recoveryInput, recoveryWire);
     assert.equal(await page.locator('#request').getAttribute('aria-invalid'), null);
     await Promise.all(responseChecks);
     assert.deepEqual(responseErrors, []);
     await ready();
-    await submit(decode(recovery.request), decode(recovery.response));
+    await submit(recoveryInput, recoveryWire);
     await Promise.all(responseChecks);
     assert.deepEqual(responseErrors, [], 'Browser responses must equal the captured accepted release assets');
     assert.deepEqual(pageErrors, []);
@@ -190,6 +228,7 @@ async function chromiumUi(artifacts, publicationUrl = null) {
     for (const name of ['index.html', 'app.css', 'app.js', artifacts.javascript, artifacts.wasm.path]) assert(served.has(name), name);
     return { engine: 'chromium', version: browser.version(), playwright: '1.62.1',
       exact_vector_indexes: uiIndexes, textarea_normalized_vector_indexes: normalizedIndexes,
+      ui_exceptions: uiExceptions, client_rejected_vector_indexes: transportIndexes,
       input_validation_cases: 2, recovery_submissions: 3, served_assets: [...served].sort(),
       response_assets: [...observedAssets.values()].sort((left, right) => left.path < right.path ? -1 : left.path > right.path ? 1 : 0),
       external_requests: 0, page_errors: 0 };
@@ -227,8 +266,8 @@ export async function runBrowserChecks(build = freshBuild()) {
 // No source acquisition, graph load, compiler, or fresh-build gate runs here.
 export async function runPublishedBrowserChecks({ directory, model, url }) {
   assert.equal(url, deploymentMetadata().url);
-  assert(['prismpm/model-document/2', 'prismpm/model-document/5'].includes(model.schema));
-  assert(['prismpm/text-application/1', 'prismpm/text-application/2'].includes(model.application.profile));
+  assert(['prismpm/model-document/2', 'prismpm/model-document/5', 'prismpm/model-document/6'].includes(model.schema));
+  assert(['prismpm/text-application/1', 'prismpm/text-application/2', 'prismpm/text-application/3'].includes(model.application.profile));
   const assets = files(directory), wasm = assets.filter(asset => /^[^/]+_bg\.wasm$/.test(asset.path));
   assert.equal(assets.length, 6);
   assert.equal(wasm.length, 1);
@@ -240,6 +279,10 @@ export async function runPublishedBrowserChecks({ directory, model, url }) {
     acceptanceVectors().map(vector => ({ request: requestBytes(vector).toString('hex'), response: responseBytes(vector).toString('hex') })),
     'Published UI vectors must retain the accepted source-owned corpus');
   const chromium = await chromiumUi({ application: model.application, directory, assets, wasm: wasm[0], javascript, vectors }, url);
+  const production = model.application.profile === 'prismpm/text-application/3'
+    ? await (await import('./production-oracle.mjs')).runProductionArtifactChecks({ application: model.application,
+      directory, assets, wasm: wasm[0], javascript, vectors }, 'all', url) : null;
   return { schema: 'lexlean-matmul/browser-ui-publication/1', status: 'passed', url,
-    scope: 'accepted-browser-assets-and-rendered-modeled-vectors', model_sha256: sha(canonical(model)), assets, chromium };
+    scope: 'accepted-browser-assets-and-rendered-modeled-vectors', model_sha256: sha(canonical(model)), assets, chromium,
+    ...(production ? { production } : {}) };
 }
