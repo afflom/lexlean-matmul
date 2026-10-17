@@ -1,22 +1,22 @@
 {
   "schema": "lexlean-matmul/original-sdk-binding-handoff/1",
   "scope": "original-immutable-sdk-transport-canonical-policy-binding-only",
-  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:a8fdd8ca90f3846601cbb34e4ad159503b3477e020b3c89904213afce5bfdd2f",
-  "sdk_source_revision": "c1507505fa9a536dbc94656f80b9e438ebe7431c",
-  "sdk_source_pr": "https://github.com/UOR-Foundation/PrismPM/pull/195",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:594f91c8ac6968f1172568d3fe2f6a19800f61dc3b73b1d1b66b6d22e156735d",
+  "sdk_source_revision": "a909df73bdd7aca33bf75ac0daad87643f7c6a60",
+  "sdk_source_pr": "https://github.com/UOR-Foundation/PrismPM/pull/198",
   "template_revision": "1c7ee5150b65bfadfe8b8b54c0e1051f68b40394",
   "template_source_pr": "https://github.com/UOR-Foundation/template/pull/15",
-  "action_reference": "UOR-Foundation/PrismPM/action@dd693ec8d3a1eac2e1d94c5c9731f6ab5ad507e8",
-  "action_source_pr": "https://github.com/UOR-Foundation/PrismPM/pull/196",
-  "original_construction_run": "https://github.com/UOR-Foundation/PrismPM/actions/runs/38916005017",
-  "original_transport_run": "https://github.com/afflom/lexlean-matmul/actions/runs/38919099291",
-  "complete_binding_run": "https://github.com/afflom/lexlean-matmul/actions/runs/38922189334",
-  "complete_binding_workflow_revision": "df6b7a6b690701952721719a77064b6ec3e57fef",
+  "action_reference": "UOR-Foundation/PrismPM/action@03e8dfd0cc9269145850c7be17ac7a3ef8bc3acc",
+  "action_source_pr": "https://github.com/UOR-Foundation/PrismPM/pull/199",
+  "original_construction_run": "https://github.com/UOR-Foundation/PrismPM/actions/runs/39004626243",
+  "original_transport_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39005582993",
+  "complete_binding_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39005582993",
+  "complete_binding_workflow_revision": "c32dcf0ab87aee64a2dcecf54b70222f9f05ab88",
   "native_original_selfchecks": [
     {
       "platform": "linux/amd64",
-      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:b4cd0d4c2fa90a5cf54bcbc373049688e85f5c0e05f3a69e1d46e481cbb5030a",
-      "original_job": 117023814932,
+      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:18cb210b18779c01443a7a5e5f4104f8e4b3c7acfb2b6e8a47a4b1a3626f5325",
+      "original_job": 117314475621,
       "native_smoke": {
         "status": 0,
         "signal": null,
@@ -29,21 +29,21 @@
         "model-check",
         "shadowed-tool-rejected"
       ],
-      "original_artifact": "12055259150",
-      "original_zip_sha256": "a2107065065867a1f5c8de4b73cf842cf78dddbd457dc823dda35d75470a71e6",
+      "original_artifact": "12091917093",
+      "original_zip_sha256": "da8fef4c2159fe22e72ab923661afe4ee5d245ab0e1f8f93b7f2d01ab209e5b0",
       "original_oci_archive": {
         "path": "sdk.oci.tar",
-        "byte_length": 5335681024,
-        "digest": "sha256:4f0f2c734ea9346f335bff38fbe85aeb6304f615c672efc41ac880014b9933d9"
+        "byte_length": 5335719936,
+        "digest": "sha256:2d3aa632c0ffaddae31a93a775d1981ec8356654b1bbd78df1541a8350ecb081"
       },
-      "inventory_digest": "sha256:0606e9012700455fd9862e6fdaac340bc192e4e9366febd2ed2c6c0c1b9bc6bb",
+      "inventory_digest": "sha256:77342566c1ce4338555dafbec97659cbf720bd6b05bc918309ded14628bd6780",
       "public_manifest_confirmed": true,
       "qualification": false
     },
     {
       "platform": "linux/arm64",
-      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:63118da7058248aea601f3f5eed39182446d5f3c3e9642ed740d136db1cc3e48",
-      "original_job": 117023814816,
+      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:cc52a2344a52ef29c436867b00d323e5a20cded9a5cf82af72c97e86eff87341",
+      "original_job": 117314475682,
       "native_smoke": {
         "status": 0,
         "signal": null,
@@ -56,29 +56,29 @@
         "model-check",
         "shadowed-tool-rejected"
       ],
-      "original_artifact": "12056262023",
-      "original_zip_sha256": "23e3147193fa84ed1be0f77c27b1bcf8ad19a7a9f7869cef3a5a57fa5eb7fd65",
+      "original_artifact": "12091479550",
+      "original_zip_sha256": "db63a6d9a43b03f62f128d5e4a5da41913b4957ff77f53b9a511f603f0d60253",
       "original_oci_archive": {
         "path": "sdk.oci.tar",
-        "byte_length": 5309312000,
-        "digest": "sha256:b6ce601f198c8813b8e8d3956e2c232fe1b6c64cc29c3b6464fbe4dc9a3a1e7b"
+        "byte_length": 5309423616,
+        "digest": "sha256:3a9c14ab6c4b97aafbe850bf365563d079cabba7423ea5d0c5d0702a3d967533"
       },
-      "inventory_digest": "sha256:d5bd9653687695f2168b88388a923d3cff9bddef4dc09d6cd5f21a014348af49",
+      "inventory_digest": "sha256:3620e0e827d6990afdcc778e82d8da49be506229d9305e743d50ef61699c24f7",
       "public_manifest_confirmed": true,
       "qualification": false
     }
   ],
   "binding_artifact": {
-    "id": 12057278150,
-    "byte_length": 94979,
-    "digest": "sha256:93e2adcddae442f68d0daecd9e0900c89642ff93bc3c587e4d6250f9589aa289"
+    "id": 12092187659,
+    "byte_length": 94985,
+    "digest": "sha256:05ada08c7bb036128d3be1016c40ba9fd55886709fc32c580e478cd390ba70f0"
   },
   "installed": true,
   "bound_files": [
     {
       "byte_length": 1525,
       "path": ".devcontainer/devcontainer.json",
-      "sha256": "289abf36c45ff509e31f49aeb5550c6603537dee33d76824abd581b5152b2eda"
+      "sha256": "b4224efccbf1874b12dbe52384f235e2a76a61ad93d7f04ae333180e085aa526"
     },
     {
       "byte_length": 2390,
@@ -88,7 +88,7 @@
     {
       "byte_length": 23719,
       "path": ".github/workflows/prismpm.yml",
-      "sha256": "52527b3ed7883bf1374a697e01df45013f906366390a2d28853b528d16e4f4cd"
+      "sha256": "0dc852b731ada8da1b18a177c4029faff33afdf59bbe4f225e420e63f3db10d3"
     },
     {
       "byte_length": 7724,
@@ -98,7 +98,7 @@
     {
       "byte_length": 257573,
       "path": "prismpm.lock",
-      "sha256": "880999a47cec7f948bc460443e6eeeaf7d48691a9ff4933ec5a2376cb96e93d0"
+      "sha256": "3ec33f15a138d930d696be02a3e3290d19514af7cf1bd07868b5bec07f5d2be0"
     },
     {
       "byte_length": 61754,
@@ -108,19 +108,50 @@
     {
       "byte_length": 1176,
       "path": "template.lock",
-      "sha256": "1655b714ad8edfca8b8a8d2c1dcd8aae0a0b4b4130a60ecbe3644fbc36e6a105"
+      "sha256": "93bfa998680615cc8edc717112301e4017d3ba11243ef0e11eb1ea26e3f31d4d"
     }
   ],
   "source_maintenance": {
-    "scanner_workspace": {
-      "focused_red_before_fix": 5,
-      "focused_green_after_fix": 5,
-      "registered_sc04_passed": 1,
+    "owning_contracts": {
+      "SC-01": {
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0,
+        "elapsed_seconds": 232.65
+      },
+      "SC-04": {
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0,
+        "elapsed_seconds": 73.66,
+        "runtime": "genuine-c150-amd64-with-original-installed-inventory",
+        "log": "source-sc04-positive.log"
+      }
+    },
+    "docker_configuration": {
+      "focused_red_before_fix": {
+        "passed": 0,
+        "failed": 1,
+        "ignored": 0
+      },
+      "focused_green_after_fix": {
+        "passed": 1,
+        "failed": 0,
+        "ignored": 0
+      },
+      "all_storage_and_docker_cases": {
+        "passed": 6,
+        "failed": 0,
+        "ignored": 0
+      },
+      "uid": 1001,
+      "read_only_credentials": "actual Docker bind mount",
+      "network": "none",
       "qualification": false
     },
     "golden_check": {
       "schema": "lexlean-matmul/sdk-source-golden-check/1",
-      "source_revision": "c1507505fa9a536dbc94656f80b9e438ebe7431c",
+      "source_revision": "a909df73bdd7aca33bf75ac0daad87643f7c6a60",
       "platform": "DevelopmentAmd64",
       "container_image": "sha256:29b3ca3d941205958e4dde46aaf802437dbb7a8d3f5c4db567a6563cba60dd74",
       "command": [
@@ -139,70 +170,79 @@
       "build_id": "8946fb7895c8677624c6ad052c073ef886b331a373d4611ce422244fda75f50b",
       "goldens_rewritten": false,
       "log": {
-        "path": "workspace-golden-check.log",
-        "byte_length": 6045,
-        "sha256": "ad708d57dd42e3a245922339ad7c6089a3e52100979bfd3fc764d83d403e6f72"
+        "path": "source-golden-positive.log",
+        "byte_length": 236,
+        "sha256": "8fcbeb334f6339cb73c546097e7dbd72262573b7b88aac56ac18a6a808e83241"
       },
       "sdk_production_accepted": false,
       "product_accepted": false,
       "retained_source_runner": {
-        "path": "source-golden-runner.xtask",
-        "byte_length": 102985536,
-        "sha256": "c18ca5b9a11e8a64941ae01355e5b516d93eb295d69450be1a55c806d4c5e1b1",
-        "scope": "original-source-maintenance-golden-runner-not-consumer-sdk"
+        "path": "source-binaries/xtask",
+        "byte_length": 103329240,
+        "sha256": "e9ac714626da7f1576b34a24d6e76d987c915ed2b9ef14c5f3d941de5068b261",
+        "scope": "source-maintenance-runner-not-consumer-SDK"
       }
     },
     "independent_action": {
-      "schema": "lexlean-matmul/independent-action-change/1",
-      "source_revision": "dd693ec8d3a1eac2e1d94c5c9731f6ab5ad507e8",
-      "base_revision": "c1507505fa9a536dbc94656f80b9e438ebe7431c",
-      "pull_request": "https://github.com/UOR-Foundation/PrismPM/pull/196",
-      "changed_files": [
+      "actual_green": {
+        "canonical_diagnostic_codes": 86,
+        "canonical_model_ids": 198,
+        "canonical_spec_rows": 198,
+        "failed": 0,
+        "node_controls": 32,
+        "registered_TM03": {
+          "failed": 0,
+          "ignored": 0,
+          "passed": 1
+        },
+        "shell_syntax": "passed",
+        "skipped": 0,
+        "todo": 0
+      },
+      "actual_red": {
+        "cause": "existing emitted Docker argv lacks required BUILDX_CONFIG operand",
+        "failed": 1,
+        "passed": 0,
+        "skipped": 0
+      },
+      "frozen_clean": true,
+      "logs": [
         {
-          "path": "SPEC.md",
-          "byte_length": 255532,
-          "sha256": "211fcc75ab84f2de04d08be5bec022c11ab9d72c97a6352ef475364fbd25c2fe"
+          "bytes": 966,
+          "path": "/tmp/matmul-action-builder-config-red.log",
+          "retained": "/tmp/matmul-action-builder-config-provenance/matmul-action-builder-config-red.log",
+          "sha256": "62ea9de89c6891827447c2dad005392f22cd731fa490adc117a41f80fbdebd35"
         },
         {
-          "path": "action/entrypoint.sh",
-          "byte_length": 9144,
-          "sha256": "417a769b3a401e57bbda7d1787bb11360f4a5228022d8bc556b3b35ac4bef7ac"
+          "bytes": 7688,
+          "path": "/tmp/matmul-action-builder-config-green.log",
+          "retained": "/tmp/matmul-action-builder-config-provenance/matmul-action-builder-config-green.log",
+          "sha256": "3c298babdf7031f508e523bc4a7fbab51fdf1989d80336abceb32a7a2fb77b21"
         },
         {
-          "path": "action/entrypoint.test.mjs",
-          "byte_length": 18962,
-          "sha256": "6d1b5fd9c29fd072ce9a7e16fa31795b8871ba16255fd5d21cf6f4b4c218baab"
+          "bytes": 7095,
+          "path": "/tmp/matmul-action-builder-config-model.log",
+          "retained": "/tmp/matmul-action-builder-config-provenance/matmul-action-builder-config-model.log",
+          "sha256": "9f7fb23d0e0ecdd51cbd8ee625d1079c13f4e09a4165f1fb79fc5eddd750908c"
         },
         {
-          "path": "action/VERIFICATION.md",
-          "byte_length": 2311,
-          "sha256": "e1b1d3b7f603a015d0ae52c5c72e9fea037a9338bdd6d7c1993080af9acd182e"
+          "bytes": 688,
+          "path": "/tmp/matmul-action-builder-config-tm03.log",
+          "retained": "/tmp/matmul-action-builder-config-provenance/matmul-action-builder-config-tm03.log",
+          "sha256": "3a53a05ad2ba1419279485ed60bf9a043835a691b72768b39a618f7ae9712e61"
         }
       ],
-      "source_control_cases": 32,
-      "passed": 32,
-      "failed": 0,
-      "skipped": 0,
-      "shell_syntax": "passed",
-      "diff_check": "passed",
-      "independent_review": "passed",
-      "runtime_scope": "bounded Action CLI tmpfs only",
-      "sdk_image_changes": false,
-      "qualification": false,
-      "registered_model_check": {
-        "exit_code": 0,
-        "ids": 198,
-        "codes": 86,
-        "documents_current": true,
-        "runner_revision": "c1507505fa9a536dbc94656f80b9e438ebe7431c",
-        "runner_sha256": "c18ca5b9a11e8a64941ae01355e5b516d93eb295d69450be1a55c806d4c5e1b1",
-        "scope": "original source maintenance model validation only"
-      },
-      "spec_links_check": {
-        "exit_code": 0,
-        "table_rows": 198,
-        "bijective": true
-      }
+      "parent_revision": "dd693ec8d3a1eac2e1d94c5c9731f6ab5ad507e8",
+      "pull_request": "https://github.com/UOR-Foundation/PrismPM/pull/199",
+      "schema": "lexlean-matmul/action-source-validation/1",
+      "scope": "registered-action-owner-diagnostic-not-sdk-or-product-acceptance",
+      "source_revision": "03e8dfd0cc9269145850c7be17ac7a3ef8bc3acc",
+      "unclaimed": [
+        "SDK production acceptance",
+        "product full vv",
+        "release",
+        "deployment"
+      ]
     }
   },
   "qualification": false,
@@ -213,11 +253,18 @@
     "deployment"
   ],
   "notes": [
-    "Both SDK manifests are the unchanged original c150 native construction bytes; public child manifests/configs and index were independently reread anonymously.",
-    "The c150 SDK change moves pinned offline scanner scratch under private project cache without changing scanner arguments, locked databases, or scan policy.",
-    "The independently pinned dd693 Action changes bounded CLI scratch capacity; it does not change SDK image bytes.",
-    "The unchanged 1c7 canonical renderer supplied all seven outputs, including all hidden paths; three outputs remain byte-identical to the prior binding.",
-    "Source maintenance diagnostics and original native construction selfchecks grant no consumer acceptance; the exact immutable SDK must pass the complete product gate."
+    "Both SDK manifests are unchanged original a909 native construction bytes; public child manifests/configs and index were independently reread anonymously.",
+    "The final SDK source includes the c150 private disk-backed scanner workspace fix, fe74 confined Cargo manifest resolution fix, and a909 Docker-only explicit configuration forwarding.",
+    "Complete source SC-01/SC-04 owners and the fresh exact 416-file golden check passed before original image transport was activated; this grants no SDK production or consumer acceptance.",
+    "Independent Action03e8 preserves the existing bounded 2GiB private CLI scratch and supplies its private Buildx directory beside read-only credentials. It does not change SDK image bytes.",
+    "The unchanged 1c7 canonical renderer supplied exactly seven outputs, including all hidden paths; no product source or workflow policy was synthesized locally.",
+    "The root installed all seven authenticated canonical outputs and verified their bytes after installation. The complete immutable-SDK consumer gate, release, and deployment remain unclaimed."
   ],
-  "evidence_index_sha256": "2719945edef09ab838baede9c501f3ee0e3158e1ca939ed4d2db97c4b5837cbf"
+  "evidence_index_sha256": "f9aa0ac4a4ea6952c81a391138ac45abe62adc97b6d93274f8c4c5e632574530",
+  "installation": {
+    "installer_sha256": "8fa9d8f7d2129604edfa1564ef2ae562b7699113be59dc3e63f8cb16b9698d8a",
+    "result_sha256": "f49b50060fd152e6c609336df483c42a2d3dfdfb4b6e79038aa35a4407eebffd",
+    "canonical_files_verified_after_install": 7,
+    "frozen_source_files_unchanged": 17
+  }
 }
