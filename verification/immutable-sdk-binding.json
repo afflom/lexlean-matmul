@@ -1,20 +1,22 @@
 {
   "schema": "lexlean-matmul/original-sdk-binding-handoff/1",
   "scope": "original-immutable-sdk-transport-canonical-policy-binding-only",
-  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:0578887b8034dca668b402c66df80aa83a751c8d83eb309a07f74dab27c925a4",
-  "sdk_source_revision": "0984474e0208207383c3f9779451d07b2c57b91b",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:a8fdd8ca90f3846601cbb34e4ad159503b3477e020b3c89904213afce5bfdd2f",
+  "sdk_source_revision": "c1507505fa9a536dbc94656f80b9e438ebe7431c",
   "sdk_source_pr": "https://github.com/UOR-Foundation/PrismPM/pull/195",
   "template_revision": "1c7ee5150b65bfadfe8b8b54c0e1051f68b40394",
   "template_source_pr": "https://github.com/UOR-Foundation/template/pull/15",
-  "action_reference": "UOR-Foundation/PrismPM/action@0984474e0208207383c3f9779451d07b2c57b91b",
-  "original_construction_run": "https://github.com/UOR-Foundation/PrismPM/actions/runs/38899514144",
-  "original_transport_run": "https://github.com/afflom/lexlean-matmul/actions/runs/38901932445",
-  "complete_binding_run": "https://github.com/afflom/lexlean-matmul/actions/runs/38908614696",
-  "complete_binding_workflow_revision": "eb23fe0718a57be9ce1d8b4c0c74ef81018e1386",
+  "action_reference": "UOR-Foundation/PrismPM/action@dd693ec8d3a1eac2e1d94c5c9731f6ab5ad507e8",
+  "action_source_pr": "https://github.com/UOR-Foundation/PrismPM/pull/196",
+  "original_construction_run": "https://github.com/UOR-Foundation/PrismPM/actions/runs/38916005017",
+  "original_transport_run": "https://github.com/afflom/lexlean-matmul/actions/runs/38919099291",
+  "complete_binding_run": "https://github.com/afflom/lexlean-matmul/actions/runs/38922189334",
+  "complete_binding_workflow_revision": "df6b7a6b690701952721719a77064b6ec3e57fef",
   "native_original_selfchecks": [
     {
       "platform": "linux/amd64",
-      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:39ec2fbe7819fb21e3c255e633a6d37568a250cefdd4aa12c5f612ff9884bd74",
+      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:b4cd0d4c2fa90a5cf54bcbc373049688e85f5c0e05f3a69e1d46e481cbb5030a",
+      "original_job": 117023814932,
       "native_smoke": {
         "status": 0,
         "signal": null,
@@ -27,13 +29,21 @@
         "model-check",
         "shadowed-tool-rejected"
       ],
-      "original_artifact": "12048632111",
-      "original_zip_sha256": "8359000e989d563d297e9572f6579d44eee3262ee90b0a6a841b4eaddd01079b",
+      "original_artifact": "12055259150",
+      "original_zip_sha256": "a2107065065867a1f5c8de4b73cf842cf78dddbd457dc823dda35d75470a71e6",
+      "original_oci_archive": {
+        "path": "sdk.oci.tar",
+        "byte_length": 5335681024,
+        "digest": "sha256:4f0f2c734ea9346f335bff38fbe85aeb6304f615c672efc41ac880014b9933d9"
+      },
+      "inventory_digest": "sha256:0606e9012700455fd9862e6fdaac340bc192e4e9366febd2ed2c6c0c1b9bc6bb",
+      "public_manifest_confirmed": true,
       "qualification": false
     },
     {
       "platform": "linux/arm64",
-      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:1ff6ef0bd1ee9fb1e3f643d8a520bcd417e4b466645ceb2051e2120a1fd783f0",
+      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:63118da7058248aea601f3f5eed39182446d5f3c3e9642ed740d136db1cc3e48",
+      "original_job": 117023814816,
       "native_smoke": {
         "status": 0,
         "signal": null,
@@ -46,22 +56,29 @@
         "model-check",
         "shadowed-tool-rejected"
       ],
-      "original_artifact": "12048786883",
-      "original_zip_sha256": "a96d3c4e9d15fea7824dcf1ebf7b95090f6b653238db867575ee21f3ccfa6462",
+      "original_artifact": "12056262023",
+      "original_zip_sha256": "23e3147193fa84ed1be0f77c27b1bcf8ad19a7a9f7869cef3a5a57fa5eb7fd65",
+      "original_oci_archive": {
+        "path": "sdk.oci.tar",
+        "byte_length": 5309312000,
+        "digest": "sha256:b6ce601f198c8813b8e8d3956e2c232fe1b6c64cc29c3b6464fbe4dc9a3a1e7b"
+      },
+      "inventory_digest": "sha256:d5bd9653687695f2168b88388a923d3cff9bddef4dc09d6cd5f21a014348af49",
+      "public_manifest_confirmed": true,
       "qualification": false
     }
   ],
   "binding_artifact": {
-    "id": 12050185202,
-    "byte_length": 94959,
-    "digest": "sha256:28f3956057ada4509d8ee92da10d3cc9cb141b185be8162de0c11751af87007e"
+    "id": 12057278150,
+    "byte_length": 94979,
+    "digest": "sha256:93e2adcddae442f68d0daecd9e0900c89642ff93bc3c587e4d6250f9589aa289"
   },
   "installed": true,
   "bound_files": [
     {
       "byte_length": 1525,
       "path": ".devcontainer/devcontainer.json",
-      "sha256": "58a53244039a975a1e05b5ad74bd2b12a33ca828e63f44e0eb8b96c50261e4ce"
+      "sha256": "289abf36c45ff509e31f49aeb5550c6603537dee33d76824abd581b5152b2eda"
     },
     {
       "byte_length": 2390,
@@ -71,7 +88,7 @@
     {
       "byte_length": 23719,
       "path": ".github/workflows/prismpm.yml",
-      "sha256": "aaf382125448a32b986112ac638bee4bdc31a13425677bc0ab262fdd08ba73ee"
+      "sha256": "52527b3ed7883bf1374a697e01df45013f906366390a2d28853b528d16e4f4cd"
     },
     {
       "byte_length": 7724,
@@ -81,7 +98,7 @@
     {
       "byte_length": 257573,
       "path": "prismpm.lock",
-      "sha256": "c0803c6e4111d3619bae8f0144abf88a6719acb57fd9a650e067683c743d320e"
+      "sha256": "880999a47cec7f948bc460443e6eeeaf7d48691a9ff4933ec5a2376cb96e93d0"
     },
     {
       "byte_length": 61754,
@@ -91,9 +108,103 @@
     {
       "byte_length": 1176,
       "path": "template.lock",
-      "sha256": "ceb08189d3c8642e4c1da678f716aac88e984ef6960a35db5d63f93a9e0f2ad0"
+      "sha256": "1655b714ad8edfca8b8a8d2c1dcd8aae0a0b4b4130a60ecbe3644fbc36e6a105"
     }
   ],
+  "source_maintenance": {
+    "scanner_workspace": {
+      "focused_red_before_fix": 5,
+      "focused_green_after_fix": 5,
+      "registered_sc04_passed": 1,
+      "qualification": false
+    },
+    "golden_check": {
+      "schema": "lexlean-matmul/sdk-source-golden-check/1",
+      "source_revision": "c1507505fa9a536dbc94656f80b9e438ebe7431c",
+      "platform": "DevelopmentAmd64",
+      "container_image": "sha256:29b3ca3d941205958e4dde46aaf802437dbb7a8d3f5c4db567a6563cba60dd74",
+      "command": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "-j2",
+        "-p",
+        "xtask",
+        "--",
+        "check-golden"
+      ],
+      "exit_code": 0,
+      "file_count": 416,
+      "build_id": "8946fb7895c8677624c6ad052c073ef886b331a373d4611ce422244fda75f50b",
+      "goldens_rewritten": false,
+      "log": {
+        "path": "workspace-golden-check.log",
+        "byte_length": 6045,
+        "sha256": "ad708d57dd42e3a245922339ad7c6089a3e52100979bfd3fc764d83d403e6f72"
+      },
+      "sdk_production_accepted": false,
+      "product_accepted": false,
+      "retained_source_runner": {
+        "path": "source-golden-runner.xtask",
+        "byte_length": 102985536,
+        "sha256": "c18ca5b9a11e8a64941ae01355e5b516d93eb295d69450be1a55c806d4c5e1b1",
+        "scope": "original-source-maintenance-golden-runner-not-consumer-sdk"
+      }
+    },
+    "independent_action": {
+      "schema": "lexlean-matmul/independent-action-change/1",
+      "source_revision": "dd693ec8d3a1eac2e1d94c5c9731f6ab5ad507e8",
+      "base_revision": "c1507505fa9a536dbc94656f80b9e438ebe7431c",
+      "pull_request": "https://github.com/UOR-Foundation/PrismPM/pull/196",
+      "changed_files": [
+        {
+          "path": "SPEC.md",
+          "byte_length": 255532,
+          "sha256": "211fcc75ab84f2de04d08be5bec022c11ab9d72c97a6352ef475364fbd25c2fe"
+        },
+        {
+          "path": "action/entrypoint.sh",
+          "byte_length": 9144,
+          "sha256": "417a769b3a401e57bbda7d1787bb11360f4a5228022d8bc556b3b35ac4bef7ac"
+        },
+        {
+          "path": "action/entrypoint.test.mjs",
+          "byte_length": 18962,
+          "sha256": "6d1b5fd9c29fd072ce9a7e16fa31795b8871ba16255fd5d21cf6f4b4c218baab"
+        },
+        {
+          "path": "action/VERIFICATION.md",
+          "byte_length": 2311,
+          "sha256": "e1b1d3b7f603a015d0ae52c5c72e9fea037a9338bdd6d7c1993080af9acd182e"
+        }
+      ],
+      "source_control_cases": 32,
+      "passed": 32,
+      "failed": 0,
+      "skipped": 0,
+      "shell_syntax": "passed",
+      "diff_check": "passed",
+      "independent_review": "passed",
+      "runtime_scope": "bounded Action CLI tmpfs only",
+      "sdk_image_changes": false,
+      "qualification": false,
+      "registered_model_check": {
+        "exit_code": 0,
+        "ids": 198,
+        "codes": 86,
+        "documents_current": true,
+        "runner_revision": "c1507505fa9a536dbc94656f80b9e438ebe7431c",
+        "runner_sha256": "c18ca5b9a11e8a64941ae01355e5b516d93eb295d69450be1a55c806d4c5e1b1",
+        "scope": "original source maintenance model validation only"
+      },
+      "spec_links_check": {
+        "exit_code": 0,
+        "table_rows": 198,
+        "bijective": true
+      }
+    }
+  },
   "qualification": false,
   "unclaimed": [
     "sdk-production-acceptance",
@@ -102,9 +213,11 @@
     "deployment"
   ],
   "notes": [
-    "The first upload omitted four dot-path outputs; strict closed-member verification rejected it before any product write.",
-    "The complete canonical rerender matches all seven original bound-file digests and all initially retained bytes.",
-    "SDK inputs and old cached advisory data remain independently validated by the ordinary final SDK; no consumer-cache data grants application acceptance."
+    "Both SDK manifests are the unchanged original c150 native construction bytes; public child manifests/configs and index were independently reread anonymously.",
+    "The c150 SDK change moves pinned offline scanner scratch under private project cache without changing scanner arguments, locked databases, or scan policy.",
+    "The independently pinned dd693 Action changes bounded CLI scratch capacity; it does not change SDK image bytes.",
+    "The unchanged 1c7 canonical renderer supplied all seven outputs, including all hidden paths; three outputs remain byte-identical to the prior binding.",
+    "Source maintenance diagnostics and original native construction selfchecks grant no consumer acceptance; the exact immutable SDK must pass the complete product gate."
   ],
-  "evidence_index_sha256": "72ff8a2b214f2adae1a36a708baac239c7b82b0c3e2063fa6b382447c9eb0c98"
+  "evidence_index_sha256": "2719945edef09ab838baede9c501f3ee0e3158e1ca939ed4d2db97c4b5837cbf"
 }
