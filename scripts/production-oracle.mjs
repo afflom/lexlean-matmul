@@ -2,6 +2,7 @@
 // generated Wasm; fault injection is confined to explicitly named cases.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { createServer } from 'node:http';
 import { createRequire } from 'node:module';
@@ -60,13 +61,22 @@ async function withWorkbench(artifacts, work, { engine = 'chromium', publication
     response.writeHead(200, { 'content-type': name.endsWith('.wasm') ? 'application/wasm' : name.endsWith('.js') ? 'text/javascript'
       : name.endsWith('.css') ? 'text/css' : name.endsWith('.json') ? 'application/json' : 'text/html', 'cache-control': 'no-store' }).end(content.get(name));
   });
-  let browser;
+  let browser, browserHome;
   try {
     if (publicationUrl === null) await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
     else assert.equal(publicationUrl, target.url);
     const origin = publicationUrl === null ? `http://127.0.0.1:${server.address().port}` : new URL(publicationUrl).origin;
     const url = publicationUrl ?? origin + target.basePath;
-    browser = await playwright[engine].launch({ headless: true, executablePath: pins[engine].executablePath });
+    // CI's nested credential mount can leave the inherited HOME unwritable.
+    browserHome = fs.mkdtempSync(path.join(os.tmpdir(), 'lexlean-matmul-browser-'));
+    const browserEnvironment = { ...process.env, HOME: browserHome,
+      XDG_CACHE_HOME: path.join(browserHome, '.cache'), XDG_CONFIG_HOME: path.join(browserHome, '.config'),
+      XDG_DATA_HOME: path.join(browserHome, '.local', 'share') };
+    for (const name of ['XDG_CACHE_HOME', 'XDG_CONFIG_HOME', 'XDG_DATA_HOME']) {
+      fs.mkdirSync(browserEnvironment[name], { recursive: true, mode: 0o700 });
+    }
+    browser = await playwright[engine].launch({ headless: true, executablePath: pins[engine].executablePath,
+      env: browserEnvironment });
     assert.equal(browser.version(), pins[engine].version);
     const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
     if (observeWorkers) await context.addInitScript(workerProbe);
@@ -91,8 +101,10 @@ async function withWorkbench(artifacts, work, { engine = 'chromium', publication
     return { engine, version: browser.version(), playwright: '1.62.1', ...report,
       external_requests: unexpected.length, page_errors: errors.length, assets: artifacts.assets };
   } finally {
-    await browser?.close();
-    if (server.listening) { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); }
+    try { await browser?.close(); } finally {
+      if (server.listening) { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); }
+      if (browserHome) fs.rmSync(browserHome, { recursive: true, force: true });
+    }
   }
 }
 
