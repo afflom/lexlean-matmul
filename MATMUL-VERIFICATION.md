@@ -208,6 +208,14 @@ records both original native builds, verified public artifacts, canonical
 template outputs, and their installation. Its scope is SDK custody; it does
 not replace complete application acceptance or live publication checks.
 
+The [native browser-home regression](verification/production-browser-home-r3.json)
+records MM-22's Firefox launch failure on both native CI architectures. The
+credential mount left the inherited home unwritable. Each verification browser
+now receives a private home and XDG directories, removed after close. The
+exact-SDK comparison and restored three-engine journeys preserve the browser
+pins, deadlines, scenarios, and planted defects; they remain diagnostic evidence
+until the complete acceptance and publication boundary passes.
+
 The containing native browser-system `/2` binds the application model digest,
 generated artifact closure, mandatory controls, locked SPDX oracle, and Pages
 target. Its release gate builds and inspects the native OCI artifact, exports
