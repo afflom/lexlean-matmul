@@ -80,6 +80,10 @@ Native browser-system `/2` retains its exact mandatory controls and
 SPDX-3.0.1 binding. Product UX evidence is included in application acceptance;
 additional quality claims do not alter that closed containing-system schema.
 
+The SDK OCI lifecycle status is `development`. Repository acceptance means the
+complete `just vv` and publication checks; SDK promotion to `candidate` or
+`accepted` uses a separate cryptographic trust workflow.
+
 All browser content is rendered as text or structured elements. The declared
 link policy admits explicit HTTPS documentation links. The privacy claim
 concerns calculation data: loading the application and deliberately following
