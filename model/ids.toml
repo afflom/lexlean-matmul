@@ -136,7 +136,7 @@ statement = "The guided workbench satisfies finite keyboard, semantic, contrast,
 id = "MM-23"
 level = "build"
 suite = "production"
-statement = "The workbench explains browser-local computation and avoids operand-bearing network requests, URLs, logs, and persistent calculation history."
+statement = "The standalone Pages workbench explains browser-local computation and avoids operand-bearing network requests, URLs, logs, and persistent calculation history."
 
 [[id]]
 id = "MM-24"

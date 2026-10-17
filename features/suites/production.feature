@@ -31,8 +31,8 @@ Feature: Modeled production reference workbench
     Then labels, focus, status, contrast, target geometry, and contained matrix overflow meet the declared finite checks
 
   @MM-23 @build
-  Scenario: A visitor can understand and verify the local computation boundary
-    Given the source-owned browser-local and no-history privacy explanation
+  Scenario: A Pages visitor can understand and verify the local computation boundary
+    Given the standalone Pages application and its source-owned browser-local and no-history privacy explanation
     When a visitor computes hostile-looking and ordinary operand strings
     Then no operands enter a network request, navigation URL, log, or persistent storage and links follow the source HTTPS policy
 
