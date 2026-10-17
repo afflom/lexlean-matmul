@@ -1,0 +1,331 @@
+{
+  "schema": "lexlean-matmul/production-http-cache-gate-red/1",
+  "qualification": false,
+  "status": "actual-operational-red",
+  "registered_checkpoint": "3a7fae3",
+  "recorded_at": "2026-10-17T17:50:39.720491+00:00",
+  "component_build": "83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a",
+  "exit_code": 1,
+  "failure": "MM-21: a new worker reused cached Wasm instead of fetching the current artifact (0 !== 1)",
+  "metadata_policy_assertion_reached": false,
+  "files": [
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-gate-red.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-gate-red.stderr",
+      "bytes": 597,
+      "sha256": "54d3c99510e35a48e664580a1c0807ecfb75e3a885c6ae189d31b578e073f1f2"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/cache-gate-baseline-red.json",
+      "bytes": 1219,
+      "sha256": "08ad577d243d7151410704893161a32ab9fadc3379d57b6a3cd877bd5ea41611"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-gate-baseline-http-observation.json",
+      "bytes": 2244,
+      "sha256": "a42963250916d7cad67bbc1e595e3a2ab98a12e7c5f84d62bdfcbc445b3885e2"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/production-oracle.mjs",
+      "bytes": 46270,
+      "sha256": "997bfedf7d8f875a7145af8bd957376895b29e5132b59109d9a14898ab6e287d"
+    }
+  ],
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--init",
+    "--network",
+    "none",
+    "--user",
+    "1000:1000",
+    "--env",
+    "PRISMPM_EPHEMERAL_HOME=1",
+    "--volume",
+    "/tmp/matmul-cache-coherence-diagnostic/product-gate:/tmp/matmul-cache-coherence-diagnostic/product-gate",
+    "--volume",
+    "/tmp/matmul-text-v3-product-preview-source:/tmp/matmul-text-v3-product-preview-source:ro",
+    "--workdir",
+    "/tmp/matmul-cache-coherence-diagnostic/product-gate",
+    "ghcr.io/afflom/lexlean-matmul-sdk@sha256:594f91c8ac6968f1172568d3fe2f6a19800f61dc3b73b1d1b66b6d22e156735d",
+    "node",
+    "run-cache-red.mjs"
+  ],
+  "host_working_directory": "/tmp/matmul-cache-coherence-diagnostic",
+  "stdout_path": "/tmp/matmul-cache-coherence-diagnostic/cache-gate-red.stdout",
+  "stderr_path": "/tmp/matmul-cache-coherence-diagnostic/cache-gate-red.stderr",
+  "container": {
+    "platform": "linux/amd64",
+    "user": "1000:1000",
+    "network": "none",
+    "entrypoint": "unchanged pinned SDK entrypoint",
+    "ephemeral_home": true,
+    "host_sdk_substitution": false
+  },
+  "reproduction": "Run argv exactly using retained input files and genuine image; the expected negative process exit is1. This is a standalone product MM21 source-candidate component diagnostic, not final release qualification.",
+  "inputs": [
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/run-cache-red.mjs",
+      "bytes": 1638,
+      "sha256": "5271d7c436446306cb323beca22e72b54afa44b1562960b32358dfa6e03d578a"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/prismpm.lock",
+      "bytes": 257573,
+      "sha256": "3ec33f15a138d930d696be02a3e3290d19514af7cf1bd07868b5bec07f5d2be0"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/sdk-inventory.json",
+      "bytes": 105263,
+      "sha256": "77342566c1ce4338555dafbec97659cbf720bd6b05bc918309ded14628bd6780"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/acceptance-vectors.test.mjs",
+      "bytes": 4611,
+      "sha256": "dd5bc58f417f933eae55757edbf4faade70eaf2cbd654ba28bd520014e4d8b15"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/acceptance.mjs",
+      "bytes": 1645,
+      "sha256": "9fa8e8f79c99c3e433ce4219a3b0326967739cf632165f52d8d2883fbe485ee7"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/browser-oracle.mjs",
+      "bytes": 18863,
+      "sha256": "1cf90ab08065b13801ed2ddf34cb7522caf4ca3384cada73bb3f98a8b5fe9788"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/build.mjs",
+      "bytes": 1823,
+      "sha256": "bdc71e1760cb561fd2006dbdf2e176e3f557b9f3ee06618ad5995d84a7c4dff9"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/bundle-provenance.test.mjs",
+      "bytes": 3388,
+      "sha256": "9b51aa2306814bb28cff68b018ed2bf138bffa2b5343c68c0307c8d50da1d103"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/clean-copy.mjs",
+      "bytes": 4666,
+      "sha256": "8024dce0de3e0643092e0c2e0adf24c8f5f14dcb830fd2d75423f21b30f53f9b"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/codec-oracle.mjs",
+      "bytes": 25503,
+      "sha256": "2c51c16928b5061686efb6247d3d4a54eb4b14f8995438f57fc27ec9fc9f8e8e"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/conformance.mjs",
+      "bytes": 19191,
+      "sha256": "804712a815aa1dcbd477d017d40863a8c009fcb381195c16b38310ed13a7b47f"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/evidence-custody.test.mjs",
+      "bytes": 2442,
+      "sha256": "9a27ce7b4c0c32d086fd70ccb19a84998743fb199b5d5f8e956633444161a240"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/evidence.mjs",
+      "bytes": 5612,
+      "sha256": "8b79705caf72626ad66edeccc339ccc56b0113805419cec8038a5483fd9d231b"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/extended-oracle.mjs",
+      "bytes": 34395,
+      "sha256": "b72cc6a72089b9825cfbf83547f28576de9ba3f404d943055d474a4ae64b1545"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/mutations.mjs",
+      "bytes": 12468,
+      "sha256": "8cf04ce86c8bf36913c9af31e3a214bc12266d6219f6890e38de4962e5ae5385"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/pages.mjs",
+      "bytes": 1763,
+      "sha256": "7ac3a0f1d48256ee0e873ce50ad80fb2c0339efe0b40b009f9b74cb018e61575"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/production-baseline.mjs",
+      "bytes": 5842,
+      "sha256": "85ad03d2038cf1900b2a967c4605fb0c9d8e7167f5c8ec4daea111ccfa9076d6"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/production-oracle.mjs",
+      "bytes": 46270,
+      "sha256": "997bfedf7d8f875a7145af8bd957376895b29e5132b59109d9a14898ab6e287d"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/project-policy.mjs",
+      "bytes": 1440,
+      "sha256": "8120dd6bb0ca036bc311e0d87ae554d8ca58ed5286e58ac773f27cdddc4bb599"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/publication-evidence.mjs",
+      "bytes": 19477,
+      "sha256": "e7e8d6eec2f90015e0b59fc8670f514a6d442aeb48c79390b8f35a7f79db6996"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/publication-evidence.test.mjs",
+      "bytes": 24998,
+      "sha256": "184449b2bb34aa3b6717585007fa22cabba61ea0f896db114231adab750334ec"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/reproduce.mjs",
+      "bytes": 1849,
+      "sha256": "a60356b00118605c12c372dd62408a357db293f8a649636e3dc718890b4c68d7"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/runtime-oracle.mjs",
+      "bytes": 20196,
+      "sha256": "b8ac8737386c551cbaceb5608993854db9c7334493d6100c512aad6cee366e24"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/system-model.mjs",
+      "bytes": 13765,
+      "sha256": "5e0cf50f3d8438431754ce73aa7fcc5e4af3c36ef92eea3d3efff63837d5f0a0"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/system-release.mjs",
+      "bytes": 25120,
+      "sha256": "23b46f3a3e122cd18b5359702b429900e9bf018fcb9db3cc8ac71f4889aec11b"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/update-system.mjs",
+      "bytes": 12826,
+      "sha256": "0c20ac78648a7ea9ac324be9917f4c10e26878cfe84d8eb82ba8b959c51506bd"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/verify-core.mjs",
+      "bytes": 2221,
+      "sha256": "98d639b95f6d22c60788566cb12d99f589cc97d2bc46d64347534cca85e303e9"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/verify-publication.mjs",
+      "bytes": 2594,
+      "sha256": "b02396cd2a6500eef869268fde0e7cce7a1265ff478498c73cbfd1413a496765"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/workbench-test.mjs",
+      "bytes": 5967,
+      "sha256": "b5912910153daea033dd869065ec636cc9c2a377f6cac9f71c7cec0bf99ac911"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/scripts/write-errors.mjs",
+      "bytes": 16037,
+      "sha256": "946dac5261855fb0cb9811c75f270019680bbea26c9cd8eba7e49f3b9afc258d"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Application.lex.tex",
+      "bytes": 246555,
+      "sha256": "91f53f37d13c0c891070fae7455713f531d8f9f34376b232136e7fe41309da84"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Atlas.lex.tex",
+      "bytes": 164620,
+      "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Codec.lex.tex",
+      "bytes": 1146068,
+      "sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/CodecProtocol.lex.tex",
+      "bytes": 88203,
+      "sha256": "ee0a431c3a01a6c893bd3ed09b3bb1f1527bffef36be31cb210e394ad1715f5a"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Core.lex.tex",
+      "bytes": 304177,
+      "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Epilogue.lex.tex",
+      "bytes": 85876,
+      "sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/ExtendedProtocol.lex.tex",
+      "bytes": 190587,
+      "sha256": "ae343c20e5d5c970ddd19018ad9c6a4c1a176cfbbcf4832a1420ce8e1288d5ce"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Float.lex.tex",
+      "bytes": 266431,
+      "sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/MatmulSystem.lex.tex",
+      "bytes": 60938,
+      "sha256": "e11216f6b0e2d77c81f0b4cf289af3eb967da73f65a653cd506aa632c7147200"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Model.lex.tex",
+      "bytes": 5557,
+      "sha256": "0466617f2f6f7cda000f52f1cca5b9fd5e3b1705a859bb98653319d2e0c438cb"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Presentation.lex.tex",
+      "bytes": 119756,
+      "sha256": "0aee40f585cae19deda2c674024c7a51117072e79070e0a48864f1c9fb0a7078"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Protocol.lex.tex",
+      "bytes": 122291,
+      "sha256": "51454a08ad1013fadb6073d8e1aa304af571437d54e911929552dee2d571b791"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/product-gate/src/Workbench.lex.tex",
+      "bytes": 127039,
+      "sha256": "4704d6319de6aeed83e5ba76adf396260db71c892d5d7e82a3c615c878c41c53"
+    },
+    {
+      "path": "/tmp/matmul-text-v3-product-preview-source/.prism/build/83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a/manifest.json",
+      "bytes": 34062,
+      "sha256": "8f1a21663f40643bb4dd29111beee7d8c65c60e15611bcdf712ecb09e4a219f9"
+    },
+    {
+      "path": "/tmp/matmul-text-v3-product-preview-source/.prism/build/83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a/model.prism.json",
+      "bytes": 643243,
+      "sha256": "9ff9c64363bc2606d520122c51115aaad37e734dd1bd4e3f0276444d8bea22f5"
+    },
+    {
+      "path": "/tmp/matmul-text-v3-product-preview-source/.prism/build/83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a/view/browser/app.css",
+      "bytes": 7350,
+      "sha256": "d15030c6d348f2bc8906816414ec8d30feb72c89e3825c169f52fa97a1e5a548"
+    },
+    {
+      "path": "/tmp/matmul-text-v3-product-preview-source/.prism/build/83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a/view/browser/app.js",
+      "bytes": 64231,
+      "sha256": "ca27a601f7a365007b027c2d421b56c3f623e3229dcc708ab8740b0bc8dd7231"
+    },
+    {
+      "path": "/tmp/matmul-text-v3-product-preview-source/.prism/build/83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a/view/browser/index.html",
+      "bytes": 5879,
+      "sha256": "f0ab53df95168ec8e082c6961d9ff15d2cc960290f617a6a47a5531da1615aa1"
+    },
+    {
+      "path": "/tmp/matmul-text-v3-product-preview-source/.prism/build/83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a/view/browser/lexlean_matmul.js",
+      "bytes": 6592,
+      "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16"
+    },
+    {
+      "path": "/tmp/matmul-text-v3-product-preview-source/.prism/build/83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a/view/browser/lexlean_matmul_bg.wasm",
+      "bytes": 1016036,
+      "sha256": "e253c9092833f99e0153455be2caa49df530dd2500afe9955de29ab7124e559d"
+    },
+    {
+      "path": "/tmp/matmul-text-v3-product-preview-source/.prism/build/83ea982305f20a0a859a1ad5913b0b566c74ae3c1ae7fd8c4e8f5044a14f547a/view/browser/provenance.json",
+      "bytes": 656,
+      "sha256": "cbf7f9f890dc4aa329aea96f7ac7ab1a4ca42c2f95437cceb623c82e1aa0e9eb"
+    }
+  ],
+  "script_sha256": "997bfedf7d8f875a7145af8bd957376895b29e5132b59109d9a14898ab6e287d",
+  "sdk_inventory_sha256": "77342566c1ce4338555dafbec97659cbf720bd6b05bc918309ded14628bd6780",
+  "updated_at": "2026-10-17T17:53:06.376849+00:00"
+}
