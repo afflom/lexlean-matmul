@@ -1,5 +1,30 @@
 # Matmul verification record
 
+The production workbench adds `Presentation.lex.tex` and `Workbench.lex.tex`,
+the public Text-V3 profile, and MM-18 through MM-24. Its source corpus retains
+all 158 original byte vectors and adds 26 guided/presentation cases. The large
+escaped-response case uses closed balanced byte concatenation, preserving its
+96,221 expected bytes within default Lean elaboration settings. The metadata
+reader admits only bounded literal/alias/byte-append expressions, with negative
+controls for cycles, foreign calls, type/arity errors, and expansion limits.
+The original eight arithmetic/protocol modules are unchanged.
+
+[Workbench component evidence](verification/workbench-source-runtime.json)
+records default-options kernel verification, all 26 new exact UI vectors,
+155 representable raw wrappers across all 24 original operation families,
+and both defensive presenter failures. Its three explicit raw-wrapper
+exclusions concern invalid UTF-8 and framed requests beyond the input bound;
+the original direct corpus retains those cases. The
+[preservation audit](verification/production-source-preservation.json) records
+unchanged original module bytes and acceptance-vector records. Both receipts
+remain explicitly unqualified for release.
+
+The production requirements and preimplementation browser failures are recorded
+in [PRODUCTION-READINESS.md](PRODUCTION-READINESS.md). Source proofs, generated
+runtime probes, visual previews, and historical receipts retain their stated
+scope. The full acceptance and protected publication jobs qualify each new
+revision independently of those diagnostics.
+
 The recorded application source selection passed Lean and leanchecker
 verification before the explicit resource-profile migration, including all
 158 modeled byte vectors. The unchanged five
