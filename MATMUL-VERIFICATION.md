@@ -3,8 +3,8 @@
 The production workbench adds `Presentation.lex.tex` and `Workbench.lex.tex`,
 the public Text-V3 profile, and MM-18 through MM-24. Its source corpus retains
 all 158 original byte vectors and adds 26 guided/presentation cases. The large
-escaped-response case uses closed balanced byte concatenation, preserving its
-96,221 expected bytes within default Lean elaboration settings. The metadata
+escaped-response case uses shared closed byte blocks and balanced concatenation,
+preserving its 96,221 expected bytes without changing default Lean elaboration settings. The metadata
 reader admits only bounded literal/alias/byte-append expressions, with negative
 controls for cycles, foreign calls, type/arity errors, and expansion limits.
 The original eight arithmetic/protocol modules are unchanged.
@@ -18,6 +18,14 @@ the original direct corpus retains those cases. The
 [preservation audit](verification/production-source-preservation.json) records
 unchanged original module bytes and acceptance-vector records. Both receipts
 remain explicitly unqualified for release.
+
+The [verification custody regression](verification/verification-custody-regression.json)
+executes the exact earlier digest owner in isolated roots: changes to Rust gate
+sources, their manifests, the model-checking tool, Cargo configuration, and the
+dependency policy previously retained the same digest. The corrected owner
+binds those files and rejects all five stale-evidence mutations. Its six scoped
+tests include restoration and separate-root stability; they do not qualify a
+product release.
 
 The production requirements and preimplementation browser failures are recorded
 in [PRODUCTION-READINESS.md](PRODUCTION-READINESS.md). Source proofs, generated

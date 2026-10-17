@@ -73,9 +73,10 @@ export function sourceDigest() {
     .concat(sourceModules().map(({ path: file, sha256 }) => ({ path: `src/${file}`, sha256 })))));
 }
 export function verificationDigest() {
-  return sha(canonical(['scripts', 'model', 'features', '.github'].flatMap(directory =>
+  return sha(canonical(['scripts', 'model', 'features', '.github', 'crates', 'xtask', '.cargo'].flatMap(directory =>
     files(path.join(root, directory)).map(row => ({ ...row, path: `${directory}/${row.path}` })))
-    .concat(['Justfile', 'Cargo.toml', 'Cargo.lock'].map(file =>
+    .concat(['Justfile', 'Cargo.toml', 'Cargo.lock', 'rust-toolchain.toml', 'rustfmt.toml', 'clippy.toml',
+      'deny.toml', 'template-contract.json', 'template.lock', 'AGENTS.md', 'VERIFICATION.md'].map(file =>
       ({ path: file, sha256: sha(fs.readFileSync(path.join(root, file))) })))));
 }
 export function readBuild() {

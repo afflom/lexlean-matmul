@@ -11,6 +11,7 @@ vv: template-check fmt-check model lint product-build product-reproducibility te
 model:
     cargo run -q -p xtask -- validate
     node --test scripts/acceptance-vectors.test.mjs
+    node --test scripts/evidence-custody.test.mjs
     node scripts/project-policy.mjs
 
 # The hand-reviewed trust root is checked independently of generated project
