@@ -14,6 +14,20 @@ handling remain LexLean declarations.
 [Open the application](https://afflom.github.io/lexlean-matmul/) ·
 [Acceptance and deployment runs](https://github.com/afflom/lexlean-matmul/actions/workflows/pages.yml)
 
+Choose a calculation, load a worked example, and edit its matrices. Entries
+accept spaces, commas, or line breaks. Compute displays the actual exact result,
+its interpretation, and inspectable protocol bytes. The first example multiplies
+two 2-by-2 matrices; cancellation, IEEE, complex, dyadic, tropical, and composed
+codec examples explore the other domains. The advanced editor accepts the
+complete [version 1 protocol](PROTOCOL.md), including operations without a
+guided form.
+
+On GitHub Pages, calculations run in a browser worker. Cancel and retry preserve the current
+draft, while changing an input clears the previous result. Calculation history
+is not saved in browser storage. The page includes method, limits, privacy,
+and recovery guidance. [Production requirements](PRODUCTION-READINESS.md)
+identify stakeholders and the finite accessibility and release checks.
+
 Release qualification requires the complete `just vv` gate and the protected
 Pages publication checks. Component proofs and diagnostic builds establish
 their recorded scope. See [MATMUL-VERIFICATION.md](MATMUL-VERIFICATION.md) for
@@ -73,7 +87,7 @@ The browser protocol declares dimensions from zero through eight, at most 64
 magnitude digits per input coefficient, and explicit byte budgets. These are
 transport bounds. See [PROTOCOL.md](PROTOCOL.md) for requests and examples, and
 [PORTING.md](PORTING.md) for the reference correspondence and substrate choices.
-The Text-V2 application model also declares a maximum of 32,767 Core-Wasm memory
+The Text-V3 application model also declares a maximum of 32,767 Core-Wasm memory
 pages and a 16 MiB stack; actual memory grows with the request.
 
 ## Model and source map
@@ -89,11 +103,16 @@ pages and a 16 MiB stack; actual memory grows with the request.
 | `src/Protocol.lex.tex` | Original exact-domain requests, canonical values, and typed failures |
 | `src/ExtendedProtocol.lex.tex` | IEEE, output-encoding, and epilogue requests |
 | `src/CodecProtocol.lex.tex` | General codec and canonical arena requests; delegates the existing operations |
+| `src/Workbench.lex.tex` | Guided input normalization, exact response interpretation, bounded JSON, and typed presenter failures |
+| `src/Presentation.lex.tex` | Purpose, instructions, fields, examples, error assistance, design, and execution policy |
 | `src/Application.lex.tex` | Application roots, byte-level acceptance vectors, Core-Wasm, and portable View |
 | `src/MatmulSystem.lex.tex` | Native `Production.BrowserSystem.SystemModel`, component/artifact bindings, controls, and Pages target |
 | `model/*.toml`, `features/suites/` | Registered claims, pinned authorities, and behavioral acceptance scenarios |
 
-The containing system uses PrismPM's native browser-system `/2` model. Its
+The public `prismpm/text-application/3` profile models the complete workbench.
+The SDK generates generic controls, framing, semantic rendering, and worker
+lifecycle from that closed model. Product arithmetic and interpretation remain
+LexLean. The containing system uses PrismPM's native browser-system `/2` model. Its
 acceptance path binds the selected application digest, complete artifact
 inventory, mandatory controls, locked SPDX validation, and GitHub Pages target.
 
@@ -106,10 +125,12 @@ contains the captured OCI store and no product source or configuration. Pages
 uses those same six exported assets.
 
 Deployment runs separately on protected `main` through the `github-pages`
-environment. Subsequent jobs verify the published bytes against both the
-accepted SDK release and the uploaded archive. The modeled destination is
+environment. An immediate revision check requires the accepted revision to be
+current `main` before publication. Subsequent jobs verify the published bytes
+against both the accepted SDK release and the uploaded archive and exercise
+the live application. The modeled destination is
 `https://afflom.github.io/lexlean-matmul/`. The workflow retains acceptance and
-publication results for each revision.
+bounded success/failure publication receipts for each revision for 30 days.
 
 The pure implementation uses persistent data and software arithmetic. Native
 SIMD throughput, caller-owned scratch, zero allocation, raw BLAS ABI, mutable
