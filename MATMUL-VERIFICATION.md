@@ -203,6 +203,11 @@ Its component tests
 are dependency-maintenance evidence, not application qualification. No host,
 vendored, handwritten, or reduced-fixture product implementation is admitted.
 
+The [immutable SDK binding receipt](verification/immutable-sdk-binding.json)
+records both original native builds, verified public artifacts, canonical
+template outputs, and their installation. Its scope is SDK custody; it does
+not replace complete application acceptance or live publication checks.
+
 The containing native browser-system `/2` binds the application model digest,
 generated artifact closure, mandatory controls, locked SPDX oracle, and Pages
 target. Its release gate builds and inspects the native OCI artifact, exports
@@ -226,6 +231,7 @@ supply release acceptance.
 The complete acceptance and publication staging commands are:
 
 ```console
+./scripts/in-sdk.sh just setup
 ./scripts/in-sdk.sh just vv
 ./scripts/in-sdk.sh just pages
 ```
