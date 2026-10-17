@@ -272,6 +272,103 @@ async function assertUnblockedRunningStatus(page, expected) {
   await check();
 }
 
+async function wasmCacheChecks(artifacts) {
+  const require = createRequire('/opt/prismpm/oracles/package.json');
+  assert.equal(require('playwright/package.json').version, '1.62.1');
+  const { chromium } = require('playwright'), target = deploymentMetadata();
+  const content = new Map(artifacts.assets.map(row => [row.path, fs.readFileSync(path.join(artifacts.directory, row.path))]));
+  assert.equal(content.size, 6);
+  const wasm = artifacts.assets.filter(row => /^[^/]+_bg\.wasm$/.test(row.path));
+  assert.equal(wasm.length, 1);
+  const operation = artifacts.application.view.operations.find(row => row.id === 'matmul');
+  assert(operation, 'MM-21: cache acceptance requires the actual matrix product');
+  const values = operation.fields.map(field => ({ m: '2', k: '2', n: '2', a: '1 2\n3 4', b: '5 6\n7 8' })[field.id]);
+  assert(values.every(value => typeof value === 'string'));
+  const prepared = { kind: 'guided', operation, values, wire: '1\tok\t2\t2\t19,22,43,50' };
+  const requests = [], observations = [], unexpected = [], errors = [];
+  let app = content.get('app.js'), caseName = 'modeled-no-store', browser;
+  const report = { schema: 'lexlean-matmul/browser-http-cache/1', status: 'failed',
+    routing_installed: false, cache_disabled: false, wasm_sha256: wasm[0].sha256, observations };
+  const server = createServer((request, response) => {
+    const address = new URL(request.url, 'http://127.0.0.1');
+    const name = address.pathname === target.basePath ? 'index.html' : address.pathname.slice(target.basePath.length);
+    if (request.method !== 'GET' || !address.pathname.startsWith(target.basePath) || address.search || !content.has(name)) {
+      unexpected.push(request.url); response.writeHead(404).end(); return;
+    }
+    const body = name === 'app.js' ? app : content.get(name);
+    requests.push({ case: caseName, path: name, bytes: body.length, sha256: sha(body) });
+    response.writeHead(200, { 'content-type': name.endsWith('.wasm') ? 'application/wasm' : name.endsWith('.js') ? 'text/javascript'
+      : name.endsWith('.css') ? 'text/css' : name.endsWith('.json') ? 'application/json' : 'text/html',
+    'cache-control': name === wasm[0].path ? 'public, max-age=600' : 'no-store', 'content-length': body.length }).end(body);
+  });
+  try {
+    await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
+    const origin = `http://127.0.0.1:${server.address().port}`, url = origin + target.basePath;
+    const wasmUrl = new URL(wasm[0].path, url).href;
+    browser = await chromium.launch({ headless: true, executablePath: pins.chromium.executablePath });
+    assert.equal(browser.version(), pins.chromium.version);
+    const exercise = async () => {
+      const context = await browser.newContext();
+      const observation = { case: caseName, requests: [], cache_warmup_verified: false, fresh_worker_fetch_verified: false };
+      observations.push(observation);
+      const count = () => requests.filter(row => row.case === caseName && row.path === wasm[0].path).length;
+      context.on('request', request => {
+        if (request.method() !== 'GET' || !capturedBrowserRequest(request.url(), origin, target.basePath, [...content.keys()])) unexpected.push(request.url());
+      });
+      context.on('page', page => page.on('pageerror', error => errors.push(error.message)));
+      const ready = async page => {
+        await page.goto(url);
+        await page.waitForFunction(copy => document.querySelector('#status')?.textContent === copy
+          && !document.querySelector('#guided-submit').disabled, artifacts.application.view.statuses.ready);
+      };
+      try {
+        const page = await context.newPage(); await ready(page);
+        await submitUiVector(page, prepared);
+        assert.deepEqual(await page.locator('#result-table tbody td').allTextContents(), ['19', '22', '43', '50']);
+        observation.initial_wasm_requests = count();
+        const fetchCached = () => page.evaluate(async address => {
+          const response = await fetch(address, { cache: 'force-cache' }), bytes = await response.arrayBuffer();
+          const digest = await crypto.subtle.digest('SHA-256', bytes);
+          return { status: response.status, bytes: bytes.byteLength,
+            sha256: [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2, '0')).join('') };
+        }, wasmUrl);
+        for (let index = 0; index < 2; index++) {
+          const before = count(), fetched = await fetchCached();
+          assert.deepEqual(fetched, { status: 200, bytes: wasm[0].bytes, sha256: wasm[0].sha256 });
+          observation.requests.push({ stage: `force-cache-${index + 1}`, server_wasm_requests: count() - before, ...fetched });
+          if (index === 1) assert.equal(count(), before, 'MM-21: the ordinary browser HTTP cache was not actually warmed');
+        }
+        observation.cache_warmup_verified = true;
+        const before = count(), next = await context.newPage(); await ready(next);
+        observation.requests.push({ stage: 'new-worker', server_wasm_requests: count() - before });
+        assert.equal(count() - before, 1, 'MM-21: a new worker reused cached Wasm instead of fetching the current artifact');
+        observation.fresh_worker_fetch_verified = true;
+        await submitUiVector(next, prepared);
+        assert.deepEqual(await next.locator('#result-table tbody td').allTextContents(), ['19', '22', '43', '50']);
+        observation.actual_matrix_response = await next.locator('#result').textContent();
+      } finally { await context.close(); }
+    };
+    // Check the operational cache boundary before metadata, so an older runtime
+    // is rejected for actual cached-byte reuse rather than an absent policy key.
+    await exercise();
+    assert.equal(artifacts.application.view.execution.wasm_cache_policy, 'no-store', 'MM-21: source-owned Wasm cache policy differs');
+    const marker = 'cache:VIEW.execution.wasm_cache_policy,';
+    const source = app.toString('utf8');
+    assert.equal(source.split(marker).length, 2, 'MM-21: the isolated cache-option mutation is ambiguous');
+    app = Buffer.from(source.replace(marker, '')); caseName = 'wasm-cache-policy-omitted';
+    await assert.rejects(exercise, /MM-21: a new worker reused cached Wasm/);
+    assert.deepEqual(unexpected, [], 'MM-21: HTTP cache acceptance observed an undeclared request');
+    assert.deepEqual(errors, [], 'MM-21: HTTP cache acceptance raised an unhandled page error');
+    report.status = 'passed'; report.planted_rejections = ['wasm-cache-policy-omitted'];
+    return report;
+  } finally {
+    report.server_requests = requests;
+    await browser?.close();
+    if (server.listening) { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); }
+    writeJson(path.join(evidenceRoot, 'runtime-oracle', 'MM-21.http-cache.json'), report);
+  }
+}
+
 async function recovery({ page, context, url, ready }, view, policy) {
   const prepared = { kind: 'raw', input: '1\tmatmul\t1\t1\t1\t6\t7', wire: '1\tok\t1\t1\t42' };
   const status = (target, copy) => target.waitForFunction(expected => document.querySelector('#status').textContent === expected, copy);
@@ -534,9 +631,10 @@ export async function runProductionArtifactChecks(artifacts, id = 'all', publica
   fs.mkdirSync(path.join(evidenceRoot, 'runtime-oracle'), { recursive: true });
   for (const selected of ids) {
     assert(Object.hasOwn(checks, selected));
+    const httpCache = selected === 'MM-21' ? await wasmCacheChecks(artifacts) : null;
     for (const engine of selected === 'MM-22' ? Object.keys(pins) : ['chromium']) {
       evidence.push({ id: selected, ...(await withWorkbench(artifacts, checks[selected], { engine, publicationUrl,
-        observeWorkers: ['MM-19', 'MM-21', 'MM-22'].includes(selected) })) });
+        observeWorkers: ['MM-19', 'MM-21', 'MM-22'].includes(selected) })), ...(httpCache ? { http_cache: httpCache } : {}) });
     }
   }
   return { schema: 'lexlean-matmul/production-browser-acceptance/1', id, status: 'passed',
