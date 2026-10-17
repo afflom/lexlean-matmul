@@ -62,20 +62,44 @@ export function acceptanceVectors(modules = sourceModules()) {
     assert(term && typeof term === 'object', 'Missing closed Application value.');
     return term;
   }
-  function bytes(term) {
-    const literal = resolve(term, bytesType);
-    keys(literal, ['kind', 'hex']);
-    assert.equal(literal.kind, 'bytes', 'Acceptance-vector fields must resolve to byte literals.');
-    assert.equal(typeof literal.hex, 'string');
-    assert.match(literal.hex, /^(?:[0-9a-f]{2})*$/, 'Acceptance-vector bytes must be canonical hexadecimal.');
-    totalBytes += literal.hex.length / 2;
+  function bytes(term, active = new Set(), depth = 0) {
+    step();
+    assert(depth <= 128, 'Acceptance-vector byte expression depth budget exceeded.');
+    if (term?.kind === 'primitive') {
+      keys(term, ['kind', 'operation', 'result', 'arguments']);
+      assert.equal(term.operation, 'append', 'Only closed byte concatenation is admitted.');
+      assert.deepEqual(term.result, bytesType);
+      assert(Array.isArray(term.arguments) && term.arguments.length === 2, 'Byte concatenation requires exactly two closed operands.');
+      const left = bytes(term.arguments[0], active, depth + 1);
+      const right = bytes(term.arguments[1], active, depth + 1);
+      return { kind: 'bytes', hex: left.hex + right.hex };
+    }
+    if (term?.kind === 'call') {
+      keys(term, ['kind', 'function', 'arguments']);
+      const reference = term.function;
+      keys(reference, Object.hasOwn(reference, 'module') ? ['module', 'name'] : ['name']);
+      assert(!Object.hasOwn(reference, 'module') || reference.module === 'Application', 'Foreign Application byte aliases are forbidden.');
+      assert.deepEqual(term.arguments, [], 'Open Application byte aliases are forbidden.');
+      assert(!active.has(reference.name), 'Cyclic Application byte alias.');
+      const declaration = declarations.get(reference.name);
+      closedDefinition(declaration, bytesType);
+      active.add(reference.name);
+      const result = bytes(declaration.body, active, depth + 1);
+      active.delete(reference.name);
+      return result;
+    }
+    keys(term, ['kind', 'hex']);
+    assert.equal(term.kind, 'bytes', 'Acceptance-vector fields must resolve to closed byte constants.');
+    assert.equal(typeof term.hex, 'string');
+    assert.match(term.hex, /^(?:[0-9a-f]{2})*$/, 'Acceptance-vector bytes must be canonical hexadecimal.');
+    totalBytes += term.hex.length / 2;
     assert(totalBytes <= 16777216, 'Acceptance-vector expanded byte budget exceeded.');
-    return literal;
+    return term;
   }
   const declaration = declarations.get('application');
   assert(declaration?.body?.kind === 'record', 'A closed application record is required.');
   const applicationOwner = declaration.body.type?.module;
-  assert([owner, 'Foundation.View.Text.V2.Model'].includes(applicationOwner));
+  assert([owner, 'Foundation.View.Text.V2.Model', 'Foundation.View.Text.V3.Model'].includes(applicationOwner));
   assert.deepEqual(declaration.body.type, { module: applicationOwner, name: 'TextApplication' });
   closedDefinition(declaration, { kind: 'named', member: declaration.body.type, arguments: [] });
   const fields = declaration.body.fields;
@@ -155,6 +179,80 @@ export function renderErrors() {
       assert(witnesses.length > 0, `No modeled negative theorem for CodecError.${variant.name}`);
       result += `| \`${variant.name}\` | ${witnesses.map(row => `\`${row.name}\``).join(', ')} |\n`;
     }
+  }
+  const workbench = modules.find(module => module.module === 'Workbench')?.semantic.declarations;
+  const presentation = modules.find(module => module.module === 'Presentation')?.semantic.declarations;
+  if (workbench && presentation) {
+    const variants = workbench.find(row => row.kind === 'inductive' && row.name === 'WorkbenchError');
+    const mapping = workbench.find(row => row.name === 'workbenchErrorCode');
+    assert(variants && mapping?.body?.kind === 'match');
+    assert.equal(variants.constructors.length, mapping.body.branches.length);
+    result += '\nThe guided and advanced browser views use the closed `WorkbenchResult` JSON presentation. '
+      + 'Protocol failures retain the original wire code and actual request/response bytes. '
+      + 'The following defensive presenter failures have typed LexLean variants; isolated exact-source '
+      + 'negative fixtures exercise malformed replies and the declared output bound.\n\n';
+    result += '| Typed presenter variant | JSON error code | Negative fixture |\n| --- | --- | --- |\n';
+    const defensive = new Set();
+    for (const variant of variants.constructors) {
+      const branch = mapping.body.branches.find(row => row.constructor.name === `WorkbenchError.${variant.name}`);
+      assert.equal(branch?.body?.kind, 'string');
+      const code = branch.body.value;
+      assert.match(code, /^[a-z]+(?:-[a-z]+)*$/);
+      assert(!defensive.has(code));
+      defensive.add(code);
+      const fixtures = { InvalidResponse: 'Malformed actual presenter reply', ResponseTooLarge: 'Response beyond the modeled byte bound' };
+      assert(Object.hasOwn(fixtures, variant.name), `Missing defensive fixture for ${variant.name}`);
+      const fixture = fixtures[variant.name];
+      result += `| \`${variant.name}\` | \`${code}\` | ${fixture} |\n`;
+    }
+    const view = presentation.find(row => row.name === 'view');
+    assert.equal(view?.body?.kind, 'record');
+    let hints = view.body.fields.find(row => row.field === 'errors')?.value;
+    const declared = new Set(), ui = expected.flatMap(hex => {
+      const text = Buffer.from(hex, 'hex').toString('utf8');
+      return text.startsWith('{') ? [JSON.parse(text)] : [];
+    });
+    result += '\nActionable browser error assistance is generated from `Presentation.view.errors`. '
+      + 'The input byte limit also has direct transport coverage in the unchanged protocol corpus.\n\n';
+    result += '| Error code | Explanation | Recovery | Modeled UI negative vectors |\n| --- | --- | --- | --- |\n';
+    while (hints?.kind === 'cons') {
+      assert.equal(hints.head.kind, 'record');
+      const fields = Object.fromEntries(hints.head.fields.map(row => [row.field, row.value]));
+      for (const key of ['code', 'explanation', 'recovery']) assert.equal(fields[key]?.kind, 'string');
+      const code = fields.code.value;
+      assert(!declared.has(code));
+      declared.add(code);
+      const count = ui.filter(row => row.version === 1 && row.status === 'error' && row.error === code).length;
+      const safe = value => value.replaceAll('|', '&#124;').replaceAll('\n', ' ');
+      result += `| \`${code}\` | ${safe(fields.explanation.value)} | ${safe(fields.recovery.value)} | ${count} |\n`;
+      hints = hints.tail;
+    }
+    assert.equal(hints?.kind, 'nil');
+    for (const code of defensive) assert(declared.has(code), `Missing modeled browser help for ${code}`);
+    for (const branch of response.body.branches) {
+      const code = Buffer.from(branch.body.hex, 'hex').toString('utf8').split('\t')[2];
+      assert(declared.has(code), `Missing modeled browser help for ${code}`);
+    }
+  }
+  const model = modules.find(module => module.module === 'Model')?.semantic.declarations;
+  let failures = model?.find(row => row.name === 'productionEvidenceFailureCodes')?.body;
+  if (failures) {
+    result += '\nExternal CI observation failures use the closed code set declared by '
+      + '`Model.productionEvidenceFailureCodes`. Bounded structured failure receipts preserve '
+      + 'the observation scope and revision identity; these codes do not change the arithmetic protocol.\n\n';
+    result += '| Publication/evidence failure code |\n| --- |\n';
+    const seen = new Set();
+    while (failures.kind === 'cons') {
+      assert.equal(failures.head.kind, 'string');
+      const code = failures.head.value;
+      assert.match(code, /^[a-z]+(?:-[a-z]+)*$/);
+      assert(!seen.has(code));
+      seen.add(code);
+      result += `| \`${code}\` |\n`;
+      failures = failures.tail;
+    }
+    assert.equal(failures.kind, 'nil');
+    assert(seen.size > 0);
   }
   return result;
 }
