@@ -30,11 +30,37 @@ function moduleSource(root, name) {
 function sourceReader(root) {
   const modules = new Map();
   const active = new Set();
+  let byteNodes = 65536;
   const declaration = (module, name) => {
     if (!modules.has(module)) modules.set(module, moduleSource(root, module));
     const value = modules.get(module).get(name);
     assert(value, `${module}.${name}: missing modeled declaration`);
     return value;
+  };
+  const evaluateBytes = (value, owner, depth = 0) => {
+    assert(depth <= 128 && byteNodes-- > 0, 'closed byte metadata exceeds its finite evaluation budget');
+    if (value.kind === 'bytes') {
+      assert.equal(typeof value.hex, 'string');
+      assert(value.hex.length <= 2 * 16777216 && /^(?:[0-9a-f]{2})*$/.test(value.hex), 'closed byte literal is invalid or oversized');
+      return Buffer.from(value.hex, 'hex');
+    }
+    if (value.kind === 'call') {
+      assert.equal(value.arguments.length, 0, 'closed byte metadata only admits zero-argument aliases');
+      const module = value.function.module ?? owner, key = `${module}.${value.function.name}`;
+      assert(!active.has(key), 'cyclic closed byte metadata');
+      const target = declaration(module, value.function.name);
+      assert.equal(target.kind, 'definition'); assert.equal(target.parameters.length, 0);
+      assert.equal(target.result.kind, 'bytes');
+      active.add(key);
+      const result = evaluateBytes(target.body, module, depth + 1);
+      active.delete(key); return result;
+    }
+    assert.equal(value.kind, 'primitive', 'unsupported closed byte metadata expression');
+    assert.equal(value.operation, 'append'); assert.deepEqual(value.result, { kind: 'bytes' });
+    assert.equal(value.arguments.length, 2);
+    const left = evaluateBytes(value.arguments[0], owner, depth + 1), right = evaluateBytes(value.arguments[1], owner, depth + 1);
+    assert(left.length + right.length <= 16777216, 'closed byte metadata exceeds its byte bound');
+    return Buffer.concat([left, right]);
   };
   const evaluate = (value, owner) => {
     switch (value.kind) {
@@ -49,7 +75,11 @@ function sourceReader(root) {
       }
       case 'nil': return [];
       case 'cons': return [evaluate(value.head, owner), ...evaluate(value.tail, owner)];
-      case 'bytes': return Buffer.from(value.hex, 'hex');
+      case 'bytes': return evaluateBytes(value, owner);
+      case 'primitive': return evaluateBytes(value, owner);
+      case 'constructor':
+        assert.equal(value.arguments.length, 0, 'deployment metadata only admits closed enumeration values');
+        return value.constructor.name;
       case 'record': {
         const record = Object.create(null);
         for (const field of value.fields) {
@@ -165,14 +195,31 @@ export function deploymentMetadata(root = repositoryRoot) {
   };
 }
 
+export function productionPolicy(root = repositoryRoot) {
+  const { evaluate } = sourceReader(root);
+  const names = ['evidenceRetentionDays', 'publicationRequiresCurrentMain',
+    'browserMainThreadGapMaximumMilliseconds', 'browserCpuSlowdown', 'evidenceMaximumBytes',
+    'productionEvidenceFailureCodes'];
+  const policy = Object.fromEntries(names.map(name => [name,
+    evaluate({ kind: 'call', function: { module: 'Model', name }, arguments: [] }, 'Model')]));
+  assert(Number.isInteger(policy.evidenceRetentionDays) && policy.evidenceRetentionDays >= 1 && policy.evidenceRetentionDays <= 90);
+  assert.equal(typeof policy.publicationRequiresCurrentMain, 'boolean');
+  assert(Number.isInteger(policy.browserMainThreadGapMaximumMilliseconds) && policy.browserMainThreadGapMaximumMilliseconds > 0);
+  assert(Number.isInteger(policy.browserCpuSlowdown) && policy.browserCpuSlowdown >= 1 && policy.browserCpuSlowdown <= 20);
+  assert(Number.isInteger(policy.evidenceMaximumBytes) && policy.evidenceMaximumBytes > 0 && policy.evidenceMaximumBytes <= 67108864);
+  assert(Array.isArray(policy.productionEvidenceFailureCodes) && policy.productionEvidenceFailureCodes.length > 0
+    && policy.productionEvidenceFailureCodes.every(code => typeof code === 'string' && code.length > 0));
+  return policy;
+}
+
 export function validateWorkflow(root = repositoryRoot) {
   const target = deploymentMetadata(root);
   const workflow = readFileSync(resolve(root, '.github/workflows/pages.yml'), 'utf8');
   for (const action of [target.uploadAction, target.deployAction]) {
     assert.equal(workflow.split(`uses: ${action}`).length - 1, 1, `Pages workflow must bind ${action}`);
   }
-  assert.equal(workflow.split(`uses: ${target.bundleUploadAction}`).length - 1, 1,
-    'Native release bundle must use the modeled pinned upload action');
+  assert.equal(workflow.split(`uses: ${target.bundleUploadAction}`).length - 1, 4,
+    'Native, acceptance, deployment and publication evidence must use the modeled pinned upload action');
   const bundleUpload = workflow.split(`uses: ${target.bundleUploadAction}`)[1].split('      - ')[0];
   assert(bundleUpload.includes('include-hidden-files: true'), 'Native OCI/evidence bundle upload must include hidden files');
   assert(workflow.includes(`uses: ${target.bundleDownloadAction}`), 'Native release bundle download action differs');

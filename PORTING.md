@@ -88,6 +88,12 @@ accumulator or silently changing arithmetic when a bound is reached.
 `Protocol.lex.tex`, `ExtendedProtocol.lex.tex`, and `CodecProtocol.lex.tex`
 implement the versioned requests and typed failures. `Application.lex.tex`
 declares the native roots, acceptance vectors, Core-Wasm, and portable View.
+`Workbench.lex.tex` wraps guided requests, normalizes entry separators, and
+interprets actual wire responses as bounded structured results. Unframed
+version 1 requests retain their original bytes and responses.
+`Presentation.lex.tex` declares the full Text-V3 interface: fields, examples,
+guidance, design, error assistance, and cancellation/timeout policy. The SDK
+supplies generic rendering and browser-worker execution without domain arithmetic.
 `MatmulSystem.lex.tex` uses the native `Production.BrowserSystem.SystemModel`
 for browser-system `/2`, binding the application digest, complete generated
 artifact inventory, controls, and Pages target.
@@ -99,6 +105,13 @@ build. Pages deploys those accepted assets and then verifies publication
 through the SDK release API and direct HTTPS byte checks. Repository scripts
 orchestrate and inspect this evidence; product arithmetic and request handling
 remain LexLean source.
+
+The guided interface covers ten operation families; the advanced editor covers
+all 24 version 1 operation families. Exact cells remain strings, including IEEE
+bit patterns larger than JavaScript's exact integer range. Empty matrix shapes
+remain valid. A timed-out or cancelled browser worker is replaced, while inputs
+remain editable. This lifecycle bounds waiting and prevents stale results; it
+does not promise a fixed calculation time on every device.
 
 ## Evidence scope
 

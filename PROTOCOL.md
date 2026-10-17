@@ -7,6 +7,11 @@ integers from zero through eight, and each magnitude has at most 64 digits.
 The request, response, and guest-allocation bounds are declared by the
 application model. Source declarations remain authoritative.
 
+In the web application, open **Advanced protocol editor** to paste a complete
+request from this document. Guided forms additionally accept whitespace between
+matrix entries and show readable result tables. The advanced editor preserves
+the canonical tab/comma syntax described here.
+
 | Operation | Fields after `1` and operation name |
 | --- | --- |
 | `matmul` | `m`, `k`, `n`, `A`, `B` |

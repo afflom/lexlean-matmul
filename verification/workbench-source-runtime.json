@@ -1,0 +1,65 @@
+{
+  "qualification": false,
+  "scope": "kernel verified pure LexLean Workbench component and compiled-source Lean runtime; no production Rust/Wasm/V3 UI/release acceptance",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:594f91c8ac6968f1172568d3fe2f6a19800f61dc3b73b1d1b66b6d22e156735d",
+  "source_sha256": "4704d6319de6aeed83e5ba76adf396260db71c892d5d7e82a3c615c878c41c53",
+  "verify": {
+    "artifacts": [
+      ".lexlean/verified/7cbee8495d3c4bf9cd28a2568e6f6e8455c9db2bfd419d4a9d4ab2fd65c348df"
+    ],
+    "attestation_id": "7cbee8495d3c4bf9cd28a2568e6f6e8455c9db2bfd419d4a9d4ab2fd65c348df",
+    "build_id": "eb0344861caf749d38803d5eb92f78bf8b470484ba75ddacc57b3406dc9cead9",
+    "command": "verify",
+    "diagnostics": [],
+    "exit_code": 0,
+    "modules": [
+      "Atlas",
+      "Codec",
+      "CodecProtocol",
+      "Core",
+      "Epilogue",
+      "ExtendedProtocol",
+      "Float",
+      "Model",
+      "Protocol",
+      "Workbench"
+    ],
+    "semantic_id": "ffeaff51d376470722a41e83fce6aa124dce6a208740ffa6092996d40434087c",
+    "source_id": "379ca61243a8469ffc82428c005c83b097fc05d7b6972bd225bb46e75d622ec9",
+    "spec": "lexlean/command-result/1",
+    "success": true
+  },
+  "ui_vectors_exact": 26,
+  "largest_ui_response_bytes": 96221,
+  "raw_wrapped_originals": 155,
+  "all_original_operation_families": 24,
+  "excluded_raw_originals": [
+    {
+      "index": 17,
+      "reason": "original request is not UTF8, so the browser raw editor cannot represent it"
+    },
+    {
+      "index": 44,
+      "reason": "framed request exceeds source requestMaximum16384",
+      "framed_bytes": 16395
+    },
+    {
+      "index": 45,
+      "reason": "framed request exceeds source requestMaximum16384",
+      "framed_bytes": 32778
+    }
+  ],
+  "defensive_cases": 2,
+  "raw_unit_separator_regression": {
+    "red_request_lost": true,
+    "green_exact_request_preserved": true
+  },
+  "runtime_default_options": true,
+  "logs": {
+    "ui.log": "dc81d5e0d5a1b3926a06dc1fbcd6e5c5704726e6d777ac717911f6124525a0c9",
+    "raw.log": "01906048a4b5f23f85f1c12ff00dc54cc85fe0574ec162c2f8a84906fe8966ce",
+    "defensive.log": "f678bd8e99d034958740c5bab1bcfe143169ecdfe2cf0a09f11a4d3088a1c035",
+    "raw-separator.log": "b29cffe4e97264b5386d02c5916b8940f8f7e0016b9880521b4d198438f8c599"
+  },
+  "emitted_workbench_sha256": "b87cb8b19b194152d0f7b2ff587acc8ad5506592376fe4736c0ab419678c6ad6"
+}
