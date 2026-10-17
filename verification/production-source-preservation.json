@@ -1,0 +1,60 @@
+{
+  "baseline_revision": "2d4dc45f1dde9fde7978653aad3ce72b071d542f",
+  "new_presentation_acceptance_vectors": 26,
+  "new_workbench_theorem_axiom_policies": {
+    "workbenchFieldOrder": [],
+    "workbenchGemmFieldCount": [],
+    "workbenchInvalidResponseCode": [],
+    "workbenchKnownOperation": [],
+    "workbenchResponseTooLargeCode": [],
+    "workbenchUnknownOperation": []
+  },
+  "new_workbench_theorems": [
+    "workbenchKnownOperation",
+    "workbenchUnknownOperation",
+    "workbenchInvalidResponseCode",
+    "workbenchResponseTooLargeCode",
+    "workbenchGemmFieldCount",
+    "workbenchFieldOrder"
+  ],
+  "original_list_aliases_relinked_to_include_all_new_cases": true,
+  "qualified_for_release": false,
+  "schema": "lexlean-matmul/production-source-preservation/1",
+  "scope": "Source byte and semantic preservation audit, independent of runtime/release qualification",
+  "unchanged_modules": [
+    {
+      "path": "src/Core.lex.tex",
+      "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+    },
+    {
+      "path": "src/Atlas.lex.tex",
+      "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b"
+    },
+    {
+      "path": "src/Float.lex.tex",
+      "sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6"
+    },
+    {
+      "path": "src/Epilogue.lex.tex",
+      "sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87"
+    },
+    {
+      "path": "src/Codec.lex.tex",
+      "sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88"
+    },
+    {
+      "path": "src/Protocol.lex.tex",
+      "sha256": "51454a08ad1013fadb6073d8e1aa304af571437d54e911929552dee2d571b791"
+    },
+    {
+      "path": "src/ExtendedProtocol.lex.tex",
+      "sha256": "ae343c20e5d5c970ddd19018ad9c6a4c1a176cfbbcf4832a1420ce8e1288d5ce"
+    },
+    {
+      "path": "src/CodecProtocol.lex.tex",
+      "sha256": "ee0a431c3a01a6c893bd3ed09b3bb1f1527bffef36be31cb210e394ad1715f5a"
+    }
+  ],
+  "unchanged_original_acceptance_vector_records": 158,
+  "workbench_source_sha256": "4704d6319de6aeed83e5ba76adf396260db71c892d5d7e82a3c615c878c41c53"
+}
