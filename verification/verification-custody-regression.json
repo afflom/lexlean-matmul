@@ -1,0 +1,38 @@
+{
+  "baseline_owner": "scripts/evidence.mjs",
+  "baseline_revision": "2d4dc45f1dde9fde7978653aad3ce72b071d542f",
+  "command": [
+    "node",
+    "--test",
+    "scripts/evidence-custody.test.mjs"
+  ],
+  "logs": {
+    "green": {
+      "failed": 0,
+      "passed": 6,
+      "sha256": "692c8bd83d7b851c34f301274362ae0ae4379974ff4c9d56c9093c38858711a4",
+      "skipped": 0,
+      "tests": 6
+    },
+    "red": {
+      "failed": 5,
+      "passed": 1,
+      "sha256": "06b0940412c0929715e78fb44df90e7a78f17ad88b52ba86217d0deed5548d8f",
+      "skipped": 0,
+      "tests": 6
+    }
+  },
+  "negative_owner_changes": [
+    "crates/conformance/tests/production.rs",
+    "crates/conformance/Cargo.toml",
+    "xtask/src/main.rs",
+    ".cargo/config.toml",
+    "deny.toml"
+  ],
+  "qualified_for_release": false,
+  "red_owner_custody": "Test copied the exact baseline evidence.mjs into each isolated root and invoked its original zero-argument verificationDigest(); all five owner changes wrongly retained its prior digest.",
+  "restored_behavior": "Each owner change changes the digest; restoring exact bytes restores the digest; separate roots agree.",
+  "schema": "lexlean-matmul/verification-custody-regression/1",
+  "scope": "Isolated exact verification owner and temporary fixtures; not product runtime or release acceptance",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:594f91c8ac6968f1172568d3fe2f6a19800f61dc3b73b1d1b66b6d22e156735d"
+}
