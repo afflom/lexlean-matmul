@@ -19,6 +19,18 @@ the original direct corpus retains those cases. The
 unchanged original module bytes and acceptance-vector records. Both receipts
 remain explicitly unqualified for release.
 
+The [coherent workbench component](verification/production-workbench-component.json)
+accounts for all 184 vectors and executes MM-18 through MM-23 on one unchanged
+generated artifact, including all named defects and three browser engines.
+Its real HTTP-cache check warms the actual Wasm, requires a fresh fetch from a
+new engine, and rejects omission of the modeled `NoStore` policy. The
+[registered cache regression](verification/production-cache-gate-r3.json)
+records the earlier operational failure before the policy check was reached;
+[the cross-revision observation](verification/production-cache-r3.json) first
+reproduced a new interface using cached old Wasm. These component diagnostics
+exclude final installed-SDK, containing-system, complete acceptance, and live
+publication qualification.
+
 The [verification custody regression](verification/verification-custody-regression.json)
 executes the exact earlier digest owner in isolated roots: changes to Rust gate
 sources, their manifests, the model-checking tool, Cargo configuration, and the

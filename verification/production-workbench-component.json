@@ -1,0 +1,292 @@
+{
+  "schema": "lexlean-matmul/coherent-production-component-evidence/1",
+  "qualification": false,
+  "status": "passed",
+  "recorded_at": "2026-10-17T18:12:07.109278+00:00",
+  "scope": "Genuine single app-only component browser/production diagnostic from exact committed sources and new NoStore source SDK. This does not qualify the full production System, final published immutable SDK, complete24-capability gate, native bundle, PR/main or live deployment.",
+  "product_revision": "a1cada2ebf29d8f065f014ca3f302cd62eb6755d",
+  "component_build": "c7673d602f7381269d40b130cb48c7f179c7caaa9d627a5c7c849e856d36f152",
+  "started_at": "2026-10-17T18:09:35.281Z",
+  "finished_at": "2026-10-17T18:10:13.985Z",
+  "process_exit_code": 0,
+  "argv": [
+    "docker",
+    "run",
+    "--rm",
+    "--init",
+    "--network",
+    "none",
+    "--user",
+    "1000:1000",
+    "--env",
+    "PRISMPM_EPHEMERAL_HOME=1",
+    "--volume",
+    "/tmp/matmul-production-coherent-component-check:/tmp/matmul-production-coherent-component-check",
+    "--volume",
+    "/tmp/matmul-text-v3-no-store-product-component-source/.prism/build/c7673d602f7381269d40b130cb48c7f179c7caaa9d627a5c7c849e856d36f152:/tmp/matmul-production-coherent-component-check/.prism/build/c7673d602f7381269d40b130cb48c7f179c7caaa9d627a5c7c849e856d36f152:ro",
+    "--workdir",
+    "/tmp/matmul-production-coherent-component-check",
+    "ghcr.io/afflom/lexlean-matmul-sdk@sha256:594f91c8ac6968f1172568d3fe2f6a19800f61dc3b73b1d1b66b6d22e156735d",
+    "node",
+    "run-coherent-component.mjs",
+    "c7673d602f7381269d40b130cb48c7f179c7caaa9d627a5c7c849e856d36f152"
+  ],
+  "assets_unchanged": true,
+  "artifact_mount_read_only": true,
+  "browser_tools_sdk": "sha256:594f91c8ac6968f1172568d3fe2f6a19800f61dc3b73b1d1b66b6d22e156735d",
+  "modeled_vectors": 184,
+  "node_vector_partition": {
+    "engine": "v22.23.2",
+    "answered_vectors": 181,
+    "rejected_utf8_vectors": 1,
+    "rejected_length_vectors": 2,
+    "additional_transport_negatives": 3
+  },
+  "ui_exact_vectors": 180,
+  "ui_explicit_exceptions": [
+    {
+      "index": 17,
+      "reason": "invalid-utf8"
+    },
+    {
+      "index": 44,
+      "reason": "input-byte-limit"
+    },
+    {
+      "index": 45,
+      "reason": "input-byte-limit"
+    },
+    {
+      "index": 182,
+      "reason": "html-normalization"
+    }
+  ],
+  "all_mm18_through_mm23_pass": true,
+  "skipped": 0,
+  "filtered": 0,
+  "production_observations": [
+    {
+      "id": "MM-18",
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "planted_rejections": [
+        "hidden-purpose"
+      ]
+    },
+    {
+      "id": "MM-19",
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "planted_rejections": [
+        "fixture-only-execution"
+      ]
+    },
+    {
+      "id": "MM-20",
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "planted_rejections": [
+        "rounded-exact-cell",
+        "wrong-result-shape",
+        "missing-result-shape"
+      ]
+    },
+    {
+      "id": "MM-21",
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "planted_rejections": [
+        "native-worker-retirement-omitted",
+        "busy-live-status-ancestor"
+      ]
+    },
+    {
+      "id": "MM-22",
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "planted_rejections": [
+        "missing-label",
+        "low-contrast",
+        "busy-live-status-ancestor"
+      ]
+    },
+    {
+      "id": "MM-22",
+      "engine": "firefox",
+      "version": "153.0",
+      "planted_rejections": [
+        "missing-label",
+        "low-contrast",
+        "busy-live-status-ancestor"
+      ]
+    },
+    {
+      "id": "MM-22",
+      "engine": "webkit",
+      "version": "26.5",
+      "planted_rejections": [
+        "missing-label",
+        "low-contrast",
+        "busy-live-status-ancestor"
+      ]
+    },
+    {
+      "id": "MM-23",
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "planted_rejections": [
+        "persistent-calculation-history"
+      ]
+    }
+  ],
+  "cache_operational_green": {
+    "source_policy": "no-store",
+    "ordinary_second_force_cache_server_requests": 0,
+    "new_worker_server_requests": 1,
+    "actual_matrix_response": "1\tok\t2\t2\t19,22,43,50",
+    "one_property_mutant_caught": true,
+    "mutant_new_worker_server_requests": 0,
+    "alternate_wasm_or_backend": false,
+    "routing_installed": false,
+    "cache_disabled": false
+  },
+  "actual_operational_red": {
+    "receipt_path": "/tmp/matmul-cache-coherence-diagnostic/cache-gate-operational-red-receipt.json",
+    "sha256": "a31833f86f87ffe6d4b02a506d39bee2c4a5792065e97041578c2c38dff9aded",
+    "expected_exit_code": 1,
+    "failure_reason": "new Worker reused genuinely cached same-revision Wasm:0 fresh HTTP requests instead of1; checked before new policy metadata"
+  },
+  "finite_accessibility": {
+    "engines": [
+      "chromium157",
+      "firefox153",
+      "webkit26.5"
+    ],
+    "color_schemes": [
+      "light",
+      "dark"
+    ],
+    "axe_violations": 0,
+    "axe_incomplete": 0,
+    "running_status_no_busy_ancestor": true,
+    "screen_reader_speech_tested": false,
+    "complete_wcag_acceptance": false
+  },
+  "maximum_main_thread_gap_ms": 26,
+  "cpu_slowdown": 4,
+  "fresh_default_viewports": {
+    "receipt_path": "/tmp/matmul-production-coherent-clean-screenshots/clean-default-viewport-receipt.json",
+    "screenshots": [
+      {
+        "path": "runtime-oracle/production-desktop-top.png",
+        "width": 1280,
+        "height": 900,
+        "position": "top",
+        "bytes": 141450,
+        "sha256": "61ddd09e1087fb543251745028883d93b02446607d19828c6d74965d5369aebe"
+      },
+      {
+        "path": "runtime-oracle/production-desktop-result.png",
+        "width": 1280,
+        "height": 900,
+        "position": "result",
+        "bytes": 141450,
+        "sha256": "61ddd09e1087fb543251745028883d93b02446607d19828c6d74965d5369aebe"
+      },
+      {
+        "path": "runtime-oracle/production-mobile-top.png",
+        "width": 390,
+        "height": 844,
+        "position": "top",
+        "bytes": 76853,
+        "sha256": "07aff797a8902a5efd3168953bb6f1f3a2aabf1c51a74beb571e282444e945e2"
+      },
+      {
+        "path": "runtime-oracle/production-mobile-result.png",
+        "width": 390,
+        "height": 844,
+        "position": "result",
+        "bytes": 41562,
+        "sha256": "70561c3cb2056076aced904b495a0fd2faf34df392be79dd215862964d327e6f"
+      }
+    ],
+    "original_suite_images_unchanged": true
+  },
+  "files": [
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/run-coherent-component.mjs",
+      "bytes": 1969,
+      "sha256": "df60c005665fdfaa7df3bc473bb69595fb23e73d5278655dfe84b58043962367"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/source-inputs.json",
+      "bytes": 6147,
+      "sha256": "12f3d1b02a1662f6b3ce65897b7faaab65d2d7808667c69fd0d07920eb3f4504"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/component-authentication.json",
+      "bytes": 1247,
+      "sha256": "1cff96a463ed98e6eb6bbf7387951d42cbd3aabf8a6fbf3f5db8332e3ff719c6"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/component-build-receipt-review.json",
+      "bytes": 619,
+      "sha256": "9708eb867a3be7b2eae7003b7f4c104a544b6b84f4d4699af08068dd05880388"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/browser184-diagnostic.json",
+      "bytes": 4913,
+      "sha256": "d31aeccd3377b3a508f2ce5c229827ede0931c589215c109ab5a2a54d06d9c00"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/coherent-component-browser-diagnostic.json",
+      "bytes": 41792,
+      "sha256": "017f5dae69e91a94c93f605cf048e0bcb603ac28f55e3cf0656a9c24332d7bfc"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/coherent-component-run.stdout",
+      "bytes": 998,
+      "sha256": "001940122d7446f7cf6852375fe2e6c225b53baab29cf870ff2e1b68b1d70510"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/coherent-component-run.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-component-check/.prism/matmul/runtime-oracle/MM-21.http-cache.json",
+      "bytes": 4768,
+      "sha256": "0e5573df4e9022bcf3ff6b96f81acde90da7946f73792e445840fd085c407094"
+    },
+    {
+      "path": "/tmp/matmul-sdk-text-v3-provenance/no-store-product-component-build-receipt.json",
+      "bytes": 6873,
+      "sha256": "12f752cf0661f0884c462baa7ad34d44ba2ea34124f3ebb0370a94b2293e35eb"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-gate-operational-red-receipt.json",
+      "bytes": 14419,
+      "sha256": "a31833f86f87ffe6d4b02a506d39bee2c4a5792065e97041578c2c38dff9aded"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-clean-screenshots/capture-clean.mjs",
+      "bytes": 841,
+      "sha256": "80ea5f2adab19ac5431ca5fff9479e66585602942325b42fa486f60ca03253c9"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-clean-screenshots/clean-default-viewport-receipt.json",
+      "bytes": 2302,
+      "sha256": "1de59354b7d7fabbee35efab8220720ecbc18f1945b2681710e19f2f66ff457c"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-clean-screenshots/clean-default-viewport.stdout",
+      "bytes": 890,
+      "sha256": "d441eea049bb6251a2b510d84a85a0c40e3f2fcf91d539c644bb7905051106dd"
+    },
+    {
+      "path": "/tmp/matmul-production-coherent-clean-screenshots/clean-default-viewport.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
