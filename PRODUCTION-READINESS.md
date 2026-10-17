@@ -53,7 +53,7 @@ failure. It does not qualify a later revision.
 | MM-18 | Source-owned purpose, audience, instructions, limits, navigation, and HTTPS documentation links are rendered and reachable. |
 | MM-19 | Examples populate editable guided inputs. Both the original example and independently calculated edits execute generated LexLean arithmetic. |
 | MM-20 | Exact result cells, order, domain explanations, and underlying request/response bytes agree with the actual generated response. |
-| MM-21 | Loading, computation, cancellation, timeout, retry, rejection, and success follow the declared lifecycle. Drafts survive recoverable failures; stale work cannot replace a newer result. |
+| MM-21 | Each new engine fetch bypasses cached Wasm from earlier deployments. Loading, computation, cancellation, timeout, retry, rejection, and success follow the declared lifecycle; drafts survive recovery and stale work cannot replace a newer result. |
 | MM-22 | Pinned semantic scans and actual keyboard, focus, status, contrast, target, 320-pixel reflow, and enlarged-text journeys exercise the rendered product. |
 | MM-23 | Visible privacy guidance matches observed behavior: calculations use browser-local execution, without operand-bearing navigation, telemetry, logs, or persistent history. |
 | MM-24 | The modeled current-main policy and retention period bind the accepted bundle and bounded success/failure publication receipts to the deployed revision. |

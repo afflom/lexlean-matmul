@@ -141,7 +141,7 @@ feature = "features/suites/production.feature"
 [[claim]]
 id = "MM-21"
 level = "build"
-statement = "Modeled worker execution exposes loading and busy states, typed error assistance, cancellation, timeout, retry, and draft-preserving recovery."
+statement = "Modeled worker execution loads the current Wasm without reusable browser caching and exposes loading, busy, typed errors, cancellation, timeout, retry, and draft-preserving recovery."
 feature = "features/suites/production.feature"
 
 [[claim]]

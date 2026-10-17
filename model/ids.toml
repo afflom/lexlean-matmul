@@ -124,7 +124,7 @@ statement = "Readable result matrices and domain interpretations retain exact va
 id = "MM-21"
 level = "build"
 suite = "production"
-statement = "Modeled worker execution exposes loading and busy states, typed error assistance, cancellation, timeout, retry, and draft-preserving recovery."
+statement = "Modeled worker execution loads the current Wasm without reusable browser caching and exposes loading, busy, typed errors, cancellation, timeout, retry, and draft-preserving recovery."
 
 [[id]]
 id = "MM-22"
