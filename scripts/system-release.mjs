@@ -6,11 +6,23 @@ import { canonical, capabilityIds, confined, evidenceRoot, files, freshBuild, re
   sdk, sha, sourceDigest, verificationDigest, writeJson } from './evidence.mjs';
 import { deploymentMetadata, nativeSystemModel } from './system-model.mjs';
 import { runPublishedBrowserChecks } from './browser-oracle.mjs';
+import { writePublicationFailure } from './publication-evidence.mjs';
 
 const receiptPath = path.join(evidenceRoot, 'system-release.json');
 const sourceFreePath = path.join(evidenceRoot, 'source-free-release');
 const validationType = 'application/vnd.prismpm.validation.v1+json';
 const digest = bytes => `sha256:${sha(bytes)}`;
+
+// The production caller uses the actual pinned browser consumer. A caller may
+// supply a failed observer in an isolated test of this failure boundary.
+export async function verifyPublishedRuntime(artifacts, observe = runPublishedBrowserChecks) {
+  try { return await observe(artifacts); }
+  catch (error) {
+    fs.rmSync(path.join(evidenceRoot, 'native-bundle-browser-publication.json'), { force: true });
+    writePublicationFailure('native-bundle-browser-publication.failure.json', 'publication-runtime-failed', error);
+    throw error;
+  }
+}
 
 export function validateCapturedBuild({ modelBytes, manifestBytes, applicationSnapshotBytes,
   capturedBuild, buildId, modelDigest, buildDigest }) {
@@ -282,9 +294,12 @@ function bundleRelease() {
 // A separate publication job consumes inert captured bytes. It does not load a
 // source graph, acquire SDK inputs, compile, or recreate acceptance evidence.
 async function verifyBundle(relative, url) {
+  let failureCode = 'publication-url-refused';
+  try {
   const target = deploymentMetadata();
   assert.equal(relative, target.bundleDirectory);
   assert.equal(url, target.url);
+  failureCode = 'publication-integrity-failed';
   const bundleRoot = confined(relative), bundleBytes = fs.readFileSync(confined('bundle.json', bundleRoot));
   const bundle = JSON.parse(bundleBytes);
   assert.equal(bundle.schema, 'lexlean-matmul/browser-release-bundle/1');
@@ -352,7 +367,9 @@ async function verifyBundle(relative, url) {
   validateExport(exported, release.release, bundle.assets);
   assert.equal(exported.reference, bundle.reference);
   assert.deepEqual(expectedFiles(path.join(restored, 'browser')), bundle.assets);
+  failureCode = 'publication-http-failed';
   const observed = JSON.parse(run('prismpm', ['--json', 'verify-browser-publication', bundle.reference, '--url', url], restored));
+  failureCode = 'publication-integrity-failed';
   assert.equal(observed.schema, 'prismpm/browser-publication-integrity/1');
   assert.equal(observed.scope, 'browser-byte-integrity-only');
   assert.equal(observed.reference, bundle.reference);
@@ -361,14 +378,21 @@ async function verifyBundle(relative, url) {
   assert.equal(observed.url, url);
   assert.equal(observed.requests, 7);
   assert.equal(observed.redirects, 0);
-  const browserUi = await runPublishedBrowserChecks({ directory: path.join(restored, 'browser'), model, url });
+  failureCode = 'publication-runtime-failed';
+  const browserUi = await verifyPublishedRuntime({ directory: path.join(restored, 'browser'), model, url });
   assert.equal(browserUi.model_sha256, bundle.model_digest.slice(7));
   writeJson(path.join(evidenceRoot, 'native-bundle-browser-publication.json'), {
     schema: 'lexlean-matmul/browser-bundle-publication/1', commit: bundle.commit,
     bundle_sha256: sha(bundleBytes), acceptance_sha256: bundle.acceptance_sha256,
     source_digest: bundle.source_digest, verification_digest: bundle.verification_digest, observation: observed, browser_ui: browserUi,
   });
+  fs.rmSync(path.join(evidenceRoot, 'native-bundle-browser-publication.failure.json'), { force: true });
   console.log(`SDK HTTPS integrity and Chromium UI checks passed for ${bundle.reference} at ${url}`);
+  } catch (error) {
+    fs.rmSync(path.join(evidenceRoot, 'native-bundle-browser-publication.json'), { force: true });
+    writePublicationFailure('native-bundle-browser-publication.failure.json', failureCode, error);
+    throw error;
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
