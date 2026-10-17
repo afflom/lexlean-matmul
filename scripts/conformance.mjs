@@ -6,6 +6,8 @@ import { runRuntimeChecks } from './runtime-oracle.mjs';
 import { runExtendedChecks } from './extended-oracle.mjs';
 import { runCodecChecks } from './codec-oracle.mjs';
 import { runBrowserChecks } from './browser-oracle.mjs';
+import { runProductionChecks } from './production-oracle.mjs';
+import { runPublicationReadinessChecks } from './publication-evidence.mjs';
 import { acceptanceVectors } from './write-errors.mjs';
 import { nativeSystemModel } from './system-model.mjs';
 import { readSystemRelease } from './system-release.mjs';
@@ -256,6 +258,10 @@ if (['MM-01', 'MM-02', 'MM-03', 'MM-04', 'MM-05', 'MM-06', 'MM-07', 'MM-11', 'MM
       assert(lexlean.declarations.some(row => row.name.endsWith(`.MatmulSystem.${proof.name}`) && row.result === 'ok'),
         `Missing native-system kernel proof ${proof.name}`);
     }
+  } else if (['MM-18', 'MM-19', 'MM-20', 'MM-21', 'MM-22', 'MM-23'].includes(id)) {
+    runtimeReport = await runProductionChecks(build, id);
+  } else if (id === 'MM-24') {
+    runtimeReport = runPublicationReadinessChecks(build);
   } else if (id === 'MM-12') {
     const reproduction = readJson(path.join(evidenceRoot, 'reproduction.json'));
     assert.equal(reproduction.schema, 'lexlean-matmul/reproduction/1');

@@ -11,6 +11,23 @@ const require = createRequire('/opt/prismpm/oracles/package.json');
 assert.equal(require('playwright/package.json').version, '1.62.1');
 const { chromium } = require('playwright');
 const url = 'https://afflom.github.io/lexlean-matmul/';
+const baselineAssets = {
+  'app.css': '93a8e4a6a873f55f56a7adb3a55a49912bdcddd740b1af52f9a27f1403ea0279',
+  'app.js': '8aaf0c66deee92a16ba57bd40108691178c04ade4531b91cdce5c8c12a16e0e1',
+  'index.html': '335039253de90c927321b383d54d2d6d5f740a98347c25d29c8f3b73bdb0c9ad',
+  'lexlean_matmul.js': '6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16',
+  'lexlean_matmul_bg.wasm': '7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc',
+  'provenance.json': 'ac8b50eb728f5c75c65f462f9354493b283ddb85f1c3a839206292bbf387f7c4',
+};
+try {
+  for (const [name, expected] of Object.entries(baselineAssets)) {
+    const response = await fetch(new URL(name, url), { redirect: 'error', signal: AbortSignal.timeout(30000) });
+    assert.equal(response.status, 200);
+    assert.equal(sha(Buffer.from(await response.arrayBuffer())), expected);
+  }
+} catch {
+  throw new Error('BASELINE_REVISION_CHANGED: live assets differ from accepted 2d4; historical R3 evidence cannot be regenerated against another revision');
+}
 const browser = await chromium.launch({ headless: true, executablePath: process.arch === 'x64'
   ? '/ms-playwright/chromium_headless_shell-cft-157.0.8099.0/chrome-headless-shell-linux64/chrome-headless-shell'
   : '/ms-playwright/chromium_headless_shell-cft-157.0.8099.0/chrome-headless-shell-linux-arm64/chrome-headless-shell' });
