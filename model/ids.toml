@@ -101,3 +101,45 @@ id = "MM-17"
 level = "build"
 suite = "codec"
 statement = "Total scalar and compositional codebooks decode stored symbols before the shared exact direct or tabulated matrix traversal."
+
+[[id]]
+id = "MM-18"
+level = "build"
+suite = "production"
+statement = "The modeled workbench explains its purpose, audiences, method, bounds, and documentation through source-owned navigation and guidance."
+
+[[id]]
+id = "MM-19"
+level = "build"
+suite = "production"
+statement = "Editable guided matrix inputs and named worked examples invoke the generated exact arithmetic rather than displaying fixture answers."
+
+[[id]]
+id = "MM-20"
+level = "build"
+suite = "production"
+statement = "Readable result matrices and domain interpretations retain exact values and the actual underlying request and response bytes."
+
+[[id]]
+id = "MM-21"
+level = "build"
+suite = "production"
+statement = "Modeled worker execution exposes loading and busy states, typed error assistance, cancellation, timeout, retry, and draft-preserving recovery."
+
+[[id]]
+id = "MM-22"
+level = "build"
+suite = "production"
+statement = "The guided workbench satisfies finite keyboard, semantic, contrast, target, status, and responsive accessibility checks against pinned browser oracles."
+
+[[id]]
+id = "MM-23"
+level = "build"
+suite = "production"
+statement = "The workbench explains browser-local computation and avoids operand-bearing network requests, URLs, logs, and persistent calculation history."
+
+[[id]]
+id = "MM-24"
+level = "build"
+suite = "production"
+statement = "The protected Pages release enforces modeled freshness and retains bounded, revision-bound acceptance and publication evidence for the declared period."
