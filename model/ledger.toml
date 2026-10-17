@@ -153,7 +153,7 @@ feature = "features/suites/production.feature"
 [[claim]]
 id = "MM-23"
 level = "build"
-statement = "The workbench explains browser-local computation and avoids operand-bearing network requests, URLs, logs, and persistent calculation history."
+statement = "The standalone Pages workbench explains browser-local computation and avoids operand-bearing network requests, URLs, logs, and persistent calculation history."
 feature = "features/suites/production.feature"
 
 [[claim]]
