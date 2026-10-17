@@ -75,7 +75,7 @@ model does not sanction.
 | `MM-18` | `build` | The modeled workbench explains its purpose, audiences, method, bounds, and documentation through source-owned navigation and guidance. |
 | `MM-19` | `build` | Editable guided matrix inputs and named worked examples invoke the generated exact arithmetic rather than displaying fixture answers. |
 | `MM-20` | `build` | Readable result matrices and domain interpretations retain exact values and the actual underlying request and response bytes. |
-| `MM-21` | `build` | Modeled worker execution exposes loading and busy states, typed error assistance, cancellation, timeout, retry, and draft-preserving recovery. |
+| `MM-21` | `build` | Modeled worker execution loads the current Wasm without reusable browser caching and exposes loading, busy, typed errors, cancellation, timeout, retry, and draft-preserving recovery. |
 | `MM-22` | `build` | The guided workbench satisfies finite keyboard, semantic, contrast, target, status, and responsive accessibility checks against pinned browser oracles. |
 | `MM-23` | `build` | The standalone Pages workbench explains browser-local computation and avoids operand-bearing network requests, URLs, logs, and persistent calculation history. |
 | `MM-24` | `build` | The protected Pages release enforces modeled freshness and retains bounded, revision-bound acceptance and publication evidence for the declared period. |
@@ -154,7 +154,7 @@ Never re-derived, vendored, or gated on.
 | `MM-18` | `build` | The modeled workbench explains its purpose, audiences, method, bounds, and documentation through source-owned navigation and guidance. |
 | `MM-19` | `build` | Editable guided matrix inputs and named worked examples invoke the generated exact arithmetic rather than displaying fixture answers. |
 | `MM-20` | `build` | Readable result matrices and domain interpretations retain exact values and the actual underlying request and response bytes. |
-| `MM-21` | `build` | Modeled worker execution exposes loading and busy states, typed error assistance, cancellation, timeout, retry, and draft-preserving recovery. |
+| `MM-21` | `build` | Modeled worker execution loads the current Wasm without reusable browser caching and exposes loading, busy, typed errors, cancellation, timeout, retry, and draft-preserving recovery. |
 | `MM-22` | `build` | The guided workbench satisfies finite keyboard, semantic, contrast, target, status, and responsive accessibility checks against pinned browser oracles. |
 | `MM-23` | `build` | The standalone Pages workbench explains browser-local computation and avoids operand-bearing network requests, URLs, logs, and persistent calculation history. |
 | `MM-24` | `build` | The protected Pages release enforces modeled freshness and retains bounded, revision-bound acceptance and publication evidence for the declared period. |

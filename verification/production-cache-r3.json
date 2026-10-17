@@ -1,0 +1,129 @@
+{
+  "schema": "lexlean-matmul/cache-coherence-causal-receipt/1",
+  "observed_at": "2026-10-17T17:44:06.422358+00:00",
+  "qualification": false,
+  "status": "material-concern-reproduced",
+  "scope": "Read-only cross-revision deployment HTTP-cache diagnostic, not live deployment reproduction or newrelease qualification. Actual accepted live2d4 Wasm freshly downloaded and authenticated; actual unchanged generated83ea component executes locally. No source or asset edits, backend calculation fixture, Playwright routing, cache disabling, ServiceWorker or source substitution.",
+  "result": {
+    "warm_context": "new UI + cached accepted old Wasm => typed response_error, no rendered result",
+    "fresh_context": "same new six assets => correct2x2 exact19,22,43,50",
+    "warmup_only_old_wasm": true,
+    "old_glue_byte_identical_to_new": true,
+    "server_wasm_requests_warm": 0,
+    "server_wasm_requests_fresh": 1,
+    "worker_wasm_transfer_bytes_warm": 0,
+    "worker_wasm_encoded_bytes_warm": 946431,
+    "worker_wasm_transfer_bytes_fresh": 1016336,
+    "two_observed_runs_same_outcome": true
+  },
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--init",
+    "--network",
+    "none",
+    "--user",
+    "1000:1000",
+    "--env",
+    "PRISMPM_EPHEMERAL_HOME=1",
+    "--volume",
+    "/tmp/matmul-cache-coherence-diagnostic:/tmp/matmul-cache-coherence-diagnostic",
+    "--volume",
+    "/tmp/matmul-production-readiness-audit/browser:/tmp/matmul-production-readiness-audit/browser:ro",
+    "--volume",
+    "/tmp/matmul-text-v3-product-preview-source:/tmp/matmul-text-v3-product-preview-source:ro",
+    "--workdir",
+    "/tmp/matmul-cache-coherence-diagnostic",
+    "ghcr.io/afflom/lexlean-matmul-sdk@sha256:594f91c8ac6968f1172568d3fe2f6a19800f61dc3b73b1d1b66b6d22e156735d",
+    "node",
+    "cache-coherence.mjs"
+  ],
+  "process_exit_code": 0,
+  "files": [
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/accepted-live-old-receipt.json",
+      "bytes": 1149,
+      "sha256": "8e888fda7b6122a10778415d24b6ac9ba7e349c6de051680a5018e0b4dda36b2"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/accepted-live-old.wasm",
+      "bytes": 946431,
+      "sha256": "7f353c81da5837ea06f345581222abd9890ffe2b2f84db847909c3123e88b6cc"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-coherence.mjs",
+      "bytes": 9467,
+      "sha256": "527eb9aba36639a8eef3e7c8a5feca015344285414f269c6177467b8074aa7e6"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-coherence-first-result.json",
+      "bytes": 32020,
+      "sha256": "5ff9bdbb09db646067b7e7c6cf6d451966afeccef945ef5b466df60167fb29ee"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-coherence-result.json",
+      "bytes": 33410,
+      "sha256": "4cfa76fb913a457e26143334ac901f3e8f644c5779e3764f6c9c01d9a8a59462"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-coherence-run.stdout",
+      "bytes": 962,
+      "sha256": "736196a63ad4538ba7ae4636078fd0c4a745201d31476ed2f8a4fb0b2bb239ba"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/cache-coherence-run.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/warm-cache-new-ui.png",
+      "bytes": 427275,
+      "sha256": "d5d7b7f68ae1deb228a568016f1b5e766871b75ed18e5f4f7d45072c41c2571e"
+    },
+    {
+      "path": "/tmp/matmul-cache-coherence-diagnostic/fresh-cache-new-ui.png",
+      "bytes": 433053,
+      "sha256": "12521a86c2f348d99537fede74a557cb3539e9296374c2140cc85fd01f61ced3"
+    }
+  ],
+  "new_assets": [
+    {
+      "path": "index.html",
+      "bytes": 5879,
+      "sha256": "f0ab53df95168ec8e082c6961d9ff15d2cc960290f617a6a47a5531da1615aa1"
+    },
+    {
+      "path": "app.js",
+      "bytes": 64231,
+      "sha256": "ca27a601f7a365007b027c2d421b56c3f623e3229dcc708ab8740b0bc8dd7231"
+    },
+    {
+      "path": "app.css",
+      "bytes": 7350,
+      "sha256": "d15030c6d348f2bc8906816414ec8d30feb72c89e3825c169f52fa97a1e5a548"
+    },
+    {
+      "path": "lexlean_matmul.js",
+      "bytes": 6592,
+      "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16"
+    },
+    {
+      "path": "lexlean_matmul_bg.wasm",
+      "bytes": 1016036,
+      "sha256": "e253c9092833f99e0153455be2caa49df530dd2500afe9955de29ab7124e559d"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 656,
+      "sha256": "cbf7f9f890dc4aa329aea96f7ac7ab1a4ca42c2f95437cceb623c82e1aa0e9eb"
+    }
+  ],
+  "new_model_sha256": "9ff9c64363bc2606d520122c51115aaad37e734dd1bd4e3f0276444d8bea22f5",
+  "limitations": [
+    "Local two-revision server models independent browser cache freshness; no real GitHub Pages deployment changed.",
+    "Uses genuine83ea source-candidate component, not final published SDK/product qualification.",
+    "This test isolates old cached Wasm/new interface; it does not claim complete mixed-revision asset coverage."
+  ],
+  "source_receipt_sha256": "f5abd299a6c7419511132f904c5bb7b27917a7a2e511fb89230629165e3c335c"
+}
