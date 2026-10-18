@@ -86,7 +86,9 @@ export function assertTrace(report, fixture, row, column) {
   }
   if (fixture.hasLinear) {
     const actual = rows.find(r => r[0] === 'linear epilogue'); same(actual[1], 'alpha, beta');
-    equalScalar(actual[2], 'integer', fixture.alpha, 'epilogue alpha'); equalScalar(actual[3], 'integer', fixture.beta, 'epilogue beta');
+    const factorDomain=fixture.domain==='ieee'?'ieee':'integer';
+    const factor=value=>fixture.domain==='ieee'?{kind:'finite',coefficient:value,exponent:0}:value;
+    equalScalar(actual[2], factorDomain, factor(fixture.alpha), 'epilogue alpha'); equalScalar(actual[3], factorDomain, factor(fixture.beta), 'epilogue beta');
     equalScalar(actual[4], fixture.domain, fixture.prior[index], 'epilogue oldC');
     equalScalar(actual[5], fixture.domain, fixture.reduced[index], 'epilogue reduction');
     equalScalar(actual[6], fixture.domain, fixture.linear[index], 'epilogue actual output');
@@ -124,7 +126,7 @@ export function assertLookupContributions(report, fixture, row, column) {
       stored=String(mapping.code)+' @ '+mapping.coordinate;
     } else {
       const code=fixture.storedCodes[step.index*fixture.columns+column];
-      stored=String(code)+(fixture.domain==='ieee'?' -> '+String(code%BigInt(fixture.book.length)):'');
+      stored=String(code)+(fixture.domain==='ieee'?' -> book '+String(code%BigInt(fixture.book.length)):'');
     }
     same(actual[2],stored,'research-lookup: wrong stored symbol or decoded coordinate');
     equalScalar(actual[3],fixture.domain,step.right,'lookup decoded weight');

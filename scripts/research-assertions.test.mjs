@@ -10,7 +10,8 @@ function traceFixture(fixture, row = 0, column = 0) {
   const index = row * fixture.columns + column;
   const rows = expectedAccumulation(fixture, row, column).map(step => ['accumulate', String(step.index),
     ...['left', 'right', 'product', 'before', 'after'].map(key => scalarText(fixture.domain, step[key]))]);
-  if (fixture.hasLinear) rows.push(['linear epilogue', 'alpha, beta', String(fixture.alpha), String(fixture.beta),
+  const factor=value=>fixture.domain==='ieee'?scalarText('ieee',{kind:'finite',coefficient:value,exponent:0}):String(value);
+  if (fixture.hasLinear) rows.push(['linear epilogue', 'alpha, beta', factor(fixture.alpha), factor(fixture.beta),
     scalarText(fixture.domain, fixture.prior[index]), scalarText(fixture.domain, fixture.reduced[index]), scalarText(fixture.domain, fixture.linear[index])]);
   if (fixture.hasBias) rows.push(['column bias', String(column), String(fixture.bias[column]), '', '',
     scalarText(fixture.domain, fixture.linear[index]), scalarText(fixture.domain, fixture.beforeEncoding[index])]);
@@ -24,7 +25,7 @@ function traceFixture(fixture, row = 0, column = 0) {
       ...(['table','ieee-table','arena'].includes(fixture.family)?[{id:'lookup-contributions',title:'Actual table gathers',
         columns:['Index','Activation','Stored symbol','Decoded weight','Gathered product','Before','After'],
         rows:expectedAccumulation(fixture,row,column).map(step=>[String(step.index),scalarText(fixture.domain,step.left),
-          String(fixture.storedCodes[step.index*fixture.columns+column])+(fixture.domain==='ieee'?' -> '+String(fixture.storedCodes[step.index*fixture.columns+column]%BigInt(fixture.book.length)):''),
+          String(fixture.storedCodes[step.index*fixture.columns+column])+(fixture.domain==='ieee'?' -> book '+String(fixture.storedCodes[step.index*fixture.columns+column]%BigInt(fixture.book.length)):''),
           ...['right','product','before','after'].map(key=>scalarText(fixture.domain,step[key]))])}]:[])] };
 }
 const mutate = (report, change) => { const result = structuredClone(report); change(result); return result; };
