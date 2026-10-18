@@ -41,4 +41,5 @@ Feature: Modeled production reference workbench
     Given a protected main revision and its accepted native browser bundle
     When the release deploys and observes the live HTTPS application
     Then the current-main policy and retention model bind the bounded acceptance, deployment, and publication records
+    And the retained closure includes full source-defensive receipts and research browser screenshots
 

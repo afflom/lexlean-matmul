@@ -122,13 +122,13 @@ export function runPublicationReadinessChecks(build) {
   const workflow = fs.readFileSync(path.join(root, '.github/workflows/pages.yml'), 'utf8');
   validateEvidenceWorkflow(workflow, policy, target);
   const output = run(process.execPath, ['--test', '--test-reporter=tap', 'scripts/publication-evidence.test.mjs']);
-  const counts = { tests: 41, suites: 0, pass: 41, fail: 0, cancelled: 0, skipped: 0, todo: 0 };
+  const counts = { tests: 44, suites: 0, pass: 44, fail: 0, cancelled: 0, skipped: 0, todo: 0 };
   for (const [name, expected] of Object.entries(counts)) {
     assert.deepEqual([...output.matchAll(new RegExp(`^# ${name} ([0-9]+)$`, 'gm'))].map(row => Number(row[1])),
       [expected], `publication-test-plan: ${name} must cover the complete registered owner`);
   }
-  assert.deepEqual([...output.matchAll(/^1\.\.([0-9]+)$/gm)].map(row => Number(row[1])), [41]);
-  assert.equal([...output.matchAll(/^ok [0-9]+ - /gm)].length, 41);
+  assert.deepEqual([...output.matchAll(/^1\.\.([0-9]+)$/gm)].map(row => Number(row[1])), [44]);
+  assert.equal([...output.matchAll(/^ok [0-9]+ - /gm)].length, 44);
   return { schema: 'lexlean-matmul/production-publication-acceptance/1', id: 'MM-24', status: 'passed',
     build_id: build.build_id, workflow_sha256: sha(workflow), policy, tests: counts, transcript: output,
     scope: 'modeled-retention-and-predeployment-current-main-observation; live-publication-requires-main-workflow' };
@@ -153,7 +153,7 @@ function selectedEvidence(phase) {
   if (phase === 'deployment') return ['deployment-current-main.json'];
   const screenshotDirectory = path.join(evidenceRoot, 'runtime-oracle');
   const screenshots = fs.existsSync(screenshotDirectory) ? files(screenshotDirectory)
-    .filter(row => /^production-[a-z-]+\.png$/.test(row.path)).map(row => `runtime-oracle/${row.path}`) : [];
+    .filter(row => /^(?:production|research)-[a-z-]+\.png$/.test(row.path)).map(row => `runtime-oracle/${row.path}`) : [];
   if (phase === 'publication') return ['native-bundle-browser-publication.json', 'publication.json',
     'native-bundle-browser-publication.failure.json', 'publication.failure.json', ...screenshots];
   const names = ['acceptance.json', 'pages.json', 'build.json', 'verify.json', 'source.json',
@@ -163,7 +163,12 @@ function selectedEvidence(phase) {
     const directory = path.join(evidenceRoot, name);
     if (fs.existsSync(directory)) names.push(...files(directory).filter(row => row.path.endsWith('.json')).map(row => `${name}/${row.path}`));
   }
-  return [...names, ...screenshots];
+  const acceptancePath = path.join(evidenceRoot, 'acceptance.json');
+  if (fs.existsSync(acceptancePath)) {
+    const acceptance = readJson(acceptancePath);
+    if (Array.isArray(acceptance.evidence)) names.push(...acceptance.evidence.map(row => row.path));
+  }
+  return [...new Set([...names, ...screenshots])];
 }
 
 export function validateSuccessfulEvidence(phase, ci, directory = evidenceRoot) {
@@ -192,6 +197,19 @@ export function validateSuccessfulEvidence(phase, ci, directory = evidenceRoot) 
     assert.equal(native.observation.scope, 'browser-byte-integrity-only');
     assert.equal(native.browser_ui.status, 'passed');
     assert.equal(native.browser_ui.production.status, 'passed');
+    const research = native.browser_ui.research;
+    assert(Array.isArray(research), 'publication-research-closure: missing research verification');
+    assert(typeof native.browser_ui.model_sha256 === 'string' && /^[0-9a-f]{64}$/.test(native.browser_ui.model_sha256),
+      'publication-research-closure: missing actual model identity');
+    assert.deepEqual(research.map(row => row.id), ['MM-25', 'MM-26', 'MM-27', 'MM-28', 'MM-29', 'MM-30', 'MM-31'],
+      'publication-research-closure: incomplete research verification');
+    for (const row of research) {
+      assert(row.status === 'passed' && row.profile === 'prismpm/text-application/4'
+        && row.model_id === native.browser_ui.model_sha256 && row.publication_url === ci.url
+        && row.skipped === 0 && row.filtered === 0, 'publication-research-closure: stale, failed or omitted research work');
+      if (['MM-30', 'MM-31'].includes(row.id)) assert.deepEqual(row.browsers?.map(browser => browser.engine),
+        ['chromium', 'firefox', 'webkit'], 'publication-research-closure: missing browser engine');
+    }
     assert.equal(native.observation.url, ci.url);
     assert.equal(bytes.url, ci.url);
     assert.deepEqual(native.observation.files.map(row => ({ path: row.path, bytes: row.size, sha256: row.digest.slice(7) })), bytes.assets);

@@ -13,6 +13,63 @@ const workflow = fs.readFileSync(path.join(root, '.github/workflows/pages.yml'),
 const commit = 'a'.repeat(40), other = 'b'.repeat(40);
 const current = () => ({ commit, current: commit, ref: `refs/heads/${target.branch}`, branch: target.branch, protectedRef: 'true' });
 
+test('acceptance retention includes the complete referenced source-defensive receipt', () => {
+  receiptFixture(`
+    seedSuccessfulObservationMetadata('acceptance');
+    const name = 'research-defensive/' + 'd'.repeat(64) + '/receipt.json';
+    writeJson(path.join(evidenceRoot, name), { qualification: false, scope: 'test-only receipt retention metadata' });
+    const acceptance = readJson(path.join(evidenceRoot, 'acceptance.json'));
+    acceptance.evidence.push({ path: name, sha256: sha(fs.readFileSync(path.join(evidenceRoot, name))) });
+    writeJson(path.join(evidenceRoot, 'acceptance.json'), acceptance);
+    const captured = captureEvidence('acceptance', ci);
+    const retained = captured.files.find(row => row.path === 'observations/' + name);
+    assert(retained, 'research-retention: full referenced source-defensive receipt was omitted');
+    assert.equal(retained.sha256, acceptance.evidence.at(-1).sha256);
+    assert.deepEqual(readJson(path.join(evidenceRoot, 'retained/acceptance/observations', name)),
+      readJson(path.join(evidenceRoot, name)));
+  `);
+});
+
+test('publication retention includes research browser screenshots', () => {
+  receiptFixture(`
+    const name = 'runtime-oracle/research-webkit-mobile-case.png';
+    fs.mkdirSync(path.dirname(path.join(evidenceRoot, name)), { recursive: true });
+    // Signature-only bytes exercise packaging; this is not a rendered UI claim.
+    const bytes = Buffer.from([137,80,78,71,13,10,26,10]);
+    fs.writeFileSync(path.join(evidenceRoot, name), bytes);
+    const captured = captureEvidence('publication', ci);
+    const retained = captured.files.find(row => row.path === 'observations/' + name);
+    assert(retained, 'research-retention: research browser screenshot was omitted');
+    assert.equal(retained.sha256, sha(bytes));
+    assert(fs.readFileSync(path.join(evidenceRoot, 'retained/publication/observations', name)).equals(bytes));
+  `);
+});
+
+test('successful publication requires the complete current-model research closure', () => {
+  receiptFixture(`
+    seedSuccessfulObservationMetadata('publication');
+    const name = path.join(evidenceRoot, 'native-bundle-browser-publication.json');
+    const native = readJson(name), model = 'e'.repeat(64);
+    native.browser_ui.model_sha256 = model;
+    const complete = Array.from({ length: 7 }, (_, index) => ({
+      id: 'MM-' + (25 + index), status: 'passed', profile: 'prismpm/text-application/4',
+      model_id: model, publication_url: ci.url, skipped: 0, filtered: 0,
+      ...(index >= 5 ? { browsers: ['chromium','firefox','webkit'].map(engine => ({ engine })) } : {}),
+    }));
+    native.browser_ui.research = complete;
+    const mutations = [undefined, complete.slice(1),
+      complete.map((row, index) => index ? row : { ...row, status: 'failed' }),
+      complete.map((row, index) => index ? row : { ...row, model_id: 'f'.repeat(64) }),
+      complete.map((row, index) => index ? row : { ...row, skipped: 1 }),
+      complete.map((row, index) => index === 5 ? { ...row, browsers: row.browsers.slice(1) } : row),
+    ];
+    for (const research of mutations) {
+      fs.writeFileSync(name, JSON.stringify({ ...native, browser_ui: { ...native.browser_ui, research } }));
+      assert.throws(() => validateSuccessfulEvidence('publication', ci), /publication-research-closure:/);
+    }
+  `);
+});
+
 // Exercise the real writer in an isolated copy of its source authorities. These
 // fixtures test failure retention; they never manufacture accepted math evidence.
 function receiptFixture(body) {
@@ -38,6 +95,14 @@ function receiptFixture(body) {
       const ci = { run_id: '123', run_attempt: '2', commit: '${commit}', job_status: 'failure', url: target.url,
         workflow_url: 'https://github.com/' + target.repository + '/actions/runs/123/attempts/2',
         native_artifact: { id: '456', digest: 'sha256:' + 'c'.repeat(64) }, pages_artifact: { id: '789' } };
+      function researchPublicationMetadata() {
+        const model = 'e'.repeat(64);
+        return { model_sha256: model, research: Array.from({ length: 7 }, (_, index) => ({
+          qualification: false, id: 'MM-' + (25 + index), status: 'passed', profile: 'prismpm/text-application/4',
+          model_id: model, publication_url: ci.url, skipped: 0, filtered: 0,
+          ...(index >= 5 ? { browsers: ['chromium','firefox','webkit'].map(engine => ({ engine })) } : {}),
+        })) };
+      }
       function seedSuccessfulObservationMetadata(phase) {
         // Test-only receipt metadata, never mathematical or SDK qualification.
         const identity = { qualification: false, commit: ci.commit,
@@ -57,7 +122,7 @@ function receiptFixture(body) {
           writeJson(path.join(evidenceRoot, 'native-bundle-browser-publication.json'), { ...identity,
             observation: { scope: 'browser-byte-integrity-only', url: ci.url,
               files: assets.map(row => ({ path: row.path, size: row.bytes, digest: 'sha256:' + row.sha256 })) },
-            browser_ui: { status: 'passed', production: { status: 'passed' } } });
+            browser_ui: { status: 'passed', production: { status: 'passed' }, ...researchPublicationMetadata() } });
           writeJson(path.join(evidenceRoot, 'publication.json'), { ...identity,
             schema: 'lexlean-matmul/publication/1', status: 'passed', url: ci.url, assets });
         }
@@ -286,7 +351,7 @@ test('the independent archive-byte receipt must retain successful status and thi
   const identity = { commit: ci.commit, source_digest: sourceDigest(), verification_digest: verificationDigest() };
   const native = { ...identity, observation: { scope: 'browser-byte-integrity-only', url: ci.url,
     files: assets.map(row => ({ path: row.path, size: row.bytes, digest: 'sha256:' + row.sha256 })) },
-    browser_ui: { status: 'passed', production: { status: 'passed', skipped: 0, filtered: 0 } } };
+    browser_ui: { status: 'passed', production: { status: 'passed', skipped: 0, filtered: 0 }, ...researchPublicationMetadata() } };
   const bytes = { ...identity, schema: 'lexlean-matmul/publication/1', status: 'passed', url: ci.url, assets };
   writeJson(path.join(evidenceRoot, 'native-bundle-browser-publication.json'), native);
   const write = value => writeJson(path.join(evidenceRoot, 'publication.json'), value);

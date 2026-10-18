@@ -1,0 +1,29 @@
+{
+  "schema": "lexlean-matmul/research-publication-closure-green/1",
+  "qualification": false,
+  "scope": "Complete actual publication metadata-owner tests after retention and research closure validation; no mathematical or release qualification.",
+  "capabilities": [
+    "MM-24",
+    "MM-31"
+  ],
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/publication-evidence.test.mjs"
+  ],
+  "counts": {
+    "tests": 44,
+    "suites": 0,
+    "pass": 44,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "stdout_sha256": "34bdd297424a7447773894766cf65182f4cc93fde40fb4202453c657abeb3c5a",
+  "stderr_bytes": 0,
+  "writer_sha256": "7f5210a45de850818936eef0646e86ca52edea7cd83347c39f96a17dfe797112",
+  "tests_sha256": "7b31250acdabc95e99e194f5da2150b90c30e100d154e9a0f5169154bd4e7241"
+}

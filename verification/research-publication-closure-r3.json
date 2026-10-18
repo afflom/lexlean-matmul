@@ -1,0 +1,27 @@
+{
+  "schema": "lexlean-matmul/research-publication-closure-r3/1",
+  "qualification": false,
+  "scope": "Complete actual publication metadata-owner tests before complete research-closure validation; no mathematical or release qualification.",
+  "capability": "MM-24",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/publication-evidence.test.mjs"
+  ],
+  "counts": {
+    "tests": 44,
+    "suites": 0,
+    "pass": 43,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "intended_failure": "Missing expected exception: a missing complete current-model research publication closure was accepted.",
+  "stdout_sha256": "821967a5f61a071cb91ac28f2b371d8d8294fb246d33159d78bdc237a769bd08",
+  "stderr_bytes": 0,
+  "writer_sha256": "8f9c7b7ac394dc0f15a194767fb1d3433b07638f036e31e0d454ffc00edb41b1",
+  "tests_sha256": "a2909450a8952068159c65061e93032131efcc8e6ced2fa0418b3dc020fa7077"
+}
