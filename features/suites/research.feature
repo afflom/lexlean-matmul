@@ -35,10 +35,14 @@ Feature: Complete modeled exact arithmetic research journeys
     Given all 24 guided operation families and all preserved named editable examples
     When visitors use keyboard navigation, each pinned browser, mobile reflow, and enlarged text to compute, select cells, compare routes, handle cases, and open applicable inspectors
     Then every journey reaches readable exact results with source-owned labels, focus, tables, limits, recovery instructions, and no unsupported-family placeholder
+    And switching from a guided family into raw input renders the source-declared initial-operation research controls and executes correlated raw trace and inspection actions
+    And standalone codec and IEEE inspectors and their exact local case round trips remain usable despite invalid unrelated matrix-coordinate text
 
   @MM-31 @build
   Scenario: Research state remains correlated, recoverable, accessible, and local
     Given real delayed or failed computation and research work, edited drafts, imported cases, and hostile-looking operands
     When a visitor cancels, times out, retries, changes a cell or route, imports a replacement, or follows an explicit export action
     Then stale reports cannot replace current trace, comparison, inspection, or case data, drafts remain recoverable, live status stays outside busy ancestors, and operands enter only the requested local case output rather than URLs, telemetry, logs, or persistent history
+    And valid local case import restores its fresh source draft despite unrelated empty required fields or invalid selected-coordinate text
+    And every selected-coordinate input edit retires pending work before blur or change, preserves exact valid or invalid text, and permits explicit typed rejection or corrected recovery
     And accepted publication evidence retains the complete bound source-defensive receipt and research browser screenshots

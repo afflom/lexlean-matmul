@@ -1,0 +1,48 @@
+{
+  "schema": "lexlean-matmul/research-browser-lifecycle-preparation/1",
+  "qualification": false,
+  "scope": "Actual complete helper owner and frozen product browser assertion preparation. These tests do not execute the new product browser journeys and provide no final SDK/V4 UI/release qualification. Generic lifecycle REDs and actual source import probes are separate.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/research-assertions.test.mjs",
+    "scripts/research-oracle.test.mjs"
+  ],
+  "counts": {
+    "tests": 19,
+    "suites": 0,
+    "pass": 19,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "stdout_sha256": "1e58062dac7de49ca0dc614767c19e3afea02ae459fd1f9996329045893a8403",
+  "stderr_bytes": 0,
+  "prepared_assertions": [
+    "exact source raw research schema, choices, labels, help and real raw trace/inspection",
+    "valid case file replaces blank required matrix field and invalid coordinate text",
+    "eight pre-blur row/column edit ownership, typed source refusal and corrected recovery journeys",
+    "independent codec/IEEE tools and versioned cases despite invalid matrix coordinates"
+  ],
+  "inputs": [
+    {
+      "path": "scripts/research-oracle.mjs",
+      "sha256": "318e1e3e10f21a32d504527fcd0e3eb98fca6c88251a81e86d0c162d46eec132"
+    },
+    {
+      "path": "features/suites/research.feature",
+      "sha256": "169773fb3580cda4d2d9db93ec9272a9f084ce609e42f7c54d428e9f3225c854"
+    },
+    {
+      "path": "scripts/research-assertions.test.mjs",
+      "sha256": "90471d2e3fc417161219861dded962a8ff0ddd57675b149be8c04867b086b37f"
+    },
+    {
+      "path": "scripts/research-oracle.test.mjs",
+      "sha256": "49f556718405660cf7d60011d80a2fd40f28d0d68078a421e0b27ae4efa56b9e"
+    }
+  ]
+}

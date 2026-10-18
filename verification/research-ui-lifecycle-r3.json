@@ -1,0 +1,92 @@
+{
+  "schema": "lexlean-matmul/research-ui-lifecycle-r3/1",
+  "qualification": false,
+  "scope": "Executed independent generic SDK V4 UI lifecycle regressions before source freeze; no product arithmetic, final SDK, release, or public-host qualification.",
+  "runs": [
+    {
+      "schema": "lexlean-matmul/sdk4-independent-browser-review/1",
+      "qualification": false,
+      "scope": "Read-only generic V4 runtime lifecycle diagnostics using the existing SDK fixture binding; no product arithmetic/release qualification.",
+      "status": "red",
+      "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+      "runtime_sha256": "5d76d40879a19692ec1cbfabb41ce3b4c148193fc6d02ecb6c2bcc1d629d436a",
+      "fixture_sha256": "9bb9af910b00bfaa3563d246de7dc02d93c77e72968e71e3b6893b35686c1abe",
+      "driver_sha256": "2461cba6942edf63e410da2c28e94667cd37cf90ab32936299f18e246be95d5b",
+      "stdout_sha256": "aea17e9d8733e123c00647a28ca14152fe495a0c17ffa7d52d37b8f3a9002a38",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 3,
+      "failed": 3,
+      "skipped": 0,
+      "cancelled": 0,
+      "findings": [
+        "Valid case import is blocked by an unrelated blank required guided field; guest call count stays1 and status becomes input_error.",
+        "An invalid selected-row edit during an active slow trace preserves stale reply authority; stale report renders and replaces the invalid text with0.",
+        "Switching from a second guided operation into raw mode keeps its control schema; the source-declared initial-operation raw controls are absent."
+      ],
+      "source_commit_baseline": "6fa26e653c9146626d4613f12dd930f4d6d77bbb"
+    },
+    {
+      "schema": "lexlean-matmul/sdk4-independent-browser-review/1",
+      "qualification": false,
+      "scope": "Read-only generic V4 runtime lifecycle diagnostics using the existing SDK fixture binding; no product arithmetic/release qualification.",
+      "status": "red",
+      "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+      "runtime_sha256": "5d76d40879a19692ec1cbfabb41ce3b4c148193fc6d02ecb6c2bcc1d629d436a",
+      "fixture_sha256": "9bb9af910b00bfaa3563d246de7dc02d93c77e72968e71e3b6893b35686c1abe",
+      "driver_sha256": "d519e63e1033ce218262270dcaf7e8e39fe1314423f3960b37b57eb3ec580bd3",
+      "stdout_sha256": "c90d312d7030de100e11df22d31fcee95285022288f0cb32250f700f0fd1dd8f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 4,
+      "failed": 4,
+      "skipped": 0,
+      "cancelled": 0,
+      "findings": [
+        "Valid case import is blocked by an unrelated blank required guided field; guest call count stays1 and status becomes input_error.",
+        "An invalid selected-row edit during an active slow trace preserves stale reply authority; stale report renders and replaces the invalid text with0.",
+        "Switching from a second guided operation into raw mode keeps its control schema; the source-declared initial-operation raw controls are absent.",
+        "Typing selected row7 during an active slow trace without blur/change also preserves stale authority; the old trace renders and rewrites the new text to0."
+      ],
+      "source_commit_baseline": "6fa26e653c9146626d4613f12dd930f4d6d77bbb"
+    }
+  ],
+  "full_evidence_index": {
+    "path": "/tmp/matmul-sdk4-independent-review/index.json",
+    "bytes": 3579,
+    "sha256": "51c07a6a78dbf99dd3e8f44c35511fe62a47ec06d8fab2afee0a4c63cdd9afa8"
+  },
+  "native_query_finding": {
+    "kind": "read-only source finding, not an executed behavioral assertion in these runs",
+    "path": "tests/hologram-oracle/src/main.rs",
+    "function": "portable_http",
+    "observed": "Unconditional query rejection precedes asset lookup.",
+    "required": "V4 asset queries admit only the exact current model_id on the named generated model-bound assets; legacy and other query rejection remains."
+  },
+  "independent_tool_regression": {
+    "schema": "lexlean-matmul/sdk4-independent-tool-selection-review/1",
+    "qualification": false,
+    "scope": "Actual generic standalone ToolSpec context regression found during the coordinate-lifecycle fix; no product arithmetic/release qualification. Original3/4-case review evidence is unchanged.",
+    "status": "red",
+    "tests": 1,
+    "failed": 1,
+    "skipped": 0,
+    "stderr_bytes": 0,
+    "runtime_sha256": "aed4e79c9553edd1bec7604dc6027012cd06015d3a2d97f4c822342294f1f9aa",
+    "driver_sha256": "e3772654de3c18b5d1e2774e488da34ac98592688d07a3ca8fa2dd74ee628fdb",
+    "stdout_sha256": "4685e43ed9274cce5e9dd808a6705b44d1d12964e0dd74b61fe0acd4cf5004fc",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "observed": {
+      "before_guest_calls": 1,
+      "after_guest_calls": 1,
+      "row": "invalid",
+      "status": "input_error",
+      "report": ""
+    },
+    "required": "An explicit standalone ToolSpec uses its own controls and a valid stored selection in the envelope, independently of invalid unrelated matrix coordinate text.",
+    "original_review_index_sha256": "51c07a6a78dbf99dd3e8f44c35511fe62a47ec06d8fab2afee0a4c63cdd9afa8"
+  },
+  "supplement_evidence_index": {
+    "path": "/tmp/matmul-sdk4-independent-review/supplement-index.json",
+    "bytes": 1012,
+    "sha256": "d81e92640b3c0e8ce838653ef854652dd4ce463c75b8d1adcf800be78e6c8c5d"
+  }
+}
