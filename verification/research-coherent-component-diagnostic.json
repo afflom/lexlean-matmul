@@ -1,0 +1,920 @@
+{
+  "schema": "lexlean-matmul/coherent-component-and-focus-regression-diagnostic/1",
+  "qualification": false,
+  "record_state": "recorded-actual-component-diagnostic",
+  "scope": "Actual b949 normal/source successes and retained browser failure, separate restored generic SDK31 fixture, then actual coherent9759330 application-only source-maintenance closure. Each selection keeps its own identities and scope; no final immutableSDK/fullvv/native system/release/main/Pages qualification.",
+  "b949_identity": {
+    "oracle_revision": "be2f8a9e4684ff5a5f505725fa702d38a68df443",
+    "build_id": "b949f623f67fabd2bf983effd81fad1afc9f64e0389a752c5db4a79b99eb6c0a",
+    "model_id": "5127695092a490500d2cc0be60717379058e9b985c5eb36fa9b4acc51b24e1cf",
+    "source_id": "4151103827b9aefde512009ee00af21125d0790f6221f400111c7a0a2a1fec14",
+    "semantic_id": "af5808668bc5621c5478b3ead92d86b28d23b05e4531a05f5627e6f8223ad60a",
+    "compiler_semantics_id": "4658bc8564c14b99f771a758276c578e8acd5ef5f24a3c43e69e4e6eb7df370e",
+    "kernel_attestation": "c5f272c3e1d7cab53d4e08734b43f375bb3d94ce1bd67c1d58b224dceb978fd0",
+    "sdk_emitter_semantics_id": "ad6b5b076a05d11d1a336f7595500bf1cc046b43dce923e2a9d1dc2c557a3d85",
+    "source_sdk_cli": {
+      "path": "/tmp/lexlean-matmul-sdk-text-research/target/research-navigation-source/debug/prismpm",
+      "bytes": 136023992,
+      "sha256": "0ebb5b9c0ea592911e411d7e73280a7d5444241de563c669672e9b3e67666b06"
+    },
+    "source_sdk_handoff_sha256": "596f161f0c977aafe32569766c76e6263d92c68dce975e3a9e140f46c7243896",
+    "containing_System_compiled": false
+  },
+  "source_selection": {
+    "modules": 24,
+    "compiler_input_files": 47,
+    "acceptance_vectors": 233,
+    "canonical_Std_archive_sha256": "9bd74738c0de434e3ed215fd00c154bbab0887f6dafb209927b7e91216d5dab5",
+    "ResearchJson_sha256": "07e0f08dfac0fce9f8f0e8132cff5526221e1748615da92302acb066bbfee6dc",
+    "kernel_preflight_reference": "source_kernel_preflight",
+    "whole_System_context_only": [
+      {
+        "path": "src/MatmulSystem.lex.tex",
+        "committed_sha256": "cf8a0cb8ab653d2745b94adafeae8e42fe2ba1cea768dec14fdba0ac9cfe7d1b",
+        "whole_working_sha256": "19f27bab140ac202517c59db1fb232e3f875de9344345832444300f8e4a0ff28"
+      }
+    ],
+    "source_files": [
+      {
+        "path": "src/Application.lex.tex",
+        "bytes": 381709,
+        "sha256": "2eefface35775c47b7406c27fb8de4e10384b18c08f2da1d819ffbb3b552f3e4"
+      },
+      {
+        "path": "src/Atlas.lex.tex",
+        "bytes": 164620,
+        "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b"
+      },
+      {
+        "path": "src/Codec.lex.tex",
+        "bytes": 1146068,
+        "sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88"
+      },
+      {
+        "path": "src/CodecProtocol.lex.tex",
+        "bytes": 88203,
+        "sha256": "ee0a431c3a01a6c893bd3ed09b3bb1f1527bffef36be31cb210e394ad1715f5a"
+      },
+      {
+        "path": "src/Core.lex.tex",
+        "bytes": 304177,
+        "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+      },
+      {
+        "path": "src/Epilogue.lex.tex",
+        "bytes": 85876,
+        "sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87"
+      },
+      {
+        "path": "src/ExtendedProtocol.lex.tex",
+        "bytes": 190587,
+        "sha256": "ae343c20e5d5c970ddd19018ad9c6a4c1a176cfbbcf4832a1420ce8e1288d5ce"
+      },
+      {
+        "path": "src/Float.lex.tex",
+        "bytes": 266431,
+        "sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6"
+      },
+      {
+        "path": "src/Foundation/View/Text/V1/Model.lex.tex",
+        "bytes": 2229,
+        "sha256": "0330f25d081010dd718aa4f02298df3c9ad0b95cdc3d51fee085e3fcbc3fc9dd"
+      },
+      {
+        "path": "src/Foundation/View/Text/V3/Model.lex.tex",
+        "bytes": 9583,
+        "sha256": "e1fcee344a526b54cba3b0967bf94ee24a93684241a3abc1ee3f8d9f887a9cb2"
+      },
+      {
+        "path": "src/Foundation/View/Text/V4/Model.lex.tex",
+        "bytes": 8276,
+        "sha256": "213293e2487fa554d75ba3061f2841281b4d0823648451b373c9196ac02b2111"
+      },
+      {
+        "path": "src/Model.lex.tex",
+        "bytes": 6583,
+        "sha256": "9cbc03b00caf8c818a135d139d9f0ab0fb90ec7cd473d73a13a45016d36d657c"
+      },
+      {
+        "path": "src/Presentation.lex.tex",
+        "bytes": 545081,
+        "sha256": "932dbce789ebb02d251786015a0069bad0a8f16706b6c0ae33c06909c3ae17eb"
+      },
+      {
+        "path": "src/Protocol.lex.tex",
+        "bytes": 122291,
+        "sha256": "51454a08ad1013fadb6073d8e1aa304af571437d54e911929552dee2d571b791"
+      },
+      {
+        "path": "src/Research.lex.tex",
+        "bytes": 7299,
+        "sha256": "9b10291284a8157eb84287f90218170664f87d2d6e0963c3cde9b0fb70ddbde1"
+      },
+      {
+        "path": "src/ResearchCases.lex.tex",
+        "bytes": 66206,
+        "sha256": "e6f71f6bf7e98c69b189980ec7f021c8424e955fd91f39092e1f756ac227c545"
+      },
+      {
+        "path": "src/ResearchCompare.lex.tex",
+        "bytes": 148264,
+        "sha256": "5282e8b054995715700902c082a915f8c83ce26ffcae0f239ab5aceb9df549a1"
+      },
+      {
+        "path": "src/ResearchForms.lex.tex",
+        "bytes": 51436,
+        "sha256": "c6a390d5646444013afe0ec23c00ae38e34a637d428747b8cddfa51e0c8af604"
+      },
+      {
+        "path": "src/ResearchInspect.lex.tex",
+        "bytes": 109086,
+        "sha256": "99e55dd7a7d9c8d65f43745816c4ebd23f2149f65b4a8b96770cf0550a32729d"
+      },
+      {
+        "path": "src/ResearchJson.lex.tex",
+        "bytes": 97891,
+        "sha256": "07e0f08dfac0fce9f8f0e8132cff5526221e1748615da92302acb066bbfee6dc"
+      },
+      {
+        "path": "src/ResearchModel.lex.tex",
+        "bytes": 196689,
+        "sha256": "913d78c8f0af809eb45b47518288ca42da61984c6ae072b652c03ccbc81f2685"
+      },
+      {
+        "path": "src/ResearchTrace.lex.tex",
+        "bytes": 146327,
+        "sha256": "24c46f5edb206dd3e0ab842b18f2063ed79e9877e90d2602d6d95b929609bc29"
+      },
+      {
+        "path": "src/ResearchWorkspace.lex.tex",
+        "bytes": 157648,
+        "sha256": "ec0c9dd5a266aaa84a390e0d13bbbf88d6172491bdc435ec4c4d93849712cdd8"
+      },
+      {
+        "path": "src/Workbench.lex.tex",
+        "bytes": 127039,
+        "sha256": "4704d6319de6aeed83e5ba76adf396260db71c892d5d7e82a3c615c878c41c53"
+      }
+    ],
+    "frozen_helpers": {
+      "scripts/research-oracle.mjs": "3307b9b24c3f043637ab81f8dbb8f01e63113c577000dac21f2973c4e6a2fa2d",
+      "scripts/research-case-fidelity.mjs": "41c33bef45ed5cb3a0f57ac0bbea228a4d8c5c1bf05a01811d1f923f69587b21",
+      "scripts/research-cache.mjs": "0b41d6f342eae7ec9d02262dfca796b91ae201d35522462b83ea29557e79e999"
+    }
+  },
+  "actual_normal_build": {
+    "status": "passed",
+    "exit": 0,
+    "elapsed_seconds": 584.0411806106567,
+    "stable_recorded_authority_rows": 41,
+    "manifest": {
+      "path": "/tmp/matmul-sdk4-product-component-ux/input/.prism/build/b949f623f67fabd2bf983effd81fad1afc9f64e0389a752c5db4a79b99eb6c0a/manifest.json",
+      "bytes": 52946,
+      "sha256": "578d379adba302197a25bd5ceca94239a23d57f2acebf49ca20e01afd460d72b",
+      "file_descriptors": 287,
+      "all_descriptors_authenticated": true
+    },
+    "untouched_browser_assets": [
+      {
+        "path": "app.css",
+        "bytes": 7909,
+        "sha256": "b86bd90dddd5817def7c9e2b4e1c9106f6591d705a1757bc33a412150b61650b"
+      },
+      {
+        "path": "app.js",
+        "bytes": 238398,
+        "sha256": "bdd8de82df5b10757c4e19c5a189a91be1ce1be81c65e5c2a078d64a10655d64"
+      },
+      {
+        "path": "index.html",
+        "bytes": 8794,
+        "sha256": "c974b572b974f56ba91c33feef5e375134b2a802876036193435f1d186792dc9"
+      },
+      {
+        "path": "lexlean_matmul.js",
+        "bytes": 6934,
+        "sha256": "7cb53fa75f4c9be946b8f70c3654179e2417ea7c8b600d0a01334cb944231358"
+      },
+      {
+        "path": "lexlean_matmul_bg.wasm",
+        "bytes": 1679157,
+        "sha256": "8ec5d27f7cbe9a8721a7eaab0be844f4836ae9a7ccef2f5fca59aaa06b4a4a0a"
+      },
+      {
+        "path": "provenance.json",
+        "bytes": 656,
+        "sha256": "91e2359ed5980323deaf1d763fa42606a0f31a77966758fe45c3a6736943cd1b"
+      }
+    ],
+    "notes": "All 41 before/after authority rows were stable during this recorded build. Later SDK focus edits are a separate selection; this does not claim mutable original SDK paths still contain the old bytes."
+  },
+  "actual_early_case_source": {
+    "status": "passed",
+    "exit": 0,
+    "elapsed_seconds": 42.00358530599624,
+    "attempted_actions": 12,
+    "completed_actions": 12,
+    "current_generated_parser_admissions": 12,
+    "raw_request_response_files": 24,
+    "action_deadline_milliseconds": 180000,
+    "fixtures": [
+      {
+        "id": "two-operands-9000-line-feeds",
+        "source_bytes": 108356,
+        "source_sha256": "af369a2b388aeda56fc77ab5fa39e79c7833077093f2cbfae89a8cd6f61c20e6",
+        "import_bytes": 108356,
+        "import_sha256": "af369a2b388aeda56fc77ab5fa39e79c7833077093f2cbfae89a8cd6f61c20e6",
+        "comparison": "equivalent",
+        "exact_values": true,
+        "exact_canonical_reexport": true,
+        "fresh_response_sha256": "cbee5be4f701b9ebfb614b999937132d198ac06b0c896f3c02c286d869da7291",
+        "source_guest_calls": 3,
+        "source_action_timings": [
+          {
+            "action": "case-export",
+            "elapsed_milliseconds": 66.2990649999997
+          },
+          {
+            "action": "case-import",
+            "elapsed_milliseconds": 251.73970000000008
+          },
+          {
+            "action": "case-export",
+            "elapsed_milliseconds": 55.14372000000003
+          }
+        ]
+      },
+      {
+        "id": "unicode-escaped-values",
+        "source_bytes": 108356,
+        "source_sha256": "af369a2b388aeda56fc77ab5fa39e79c7833077093f2cbfae89a8cd6f61c20e6",
+        "import_bytes": 108381,
+        "import_sha256": "b4537e61624d94ebc969c1815a858197b40dd346b0842d4a76e5fd4a2c97860c",
+        "comparison": "equivalent",
+        "exact_values": true,
+        "exact_canonical_reexport": true,
+        "fresh_response_sha256": "cbee5be4f701b9ebfb614b999937132d198ac06b0c896f3c02c286d869da7291",
+        "source_guest_calls": 3,
+        "source_action_timings": [
+          {
+            "action": "case-export",
+            "elapsed_milliseconds": 46.73885100000007
+          },
+          {
+            "action": "case-import",
+            "elapsed_milliseconds": 247.69078900000022
+          },
+          {
+            "action": "case-export",
+            "elapsed_milliseconds": 54.35243499999979
+          }
+        ]
+      },
+      {
+        "id": "unicode-escaped-recorded-observation",
+        "source_bytes": 108356,
+        "source_sha256": "af369a2b388aeda56fc77ab5fa39e79c7833077093f2cbfae89a8cd6f61c20e6",
+        "import_bytes": 270326,
+        "import_sha256": "13b4270c56fe046ed89315b327e9dbee5a66555a2adef361dc177c29373b86a2",
+        "comparison": "different",
+        "exact_values": true,
+        "exact_canonical_reexport": true,
+        "fresh_response_sha256": "cbee5be4f701b9ebfb614b999937132d198ac06b0c896f3c02c286d869da7291",
+        "source_guest_calls": 3,
+        "source_action_timings": [
+          {
+            "action": "case-export",
+            "elapsed_milliseconds": 47.39437999999973
+          },
+          {
+            "action": "case-import",
+            "elapsed_milliseconds": 1868.4078529999997
+          },
+          {
+            "action": "case-export",
+            "elapsed_milliseconds": 53.10103200000049
+          }
+        ]
+      },
+      {
+        "id": "near-case-file-limit-81000-line-feeds",
+        "source_bytes": 972356,
+        "source_sha256": "e60c81744bd584b966f4dd6b7d6c9c6e62e8d27c6e82fd76a8a9f2851fd6146d",
+        "import_bytes": 972356,
+        "import_sha256": "e60c81744bd584b966f4dd6b7d6c9c6e62e8d27c6e82fd76a8a9f2851fd6146d",
+        "comparison": "equivalent",
+        "exact_values": true,
+        "exact_canonical_reexport": true,
+        "fresh_response_sha256": "cbee5be4f701b9ebfb614b999937132d198ac06b0c896f3c02c286d869da7291",
+        "source_guest_calls": 3,
+        "source_action_timings": [
+          {
+            "action": "case-export",
+            "elapsed_milliseconds": 3520.424893999999
+          },
+          {
+            "action": "case-import",
+            "elapsed_milliseconds": 27391.082513
+          },
+          {
+            "action": "case-export",
+            "elapsed_milliseconds": 3608.6946489999973
+          }
+        ]
+      }
+    ],
+    "notes": "All four source fixtures recompute exact 1x1 result 2, preserve the draft and re-export canonical bytes. The untrusted Unicode saved observation is correctly different. Referenced raw pairs and measured times are generated Node/Wasm evidence, not native throughput or universal complexity claims."
+  },
+  "actual_five_source_guest_gates": {
+    "status": "passed",
+    "attempted_calls": 4517,
+    "completed_replies": 4517,
+    "capabilities": [
+      {
+        "id": "MM-25",
+        "status": "passed",
+        "calls": 1688
+      },
+      {
+        "id": "MM-26",
+        "status": "passed",
+        "calls": 250
+      },
+      {
+        "id": "MM-27",
+        "status": "passed",
+        "calls": 206
+      },
+      {
+        "id": "MM-28",
+        "status": "passed",
+        "calls": 2153
+      },
+      {
+        "id": "MM-29",
+        "status": "passed",
+        "calls": 220
+      }
+    ],
+    "generated_renderer_frames": 4110,
+    "renderer_admitted": 4110,
+    "renderer_refused": 0,
+    "blank_cells": 0,
+    "per_capability": {
+      "MM-25": {
+        "blank_cells": 0,
+        "calls": 1688,
+        "current_ui_frames": 1528,
+        "renderer_admitted": 1528,
+        "renderer_refused": 0
+      },
+      "MM-26": {
+        "blank_cells": 0,
+        "calls": 250,
+        "current_ui_frames": 52,
+        "renderer_admitted": 52,
+        "renderer_refused": 0
+      },
+      "MM-27": {
+        "blank_cells": 0,
+        "calls": 206,
+        "current_ui_frames": 205,
+        "renderer_admitted": 205,
+        "renderer_refused": 0
+      },
+      "MM-28": {
+        "blank_cells": 0,
+        "calls": 2153,
+        "current_ui_frames": 2153,
+        "renderer_admitted": 2153,
+        "renderer_refused": 0
+      },
+      "MM-29": {
+        "blank_cells": 0,
+        "calls": 220,
+        "current_ui_frames": 172,
+        "renderer_admitted": 172,
+        "renderer_refused": 0
+      }
+    },
+    "notes": "The 4517-call source phase includes the twelve MM-27 fidelity calls. The separate early run is not added to that total. Every request/response digest remains in the full report; no family, case, parser refusal or failure was filtered."
+  },
+  "actual_full_browser_attempt": {
+    "status": "failed",
+    "exit": 1,
+    "elapsed_seconds": 138.00965593999717,
+    "failed_capability": "MM-30",
+    "error": "research-keyboard: explicit local case import is not reachable before export\n\nfalse !== true\n",
+    "all_three_engine_MM30_pass": false,
+    "MM31_reached": false,
+    "notes": "The full owner remains failed. Chromium/Firefox screenshots are retained in its evidence index. A partial browser run is not browser acceptance."
+  },
+  "actual_focus_regression": {
+    "status": "genuine-renderer-focus-defect-reproduced",
+    "classification": "GenericSDKV4 runtime async focusownership, not applicationmath, sourcecaseparser or adjacencyoracle defect.",
+    "conclusion": "Temporarily disabling the async initiatingbutton causes native focus loss. Firefoxsuccessfully completes sourcecase-export butfocus remainsBODY; ShiftTab thenreaches case-content ratherthanadjacentcase-import. Chromiumalsoblursbycompletion butitssequentialtabstart stillreaches case-import; WebKitretains actualcase-export focus. Pointeractivation withsameprefocus reproducesFirefoxloss.",
+    "actual_probe_exit": 0,
+    "causal_rows": [
+      {
+        "engine": "chromium",
+        "activation": "keyboard",
+        "completed_action": "case-export",
+        "focus_after_completion": "BODY",
+        "reverse_tab_target": "case-import",
+        "journey_status": "passed"
+      },
+      {
+        "engine": "firefox",
+        "activation": "keyboard",
+        "completed_action": "case-export",
+        "focus_after_completion": "BODY",
+        "reverse_tab_target": "case-content",
+        "journey_status": "failed"
+      },
+      {
+        "engine": "webkit",
+        "activation": "keyboard",
+        "completed_action": "case-export",
+        "focus_after_completion": "case-export",
+        "reverse_tab_target": "case-import",
+        "journey_status": "passed"
+      },
+      {
+        "engine": "firefox",
+        "activation": "pointer-export",
+        "completed_action": "case-export",
+        "focus_after_completion": "BODY",
+        "reverse_tab_target": "case-content",
+        "journey_status": "failed"
+      }
+    ],
+    "notes": "Source case-export succeeds. Firefox loses the disabled initiating button and reverse-Tab reaches case-content. Chromium also ends at BODY but reaches case-import; WebKit retains case-export. The shipping assertion and genuine assets remain unchanged."
+  },
+  "separate_actual_generic_sdk_focus_owner": {
+    "scope": "Generic SDK source fixture, not a rebuilt b949 product or final immutable SDK.",
+    "runtime": {
+      "path": "/tmp/lexlean-matmul-sdk-text-research/crates/prismpm/src/research_workbench/runtime.js",
+      "bytes": 50726,
+      "sha256": "718f904fe47e37066e103ccaba6fa985f527469aa6025f1cf2a0275974366e65"
+    },
+    "test": {
+      "path": "/tmp/lexlean-matmul-sdk-text-research/scripts/text-research.test.mjs",
+      "bytes": 58834,
+      "sha256": "8982ad8395167b5c7b5f12249a5da7a03266321e76effa2889cdfa2ea0cda2ef"
+    },
+    "emitter_semantics_id": "d40b961a5aa718dbcff671671e2cd502eeaa2c60cf8cd7096e99c0624b354e3e",
+    "original_red": {
+      "tests": 31,
+      "pass": 30,
+      "fail": 1,
+      "skipped": 0,
+      "cause": "RealFirefox export disables focused initiating button and native blur leaves BODY; exact original case-export focus assertion fails."
+    },
+    "restored_green": {
+      "tests": 31,
+      "pass": 31,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "exit_code": 0,
+      "elapsed_seconds": 49.96873903274536,
+      "focus_test_duration_ms": 34310.717429
+    },
+    "original_30_test_bodies_byte_identical": true,
+    "specific_mutants_rejected": [
+      "omit restoration fails explicit export-focus assertion",
+      "ignore pointer abandonment fails explicit BODY-intent assertion",
+      "omit AbortController abort fails actual listener cleanup assertion"
+    ],
+    "notes": "The actual 31-test owner passes after restoring only the still-owned initiating button. Deliberate focus moves, draft retirement, typed field focus, hidden retry, stale replies and listener cleanup are exercised. Earlier new-fixture deadline-collision and empty-textarea failures remain in the referenced independent review; they were not discarded."
+  },
+  "remaining_acceptance": [
+    "Complete proper-context final SDK owners and original native source records, authenticated successor review, frozen source and dual-native immutable image custody.",
+    "Exact installed-SDK full just vv including the source-defensive fixture, containing native system and source-free bundle.",
+    "Protected PR merge, fresh-main publication and live GitHub Pages byte/browser checks."
+  ],
+  "custody": {
+    "references": {
+      "component_build": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/component-build-receipt.json",
+        "bytes": 4210,
+        "sha256": "98f18cedcd4f2467ad18adacc6053b246b74cfcfef9ae60accffa6a5b5dbb005"
+      },
+      "source_preparation": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/source-preparation.json",
+        "bytes": 8145,
+        "sha256": "d553e5ef1d3ef10b336b27f74e585f164e5370b2aa2316241e4c6e5edd79fb71"
+      },
+      "source_kernel_preflight": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/source-preflight.json",
+        "bytes": 1569,
+        "sha256": "6bf28e5014d849ec154b649cee8092d62458060113dd9ba75b2618cc77db009f"
+      },
+      "normal_build": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/normal-build.receipt.json",
+        "bytes": 19708,
+        "sha256": "9a75693ffd404ff9d169445361c05a7608e7ff8592728aaf78b85ee3b3519e42"
+      },
+      "source_sdk_handoff": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/source-sdk-binding.json",
+        "bytes": 10796,
+        "sha256": "596f161f0c977aafe32569766c76e6263d92c68dce975e3a9e140f46c7243896"
+      },
+      "oracle_context": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/oracle-context.json",
+        "bytes": 29755,
+        "sha256": "d747dd71ff1d5167a83672dce813c3e986836b8a7f7d50211dfc8fd08755d8ee"
+      },
+      "early_report": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/early-case-fidelity/report.json",
+        "bytes": 11722,
+        "sha256": "2614a07b0099cdd9443c4c331fd0689e9b9f5cef0a8dd1731003d8826a93b30a"
+      },
+      "early_independent_review": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/early-case-fidelity/independent-review.json",
+        "bytes": 14972,
+        "sha256": "50ccd6bd05d6aba1b2fdf3986971c5f5b93c612bbf4537ab7c5ecdafbfd7760e"
+      },
+      "full_attempt": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/research-diagnostic.json",
+        "bytes": 2356835,
+        "sha256": "5ad28dec9216c28865c68a38a212dd596ca47b53013dc6d6a06e0f4a565cded4"
+      },
+      "focus_regression": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/browser-focus-r3-receipt.json",
+        "bytes": 13600,
+        "sha256": "af497a1982782c361d4ec5eee21115352d02ba4e58159c26677d0150fc530adc"
+      },
+      "generic_focus_independent_review": {
+        "path": "/tmp/matmul-sdk-text-v4-provenance/research-focus-owner-independent-review.json",
+        "bytes": 8632,
+        "sha256": "d53a94180634bfba447fb21d38e1d2a7eacd7fb80c10e54c495841ae43b5315a"
+      },
+      "generic_emitter_refresh": {
+        "path": "/tmp/matmul-sdk-text-v4-provenance/research-focus-owner-emitter-refresh.json",
+        "bytes": 7952,
+        "sha256": "9b8cf566973c3669b4cdfce8ef9ed5bce6e761656412fe5841068f471a2299be"
+      },
+      "early_invocation": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/early-checks.invocation-result.json",
+        "bytes": 1770,
+        "sha256": "6b04c3b39badd21bdee0e7c71639a0c99ec927cc945914a6c11c0c75efc82aa8"
+      },
+      "full_invocation": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/research-checks.invocation-result.json",
+        "bytes": 1778,
+        "sha256": "08862c30c570e0d875f88224c7ce4a37d96b50113564740ce9a9a830c0136ac6"
+      },
+      "generic_final_owner_invocation": {
+        "path": "/tmp/matmul-sdk-text-v4-provenance/research-focus-owner-green3-invocation.json",
+        "bytes": 1305,
+        "sha256": "f4c6b39f2683a4caf29b912b0bb2a40f340ab453d0e0735fc23e90b3050052eb"
+      },
+      "generic_final_owner_exit": {
+        "path": "/tmp/matmul-sdk-text-v4-provenance/research-focus-owner-green3-exit.json",
+        "bytes": 340,
+        "sha256": "1a99bd41a3919112d1620ad122129a9ba1c0e92c1f7c0040a1ddc90678d84ac7"
+      },
+      "generic_final_owner_log": {
+        "path": "/tmp/matmul-sdk-text-v4-provenance/research-focus-owner-green3.log",
+        "bytes": 7745,
+        "sha256": "a7de7c3daf6aff9693d8c4ce03fc5370a05771b73026a8d9807b6b4d429edbd9"
+      },
+      "generic_original_red_log": {
+        "path": "/tmp/matmul-sdk-text-v4-provenance/research-focus-owner-r3-red.log",
+        "bytes": 8594,
+        "sha256": "6e7c38923b843ae41ca4d015a05006faf1289a56de77d41c42567735b62b1ab6"
+      },
+      "normal_stdout": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/normal-build.stdout",
+        "bytes": 494,
+        "sha256": "05b74dee3a1bcb96092c05de19dcba89d41c58a9b38ea800b9041f5e242a3877"
+      },
+      "normal_stderr": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/normal-build.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "full_stderr": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/research-checks.stderr",
+        "bytes": 1080,
+        "sha256": "3a8b8363d8c82e5e8621dd8c34ec1ef9344b4ea248af22b3e51c94c9ca56552c"
+      },
+      "browser_owner_failure": {
+        "path": "/tmp/matmul-sdk4-product-component-ux/oracle/.prism/matmul/runtime-oracle/MM-30.failure.json",
+        "bytes": 23479,
+        "sha256": "3e5854bc22f85cf921c556cd9d4a8f6d4785e6642e1e8c96676d37e15d10ae98"
+      },
+      "successor_full_summary": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/full-component-independent-summary.json",
+        "bytes": 10201,
+        "sha256": "d69ebd281a9cefd85991708a763c7346f9ec61df5141f59f60756497d637c0a2"
+      },
+      "successor_full_review": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/full-component-independent-review.json",
+        "bytes": 15649,
+        "sha256": "03e32fba8146b90edfa49c8f83866250f732c7844d2e14c2b1793243f2c903b3"
+      },
+      "successor_build": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/component-build-receipt.json",
+        "bytes": 4274,
+        "sha256": "83341b569dc1f0e5f6b9ce5df05e9d82748402c0992edd037997458cfa302684"
+      },
+      "successor_normal": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/normal-build.receipt.json",
+        "bytes": 19747,
+        "sha256": "b27f84188e2acde81bc289308ba6dd9f9e02b70ac934dd652aa502859c0d7599"
+      },
+      "successor_full_attempt": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/research-diagnostic.json",
+        "bytes": 2532366,
+        "sha256": "2c638c7a04f61ff3bdd78a5c11d3c3bd8b92b1295b0378372b836b64ce067b5f"
+      },
+      "successor_full_invocation": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/research-checks-mounted.invocation-result.json",
+        "bytes": 1916,
+        "sha256": "202d7ef91801d3c045144e2bff2d0221746f143769169782421efaaf8ff4291e"
+      },
+      "successor_full_stderr": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/research-checks-mounted.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "successor_oracle_context": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/oracle-context.json",
+        "bytes": 29981,
+        "sha256": "90fa79a0c633a2e8e12f409a49bc422fc6283b5cf6e909cd7f98fa5d351f2ad3"
+      },
+      "successor_wrapper_preflight": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/wrapper-preflight-independent-review.json",
+        "bytes": 3695,
+        "sha256": "6af7059b2ce5db9e23bb536e578a2f5fc6101d307605614eece1fe5dce50054d"
+      },
+      "successor_initial_wrapper": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/run_checks.py",
+        "bytes": 3453,
+        "sha256": "e78e26f44769b0c8fea80f633ef6fb26bf01f5cb362716eb6ec8d086cb798d24"
+      },
+      "successor_corrected_wrapper": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/run_checks_mounted.py",
+        "bytes": 3561,
+        "sha256": "d8f6962bfdf4bbf78b88c5f3e9bbab673ce06ada6d14c5f9a7e970f3201011d1"
+      },
+      "successor_early_review": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/early-case-independent-review.json",
+        "bytes": 5892,
+        "sha256": "3727d5806f9aceaab9db2e10ed5c458c33fc83a3890b9a92805312657fcdf6fc"
+      },
+      "successor_MM30": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/oracle/.prism/matmul/runtime-oracle/MM-30.json",
+        "bytes": 67869,
+        "sha256": "8da2e2fb1243b98017c665a8950551e0cfffda0a453fd10d37b7dab54f1d804e"
+      },
+      "successor_MM31": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/oracle/.prism/matmul/runtime-oracle/MM-31.json",
+        "bytes": 108345,
+        "sha256": "20b5d6aba07d338eac4c46b0bdb1a115dd0b5ed126f1ac2316025f92186ec667"
+      },
+      "successor_cache": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/oracle/.prism/matmul/runtime-oracle/MM-31.asset-cache.json",
+        "bytes": 81764,
+        "sha256": "77bbc11b1cc91a918a052ad172e79fa0307864c08c546d39be846dc3b777cda5"
+      }
+    },
+    "reference_checks": "Preparation rehashed named receipts/logs, 24 frozen source files, 47 compiler inputs, 68 oracle-context files, 24 early raw files, generic-review20 references, 33 current emitter inputs and original focus raw references. No owner was rerun.",
+    "old_evidence_unchanged": true,
+    "product_or_git_mutation": false,
+    "future_results_claimed": false,
+    "successor_review_checks": "Rehashed all bounded summary/detail/reference records, actual12 evidence files/9PNG hashes, initial wrapper negative and corrected wrapper chain, and exact24 source equality. Authenticated current complete report identities/counts and per-engine successful records without rerunning owners; detailed independent review retains all9034 raw request/reply hash checks."
+  },
+  "actual_successor_coherent_component": {
+    "status": "passed",
+    "build_id": "9759330f22a5d18dd4a393ecdd8b677e05e31bc4bc429bf8b11f0896c0c4b035",
+    "model_id": "bdeca0134ae99e67c0727690d802d69b605bf83962ff3607b3df767a97999c2d",
+    "source_id": "4151103827b9aefde512009ee00af21125d0790f6221f400111c7a0a2a1fec14",
+    "semantic_id": "af5808668bc5621c5478b3ead92d86b28d23b05e4531a05f5627e6f8223ad60a",
+    "same24_source_files_and_reused_original_c5_proof": true,
+    "kernel_attestation": "c5f272c3e1d7cab53d4e08734b43f375bb3d94ce1bd67c1d58b224dceb978fd0",
+    "emitter_semantics_id": "d40b961a5aa718dbcff671671e2cd502eeaa2c60cf8cd7096e99c0624b354e3e",
+    "source_CLI": {
+      "path": "/tmp/lexlean-matmul-sdk-text-research/target/research-focus-debian12/debug/prismpm",
+      "bytes": 136026280,
+      "sha256": "4991dd8cc50906891e2a29c25719957f8bc8f87d78d6df2a0a098c0eec611b68"
+    },
+    "source_sdk_handoff": {
+      "path": "/tmp/matmul-sdk4-product-component-focus/source-sdk-binding.json",
+      "bytes": 12557,
+      "sha256": "f61543e3339ceaee8251673d9d5ba97714fb2a98d734d7a439e6bcc69cbf1049"
+    },
+    "normal_build_seconds": 814.0534064769745,
+    "normal_exit": 0,
+    "manifest_descriptors": 287,
+    "untouched_browser_assets": [
+      {
+        "path": "app.css",
+        "bytes": 7909,
+        "sha256": "b86bd90dddd5817def7c9e2b4e1c9106f6591d705a1757bc33a412150b61650b"
+      },
+      {
+        "path": "app.js",
+        "bytes": 239619,
+        "sha256": "119ecd8cb278b8612f03acf85900bf80fe5fb55584f1e12a52220f5bb746609d"
+      },
+      {
+        "path": "index.html",
+        "bytes": 8794,
+        "sha256": "8c16106da23c8ea418979d762d1474c9f73c2f8cb3bd1ab94b77dc8061d071c7"
+      },
+      {
+        "path": "lexlean_matmul.js",
+        "bytes": 6934,
+        "sha256": "7cb53fa75f4c9be946b8f70c3654179e2417ea7c8b600d0a01334cb944231358"
+      },
+      {
+        "path": "lexlean_matmul_bg.wasm",
+        "bytes": 1679157,
+        "sha256": "0d442d633dd508e39035e75ff693503d76ed6c827a1a7c83aadddff4e5f5a9c2"
+      },
+      {
+        "path": "provenance.json",
+        "bytes": 656,
+        "sha256": "3370db7c3cbf8f3f80f5593d4c692c17b29861d18ea75004b529e35fde268aaf"
+      }
+    ],
+    "early_source_case_actions": 12,
+    "source_guest_calls": 4517,
+    "current_generated_parser_admissions": 4110,
+    "parser_refusals": 0,
+    "blank_cells": 0,
+    "actual_full_exit": 0,
+    "actual_full_seconds": 648.0673998540733,
+    "all7_capabilities_passed": [
+      "MM-25",
+      "MM-26",
+      "MM-27",
+      "MM-28",
+      "MM-29",
+      "MM-30",
+      "MM-31"
+    ],
+    "MM30": {
+      "engine_versions": {
+        "chromium": "157.0.8099.0",
+        "firefox": "153.0",
+        "webkit": "26.5"
+      },
+      "families_per_engine": 24,
+      "ordered_examples_per_engine": 28,
+      "native_source_labeled_discovery_and_two_defect_controls": true,
+      "actual_keyboard_research_actions_per_engine": 6,
+      "original_Firefox_export_ShiftTab_import_assertion_unchanged_and_passing": true,
+      "width320_and200percent_text": true,
+      "light_dark_axe_violations_and_incomplete_each": 0,
+      "three_engine_default_discovery_desktop_mobile_images_visually_inspected": 9,
+      "visual_observation": "Readable source navigation, purpose, actual result cells and research selection panels; no material clipping or overlap observed. Actual owner draft state, not a live-deployment screenshot.",
+      "screen_reader_speech_claimed": false
+    },
+    "MM31": {
+      "file_variants_per_engine": [
+        "two-operands-9000-line-feeds",
+        "unicode-escaped-values",
+        "unicode-escaped-recorded-observation",
+        "near-case-file-limit-81000-line-feeds"
+      ],
+      "each_file_selection_guest_calls": 0,
+      "each_file_explicit_import_calls": 1,
+      "each_file_import_and_export_calls": 2,
+      "all_source_restored_values_and_exact_canonical_reexports": true,
+      "forged_recorded_Unicode_answer_compares_different_and_fresh_product_is2": true,
+      "near_file_actual_bytes": 972356,
+      "near_file_import_ms_by_engine": {
+        "chromium": 47048.68609699997,
+        "firefox": 48007.59121300001,
+        "webkit": 42073.81782
+      },
+      "source_owned_action_budget_ms": 180000,
+      "exact_untouched_CRLF_and_loneCR_case_then_one_field_edit": true,
+      "input_only_selection_ownership_cases_per_engine": 8,
+      "invalid_draft_import_recovery_cases_per_engine": 2,
+      "cancel_stale_timeout_retry_malformed_reply_and_FileReader_retirement": true,
+      "typed_file_and_encoded_action_negatives_plus_exact1MiB_success": true,
+      "complete_import_budget": {
+        "bytes": 1048576,
+        "encoded_case_text_bytes": 2096794,
+        "encoded_action_bytes": 2105241,
+        "actual_equivalent_draft": true,
+        "preserved_draft": true,
+        "worker_guest_calls": 0
+      },
+      "all_persistent_state_network_operand_and_console_operand_counts": 0,
+      "planted_rejections": [
+        "busy-live-status-ancestor",
+        "malformed-actual-worker-output",
+        "persistent-case-history"
+      ]
+    },
+    "ordinary_HTTP_cache": {
+      "routing_installed": false,
+      "cache_disabled": false,
+      "service_worker_installed": false,
+      "cases": 9,
+      "named_omission_controls_per_engine": 2,
+      "browsers": [
+        {
+          "engine": "chromium",
+          "cases": [
+            "captured-model-keyed-assets",
+            "binding-model-key-omitted",
+            "stylesheet-model-key-omitted"
+          ],
+          "each_actual_cells": [
+            "19",
+            "22",
+            "43",
+            "50"
+          ],
+          "each_bare_Wasm_GETs": 1,
+          "positive_model_keyed_app_Worker_binding_CSS_network_and_body_checks": true,
+          "negative_omission_cases": "Only one modeled key omitted per named case; warmed bare-byte reuse and genuine math verified, exact intended network assertion refuses.",
+          "streamed_original_HTML_prefix_before_assets": true
+        },
+        {
+          "engine": "firefox",
+          "cases": [
+            "captured-model-keyed-assets",
+            "binding-model-key-omitted",
+            "stylesheet-model-key-omitted"
+          ],
+          "each_actual_cells": [
+            "19",
+            "22",
+            "43",
+            "50"
+          ],
+          "each_bare_Wasm_GETs": 1,
+          "positive_model_keyed_app_Worker_binding_CSS_network_and_body_checks": true,
+          "negative_omission_cases": "Only one modeled key omitted per named case; warmed bare-byte reuse and genuine math verified, exact intended network assertion refuses.",
+          "streamed_original_HTML_prefix_before_assets": true
+        },
+        {
+          "engine": "webkit",
+          "cases": [
+            "captured-model-keyed-assets",
+            "binding-model-key-omitted",
+            "stylesheet-model-key-omitted"
+          ],
+          "each_actual_cells": [
+            "19",
+            "22",
+            "43",
+            "50"
+          ],
+          "each_bare_Wasm_GETs": 1,
+          "positive_model_keyed_app_Worker_binding_CSS_network_and_body_checks": true,
+          "negative_omission_cases": "Only one modeled key omitted per named case; warmed bare-byte reuse and genuine math verified, exact intended network assertion refuses.",
+          "streamed_original_HTML_prefix_before_assets": true
+        }
+      ],
+      "scope": "Warm current captured bare asset bytes then model-keyed app/Worker/adapter/CSS and no-store Wasm; controlled local normal HTTP cache, not a cross-revision/public incident claim.",
+      "all_actual_requests_responses_workers_math_and_expected_controls_checked": true
+    },
+    "retained_evidence": {
+      "files": 12,
+      "PNG_files": 9,
+      "bytes": 1027268,
+      "maximum_bytes": 16777216,
+      "each_hash_length_and_image_dimension_authenticated": true,
+      "diagnostic_raw_pair_files_outside_acceptance_evidence": true
+    },
+    "notes": "No overlay, mock, route interception, source/domain/limit changes or assertion weakening. The unchanged original Firefox export/ShiftTab/import assertion now passes on the actual focus-fixed generated product. Actual strict source/parser/browser/cache controls are included; all raw evidence remains attributed to this component."
+  },
+  "successor_orchestration_preflight": {
+    "scope": "Orchestration custody refusal, not a product/kernel/runtime failure.",
+    "original": {
+      "exit": 1,
+      "seconds": 2.0007840419420972,
+      "stdout_bytes": 0,
+      "stderr_bytes": 708,
+      "source_guest_calls": 0,
+      "build_or_product_failure": false
+    },
+    "cause": "Copied c5 proof metadata truthfully retains original absolute parent custody paths. Initial successor wrapper omitted the parent mount, so checker read of the first old proof file failed ENOENT at line25 before generated guest initialization/calls.",
+    "correction": {
+      "new_wrapper_file": {
+        "path": "/tmp/matmul-sdk4-product-component-focus/run_checks_mounted.py",
+        "bytes": 3561,
+        "sha256": "d8f6962bfdf4bbf78b88c5f3e9bbab673ce06ada6d14c5f9a7e970f3201011d1"
+      },
+      "exact_diff": "Only separate attempt filenames plus readonly original-parent mount; same checker/context/boundaries/SDK/inputs/assets and independent old evidence.",
+      "same_checker_sha256": "cb2e26794281f379060c9cfe2a8fa673c517b9ddfbc3efa46c994fa640d73eef",
+      "same_oracle_context_sha256": "90fa79a0c633a2e8e12f409a49bc422fc6283b5cf6e909cd7f98fa5d351f2ad3",
+      "same_build_receipt_sha256": "83341b569dc1f0e5f6b9ce5df05e9d82748402c0992edd037997458cfa302684",
+      "actual_successor_invocation_has_readonly_parent_mount": true,
+      "successor_outcome_not_inferred": true
+    },
+    "actual_after_correction": "Mounted early12 and full4517/4110 plus all3MM30/MM31/cache9 passed in separate retained invocations.",
+    "original_failure_preserved": true
+  },
+  "product_path": "verification/research-coherent-component-diagnostic.json"
+}
