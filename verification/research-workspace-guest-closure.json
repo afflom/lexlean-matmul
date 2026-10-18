@@ -1,0 +1,135 @@
+{
+  "schema": "lexlean-matmul/research-workspace-source-guest-closure/1",
+  "qualification": false,
+  "status": "passed",
+  "scope": "Actual unchanged ResearchWorkspace guest through immutable SDK929 TextV3 carrier. The closed V4 source metadata supplies public test inputs only. No V4 adapter export, renderer, native System, source-free release, Pages or installed final SDK qualification.",
+  "build_id": "c4b5a05e288714bf585257fea7d838075b1a6c2d7936867eaaf02472bdd55b73",
+  "actual_carrier_profile": "prismpm/text-application/3",
+  "declared_source_context_identity": "a7e960042247dedcddd5d022a8bda0c6ab953482f7f51ac5aa6dede409222b54",
+  "actual_model_id_export": false,
+  "source_corpus_scope": "Carrier185 vectors (unchanged original184 plus genuine4MiB allocation boundary), not the final233 V4 corpus. The same production research guest gates execute all their independent selected-cell/routes/case/codec/IEEE fixtures.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "command": {
+    "argv": [
+      "./scripts/in-sdk.sh",
+      "node",
+      ".prism/matmul/research-workspace-check/check.mjs",
+      ".prism/matmul/research-workspace-carrier/.prism/build/c4b5a05e288714bf585257fea7d838075b1a6c2d7936867eaaf02472bdd55b73"
+    ],
+    "cwd": "/home/alex/Desktop/lexlean-matmul",
+    "exit": 0,
+    "stdout": {
+      "path": "/tmp/matmul-research-workspace-c4b5-guest/invocation.stdout",
+      "bytes": 424,
+      "sha256": "10f1746a298d9df01465508296b02728fcc30cb12e6ca2b87fda8c2da4ae4907"
+    },
+    "stderr": {
+      "path": "/tmp/matmul-research-workspace-c4b5-guest/invocation.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "gateway": {
+      "path": "/home/alex/Desktop/lexlean-matmul/scripts/in-sdk.sh",
+      "bytes": 1155,
+      "sha256": "3b5dffffcc709e39f34d57535ac4f183617724274d838cd59a55dedbd804adf1"
+    }
+  },
+  "artifact_custody": {
+    "path": "/tmp/matmul-research-workspace-c4b5-guest/component-artifact.json",
+    "bytes": 4354,
+    "sha256": "1709c46b699edece6fc1028cc73c1fcce8f6b4f4c5cb91f4f6390ec15cbaf9a3"
+  },
+  "source_snapshot": {
+    "path": "/tmp/matmul-research-workspace-c4b5-guest/component-source.json",
+    "bytes": 9116,
+    "sha256": "2427e74099f64c7b03458d69183b23b99d2d8a8d3539ed49b9b5d3fbcb89ae4b"
+  },
+  "raw_report": {
+    "path": "/tmp/matmul-research-workspace-c4b5-guest/raw/result.json",
+    "bytes": 298180,
+    "sha256": "33cbfd3a13674d1c412ff0b852846f7e3602cd1c235417a44ba8fb3e63514723"
+  },
+  "full_evidence_index": {
+    "path": "/tmp/matmul-research-workspace-c4b5-guest/evidence-index.json",
+    "bytes": 2457,
+    "sha256": "61ac73d596ee3b3bff9214b9e90c885ad5d14c31c56bdeb4374872785fe92bda"
+  },
+  "actual_capabilities": [
+    {
+      "id": "MM-25",
+      "status": "passed",
+      "actual_invocations": 1688
+    },
+    {
+      "id": "MM-26",
+      "status": "passed",
+      "actual_invocations": 250
+    },
+    {
+      "id": "MM-27",
+      "status": "passed",
+      "actual_invocations": 194
+    },
+    {
+      "id": "MM-28",
+      "status": "passed",
+      "actual_invocations": 2153
+    },
+    {
+      "id": "MM-29",
+      "status": "passed",
+      "actual_invocations": 220
+    }
+  ],
+  "actual_invocations": 4505,
+  "closure": {
+    "trace_cases": 160,
+    "selected_trace_cells": 370,
+    "independently_inspected_family_outputs": 24,
+    "operand_applicability_fixtures": 94,
+    "comparison_families": 24,
+    "case_families_plus_zero_shapes": 28,
+    "standalone_case_tools": 3,
+    "actual_codec_paths": 2120,
+    "e8_codes": 256,
+    "e8_coordinates": 8,
+    "maximum_codec_stages": 8,
+    "large_coordinate": 16777215,
+    "ieee_patterns": 30,
+    "ieee_matrix_operand_inspections": 75,
+    "ieee_terminal_cases": 48
+  },
+  "prior_actual_red": {
+    "report": {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-workspace-check/cebd96345622fa46704a33b9c29247314845da1a3c8775106eac78288af776a0-closed-contract/result.json",
+      "bytes": 111890,
+      "sha256": "1f16796a056f95ae0c649445935a5dae73e8d27ba2d235991d1e68f3be4302e1"
+    },
+    "failures": [
+      {
+        "id": "MM-25",
+        "actual_invocations": 886,
+        "error": {
+          "name": "AssertionError",
+          "message": "research-error: invalid input became a successful report\n\n'ok' !== 'error'\n"
+        }
+      },
+      {
+        "id": "MM-27",
+        "actual_invocations": 174,
+        "error": {
+          "name": "AssertionError",
+          "message": "research-tool-case: imported tool did not freshly reconstruct actual inspector\n+ actual - expected\n\n+ []\n- [\n-   {\n-     columns: [\n-       'Target',\n-       'Index',\n-       'Stored',\n-       'Decoded'\n-     ],\n-     id: 'operand-values',\n-     rows: [\n-       [\n-         'stored symbol',\n-         '0',\n-         '228',\n-         '7'\n-       ],\n-       [\n-         'decoded coordinate',\n-         '2',\n-         'exact decoded word length',\n-         '4'\n-       ]\n-     ],\n-     title: 'Stored symbol and selected decoded coordinate'\n-   }\n- ]\n"
+        }
+      }
+    ]
+  },
+  "unchanged_release_guards": [
+    "normal release entry requires actual prismpm/text-application/4 and real generated Wasm model_id export",
+    "diagnostic refuses invented V4 metadata/export",
+    "original184 bytepairs preserved independently",
+    "final immutableSDK full31 vv, all233 source vectors, all3 actual UI engines, sourcefree bundle and fresh main Pages remain mandatory"
+  ],
+  "started_at": "2026-10-18T17:14:02.900Z",
+  "finished_at": "2026-10-18T17:14:12.672Z"
+}

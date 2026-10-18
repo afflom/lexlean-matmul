@@ -1,0 +1,299 @@
+{
+  "schema": "lexlean-matmul/research-workspace-carrier-proof/1",
+  "qualification": false,
+  "scope": "Actual immutable SDK929 normal lock/kernel/build of unchanged current ResearchWorkspace/domain source on an accepted-main TextV3 diagnostic carrier. V3 presentation and metadata; no SDK4 renderer/model_id-export/native System/release/Pages qualification. Full independent mathematical gates are recorded separately after execution.",
+  "status": "pass",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "build": {
+    "build_id": "c4b5a05e288714bf585257fea7d838075b1a6c2d7936867eaaf02472bdd55b73",
+    "manifest_path": ".prism/build/c4b5a05e288714bf585257fea7d838075b1a6c2d7936867eaaf02472bdd55b73/manifest.json",
+    "model_path": ".prism/build/c4b5a05e288714bf585257fea7d838075b1a6c2d7936867eaaf02472bdd55b73/model.prism.json",
+    "schema": "prismpm/build-result/1",
+    "semantic_id": "dae358c32f7d97d8789a11b4046d85c9727d2d17ed5d3b78d6781cc64a889e72",
+    "source_id": "02d8e58cf0adec7140c5d7f5e341576bab2a26e6f98b5de4b6eeda51b877b228"
+  },
+  "actual_provenance_model_id": "a7e960042247dedcddd5d022a8bda0c6ab953482f7f51ac5aa6dede409222b54",
+  "kernel_attestation_id": "68fcbebc7f3b79ad7176b3944c145fa7e490092710067e53f3fdb5342769b518",
+  "profile": "prismpm/text-application/3",
+  "vector_count": 185,
+  "request_maximum": 2097152,
+  "response_maximum": 4194304,
+  "guest_allocation_maximum": 4194304,
+  "project_model_maximum": 67108864,
+  "source_custody_sha256": "2427e74099f64c7b03458d69183b23b99d2d8a8d3539ed49b9b5d3fbcb89ae4b",
+  "production_source_inputs": [
+    {
+      "path": "src/ResearchModel.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "913d78c8f0af809eb45b47518288ca42da61984c6ae072b652c03ccbc81f2685",
+      "bytes": 196689
+    },
+    {
+      "path": "src/ResearchTrace.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "dccddf04ba3432a78bdcc4248d7ae7a82cd56c95bb5602e3d8eb441b697415e6",
+      "bytes": 145649
+    },
+    {
+      "path": "src/ResearchCompare.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "5282e8b054995715700902c082a915f8c83ce26ffcae0f239ab5aceb9df549a1",
+      "bytes": 148264
+    },
+    {
+      "path": "src/ResearchInspect.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "99e55dd7a7d9c8d65f43745816c4ebd23f2149f65b4a8b96770cf0550a32729d",
+      "bytes": 109086
+    },
+    {
+      "path": "src/Research.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "9b10291284a8157eb84287f90218170664f87d2d6e0963c3cde9b0fb70ddbde1",
+      "bytes": 7299
+    },
+    {
+      "path": "src/ResearchJson.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "66daa55b9e881e6fc2d43c5530c17f0dfcaf3996631a581423836c2487968686",
+      "bytes": 97599
+    },
+    {
+      "path": "src/ResearchCases.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "e6f71f6bf7e98c69b189980ec7f021c8424e955fd91f39092e1f756ac227c545",
+      "bytes": 66206
+    },
+    {
+      "path": "src/ResearchForms.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "c6a390d5646444013afe0ec23c00ae38e34a637d428747b8cddfa51e0c8af604",
+      "bytes": 51436
+    },
+    {
+      "path": "src/ResearchWorkspace.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "ec0c9dd5a266aaa84a390e0d13bbbf88d6172491bdc435ec4c4d93849712cdd8",
+      "bytes": 157648
+    },
+    {
+      "path": "src/Model.lex.tex",
+      "authority": "current-product-source",
+      "sha256": "9cbc03b00caf8c818a135d139d9f0ab0fb90ec7cd473d73a13a45016d36d657c",
+      "bytes": 6583
+    }
+  ],
+  "fixture_inputs": [
+    {
+      "path": "lexlean.toml",
+      "sha256": "f9446c8fa91b9142b1b3872245df594ac63f9f4346c4454147c79a35741c644e",
+      "bytes": 994
+    },
+    {
+      "path": "prismpm.lock",
+      "sha256": "371ab8c5549ba8f45b7dd8f7d1248d4afa31cb0857c48ef4f0734623fed49617",
+      "bytes": 257573
+    },
+    {
+      "path": "prismpm.toml",
+      "sha256": "ed889064e92a044b994544d46ad453111d228bc651c3f48e4747c9157b8c5bd6",
+      "bytes": 188
+    },
+    {
+      "path": "src/Application.lex.tex",
+      "sha256": "7b42eb85c913de3c788397dfcae55d77da77daad2ee2ff62eaab1209a2c13408",
+      "bytes": 253088
+    },
+    {
+      "path": "src/Atlas.lex.tex",
+      "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b",
+      "bytes": 164620
+    },
+    {
+      "path": "src/Codec.lex.tex",
+      "sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88",
+      "bytes": 1146068
+    },
+    {
+      "path": "src/CodecProtocol.lex.tex",
+      "sha256": "ee0a431c3a01a6c893bd3ed09b3bb1f1527bffef36be31cb210e394ad1715f5a",
+      "bytes": 88203
+    },
+    {
+      "path": "src/Core.lex.tex",
+      "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+      "bytes": 304177
+    },
+    {
+      "path": "src/Epilogue.lex.tex",
+      "sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87",
+      "bytes": 85876
+    },
+    {
+      "path": "src/ExtendedProtocol.lex.tex",
+      "sha256": "ae343c20e5d5c970ddd19018ad9c6a4c1a176cfbbcf4832a1420ce8e1288d5ce",
+      "bytes": 190587
+    },
+    {
+      "path": "src/Float.lex.tex",
+      "sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6",
+      "bytes": 266431
+    },
+    {
+      "path": "src/MatmulSystem.lex.tex",
+      "sha256": "cf8a0cb8ab653d2745b94adafeae8e42fe2ba1cea768dec14fdba0ac9cfe7d1b",
+      "bytes": 60938
+    },
+    {
+      "path": "src/Model.lex.tex",
+      "sha256": "9cbc03b00caf8c818a135d139d9f0ab0fb90ec7cd473d73a13a45016d36d657c",
+      "bytes": 6583
+    },
+    {
+      "path": "src/Presentation.lex.tex",
+      "sha256": "0aee40f585cae19deda2c674024c7a51117072e79070e0a48864f1c9fb0a7078",
+      "bytes": 119756
+    },
+    {
+      "path": "src/Protocol.lex.tex",
+      "sha256": "51454a08ad1013fadb6073d8e1aa304af571437d54e911929552dee2d571b791",
+      "bytes": 122291
+    },
+    {
+      "path": "src/Research.lex.tex",
+      "sha256": "9b10291284a8157eb84287f90218170664f87d2d6e0963c3cde9b0fb70ddbde1",
+      "bytes": 7299
+    },
+    {
+      "path": "src/ResearchCases.lex.tex",
+      "sha256": "e6f71f6bf7e98c69b189980ec7f021c8424e955fd91f39092e1f756ac227c545",
+      "bytes": 66206
+    },
+    {
+      "path": "src/ResearchCompare.lex.tex",
+      "sha256": "5282e8b054995715700902c082a915f8c83ce26ffcae0f239ab5aceb9df549a1",
+      "bytes": 148264
+    },
+    {
+      "path": "src/ResearchForms.lex.tex",
+      "sha256": "c6a390d5646444013afe0ec23c00ae38e34a637d428747b8cddfa51e0c8af604",
+      "bytes": 51436
+    },
+    {
+      "path": "src/ResearchInspect.lex.tex",
+      "sha256": "99e55dd7a7d9c8d65f43745816c4ebd23f2149f65b4a8b96770cf0550a32729d",
+      "bytes": 109086
+    },
+    {
+      "path": "src/ResearchJson.lex.tex",
+      "sha256": "66daa55b9e881e6fc2d43c5530c17f0dfcaf3996631a581423836c2487968686",
+      "bytes": 97599
+    },
+    {
+      "path": "src/ResearchModel.lex.tex",
+      "sha256": "913d78c8f0af809eb45b47518288ca42da61984c6ae072b652c03ccbc81f2685",
+      "bytes": 196689
+    },
+    {
+      "path": "src/ResearchTrace.lex.tex",
+      "sha256": "dccddf04ba3432a78bdcc4248d7ae7a82cd56c95bb5602e3d8eb441b697415e6",
+      "bytes": 145649
+    },
+    {
+      "path": "src/ResearchWorkspace.lex.tex",
+      "sha256": "ec0c9dd5a266aaa84a390e0d13bbbf88d6172491bdc435ec4c4d93849712cdd8",
+      "bytes": 157648
+    },
+    {
+      "path": "src/Workbench.lex.tex",
+      "sha256": "4704d6319de6aeed83e5ba76adf396260db71c892d5d7e82a3c615c878c41c53",
+      "bytes": 127039
+    }
+  ],
+  "assets": [
+    {
+      "path": "core-wasm/lexlean_matmul_core_wasm.wasm",
+      "bytes": 1114036,
+      "sha256": "f9c53a4c964cbf81603fa86ed4da204ab859ef33f23ac0f5d371bbf9e05677d2"
+    },
+    {
+      "path": "core-wasm/package/.cargo/config.toml",
+      "bytes": 283,
+      "sha256": "4eb9b38b7bbcdaf4d0d70e87b7f0600f37fd37a4ad077b4243c02c0b88ae4b61"
+    },
+    {
+      "path": "core-wasm/package/Cargo.lock",
+      "bytes": 168,
+      "sha256": "0634ee8e663d867a428408ebab040f1a6813aa7360c3b795470cc489c83a5426"
+    },
+    {
+      "path": "core-wasm/package/Cargo.toml",
+      "bytes": 244,
+      "sha256": "c748f4fde5a8b1a2b2d9a825a50597e90b6dcef8b6df9b50fab3f1478dd27720"
+    },
+    {
+      "path": "core-wasm/package/generation-manifest.json",
+      "bytes": 694,
+      "sha256": "0f962f5ec8dac3959b13505fef4a5da9c3d48d5e8a7989f61940f1c23390bc24"
+    },
+    {
+      "path": "core-wasm/package/src/lib.rs",
+      "bytes": 4118756,
+      "sha256": "0df1193742a1d67b3e791b5a3cb50d2640f9d12cfa298618f263577fe9b0ce24"
+    },
+    {
+      "path": "view/browser/app.css",
+      "bytes": 7350,
+      "sha256": "d15030c6d348f2bc8906816414ec8d30feb72c89e3825c169f52fa97a1e5a548"
+    },
+    {
+      "path": "view/browser/app.js",
+      "bytes": 65020,
+      "sha256": "dd32e6c85c03281f6c0927af8a692d689a4a7abb6d2aef9a32fc526b6a7f1fde"
+    },
+    {
+      "path": "view/browser/index.html",
+      "bytes": 6203,
+      "sha256": "8755fcb164d3730a16137b6269a8e6236e96db67a257ef5625ec9b03135255a7"
+    },
+    {
+      "path": "view/browser/lexlean_matmul.js",
+      "bytes": 6592,
+      "sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16"
+    },
+    {
+      "path": "view/browser/lexlean_matmul_bg.wasm",
+      "bytes": 1676531,
+      "sha256": "6ea49dc81fc873dc53671f7bd168a7b2f135551dca7d01576f2437f3cb18b4c7"
+    },
+    {
+      "path": "view/browser/provenance.json",
+      "bytes": 656,
+      "sha256": "51de00bd68b9c62ef0d2d2a895200cd9a854a94b4a5de36e746da42e6cc269da"
+    }
+  ],
+  "compiler_stages": [
+    {
+      "stage": "lock",
+      "stdout_sha256": "dc089a4cfd5d488f53409e30183abc597de06975f0902f8a35005a468d24f317",
+      "stderr_bytes": 0
+    },
+    {
+      "stage": "verify",
+      "stdout_sha256": "04112c9b95cd7e571d7c40bd78de7a70d75a18b381c700d63104942be9f2f2b7",
+      "stderr_bytes": 0
+    },
+    {
+      "stage": "build",
+      "stdout_sha256": "f0e703af153b43c3ae6cc5100a21070ab640f6785c66c9c314e9dfe373900588",
+      "stderr_bytes": 0
+    }
+  ],
+  "historical_observations": {
+    "preserved_separately": true,
+    "previous_build_id": "cebd96345622fa46704a33b9c29247314845da1a3c8775106eac78288af776a0",
+    "source_snapshot_archive_sha256": "92957d642c59284d1d445876cfdb6296e6d787a2aae4397fe35cdb7ae09d464d",
+    "prior_cap_rejection_sha256": "23e659c2aae318cddff9054cfbe02195d32001395cc3285702e78ba45aa3064c",
+    "note": "Historical carrier source, compiler receipts, cap rejection and independent failing invocations remain unchanged in their original diagnostic records. This new build does not replace their outcomes."
+  }
+}
