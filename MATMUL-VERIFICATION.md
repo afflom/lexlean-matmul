@@ -59,6 +59,14 @@ new design. [Stylesheet admission](verification/research-css-admission-r3.json)
 retains the complete owner before and after admitting its exact model key;
 no arbitrary query or additional asset becomes allowed.
 
+[The cache-driver preparation](verification/research-cache-driver-preparation.json)
+checks ordinary HTTP-cache warmup in all three pinned engines: a second fetch
+of the captured bare scripts and stylesheet requires zero server requests.
+It uses private temporary persistent profiles and removes them afterward.
+This preparation does not execute an application. MM-31 separately requires
+the actual V4 app, Worker, adapter, stylesheet, genuine matrix computation,
+and both named cache-key omission failures on the final captured assets.
+
 [Independent UI lifecycle regressions](verification/research-ui-lifecycle-r3.json)
 retain the original three and subsequent four genuine failing browser probes:
 replacement import must not depend on a finished matrix draft, coordinate edits

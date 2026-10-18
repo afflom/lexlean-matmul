@@ -45,4 +45,5 @@ Feature: Complete modeled exact arithmetic research journeys
     Then stale reports cannot replace current trace, comparison, inspection, or case data, drafts remain recoverable, live status stays outside busy ancestors, and operands enter only the requested local case output rather than URLs, telemetry, logs, or persistent history
     And valid local case import restores its fresh source draft despite unrelated empty required fields or invalid selected-coordinate text
     And every selected-coordinate input edit retires pending work before blur or change, preserves exact valid or invalid text, and permits explicit typed rejection or corrected recovery
+    And ordinary HTTP caching reuses the exact captured bare script and stylesheet bytes while current model-keyed application, Worker, adapter, and stylesheet loads execute genuine mathematics without routing or cache disabling
     And accepted publication evidence retains the complete bound source-defensive receipt and research browser screenshots
