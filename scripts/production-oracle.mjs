@@ -6,7 +6,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { createServer } from 'node:http';
 import { createRequire } from 'node:module';
-import { browserArtifacts, capturedBrowserRequest } from './browser-oracle.mjs';
+import { browserArtifacts, capturedBrowserRequest, browserScriptIdentity } from './browser-oracle.mjs';
 import { canonical, evidenceRoot, sha, writeJson } from './evidence.mjs';
 import { deploymentMetadata, productionPolicy } from './system-model.mjs';
 import { assertRenderedResult, assertResultShape, fillUiVector, separator, submitUiVector } from './workbench-test.mjs';
@@ -52,10 +52,12 @@ export async function withWorkbench(artifacts, work, { engine = 'chromium', publ
   const playwright = require('playwright'), target = deploymentMetadata();
   const content = new Map(artifacts.assets.map(row => [row.path, fs.readFileSync(path.join(artifacts.directory, row.path))]));
   assert.equal(content.size, 6);
+  const scriptIdentity = browserScriptIdentity(artifacts);
   const server = createServer((request, response) => {
     const address = new URL(request.url, 'http://127.0.0.1');
     const name = address.pathname === target.basePath ? 'index.html' : address.pathname.slice(target.basePath.length);
-    if (request.method !== 'GET' || !address.pathname.startsWith(target.basePath) || address.search || !content.has(name)) {
+    if (request.method !== 'GET' || !capturedBrowserRequest('http://127.0.0.1' + request.url,
+      'http://127.0.0.1', target.basePath, [...content.keys()], scriptIdentity)) {
       response.writeHead(404).end(); return;
     }
     response.writeHead(200, { 'content-type': name.endsWith('.wasm') ? 'application/wasm' : name.endsWith('.js') ? 'text/javascript'
@@ -83,10 +85,10 @@ export async function withWorkbench(artifacts, work, { engine = 'chromium', publ
     const requests = [], unexpected = [], consoles = [], errors = [];
     context.on('request', request => {
       const address = request.url(); requests.push({ url: address, method: request.method() });
-      if (request.method() !== 'GET' || !capturedBrowserRequest(address, origin, target.basePath, [...content.keys()])) unexpected.push(address);
+      if (request.method() !== 'GET' || !capturedBrowserRequest(address, origin, target.basePath, [...content.keys()], scriptIdentity)) unexpected.push(address);
     });
     context.on('page', page => { page.on('console', message => consoles.push(message.text())); page.on('pageerror', error => errors.push(error.message)); });
-    await context.route('**/*', route => capturedBrowserRequest(route.request().url(), origin, target.basePath, [...content.keys()])
+    await context.route('**/*', route => capturedBrowserRequest(route.request().url(), origin, target.basePath, [...content.keys()], scriptIdentity)
       ? route.continue() : route.abort());
     const page = await context.newPage(); page.setDefaultTimeout(30000);
     const ready = async targetPage => {
@@ -290,6 +292,7 @@ async function wasmCacheChecks(artifacts) {
   const { chromium } = require('playwright'), target = deploymentMetadata();
   const content = new Map(artifacts.assets.map(row => [row.path, fs.readFileSync(path.join(artifacts.directory, row.path))]));
   assert.equal(content.size, 6);
+  const scriptIdentity = browserScriptIdentity(artifacts);
   const wasm = artifacts.assets.filter(row => /^[^/]+_bg\.wasm$/.test(row.path));
   assert.equal(wasm.length, 1);
   const operation = artifacts.application.view.operations.find(row => row.id === 'matmul');
@@ -304,7 +307,8 @@ async function wasmCacheChecks(artifacts) {
   const server = createServer((request, response) => {
     const address = new URL(request.url, 'http://127.0.0.1');
     const name = address.pathname === target.basePath ? 'index.html' : address.pathname.slice(target.basePath.length);
-    if (request.method !== 'GET' || !address.pathname.startsWith(target.basePath) || address.search || !content.has(name)) {
+    if (request.method !== 'GET' || !capturedBrowserRequest('http://127.0.0.1' + request.url,
+      'http://127.0.0.1', target.basePath, [...content.keys()], scriptIdentity)) {
       unexpected.push(request.url); response.writeHead(404).end(); return;
     }
     const body = name === 'app.js' ? app : content.get(name);
@@ -325,7 +329,7 @@ async function wasmCacheChecks(artifacts) {
       observations.push(observation);
       const count = () => requests.filter(row => row.case === caseName && row.path === wasm[0].path).length;
       context.on('request', request => {
-        if (request.method() !== 'GET' || !capturedBrowserRequest(request.url(), origin, target.basePath, [...content.keys()])) unexpected.push(request.url());
+        if (request.method() !== 'GET' || !capturedBrowserRequest(request.url(), origin, target.basePath, [...content.keys()], scriptIdentity)) unexpected.push(request.url());
       });
       context.on('page', page => page.on('pageerror', error => errors.push(error.message)));
       const ready = async page => {

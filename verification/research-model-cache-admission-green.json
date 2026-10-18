@@ -1,0 +1,30 @@
+{
+  "schema": "lexlean-matmul/research-model-cache-admission-green/1",
+  "qualification": false,
+  "scope": "Complete actual research helper tests after exact public model-keyed script admission; framing, independent assertion negatives and URL privacy predicates only, not SDK, product guest or publication qualification.",
+  "capabilities": [
+    "MM-23",
+    "MM-25"
+  ],
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/research-assertions.test.mjs",
+    "scripts/research-oracle.test.mjs"
+  ],
+  "counts": {
+    "tests": 19,
+    "suites": 0,
+    "pass": 19,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "stdout_sha256": "0cb5bcf73751a5128bc888abedb29909a8597b993404d7f10c34f835b067b6af",
+  "stderr_bytes": 0,
+  "browser_oracle_sha256": "97d3608c27dc815cb02ff4169708fcec868e013006846f054e91d0cc2aa06724",
+  "tests_sha256": "a75e1b1a729157f9739b1be923371b6739cfb9dfe1cecb5404516f0166b3ed7d"
+}

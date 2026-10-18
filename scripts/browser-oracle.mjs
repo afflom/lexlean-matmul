@@ -15,12 +15,23 @@ const decode = bytes => { try { return decoder.decode(bytes); } catch { return n
 const responseBytes = vector => Buffer.from(vector.fields.find(field => field.field === 'response').value.hex, 'hex');
 const requestBytes = vector => Buffer.from(vector.fields.find(field => field.field === 'request').value.hex, 'hex');
 
-export function capturedBrowserRequest(address, origin, basePath, assetPaths) {
+export function capturedBrowserRequest(address, origin, basePath, assetPaths, scriptIdentity = null) {
   let url;
   try { url = new URL(address); } catch { return false; }
-  if (url.origin !== origin || url.search || url.hash || url.username || url.password) return false;
+  if (url.origin !== origin || url.hash || url.username || url.password) return false;
+  if (url.search) return typeof scriptIdentity?.modelId === 'string'
+    && /^[0-9a-f]{64}$/.test(scriptIdentity.modelId)
+    && ['app.js', scriptIdentity.javascript].some(asset => assetPaths.includes(asset)
+      && address === `${origin}${basePath}${asset}?model_id=${scriptIdentity.modelId}`);
   return address === `${origin}${basePath}`
     || assetPaths.some(asset => address === `${origin}${basePath}${asset}`);
+}
+
+export function browserScriptIdentity(artifacts) {
+  if (artifacts.application.profile !== 'prismpm/text-application/4') return null;
+  assert.equal(artifacts.application.view.runtime_binding.model_identity, 'current-model');
+  assert.match(artifacts.modelId, /^[0-9a-f]{64}$/);
+  return { modelId: artifacts.modelId, javascript: artifacts.javascript };
 }
 
 export function browserArtifacts(build) {
@@ -45,7 +56,7 @@ export function browserArtifacts(build) {
   const vectors = acceptanceVectors().map((vector, index) => ({ index, request: requestBytes(vector), response: responseBytes(vector) }));
   assert.deepEqual(vectors.map(vector => ({ request: [...vector.request], response: [...vector.response] })), application.acceptance_vectors,
     'Browser smoke must use the exact source-owned projected acceptance corpus');
-  return { buildRoot, application, directory, assets, javascript, wasm: wasm[0], vectors };
+  return { buildRoot, application, directory, assets, javascript, wasm: wasm[0], vectors, modelId: sha(canonical(model)) };
 }
 
 async function nodeBinding(artifacts, build) {
@@ -99,13 +110,15 @@ async function chromiumUi(artifacts, publicationUrl = null) {
     : '/ms-playwright/chromium_headless_shell-cft-157.0.8099.0/chrome-headless-shell-linux-arm64/chrome-headless-shell';
   assert(['x64', 'arm64'].includes(process.arch));
   const target = deploymentMetadata(), served = new Set(), unexpected = [], pageErrors = [];
+  const scriptIdentity = browserScriptIdentity(artifacts);
   if (publicationUrl !== null) assert.equal(publicationUrl, target.url);
   const responseChecks = [], responseErrors = [], observedAssets = new Map();
   const content = new Map(artifacts.assets.map(asset => [asset.path, fs.readFileSync(path.join(artifacts.directory, asset.path))]));
   const server = createServer((request, response) => {
     const url = new URL(request.url, 'http://127.0.0.1');
     const name = url.pathname === target.basePath ? 'index.html' : url.pathname.slice(target.basePath.length);
-    if (request.method !== 'GET' || !url.pathname.startsWith(target.basePath) || url.search || !content.has(name)) {
+    if (request.method !== 'GET' || !capturedBrowserRequest('http://127.0.0.1' + request.url,
+      'http://127.0.0.1', target.basePath, [...content.keys()], scriptIdentity)) {
       response.writeHead(404).end(); return;
     }
     served.add(name);
@@ -136,7 +149,7 @@ async function chromiumUi(artifacts, publicationUrl = null) {
       })().catch(error => responseErrors.push(error.message)));
     });
     await page.route('**/*', route => {
-      if (capturedBrowserRequest(route.request().url(), origin, target.basePath, [...content.keys()])) return route.continue();
+      if (capturedBrowserRequest(route.request().url(), origin, target.basePath, [...content.keys()], scriptIdentity)) return route.continue();
       unexpected.push(route.request().url()); return route.abort();
     });
     async function ready() {
@@ -278,13 +291,14 @@ export async function runPublishedBrowserChecks({ directory, model, url }) {
   assert.deepEqual(vectors.map(vector => ({ request: vector.request.toString('hex'), response: vector.response.toString('hex') })),
     acceptanceVectors().map(vector => ({ request: requestBytes(vector).toString('hex'), response: responseBytes(vector).toString('hex') })),
     'Published UI vectors must retain the accepted source-owned corpus');
-  const chromium = await chromiumUi({ application: model.application, directory, assets, wasm: wasm[0], javascript, vectors }, url);
+  const modelId = sha(canonical(model));
+  const chromium = await chromiumUi({ application: model.application, directory, assets, wasm: wasm[0], javascript, vectors, modelId }, url);
   const production = ['prismpm/text-application/3', 'prismpm/text-application/4'].includes(model.application.profile)
     ? await (await import('./production-oracle.mjs')).runProductionArtifactChecks({ application: model.application,
-      directory, assets, wasm: wasm[0], javascript, vectors }, 'all', url) : null;
+      directory, assets, wasm: wasm[0], javascript, vectors, modelId }, 'all', url) : null;
   const research = model.application.profile === 'prismpm/text-application/4'
     ? await (await import('./research-oracle.mjs')).runResearchArtifactChecks({ application: model.application,
-      directory, assets, wasm: wasm[0], javascript, vectors }, 'all', url) : null;
+      directory, assets, wasm: wasm[0], javascript, vectors, modelId }, 'all', url) : null;
   return { schema: 'lexlean-matmul/browser-ui-publication/1', status: 'passed', url,
     scope: 'accepted-browser-assets-and-rendered-modeled-vectors', model_sha256: sha(canonical(model)), assets, chromium,
     ...(production ? { production } : {}), ...(research ? { research } : {}) };

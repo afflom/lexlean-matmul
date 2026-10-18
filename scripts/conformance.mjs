@@ -131,14 +131,14 @@ function validateBundleProvenanceTap(output) {
 }
 
 function validateResearchTap(output) {
-  const expected = { tests: 18, suites: 0, pass: 18, fail: 0, cancelled: 0, skipped: 0, todo: 0 };
+  const expected = { tests: 19, suites: 0, pass: 19, fail: 0, cancelled: 0, skipped: 0, todo: 0 };
   for (const [name, count] of Object.entries(expected)) {
     const matches = [...output.matchAll(new RegExp(`^# ${name} ([0-9]+)$`, 'gm'))];
     assert.equal(matches.length, 1, `Research TAP must contain exactly one ${name} count`);
     assert.equal(matches[0][1], String(count), `Research TAP ${name} count differs`);
   }
-  assert.deepEqual([...output.matchAll(/^1\.\.([0-9]+)$/gm)].map(match => match[1]), ['18'],
-    'Research TAP must execute the complete unfiltered eighteen-test plan');
+  assert.deepEqual([...output.matchAll(/^1\.\.([0-9]+)$/gm)].map(match => match[1]), ['19'],
+    'Research TAP must execute the complete unfiltered nineteen-test plan');
 }
 
 const id = process.argv[2];
