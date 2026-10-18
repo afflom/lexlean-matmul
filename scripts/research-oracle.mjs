@@ -8,7 +8,7 @@ import { browserArtifacts } from './browser-oracle.mjs';
 import { withWorkbench } from './production-oracle.mjs';
 import { evidenceRoot, freshBuild, sha, writeJson } from './evidence.mjs';
 import { researchFamilies, completeResearchCases, researchCase, ieeeTerminalCases, roundingModes, preservedResearchExamples } from './research-cases.mjs';
-import { assertTrace, assertComparison, assertIeeeInspection, ieeeCases, plantReportDefect, reportTable, expectedResearchCells } from './research-assertions.mjs';
+import { assertTrace, assertComparison, assertIeeeInspection, assertOutputInspection, ieeeCases, plantReportDefect, reportTable, expectedResearchCells } from './research-assertions.mjs';
 import { assertCodecInspection, codecInspectionCases, invalidCodecInspections, codecMatrixCase } from './research-codec-reference.mjs';
 
 const separator = '\u001f', encoder = new TextEncoder(), decoder = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true });
@@ -154,7 +154,15 @@ async function traces(artifacts, binding, actions) {
     cases.push({ family: fixture.family, rows: fixture.rows, inner: fixture.inner, columns: fixture.columns,
       request_sha256: sha(fixture.request), response_sha256: sha(fixture.expectedResponse), selected_cells: positions.length });
   }
-  return { cases, selected_cells: selectedCells, intended_rejections: negatives,
+  let inspectedOutputs=0;
+  for(const fixture of completeResearchCases()){
+    const index=fixture.output.length-1;
+    const inspected=actions.invokeAction(actions.inspection,{request:fixture.request,controls:['output',String(index),'0']});
+    assertOutputInspection(inspected,fixture,index);inspectedOutputs++;
+    if(fixture.family==='matmul')plantReportDefect(inspected,r=>{r.tables.find(table=>table.id==='operand-values').rows[0][3]='planted output';},
+      r=>assertOutputInspection(r,fixture,index),/research-output-inspection/);
+  }
+  return { cases, selected_cells: selectedCells, independently_inspected_family_outputs:inspectedOutputs, intended_rejections: negatives,
     planted_rejections: ['omitted-terminal-or-normalization-step', 'wrong-primitive-product', 'wrong-selected-cell','wrong-table-stored-symbol','wrong-actual-gathered-product'] };
 }
 async function comparisons(artifacts, binding, actions) {
@@ -328,6 +336,9 @@ async function cases(artifacts, binding, actions) {
   }
   const base = researchCase('matmul'), alternate = researchCase('matmul', { left: [9n, 2n, 4n, 3n, 7n, 1n] });
   const exported = actions.invokeAction(specs.export, { request: base.request }), file = parseCase(exported.exchange.file_text, binding.modelId);
+  const paddedCase=' '.repeat(actions.view.case_exchange.maximum_bytes-Buffer.byteLength(exported.exchange.file_text))+exported.exchange.file_text;
+  assert.equal(Buffer.byteLength(paddedCase),actions.view.case_exchange.maximum_bytes);
+  assertCaseResult(actions.invokeAction(specs.import,{case_text:paddedCase}),base);
   const controlsCase=actions.invokeAction(specs.import,{case_text:JSON.stringify({...file,response:controlObservation})});
   assertCaseResult(controlsCase,base,'different',controlObservation);assertCaseDisplaySafe(controlsCase);
   const edited = { ...file, request: alternate.request };
@@ -348,6 +359,7 @@ async function cases(artifacts, binding, actions) {
     ['selection-overflow', JSON.stringify({ ...file, row: 4294967296 }), 'case-invalid-selection'],
     ['duplicate-field', exported.exchange.file_text.replace('{', '{"version":1,'), 'case-duplicate-field'],
     ['oversized-file', ' '.repeat(actions.view.case_exchange.maximum_bytes + 1), 'case-too-large'],
+    ['at-limit-whitespace-only', ' '.repeat(actions.view.case_exchange.maximum_bytes), 'case-invalid-json'],
     ['unknown-operation', JSON.stringify({ ...file, operation: 'unknown-operation' }), 'case-invalid-draft'],
     ['unknown-action', JSON.stringify({ ...file, action: 'execute-remote-script' }), 'case-invalid-action'],
   ];
@@ -396,7 +408,7 @@ async function cases(artifacts, binding, actions) {
   const failedImport=actions.invokeAction(specs.import,{case_text:failedExport.exchange.file_text});
   assert.equal(failedImport.status,'error');assert.equal(failedImport.error,'invalid-integer');assert.equal(failedImport.exchange.status,'imported');
   assert.equal(failedImport.response,failedResponse);assert.equal(failedImport.comparison.status,'equivalent');assertCaseObservations(failedImport,failedResponse,failedResponse);
-  return { families: rows, standalone_tools:toolCases, edited_request_recomputed: true, opaque_control_observation_sha256:sha(controlObservation), failed_raw_protocol_case_preserved:true, typed_failures: errors,
+  return { families: rows, standalone_tools:toolCases, exact_case_file_limit_imported:true, edited_request_recomputed: true, opaque_control_observation_sha256:sha(controlObservation), failed_raw_protocol_case_preserved:true, typed_failures: errors,
     planted_rejections: ['recorded-answer-as-computation'], actual_identity: binding.modelId };
 }
 async function installResearchObserver(page) {
@@ -579,8 +591,7 @@ async function browserResearchJourneys(context, artifacts, binding, actions, { c
     await fillFields(page, operation.inspection.fields, ['output', String(row * fixture.columns + column), '0'], 'research-inspection-field-');
     const inspection = await browserReply(page, '#research-inspect', operation.inspection, operation.id);
     assert.equal(inspection.status, 'ok'); assert.equal(inspection.response, fixture.expectedResponse);
-    if(fixture.domain==='ieee')assertIeeeInspection(inspection,fixture.format,fixture.output[row*fixture.columns+column]);
-    const operands = reportTable(inspection, 'operand-values'); assert(operands.length > 0, 'research-inspection: actual selected operand is absent');
+    assertOutputInspection(inspection,fixture,row*fixture.columns+column);
     await assertResearchRendered(page, inspection, view);
     if (complete) caseRows.push(await browserCaseRoundTrip(page, view, binding.modelId, fixture, operation, { download: fixture.family === 'matmul' }));
     families.push({ family: fixture.family, operation: operation.id, selected: { row, column },
@@ -815,8 +826,12 @@ async function replayHeldReply(page) {
 async function waitResearchReady(page) {
   await page.waitForFunction(() => !document.querySelector('#guided-submit').disabled && !document.querySelector('#research-trace').disabled);
 }
-async function researchFileFailures(page, view, operation) {
+async function researchFileFailures(page, view, operation, requestMaximum) {
   const cases = view.case_exchange, retained = await page.locator('#fields input,#fields select,#fields textarea').evaluateAll(nodes => nodes.map(x => x.value));
+  const exported=await browserReply(page,'#case-export',cases.export_action,operation.id);
+  const canonical=Buffer.from(exported.exchange.file_text);
+  assert(canonical.length<cases.maximum_bytes);
+  const padded=Buffer.concat([Buffer.alloc(cases.maximum_bytes-canonical.length,0x09),canonical]);
   const files = [
     { name: 'invalid-utf8.json', data: Buffer.from([0xff]), code: cases.file_encoding_error_code },
     { name: 'too-large.json', data: Buffer.alloc(cases.maximum_bytes + 1, 0x20), code: cases.file_too_large_error_code },
@@ -834,6 +849,25 @@ async function researchFileFailures(page, view, operation) {
       'research-file: failure changed a valid draft');
     results.push({ bytes: file.data.length, code: file.code });
   }
+  // Legal JSON whitespace still consumes the independent encoded action budget.
+  // Use a real source-exported case, not a replacement case parser or answer.
+  const paddedText=padded.toString('utf8');
+  assert(Buffer.byteLength(JSON.stringify(paddedText))>requestMaximum,'research-fixture: padded case must exceed the actual outer transport');
+  await page.locator('#case-file').setInputFiles({name:'encoded-action-budget.json',mimeType:cases.media_type,buffer:padded});
+  const beforeBudget=await page.evaluate(()=>window.__researchObserved.inputs.length);
+  await page.locator('#case-import').click();
+  await page.waitForFunction(copy=>document.querySelector('#status')?.textContent===copy,view.statuses.input_error);
+  assert.equal(await page.evaluate(()=>window.__researchObserved.inputs.length),beforeBudget,'research-file-budget: oversized encoded action reached guest');
+  assert.deepEqual(await page.locator('#fields input,#fields select,#fields textarea').evaluateAll(nodes=>nodes.map(node=>node.value)),retained,
+    'research-file-budget: encoded action refusal changed a valid draft');
+  results.push({bytes:padded.length,code:'input_error',fault:'source-exported valid case padded with legal JSON whitespace exceeds the separate encoded action budget',
+    encoded_case_text_bytes:Buffer.byteLength(JSON.stringify(paddedText)),preserved_draft:true});
+  const representable=Buffer.concat([Buffer.alloc(cases.maximum_bytes-canonical.length,0x20),canonical]);
+  await page.locator('#case-file').setInputFiles({name:'exact-file-limit.json',mimeType:cases.media_type,buffer:representable});
+  const atLimit=await browserReply(page,'#case-import',cases.import_action,operation.id);
+  assert.equal(atLimit.exchange.status,'imported');assert.equal(atLimit.comparison.status,'equivalent');
+  assert.equal(atLimit.request,exported.request);assert.equal(atLimit.response,exported.response);
+  results.push({bytes:representable.length,status:'imported',fault:'genuine source-exported case with legal ASCII whitespace at the exact file limit',fresh_execution:true});
   await page.evaluate(()=>{const Actual=window.FileReader;window.__researchReadFailureActual=Actual;window.FileReader=class extends Actual {
     readAsArrayBuffer(file){super.readAsArrayBuffer(file);this.abort();queueMicrotask(()=>this.onerror?.(new ProgressEvent('error')));}
   };});
@@ -935,7 +969,7 @@ async function researchLifecycle(context, artifacts, binding, actions) {
   await assertComparison(recovered, fixture, binding.invoke); await assertResearchRendered(page, recovered, view);
   const fileCancellation = await fileReadCancellation(page, view, fixture, operation);
   ({ operation } = await browserCompute(page, view, fixture));
-  const fileErrors = await researchFileFailures(page, view, operation);
+  const fileErrors = await researchFileFailures(page, view, operation, artifacts.application.request_maximum);
   const sentinel = '987654321098765432109876543210987654321098765432109876543210';
   const privateCase = researchCase('matmul', { rows: 1, inner: 1, columns: 1, left: [BigInt(sentinel)], right: [1n] });
   ({ operation } = await browserCompute(page, view, privateCase));
@@ -1021,3 +1055,8 @@ export async function runResearchChecks(id, build = freshBuild()) {
   }
   return records;
 }
+
+// These unchanged guest gates also support an explicitly unqualified source
+// carrier diagnostic. Release entrypoints retain their exact V4/model binding.
+export {traces as runResearchTraceGuestChecks,comparisons as runResearchComparisonGuestChecks,
+  cases as runResearchCaseGuestChecks,codecs as runResearchCodecGuestChecks,ieee as runResearchIeeeGuestChecks};
