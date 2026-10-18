@@ -1,0 +1,38 @@
+{
+  "schema": "lexlean-matmul/v4-json-source-preflight/1",
+  "qualification": false,
+  "status": "source-lock-and-kernel-passed",
+  "source_modules": 24,
+  "attestation_id": "a3b39da48666d6707f11e4fbc529d12f1f200c7bbda542011ab658f4f5eaa7e4",
+  "source_verify_exit": 0,
+  "source_verify_seconds": 141.19381165504456,
+  "source_json_sha256": "07e0f08dfac0fce9f8f0e8132cff5526221e1748615da92302acb066bbfee6dc",
+  "scope": "Actual full24-module application-only source/kernel verification of trace and JSON budget corrections. No containing System, current/final SDK sourceCLI build, runtime/large-case GREEN, fullvv, native release, main or Pages qualification.",
+  "files": [
+    {
+      "path": "/tmp/matmul-sdk4-product-component-json/source-preparation.json",
+      "bytes": 8287,
+      "sha256": "d4f102786c6d169e7d038530b384aa36042ddefd426c24a4ef5e1cb2071f685e"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-json/source-lock.receipt.json",
+      "bytes": 1197,
+      "sha256": "8e3fa55d270cc51effe124eee261c361a1ea659f85ee8f66e282bfef46876f0d"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-json/source-verify.receipt.json",
+      "bytes": 1205,
+      "sha256": "eecfbf744cc991c3675feac8a938a7ceca968a1abc1f43549bd7a90766d88767"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-json/source-verify.stdout",
+      "bytes": 98,
+      "sha256": "382bd45e4a30135dbe482aa8e7f34281a5b76c3655f4ec006727cd520bbc26bb"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-json/source-verify.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

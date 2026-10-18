@@ -11,6 +11,7 @@ import { researchFamilies, completeResearchCases, researchCase, ieeeTerminalCase
 import { assertTrace, assertComparison, assertIeeeInspection, assertOutputInspection, ieeeCases, plantReportDefect, reportTable, expectedResearchCells } from './research-assertions.mjs';
 import { assertCodecInspection, codecInspectionCases, invalidCodecInspections, codecMatrixCase } from './research-codec-reference.mjs';
 import { runResearchCacheChecks } from './research-cache.mjs';
+import { runResearchCaseFidelityGuestChecks, runResearchCaseFidelityBrowserChecks } from './research-case-fidelity.mjs';
 
 const separator = '\u001f', encoder = new TextEncoder(), decoder = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true });
 const capabilities = Object.freeze(['MM-25', 'MM-26', 'MM-27', 'MM-28', 'MM-29', 'MM-30', 'MM-31']);
@@ -448,7 +449,8 @@ async function cases(artifacts, binding, actions) {
   const failedImport=actions.invokeAction(specs.import,{case_text:failedExport.exchange.file_text});
   assert.equal(failedImport.status,'error');assert.equal(failedImport.error,'invalid-integer');assert.equal(failedImport.exchange.status,'imported');
   assert.equal(failedImport.response,failedResponse);assert.equal(failedImport.comparison.status,'equivalent');assertCaseObservations(failedImport,failedResponse,failedResponse);
-  return { families: rows, standalone_tools:toolCases, exact_case_file_limit_imported:true, edited_request_recomputed: true, opaque_control_observation_sha256:sha(controlObservation), failed_raw_protocol_case_preserved:true, typed_failures: errors,
+  const caseFidelity=runResearchCaseFidelityGuestChecks(artifacts,binding,actions,{frame:researchFrame,assertObservations:assertCaseObservations});
+  return { families: rows, standalone_tools:toolCases, case_text_fidelity:caseFidelity, exact_case_file_limit_imported:true, edited_request_recomputed: true, opaque_control_observation_sha256:sha(controlObservation), failed_raw_protocol_case_preserved:true, typed_failures: errors,
     planted_rejections: ['recorded-answer-as-computation'], actual_identity: binding.modelId };
 }
 async function installResearchObserver(page) {
@@ -1196,6 +1198,7 @@ async function researchLifecycle(context, artifacts, binding, actions) {
   const fileCancellation = await fileReadCancellation(page, view, fixture, operation);
   ({ operation } = await browserCompute(page, view, fixture));
   const fileErrors = await researchFileFailures(page, view, operation, artifacts.application.request_maximum);
+  const caseFileFidelity=await runResearchCaseFidelityBrowserChecks(page,artifacts,binding,actions,{frame:researchFrame,assertObservations:assertCaseObservations,browserReply,assertRendered:assertResearchRendered});
   const sentinel = '987654321098765432109876543210987654321098765432109876543210';
   const privateCase = researchCase('matmul', { rows: 1, inner: 1, columns: 1, left: [BigInt(sentinel)], right: [1n] });
   ({ operation } = await browserCompute(page, view, privateCase));
@@ -1217,7 +1220,7 @@ async function researchLifecycle(context, artifacts, binding, actions) {
   await persistentState(page);
   return { actual_delayed_cancel: true, stale_reply_replay: true, invalidations, source_deadline_milliseconds: operation.trace.timeout_milliseconds,
     selection_input_ownership:selectionInputs,import_draft_recovery:importRecovery,exact_imported_case_text:exactCaseText,
-    actual_timeout_retry: true, malformed_reply_retry: true, file_errors: fileErrors, file_read_cancellation:fileCancellation, identity: binding.modelId, storage,
+    actual_timeout_retry: true, malformed_reply_retry: true, file_errors: fileErrors, file_read_cancellation:fileCancellation, case_file_fidelity:caseFileFidelity, identity: binding.modelId, storage,
     operand_requests: 0, operand_console_messages: 0,
     planted_rejections: ['busy-live-status-ancestor', 'malformed-actual-worker-output', 'persistent-case-history'],
     scope: 'Actual guest results, bounded file refusals, rendered semantics and local privacy. No screen-reader speech claim.' };

@@ -17,6 +17,7 @@ Feature: Complete modeled exact arithmetic research journeys
     Given a bounded versioned case containing canonical request data and declared implementation identity
     When a visitor exports it, edits or clears the draft, imports it, and recomputes
     Then exact request values survive and fresh generated arithmetic determines the result while malformed, incompatible, oversized, and forged-result cases cannot replace the current draft or become computation authority
+    And valid exported cases with many escaped line breaks or Unicode preserve their exact drafts through import and re-export within the declared file and action bounds
 
   @MM-28 @build
   Scenario: Codec inspection follows every actual wrapper mapping

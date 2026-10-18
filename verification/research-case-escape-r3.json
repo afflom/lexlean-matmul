@@ -1,0 +1,94 @@
+{
+  "schema": "lexlean-matmul/actual-source-case-escape-budget-r3/1",
+  "qualification": false,
+  "status": "genuine-source-own-export-roundtrip-red",
+  "scope": "One unchanged genuine b334 source-Wasm export and exact reimport through original generated binding, executed inside exact929UID1000Node. No browser, build, source/SDK/testguard changes or final SDK/product/main/Pages qualification.",
+  "actual_observation": {
+    "guided_shape": [
+      1,
+      1,
+      1
+    ],
+    "operand_A": "1 followed by9000literalLF",
+    "operand_B": "2 followed by9000literalLF",
+    "source_export": "ok/exported, independently expected1\\tok\\t1\\t1\\t2",
+    "export_frame_bytes": 36244,
+    "case_file_bytes": 108356,
+    "exact_import_frame_bytes": 126623,
+    "case_file_limit": 1048576,
+    "request_limit": 2097152,
+    "import": "error/research-invalid-envelope",
+    "roundtrip": false,
+    "modeled_field_maxlength": "None in actual source field model; current SDK runtime has no maxLength assignment."
+  },
+  "source_cause": {
+    "module": {
+      "path": "/home/alex/Desktop/lexlean-matmul/src/ResearchJson.lex.tex",
+      "bytes": 97599,
+      "sha256": "66daa55b9e881e6fc2d43c5530c17f0dfcaf3996631a581423836c2487968686"
+    },
+    "definition": "jsonStringScan",
+    "canonical_definition_sha256": "34cb66658264d3e411f5b7dff1d6a0f2155456ebb02a76267d19b39072900ec5",
+    "escape_count_guard": 16384,
+    "exhaustion_error": "json_complexity_limit",
+    "complexity_note": "Escaped chunks currently append to growing chunk list. Review finite input-derived linear accumulation before raising independent magic budget."
+  },
+  "custody": [
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/probe.mjs",
+      "bytes": 4067,
+      "sha256": "30335094291e044c7ab6ee530da7b9a3c63c7afa3577217fe3def52e6d4625a1"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/invocation.json",
+      "bytes": 741,
+      "sha256": "04cf57d0298599fa0d59532cb5101d17723eb7b2f7156b0142676a0e8088f984"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/stdout",
+      "bytes": 873,
+      "sha256": "91524d6558c094c2d6c35c39a2d8c6fa016f78be42f80c923b5c2595ab319ba8"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/receipt.json",
+      "bytes": 4071,
+      "sha256": "6cb21e59f5446cc8ae50ee9e322d0dbe36749a550d175a04273b6aef7a82d03f"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/export.request.txt",
+      "bytes": 36244,
+      "sha256": "7ced6f1156d895c93a96006b247a4e563a80c3d951eec2a52de7a3f91c716f61"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/export.reply.json",
+      "bytes": 126952,
+      "sha256": "f5ad0820529fd44057e95e3d55ef1f1dae4ee1299ebdb390b176cb2cc51e0edf"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/exported.case.json",
+      "bytes": 108356,
+      "sha256": "8a06706a985708e1fc17c2014a0941c6651f7ecc6faaf8fd3144cfc8a67019f8"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/import.request.txt",
+      "bytes": 126623,
+      "sha256": "e9e642c6fd95ab88d45116a311c32cd7666398c772ae1d5b570ecb256ac7417b"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/import.reply.json",
+      "bytes": 399,
+      "sha256": "b603a085a6efb25ada6baaf0cad15d519d0c884f60eb21446a517432c1c2a1fd"
+    }
+  ],
+  "source_component_build_receipt": {
+    "path": "/tmp/matmul-sdk4-product-component-diagnostic/component-build-receipt.json",
+    "bytes": 3637,
+    "sha256": "61364e81a20ec9d94d8605fb2ba2b2fadd0aa96ae80b1b6088929a029cef7b5c"
+  },
+  "recommendation": "Close source parser/export-import roundtrip within advertised1MiBcase/2MiBframe bounds, with finite work and new modeled regression. Preserve typed malformed escape rejection and original233pairs."
+}
