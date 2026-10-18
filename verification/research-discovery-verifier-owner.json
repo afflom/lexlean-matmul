@@ -1,0 +1,30 @@
+{
+  "qualification": false,
+  "scope": "Fullstrict19finite verifierowner after discovery integration only. Actualoldsource3engine discoveryRED preserved; no currentcoherent discoveryGREEN, newlargecasefidelity/finalSDK/fullvv claim.",
+  "argv": [
+    "./scripts/in-sdk.sh",
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/research-assertions.test.mjs",
+    "scripts/research-oracle.test.mjs"
+  ],
+  "cwd": "/home/alex/Desktop/lexlean-matmul",
+  "sdk": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "exit": 0,
+  "elapsed_seconds": 6.085429978906177,
+  "files": [
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/scripts/research-oracle.mjs",
+      "bytes": 117067,
+      "sha256": "3307b9b24c3f043637ab81f8dbb8f01e63113c577000dac21f2973c4e6a2fa2d"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/scripts/research-case-fidelity.mjs",
+      "bytes": 11712,
+      "sha256": "41c33bef45ed5cb3a0f57ac0bbea228a4d8c5c1bf05a01811d1f923f69587b21"
+    }
+  ],
+  "stdout_sha256": "4e1f277cfe5d09d74a964062f0cab2c5070796561b7dcd310b02db300846899b",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

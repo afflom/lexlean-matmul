@@ -36,6 +36,7 @@ Feature: Complete modeled exact arithmetic research journeys
     Given all 24 guided operation families and all preserved named editable examples
     When visitors use keyboard navigation, each pinned browser, mobile reflow, and enlarged text to compute, select cells, compare routes, handle cases, and open applicable inspectors
     Then every journey reaches readable exact results with source-owned labels, focus, tables, limits, recovery instructions, and no unsupported-family placeholder
+    And direct source-labeled navigation reaches calculation, research and local cases by keyboard, with those workflows before the reference guide and documentation footer
     And switching from a guided family into raw input renders the source-declared initial-operation research controls and executes correlated raw trace and inspection actions
     And standalone codec and IEEE inspectors and their exact local case round trips remain usable despite invalid unrelated matrix-coordinate text
 

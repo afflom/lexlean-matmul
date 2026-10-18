@@ -1,0 +1,132 @@
+{
+  "qualification": false,
+  "scope": "Actual new MM30discovery owner against heldold103375genuineguest+declaredcanonicalCSS; expected preimplementationRED, not source/finalSDK/releasequalification.",
+  "build_id": "103375d256fc1dff0f43537698ff2089a21aca0d92698cd4dff8bdca36fc0df7",
+  "model_id": "0ac3ef981ba97f7ea7fb5f4b9af33fddc13c4a443cc97e4c82231a1d1a113022",
+  "assets": [
+    {
+      "path": "app.css",
+      "bytes": 7909,
+      "sha256": "b86bd90dddd5817def7c9e2b4e1c9106f6591d705a1757bc33a412150b61650b"
+    },
+    {
+      "path": "app.js",
+      "bytes": 238119,
+      "sha256": "bbdd0e883a4fd20a6b254a0256f61d9a8eb5b41a9de7b873151e80fa6abe0e89"
+    },
+    {
+      "path": "index.html",
+      "bytes": 8806,
+      "sha256": "6c7368dddb0aaa09c44586c16b7f25f36c562a4b98ba32cdccd7d01fc08858dc"
+    },
+    {
+      "path": "lexlean_matmul.js",
+      "bytes": 6934,
+      "sha256": "7cb53fa75f4c9be946b8f70c3654179e2417ea7c8b600d0a01334cb944231358"
+    },
+    {
+      "path": "lexlean_matmul_bg.wasm",
+      "bytes": 1679300,
+      "sha256": "c45124ac60df15a1d989c0744237ccf975e48f6ef09b3f3fc1d43899f5a6b917"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 656,
+      "sha256": "9e71e1e5da2f047a5a25c8f1fb1403a473f706cc1bb712883e8242f3dd76299a"
+    }
+  ],
+  "oracle_sha256": "0b55b497f0358a5496bb3604a8b4e54372414ed74990d61c0b2149732da677e3",
+  "browsers": [
+    {
+      "engine": "chromium",
+      "dom": {
+        "response": "1\tok\t2\t2\t19,22,43,50",
+        "navigation": [
+          {
+            "label": "Compute, explain, compare and reproduce",
+            "href": "#guide"
+          },
+          {
+            "label": "Documentation & source",
+            "href": "#links"
+          }
+        ],
+        "main_order": [
+          "hero",
+          "workspace",
+          "guide",
+          "links",
+          "research-panel",
+          "case-exchange"
+        ]
+      },
+      "error": {
+        "name": "AssertionError",
+        "message": "research-discovery: direct source-labeled native links missing or changed\n+ actual - expected\n\n  [\n    {\n-     href: '#computation-workspace',\n-     label: 'Compute exact result'\n-   },\n-   {\n-     href: '#research-panel',\n-     label: 'Explore the actual computation'\n-   },\n-   {\n-     href: '#case-exchange',\n-     label: 'Reproducible local cases'\n-   },\n-   {\n      href: '#guide',\n      label: 'Compute, explain, compare and reproduce'\n    },\n    {\n      href: '#links',\n",
+        "stack": "AssertionError [ERR_ASSERTION]: research-discovery: direct source-labeled native links missing or changed\n+ actual - expected\n\n  [\n    {\n-     href: '#computation-workspace',\n-     label: 'Compute exact result'\n-   },\n-   {\n-     href: '#research-panel',\n-     label: 'Explore the actual computation'\n-   },\n-   {\n-     href: '#case-exchange',\n-     label: 'Reproducible local cases'\n-   },\n-   {\n      href: '#guide',\n      label: 'Compute, explain, compare and reproduce'\n    },\n    {\n      href: '#links',\n\n    at researchDiscoveryStructure (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/research-discovery-current.mjs:846:10)\n    at async assertResearchDiscovery (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/research-discovery-current.mjs:859:34)\n    at async withWorkbench.engine.engine (file:///tmp/matmul-sdk4-product-component-successor/discovery-r3.mjs:3:580)\n    at async withWorkbench (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/production-oracle.mjs:100:20)\n    at async file:///tmp/matmul-sdk4-product-component-successor/discovery-r3.mjs:3:66"
+      },
+      "intended": true
+    },
+    {
+      "engine": "firefox",
+      "dom": {
+        "response": "1\tok\t2\t2\t19,22,43,50",
+        "navigation": [
+          {
+            "label": "Compute, explain, compare and reproduce",
+            "href": "#guide"
+          },
+          {
+            "label": "Documentation & source",
+            "href": "#links"
+          }
+        ],
+        "main_order": [
+          "hero",
+          "workspace",
+          "guide",
+          "links",
+          "research-panel",
+          "case-exchange"
+        ]
+      },
+      "error": {
+        "name": "AssertionError",
+        "message": "research-discovery: direct source-labeled native links missing or changed\n+ actual - expected\n\n  [\n    {\n-     href: '#computation-workspace',\n-     label: 'Compute exact result'\n-   },\n-   {\n-     href: '#research-panel',\n-     label: 'Explore the actual computation'\n-   },\n-   {\n-     href: '#case-exchange',\n-     label: 'Reproducible local cases'\n-   },\n-   {\n      href: '#guide',\n      label: 'Compute, explain, compare and reproduce'\n    },\n    {\n      href: '#links',\n",
+        "stack": "AssertionError [ERR_ASSERTION]: research-discovery: direct source-labeled native links missing or changed\n+ actual - expected\n\n  [\n    {\n-     href: '#computation-workspace',\n-     label: 'Compute exact result'\n-   },\n-   {\n-     href: '#research-panel',\n-     label: 'Explore the actual computation'\n-   },\n-   {\n-     href: '#case-exchange',\n-     label: 'Reproducible local cases'\n-   },\n-   {\n      href: '#guide',\n      label: 'Compute, explain, compare and reproduce'\n    },\n    {\n      href: '#links',\n\n    at researchDiscoveryStructure (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/research-discovery-current.mjs:846:10)\n    at async assertResearchDiscovery (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/research-discovery-current.mjs:859:34)\n    at async withWorkbench.engine.engine (file:///tmp/matmul-sdk4-product-component-successor/discovery-r3.mjs:3:580)\n    at async withWorkbench (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/production-oracle.mjs:100:20)\n    at async file:///tmp/matmul-sdk4-product-component-successor/discovery-r3.mjs:3:66"
+      },
+      "intended": true
+    },
+    {
+      "engine": "webkit",
+      "dom": {
+        "response": "1\tok\t2\t2\t19,22,43,50",
+        "navigation": [
+          {
+            "label": "Compute, explain, compare and reproduce",
+            "href": "#guide"
+          },
+          {
+            "label": "Documentation & source",
+            "href": "#links"
+          }
+        ],
+        "main_order": [
+          "hero",
+          "workspace",
+          "guide",
+          "links",
+          "research-panel",
+          "case-exchange"
+        ]
+      },
+      "error": {
+        "name": "AssertionError",
+        "message": "research-discovery: direct source-labeled native links missing or changed\n+ actual - expected\n\n  [\n    {\n-     href: '#computation-workspace',\n-     label: 'Compute exact result'\n-   },\n-   {\n-     href: '#research-panel',\n-     label: 'Explore the actual computation'\n-   },\n-   {\n-     href: '#case-exchange',\n-     label: 'Reproducible local cases'\n-   },\n-   {\n      href: '#guide',\n      label: 'Compute, explain, compare and reproduce'\n    },\n    {\n      href: '#links',\n",
+        "stack": "AssertionError [ERR_ASSERTION]: research-discovery: direct source-labeled native links missing or changed\n+ actual - expected\n\n  [\n    {\n-     href: '#computation-workspace',\n-     label: 'Compute exact result'\n-   },\n-   {\n-     href: '#research-panel',\n-     label: 'Explore the actual computation'\n-   },\n-   {\n-     href: '#case-exchange',\n-     label: 'Reproducible local cases'\n-   },\n-   {\n      href: '#guide',\n      label: 'Compute, explain, compare and reproduce'\n    },\n    {\n      href: '#links',\n\n    at researchDiscoveryStructure (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/research-discovery-current.mjs:846:10)\n    at runNextTicks (node:internal/process/task_queues:64:5)\n    at process.processImmediate (node:internal/timers:452:9)\n    at process.callbackTrampoline (node:internal/async_hooks:130:17)\n    at async assertResearchDiscovery (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/research-discovery-current.mjs:859:34)\n    at async withWorkbench.engine.engine (file:///tmp/matmul-sdk4-product-component-successor/discovery-r3.mjs:3:580)\n    at async withWorkbench (file:///tmp/matmul-sdk4-product-component-successor/oracle-style-budget/scripts/production-oracle.mjs:100:20)\n    at async file:///tmp/matmul-sdk4-product-component-successor/discovery-r3.mjs:3:66"
+      },
+      "intended": true
+    }
+  ],
+  "status": "actual-preimplementation-red"
+}
