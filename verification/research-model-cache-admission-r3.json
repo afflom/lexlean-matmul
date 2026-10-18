@@ -1,0 +1,31 @@
+{
+  "schema": "lexlean-matmul/research-model-cache-admission-r3/1",
+  "qualification": false,
+  "scope": "Complete actual research helper tests before public model-keyed script admission; isolated URL privacy predicate only, not SDK, product guest or publication qualification.",
+  "capabilities": [
+    "MM-23",
+    "MM-25"
+  ],
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/research-assertions.test.mjs",
+    "scripts/research-oracle.test.mjs"
+  ],
+  "counts": {
+    "tests": 19,
+    "suites": 0,
+    "pass": 18,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "intended_failure": "browser-model-cache: the exact captured script identity must be admitted",
+  "stdout_sha256": "53e85453366b873077e0f2535783a6c8f167085e5f745856799d46ddd6a98b4f",
+  "stderr_bytes": 0,
+  "browser_oracle_sha256": "5f0eb40eea96db49cf529e86f08b1377e0cb511380d0d9d1f8a2cb084b638b19",
+  "tests_sha256": "a75e1b1a729157f9739b1be923371b6739cfb9dfe1cecb5404516f0166b3ed7d"
+}

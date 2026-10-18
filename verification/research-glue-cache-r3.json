@@ -1,0 +1,162 @@
+{
+  "schema": "lexlean-matmul/research-glue-cache-causal-receipt/1",
+  "qualification": false,
+  "status": "diagnostic-reproduced",
+  "scope": "Generic SDK TextV4 initialization/cache lifecycle; adapter fixture performs no mathematics. Not generated product V4, main, deployment or full-vv qualification.",
+  "command": {
+    "argv": [
+      "./scripts/in-sdk.sh",
+      "node",
+      ".prism/matmul/research-glue-cache-diagnostic/check.mjs"
+    ],
+    "cwd": "/home/alex/Desktop/lexlean-matmul",
+    "stdout": {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/stdout",
+      "bytes": 311,
+      "sha256": "87531f0a279946e99efb2602f198fc82e7d979633e5e0459632022e8e84d57cc"
+    },
+    "stderr": {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exit": 0,
+    "gateway": {
+      "path": "/home/alex/Desktop/lexlean-matmul/scripts/in-sdk.sh",
+      "bytes": 1155,
+      "sha256": "3b5dffffcc709e39f34d57535ac4f183617724274d838cd59a55dedbd804adf1"
+    },
+    "lock": {
+      "path": "/home/alex/Desktop/lexlean-matmul/prismpm.lock",
+      "bytes": 257573,
+      "sha256": "371ab8c5549ba8f45b7dd8f7d1248d4afa31cb0857c48ef4f0734623fed49617"
+    },
+    "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+    "image_inspect": {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/sdk-image-inspect.json",
+      "bytes": 3271,
+      "sha256": "4b57070fb1a588a0d5585452d0a209080cc16791adf8ae72227469b9ef341f18"
+    }
+  },
+  "script": {
+    "path": "/tmp/matmul-research-glue-cache-diagnostic/check.mjs",
+    "bytes": 9096,
+    "sha256": "2bee8b2f9bfe151e7991dcacc04532f9cbf5d8cf55b239e6da7c67112c7af4cb"
+  },
+  "runtime_source": {
+    "path": "/tmp/matmul-research-glue-cache-diagnostic/runtime.js",
+    "bytes": 46906,
+    "sha256": "f35edcf34e1608317efecc857e4f186e9c5c559200396309666c6d264abd5be0"
+  },
+  "fixture_model": {
+    "path": "/tmp/matmul-research-glue-cache-diagnostic/model-document.json",
+    "bytes": 109631,
+    "sha256": "9bb9af910b00bfaa3563d246de7dc02d93c77e72968e71e3b6893b35686c1abe"
+  },
+  "raw_result": {
+    "path": "/tmp/matmul-research-glue-cache-diagnostic/result.json",
+    "bytes": 26118,
+    "sha256": "096f9d74ca3bad5a6e5527af8f319d0d0a7ed55d214d8d56ad8c7b27dba76ec0"
+  },
+  "input_and_log_index": [
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/app.js",
+      "bytes": 54074,
+      "sha256": "16023542e22f3898b29256d929e3827f78f639a446b937a216b7e2d43a6e1a01"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/binding-current.js",
+      "bytes": 378,
+      "sha256": "c1aa3e53874017490b537c03da1c0071f9463fb48821396efbec1fea3e3864c3"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/binding-old.js",
+      "bytes": 275,
+      "sha256": "9a307eea1a00eb3f40d5357f8f8bd7154740fc169bed6d23ec0c42167249fe6c"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/check.mjs",
+      "bytes": 9096,
+      "sha256": "2bee8b2f9bfe151e7991dcacc04532f9cbf5d8cf55b239e6da7c67112c7af4cb"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/first-observer-check.mjs",
+      "bytes": 8988,
+      "sha256": "0db8b556da57ea23b70407e69bbf1927a0a384e36e49042054e51e217873af99"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/first-observer-result.json",
+      "bytes": 8242,
+      "sha256": "97dbfa12f658b80bc9c2e2c3f781890a57e6efabf0af5d04c4a6c402f40e7888"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/first-observer-stderr",
+      "bytes": 396,
+      "sha256": "31b091cb2f6c2aa84cb6f4100df3118faeb0d34f3697db7515e4d8b6631ccc71"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/first-observer-stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/model-document.json",
+      "bytes": 109631,
+      "sha256": "9bb9af910b00bfaa3563d246de7dc02d93c77e72968e71e3b6893b35686c1abe"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/result.json",
+      "bytes": 26118,
+      "sha256": "096f9d74ca3bad5a6e5527af8f319d0d0a7ed55d214d8d56ad8c7b27dba76ec0"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/runtime.js",
+      "bytes": 46906,
+      "sha256": "f35edcf34e1608317efecc857e4f186e9c5c559200396309666c6d264abd5be0"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/sdk-image-inspect.json",
+      "bytes": 3271,
+      "sha256": "4b57070fb1a588a0d5585452d0a209080cc16791adf8ae72227469b9ef341f18"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-research-glue-cache-diagnostic/stdout",
+      "bytes": 311,
+      "sha256": "87531f0a279946e99efb2602f198fc82e7d979633e5e0459632022e8e84d57cc"
+    }
+  ],
+  "causal_observations": {
+    "cached_old_binding": {
+      "old_export_model_id": false,
+      "cache_warmup_first_sha256": "9a307eea1a00eb3f40d5357f8f8bd7154740fc169bed6d23ec0c42167249fe6c",
+      "second_warm_server_requests": 0,
+      "actual_worker_state": "load_error",
+      "new_binding_server_gets": 0,
+      "new_wasm_server_gets": 1,
+      "compute_disabled": true
+    },
+    "fresh_current_binding": {
+      "actual_worker_state": "ready",
+      "new_binding_server_gets": 1,
+      "new_wasm_server_gets": 1,
+      "verified_model_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "compute_disabled": false
+    }
+  },
+  "worker_app_coherence": {
+    "observed_server_app_js_requests_per_case": 2,
+    "destinations": [
+      "script",
+      "worker"
+    ],
+    "bytes_identical": true,
+    "response_cache_policy": "no-store",
+    "assessment": "In this actual comparison current main-module and Worker script bytes are coherent. Constructor uses new Worker(new URL(import.meta.url)); no independent stale-Worker-only reproduction or public-host cache-header claim is made."
+  },
+  "observer_correction": "Initial script attempted resource timing on the load-failed Worker after the actual runtime retired it. That diagnostic-only observer exception and original script/result/logs are preserved as first-observer-*; observer now records retirement and uses actual server/body/cache evidence. No runtime/fixture/source behavior changed."
+}
