@@ -35,7 +35,7 @@ Feature: Modeled production reference workbench
     Given the standalone Pages application and its source-owned browser-local and no-history privacy explanation
     When a visitor computes hostile-looking and ordinary operand strings
     Then no operands enter a network request, navigation URL, log, or persistent storage and links follow the source HTTPS policy
-    And script cache keys admit only the exact public captured model identity on the declared app and adapter assets
+    And asset cache keys admit only the exact public captured model identity on the declared app, adapter, and stylesheet assets
 
   @MM-24 @build
   Scenario: Production publication retains the accepted revision and its evidence

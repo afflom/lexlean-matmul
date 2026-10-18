@@ -1,0 +1,80 @@
+{
+  "schema": "lexlean-matmul/research-css-cache-causal-receipt/1",
+  "qualification": false,
+  "status": "diagnostic-reproduced",
+  "scope": "Actual source priorV3/currentV4 stylesheet bytes with minimal structural case-panel fixture. CSS cache/lifecycle only; no product guest computation, generated V4 renderer, public deployment, route, service worker or cache disable.",
+  "command": {
+    "argv": [
+      "./scripts/in-sdk.sh",
+      "node",
+      ".prism/matmul/research-css-cache-diagnostic/check.mjs"
+    ],
+    "cwd": "/home/alex/Desktop/lexlean-matmul",
+    "exit": 0,
+    "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+    "gateway": {
+      "path": "/home/alex/Desktop/lexlean-matmul/scripts/in-sdk.sh",
+      "bytes": 1155,
+      "sha256": "3b5dffffcc709e39f34d57535ac4f183617724274d838cd59a55dedbd804adf1"
+    },
+    "lock": {
+      "path": "/home/alex/Desktop/lexlean-matmul/prismpm.lock",
+      "bytes": 257573,
+      "sha256": "371ab8c5549ba8f45b7dd8f7d1248d4afa31cb0857c48ef4f0734623fed49617"
+    }
+  },
+  "runtime": {
+    "playwright": "1.62.1",
+    "browser_version": "157.0.8099.0",
+    "routing_installed": false,
+    "cdp_cache_disabled": false,
+    "service_worker_installed": false
+  },
+  "causal_observations": [
+    {
+      "label": "warm-prior-v3-css",
+      "computed_min_height": "120px",
+      "observed_css_sha256": "d15030c6d348f2bc8906816414ec8d30feb72c89e3825c169f52fa97a1e5a548",
+      "server_css_gets": 0
+    },
+    {
+      "label": "fresh-current-v4-css",
+      "computed_min_height": "160px",
+      "observed_css_sha256": "c55c586c64feede090d5330306d298b5737649666d2d215d246713992b5fdf0b",
+      "server_css_gets": 1
+    }
+  ],
+  "second_warm_server_requests": 0,
+  "input_and_raw_index": [
+    {
+      "path": "/tmp/matmul-research-css-cache-diagnostic/check.mjs",
+      "bytes": 5750,
+      "sha256": "adab2db91e2e1244c8277f923a54108826bd377c2fe0e064a6433b9a56e62a09"
+    },
+    {
+      "path": "/tmp/matmul-research-css-cache-diagnostic/current-v4.css",
+      "bytes": 7869,
+      "sha256": "c55c586c64feede090d5330306d298b5737649666d2d215d246713992b5fdf0b"
+    },
+    {
+      "path": "/tmp/matmul-research-css-cache-diagnostic/prior-v3.css",
+      "bytes": 7350,
+      "sha256": "d15030c6d348f2bc8906816414ec8d30feb72c89e3825c169f52fa97a1e5a548"
+    },
+    {
+      "path": "/tmp/matmul-research-css-cache-diagnostic/result.json",
+      "bytes": 11169,
+      "sha256": "3a0e5d27dbc9532a4668025c9b8990a160cfda554d4f2a83dbe3870bbce2e61a"
+    },
+    {
+      "path": "/tmp/matmul-research-css-cache-diagnostic/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-research-css-cache-diagnostic/stdout",
+      "bytes": 409,
+      "sha256": "81546d4ddc446c06d593ba5c79c2876a60287cef8a279a9c3d45f52f8e1738a2"
+    }
+  ]
+}

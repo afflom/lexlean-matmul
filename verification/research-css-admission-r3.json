@@ -1,0 +1,41 @@
+{
+  "schema": "lexlean-matmul/research-css-admission-r3/1",
+  "qualification": false,
+  "scope": "Actual complete helper owner before admitting the exact captured model identity query on the stylesheet, after separately reproduced warm old CSS regression. No product or release qualification.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/research-assertions.test.mjs",
+    "scripts/research-oracle.test.mjs"
+  ],
+  "counts": {
+    "tests": 19,
+    "suites": 0,
+    "pass": 18,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "stdout_sha256": "7089755c1bdf2034313c0b541219bfdf8972811e86ea413ad1b85a8620973de5",
+  "stderr_bytes": 0,
+  "browser_oracle_sha256": "5ee5a038a895eea5ced2266fdedc45fa975b5f9038f57ad665ec4f90ba8c8901",
+  "tests_sha256": "49f556718405660cf7d60011d80a2fd40f28d0d68078a421e0b27ae4efa56b9e",
+  "restored": {
+    "counts": {
+      "tests": 19,
+      "suites": 0,
+      "pass": 19,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "stdout_sha256": "030a328191c4ec39238262207eeef17cc282489afa53a210cfb71ce303ae9699",
+    "stderr_bytes": 0,
+    "browser_oracle_sha256": "19377fe062818e88d5f88e37cda61252af91c34da4fbe3910a247d57c3ffa357",
+    "tests_sha256": "49f556718405660cf7d60011d80a2fd40f28d0d68078a421e0b27ae4efa56b9e"
+  }
+}

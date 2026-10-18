@@ -21,7 +21,7 @@ export function capturedBrowserRequest(address, origin, basePath, assetPaths, sc
   if (url.origin !== origin || url.hash || url.username || url.password) return false;
   if (url.search) return typeof scriptIdentity?.modelId === 'string'
     && /^[0-9a-f]{64}$/.test(scriptIdentity.modelId)
-    && ['app.js', scriptIdentity.javascript].some(asset => assetPaths.includes(asset)
+    && ['app.js', 'app.css', scriptIdentity.javascript].some(asset => assetPaths.includes(asset)
       && address === `${origin}${basePath}${asset}?model_id=${scriptIdentity.modelId}`);
   return address === `${origin}${basePath}`
     || assetPaths.some(asset => address === `${origin}${basePath}${asset}`);
