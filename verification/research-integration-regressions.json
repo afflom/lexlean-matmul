@@ -1,0 +1,220 @@
+{
+  "schema": "lexlean-matmul/research-source-diagnostic-failures/1",
+  "qualification": false,
+  "recorded_at": "2026-10-18T16:36:24.073563+00:00",
+  "status": "failed",
+  "scope": "Authentic generated SDK929 TextV3 carrier of pure new research domain functions. No TextV4 renderer/adapter, System/source-free/release/Pages or final-installed-SDK qualification. Original first-run downstream OOB failures after a guest trap are preserved as collateral, not independent bugs. Causal rerun starts an unchanged genuine binding/Wasm instance after each RuntimeError/RangeError and retains all2601cases.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "build_id": "75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391",
+  "executed": 2601,
+  "passed": 2463,
+  "failed": 138,
+  "phases": [
+    {
+      "phase": "trace",
+      "executed": 370,
+      "passed": 322,
+      "failed": 48,
+      "failure_classes": [
+        {
+          "count": 28,
+          "message": "research-status: trace did not succeed\n\n'error' !== 'ok'\n"
+        },
+        {
+          "count": 2,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '228 @ decoded 0'\n- '228 @ 0'\n         ^\n"
+        },
+        {
+          "count": 2,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '228 @ decoded 1'\n- '228 @ 1'\n         ^\n"
+        },
+        {
+          "count": 2,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '228 @ decoded 2'\n- '228 @ 2'\n         ^\n"
+        },
+        {
+          "count": 2,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '228 @ decoded 3'\n- '228 @ 3'\n         ^\n"
+        },
+        {
+          "count": 2,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '57 @ decoded 0'\n- '57 @ 0'\n        ^\n"
+        },
+        {
+          "count": 2,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '57 @ decoded 1'\n- '57 @ 1'\n        ^\n"
+        },
+        {
+          "count": 2,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '57 @ decoded 2'\n- '57 @ 2'\n        ^\n"
+        },
+        {
+          "count": 2,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '57 @ decoded 3'\n- '57 @ 3'\n        ^\n"
+        },
+        {
+          "count": 1,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '0 @ decoded 0'\n- '0 @ 0'\n       ^\n"
+        },
+        {
+          "count": 1,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '0 @ decoded 1'\n- '0 @ 1'\n       ^\n"
+        },
+        {
+          "count": 1,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '0 @ decoded 2'\n- '0 @ 2'\n       ^\n"
+        },
+        {
+          "count": 1,
+          "message": "research-lookup: wrong stored symbol or decoded coordinate\n+ actual - expected\n\n+ '0 @ decoded 3'\n- '0 @ 3'\n       ^\n"
+        }
+      ]
+    },
+    {
+      "phase": "compare",
+      "executed": 24,
+      "passed": 20,
+      "failed": 4,
+      "failure_classes": [
+        {
+          "count": 4,
+          "message": "research-equivalence: actual routes disagree\n+ actual - expected\n\n+ 'different'\n- 'equivalent'\n"
+        }
+      ]
+    },
+    {
+      "phase": "codec",
+      "executed": 2120,
+      "passed": 2112,
+      "failed": 8,
+      "failure_classes": [
+        {
+          "count": 8,
+          "message": "Maximum call stack size exceeded"
+        }
+      ]
+    },
+    {
+      "phase": "codec-negative",
+      "executed": 9,
+      "passed": 5,
+      "failed": 4,
+      "failure_classes": [
+        {
+          "count": 4,
+          "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'research-invalid-inspection'\n- 'research-invalid-tool-input'\n                    ^\n"
+        }
+      ]
+    },
+    {
+      "phase": "ieee",
+      "executed": 30,
+      "passed": 0,
+      "failed": 30,
+      "failure_classes": [
+        {
+          "count": 4,
+          "message": "research-ieee: wrong NaN payload field\n\nundefined !== '0'\n"
+        },
+        {
+          "count": 26,
+          "message": "Maximum call stack size exceeded"
+        }
+      ]
+    },
+    {
+      "phase": "ieee-terminal",
+      "executed": 48,
+      "passed": 4,
+      "failed": 44,
+      "failure_classes": [
+        {
+          "count": 20,
+          "message": "Maximum call stack size exceeded"
+        },
+        {
+          "count": 20,
+          "message": "research-status: trace did not succeed\n\n'error' !== 'ok'\n"
+        },
+        {
+          "count": 4,
+          "message": "research-scalar: ieee 0,0 term0 right: 0 / 2^0 differs from 4503599627370496 / 2^53"
+        }
+      ]
+    }
+  ],
+  "causal_findings": [
+    {
+      "finding": "Research normalization reused UInt32 code parsing and lost f64 source bit patterns.",
+      "owner": "pure research source",
+      "status": "source correction in progress; refreshed actual guest result pending"
+    },
+    {
+      "finding": "Domain display formatting used unary natural-to-integer conversion, causing actual stack overflow for65535 and large IEEE bit/coordinate values.",
+      "owner": "pure research source",
+      "status": "source correction in progress; refreshed actual guest result pending"
+    },
+    {
+      "finding": "Lookup displayed stored mapping used extra literal decoded; four semantic-invalid standalone plans reached inspection instead of tool validation.",
+      "owner": "pure research source",
+      "status": "source correction in progress; strict original oracle retained"
+    },
+    {
+      "finding": "Oracle expected shortened NaN payload label and invented0 for nonNaN; actual frozen source label includes quiet-bit qualifier and says not a NaN.",
+      "owner": "acceptance helper",
+      "status": "corrected exact public display expectation, strengthened exact12field identity/order; all semantic bitfields/terminal/atoms remain independent"
+    }
+  ],
+  "files": [
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/component-artifact.json",
+      "bytes": 4025,
+      "sha256": "966353ca75817bbec9151af7f5f8a93b0a311f6c9f1589e6f654d0730349b426"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/invocation.json",
+      "bytes": 1863,
+      "sha256": "1a657978fa1deea847b522d68f4c3815d342d3eb44f205cb590831f8df2bae31"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/result.json",
+      "bytes": 648028,
+      "sha256": "9aecfe20a0fd4b7d4c0a9d3eaad5cc1d3b3e18bdfd7869e74c87b1c90c85ef25"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/stdout",
+      "bytes": 2840,
+      "sha256": "d5cf41ca2fad6e61aab532b7d149617f287087c8fca57938c469864c4e468c70"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/isolated-invocation.json",
+      "bytes": 2044,
+      "sha256": "2a1aa6dd9b3f8bd269f4736c77071a68e2190290ce95cab378679136a52fa0fa"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/result-isolated.json",
+      "bytes": 766831,
+      "sha256": "4355d117f66cd47945afbfc2c1fb7fe18b3bb0f9f7e8c7c074194d89ee9fccfb"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/isolated-stdout",
+      "bytes": 19377,
+      "sha256": "6045487c6cf27b8746dbedfdbb96e2ce6c124b87f07d6f0f0dbdaf5447c00f3b"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/isolated-stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-domain-check/75d2dec1abcb0316889257c2f4998020d1659dc85d1168ad6e6bb3ceebcf7391/evidence-index.json",
+      "bytes": 5113,
+      "sha256": "464c4fb6be32145ba55408bc0e464feaf6b97ec4d9db0ee8b5b3274b9665b2f1"
+    }
+  ]
+}

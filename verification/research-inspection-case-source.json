@@ -1,0 +1,1088 @@
+{
+  "schema": "lexlean-matmul/research-inspection-case-source/1",
+  "qualification": false,
+  "scope": "Exact nineteen-module source/kernel verification after missing-operand and imported-tool report corrections; excludes generated product guest, final Text-V4 SDK, containing-system, complete acceptance and Pages qualification.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "result": {
+    "artifacts": [
+      ".lexlean/verified/07b1dad6851a58f6942973f1ef9f649d78a9fda1511425e7024ad2792a330dfa"
+    ],
+    "attestation_id": "07b1dad6851a58f6942973f1ef9f649d78a9fda1511425e7024ad2792a330dfa",
+    "build_id": "d67b6d4976027523d6af9ddd61a8f2c3fba82c19d7eebc4ff6da139731015539",
+    "command": "verify",
+    "diagnostics": [],
+    "exit_code": 0,
+    "modules": [
+      "Atlas",
+      "Codec",
+      "CodecProtocol",
+      "Core",
+      "Epilogue",
+      "ExtendedProtocol",
+      "Float",
+      "Model",
+      "Protocol",
+      "Research",
+      "ResearchCases",
+      "ResearchCompare",
+      "ResearchForms",
+      "ResearchInspect",
+      "ResearchJson",
+      "ResearchModel",
+      "ResearchTrace",
+      "ResearchWorkspace",
+      "Workbench"
+    ],
+    "semantic_id": "e222119a65b5e0004fdaf3274b28259c0a1888d77faee553121aaf2a93b534a5",
+    "source_id": "79bcdad1f6bbd869ce3ded0b3c99cd106d895e528368b93a45a53974dfc6bc89",
+    "spec": "lexlean/command-result/1",
+    "success": true
+  },
+  "attestation_sha256": "a23bb4964db5b526d27f7679999e77c1651c18289ff458a3b48ab3dc2ebe5091",
+  "exact_declaration_policies": 1963,
+  "processes": [
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/probe/LexLeanProbe.Pe222119a65b5e0004fdaf3274b28259c.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanProbe.Pe222119a65b5e0004fdaf3274b28259c",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Core.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Core.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Core",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Model.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Model.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Model",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ResearchJson.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ResearchJson.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchJson",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Atlas.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Atlas.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Atlas",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Protocol.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Protocol.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Protocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Float.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Float.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Float",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Codec.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Codec.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Codec",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Epilogue.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Epilogue.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Epilogue",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ExtendedProtocol.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ExtendedProtocol.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ExtendedProtocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/CodecProtocol.olean",
+        "$STAGING/lean-src/LexLeanMatmul/CodecProtocol.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.CodecProtocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ResearchModel.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ResearchModel.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchModel",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Workbench.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Workbench.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Workbench",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ResearchForms.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ResearchForms.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchForms",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ResearchTrace.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ResearchTrace.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchTrace",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ResearchCases.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ResearchCases.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchCases",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ResearchCompare.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ResearchCompare.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchCompare",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ResearchInspect.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ResearchInspect.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchInspect",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/Research.olean",
+        "$STAGING/lean-src/LexLeanMatmul/Research.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Research",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "-R",
+        "$STAGING/lean-src",
+        "-o",
+        "$STAGING/oleans/LexLeanMatmul/ResearchWorkspace.olean",
+        "$STAGING/lean-src/LexLeanMatmul/ResearchWorkspace.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchWorkspace",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Atlas"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Atlas",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Codec"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Codec",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.CodecProtocol"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.CodecProtocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Core"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Core",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Epilogue"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Epilogue",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ExtendedProtocol"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ExtendedProtocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Float"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Float",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Model"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Model",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Protocol"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Protocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Research"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Research",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ResearchCases"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchCases",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ResearchCompare"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchCompare",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ResearchForms"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchForms",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ResearchInspect"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchInspect",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ResearchJson"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchJson",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ResearchModel"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchModel",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ResearchTrace"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchTrace",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.ResearchWorkspace"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.ResearchWorkspace",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "$TOOLCHAIN/bin/leanchecker",
+        "LexLeanMatmul.Workbench"
+      ],
+      "executable_sha256": "c7c51e296d28dd443ed60f9414feef41253ede89dea76dbb2adde29768c3ed5f",
+      "exit_code": 0,
+      "module": "LexLeanMatmul.Workbench",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "\n",
+      "stdout_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "tool": "leanchecker"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Atlas.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Atlas",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Atlas.AtlasAccumulator' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasAddress' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasAtom' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasCoefficient' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasCoefficientList' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasDigit' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasGrade' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasMagnitudeOrder' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasMergeDecision' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasOwnedList1' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasOwnedList2' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasOwnedList3' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasPage' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasProduct' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasValuation' does not depend on any axioms\n'LexLeanMatmul.Atlas.AtlasWord' does not depend on any axioms\n'LexLeanMatmul.Atlas.accumulator' does not depend on any axioms\n'LexLeanMatmul.Atlas.addGrade' does not depend on any axioms\n'LexLeanMatmul.Atlas.addSigned' does not depend on any axioms\n'LexLeanMatmul.Atlas.address' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressFromPage' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressGrade' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripNegative1' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripNegative31' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripNegative32' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripNegative33' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripNegative64' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripNegative65' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripNegative8' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripNegative9' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive0' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive1' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive31' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive32' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive33' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive63' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive64' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive65' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive7' does not depend on any axioms\n'LexLeanMatmul.Atlas.addressRoundTripPositive8' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasAddBitWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasAddBits' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasAddBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasBitLength' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCarryBitWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCarryBits' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCarryBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCarryCoefficientIndex' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCarryCoefficientTerm' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCarryCoefficientWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCarryCoefficients' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCarryFinished' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientAccumulator' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientAt' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientAtomAt' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientAtomCount' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientExtent' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientExtentStep' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientHalf' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientHalfWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientLength' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientMass' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientParity' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCoefficientProduct' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCompareBit' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCompareBits' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasCopyBitWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasEmpty' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasHeadBit' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasLastNonzeroWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasMergeCoefficientRow' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasMergeCoefficientRows' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasMergeCoefficientWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasMergeDecision' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasMergeFinished' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasMergePresent' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasMultiply' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasNormalize' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasNormalizeOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasNormalizedBit' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasNormalizedBitOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasRowCoefficient' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasShiftBitWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasShiftBits' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasShiftBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasSubtractBitWorker' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasSubtractBits' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasSubtractBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasSubtractBorrow' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasSubtractDigit' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasTailBits' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasTailBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasValuationFromOffset' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasValuationPrefix' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasWorkerBitAt' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasWorkerBitLength' does not depend on any axioms\n'LexLeanMatmul.Atlas.atlasZero' does not depend on any axioms\n'LexLeanMatmul.Atlas.atoms' does not depend on any axioms\n'LexLeanMatmul.Atlas.atomsAt' does not depend on any axioms\n'LexLeanMatmul.Atlas.atomsAtOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.atomsOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.bitCarry' does not depend on any axioms\n'LexLeanMatmul.Atlas.canonicalWord' does not depend on any axioms\n'LexLeanMatmul.Atlas.canonicalZero' does not depend on any axioms\n'LexLeanMatmul.Atlas.contractAtoms' does not depend on any axioms\n'LexLeanMatmul.Atlas.contractRow' does not depend on any axioms\n'LexLeanMatmul.Atlas.copyWorkerPreservesPrefix' does not depend on any axioms\n'LexLeanMatmul.Atlas.copyWorkerZeroFuel' does not depend on any axioms\n'LexLeanMatmul.Atlas.difference' does not depend on any axioms\n'LexLeanMatmul.Atlas.digitProduct' does not depend on any axioms\n'LexLeanMatmul.Atlas.digitProductCommutative' does not depend on any axioms\n'LexLeanMatmul.Atlas.gradeFromOffsets' does not depend on any axioms\n'LexLeanMatmul.Atlas.gradeLedgerCombinesEqualPositions' does not depend on any axioms\n'LexLeanMatmul.Atlas.gradeLedgerEmpty' does not depend on any axioms\n'LexLeanMatmul.Atlas.gradeLedgerPreservesSparseGap' does not depend on any axioms\n'LexLeanMatmul.Atlas.gradeLedgerPropagatesCarry' does not depend on any axioms\n'LexLeanMatmul.Atlas.gradeLedgerSignedCancellation' does not depend on any axioms\n'LexLeanMatmul.Atlas.incrementBits' does not depend on any axioms\n'LexLeanMatmul.Atlas.incrementBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.leftZeroProduct' does not depend on any axioms\n'LexLeanMatmul.Atlas.lookupProductCase0' does not depend on any axioms\n'LexLeanMatmul.Atlas.lookupProductCase1' does not depend on any axioms\n'LexLeanMatmul.Atlas.lookupProductCase2' does not depend on any axioms\n'LexLeanMatmul.Atlas.lookupProductCase3' does not depend on any axioms\n'LexLeanMatmul.Atlas.lookupProductCase4' does not depend on any axioms\n'LexLeanMatmul.Atlas.lookupProductCase5' does not depend on any axioms\n'LexLeanMatmul.Atlas.lookupProductCase6' does not depend on any axioms\n'LexLeanMatmul.Atlas.makeGrade' does not depend on any axioms\n'LexLeanMatmul.Atlas.modality' does not depend on any axioms\n'LexLeanMatmul.Atlas.modalityMu' does not depend on any axioms\n'LexLeanMatmul.Atlas.mu' does not depend on any axioms\n'LexLeanMatmul.Atlas.muInvolutive' does not depend on any axioms\n'LexLeanMatmul.Atlas.multiplyWords' does not depend on any axioms\n'LexLeanMatmul.Atlas.naf64BitOnesNonAdjacent' does not depend on any axioms\n'LexLeanMatmul.Atlas.nafDigits' does not depend on any axioms\n'LexLeanMatmul.Atlas.nafDigitsOwned' does not depend on any axioms\n'LexLeanMatmul.Atlas.nafSeven' does not depend on any axioms\n'LexLeanMatmul.Atlas.nafThree' does not depend on any axioms\n'LexLeanMatmul.Atlas.negateGrade' does not depend on any axioms\n'LexLeanMatmul.Atlas.negativeGradeAddress' does not depend on any axioms\n'LexLeanMatmul.Atlas.nextGrade' does not depend on any axioms\n'LexLeanMatmul.Atlas.nonAdjacent' does not depend on any axioms\n'LexLeanMatmul.Atlas.normalizationRetainsLowZeros' does not depend on any axioms\n'LexLeanMatmul.Atlas.offer' does not depend on any axioms\n'LexLeanMatmul.Atlas.pageOf' does not depend on any axioms\n'LexLeanMatmul.Atlas.pageStep' does not depend on any axioms\n'LexLeanMatmul.Atlas.parity' does not depend on any axioms\n'LexLeanMatmul.Atlas.place' does not depend on any axioms\n'LexLeanMatmul.Atlas.productUnits' does not depend on any axioms\n'LexLeanMatmul.Atlas.reconstruct' does not depend on any axioms\n'LexLeanMatmul.Atlas.reconstructAtoms' does not depend on any axioms\n'LexLeanMatmul.Atlas.reconstructNegative3Scale2' does not depend on any axioms\n'LexLeanMatmul.Atlas.reconstructNegative7Scale0' does not depend on any axioms\n'LexLeanMatmul.Atlas.reconstructPositive0Scale17' does not depend on any axioms\n'LexLeanMatmul.Atlas.reconstructPositive12Scale1' does not depend on any axioms\n'LexLeanMatmul.Atlas.reconstructPositive37Scale11' does not depend on any axioms\n'LexLeanMatmul.Atlas.reconstructPositive3Scale2' does not depend on any axioms\n'LexLeanMatmul.Atlas.scopeOf' does not depend on any axioms\n'LexLeanMatmul.Atlas.scopeStep' does not depend on any axioms\n'LexLeanMatmul.Atlas.stripStep' does not depend on any axioms\n'LexLeanMatmul.Atlas.stripValuation' does not depend on any axioms\n'LexLeanMatmul.Atlas.subtractWorkerPropagatesBorrow' does not depend on any axioms\n'LexLeanMatmul.Atlas.timesPowerOfTwo' does not depend on any axioms\n'LexLeanMatmul.Atlas.valuationAllZeroKeepsExtent' does not depend on any axioms\n'LexLeanMatmul.Atlas.valuationPreservesUnitTrailingZero' does not depend on any axioms\n'LexLeanMatmul.Atlas.valuationTwelveHalves' does not depend on any axioms\n'LexLeanMatmul.Atlas.wordFromValuation' does not depend on any axioms\n'LexLeanMatmul.Atlas.workerPredecessor' does not depend on any axioms\n'LexLeanMatmul.Atlas.zeroAbsorbsProduct' does not depend on any axioms\n'LexLeanMatmul.Atlas.zeroOfferPreservesAccumulator' does not depend on any axioms\n",
+      "stdout_sha256": "ab2290b3f6cfaa4bcc9b794ddd645a4440aaeeb75f8fc296dc98e4a6c9b32940",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Codec.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Codec",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Codec.CodecDecodedWord' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecDecodedWords' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecError' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecKind' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecMatrix' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecNode' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecOwnedList1' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecOwnedList2' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecOwnedList3' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecOwnedList4' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecPlan' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecProduct' does not depend on any axioms\n'LexLeanMatmul.Codec.CodecRun' does not depend on any axioms\n'LexLeanMatmul.Codec.activationRow' does not depend on any axioms\n'LexLeanMatmul.Codec.activationRowOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.arenaCodes' does not depend on any axioms\n'LexLeanMatmul.Codec.arenaCodesOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.arenaLookupModulo' does not depend on any axioms\n'LexLeanMatmul.Codec.bookModulo' does not depend on any axioms\n'LexLeanMatmul.Codec.canonicalArena' does not depend on any axioms\n'LexLeanMatmul.Codec.canonicalArenaPreservesPatterns' does not depend on any axioms\n'LexLeanMatmul.Codec.canonicalNaturals' does not depend on any axioms\n'LexLeanMatmul.Codec.canonicalNaturalsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.checkedArenaValues' does not depend on any axioms\n'LexLeanMatmul.Codec.checkedDecode' does not depend on any axioms\n'LexLeanMatmul.Codec.codeWidth' does not depend on any axioms\n'LexLeanMatmul.Codec.codecCheckedMultiply' does not depend on any axioms\n'LexLeanMatmul.Codec.codecCheckedTableMultiply' does not depend on any axioms\n'LexLeanMatmul.Codec.codecDecodeWordsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.codecDecodeWordsWorker' does not depend on any axioms\n'LexLeanMatmul.Codec.codecDecodedWord' does not depend on any axioms\n'LexLeanMatmul.Codec.codecDirectArithmeticBoundary' does not depend on any axioms\n'LexLeanMatmul.Codec.codecDirectExact' depends on axioms: [propext]\n'LexLeanMatmul.Codec.codecIntegerAt' does not depend on any axioms\n'LexLeanMatmul.Codec.codecPowerTwo' does not depend on any axioms\n'LexLeanMatmul.Codec.codecPreparedWordModulo' does not depend on any axioms\n'LexLeanMatmul.Codec.codecPreparedWordProducts' does not depend on any axioms\n'LexLeanMatmul.Codec.codecPreparedWordsEmpty' does not depend on any axioms\n'LexLeanMatmul.Codec.codecProductTable' does not depend on any axioms\n'LexLeanMatmul.Codec.codecProductTableOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.codecScaleDecodedAt' does not depend on any axioms\n'LexLeanMatmul.Codec.codecScaleDecodedWord' does not depend on any axioms\n'LexLeanMatmul.Codec.codecScaleDecodedWordsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.codecScaleDecodedWordsWorker' does not depend on any axioms\n'LexLeanMatmul.Codec.codecTableArithmeticBoundary' does not depend on any axioms\n'LexLeanMatmul.Codec.codecTableDecodedCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.codecTableExact' depends on axioms: [propext]\n'LexLeanMatmul.Codec.codecTableMultiply' does not depend on any axioms\n'LexLeanMatmul.Codec.codecValidDigits' does not depend on any axioms\n'LexLeanMatmul.Codec.codecValidInteger' does not depend on any axioms\n'LexLeanMatmul.Codec.codecValidIntegerList' does not depend on any axioms\n'LexLeanMatmul.Codec.codecValidMatrix' does not depend on any axioms\n'LexLeanMatmul.Codec.codecValidWords' does not depend on any axioms\n'LexLeanMatmul.Codec.codecWeightedDecodedRowsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.decodeCodes' does not depend on any axioms\n'LexLeanMatmul.Codec.decodeCodesOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.decodeElement' does not depend on any axioms\n'LexLeanMatmul.Codec.decodeLength' does not depend on any axioms\n'LexLeanMatmul.Codec.decodeRows' does not depend on any axioms\n'LexLeanMatmul.Codec.decodeRowsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.decodeWord' does not depend on any axioms\n'LexLeanMatmul.Codec.decodeWordOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.decodedMatrix' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Chunk0' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Chunk1' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Chunk2' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Chunk3' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Chunk4' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Chunk5' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Chunk6' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Chunk7' does not depend on any axioms\n'LexLeanMatmul.Codec.e8ExactShape' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row0' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row0Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row1' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row10' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row100' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row100Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row101' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row101Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row102' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row102Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row103' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row103Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row104' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row104Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row105' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row105Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row106' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row106Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row107' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row107Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row108' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row108Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row109' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row109Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row10Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row11' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row110' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row110Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row111' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row111Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row112' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row112Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row113' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row113Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row114' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row114Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row115' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row115Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row116' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row116Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row117' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row117Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row118' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row118Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row119' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row119Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row11Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row12' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row120' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row120Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row121' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row121Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row122' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row122Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row123' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row123Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row124' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row124Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row125' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row125Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row126' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row126Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row127' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row127Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row128' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row128Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row129' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row129Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row12Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row13' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row130' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row130Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row131' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row131Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row132' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row132Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row133' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row133Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row134' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row134Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row135' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row135Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row136' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row136Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row137' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row137Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row138' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row138Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row139' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row139Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row13Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row14' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row140' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row140Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row141' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row141Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row142' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row142Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row143' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row143Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row144' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row144Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row145' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row145Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row146' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row146Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row147' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row147Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row148' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row148Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row149' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row149Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row14Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row15' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row150' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row150Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row151' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row151Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row152' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row152Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row153' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row153Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row154' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row154Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row155' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row155Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row156' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row156Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row157' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row157Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row158' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row158Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row159' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row159Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row15Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row16' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row160' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row160Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row161' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row161Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row162' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row162Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row163' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row163Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row164' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row164Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row165' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row165Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row166' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row166Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row167' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row167Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row168' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row168Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row169' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row169Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row16Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row17' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row170' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row170Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row171' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row171Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row172' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row172Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row173' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row173Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row174' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row174Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row175' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row175Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row176' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row176Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row177' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row177Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row178' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row178Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row179' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row179Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row17Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row18' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row180' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row180Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row181' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row181Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row182' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row182Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row183' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row183Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row184' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row184Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row185' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row185Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row186' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row186Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row187' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row187Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row188' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row188Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row189' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row189Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row18Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row19' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row190' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row190Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row191' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row191Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row192' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row192Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row193' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row193Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row194' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row194Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row195' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row195Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row196' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row196Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row197' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row197Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row198' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row198Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row199' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row199Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row19Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row1Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row2' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row20' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row200' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row200Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row201' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row201Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row202' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row202Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row203' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row203Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row204' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row204Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row205' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row205Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row206' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row206Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row207' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row207Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row208' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row208Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row209' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row209Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row20Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row21' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row210' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row210Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row211' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row211Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row212' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row212Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row213' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row213Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row214' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row214Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row215' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row215Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row216' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row216Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row217' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row217Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row218' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row218Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row219' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row219Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row21Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row22' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row220' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row220Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row221' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row221Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row222' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row222Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row223' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row223Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row224' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row224Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row225' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row225Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row226' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row226Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row227' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row227Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row228' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row228Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row229' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row229Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row22Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row23' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row230' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row230Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row231' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row231Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row232' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row232Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row233' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row233Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row234' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row234Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row235' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row235Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row236' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row236Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row237' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row237Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row238' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row238Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row239' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row239Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row23Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row24' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row240' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row240Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row241' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row241Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row242' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row242Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row243' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row243Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row244' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row244Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row245' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row245Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row246' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row246Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row247' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row247Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row248' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row248Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row249' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row249Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row24Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row25' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row250' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row250Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row251' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row251Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row252' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row252Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row253' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row253Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row254' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row254Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row255' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row255Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row25Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row26' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row26Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row27' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row27Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row28' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row28Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row29' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row29Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row2Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row3' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row30' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row30Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row31' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row31Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row32' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row32Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row33' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row33Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row34' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row34Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row35' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row35Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row36' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row36Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row37' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row37Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row38' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row38Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row39' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row39Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row3Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row4' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row40' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row40Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row41' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row41Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row42' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row42Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row43' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row43Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row44' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row44Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row45' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row45Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row46' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row46Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row47' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row47Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row48' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row48Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row49' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row49Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row4Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row5' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row50' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row50Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row51' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row51Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row52' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row52Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row53' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row53Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row54' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row54Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row55' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row55Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row56' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row56Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row57' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row57Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row58' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row58Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row59' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row59Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row5Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row6' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row60' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row60Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row61' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row61Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row62' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row62Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row63' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row63Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row64' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row64Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row65' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row65Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row66' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row66Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row67' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row67Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row68' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row68Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row69' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row69Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row6Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row7' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row70' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row70Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row71' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row71Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row72' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row72Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row73' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row73Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row74' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row74Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row75' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row75Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row76' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row76Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row77' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row77Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row78' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row78Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row79' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row79Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row7Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row8' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row80' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row80Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row81' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row81Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row82' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row82Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row83' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row83Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row84' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row84Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row85' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row85Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row86' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row86Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row87' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row87Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row88' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row88Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row89' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row89Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row8Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row9' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row90' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row90Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row91' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row91Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row92' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row92Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row93' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row93Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row94' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row94Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row95' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row95Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row96' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row96Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row97' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row97Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row98' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row98Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row99' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row99Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Row9Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select0' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select0Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select1' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select1Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select2' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select2Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select3' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select3Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select4' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select4Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select5' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select5Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select6' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select6Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select7' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Select7Owned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Word' does not depend on any axioms\n'LexLeanMatmul.Codec.e8WordOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.e8Words' does not depend on any axioms\n'LexLeanMatmul.Codec.e8ZeroOrigin' does not depend on any axioms\n'LexLeanMatmul.Codec.emptyNode' does not depend on any axioms\n'LexLeanMatmul.Codec.fitsRow' does not depend on any axioms\n'LexLeanMatmul.Codec.fixedWidth' does not depend on any axioms\n'LexLeanMatmul.Codec.gatherOutputRow' does not depend on any axioms\n'LexLeanMatmul.Codec.gatherOutputRowOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.gatherProducts' does not depend on any axioms\n'LexLeanMatmul.Codec.gatherProductsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.gridModulo' does not depend on any axioms\n'LexLeanMatmul.Codec.insertNatural' does not depend on any axioms\n'LexLeanMatmul.Codec.insertNaturalOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.maximumBlock' does not depend on any axioms\n'LexLeanMatmul.Codec.naturalAt' does not depend on any axioms\n'LexLeanMatmul.Codec.nodeAt' does not depend on any axioms\n'LexLeanMatmul.Codec.offsetArithmeticBoundary' does not depend on any axioms\n'LexLeanMatmul.Codec.offsetExact' depends on axioms: [propext]\n'LexLeanMatmul.Codec.packedLowFirst' does not depend on any axioms\n'LexLeanMatmul.Codec.productAt' does not depend on any axioms\n'LexLeanMatmul.Codec.productAtOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsBlockOverflow' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsEmptyRunSymbol' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsForwardReference' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsHugeDecodedWordBeforeAllocation' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsInvalidCode' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsInvalidPlan' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsLongRun' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsNonconformant' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsOutputCapacityOverflow' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsPackedParameter' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsPartialFixedRow' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsShapeMismatch' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsTableOutputCapacityOverflow' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsTranscodeRange' does not depend on any axioms\n'LexLeanMatmul.Codec.rejectsZeroRun' does not depend on any axioms\n'LexLeanMatmul.Codec.representableProduct' does not depend on any axioms\n'LexLeanMatmul.Codec.runAt' does not depend on any axioms\n'LexLeanMatmul.Codec.runsPastEndEmpty' does not depend on any axioms\n'LexLeanMatmul.Codec.runsRepeatWholeWord' does not depend on any axioms\n'LexLeanMatmul.Codec.scaleWord' does not depend on any axioms\n'LexLeanMatmul.Codec.scaleWordOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.signClearsBeyondCodeWidth' does not depend on any axioms\n'LexLeanMatmul.Codec.signLowBits' does not depend on any axioms\n'LexLeanMatmul.Codec.storedCodes' does not depend on any axioms\n'LexLeanMatmul.Codec.storedCodesOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.sumColumn' does not depend on any axioms\n'LexLeanMatmul.Codec.tableCells' does not depend on any axioms\n'LexLeanMatmul.Codec.tableCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.ternaryClearsBeyondCodeWidth' does not depend on any axioms\n'LexLeanMatmul.Codec.ternaryDeadDigit' does not depend on any axioms\n'LexLeanMatmul.Codec.transcodeTotalModulo' does not depend on any axioms\n'LexLeanMatmul.Codec.validIeeeCode' does not depend on any axioms\n'LexLeanMatmul.Codec.validIeeeCodes' does not depend on any axioms\n'LexLeanMatmul.Codec.validNaturalCodes' does not depend on any axioms\n'LexLeanMatmul.Codec.validNode' does not depend on any axioms\n'LexLeanMatmul.Codec.validNodes' does not depend on any axioms\n'LexLeanMatmul.Codec.validPlan' does not depend on any axioms\n'LexLeanMatmul.Codec.validRowLengths' does not depend on any axioms\n'LexLeanMatmul.Codec.validRuns' does not depend on any axioms\n'LexLeanMatmul.Codec.validStoredCodes' does not depend on any axioms\n'LexLeanMatmul.Codec.validWidth' does not depend on any axioms\n'LexLeanMatmul.Codec.validateEncoded' does not depend on any axioms\n'LexLeanMatmul.Codec.weightedRows' does not depend on any axioms\n'LexLeanMatmul.Codec.weightedRowsOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.wordAt' does not depend on any axioms\n'LexLeanMatmul.Codec.wordAtOwned' does not depend on any axioms\n'LexLeanMatmul.Codec.wordElements' does not depend on any axioms\n'LexLeanMatmul.Codec.wordElementsOwned' does not depend on any axioms\n",
+      "stdout_sha256": "e5808be148e12a75831f14d066e9b3de2806465cbda1ff8353b8d15d0731eed7",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.CodecProtocol.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.CodecProtocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.CodecProtocol.CodecProtocolOwnedList1' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.CodecProtocolOwnedList2' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.CodecProtocolOwnedList3' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.appendNode' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.appendNodeOwned' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.arenaProduct' depends on axioms: [propext]\n'LexLeanMatmul.CodecProtocol.codecProtocolDispatch' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.codecProtocolDispatchFields' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.codecProtocolValidCodes' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.codecResult' depends on axioms: [propext]\n'LexLeanMatmul.CodecProtocol.codesAtWidth' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.moduloCodes' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.moduloCodesOwned' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.parseArena' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseBook' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseCodec' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseCodes' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseE8' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.parseGrid' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseOffset' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.parsePacked' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.parsePlan' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseRunFields' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.parseRunNode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseRuns' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.parseSign' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.parseStage' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseStages' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseStored' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseStoredParts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseTernary' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.parseTranscode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseWordParts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.parseWords' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.CodecProtocol.singleWords' does not depend on any axioms\n'LexLeanMatmul.CodecProtocol.singleWordsOwned' does not depend on any axioms\n",
+      "stdout_sha256": "7141124aba1fecb45257dc7db418bc206f4fde81fbaf77b893f9149df716a296",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Core.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Core",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Core.BigInt' does not depend on any axioms\n'LexLeanMatmul.Core.BinarySymbol' does not depend on any axioms\n'LexLeanMatmul.Core.BlockCodebook' does not depend on any axioms\n'LexLeanMatmul.Core.Complex' does not depend on any axioms\n'LexLeanMatmul.Core.ComplexMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.CoreOwnedList1' does not depend on any axioms\n'LexLeanMatmul.Core.CoreOwnedList2' does not depend on any axioms\n'LexLeanMatmul.Core.CoreOwnedList3' does not depend on any axioms\n'LexLeanMatmul.Core.CoreOwnedList4' does not depend on any axioms\n'LexLeanMatmul.Core.CoreOwnedList5' does not depend on any axioms\n'LexLeanMatmul.Core.CoreOwnedList6' does not depend on any axioms\n'LexLeanMatmul.Core.Dyadic' does not depend on any axioms\n'LexLeanMatmul.Core.DyadicMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.MagnitudeOrder' does not depend on any axioms\n'LexLeanMatmul.Core.Matrix' does not depend on any axioms\n'LexLeanMatmul.Core.MatrixError' does not depend on any axioms\n'LexLeanMatmul.Core.Selection' does not depend on any axioms\n'LexLeanMatmul.Core.Tropical' does not depend on any axioms\n'LexLeanMatmul.Core.TropicalMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.addCarry' does not depend on any axioms\n'LexLeanMatmul.Core.addCarryOwned' does not depend on any axioms\n'LexLeanMatmul.Core.addDigits' does not depend on any axioms\n'LexLeanMatmul.Core.addDigitsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.binaryCode' does not depend on any axioms\n'LexLeanMatmul.Core.binaryTranscodeElement' does not depend on any axioms\n'LexLeanMatmul.Core.blockCount' does not depend on any axioms\n'LexLeanMatmul.Core.blockDot' does not depend on any axioms\n'LexLeanMatmul.Core.blockGatherCells' does not depend on any axioms\n'LexLeanMatmul.Core.blockGatherCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.blockGatherDot' does not depend on any axioms\n'LexLeanMatmul.Core.blockTableMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.blockTablePartialTail' does not depend on any axioms\n'LexLeanMatmul.Core.buildBlockTable' does not depend on any axioms\n'LexLeanMatmul.Core.buildBlockTableOwned' does not depend on any axioms\n'LexLeanMatmul.Core.buildProductRow' does not depend on any axioms\n'LexLeanMatmul.Core.buildProductRowOwned' does not depend on any axioms\n'LexLeanMatmul.Core.buildProductTable' does not depend on any axioms\n'LexLeanMatmul.Core.buildProductTableOwned' does not depend on any axioms\n'LexLeanMatmul.Core.buildWordProducts' does not depend on any axioms\n'LexLeanMatmul.Core.buildWordProductsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.canonicalInteger' does not depend on any axioms\n'LexLeanMatmul.Core.carryChain' does not depend on any axioms\n'LexLeanMatmul.Core.checkedBlockTableMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.checkedComplexMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.checkedDyadicMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.checkedGemm' does not depend on any axioms\n'LexLeanMatmul.Core.checkedMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.checkedPartitionedMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.checkedRecenter' does not depend on any axioms\n'LexLeanMatmul.Core.checkedTableMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.checkedTropicalMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.codecDecode' does not depend on any axioms\n'LexLeanMatmul.Core.compareDigit' does not depend on any axioms\n'LexLeanMatmul.Core.compareMagnitude' does not depend on any axioms\n'LexLeanMatmul.Core.complexAdd' does not depend on any axioms\n'LexLeanMatmul.Core.complexAt' does not depend on any axioms\n'LexLeanMatmul.Core.complexCell' does not depend on any axioms\n'LexLeanMatmul.Core.complexCells' does not depend on any axioms\n'LexLeanMatmul.Core.complexCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.complexDot' does not depend on any axioms\n'LexLeanMatmul.Core.complexMatrixMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.complexMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.complexProduct' does not depend on any axioms\n'LexLeanMatmul.Core.complexZero' does not depend on any axioms\n'LexLeanMatmul.Core.consParsedDigit' does not depend on any axioms\n'LexLeanMatmul.Core.copyDigits' does not depend on any axioms\n'LexLeanMatmul.Core.copyDigitsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.copyDigitsPreserves' depends on axioms: [propext]\n'LexLeanMatmul.Core.copyDigitsPreservesOwned' depends on axioms: [propext]\n'LexLeanMatmul.Core.decimalByte' does not depend on any axioms\n'LexLeanMatmul.Core.decodeBinarySymbols' does not depend on any axioms\n'LexLeanMatmul.Core.decodeBinarySymbolsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.decodeCells' does not depend on any axioms\n'LexLeanMatmul.Core.decodeCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.decodeCons' does not depend on any axioms\n'LexLeanMatmul.Core.decodeMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.decodePreservesCardinality' depends on axioms: [propext]\n'LexLeanMatmul.Core.decodePreservesCardinalityOwned' depends on axioms: [propext]\n'LexLeanMatmul.Core.decodeTernarySymbols' does not depend on any axioms\n'LexLeanMatmul.Core.decodeTernarySymbolsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.digitHead' does not depend on any axioms\n'LexLeanMatmul.Core.digitTail' does not depend on any axioms\n'LexLeanMatmul.Core.digitTailOwned' does not depend on any axioms\n'LexLeanMatmul.Core.digitText' does not depend on any axioms\n'LexLeanMatmul.Core.digitsEmpty' does not depend on any axioms\n'LexLeanMatmul.Core.digitsEqual' does not depend on any axioms\n'LexLeanMatmul.Core.dot' does not depend on any axioms\n'LexLeanMatmul.Core.dotCons' does not depend on any axioms\n'LexLeanMatmul.Core.dotEmpty' does not depend on any axioms\n'LexLeanMatmul.Core.dotRange' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicAdd' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicAt' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicAtScale' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicCancellation' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicCell' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicCells' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicColumnScalesSafe' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicDot' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicDotProduct' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicMatrixMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicPlacement' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicProductScalesSafe' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicScaleChecksOnlyMultipliedPairs' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicScaleSumBoundary' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicScaleSumOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicShift' does not depend on any axioms\n'LexLeanMatmul.Core.dyadicZero' does not depend on any axioms\n'LexLeanMatmul.Core.finite' does not depend on any axioms\n'LexLeanMatmul.Core.formatDigits' depends on axioms: [propext]\n'LexLeanMatmul.Core.formatInteger' depends on axioms: [propext]\n'LexLeanMatmul.Core.gatherCells' does not depend on any axioms\n'LexLeanMatmul.Core.gatherCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.gatherDot' does not depend on any axioms\n'LexLeanMatmul.Core.gemm' does not depend on any axioms\n'LexLeanMatmul.Core.identityCodecElement' does not depend on any axioms\n'LexLeanMatmul.Core.identityCodecPreservesStream' depends on axioms: [propext]\n'LexLeanMatmul.Core.identityCodecPreservesStreamOwned' depends on axioms: [propext]\n'LexLeanMatmul.Core.integerAdd' does not depend on any axioms\n'LexLeanMatmul.Core.integerAt' does not depend on any axioms\n'LexLeanMatmul.Core.integerEqual' does not depend on any axioms\n'LexLeanMatmul.Core.integerLessEqual' does not depend on any axioms\n'LexLeanMatmul.Core.integerListLength' does not depend on any axioms\n'LexLeanMatmul.Core.integerMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.integerNegate' does not depend on any axioms\n'LexLeanMatmul.Core.integerSubtract' does not depend on any axioms\n'LexLeanMatmul.Core.isZero' does not depend on any axioms\n'LexLeanMatmul.Core.largeProduct' does not depend on any axioms\n'LexLeanMatmul.Core.leastWitnessTie' does not depend on any axioms\n'LexLeanMatmul.Core.linearCell' does not depend on any axioms\n'LexLeanMatmul.Core.linearCells' does not depend on any axioms\n'LexLeanMatmul.Core.linearCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.linearEpilogueTwoByTwo' does not depend on any axioms\n'LexLeanMatmul.Core.makeInteger' does not depend on any axioms\n'LexLeanMatmul.Core.maskAbsorbs' does not depend on any axioms\n'LexLeanMatmul.Core.maskTropical' does not depend on any axioms\n'LexLeanMatmul.Core.maskedWitness' does not depend on any axioms\n'LexLeanMatmul.Core.matrixAt' does not depend on any axioms\n'LexLeanMatmul.Core.matrixMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.matrixProductTwoByTwo' does not depend on any axioms\n'LexLeanMatmul.Core.maximum' does not depend on any axioms\n'LexLeanMatmul.Core.minimum' does not depend on any axioms\n'LexLeanMatmul.Core.multiplyDigit' does not depend on any axioms\n'LexLeanMatmul.Core.multiplyDigitOwned' does not depend on any axioms\n'LexLeanMatmul.Core.multiplyDigits' does not depend on any axioms\n'LexLeanMatmul.Core.multiplyDigitsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.negativeInfinity' does not depend on any axioms\n'LexLeanMatmul.Core.negativeSum' does not depend on any axioms\n'LexLeanMatmul.Core.normalizeDigits' does not depend on any axioms\n'LexLeanMatmul.Core.normalizeDigitsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.normalizedCons' does not depend on any axioms\n'LexLeanMatmul.Core.normalizedConsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.one' does not depend on any axioms\n'LexLeanMatmul.Core.oppositeSigns' does not depend on any axioms\n'LexLeanMatmul.Core.outputGeometryBoundary' does not depend on any axioms\n'LexLeanMatmul.Core.outputGeometryOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.outputGeometryZeroReduction' does not depend on any axioms\n'LexLeanMatmul.Core.overwriteIgnoresOld' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitAddLoop' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitAt' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitCopyLoop' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitCount' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitExtent' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitExtentStep' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitMultiplyLoop' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitPredecessor' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitSubtractBorrow' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitSubtractDigit' does not depend on any axioms\n'LexLeanMatmul.Core.ownedDigitSubtractLoop' does not depend on any axioms\n'LexLeanMatmul.Core.parseBytes' does not depend on any axioms\n'LexLeanMatmul.Core.parseDigits' does not depend on any axioms\n'LexLeanMatmul.Core.parseInteger' does not depend on any axioms\n'LexLeanMatmul.Core.parseMatches' does not depend on any axioms\n'LexLeanMatmul.Core.parseUnsignedPart' does not depend on any axioms\n'LexLeanMatmul.Core.parsedInteger' does not depend on any axioms\n'LexLeanMatmul.Core.partialBlockProduct' does not depend on any axioms\n'LexLeanMatmul.Core.partitionedMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.positiveBlock' does not depend on any axioms\n'LexLeanMatmul.Core.powerTwo' does not depend on any axioms\n'LexLeanMatmul.Core.productCells' does not depend on any axioms\n'LexLeanMatmul.Core.productCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.productRowAt' does not depend on any axioms\n'LexLeanMatmul.Core.productRowAtOwned' does not depend on any axioms\n'LexLeanMatmul.Core.recenter' does not depend on any axioms\n'LexLeanMatmul.Core.recenterExample' does not depend on any axioms\n'LexLeanMatmul.Core.recenterFrom' does not depend on any axioms\n'LexLeanMatmul.Core.recenterFromOwned' does not depend on any axioms\n'LexLeanMatmul.Core.recenterOwned' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsBlockTableOutputOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsComplexOutputOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsDyadicOutputOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsDyadicScaleOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsEmptyBlockCodebook' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsEmptyTableCodebook' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsGemmOutputOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsMalformedBlockWord' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsMalformedMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsNonconformantProduct' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsOutOfBookCode' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsOutputGeometryOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsPartitionedOutputOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsTableOutputOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsTropicalOutputOverflow' does not depend on any axioms\n'LexLeanMatmul.Core.rejectsZeroWidthBlockCodebook' does not depend on any axioms\n'LexLeanMatmul.Core.representableGeometry' does not depend on any axioms\n'LexLeanMatmul.Core.representableScaleSum' does not depend on any axioms\n'LexLeanMatmul.Core.scaleCells' does not depend on any axioms\n'LexLeanMatmul.Core.scaleCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.selectedCell' does not depend on any axioms\n'LexLeanMatmul.Core.selectionChoose' does not depend on any axioms\n'LexLeanMatmul.Core.signedMinimumIsFinite' does not depend on any axioms\n'LexLeanMatmul.Core.subtractDigits' does not depend on any axioms\n'LexLeanMatmul.Core.subtractDigitsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.sumIntegers' does not depend on any axioms\n'LexLeanMatmul.Core.tableLookup' does not depend on any axioms\n'LexLeanMatmul.Core.tableMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.tableRowCons' does not depend on any axioms\n'LexLeanMatmul.Core.tabulatedProduct' does not depend on any axioms\n'LexLeanMatmul.Core.ternaryCode' does not depend on any axioms\n'LexLeanMatmul.Core.ternaryDecode' does not depend on any axioms\n'LexLeanMatmul.Core.transcodePreservesDecodedStream' depends on axioms: [propext]\n'LexLeanMatmul.Core.transcodePreservesDecodedStreamOwned' depends on axioms: [propext]\n'LexLeanMatmul.Core.transcodePreservesDot' depends on axioms: [propext]\n'LexLeanMatmul.Core.tropicalAt' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalCells' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalDot' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalMax' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalMaximum' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalMultiply' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalProduct' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalProductTwoByTwo' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalWitnesses' does not depend on any axioms\n'LexLeanMatmul.Core.tropicalWitnessesOwned' does not depend on any axioms\n'LexLeanMatmul.Core.validBlockCodebook' does not depend on any axioms\n'LexLeanMatmul.Core.validCode' does not depend on any axioms\n'LexLeanMatmul.Core.validComplex' does not depend on any axioms\n'LexLeanMatmul.Core.validComplexList' does not depend on any axioms\n'LexLeanMatmul.Core.validDigits' does not depend on any axioms\n'LexLeanMatmul.Core.validDyadic' does not depend on any axioms\n'LexLeanMatmul.Core.validDyadicList' does not depend on any axioms\n'LexLeanMatmul.Core.validInteger' does not depend on any axioms\n'LexLeanMatmul.Core.validIntegerList' does not depend on any axioms\n'LexLeanMatmul.Core.validTableCode' does not depend on any axioms\n'LexLeanMatmul.Core.validTableCodes' does not depend on any axioms\n'LexLeanMatmul.Core.validTropical' does not depend on any axioms\n'LexLeanMatmul.Core.validTropicalList' does not depend on any axioms\n'LexLeanMatmul.Core.validWordCode' does not depend on any axioms\n'LexLeanMatmul.Core.validWordCodes' does not depend on any axioms\n'LexLeanMatmul.Core.validWords' does not depend on any axioms\n'LexLeanMatmul.Core.validateComplexMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.validateDyadicMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.validateGeometry' does not depend on any axioms\n'LexLeanMatmul.Core.validateMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.validateProduct' does not depend on any axioms\n'LexLeanMatmul.Core.validateTropicalMatrix' does not depend on any axioms\n'LexLeanMatmul.Core.witnessCells' does not depend on any axioms\n'LexLeanMatmul.Core.witnessCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Core.wordDot' does not depend on any axioms\n'LexLeanMatmul.Core.zero' does not depend on any axioms\n'LexLeanMatmul.Core.zeroDepthProduct' does not depend on any axioms\n",
+      "stdout_sha256": "e31ab4078b40938ab08a6fe80680a2a7326bad32d52bbcfc390060ae11bb8d10",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Epilogue.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Epilogue",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Epilogue.EpilogueOwnedList1' does not depend on any axioms\n'LexLeanMatmul.Epilogue.EpilogueOwnedList2' does not depend on any axioms\n'LexLeanMatmul.Epilogue.EpilogueOwnedList3' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasCells' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasComplexCell' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasComplexCells' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasComplexCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasComplexMatrix' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasKeepsImaginaryComponent' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasMatrix' does not depend on any axioms\n'LexLeanMatmul.Epilogue.biasRejectsMalformedProduct' depends on axioms: [propext]\n'LexLeanMatmul.Epilogue.biasRejectsNonconformantProduct' depends on axioms: [propext]\n'LexLeanMatmul.Epilogue.biasUsesExactSignedAddition' depends on axioms: [propext]\n'LexLeanMatmul.Epilogue.checkedBiasGemm' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedBiasMultiply' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedComplexBiasGemm' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedComplexBiasMultiply' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedComplexGemm' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedEncodeComplexMatrix' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedEncodeTropicalMatrix' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedEncodedComplexGemm' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedEncodedTropicalGemm' does not depend on any axioms\n'LexLeanMatmul.Epilogue.checkedTropicalGemm' does not depend on any axioms\n'LexLeanMatmul.Epilogue.complexGemm' does not depend on any axioms\n'LexLeanMatmul.Epilogue.complexLinearCell' does not depend on any axioms\n'LexLeanMatmul.Epilogue.complexLinearCells' does not depend on any axioms\n'LexLeanMatmul.Epilogue.complexLinearCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Epilogue.complexOverwriteIgnoresOld' does not depend on any axioms\n'LexLeanMatmul.Epilogue.complexTail' does not depend on any axioms\n'LexLeanMatmul.Epilogue.complexTailOwned' does not depend on any axioms\n'LexLeanMatmul.Epilogue.complexTerminalSaturatesComponents' depends on axioms: [propext]\n'LexLeanMatmul.Epilogue.encodeComplex' does not depend on any axioms\n'LexLeanMatmul.Epilogue.encodeComplexCells' does not depend on any axioms\n'LexLeanMatmul.Epilogue.encodeComplexCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Epilogue.encodeComplexMatrix' does not depend on any axioms\n'LexLeanMatmul.Epilogue.encodeTropical' does not depend on any axioms\n'LexLeanMatmul.Epilogue.encodeTropicalCells' does not depend on any axioms\n'LexLeanMatmul.Epilogue.encodeTropicalCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Epilogue.encodeTropicalMatrix' does not depend on any axioms\n'LexLeanMatmul.Epilogue.epilogueComplexAt' does not depend on any axioms\n'LexLeanMatmul.Epilogue.epilogueIntegerAt' does not depend on any axioms\n'LexLeanMatmul.Epilogue.epilogueTropicalAt' does not depend on any axioms\n'LexLeanMatmul.Epilogue.rejectsComplexGemmOutputOverflow' depends on axioms: [propext]\n'LexLeanMatmul.Epilogue.rejectsTropicalGemmOutputOverflow' depends on axioms: [propext]\n'LexLeanMatmul.Epilogue.rejectsUnitWidthTropicalEncoding' does not depend on any axioms\n'LexLeanMatmul.Epilogue.rejectsZeroWidthComplexEncoding' does not depend on any axioms\n'LexLeanMatmul.Epilogue.rejectsZeroWidthTropicalEncoding' does not depend on any axioms\n'LexLeanMatmul.Epilogue.scaleComplex' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalBothScalarsAbsorb' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalFiniteUsesTerminalEncoder' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalGemm' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalLinearCell' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalLinearCells' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalLinearCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalOverwriteIgnoresOld' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalTail' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalTailOwned' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalTerminalPreservesMask' does not depend on any axioms\n'LexLeanMatmul.Epilogue.tropicalTerminalSaturatesFinite' depends on axioms: [propext]\n",
+      "stdout_sha256": "a37a952515b79a121b2401cc7f3103ee2e0a154fe6ba66a9516c41f677631841",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ExtendedProtocol.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ExtendedProtocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ExtendedProtocol.ExtendedProtocolOwnedList1' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.ExtendedProtocolOwnedList2' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.complexResult' depends on axioms: [propext]\n'LexLeanMatmul.ExtendedProtocol.encodeCells' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.encodeCellsOwned' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.encodeDyadicCells' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.encodeDyadicCellsOwned' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.extendedProtocolDispatch' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.extendedProtocolDispatchFields' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.floatResponse' depends on axioms: [propext]\n'LexLeanMatmul.ExtendedProtocol.floatResult' depends on axioms: [propext]\n'LexLeanMatmul.ExtendedProtocol.ieeeCodes' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.ieeeCodesOwned' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.integerCodes' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.integerCodesOwned' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.integerResult' depends on axioms: [propext]\n'LexLeanMatmul.ExtendedProtocol.matrixFailure' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.parseBias' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseBiasGemm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseComplexBias' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseComplexBiasGemm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseComplexEncode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseComplexGemm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseEncode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseEncodeDyadic' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseFormat' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.parseIeee' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseIeeeGemm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseIeeeTable' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseMode' does not depend on any axioms\n'LexLeanMatmul.ExtendedProtocol.parseTropicalEncode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.parseTropicalGemm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ExtendedProtocol.tropicalMatrixResponse' depends on axioms: [propext]\n'LexLeanMatmul.ExtendedProtocol.tropicalResult' depends on axioms: [propext]\n'LexLeanMatmul.ExtendedProtocol.validIeeeValues' does not depend on any axioms\n",
+      "stdout_sha256": "a1d1636385370512e2b1c084437fe9ef3e27c9115f9fbd35a980fbea6170aab5",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Float.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Float",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Float.BitMagnitudeOrder' does not depend on any axioms\n'LexLeanMatmul.Float.DecimalHalf' does not depend on any axioms\n'LexLeanMatmul.Float.EncodeMode' does not depend on any axioms\n'LexLeanMatmul.Float.FloatMatrix' does not depend on any axioms\n'LexLeanMatmul.Float.FloatOwnedList1' does not depend on any axioms\n'LexLeanMatmul.Float.FloatOwnedList2' does not depend on any axioms\n'LexLeanMatmul.Float.FloatOwnedList3' does not depend on any axioms\n'LexLeanMatmul.Float.Format' does not depend on any axioms\n'LexLeanMatmul.Float.Value' does not depend on any axioms\n'LexLeanMatmul.Float.add' does not depend on any axioms\n'LexLeanMatmul.Float.addFinite' does not depend on any axioms\n'LexLeanMatmul.Float.anyBits' does not depend on any axioms\n'LexLeanMatmul.Float.bias' does not depend on any axioms\n'LexLeanMatmul.Float.binaryDecimal' does not depend on any axioms\n'LexLeanMatmul.Float.binaryDecimalOwned' does not depend on any axioms\n'LexLeanMatmul.Float.bitAt' does not depend on any axioms\n'LexLeanMatmul.Float.bitsNatural' does not depend on any axioms\n'LexLeanMatmul.Float.canonicalNan' does not depend on any axioms\n'LexLeanMatmul.Float.carriedNormalCode' does not depend on any axioms\n'LexLeanMatmul.Float.cell' does not depend on any axioms\n'LexLeanMatmul.Float.cells' does not depend on any axioms\n'LexLeanMatmul.Float.cellsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.checkedIntegerGemm' does not depend on any axioms\n'LexLeanMatmul.Float.checkedValueGemm' does not depend on any axioms\n'LexLeanMatmul.Float.codeAt' does not depend on any axioms\n'LexLeanMatmul.Float.compose' does not depend on any axioms\n'LexLeanMatmul.Float.copyWorkerPreservesPrefix' does not depend on any axioms\n'LexLeanMatmul.Float.copyWorkerZeroFuel' does not depend on any axioms\n'LexLeanMatmul.Float.decimalBits' does not depend on any axioms\n'LexLeanMatmul.Float.decimalBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.decimalHalf' does not depend on any axioms\n'LexLeanMatmul.Float.decimalHalfStep' does not depend on any axioms\n'LexLeanMatmul.Float.decode' does not depend on any axioms\n'LexLeanMatmul.Float.decodeFields' does not depend on any axioms\n'LexLeanMatmul.Float.decodedBookEmpty' does not depend on any axioms\n'LexLeanMatmul.Float.decodedFinite' does not depend on any axioms\n'LexLeanMatmul.Float.differentSigns' does not depend on any axioms\n'LexLeanMatmul.Float.doubleDecimal' does not depend on any axioms\n'LexLeanMatmul.Float.doubleDecimalOwned' does not depend on any axioms\n'LexLeanMatmul.Float.dropBits' does not depend on any axioms\n'LexLeanMatmul.Float.dropBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.emptyDot' does not depend on any axioms\n'LexLeanMatmul.Float.emptyProduct32' does not depend on any axioms\n'LexLeanMatmul.Float.encode' does not depend on any axioms\n'LexLeanMatmul.Float.encodeDyadicInteger' does not depend on any axioms\n'LexLeanMatmul.Float.encodeFinite' does not depend on any axioms\n'LexLeanMatmul.Float.encodeInteger' does not depend on any axioms\n'LexLeanMatmul.Float.encodeIntegerBits' does not depend on any axioms\n'LexLeanMatmul.Float.encodeTropicalInteger' does not depend on any axioms\n'LexLeanMatmul.Float.exactZeroEncodesPositive' does not depend on any axioms\n'LexLeanMatmul.Float.exponentPlace' does not depend on any axioms\n'LexLeanMatmul.Float.f32OneProduct' does not depend on any axioms\n'LexLeanMatmul.Float.f64OneProduct' does not depend on any axioms\n'LexLeanMatmul.Float.finiteFromAtlas' does not depend on any axioms\n'LexLeanMatmul.Float.finiteFromNormalizedBits' does not depend on any axioms\n'LexLeanMatmul.Float.floatAddBitWorker' does not depend on any axioms\n'LexLeanMatmul.Float.floatAddBits' does not depend on any axioms\n'LexLeanMatmul.Float.floatAddBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatBitLength' does not depend on any axioms\n'LexLeanMatmul.Float.floatCarryBitWorker' does not depend on any axioms\n'LexLeanMatmul.Float.floatCarryBits' does not depend on any axioms\n'LexLeanMatmul.Float.floatCarryBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatCheckedGemm' does not depend on any axioms\n'LexLeanMatmul.Float.floatCheckedMultiply' does not depend on any axioms\n'LexLeanMatmul.Float.floatCheckedTableMultiply' does not depend on any axioms\n'LexLeanMatmul.Float.floatCompareBit' does not depend on any axioms\n'LexLeanMatmul.Float.floatCompareBits' does not depend on any axioms\n'LexLeanMatmul.Float.floatCopyBitWorker' does not depend on any axioms\n'LexLeanMatmul.Float.floatDecodedBookOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatDecodedProductTableOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatDot' does not depend on any axioms\n'LexLeanMatmul.Float.floatEmpty' does not depend on any axioms\n'LexLeanMatmul.Float.floatEpilogueMultiply' does not depend on any axioms\n'LexLeanMatmul.Float.floatFinite' does not depend on any axioms\n'LexLeanMatmul.Float.floatGatherCells' does not depend on any axioms\n'LexLeanMatmul.Float.floatGatherCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatHeadBit' does not depend on any axioms\n'LexLeanMatmul.Float.floatIntegerAtomCount' does not depend on any axioms\n'LexLeanMatmul.Float.floatIntegerAtomValue' does not depend on any axioms\n'LexLeanMatmul.Float.floatIntegerScale' does not depend on any axioms\n'LexLeanMatmul.Float.floatIntegerScaleAtom' does not depend on any axioms\n'LexLeanMatmul.Float.floatIntegerScaleAtoms' does not depend on any axioms\n'LexLeanMatmul.Float.floatIntegerScaleChoices' does not depend on any axioms\n'LexLeanMatmul.Float.floatIsZero' does not depend on any axioms\n'LexLeanMatmul.Float.floatLastNonzeroWorker' does not depend on any axioms\n'LexLeanMatmul.Float.floatMatrixMultiply' does not depend on any axioms\n'LexLeanMatmul.Float.floatMaximum' does not depend on any axioms\n'LexLeanMatmul.Float.floatMultiply' does not depend on any axioms\n'LexLeanMatmul.Float.floatNaturalDigits' does not depend on any axioms\n'LexLeanMatmul.Float.floatNormalize' does not depend on any axioms\n'LexLeanMatmul.Float.floatNormalizeOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatNormalizedBit' does not depend on any axioms\n'LexLeanMatmul.Float.floatNormalizedBitOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatOne' does not depend on any axioms\n'LexLeanMatmul.Float.floatProductTable' does not depend on any axioms\n'LexLeanMatmul.Float.floatProductTableOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatProductValuesOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatShiftBitWorker' does not depend on any axioms\n'LexLeanMatmul.Float.floatShiftBits' does not depend on any axioms\n'LexLeanMatmul.Float.floatShiftBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatSubtractBitWorker' does not depend on any axioms\n'LexLeanMatmul.Float.floatSubtractBits' does not depend on any axioms\n'LexLeanMatmul.Float.floatSubtractBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatSubtractBorrow' does not depend on any axioms\n'LexLeanMatmul.Float.floatSubtractDigit' does not depend on any axioms\n'LexLeanMatmul.Float.floatTableMultiply' does not depend on any axioms\n'LexLeanMatmul.Float.floatTableValueAt' does not depend on any axioms\n'LexLeanMatmul.Float.floatTailBits' does not depend on any axioms\n'LexLeanMatmul.Float.floatTailBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.floatValidCode' does not depend on any axioms\n'LexLeanMatmul.Float.floatValidCodes' does not depend on any axioms\n'LexLeanMatmul.Float.floatValidMatrix' does not depend on any axioms\n'LexLeanMatmul.Float.floatWorkerBitAt' does not depend on any axioms\n'LexLeanMatmul.Float.floatWorkerBitLength' does not depend on any axioms\n'LexLeanMatmul.Float.floatZero' does not depend on any axioms\n'LexLeanMatmul.Float.fractionalScaleRetainsAtlas32' does not depend on any axioms\n'LexLeanMatmul.Float.fractionalWrap' does not depend on any axioms\n'LexLeanMatmul.Float.gatherCell' does not depend on any axioms\n'LexLeanMatmul.Float.gemmCell' does not depend on any axioms\n'LexLeanMatmul.Float.gemmCells' does not depend on any axioms\n'LexLeanMatmul.Float.gemmCellsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.gemmValues' does not depend on any axioms\n'LexLeanMatmul.Float.ieeeCodebookGather32' does not depend on any axioms\n'LexLeanMatmul.Float.infinity' does not depend on any axioms\n'LexLeanMatmul.Float.integerBits' does not depend on any axioms\n'LexLeanMatmul.Float.integerBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.integerEpilogue32' does not depend on any axioms\n'LexLeanMatmul.Float.integerFromBits' does not depend on any axioms\n'LexLeanMatmul.Float.integerFromNatural' does not depend on any axioms\n'LexLeanMatmul.Float.integerOfValue' does not depend on any axioms\n'LexLeanMatmul.Float.integerScalarCancellation32' does not depend on any axioms\n'LexLeanMatmul.Float.integerScaleEmptyAtoms' does not depend on any axioms\n'LexLeanMatmul.Float.integerScaleNegativeFraction64' does not depend on any axioms\n'LexLeanMatmul.Float.integerScaleSubnormal64' does not depend on any axioms\n'LexLeanMatmul.Float.integerScaleZeroInfinity32' does not depend on any axioms\n'LexLeanMatmul.Float.integerTieEvenDown' does not depend on any axioms\n'LexLeanMatmul.Float.integerTieEvenUp' does not depend on any axioms\n'LexLeanMatmul.Float.integerTowardZero' does not depend on any axioms\n'LexLeanMatmul.Float.integerValue' does not depend on any axioms\n'LexLeanMatmul.Float.isFinite' does not depend on any axioms\n'LexLeanMatmul.Float.isNan' does not depend on any axioms\n'LexLeanMatmul.Float.isNearest' does not depend on any axioms\n'LexLeanMatmul.Float.isWrapping' does not depend on any axioms\n'LexLeanMatmul.Float.largestSubnormal32' does not depend on any axioms\n'LexLeanMatmul.Float.largestSubnormal64' does not depend on any axioms\n'LexLeanMatmul.Float.lateCancellation32' does not depend on any axioms\n'LexLeanMatmul.Float.lessEqualBits' does not depend on any axioms\n'LexLeanMatmul.Float.linear' does not depend on any axioms\n'LexLeanMatmul.Float.mantissaWidth' does not depend on any axioms\n'LexLeanMatmul.Float.maximumExponent' does not depend on any axioms\n'LexLeanMatmul.Float.nan' does not depend on any axioms\n'LexLeanMatmul.Float.nanAbsorbs' does not depend on any axioms\n'LexLeanMatmul.Float.nanPayloadCanonical32' does not depend on any axioms\n'LexLeanMatmul.Float.natBits' does not depend on any axioms\n'LexLeanMatmul.Float.natBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.naturalFromInteger' does not depend on any axioms\n'LexLeanMatmul.Float.nearestEvenDown32' does not depend on any axioms\n'LexLeanMatmul.Float.nearestEvenDown64' does not depend on any axioms\n'LexLeanMatmul.Float.nearestEvenUp32' does not depend on any axioms\n'LexLeanMatmul.Float.nearestEvenUp64' does not depend on any axioms\n'LexLeanMatmul.Float.negativeSubnormal64' does not depend on any axioms\n'LexLeanMatmul.Float.negativeUnderflowZero32' does not depend on any axioms\n'LexLeanMatmul.Float.negativeZeroBetaIgnoresOldNan32' does not depend on any axioms\n'LexLeanMatmul.Float.negativeZeroDecodes' does not depend on any axioms\n'LexLeanMatmul.Float.normalCode' does not depend on any axioms\n'LexLeanMatmul.Float.normalPivot' does not depend on any axioms\n'LexLeanMatmul.Float.normalScale' does not depend on any axioms\n'LexLeanMatmul.Float.normalizationRetainsLowZeros' does not depend on any axioms\n'LexLeanMatmul.Float.ones' does not depend on any axioms\n'LexLeanMatmul.Float.onesOwned' does not depend on any axioms\n'LexLeanMatmul.Float.oppositeInfinityNan64' does not depend on any axioms\n'LexLeanMatmul.Float.overflowCode' does not depend on any axioms\n'LexLeanMatmul.Float.overflowNearest32' does not depend on any axioms\n'LexLeanMatmul.Float.overflowTowardZero32' does not depend on any axioms\n'LexLeanMatmul.Float.precision' does not depend on any axioms\n'LexLeanMatmul.Float.productRow' does not depend on any axioms\n'LexLeanMatmul.Float.productRowOwned' does not depend on any axioms\n'LexLeanMatmul.Float.rejectsEmptyIeeeCodebook' does not depend on any axioms\n'LexLeanMatmul.Float.rejectsIeee32OutOfRange' does not depend on any axioms\n'LexLeanMatmul.Float.rejectsIeeeGemmOutputOverflow' depends on axioms: [propext]\n'LexLeanMatmul.Float.rejectsIeeeOutputOverflow' depends on axioms: [propext]\n'LexLeanMatmul.Float.rejectsIeeeTableOutputOverflow' depends on axioms: [propext]\n'LexLeanMatmul.Float.rejectsMalformedFloatMatrix' does not depend on any axioms\n'LexLeanMatmul.Float.rejectsNegativeBitCode' does not depend on any axioms\n'LexLeanMatmul.Float.rejectsNonconformantFloatProduct' does not depend on any axioms\n'LexLeanMatmul.Float.rejectsTooWideFloatCode' does not depend on any axioms\n'LexLeanMatmul.Float.residueBits' does not depend on any axioms\n'LexLeanMatmul.Float.residueBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.residueStep' does not depend on any axioms\n'LexLeanMatmul.Float.residueStepOwned' does not depend on any axioms\n'LexLeanMatmul.Float.roundedDrop' does not depend on any axioms\n'LexLeanMatmul.Float.roundedDropOwned' does not depend on any axioms\n'LexLeanMatmul.Float.saturateNegativeByte' does not depend on any axioms\n'LexLeanMatmul.Float.saturatePast64' does not depend on any axioms\n'LexLeanMatmul.Float.saturatePositiveByte' does not depend on any axioms\n'LexLeanMatmul.Float.saturatedInteger' does not depend on any axioms\n'LexLeanMatmul.Float.saturatedTropicalInteger' does not depend on any axioms\n'LexLeanMatmul.Float.scaleInteger' does not depend on any axioms\n'LexLeanMatmul.Float.signPlace' does not depend on any axioms\n'LexLeanMatmul.Float.smallestNormal32' does not depend on any axioms\n'LexLeanMatmul.Float.smallestSubnormal32' does not depend on any axioms\n'LexLeanMatmul.Float.smallestSubnormal64' does not depend on any axioms\n'LexLeanMatmul.Float.subnormalHalfUp32' does not depend on any axioms\n'LexLeanMatmul.Float.subnormalHalfUp64' does not depend on any axioms\n'LexLeanMatmul.Float.subnormalPromotion32' does not depend on any axioms\n'LexLeanMatmul.Float.subnormalScale' does not depend on any axioms\n'LexLeanMatmul.Float.subtractWorkerPropagatesBorrow' does not depend on any axioms\n'LexLeanMatmul.Float.tableRow' does not depend on any axioms\n'LexLeanMatmul.Float.tableRowOwned' does not depend on any axioms\n'LexLeanMatmul.Float.tableValueAtSkipsRows' does not depend on any axioms\n'LexLeanMatmul.Float.takeBits' does not depend on any axioms\n'LexLeanMatmul.Float.takeBitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.takePrefixCapsCount' does not depend on any axioms\n'LexLeanMatmul.Float.takePrefixZero' does not depend on any axioms\n'LexLeanMatmul.Float.towardZeroRetainsLowSignificand' does not depend on any axioms\n'LexLeanMatmul.Float.tropicalSaturateNegativeByte' does not depend on any axioms\n'LexLeanMatmul.Float.tropicalSaturatePositive64' does not depend on any axioms\n'LexLeanMatmul.Float.tropicalSaturatePositiveByte' does not depend on any axioms\n'LexLeanMatmul.Float.tropicalWrapNegativeByte' does not depend on any axioms\n'LexLeanMatmul.Float.tropicalWrapPositiveBoundary' does not depend on any axioms\n'LexLeanMatmul.Float.tropicalWrapPositiveByte' does not depend on any axioms\n'LexLeanMatmul.Float.unsigned128Bits' does not depend on any axioms\n'LexLeanMatmul.Float.unsigned128BitsOwned' does not depend on any axioms\n'LexLeanMatmul.Float.unusedNanCodebookEntryDoesNotPropagate' does not depend on any axioms\n'LexLeanMatmul.Float.validGeometry' does not depend on any axioms\n'LexLeanMatmul.Float.validIeeeInteger' does not depend on any axioms\n'LexLeanMatmul.Float.validIndices' does not depend on any axioms\n'LexLeanMatmul.Float.valueLookup' does not depend on any axioms\n'LexLeanMatmul.Float.wrapNegativeByte' does not depend on any axioms\n'LexLeanMatmul.Float.wrapPast64' does not depend on any axioms\n'LexLeanMatmul.Float.wrapPositiveByte' does not depend on any axioms\n'LexLeanMatmul.Float.wrapSignedMinimum' does not depend on any axioms\n'LexLeanMatmul.Float.wrappedInteger' does not depend on any axioms\n'LexLeanMatmul.Float.zeroBetaIgnoresNanOld32' does not depend on any axioms\n'LexLeanMatmul.Float.zeroScalarInfinityIsNan32' does not depend on any axioms\n'LexLeanMatmul.Float.zeroTimesInfinityNan32' does not depend on any axioms\n",
+      "stdout_sha256": "49d0ba8d81b1037e473ccba0b113c8e43d16519cad6091fc30ab2a43e87de544",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Model.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Model",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Model.applicationModelMaximumBytes' does not depend on any axioms\n'LexLeanMatmul.Model.applicationName' does not depend on any axioms\n'LexLeanMatmul.Model.applicationProfile' does not depend on any axioms\n'LexLeanMatmul.Model.browserCpuSlowdown' does not depend on any axioms\n'LexLeanMatmul.Model.browserMainThreadGapMaximumMilliseconds' does not depend on any axioms\n'LexLeanMatmul.Model.cargoName' does not depend on any axioms\n'LexLeanMatmul.Model.caseMaximumBytes' does not depend on any axioms\n'LexLeanMatmul.Model.coreMemoryPages' does not depend on any axioms\n'LexLeanMatmul.Model.coreStackBytes' does not depend on any axioms\n'LexLeanMatmul.Model.entryRoot' does not depend on any axioms\n'LexLeanMatmul.Model.evidenceMaximumBytes' does not depend on any axioms\n'LexLeanMatmul.Model.evidenceRetentionDays' does not depend on any axioms\n'LexLeanMatmul.Model.executionTimeoutMilliseconds' does not depend on any axioms\n'LexLeanMatmul.Model.guestAllocationMaximum' does not depend on any axioms\n'LexLeanMatmul.Model.homepage' does not depend on any axioms\n'LexLeanMatmul.Model.maximumDimension' does not depend on any axioms\n'LexLeanMatmul.Model.maximumDyadicScale' does not depend on any axioms\n'LexLeanMatmul.Model.maximumScalarDigits' does not depend on any axioms\n'LexLeanMatmul.Model.maximumVectorEntries' does not depend on any axioms\n'LexLeanMatmul.Model.pagesBasePath' does not depend on any axioms\n'LexLeanMatmul.Model.pagesBranch' does not depend on any axioms\n'LexLeanMatmul.Model.pagesDeployAction' does not depend on any axioms\n'LexLeanMatmul.Model.pagesDirectory' does not depend on any axioms\n'LexLeanMatmul.Model.pagesEnvironment' does not depend on any axioms\n'LexLeanMatmul.Model.pagesOrigin' does not depend on any axioms\n'LexLeanMatmul.Model.pagesUploadAction' does not depend on any axioms\n'LexLeanMatmul.Model.productionEvidenceFailureCodes' does not depend on any axioms\n'LexLeanMatmul.Model.publicationRequiresCurrentMain' does not depend on any axioms\n'LexLeanMatmul.Model.repository' does not depend on any axioms\n'LexLeanMatmul.Model.repositorySlug' does not depend on any axioms\n'LexLeanMatmul.Model.requestMaximum' does not depend on any axioms\n'LexLeanMatmul.Model.researchGuestAllocationMaximum' does not depend on any axioms\n'LexLeanMatmul.Model.researchTimeoutMilliseconds' does not depend on any axioms\n'LexLeanMatmul.Model.responseMaximum' does not depend on any axioms\n'LexLeanMatmul.Model.transportRequestMaximum' does not depend on any axioms\n'LexLeanMatmul.Model.transportResponseMaximum' does not depend on any axioms\n'LexLeanMatmul.Model.version' does not depend on any axioms\n",
+      "stdout_sha256": "1e68822ec605b978fbd452bf05e56dc61ba98edeb5fee06b285f2001d382c8c7",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Protocol.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Protocol",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Protocol.ProtocolError' does not depend on any axioms\n'LexLeanMatmul.Protocol.ProtocolOwnedList1' does not depend on any axioms\n'LexLeanMatmul.Protocol.ProtocolOwnedList2' does not depend on any axioms\n'LexLeanMatmul.Protocol.ProtocolOwnedList3' does not depend on any axioms\n'LexLeanMatmul.Protocol.complexImaginary' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.complexImaginaryOwned' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.complexPairs' does not depend on any axioms\n'LexLeanMatmul.Protocol.complexPairsOwned' does not depend on any axioms\n'LexLeanMatmul.Protocol.complexReal' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.complexRealOwned' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.complexResponse' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.dispatchOperation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.dyadicCoefficients' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.dyadicCoefficientsOwned' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.dyadicPairs' does not depend on any axioms\n'LexLeanMatmul.Protocol.dyadicPairsOwned' does not depend on any axioms\n'LexLeanMatmul.Protocol.dyadicResponse' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.dyadicScales' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.dyadicScalesOwned' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.errorResponse' does not depend on any axioms\n'LexLeanMatmul.Protocol.evaluateComplex' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.evaluateDyadic' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.evaluateGemm' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.evaluateMatrices' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.evaluateTropical' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.formatCells' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.formatCellsOwned' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.formatNatural' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.formatTropical' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.formatTropicalCells' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.formatTropicalCellsOwned' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.formatWitnesses' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.formatWitnessesOwned' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.matrixResponse' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.naturalInteger' does not depend on any axioms\n'LexLeanMatmul.Protocol.parseComplex' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseCsv' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseDyadic' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseGemm' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseGeometry' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseMatrices' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseNatural' does not depend on any axioms\n'LexLeanMatmul.Protocol.parseScalar' does not depend on any axioms\n'LexLeanMatmul.Protocol.parseScalarList' does not depend on any axioms\n'LexLeanMatmul.Protocol.parseScaleList' does not depend on any axioms\n'LexLeanMatmul.Protocol.parseScales' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseTropical' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseTropicalCsv' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.parseTropicalList' does not depend on any axioms\n'LexLeanMatmul.Protocol.parseTropicalScalar' does not depend on any axioms\n'LexLeanMatmul.Protocol.protocolDispatch' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.protocolDispatchFields' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Protocol.protocolNaturalDigits' does not depend on any axioms\n'LexLeanMatmul.Protocol.protocolValidCodes' does not depend on any axioms\n'LexLeanMatmul.Protocol.protocolValidTableCodes' does not depend on any axioms\n'LexLeanMatmul.Protocol.recenterResponse' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.tropicalResponse' depends on axioms: [propext]\n'LexLeanMatmul.Protocol.validTier' does not depend on any axioms\n",
+      "stdout_sha256": "1cf0fb35185c92d7cf3970a6f5c593fcebcbf98e4f504058fc84b33221d2afcb",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Research.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Research",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Research.researchAlternate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Research.researchCodecTool' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Research.researchCompare' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Research.researchDocumentation' does not depend on any axioms\n'LexLeanMatmul.Research.researchIeeeTool' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Research.researchInspect' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Research.researchTrace' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stdout_sha256": "edf0162cddb64521443039421ce9d669215893530326594995ccac486255a4bd",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchCases.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchCases",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ResearchCases.ResearchCaseError' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.ResearchCaseRecord' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.ResearchOwned_researchCaseControls' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.ResearchOwned_researchCaseKeys' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseControls' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseControlsOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseControlsValid' depends on axioms: [propext]\n'LexLeanMatmul.ResearchCases.researchCaseDocumentation' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseDraftJson' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCases.researchCaseDuplicateFieldCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseErrorCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseFailure' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseFields' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCases.researchCaseFileEncodingCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseFileReadCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseFileTooLargeCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInconsistentRequestCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidActionCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidControlsCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidDraftCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidIdentityCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidJsonCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidSchemaCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidSelectionCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidTypeCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseInvalidVersionCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseKeys' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseKeysOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseNatural' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseParse' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCases.researchCaseParsed' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCases.researchCaseSerialize' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCases.researchCaseTooLargeCode' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchCaseTypedFields' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCases.researchCaseTypes' does not depend on any axioms\n'LexLeanMatmul.ResearchCases.researchControlNatural' depends on axioms: [propext]\n'LexLeanMatmul.ResearchCases.researchModelIdLoop' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchCases.researchModelIdValid' depends on axioms: [propext, Quot.sound]\n",
+      "stdout_sha256": "acc70f4e4ca5609371bc7187a88d7ddb8beffd291a25fe9e7ec8a0a2222f02ee",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchCompare.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchCompare",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ResearchCompare.researchAlternateCommand' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCompare.researchAlternatePrepared' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCompare.researchCompareDocumentation' does not depend on any axioms\n'LexLeanMatmul.ResearchCompare.researchCompareMethod' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCompare.researchComparePrepared' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCompare.researchComputedCellsOwned' depends on axioms: [propext]\n'LexLeanMatmul.ResearchCompare.researchComputedResponse' depends on axioms: [propext]\n'LexLeanMatmul.ResearchCompare.researchDecodedMass' does not depend on any axioms\n'LexLeanMatmul.ResearchCompare.researchDirectTableRequest' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCompare.researchFloatDecodedCodesOwned' depends on axioms: [propext]\n'LexLeanMatmul.ResearchCompare.researchIntegerTextListOwned' depends on axioms: [propext]\n'LexLeanMatmul.ResearchCompare.researchMethod' does not depend on any axioms\n'LexLeanMatmul.ResearchCompare.researchMethodAdmissible' does not depend on any axioms\n'LexLeanMatmul.ResearchCompare.researchNaturalStringsOwned' depends on axioms: [propext]\n'LexLeanMatmul.ResearchCompare.researchPanelCell' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCompare.researchPanelCellsOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchCompare.researchReverseEmpty' does not depend on any axioms\n'LexLeanMatmul.ResearchCompare.researchReverseTropicalMaximum' does not depend on any axioms\n'LexLeanMatmul.ResearchCompare.researchStorageComparison' does not depend on any axioms\n'LexLeanMatmul.ResearchCompare.researchTierBookOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchCompare.researchWireScalar' depends on axioms: [propext]\n'LexLeanMatmul.ResearchCompare.researchWitnessesOwned' depends on axioms: [propext]\n",
+      "stdout_sha256": "1a1a6322f520f80cf3de4b15124fd82bb9c0935240412a7a52314faee717e4eb",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchForms.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchForms",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ResearchForms.ResearchDraft' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.ResearchOwned_researchFormModes' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.ResearchOwned_researchFormNames' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.ResearchOwned_researchFormValues' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchComplexEncodedFields' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchDraftValid' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchFormKnown' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchFormModes' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchFormModesOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchFormNames' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchFormNamesOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchFormNormalize' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchForms.researchFormRequest' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchForms.researchFormValues' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchForms.researchFormValuesOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchForms.researchFormWireOperation' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchFormsDocumentation' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchIeeeFormWire' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchOperationKnown' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchRawIsKnown' does not depend on any axioms\n'LexLeanMatmul.ResearchForms.researchToolKnown' does not depend on any axioms\n",
+      "stdout_sha256": "6c98269d0d265384e0ea333e38c0183c9f8bb144aba935ef6ba1aae3c0e51a88",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchInspect.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchInspect",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ResearchInspect.researchAtomRows' depends on axioms: [propext]\n'LexLeanMatmul.ResearchInspect.researchCodecChildCode' does not depend on any axioms\n'LexLeanMatmul.ResearchInspect.researchCodecChildPosition' does not depend on any axioms\n'LexLeanMatmul.ResearchInspect.researchCodecPath' depends on axioms: [propext]\n'LexLeanMatmul.ResearchInspect.researchCodecReport' depends on axioms: [propext]\n'LexLeanMatmul.ResearchInspect.researchGradeText' depends on axioms: [propext]\n'LexLeanMatmul.ResearchInspect.researchIeeeAtoms' depends on axioms: [propext]\n'LexLeanMatmul.ResearchInspect.researchIeeeClass' does not depend on any axioms\n'LexLeanMatmul.ResearchInspect.researchIeeeFields' depends on axioms: [propext]\n'LexLeanMatmul.ResearchInspect.researchIeeeFiniteZeroClass' does not depend on any axioms\n'LexLeanMatmul.ResearchInspect.researchIeeeNegativeZeroClass' does not depend on any axioms\n'LexLeanMatmul.ResearchInspect.researchIeeeReport' depends on axioms: [propext]\n'LexLeanMatmul.ResearchInspect.researchInspectCodecTool' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchInspect.researchInspectDocumentation' does not depend on any axioms\n'LexLeanMatmul.ResearchInspect.researchInspectIeeeTool' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchInspect.researchInspectPrepared' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchInspect.researchOperandField' does not depend on any axioms\n'LexLeanMatmul.ResearchInspect.researchToolMaximumBytes' does not depend on any axioms\n",
+      "stdout_sha256": "615896ddfc41c40caa09fe78f484ce4277652e7be548362d9e96527547dc9c1f",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchJson.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchJson",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ResearchJson.JsonEscape' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.JsonField' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.JsonObject' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.JsonToken' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonAllowedKeys' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonArrayBegin' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonArrayLoop' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonByte' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonCodepointText' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonEmptySchema' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonEmptyStringCollection' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonEscapeCode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonField' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonHasKey' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonHasNoKey' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonHex4' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonHexNibble' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonMissingField' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonNumberFinish' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonObject' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonObjectBegin' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonObjectFinish' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonObjectLoop' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonObjectStart' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonOctetNatural' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonOctets' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonReadNumberLoop' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonReadString' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonReadValue' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonScalarLiteral' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonScalarNumberFinish' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonScalarNumberLoop' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonSingleByte' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonSkipSpace' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonSliceText' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonSpace' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonStringMember' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.jsonStringScan' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonUnicodeEscape' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonUnicodeLow' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchJson.jsonUtf8Codepoint' does not depend on any axioms\n'LexLeanMatmul.ResearchJson.researchJsonDocumentation' does not depend on any axioms\n",
+      "stdout_sha256": "b9d485b4d2462deb101895e0027bd42c65c471e7893af2cbfd972b0f85cfece8",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchModel.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchModel",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ResearchModel.ResearchComplexList' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchDyadicList' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchError' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchIeeeList' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchInput' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchIntegerList' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchIntegers' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchNaturals' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchOwned_researchIntegers' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchOwned_researchNaturals' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchOwned_researchSplit' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchOwned_researchStored' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchOwned_researchTropicals' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchPanel' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchReport' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchRow' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchRows' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchScalar' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchScalars' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchStrings' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchTable' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchTables' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.ResearchTropicalList' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchAdd' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchAsComplex' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchAsDyadic' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchAsIeee' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchAsInteger' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchAsTropical' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchAt' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchComplexMatrix' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchComplexValues' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchComplexValuesOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchDyadicMatrix' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchDyadicValues' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchDyadicValuesOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchEmptyReport' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchErrorCode' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchExecute' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchFailure' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchField' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchFloatText' depends on axioms: [propext]\n'LexLeanMatmul.ResearchModel.researchFormat' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchFormatNatural' depends on axioms: [propext]\n'LexLeanMatmul.ResearchModel.researchIeeeTableDecodeOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchIeeeValues' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchIeeeValuesOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchInputFields' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchInteger' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchIntegerMatrix' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchIntegerValues' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchIntegerValuesOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchIntegers' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchIntegersOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchLiftComplexes' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftComplexesOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftDyadics' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftDyadicsOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftIeee' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftIeeeOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftIntegers' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftIntegersOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftTropicals' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchLiftTropicalsOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchMode' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchModeText' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchModelDocumentation' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchMultiply' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchNatural' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchNaturals' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchNaturalsOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchOriginalDispatcherBinding' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LexLeanMatmul.ResearchModel.researchPlan' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchPrepare' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchPrepareResponse' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchProtocolErrorCode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchRowsAppend' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchScalarDomain' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchScalarText' depends on axioms: [propext]\n'LexLeanMatmul.ResearchModel.researchSelectionFailureTyped' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchSplit' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchSplitOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchStored' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchStoredOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchStringsJoin' depends on axioms: [propext]\n'LexLeanMatmul.ResearchModel.researchTableDecodeOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchTableReport' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchTropical' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchTropicalMatrix' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchTropicalValues' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchTropicalValuesOwned' does not depend on any axioms\n'LexLeanMatmul.ResearchModel.researchTropicals' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchTropicalsOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchModel.researchZero' does not depend on any axioms\n",
+      "stdout_sha256": "5faeb459ea7fdaf7ce95c56e4d60085fa6d499b4b4545b3fea457210e6d83e1d",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchTrace.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchTrace",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ResearchTrace.ResearchOwned_researchSelectedTraceRows' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.ResearchStoredSelection' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchBias' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchCellValue' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchChooseOriginalIndex' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchComplexPrefixStep' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchDyadicPrefixStep' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchHasLookup' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchIeeePrefixStep' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchIntegerPrefixStep' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchLinear' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchLocateStored' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchLookupPrefix' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchTrace.researchLookupProduct' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchTrace.researchLookupRows' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchTrace.researchLookupStoredLabel' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchTrace.researchOutputPart' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchTrace.researchPrefix' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchRecenterPrefix' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchRecenterRows' depends on axioms: [propext]\n'LexLeanMatmul.ResearchTrace.researchReversePrefix' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchReverseSelection' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchScalarPrefix' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchSelectedConcordance' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchTrace.researchSelectedTraceRows' depends on axioms: [propext]\n'LexLeanMatmul.ResearchTrace.researchSelectedTraceRowsOwned' depends on axioms: [propext]\n'LexLeanMatmul.ResearchTrace.researchSelectedZeroDepth' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchStoredRow' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchTerminal' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchTerminalText' depends on axioms: [propext]\n'LexLeanMatmul.ResearchTrace.researchTraceDocumentation' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchTracePrepared' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchTrace.researchTraceRows' depends on axioms: [propext]\n'LexLeanMatmul.ResearchTrace.researchTropicalAtList' does not depend on any axioms\n'LexLeanMatmul.ResearchTrace.researchTropicalPrefixStep' does not depend on any axioms\n",
+      "stdout_sha256": "4ea377f9d3d1c027e2c350ddd85e9312d23919ac687c6aa2775be225ac2159c1",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchWorkspace.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.ResearchWorkspace",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.ResearchWorkspace.ResearchOwned_workspaceCaseTables' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.ResearchOwned_workspaceObservation' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.ResearchOwned_workspaceObservationRows' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.ResearchOwned_workspacePanels' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.ResearchOwned_workspaceRows' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.ResearchOwned_workspaceTables' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.WorkspaceEnvelope' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.WorkspaceError' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.WorkspaceReply' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceAction' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceAlternate' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceAlternateParts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceApplyReport' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceBound' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseCompareReport' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseExport' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseExportText' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseFresh' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseImportRecord' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseMergeReport' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseSelectionValid' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseTables' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCaseTablesOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceChunkEnd' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceComparisonJson' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceCompute' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceComputeResponse' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceComputeWire' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceControlsValid' depends on axioms: [propext]\n'LexLeanMatmul.ResearchWorkspace.workspaceDispatch' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceDisplayQuote' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceDocumentation' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceEmptyReport' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceEncode' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceEnvelope' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceEnvelopeFields' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceEnvelopeParsed' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceEnvelopeTypes' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceErrorCode' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceFrameParts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceFramed' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceInvalidDraftCode' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceInvalidEnvelopeCode' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceInvoke' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceInvokeDraft' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceObservation' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceObservationOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceObservationRows' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceObservationRowsOwned' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspacePanels' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspacePanelsOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceReportFor' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceReportJson' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceResearchRun' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceResponseTooLargeCode' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceRows' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceRowsOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceRuntimeIdentityCode' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceSerialize' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceStarts' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceTables' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceTablesOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceToolBase' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceToolReport' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.ResearchWorkspace.workspaceTraceAction' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceUnknownAction' does not depend on any axioms\n'LexLeanMatmul.ResearchWorkspace.workspaceUnknownActionCode' does not depend on any axioms\n",
+      "stdout_sha256": "9e147ac75907a63a1cee216c9d85affdb9df630c800138b7c0fd8f11fc7e1dc2",
+      "tool": "lean"
+    },
+    {
+      "argv": [
+        "env",
+        "lean",
+        "$STAGING/audit/LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Workbench.lean"
+      ],
+      "executable_sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550",
+      "exit_code": 0,
+      "module": "LexLeanAudit.Ae222119a65b5e0004fdaf3274b28259c.LexLeanMatmul.Workbench",
+      "stderr": "\n",
+      "stderr_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "stdout": "'LexLeanMatmul.Workbench.WorkbenchError' does not depend on any axioms\n'LexLeanMatmul.Workbench.WorkbenchReply' does not depend on any axioms\n'LexLeanMatmul.Workbench.WorkbenchStrings' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchArity' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchBoundResponse' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchCellKind' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchControlCharacter' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchControlEscape' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchCsvOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchDetailsOwned' depends on axioms: [propext]\n'LexLeanMatmul.Workbench.workbenchDispatch' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchEncodeReply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchErrorCode' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchErrorReply' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchEscapeControls' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchExecute' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchExecuteReply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchField' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchFieldOrder' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchFixedNatural' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchFrameFields' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchFrameParts' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchFramed' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchGemmFieldCount' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchInvalidResponseCode' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchJsonArray' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchJsonQuote' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchJsonValuesOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchKnownOperation' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchMatrixParts' depends on axioms: [propext]\n'LexLeanMatmul.Workbench.workbenchMatrixReply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchNatural32' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchNatural32Loop' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchNonemptyOwned' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchNormalizeMatrix' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchNormalizeStored' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchNormalizeStoredRowsOwned' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchOperation' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchPairCellsOwned' depends on axioms: [propext]\n'LexLeanMatmul.Workbench.workbenchParseReply' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchPresent' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchRecenterParts' depends on axioms: [propext]\n'LexLeanMatmul.Workbench.workbenchReplace' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchRequest' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchResponseTooLargeCode' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchSerialize' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchTrim' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchTrimBytes' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchTrimEnd' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchTrimSlice' depends on axioms: [propext, Classical.choice, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchTrimStart' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchUnknownOperation' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchVectorLimit' depends on axioms: [propext, Quot.sound]\n'LexLeanMatmul.Workbench.workbenchWhitespace' does not depend on any axioms\n'LexLeanMatmul.Workbench.workbenchWireOperation' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+      "stdout_sha256": "836c8f1c18f9981585c5fc1947e079a755ad4e182f5bb47bc336d2716e1ebdb7",
+      "tool": "lean"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "src/Atlas.lex.tex",
+      "byte_length": 164620,
+      "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b"
+    },
+    {
+      "path": "src/Codec.lex.tex",
+      "byte_length": 1146068,
+      "sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88"
+    },
+    {
+      "path": "src/CodecProtocol.lex.tex",
+      "byte_length": 88203,
+      "sha256": "ee0a431c3a01a6c893bd3ed09b3bb1f1527bffef36be31cb210e394ad1715f5a"
+    },
+    {
+      "path": "src/Core.lex.tex",
+      "byte_length": 304177,
+      "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c"
+    },
+    {
+      "path": "src/Epilogue.lex.tex",
+      "byte_length": 85876,
+      "sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87"
+    },
+    {
+      "path": "src/ExtendedProtocol.lex.tex",
+      "byte_length": 190587,
+      "sha256": "ae343c20e5d5c970ddd19018ad9c6a4c1a176cfbbcf4832a1420ce8e1288d5ce"
+    },
+    {
+      "path": "src/Float.lex.tex",
+      "byte_length": 266431,
+      "sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6"
+    },
+    {
+      "path": "src/Model.lex.tex",
+      "byte_length": 6583,
+      "sha256": "9cbc03b00caf8c818a135d139d9f0ab0fb90ec7cd473d73a13a45016d36d657c"
+    },
+    {
+      "path": "src/Protocol.lex.tex",
+      "byte_length": 122291,
+      "sha256": "51454a08ad1013fadb6073d8e1aa304af571437d54e911929552dee2d571b791"
+    },
+    {
+      "path": "src/Research.lex.tex",
+      "byte_length": 7299,
+      "sha256": "9b10291284a8157eb84287f90218170664f87d2d6e0963c3cde9b0fb70ddbde1"
+    },
+    {
+      "path": "src/ResearchCases.lex.tex",
+      "byte_length": 66206,
+      "sha256": "e6f71f6bf7e98c69b189980ec7f021c8424e955fd91f39092e1f756ac227c545"
+    },
+    {
+      "path": "src/ResearchCompare.lex.tex",
+      "byte_length": 148264,
+      "sha256": "5282e8b054995715700902c082a915f8c83ce26ffcae0f239ab5aceb9df549a1"
+    },
+    {
+      "path": "src/ResearchForms.lex.tex",
+      "byte_length": 51436,
+      "sha256": "c6a390d5646444013afe0ec23c00ae38e34a637d428747b8cddfa51e0c8af604"
+    },
+    {
+      "path": "src/ResearchInspect.lex.tex",
+      "byte_length": 109086,
+      "sha256": "99e55dd7a7d9c8d65f43745816c4ebd23f2149f65b4a8b96770cf0550a32729d"
+    },
+    {
+      "path": "src/ResearchJson.lex.tex",
+      "byte_length": 97599,
+      "sha256": "66daa55b9e881e6fc2d43c5530c17f0dfcaf3996631a581423836c2487968686"
+    },
+    {
+      "path": "src/ResearchModel.lex.tex",
+      "byte_length": 196689,
+      "sha256": "913d78c8f0af809eb45b47518288ca42da61984c6ae072b652c03ccbc81f2685"
+    },
+    {
+      "path": "src/ResearchTrace.lex.tex",
+      "byte_length": 145649,
+      "sha256": "dccddf04ba3432a78bdcc4248d7ae7a82cd56c95bb5602e3d8eb441b697415e6"
+    },
+    {
+      "path": "src/ResearchWorkspace.lex.tex",
+      "byte_length": 157648,
+      "sha256": "ec0c9dd5a266aaa84a390e0d13bbbf88d6172491bdc435ec4c4d93849712cdd8"
+    },
+    {
+      "path": "src/Workbench.lex.tex",
+      "byte_length": 127039,
+      "sha256": "4704d6319de6aeed83e5ba76adf396260db71c892d5d7e82a3c615c878c41c53"
+    }
+  ]
+}
