@@ -16,7 +16,17 @@ retains the actual early arithmetic, formatting, and inspection failures.
 [The corrected source graph](verification/research-inspection-case-source.json)
 checks all nineteen workspace modules, including missing-operand rejection and
 preservation of freshly recomputed inspector tables when importing tool cases.
-These source checks precede independent execution of the refreshed guest.
+[The refreshed carrier build](verification/research-workspace-carrier-proof.json)
+and [independent guest closure](verification/research-workspace-guest-closure.json)
+then pass all five unchanged feature gates: 4,505 actual generated-Wasm calls,
+including 160 trace cases, 370 selected cells, all 24 family outputs, all 94
+inspection availability/index cases, both tool-case reports, and 2,120 codec
+paths. The carrier uses Text-V3 metadata and 185 vectors, with the current
+production source dispatcher; it does not qualify the final 233-vector V4 UI,
+native containing system, source-free publication, or complete acceptance.
+[The defensive fixture source proof](verification/research-defensive-source-proof.json)
+checks the real source functions and a bounded runtime byte constructor;
+MM-31 independently builds and executes every negative branch with the final SDK.
 
 [Model capacity admission](verification/research-model-capacity.json) projects
 all 233 vectors through the real SDK source reader and admits their canonical

@@ -1,0 +1,210 @@
+{
+  "schema": "lexlean-matmul/research-defensive-source-proof/1",
+  "qualification": false,
+  "scope": "Current unchanged production dependencies and the isolated negative-fixture module pass the pinned source/kernel checker. This receipt does not claim execution of the negative branches, full SDK4 artifact qualification, native/browser qualification, or release qualification.",
+  "status": "pass",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "source_baseline_revision": "6d8c29e3fb1b7d5033c8a34451f09e1caada7eee",
+  "driver": {
+    "path": "scripts/research-defensive.mjs",
+    "sha256": "bfcd50a6445e155d3346d52db48f0e774050a8e8419d156eb9ec29459fc8616d"
+  },
+  "construction": {
+    "recursion": "structural Nat fuel with tail call",
+    "fuel": 14,
+    "seed_bytes": 256,
+    "seed_value": "ASCII x",
+    "exact_response_bytes": 4194304,
+    "first_rejected_response_bytes": 4194305,
+    "product_acceptance_vectors": "unchanged"
+  },
+  "kernel": {
+    "attestation_id": "66d04dcaf7ba74e5c6a900c94f714f59ec413b56722cac1ec930f5f70748b527",
+    "build_id": "b537dee61262f773a36cd4cc5b760d3b31f1f332f00cb34e00c0ebb3bff46a9b",
+    "source_id": "361e05354a1960c131f177e50e0fb9c2581b7feac2d1682c99ad69e8959471ec",
+    "semantic_id": "818bfd74781ad54896944ae92dcd855a49c29344793e6dee23ff4baf2ade71df",
+    "modules": [
+      "Atlas",
+      "Codec",
+      "CodecProtocol",
+      "Core",
+      "Epilogue",
+      "ExtendedProtocol",
+      "Float",
+      "Model",
+      "Protocol",
+      "Research",
+      "ResearchCases",
+      "ResearchCompare",
+      "ResearchDefensiveFixture",
+      "ResearchForms",
+      "ResearchInspect",
+      "ResearchJson",
+      "ResearchModel",
+      "ResearchTrace",
+      "ResearchWorkspace",
+      "Workbench"
+    ],
+    "success": true,
+    "exit_code": 0
+  },
+  "diagnostic_count": 0,
+  "source_inputs": [
+    {
+      "module": "Atlas",
+      "sha256": "d11538a53e3ab38345bb84ab7003bf2e8e8de5e62444bc5c53f9a42b8513450b",
+      "bytes": 164620,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Atlas.lex.tex"
+    },
+    {
+      "module": "Codec",
+      "sha256": "a83ab264286014e9a470c7ba5d557d9e4c8a459d134d07060739b0ff86a38e88",
+      "bytes": 1146068,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Codec.lex.tex"
+    },
+    {
+      "module": "CodecProtocol",
+      "sha256": "ee0a431c3a01a6c893bd3ed09b3bb1f1527bffef36be31cb210e394ad1715f5a",
+      "bytes": 88203,
+      "authority": "unchanged-current-production-source",
+      "path": "src/CodecProtocol.lex.tex"
+    },
+    {
+      "module": "Core",
+      "sha256": "7ef965d082db2a8b8073c856bbdba83f652422508b5fc2f07032a787943f7b3c",
+      "bytes": 304177,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Core.lex.tex"
+    },
+    {
+      "module": "Epilogue",
+      "sha256": "d523c13d814fdf434ada30b988f30015f2f103871357f58fd7cf371dace90a87",
+      "bytes": 85876,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Epilogue.lex.tex"
+    },
+    {
+      "module": "ExtendedProtocol",
+      "sha256": "ae343c20e5d5c970ddd19018ad9c6a4c1a176cfbbcf4832a1420ce8e1288d5ce",
+      "bytes": 190587,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ExtendedProtocol.lex.tex"
+    },
+    {
+      "module": "Float",
+      "sha256": "6345f279bf4099e10dc1c1cdc046f7eeebd17ecc0c1b7aa58e64efde0f3df5a6",
+      "bytes": 266431,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Float.lex.tex"
+    },
+    {
+      "module": "Model",
+      "sha256": "9cbc03b00caf8c818a135d139d9f0ab0fb90ec7cd473d73a13a45016d36d657c",
+      "bytes": 6583,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Model.lex.tex"
+    },
+    {
+      "module": "Protocol",
+      "sha256": "51454a08ad1013fadb6073d8e1aa304af571437d54e911929552dee2d571b791",
+      "bytes": 122291,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Protocol.lex.tex"
+    },
+    {
+      "module": "Research",
+      "sha256": "9b10291284a8157eb84287f90218170664f87d2d6e0963c3cde9b0fb70ddbde1",
+      "bytes": 7299,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Research.lex.tex"
+    },
+    {
+      "module": "ResearchCases",
+      "sha256": "e6f71f6bf7e98c69b189980ec7f021c8424e955fd91f39092e1f756ac227c545",
+      "bytes": 66206,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ResearchCases.lex.tex"
+    },
+    {
+      "module": "ResearchCompare",
+      "sha256": "5282e8b054995715700902c082a915f8c83ce26ffcae0f239ab5aceb9df549a1",
+      "bytes": 148264,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ResearchCompare.lex.tex"
+    },
+    {
+      "module": "ResearchDefensiveFixture",
+      "sha256": "1159432b7b1e7c264dca4707117b944a2ed20a60666479f16198e9e5e603f287",
+      "bytes": 9317,
+      "authority": "isolated-source-negative-fixture"
+    },
+    {
+      "module": "ResearchForms",
+      "sha256": "c6a390d5646444013afe0ec23c00ae38e34a637d428747b8cddfa51e0c8af604",
+      "bytes": 51436,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ResearchForms.lex.tex"
+    },
+    {
+      "module": "ResearchInspect",
+      "sha256": "99e55dd7a7d9c8d65f43745816c4ebd23f2149f65b4a8b96770cf0550a32729d",
+      "bytes": 109086,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ResearchInspect.lex.tex"
+    },
+    {
+      "module": "ResearchJson",
+      "sha256": "66daa55b9e881e6fc2d43c5530c17f0dfcaf3996631a581423836c2487968686",
+      "bytes": 97599,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ResearchJson.lex.tex"
+    },
+    {
+      "module": "ResearchModel",
+      "sha256": "913d78c8f0af809eb45b47518288ca42da61984c6ae072b652c03ccbc81f2685",
+      "bytes": 196689,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ResearchModel.lex.tex"
+    },
+    {
+      "module": "ResearchTrace",
+      "sha256": "dccddf04ba3432a78bdcc4248d7ae7a82cd56c95bb5602e3d8eb441b697415e6",
+      "bytes": 145649,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ResearchTrace.lex.tex"
+    },
+    {
+      "module": "ResearchWorkspace",
+      "sha256": "ec0c9dd5a266aaa84a390e0d13bbbf88d6172491bdc435ec4c4d93849712cdd8",
+      "bytes": 157648,
+      "authority": "unchanged-current-production-source",
+      "path": "src/ResearchWorkspace.lex.tex"
+    },
+    {
+      "module": "Workbench",
+      "sha256": "4704d6319de6aeed83e5ba76adf396260db71c892d5d7e82a3c615c878c41c53",
+      "bytes": 127039,
+      "authority": "unchanged-current-production-source",
+      "path": "src/Workbench.lex.tex"
+    }
+  ],
+  "stage_receipts": [
+    {
+      "stage": "lock",
+      "stdout_sha256": "dc089a4cfd5d488f53409e30183abc597de06975f0902f8a35005a468d24f317",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    },
+    {
+      "stage": "verify",
+      "stdout_sha256": "0919bdd0416b6d46ad3ae62db375af8878f9fa893dee6e5c87b331fa214fd6ec",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0
+    }
+  ],
+  "pending_validation": [
+    "Actual normal full fixture build and branch execution using the finalized locked SDK4 image; performed by MM31, separately from production release qualification."
+  ]
+}

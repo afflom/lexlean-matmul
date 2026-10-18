@@ -32,13 +32,14 @@ const fixtureCall = (name, ...args) => ({ kind: 'call', function: { name }, argu
 export function researchDefensiveFixtureSource(modules) {
   const semantic = new Map(modules.map(module => [module.module, module.semantic]));
   const declarations = [];
-  const define = (name, parameters, result, body) => {
+  const define = (name, parameters, result, body, recursiveArgument) => {
     const dependencies = new Set();
     const visit = value => {
       if (!value || typeof value !== 'object') return;
       if (value.kind === 'call') {
         const { name: member } = value.function, module = value.function.module || moduleName;
-        const declaration = module === moduleName ? declarations.find(item => item.name === member)
+        const declaration = module === moduleName && member === name && recursiveArgument ? { axioms: [] }
+          : module === moduleName ? declarations.find(item => item.name === member)
           : semantic.get(module)?.declarations.find(item => item.name === member);
         assert(declaration, `defensive-source: missing ${module}.${member}`);
         for (const axiom of declaration.axioms || []) dependencies.add(axiom);
@@ -46,7 +47,8 @@ export function researchDefensiveFixtureSource(modules) {
       for (const child of Object.values(value)) if (Array.isArray(child)) child.forEach(visit); else visit(child);
     };
     visit(body);
-    declarations.push({ kind: 'definition', name, parameters, result, body, axioms: [...dependencies].sort() });
+    declarations.push({ kind: 'definition', name, parameters, result, body, axioms: [...dependencies].sort(),
+      ...(recursiveArgument ? { recursive_argument: recursiveArgument } : {}) });
   };
   const input = semantic.get('ResearchModel').declarations.find(item => item.name === 'ResearchInput');
   assert(input?.fields.length);
@@ -64,19 +66,25 @@ export function researchDefensiveFixtureSource(modules) {
   define('fixtureComputedReply', [], named('ResearchWorkspace', 'WorkspaceReply'),
     call('ResearchWorkspace', 'workspaceInvoke', string('compute'),
       call('ResearchWorkspace', 'workspaceEnvelope', string(JSON.stringify(envelope)))));
-  // Compact doubling constructs the exact modeled response bound in source.
-  define('fixtureBytes0', [], bytesType, bytes('x'.repeat(1024)));
-  for (let index = 1; index <= 12; index++) define(`fixtureBytes${index}`, [], bytesType,
-    primitive('append', bytesType, fixtureCall(`fixtureBytes${index - 1}`), fixtureCall(`fixtureBytes${index - 1}`)));
+  // A bounded runtime recursion constructs the same exact response bound from
+  // a small literal, keeping executable source within normal exporter limits.
+  define('fixtureDoubleBytes', [{ name: 'fuel', type: { kind: 'nat' } }, { name: 'value', type: bytesType }], bytesType,
+    { kind: 'match', scrutinee: variable('fuel'), branches: [
+      { constructor: { name: 'Nat.zero' }, binders: [], body: variable('value') },
+      { constructor: { name: 'Nat.succ' }, binders: ['previous'],
+        body: fixtureCall('fixtureDoubleBytes', variable('previous'),
+          primitive('append', bytesType, variable('value'), variable('value'))) },
+    ] }, 'fuel');
+  const responseBound = fixtureCall('fixtureDoubleBytes', natural(14), bytes('x'.repeat(256)));
   const normalReply = fixtureCall('fixtureComputedReply');
   let dispatch = call('ResearchWorkspace', 'workspaceDispatch', variable('request'));
   const commands = [
     ['prepared-trace', encode(fixtureCall('fixtureTraceFailure', string(envelope.request)))],
     ['prepared-response', encode(fixtureCall('fixtureResponseFailure', string(envelope.request)))],
     ['computed-reply', call('ResearchWorkspace', 'workspaceSerialize', normalReply)],
-    ['response-at-bound', call('ResearchWorkspace', 'workspaceBound', normalReply, fixtureCall('fixtureBytes12'))],
+    ['response-at-bound', call('ResearchWorkspace', 'workspaceBound', normalReply, responseBound)],
     ['response-over-bound', call('ResearchWorkspace', 'workspaceBound', normalReply,
-      primitive('append', bytesType, fixtureCall('fixtureBytes12'), bytes('x')))],
+      primitive('append', bytesType, responseBound, bytes('x')))],
   ];
   for (const [command, result] of commands) dispatch = ifThen(equal(variable('request'), bytes(`\u001fdefensive-source-v1\u001f${command}`)), result, dispatch);
   define('fixtureDispatch', [{ name: 'request', type: bytesType }], bytesType, dispatch);
