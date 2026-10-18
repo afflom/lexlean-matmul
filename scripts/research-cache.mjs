@@ -19,13 +19,18 @@ const pins={
   webkit:{version:'26.5',executablePath:'/ms-playwright/webkit-2336/pw_run.sh'},
 };
 const bindingMarker="bindingUrl.searchParams.set('model_id',MODEL_ID);";
-const types=name=>name.endsWith('.wasm')?'application/wasm':name.endsWith('.js')?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.json')?'application/json':'text/html';
+const iconMarker='<link rel="icon" href="data:,">';
+const types=name=>name.endsWith('.wasm')?'application/wasm':name.endsWith('.js')?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.json')?'application/json':'text/html; charset=utf-8';
 const observationError=(asset)=>`research-cache: current model-keyed ${asset} was not acquired from network`;
 
 export async function warmResearchCacheAssets(page,{url,basePath,content,javascript,requests}) {
-  // A captured stylesheet is inert when navigated as a document. This creates
-  // the same origin without executing an app or adding a seventh asset.
-  await page.goto(new URL('app.css',url).href);
+  // The server streams the captured head through its data icon, holding the
+  // remaining exact bytes until bare assets have entered the normal cache.
+  const navigation=await page.goto(url,{waitUntil:'commit'});
+  await page.waitForFunction(()=>document.querySelector('link[rel="icon"]')?.getAttribute('href')==='data:,');
+  const prefixDom=await page.evaluate(()=>({icons:[...document.querySelectorAll('link[rel="icon"]')].map(node=>node.getAttribute('href')),
+    scripts:document.querySelectorAll('script').length,stylesheets:document.querySelectorAll('link[rel="stylesheet"]').length}));
+  assert.deepEqual(prefixDom,{icons:['data:,'],scripts:0,stylesheets:0},'research-cache: streamed head executed or loaded an app asset before cache warmup');
   const bare=['app.js',javascript,'app.css'],warmup=[];
   const fetchBodies=()=>page.evaluate(async addresses=>{const rows=[];for(const address of addresses){const response=await fetch(address,{cache:'force-cache',mode:'same-origin',redirect:'error'}),bytes=await response.arrayBuffer();
     rows.push({url:new URL(address,location.href).pathname,status:response.status,bytes:bytes.byteLength,sha256:[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(x=>x.toString(16).padStart(2,'0')).join('')});}return rows;},bare.map(name=>new URL(name,url).href));
@@ -35,7 +40,7 @@ export async function warmResearchCacheAssets(page,{url,basePath,content,javascr
     const delta=requests.length-before;warmup.push({pass,server_gets:delta,bodies});
     if(pass===2)assert.equal(delta,0,'research-cache: second bare-asset fetch did not reuse ordinary HTTP cache');
   }
-  return warmup;
+  return {warmup,navigation,prefixDom};
 }
 
 export async function runResearchCacheChecks(artifacts,binding) {
@@ -53,6 +58,8 @@ export async function runResearchCacheChecks(artifacts,binding) {
   const fixture=researchCase('matmul',{rows:2,inner:2,columns:2,left:[1n,2n,3n,4n],right:[5n,6n,7n,8n]});
   assert.equal(fixture.expectedResponse,'1\tok\t2\t2\t19,22,43,50');assert.equal(operation.fields.length,fixture.fields.length);
   const key='?model_id='+artifacts.modelId,html=content.get('index.html').toString('utf8'),app=content.get('app.js').toString('utf8');
+  assert.equal(html.split(iconMarker).length,2,'research-cache: explicit captured data-icon policy is missing or ambiguous');
+  assert(!/<(?:script|link)\b/i.test(html.slice(0,html.indexOf(iconMarker))),'research-cache: data icon must precede app asset references');
   const cssMarker='href="app.css'+key+'"';
   assert.equal(app.split(bindingMarker).length,2,'research-cache: isolated adapter-key omission is ambiguous');
   assert.equal(html.split(cssMarker).length,2,'research-cache: isolated stylesheet-key omission is ambiguous');
@@ -101,24 +108,35 @@ export async function runResearchCacheChecks(artifacts,binding) {
 
 async function exercise(context,variant,content,artifacts,target,identity,fixture,operation,view,observations) {
   let phase='warm';const requests=[],unexpected=[],errors=[],responseErrors=[],responses=[],pending=[];
+  const html=variant.mutated==='index.html'?variant.bytes:content.get('index.html'),icon=Buffer.from(iconMarker),iconEnd=html.indexOf(icon)+icon.length;
+  const references=['<link rel="stylesheet"','<script'].map(marker=>html.indexOf(Buffer.from(marker))).filter(index=>index>=0),split=Math.min(...references);
+  assert(iconEnd>=icon.length&&Number.isInteger(split)&&split>=iconEnd,'research-cache: captured icon must precede stylesheet/module activation');
+  const prefix=html.subarray(0,split),remainder=html.subarray(split);assert(Buffer.concat([prefix,remainder]).equals(html));
+  let releaseHtml,htmlRequests=0;const heldHtml=new Promise(resolve=>{releaseHtml=resolve;});
+  const htmlStream={icon:iconMarker,prefix_bytes:prefix.length,prefix_sha256:sha(prefix),remainder_bytes:remainder.length,remainder_sha256:sha(remainder),
+    full_bytes:html.length,full_sha256:sha(html),held:false,released_after_warmup:false};
   const server=createServer((request,response)=>{
     const address=new URL(request.url,'http://127.0.0.1'),name=address.pathname===target.basePath?'index.html':address.pathname.slice(target.basePath.length);
     if(request.method!=='GET'||!capturedBrowserRequest('http://127.0.0.1'+request.url,'http://127.0.0.1',target.basePath,[...content.keys()],identity)){
       unexpected.push(request.url);response.writeHead(404).end();return;
     }
-    const bytes=phase==='current'&&name===variant.mutated?variant.bytes:content.get(name);
+    const bytes=name==='index.html'?html:phase==='current'&&name===variant.mutated?variant.bytes:content.get(name);
     requests.push({phase,url:request.url,path:name,method:request.method,bytes:bytes.length,sha256:sha(bytes),destination:request.headers['sec-fetch-dest']??null});
     response.writeHead(200,{'content-type':types(name),'cache-control':name==='index.html'?'no-store':'public, max-age=600',
-      'content-length':bytes.length,Date:new Date().toUTCString(),ETag:'"'+sha(bytes)+'"'}).end(bytes);
+      'content-length':bytes.length,Date:new Date().toUTCString(),ETag:'"'+sha(bytes)+'"'});
+    if(name==='index.html'){
+      htmlRequests++;htmlStream.held=true;response.write(prefix);
+      heldHtml.then(()=>{if(!response.destroyed)response.end(remainder);});
+    }else response.end(bytes);
   });
   await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
   const origin='http://127.0.0.1:'+server.address().port,url=origin+target.basePath,key='?model_id='+artifacts.modelId;
   const workers=[];
   const observed={case:variant.name,status:'running',mutated_asset:variant.mutated,cache_warmup_verified:false,network_gets:{},requests,
-    warmup:[],responses,worker_urls:[],worker_ready_model_ids:[],actual_matrix_response:'',actual_matrix_cells:[],
+    warmup:[],html_stream:htmlStream,responses,worker_urls:[],worker_ready_model_ids:[],actual_matrix_response:'',actual_matrix_cells:[],
     mutation:variant.mutated?{asset:variant.mutated,before_sha256:sha(content.get(variant.mutated)),after_sha256:sha(variant.bytes)}:null};
   observations.push(observed);
-  const expectedBody=name=>phase==='current'&&name===variant.mutated?variant.bytes:content.get(name);
+  const expectedBody=name=>name==='index.html'?html:phase==='current'&&name===variant.mutated?variant.bytes:content.get(name);
   context.on('request',request=>{if(request.method()!=='GET'||!capturedBrowserRequest(request.url(),origin,target.basePath,[...content.keys()],identity))unexpected.push(request.url());});
   context.on('response',response=>{
     const address=new URL(response.url());if(address.origin!==origin)return;
@@ -132,9 +150,12 @@ async function exercise(context,variant,content,artifacts,target,identity,fixtur
         this.addEventListener('message',({data})=>{if(data?.type==='ready')row.ready.push(data.model_id);else if(data?.type==='result'&&data.output instanceof Uint8Array)row.results.push([...data.output]);});}
     };});
     const page=await context.newPage();page.setDefaultTimeout(view.execution.timeout_milliseconds);page.on('pageerror',error=>errors.push(error.message));page.on('worker',worker=>workers.push(worker));
-    observed.warmup=await warmResearchCacheAssets(page,{url,basePath:target.basePath,content,javascript:artifacts.javascript,requests});
-    observed.cache_warmup_verified=true;await Promise.all(pending);assert.deepEqual(responseErrors,[]);phase='current';
-    const navigation=await page.goto(url);
+    const {warmup,navigation,prefixDom}=await warmResearchCacheAssets(page,{url,basePath:target.basePath,content,javascript:artifacts.javascript,requests});
+    observed.warmup=warmup;observed.cache_warmup_verified=true;htmlStream.prefix_dom=prefixDom;
+    assert.equal(htmlRequests,1,'research-cache: more than one initial HTML response was requested');
+    assert(requests.every(row=>row.path==='index.html'||(['app.js',artifacts.javascript,'app.css'].includes(row.path)&&!row.url.includes('?'))),
+      'research-cache: app assets were activated before cache warmup completed');
+    phase='current';htmlStream.released_after_warmup=true;releaseHtml();
     observed.initial_html=await page.evaluate(html=>{const document=new DOMParser().parseFromString(html,'text/html');return{modules:[...document.querySelectorAll('script')].map(node=>({src:node.getAttribute('src'),type:node.getAttribute('type')})),stylesheets:[...document.querySelectorAll('link[rel="stylesheet"]')].map(node=>node.getAttribute('href'))};},await navigation.text());
     assert.deepEqual(observed.initial_html,{modules:[{src:'app.js'+key,type:'module'}],stylesheets:[variant.missing==='stylesheet'?'app.css':'app.css'+key]});
     await page.waitForFunction(()=>['ready','load_error','response_error','compute_error'].includes(document.querySelector('#status')?.dataset.state));
@@ -175,5 +196,5 @@ async function exercise(context,variant,content,artifacts,target,identity,fixtur
     observed.external_requests=0;observed.page_errors=0;observed.service_workers=await page.evaluate(async()=>('serviceWorker'in navigator?(await navigator.serviceWorker.getRegistrations()).length:0));assert.equal(observed.service_workers,0);
     return observed;
   } catch(error){observed.status='failed';observed.error={name:error.name,message:String(error.message).slice(0,4096)};throw error;
-  } finally {server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
+  } finally {releaseHtml();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));}
 }
