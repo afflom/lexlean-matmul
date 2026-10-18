@@ -3,7 +3,7 @@
 The product is an exact arithmetic reference workbench for learning, examining,
 and integrating the UOR method. The authoritative interface and execution policy
 are LexLean declarations in `src/`. The registered release requirements are
-MM-18 through MM-24 in the generated `CONFORMANCE.md`. The complete `just vv`
+MM-18 through MM-31 in the generated `CONFORMANCE.md`. The complete `just vv`
 gate and protected-main publication checks qualify a revision for release.
 
 ## Stakeholders and useful outcomes
@@ -57,11 +57,26 @@ failure. It does not qualify a later revision.
 | MM-22 | Pinned semantic scans and actual keyboard, focus, status, contrast, target, 320-pixel reflow, and enlarged-text journeys exercise the rendered product. |
 | MM-23 | Visible privacy guidance matches observed behavior: calculations use browser-local execution, without operand-bearing navigation, telemetry, logs, or persistent history. |
 | MM-24 | The modeled current-main policy and retention period bind the accepted bundle and bounded success/failure publication receipts to the deployed revision. |
+| MM-25 | A selected output cell exposes its actual source arithmetic, decoded contributions, epilogue and terminal result; the trace must reconstruct the actual response. |
+| MM-26 | Equivalent routes and alternate exact schedules execute over the same inputs, expose independently replayable commands, and compare complete responses. |
+| MM-27 | Versioned local cases preserve all operation/tool drafts, inspection controls, selection, checked model identity and exact observations; import validates, recomputes and compares. |
+| MM-28 | All nine codec stages expose their actual transformed code and selected coordinate through the full composition, including empty runs and large decoded words. |
+| MM-29 | Both IEEE formats expose exact bit fields, special classes, exact finite values and canonical Laurent representations, independently and within matrix operations. |
+| MM-30 | All 24 operation families, 28 worked examples, both tools and case journeys work with keyboard input, pagination, 320-pixel layouts and enlarged text in three browser engines. |
+| MM-31 | Research actions and files obey worker cancellation, edit ownership, stale-result rejection, timeout/retry, typed recovery, safe text rendering and local-data privacy. |
 
 Guided request construction and mathematical response interpretation belong in
 LexLean. The SDK generates presentation, generic field framing, rendering, and
 the execution lifecycle. Expected example answers are acceptance inputs;
 calculating an example invokes the generated dispatcher.
+
+The research extension uses the public Text-V4 profile and its modeled actions,
+reports, tools and case controls. LexLean owns parsing, calculations, route
+selection, inspectors, case schema validation, identity decisions and answer
+comparison. The SDK owns generic widgets, worker transport and file/download
+mechanics. The [research journeys](RESEARCH-WORKBENCH.md) describe the complete
+interaction contract. `verification/research-r3-baseline.json` records the seven
+intended failures against the actual accepted PR4 artifact before implementation.
 
 ## Standards and evidence scope
 
