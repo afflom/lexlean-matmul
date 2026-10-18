@@ -12,6 +12,13 @@ request from this document. Guided forms additionally accept whitespace between
 matrix entries and show readable result tables. The advanced editor preserves
 the canonical tab/comma syntax described here.
 
+These arithmetic requests retain the original 16 KiB source limit. The
+Text-V4 interface frames research and case actions separately, with source-owned
+JSON validation and explicit transport budgets. See
+[RESEARCH-WORKBENCH.md](RESEARCH-WORKBENCH.md) for that contract, independent
+inspectors, and versioned local files. It does not change the arithmetic wire
+format below.
+
 | Operation | Fields after `1` and operation name |
 | --- | --- |
 | `matmul` | `m`, `k`, `n`, `A`, `B` |
