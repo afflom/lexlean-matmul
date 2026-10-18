@@ -32,6 +32,52 @@ an arbitrarily large decoded word. Unknown runs have zero length; the inspector
 stops there without inventing a child code or value. Coordinates use validated
 unsigned 64-bit representation and are checked against the actual decoded word.
 
+## Replaying comparison commands
+
+Each comparison panel contains an exact `request` string and its canonical
+`response`. Integrators can execute either request through the generated public
+JavaScript binding. Serve the matching generated JavaScript and Wasm files
+alongside this module, initialize once, and pass the request as UTF-8 bytes:
+
+```js
+import init, { invoke_bytes } from "./lexlean_matmul.js";
+
+await init();
+const encoder = new TextEncoder();
+const decoder = new TextDecoder("utf-8", { fatal: true });
+
+export function replayComparison(comparisonReply) {
+  return comparisonReply.panels.map(panel => {
+    const response = decoder.decode(invoke_bytes(encoder.encode(panel.request)));
+    if (response !== panel.response) {
+      throw new Error(`Replay differs for ${panel.id}`);
+    }
+    return { id: panel.id, response };
+  });
+}
+```
+
+Pass the parsed comparison reply with its `panels` array to this function.
+Preserve each request verbatim: do not trim it, append a newline, or pass the
+JSON quotes and escapes used to display a string.
+
+Ordinary version 1 requests can also be pasted into **Advanced protocol editor**.
+A research alternate command instead starts with literal U+001F, followed by
+`research-alternate-v1`, U+001F, the method, U+001F, and the original request.
+The generated public dispatcher accepts that command; the advanced editor
+accepts the version 1 arithmetic protocol. For example, this JavaScript string
+constructs a reverse-order replay of the exact one-cell product 6 × 7:
+
+```js
+const request = "1\tmatmul\t1\t1\t1\t6\t7";
+const alternate = "\u001fresearch-alternate-v1\u001freverse\u001f" + request;
+const response = decoder.decode(invoke_bytes(encoder.encode(alternate)));
+// response === "1\tok\t1\t1\t42"
+```
+
+Here `\u001f` creates the actual separator character at runtime. In the
+application, use **Compare equivalent executions** to run the selected route.
+
 ## Local case interchange
 
 A case is UTF-8 JSON with exactly these fields:
