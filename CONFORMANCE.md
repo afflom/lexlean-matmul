@@ -98,6 +98,18 @@ model does not sanction.
 | --- | --- | --- |
 | `MM-12` | `build` | The pinned SDK reproduces platform-independent application artifacts from separate clean roots. |
 
+## research
+
+| ID | Level | Statement |
+| --- | --- | --- |
+| `MM-25` | `build` | Every supported operation exposes an actual selected-cell or normalization trace with exact decoded terms, reduction steps, applicable epilogues, and one terminal encoding. |
+| `MM-26` | `build` | Every supported operation executes an equivalent route on the same parsed inputs and compares exact results, shapes, witnesses, and terminal encodings without native-performance claims. |
+| `MM-27` | `build` | Versioned local cases export and import exact requests with explicit identity, bounded validation, and fresh recomputation rather than trusting serialized answers. |
+| `MM-28` | `build` | All nine scalar and compositional codec stages expose their actual stored-symbol mappings, decoded positions, wrapping transformations, and shape effects. |
+| `MM-29` | `build` | Binary32 and binary64 inspection preserves original bits and classes, exact finite dyadics and Laurent atoms, and the actual terminal rounding and Atlas contraction semantics. |
+| `MM-30` | `build` | All supported operations provide modeled guided research journeys with named editable examples, selected cells, route comparisons, local cases, and applicable inspectors across keyboard and mobile presentations. |
+| `MM-31` | `build` | Research execution, inspection, comparison, and case handling preserve request ownership, recoverable drafts, accessible lifecycle states, and browser-local operand privacy. |
+
 ## system
 
 | ID | Level | Statement |
@@ -158,3 +170,10 @@ Never re-derived, vendored, or gated on.
 | `MM-22` | `build` | The guided workbench satisfies finite keyboard, semantic, contrast, target, status, and responsive accessibility checks against pinned browser oracles. |
 | `MM-23` | `build` | The standalone Pages workbench explains browser-local computation and avoids operand-bearing network requests, URLs, logs, and persistent calculation history. |
 | `MM-24` | `build` | The protected Pages release enforces modeled freshness and retains bounded, revision-bound acceptance and publication evidence for the declared period. |
+| `MM-25` | `build` | Every supported operation exposes an actual selected-cell or normalization trace with exact decoded terms, reduction steps, applicable epilogues, and one terminal encoding. |
+| `MM-26` | `build` | Every supported operation executes an equivalent route on the same parsed inputs and compares exact results, shapes, witnesses, and terminal encodings without native-performance claims. |
+| `MM-27` | `build` | Versioned local cases export and import exact requests with explicit identity, bounded validation, and fresh recomputation rather than trusting serialized answers. |
+| `MM-28` | `build` | All nine scalar and compositional codec stages expose their actual stored-symbol mappings, decoded positions, wrapping transformations, and shape effects. |
+| `MM-29` | `build` | Binary32 and binary64 inspection preserves original bits and classes, exact finite dyadics and Laurent atoms, and the actual terminal rounding and Atlas contraction semantics. |
+| `MM-30` | `build` | All supported operations provide modeled guided research journeys with named editable examples, selected cells, route comparisons, local cases, and applicable inspectors across keyboard and mobile presentations. |
+| `MM-31` | `build` | Research execution, inspection, comparison, and case handling preserve request ownership, recoverable drafts, accessible lifecycle states, and browser-local operand privacy. |

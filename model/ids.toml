@@ -143,3 +143,45 @@ id = "MM-24"
 level = "build"
 suite = "production"
 statement = "The protected Pages release enforces modeled freshness and retains bounded, revision-bound acceptance and publication evidence for the declared period."
+
+[[id]]
+id = "MM-25"
+level = "build"
+suite = "research"
+statement = "Every supported operation exposes an actual selected-cell or normalization trace with exact decoded terms, reduction steps, applicable epilogues, and one terminal encoding."
+
+[[id]]
+id = "MM-26"
+level = "build"
+suite = "research"
+statement = "Every supported operation executes an equivalent route on the same parsed inputs and compares exact results, shapes, witnesses, and terminal encodings without native-performance claims."
+
+[[id]]
+id = "MM-27"
+level = "build"
+suite = "research"
+statement = "Versioned local cases export and import exact requests with explicit identity, bounded validation, and fresh recomputation rather than trusting serialized answers."
+
+[[id]]
+id = "MM-28"
+level = "build"
+suite = "research"
+statement = "All nine scalar and compositional codec stages expose their actual stored-symbol mappings, decoded positions, wrapping transformations, and shape effects."
+
+[[id]]
+id = "MM-29"
+level = "build"
+suite = "research"
+statement = "Binary32 and binary64 inspection preserves original bits and classes, exact finite dyadics and Laurent atoms, and the actual terminal rounding and Atlas contraction semantics."
+
+[[id]]
+id = "MM-30"
+level = "build"
+suite = "research"
+statement = "All supported operations provide modeled guided research journeys with named editable examples, selected cells, route comparisons, local cases, and applicable inspectors across keyboard and mobile presentations."
+
+[[id]]
+id = "MM-31"
+level = "build"
+suite = "research"
+statement = "Research execution, inspection, comparison, and case handling preserve request ownership, recoverable drafts, accessible lifecycle states, and browser-local operand privacy."
