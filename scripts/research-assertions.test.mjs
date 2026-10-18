@@ -2,24 +2,30 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { researchFamilies, researchCase, completeResearchCases, expectedAccumulation, scalarText, scalarReferences, traceColumns,
   signedEncoding, tropicalEncoding } from './research-cases.mjs';
-import { assertTrace, assertComparison, assertIeeeInspection, ieeeCases } from './research-assertions.mjs';
+import { assertTrace, assertComparison, assertIeeeInspection, ieeeCases, reportTable } from './research-assertions.mjs';
 import { codecPath, codecInspectionCases, assertCodecInspection } from './research-codec-reference.mjs';
 import { ieeeOracle } from './extended-oracle.mjs';
 
 function traceFixture(fixture, row = 0, column = 0) {
   const index = row * fixture.columns + column;
+  const table = rows => ({status:'ok',request:fixture.request,response:fixture.expectedResponse,selection:{row,column},
+    tables:[{id:fixture.normalize?'recenter-trace':'calculation-trace',title:'Exact independently described trace',columns:[...traceColumns],rows}]});
+  if(fixture.rows*fixture.columns===0)return table([['empty output','none',String(fixture.rows),String(fixture.columns),
+    'not applicable: no output cell','not applicable: no accumulator','No output cell exists; no index is fabricated.']]);
+  if(fixture.normalize){let maximum=null;const rows=fixture.original.map((value,i)=>{const before=maximum;maximum=fixture.arithmetic.add(maximum,value);return['global maximum',String(i),scalarText('tropical',value),'max','not applicable: maximum reduction',scalarText('tropical',before),scalarText('tropical',maximum)];});
+    rows.push(['remove maximum',String(column),scalarText('tropical',fixture.original[column]),scalarText('tropical',maximum),'subtract finite maximum',scalarText('tropical',fixture.original[column]),scalarText('tropical',fixture.output[column])]);return table(rows);}
   const rows = expectedAccumulation(fixture, row, column).map(step => ['accumulate', String(step.index),
     ...['left', 'right', 'product', 'before', 'after'].map(key => scalarText(fixture.domain, step[key]))]);
   const factor=value=>fixture.domain==='ieee'?scalarText('ieee',{kind:'finite',coefficient:value,exponent:0}):String(value);
   if (fixture.hasLinear) rows.push(['linear epilogue', 'alpha, beta', factor(fixture.alpha), factor(fixture.beta),
     scalarText(fixture.domain, fixture.prior[index]), scalarText(fixture.domain, fixture.reduced[index]), scalarText(fixture.domain, fixture.linear[index])]);
-  if (fixture.hasBias) rows.push(['column bias', String(column), String(fixture.bias[column]), '', '',
+  if (fixture.hasBias) rows.push(['column bias', String(column), String(fixture.bias[column]), 'not applicable: bias is added', 'not applicable: bias addition',
     scalarText(fixture.domain, fixture.linear[index]), scalarText(fixture.domain, fixture.beforeEncoding[index])]);
-  if (fixture.family === 'tropical') rows.push(['least attaining witness', 'original index', '', '', '',
+  if (fixture.family === 'tropical') rows.push(['least attaining witness', 'original index', 'original term indices', 'least index on ties', 'not applicable: witness selection',
     fixture.expectedResponse.split('\t')[5].split(',')[index], scalarText(fixture.domain, fixture.reduced[index])]);
   const final = fixture.output[index], terminal = fixture.domain === 'complex' ? scalarText('complex', final)
     : fixture.family === 'dyadic' ? scalarText('dyadic', final) : final === null ? '-inf' : String(final);
-  rows.push(['terminal encoding', 'once', fixture.domain, fixture.mode, '', scalarText(fixture.domain, fixture.beforeEncoding[index]), terminal]);
+  rows.push(['terminal encoding', 'once', fixture.domain, fixture.mode, 'not applicable: terminal conversion', scalarText(fixture.domain, fixture.beforeEncoding[index]), terminal]);
   return { status: 'ok', request: fixture.request, response: fixture.expectedResponse, selection: { row, column },
     tables: [{ id: 'calculation-trace', title: 'Actual exact calculation', columns: [...traceColumns], rows },
       ...(['table','ieee-table','arena'].includes(fixture.family)?[{id:'lookup-contributions',title:'Actual table gathers',
@@ -36,10 +42,23 @@ test('all24 fixtures are complete actual protocol requests with independent exac
   assert.equal(researchCase('complex').expectedResponse, '1\tok\t2\t2\t-329,346,419,-442\t63,-74,-27,38');
   assert.equal(researchCase('recenter').expectedResponse, '1\tok\t-4,-inf,0,-9\t7');
 });
-test('trace validator closes all nonnormalization families and every independently derived selected cell', () => {
-  for (const fixture of completeResearchCases().filter(x => !x.normalize)) for (let r = 0; r < fixture.rows; r++) for (let c = 0; c < fixture.columns; c++) {
+test('trace validator closes all24 actual phases and refuses nonplain or fabricated display explanations', () => {
+  for (const fixture of completeResearchCases()) for (let r = 0; r < fixture.rows; r++) for (let c = 0; c < fixture.columns; c++) {
     assertTrace(traceFixture(fixture, r, c), fixture, r, c);
   }
+  for(const family of researchFamilies){const fixture=family==='recenter'?researchCase(family,{vector:[]}):researchCase(family,{rows:0});assert.equal(fixture.output.length,0);assertTrace(traceFixture(fixture),fixture,0,0);}
+  const fixture=researchCase('matmul'),report=traceFixture(fixture);
+  assertTrace(mutate(report,r=>r.tables[0].rows.at(-1)[4]='No scalar multiplication: terminal encoding occurs once.'),fixture,0,0);
+  for(const text of ['', ' ', '\t', '\u007f', '\u0085', '\ud800', 'x'.repeat(16385)])
+    assert.throws(()=>assertTrace(mutate(report,r=>r.tables[0].rows.at(-1)[4]=text),fixture,0,0),/research-display/);
+  for(const current of [researchCase('matmul'),researchCase('complex-bias-gemm'),researchCase('tropical'),researchCase('recenter'),researchCase('matmul',{rows:0}),researchCase('recenter',{vector:[]})]){
+    const report=traceFixture(current);for(const[i,row]of report.tables[0].rows.entries())for(const[j,text]of row.entries())if(text.startsWith('not applicable:')||text==='original term indices'||text==='least index on ties')
+      assert.throws(()=>assertTrace(mutate(report,r=>r.tables[0].rows[i][j]='unused'),current,0,0),/research-explanation/);
+  }
+  assert.throws(()=>assertTrace(mutate(report,r=>r.tables[0].rows.at(-1)[4]='not applicable: witness selection'),fixture,0,0),/research-explanation/);
+  const display=value=>({tables:[{id:'operand-values',title:'Exact value',columns:['Target','Index','Stored','Decoded'],rows:[['a','0',value,value]]}]});
+  reportTable(display('🌱'.repeat(4096)),'operand-values');
+  for(const text of ['', ' ', '\n', '\u009f', '\udfff', '🌱'.repeat(4096)+'x'])assert.throws(()=>reportTable(display(text),'operand-values'),/research-display/);
 });
 test('trace validator rejects reordered terms despite identical final answer', () => {
   const fixture = researchCase('matmul'), report = traceFixture(fixture);

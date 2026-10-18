@@ -1,0 +1,215 @@
+{
+  "schema": "lexlean-matmul/research-display-verification-owner/1",
+  "qualification": false,
+  "status": "finite-owner-red-to-green",
+  "recorded_at": "2026-10-18T19:04:19.884319+00:00",
+  "scope": "Finite verification-owner regression and actual prior component display RED. This is not a rebuilt successor, generated-renderer GREEN, immutable SDK, System/full-vv, PR/main or Pages acceptance claim.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "actual_baseline": {
+    "build_id": "b334d77128a7cad43ffb0d71af43b9a93e1c9064657fe878b41a5791f58baf06",
+    "model_id": "aeb90ff4c975b7188e5ce6cb8c23a43a7a516f848ee6b39dc9715858c57f4afb",
+    "guest_calls": 4505,
+    "current_UI_replies": 4098,
+    "renderer_refusals": 418,
+    "blank_display_cells": 595,
+    "refusals_without_blank_cells": 0
+  },
+  "fail_first": {
+    "totals": {
+      "tests": 19,
+      "suites": 0,
+      "pass": 18,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "failure": "Missing expected exception: original assertTrace admitted a blank terminal Product display cell. No skipped cases; test added before validator implementation.",
+    "log": {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/owner-red.log",
+      "bytes": 5315,
+      "sha256": "6a1289ea685dd034761d7f55b0410321cd3c7f60f50f32d3f4ae4060acd5f969"
+    }
+  },
+  "final_owner": {
+    "argv": [
+      "./scripts/in-sdk.sh",
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "scripts/research-assertions.test.mjs",
+      "scripts/research-oracle.test.mjs"
+    ],
+    "exit_code": 0,
+    "totals": {
+      "tests": 19,
+      "suites": 0,
+      "pass": 19,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "tap_duration_ms": 183.480002,
+    "files": [
+      {
+        "path": "scripts/research-assertions.mjs",
+        "bytes": 18232,
+        "sha256": "6ff8d12bf6ced6b23c3713a6ed60f41e1dcb79ff857e972b12d66a4ab58f01fb"
+      },
+      {
+        "path": "scripts/research-assertions.test.mjs",
+        "bytes": 13882,
+        "sha256": "fe183959a13527d75d59a15ca50e90a22ce5133b26b9ff69679defb338291dc9"
+      },
+      {
+        "path": "scripts/research-oracle.test.mjs",
+        "bytes": 7205,
+        "sha256": "49f556718405660cf7d60011d80a2fd40f28d0d68078a421e0b27ae4efa56b9e"
+      },
+      {
+        "path": "scripts/conformance.mjs",
+        "bytes": 20219,
+        "sha256": "000ac400cf600b36160c5cf8e5b424b8d323b8eb3cff1054a5deff1798316e88"
+      },
+      {
+        "path": "prismpm.lock",
+        "bytes": 257573,
+        "sha256": "371ab8c5549ba8f45b7dd8f7d1248d4afa31cb0857c48ef4f0734623fed49617"
+      }
+    ]
+  },
+  "assertion_scope": [
+    "All table titles, headers and cells must be nonblank Unicode scalar text, no C0/DEL/C1 and at most16384 UTF8 bytes.",
+    "All24 independently modeled scalar domains, every selected default output cell, all24 empty output shapes and recenter normalization retain exact arithmetic/order/terminal checks.",
+    "Absent multiplication/accumulation slots must explain phase-appropriate absence or operation semantics; complete prose is not compared.",
+    "Original-index least-witness tie semantics and actual selected output/empty dimensions remain independently checked."
+  ],
+  "negative_controls": [
+    "empty and whitespace-only display",
+    "TAB, DEL and C1 display controls",
+    "unpaired UTF16 surrogates",
+    "16384-byte UTF8 boundary overflow",
+    "generic unused display replacing phase meanings",
+    "witness explanation substituted for terminal encoding"
+  ],
+  "positive_control": "A separately authored terminal-encoding paraphrase is accepted; it is not a source-string copy.",
+  "count_changed": false,
+  "full_owner_tests": 19,
+  "unchanged_conformance_test_count": 19,
+  "syntax_and_diff_check": "passed",
+  "files": [
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/before-research-assertions.mjs",
+      "bytes": 16081,
+      "sha256": "fa59901789a79fb2418dcc3dc48cc7e73ee9cdebf0d3ec6d567d3a6c86194923"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/before-research-assertions.test.mjs",
+      "bytes": 10906,
+      "sha256": "90471d2e3fc417161219861dded962a8ff0ddd57675b149be8c04867b086b37f"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/owner-red.log",
+      "bytes": 5315,
+      "sha256": "6a1289ea685dd034761d7f55b0410321cd3c7f60f50f32d3f4ae4060acd5f969"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/owner-red.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/first-green-source.json",
+      "bytes": 610,
+      "sha256": "ec266dd3d723e2b10b089716c85e456e323f1117d2cddafcd980e3cf19e7b213"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/first-green-research-assertions.mjs",
+      "bytes": 17572,
+      "sha256": "5fa10b12db0de6598d2c254651265770ea1a7cebda2da67da2bcdc9d630ca635"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/first-green-research-assertions.test.mjs",
+      "bytes": 13565,
+      "sha256": "f73dc66c9b0ca1f0125574ccc8a329996ab86ad4f1043deeae0576c013bdad56"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/owner-green.log",
+      "bytes": 4571,
+      "sha256": "54f1a15e5d447ea7313c71b80cfc74b2643013df55082a477754792511e357ed"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/owner-green.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/semantic-owner.invocation.json",
+      "bytes": 1241,
+      "sha256": "ded34a451147bcb12e12e7cfe079981e704bd2d2ecaf82b91950de1209b7372b"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/semantic-owner.result.json",
+      "bytes": 1611,
+      "sha256": "a85461c981e80a6d0986f7484597bb053b20b6d672ca57a51f653487408d386b"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/semantic-owner.log",
+      "bytes": 4573,
+      "sha256": "d894736af4faa82ef24356d3b4bbbd6ed35ad7b195c9a81b22f4535e4f0457a8"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/semantic-owner.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/trace-display-r3.json",
+      "bytes": 5940,
+      "sha256": "9fed94645e00af390e09936f7fe1c61ed97e65c0abff45e8aad1e92905241881"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/display-inventory-closure.json",
+      "bytes": 6401,
+      "sha256": "2d0cf042cdaa775afad808f6499ae565f95622f9febd71ae30c367ef1e5e2b38"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/source-display-fix/audit.json",
+      "bytes": 13479,
+      "sha256": "6f43de9326e106ac5fd006e2a72d62698bed91e142ce0ec3ae4b342297d6a02f"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/before-empty-fixture-review-semantic-owner.log",
+      "bytes": 4574,
+      "sha256": "8162c092386d049e055dcccc5c56547c5c701c42b87059418bfbd2aa0454bc62"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/before-empty-fixture-review-semantic-owner.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/before-empty-fixture-review-semantic-owner.invocation.json",
+      "bytes": 1241,
+      "sha256": "894ea54b4fabf4b36cab3ce53e2ac6d40bb2fa1cd6a4d05c4047cb7209e8e4c7"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/before-empty-fixture-review-semantic-owner.result.json",
+      "bytes": 1612,
+      "sha256": "17327d613681b98bb0f227e1889a6678e99594845390b0d25c8c836ce3752cc6"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/nonblank-gate-r3/before-empty-fixture-review-receipt.json",
+      "bytes": 7745,
+      "sha256": "ca3e4ce92c89310e1b1c2fcc6ba12d32f3e9269dda3944a3db2ef8a40ccfdd3c"
+    }
+  ],
+  "pending": "A fresh coherent source/SDK component must recompute all4505 guest observations and admit all4098 current UI replies through its actual generated parseResult, then execute full MM30/MM31 browser/cache journeys. Shipping acceptance remains full just vv using final locked SDK.",
+  "review_correction": {
+    "finding": "Initial finite-owner recenter-empty fixture used ignored option original instead of actual vector option, so it did not exercise an empty recenter.",
+    "correction": "Both calls now use vector:[], and every all24 empty-output fixture explicitly asserts output.length===0 before the validator.",
+    "new_actual_owner": "complete unfiltered19/19 with recenter genuinely empty",
+    "prior_run_scope": "Earlier semantic GREEN is preserved, but does not prove empty recenter coverage."
+  }
+}
