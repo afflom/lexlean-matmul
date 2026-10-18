@@ -1,4 +1,4 @@
-//! Research R3 requirements first exercise the accepted application's missing user journeys.
+//! Research requirements execute the generated guest and independent browser oracles.
 
 use std::path::Path;
 use std::process::Command;
@@ -8,12 +8,11 @@ fn check(id: &str) {
         .ancestors()
         .nth(2)
         .expect("repository root");
-    let output = format!(".prism/matmul/research-r3/{id}.json");
     let result = Command::new("node")
-        .args(["scripts/research-baseline.mjs", &output, id])
+        .args(["scripts/conformance.mjs", id])
         .current_dir(root)
         .output()
-        .expect("execute actual research baseline journey");
+        .expect("execute research acceptance");
     assert!(
         result.status.success(),
         "{id}: {}{}",

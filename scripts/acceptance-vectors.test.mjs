@@ -29,7 +29,12 @@ test('closed byte concatenation preserves literal and typed alias bytes', () => 
 });
 test('actual complete corpus preserves the large escaped response exactly', () => {
   const vectors = acceptanceVectors();
-  assert.equal(vectors.length, 184);
+  assert.equal(vectors.length, 233);
+  const historicalPairs = vectors.slice(0, 184).map(vector =>
+    Object.fromEntries(vector.fields.map(field => [field.field, field.value.hex])));
+  assert.equal(createHash('sha256').update(JSON.stringify(historicalPairs)).digest('hex'),
+    'db6adf93660833f913c7943b3e0317ce578fcdda50bfa44332ac02ffbd7011d4',
+    'Every original accepted request and response must remain byte-exact and in order.');
   const response = Buffer.from(vectors[183].fields.find(row => row.field === 'response').value.hex, 'hex');
   assert.equal(response.length, 96221);
   assert.equal(createHash('sha256').update(response).digest('hex'), '339d6475a56e8741ddf171c957a7081b97f9109bec8564583d5e7d31d8ac84c8');

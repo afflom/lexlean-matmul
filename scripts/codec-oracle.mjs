@@ -131,6 +131,8 @@ function decode(stages, code) {
   const count = root.kind === 'runs' ? (root.entries[Number(code)]?.length ?? 0) : maximumBlock(stages);
   return Array.from({ length: count }, (_, position) => element(stages, code, position));
 }
+export const codecOracle = Object.freeze({ parsePlan, maximumBlock, width, element, decode });
+
 function multiply(rows, inner, columns, a, b) {
   const output = [];
   for (let row = 0; row < rows; row += 1) for (let column = 0; column < columns; column += 1) {
