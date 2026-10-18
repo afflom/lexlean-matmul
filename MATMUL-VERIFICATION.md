@@ -111,6 +111,13 @@ preserves source text until that field is edited. Both records concern an
 isolated source-maintenance build; final SDK, complete acceptance, and publication
 qualification remain separate.
 
+[The browser case gate](verification/research-exact-case-browser-r3.json)
+reproduces that loss using the shipping MM-31 helper and genuine prior browser
+assets. The complete journey requires unchanged case bytes, explicit input
+retirement for only the edited field, preservation of an untouched operand,
+and fresh edited arithmetic. The recorded failure precedes the successor
+runtime and does not claim a restored browser result.
+
 The following records describe their stated historical source selections.
 They are retained independently of the current release acceptance.
 
