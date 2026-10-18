@@ -118,6 +118,28 @@ retirement for only the edited field, preservation of an untouched operand,
 and fresh edited arithmetic. The recorded failure precedes the successor
 runtime and does not claim a restored browser result.
 
+[The escape-budget regression](verification/research-case-escape-r3.json)
+exports two valid matrix fields with 9,000 line breaks each, then rejects its
+own 108,356-byte file despite staying within both declared byte bounds.
+[The source correction](verification/research-case-escape-source.json) derives
+the escape allowance from the admitted UTF-8 input length. Existing grammar,
+proofs, caller byte limits, and all 233 byte vectors are preserved. The recorded
+source proposal is retained before application. The applied correction passes
+[the full 24-module kernel preflight](verification/research-case-escape-preflight.json).
+Four actual-source and browser-file fixtures also cover escaped value lexemes,
+Unicode saved observations, and a case near the file limit. Their new runtime
+results remain pending a fresh coherent build; neither preflight nor historical
+diagnostics qualify the final application.
+
+[The browser component diagnostic](verification/research-browser-component-diagnostic.json)
+records all three engines passing the research and lifecycle journeys and nine
+cache controls after a declared single stylesheet overlay. It also retains the
+original failures: pagination could erase a planted defect, Firefox text insertion
+could alter a literal DEL fixture, and the oversized-file fixture omitted the
+current draft's encoded bytes. The corrected checks preserve the complete expected
+observation and measure the actual action frame. These observations precede the
+new JSON fixtures and do not qualify a coherent release.
+
 [The icon regression](verification/research-browser-icon-r3.json) isolates
 Firefox's automatic undeclared favicon request. An explicit data icon in the
 generated V4 head prevents it in the three-engine diagnostic. The strict

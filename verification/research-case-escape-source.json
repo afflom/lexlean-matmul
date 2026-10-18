@@ -1,0 +1,64 @@
+{
+  "schema": "lexlean-matmul/source-json-input-derived-escape-fix/1",
+  "qualification": false,
+  "status": "staged-unbuilt-unapplied",
+  "source": {
+    "path": "/home/alex/Desktop/lexlean-matmul/src/ResearchJson.lex.tex",
+    "bytes": 97599,
+    "sha256": "66daa55b9e881e6fc2d43c5530c17f0dfcaf3996631a581423836c2487968686"
+  },
+  "before": {
+    "path": "/tmp/source-json-fix/ResearchJson.before.lex.tex",
+    "bytes": 97599,
+    "sha256": "66daa55b9e881e6fc2d43c5530c17f0dfcaf3996631a581423836c2487968686"
+  },
+  "staged": {
+    "path": "/tmp/source-json-fix/ResearchJson.lex.tex",
+    "bytes": 97891,
+    "sha256": "07e0f08dfac0fce9f8f0e8132cff5526221e1748615da92302acb066bbfee6dc"
+  },
+  "semantic_changes": {
+    "path": "/tmp/source-json-fix/semantic-changes.json",
+    "bytes": 2040,
+    "sha256": "e892cca6d5cab4bbb9c77da10620af5eee122d6ba5c51e52666299da0805db3e"
+  },
+  "vector_preservation": {
+    "path": "/tmp/source-json-fix/vector-preservation.json",
+    "bytes": 692,
+    "sha256": "116d54f19dd8d79f9ebe878c227128f2b3720b92a1ff69c40102f94b52aff0a5"
+  },
+  "declaration_count": 42,
+  "changed_declarations": [
+    "jsonStringScan",
+    "researchJsonDocumentation"
+  ],
+  "added_declarations": [],
+  "removed_declarations": [],
+  "all_existing_parameters_results_recursive_arguments_unchanged": true,
+  "all_axiom_policies_unchanged": true,
+  "all_four_theorems_unchanged": [
+    "jsonMissingField",
+    "jsonEmptySchema",
+    "jsonHasNoKey",
+    "jsonEmptyStringCollection"
+  ],
+  "append_and_join_and_scanner_control_flow_unchanged_except_escape_guard": true,
+  "unchanged_user_bounds": {
+    "case_bytes": 1048576,
+    "action_frame_bytes": 2097152,
+    "output_transport_bytes": 4194304
+  },
+  "causal_red": {
+    "path": "/tmp/matmul-sdk4-product-component-diagnostic/case-escape-budget/closed-r3.json",
+    "bytes": 4241,
+    "sha256": "c929581bd8019026848d605662bf21afced9ba70cc3f30779436c82979cb2cb5"
+  },
+  "rationale": "A valid quoted JSON escape consumes input bytes; deriving its count bound from the admitted input removes an independent arbitrary refusal without changing any caller byte cap or malformed grammar.",
+  "complexity_scope": "No new complexity claim or accumulator rewrite. Actual existing generated scanner transfers its owned chunk Vec through extend and performs one join; existing whole-input helper clones remain a measured follow-up within the actual180s deadline.",
+  "pending": [
+    "Root review and coherent source application after frozen UI captures.",
+    "Actual refreshed24module source/kernel proof.",
+    "Actual own-export/exact-import18kLF regression and near-file-limit runtime measurements.",
+    "Full unchanged233vectors and expanded guest/browser acceptance with final source assets."
+  ]
+}
