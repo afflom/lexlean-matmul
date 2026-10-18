@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { capturedBrowserRequest } from './browser-oracle.mjs';
+import { capturedBrowserRequest, browserScriptIdentity } from './browser-oracle.mjs';
 import { researchEnvelope, researchFrame, parseResearchReply, assertCaseObservations } from './research-oracle.mjs';
 
 const identity='12'.repeat(32), action={id:'trace',request_prefix:'research-trace-v1'};
@@ -47,7 +47,12 @@ test('V4 error reply uses exact String code and rejects old object-shaped or unc
 test('browser requests admit only exact public model identity keys on captured scripts',()=>{
   const origin='https://example.test',base='/lexlean-matmul/',modelId='ab'.repeat(32),javascript='lexlean_matmul.js';
   const assets=['index.html','app.js','app.css',javascript,'lexlean_matmul_bg.wasm','provenance.json'];
-  const captured={modelId,javascript};
+  const artifact={modelId,javascript,application:{profile:'prismpm/text-application/4',view:{runtime_binding:{model_identity:'current_model'}}}};
+  const captured=browserScriptIdentity(artifact);
+  assert.deepEqual(captured,{modelId,javascript});
+  assert.equal(browserScriptIdentity({...artifact,application:{profile:'prismpm/text-application/3'}}),null);
+  assert.throws(()=>browserScriptIdentity({...artifact,modelId:'bad'}));
+  assert.throws(()=>browserScriptIdentity({...artifact,application:{...artifact.application,view:{runtime_binding:{model_identity:'unbound'}}}}));
   const permitted=address=>capturedBrowserRequest(address,origin,base,assets,captured);
   for(const asset of assets)assert.equal(permitted(origin+base+asset),true);
   assert.equal(permitted(origin+base),true);

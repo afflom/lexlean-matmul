@@ -29,7 +29,7 @@ export function capturedBrowserRequest(address, origin, basePath, assetPaths, sc
 
 export function browserScriptIdentity(artifacts) {
   if (artifacts.application.profile !== 'prismpm/text-application/4') return null;
-  assert.equal(artifacts.application.view.runtime_binding.model_identity, 'current-model');
+  assert.equal(artifacts.application.view.runtime_binding.model_identity, 'current_model');
   assert.match(artifacts.modelId, /^[0-9a-f]{64}$/);
   return { modelId: artifacts.modelId, javascript: artifacts.javascript };
 }
