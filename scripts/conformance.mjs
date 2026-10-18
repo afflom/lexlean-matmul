@@ -7,6 +7,7 @@ import { runExtendedChecks } from './extended-oracle.mjs';
 import { runCodecChecks } from './codec-oracle.mjs';
 import { runBrowserChecks } from './browser-oracle.mjs';
 import { runProductionChecks } from './production-oracle.mjs';
+import { runResearchChecks } from './research-oracle.mjs';
 import { runPublicationReadinessChecks } from './publication-evidence.mjs';
 import { acceptanceVectors } from './write-errors.mjs';
 import { nativeSystemModel } from './system-model.mjs';
@@ -127,6 +128,17 @@ function validateBundleProvenanceTap(output) {
   }
   const plans = [...output.matchAll(/^1\.\.([0-9]+)$/gm)];
   assert.deepEqual(plans.map(match => match[1]), ['5'], 'Bundle provenance TAP must execute its complete five-test plan');
+}
+
+function validateResearchTap(output) {
+  const expected = { tests: 18, suites: 0, pass: 18, fail: 0, cancelled: 0, skipped: 0, todo: 0 };
+  for (const [name, count] of Object.entries(expected)) {
+    const matches = [...output.matchAll(new RegExp(`^# ${name} ([0-9]+)$`, 'gm'))];
+    assert.equal(matches.length, 1, `Research TAP must contain exactly one ${name} count`);
+    assert.equal(matches[0][1], String(count), `Research TAP ${name} count differs`);
+  }
+  assert.deepEqual([...output.matchAll(/^1\.\.([0-9]+)$/gm)].map(match => match[1]), ['18'],
+    'Research TAP must execute the complete unfiltered eighteen-test plan');
 }
 
 const id = process.argv[2];
@@ -260,6 +272,10 @@ if (['MM-01', 'MM-02', 'MM-03', 'MM-04', 'MM-05', 'MM-06', 'MM-07', 'MM-11', 'MM
     }
   } else if (['MM-18', 'MM-19', 'MM-20', 'MM-21', 'MM-22', 'MM-23'].includes(id)) {
     runtimeReport = await runProductionChecks(build, id);
+  } else if (['MM-25', 'MM-26', 'MM-27', 'MM-28', 'MM-29', 'MM-30', 'MM-31'].includes(id)) {
+    if (id === 'MM-25') validateResearchTap(run(process.execPath,
+      ['--test', '--test-reporter=tap', 'scripts/research-assertions.test.mjs', 'scripts/research-oracle.test.mjs']));
+    runtimeReport = await runResearchChecks(id, build);
   } else if (id === 'MM-24') {
     runtimeReport = runPublicationReadinessChecks(build);
   } else if (id === 'MM-12') {

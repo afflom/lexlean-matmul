@@ -28,7 +28,7 @@ export function browserArtifacts(build) {
   const manifest = readJson(confined(build.manifest_path));
   const model = readJson(confined(build.model_path));
   const application = model.application;
-  assert(['prismpm/text-application/1', 'prismpm/text-application/2', 'prismpm/text-application/3'].includes(application.profile));
+  assert(['prismpm/text-application/1', 'prismpm/text-application/2', 'prismpm/text-application/3', 'prismpm/text-application/4'].includes(application.profile));
   const directory = path.join(buildRoot, 'view/browser');
   const assets = files(directory);
   assert.equal(assets.length, 6);
@@ -87,7 +87,7 @@ async function nodeBinding(artifacts, build) {
 }
 
 async function chromiumUi(artifacts, publicationUrl = null) {
-  const workbench = artifacts.application.profile === 'prismpm/text-application/3';
+  const workbench = ['prismpm/text-application/3', 'prismpm/text-application/4'].includes(artifacts.application.profile);
   const inputError = workbench ? artifacts.application.view.statuses.input_error : artifacts.application.view.input_error;
   // The toolchain comes from the executing immutable SDK, whose inventory is
   // checked by freshBuild and whose browser trees the SDK verifier has checked.
@@ -266,8 +266,8 @@ export async function runBrowserChecks(build = freshBuild()) {
 // No source acquisition, graph load, compiler, or fresh-build gate runs here.
 export async function runPublishedBrowserChecks({ directory, model, url }) {
   assert.equal(url, deploymentMetadata().url);
-  assert(['prismpm/model-document/2', 'prismpm/model-document/5', 'prismpm/model-document/6'].includes(model.schema));
-  assert(['prismpm/text-application/1', 'prismpm/text-application/2', 'prismpm/text-application/3'].includes(model.application.profile));
+  assert(['prismpm/model-document/2', 'prismpm/model-document/5', 'prismpm/model-document/6', 'prismpm/model-document/7'].includes(model.schema));
+  assert(['prismpm/text-application/1', 'prismpm/text-application/2', 'prismpm/text-application/3', 'prismpm/text-application/4'].includes(model.application.profile));
   const assets = files(directory), wasm = assets.filter(asset => /^[^/]+_bg\.wasm$/.test(asset.path));
   assert.equal(assets.length, 6);
   assert.equal(wasm.length, 1);
@@ -279,10 +279,13 @@ export async function runPublishedBrowserChecks({ directory, model, url }) {
     acceptanceVectors().map(vector => ({ request: requestBytes(vector).toString('hex'), response: responseBytes(vector).toString('hex') })),
     'Published UI vectors must retain the accepted source-owned corpus');
   const chromium = await chromiumUi({ application: model.application, directory, assets, wasm: wasm[0], javascript, vectors }, url);
-  const production = model.application.profile === 'prismpm/text-application/3'
+  const production = ['prismpm/text-application/3', 'prismpm/text-application/4'].includes(model.application.profile)
     ? await (await import('./production-oracle.mjs')).runProductionArtifactChecks({ application: model.application,
+      directory, assets, wasm: wasm[0], javascript, vectors }, 'all', url) : null;
+  const research = model.application.profile === 'prismpm/text-application/4'
+    ? await (await import('./research-oracle.mjs')).runResearchArtifactChecks({ application: model.application,
       directory, assets, wasm: wasm[0], javascript, vectors }, 'all', url) : null;
   return { schema: 'lexlean-matmul/browser-ui-publication/1', status: 'passed', url,
     scope: 'accepted-browser-assets-and-rendered-modeled-vectors', model_sha256: sha(canonical(model)), assets, chromium,
-    ...(production ? { production } : {}) };
+    ...(production ? { production } : {}), ...(research ? { research } : {}) };
 }

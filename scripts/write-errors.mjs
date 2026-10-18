@@ -99,7 +99,7 @@ export function acceptanceVectors(modules = sourceModules()) {
   const declaration = declarations.get('application');
   assert(declaration?.body?.kind === 'record', 'A closed application record is required.');
   const applicationOwner = declaration.body.type?.module;
-  assert([owner, 'Foundation.View.Text.V2.Model', 'Foundation.View.Text.V3.Model'].includes(applicationOwner));
+  assert([owner, 'Foundation.View.Text.V2.Model', 'Foundation.View.Text.V3.Model', 'Foundation.View.Text.V4.Model'].includes(applicationOwner));
   assert.deepEqual(declaration.body.type, { module: applicationOwner, name: 'TextApplication' });
   closedDefinition(declaration, { kind: 'named', member: declaration.body.type, arguments: [] });
   const fields = declaration.body.fields;
@@ -222,7 +222,7 @@ export function renderErrors() {
       const code = fields.code.value;
       assert(!declared.has(code));
       declared.add(code);
-      const count = ui.filter(row => row.version === 1 && row.status === 'error' && row.error === code).length;
+      const count = ui.filter(row => [1, 2].includes(row.version) && row.status === 'error' && row.error === code).length;
       const safe = value => value.replaceAll('|', '&#124;').replaceAll('\n', ' ');
       result += `| \`${code}\` | ${safe(fields.explanation.value)} | ${safe(fields.recovery.value)} | ${count} |\n`;
       hints = hints.tail;
@@ -232,6 +232,62 @@ export function renderErrors() {
     for (const branch of response.body.branches) {
       const code = Buffer.from(branch.body.hex, 'hex').toString('utf8').split('\t')[2];
       assert(declared.has(code), `Missing modeled browser help for ${code}`);
+    }
+    const researchFailures = [
+      ['ResearchModel', 'ResearchError', 'researchErrorCode', {
+        InvalidSelection: 'MM-25: absent output cell, empty output and bounded-index failures',
+        IncompatibleRoute: 'MM-26: route unavailable for the selected operation',
+        TraceDisagreement: 'MM-31: exact-source prepared trace with inconsistent terminal observation',
+        InvalidInspection: 'MM-28/MM-29: target, operand index or decoded coordinate outside its representation',
+        InvalidToolInput: 'MM-28/MM-29: invalid codec plan, stored code, IEEE format or bit pattern',
+        InvalidResponse: 'MM-31: exact-source preparation with a malformed actual response',
+      }],
+      ['ResearchCases', 'ResearchCaseError', 'researchCaseErrorCode', {
+        InvalidJson: 'MM-27: malformed JSON and Unicode escape sequences',
+        DuplicateField: 'MM-27: duplicate case key',
+        InvalidSchema: 'MM-27: unknown, missing or additional schema fields',
+        InvalidVersion: 'MM-27: unsupported case version',
+        TooLarge: 'MM-27: case text beyond its declared UTF-8 byte limit',
+        InvalidIdentity: 'MM-27: malformed saved model identity',
+        InvalidType: 'MM-27: wrong scalar or array field type',
+        InvalidDraft: 'MM-27: unknown operation or wrong guided-value arity',
+        InvalidSelection: 'MM-27: selection outside the bounded index or freshly computed output shape',
+        InvalidControls: 'MM-27: unsupported inspection settings or integer representation overflow',
+        InconsistentRequest: 'MM-27: saved guided values disagree with saved request',
+        InvalidAction: 'MM-27: case action disagrees with selected operation',
+        FileRead: 'MM-31: injected native FileReader error callback',
+        FileEncoding: 'MM-31: actual file with invalid UTF-8 bytes',
+        FileTooLarge: 'MM-31: actual file beyond the declared byte limit',
+      }],
+      ['ResearchWorkspace', 'WorkspaceError', 'workspaceErrorCode', {
+        InvalidEnvelope: 'MM-31: malformed, duplicate, missing, additional or wrongly typed action fields',
+        InvalidDraft: 'MM-31: invalid operation, selection or action-control schema',
+        UnknownAction: 'MM-31: unknown framed action prefix',
+        RuntimeIdentity: 'MM-31: absent or malformed checked runtime identity for a case action',
+        ResponseTooLarge: 'MM-31: exact-source serialization at and beyond the modeled response bound',
+      }],
+    ];
+    result += '\nResearch actions use typed source errors in the version 2 workbench reply. '
+      + 'A saved answer is an observation; a different saved model identity requires explicit recomputation. '
+      + 'The following rows identify required negative fixtures, not their execution results. '
+      + 'Current acceptance receipts record the actual outcomes. Exact-source defensive fixtures are isolated '
+      + 'generated applications and never replace the shipped dispatcher.\n\n';
+    result += '| Source type | Typed variant | JSON error code | Required negative fixture |\n| --- | --- | --- | --- |\n';
+    for (const [moduleName, typeName, functionName, fixtures] of researchFailures) {
+      const declarations = modules.find(module => module.module === moduleName)?.semantic.declarations;
+      assert(declarations, `Missing typed research module ${moduleName}`);
+      const variants = declarations.find(row => row.kind === 'inductive' && row.name === typeName);
+      const mapping = declarations.find(row => row.name === functionName);
+      assert(variants && mapping?.body?.kind === 'match');
+      assert.equal(variants.constructors.length, mapping.body.branches.length);
+      assert.deepEqual(variants.constructors.map(variant => variant.name).sort(), Object.keys(fixtures).sort());
+      for (const variant of variants.constructors) {
+        const branch = mapping.body.branches.find(row => row.constructor.name === `${typeName}.${variant.name}`);
+        assert.equal(branch?.body?.kind, 'string');
+        const code = branch.body.value;
+        assert(declared.has(code), `Missing modeled browser help for ${code}`);
+        result += `| \`${moduleName}.${typeName}\` | \`${variant.name}\` | \`${code}\` | ${fixtures[variant.name]} |\n`;
+      }
     }
   }
   const model = modules.find(module => module.module === 'Model')?.semantic.declarations;

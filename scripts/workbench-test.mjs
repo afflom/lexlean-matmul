@@ -8,13 +8,43 @@ export function prepareUiVector(application, vector) {
   let request;
   try { request = decoder.decode(input); } catch { return { exception: 'invalid-utf8' }; }
   if (input.length > application.request_maximum) return { exception: 'input-byte-limit' };
-  const workbench = application.profile === 'prismpm/text-application/3';
+  const research = application.profile === 'prismpm/text-application/4';
+  const workbench = research || application.profile === 'prismpm/text-application/3';
   if (!workbench) return { kind: 'raw', input: request, wire: decoder.decode(output), framed: false };
   const view = application.view;
   const operation = view.operations.find(row => request.startsWith(row.request_prefix + separator));
   const raw = request.startsWith(view.raw.request_prefix + separator);
   let prepared;
-  if (operation) {
+  if (research && (operation || raw)) {
+    let envelope;
+    try { envelope = JSON.parse(request.slice((operation?.request_prefix ?? view.raw.request_prefix).length + 1)); }
+    catch { return { exception: 'unrepresentable-frame' }; }
+    if (!envelope || envelope.version !== 1 || envelope.operation !== (operation?.id ?? 'raw')
+      || !Array.isArray(envelope.values) || envelope.values.some(value => typeof value !== 'string')
+      || envelope.values.length !== (operation?.fields.length ?? 0) || typeof envelope.request !== 'string'
+      || !Array.isArray(envelope.controls) || envelope.controls.length !== 0 || envelope.row !== 0 || envelope.column !== 0
+      || envelope.case_text !== '' || envelope.model_id !== '') return { exception: 'unrepresentable-frame' };
+    const result = JSON.parse(decoder.decode(output));
+    assert.equal(result.version, 2);
+    prepared = operation ? { kind: 'guided', operation, values: envelope.values, result, wire: result.response, framed: true }
+      : { kind: 'raw', input: envelope.request, result, wire: result.response, framed: true };
+    if (operation) {
+      if (operation.fields.some((field, index) => field.kind === 'choice'
+        && !field.choices.some(choice => choice.value === prepared.values[index]))) return { ...prepared, exception: 'unrepresentable-choice' };
+      if (operation.fields.some((field, index) => field.required && !prepared.values[index].trim())) return { ...prepared, exception: 'required-input' };
+      if (prepared.values.some((value, index) => operation.fields[index].kind === 'multiline' ? value.includes('\r') : /[\r\n]/.test(value)))
+        return { ...prepared, exception: 'html-normalization' };
+    }
+  } else if (research && request.startsWith('research-')) {
+    // Invalid source envelopes and file/action requests have no editable raw
+    // arithmetic counterpart. Their genuine action journeys run in MM-27/31;
+    // every original byte pair still executes through the generated binding.
+    return { exception: 'research-action-frame' };
+  } else if (research && request.startsWith('ui-')) {
+    // Original presentation frames remain exact ABI vectors. The V4 forms
+    // emit the new checked envelope; ordinary v1 protocol bytes still use raw.
+    return { exception: 'legacy-presentation-frame' };
+  } else if (operation) {
     const values = request.slice(operation.request_prefix.length + 1).split(separator);
     if (values.length !== operation.fields.length) return { exception: 'unrepresentable-frame' };
     const result = JSON.parse(decoder.decode(output));
@@ -29,8 +59,11 @@ export function prepareUiVector(application, vector) {
     prepared = { kind: 'raw', input: request.slice(view.raw.request_prefix.length + 1), result, wire: result.response, framed: true };
   } else prepared = { kind: 'raw', input: request, wire: decoder.decode(output), framed: false };
   if (prepared.kind === 'raw') {
-    if (prepared.input.includes(separator)) return { ...prepared, exception: 'reserved-separator' };
-    if (Buffer.byteLength(view.raw.request_prefix + separator + prepared.input) > application.request_maximum)
+    if (!research && prepared.input.includes(separator)) return { ...prepared, exception: 'reserved-separator' };
+    const framed = research ? view.raw.request_prefix + separator + JSON.stringify({ version: 1, operation: 'raw',
+      request: prepared.input, values: [], row: 0, column: 0, controls: [], model_id: '0'.repeat(64), case_text: '' })
+      : view.raw.request_prefix + separator + prepared.input;
+    if (Buffer.byteLength(framed) > application.request_maximum)
       return { ...prepared, exception: 'framed-byte-limit' };
     if (prepared.input.includes('\r')) return { ...prepared, exception: 'html-normalization' };
   }

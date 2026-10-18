@@ -46,7 +46,7 @@ async function renderedScreenshots({ page }, view) {
   return screenshots;
 }
 
-async function withWorkbench(artifacts, work, { engine = 'chromium', publicationUrl = null, observeWorkers = false } = {}) {
+export async function withWorkbench(artifacts, work, { engine = 'chromium', publicationUrl = null, observeWorkers = false } = {}) {
   const require = createRequire('/opt/prismpm/oracles/package.json');
   assert.equal(require('playwright/package.json').version, '1.62.1');
   const playwright = require('playwright'), target = deploymentMetadata();
@@ -225,7 +225,7 @@ async function guided({ page, application }, view, interpretationOnly = false) {
     planted_rejections: interpretationOnly ? ['rounded-exact-cell', 'wrong-result-shape', 'missing-result-shape'] : ['fixture-only-execution'] };
 }
 
-function workerProbe() {
+export function workerProbe() {
   const Actual = window.Worker;
   const state = window.__productionWorkerProbe = { drop: false, hold: false, replacement: null, ignoreTerminate: false,
     created: 0, terminated: 0, sent: [], workers: [], held: [] };
@@ -633,7 +633,7 @@ export async function captureProductionScreenshots(artifacts) {
 }
 
 export async function runProductionArtifactChecks(artifacts, id = 'all', publicationUrl = null) {
-  assert.equal(artifacts.application.profile, 'prismpm/text-application/3');
+  assert(['prismpm/text-application/3', 'prismpm/text-application/4'].includes(artifacts.application.profile));
   const view = artifacts.application.view, policy = productionPolicy();
   const checks = { 'MM-18': context => onboarding(context, view), 'MM-19': context => guided(context, view),
     'MM-20': context => guided(context, view, true), 'MM-21': context => recovery(context, view, policy),
