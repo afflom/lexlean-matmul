@@ -134,6 +134,40 @@ export function researchTraceCases() {
     researchCase('recenter', { vector: [] }), researchCase('recenter', { vector: [null, null] }),
     researchCase('recenter',{vector:[10n ** 64n - 1n,-(10n ** 64n - 1n),null]})];
 }
+async function inspectionApplicability(actions) {
+  const fixtures=[...completeResearchCases(),...researchFamilies.filter(family=>family!=='recenter').flatMap(family=>[
+    researchCase(family,{rows:0}),researchCase(family,{columns:0}),researchCase(family,{inner:0})]),researchCase('recenter',{vector:[]})];
+  const observations=[];
+  for(const fixture of fixtures){
+    const counts={a:fixture.normalize?fixture.original.length:fixture.left.length,
+      b:fixture.normalize?0:fixture.family==='codec'?fixture.storedCodes.flat().length:fixture.right.length,
+      c:fixture.hasLinear?fixture.prior.length:0,
+      codebook:fixture.family==='coded'?3:['table','ieee-table','arena'].includes(fixture.family)?fixture.book.length:0,
+      output:fixture.output.length};
+    const present=[],missing=[],boundaries=[];
+    for(const [target,count]of Object.entries(counts)){
+      if(count){
+        const report=actions.invokeAction(actions.inspection,{request:fixture.request,controls:[target,'0','0']});
+        assert.equal(report.status,'ok','research-operand-availability: actual existing operand was refused');
+        assert.equal(report.response,fixture.expectedResponse,'research-operand-availability: inspection changed canonical arithmetic');
+        if(fixture.family==='codec'&&target==='b'){
+          expectTyped(actions.invokeAction(actions.inspection,{request:fixture.request,controls:[target,'0','1']}),['research-invalid-inspection']);
+        }else{
+          const coordinate=actions.invokeAction(actions.inspection,{request:fixture.request,controls:[target,'0','7']});
+          assert.equal(coordinate.status,'ok');assert.deepEqual(coordinate.tables,report.tables,
+            'research-scalar-coordinate: scalar inspection wrongly interprets a codec-only coordinate');
+        }
+        present.push(target);
+      }else missing.push(target);
+      boundaries.push({target,index:count,code:expectTyped(actions.invokeAction(actions.inspection,{request:fixture.request,controls:[target,String(count),'0']}),['research-invalid-inspection'])});
+    }
+    const unknown=expectTyped(actions.invokeAction(actions.inspection,{request:fixture.request,controls:['unmodeled-target','0','0']}),['research-invalid-draft']);
+    observations.push({family:fixture.family,rows:fixture.rows,inner:fixture.inner,columns:fixture.columns,target_counts:counts,
+      actual_present_targets:present,absent_target_refusals:missing,index_boundary_refusals:boundaries,unknown_target_refusal:unknown,
+      codec_coordinate_or_scalar_invariance_checked:true});
+  }
+  return observations;
+}
 async function traces(artifacts, binding, actions) {
   let selectedCells = 0, negatives = 0; const cases = [];
   const fixtures=researchTraceCases();
@@ -159,11 +193,14 @@ async function traces(artifacts, binding, actions) {
     const index=fixture.output.length-1;
     const inspected=actions.invokeAction(actions.inspection,{request:fixture.request,controls:['output',String(index),'0']});
     assertOutputInspection(inspected,fixture,index);inspectedOutputs++;
-    if(fixture.family==='matmul')plantReportDefect(inspected,r=>{r.tables.find(table=>table.id==='operand-values').rows[0][3]='planted output';},
-      r=>assertOutputInspection(r,fixture,index),/research-output-inspection/);
+    if(fixture.family==='matmul'){
+      plantReportDefect(inspected,r=>{r.tables.find(table=>table.id==='operand-values').rows[0][3]='planted output';},
+        r=>assertOutputInspection(r,fixture,index),/research-output-inspection/);negatives++;
+    }
   }
-  return { cases, selected_cells: selectedCells, independently_inspected_family_outputs:inspectedOutputs, intended_rejections: negatives,
-    planted_rejections: ['omitted-terminal-or-normalization-step', 'wrong-primitive-product', 'wrong-selected-cell','wrong-table-stored-symbol','wrong-actual-gathered-product'] };
+  return { cases, selected_cells: selectedCells, independently_inspected_family_outputs:inspectedOutputs,
+    operand_applicability:await inspectionApplicability(actions), intended_rejections: negatives,
+    planted_rejections: ['omitted-terminal-or-normalization-step', 'wrong-primitive-product', 'wrong-selected-cell','wrong-table-stored-symbol','wrong-actual-gathered-product','wrong-inspected-output'] };
 }
 async function comparisons(artifacts, binding, actions) {
   const rows = [];
@@ -178,7 +215,7 @@ async function comparisons(artifacts, binding, actions) {
     await assert.rejects(() => assertComparison(originalRoute, fixture, binding.invoke), /research-route/);
     const falseWork = structuredClone(report); falseWork.tables.find(x => x.id === 'comparison-work').rows[0][1] = '999999';
     await assert.rejects(() => assertComparison(falseWork, fixture, binding.invoke), /research-work/);
-    const incompatible = fixture.family === 'matmul' || fixture.family === 'partitioned' ? 'nonsense'
+    const incompatible = fixture.family === 'matmul' || fixture.family === 'partitioned' ? 'direct-table'
       : ['coded', 'table', 'codec', 'ieee-table', 'arena'].includes(fixture.family) ? 'partitioned' : 'direct-table';
     expectTyped(actions.invokeAction(actions.comparison, { request: fixture.request, controls: [incompatible] }), ['research-incompatible-route']);
     rows.push({ family: fixture.family, method: 'auto', primary_request_sha256: sha(report.panels[0].request),
@@ -194,7 +231,8 @@ async function comparisons(artifacts, binding, actions) {
   tie.request = '1\ttropical\t1\t3\t1\t5,5,5\t2,2,2'; tie.expectedResponse = '1\tok\t1\t1\t7\t0';
   const tieReport = actions.invokeAction(actions.comparison, { request: tie.request, controls: ['reverse'] });
   await assertComparison(tieReport, tie, binding.invoke);
-  return { families: rows, explicit_partitioned_routes: 2, tropical_original_index: true,
+  const unknown=expectTyped(actions.invokeAction(actions.comparison,{request:researchCase('matmul').request,controls:['not-a-source-method']}),['research-invalid-draft']);
+  return { families: rows, explicit_partitioned_routes: 2, tropical_original_index: true,unknown_method_refusal:unknown,
     planted_rejections: ['fabricated-alternate-response','wrong-interpreted-route-cell', 'same-route-as-primary', 'false-work-count'] };
 }
 async function codecs(artifacts, binding, actions) {
@@ -260,7 +298,8 @@ async function ieee(artifacts, binding, actions) {
   }
   expectTyped(actions.invokeAction(action, {operation:'ieee-tool',controls:['f64','1'.repeat(16385)]}), ['request-too-large']);
   const errors = [['binary128', '0'], ['f32', '4294967296'], ['f64', '18446744073709551616'], ['f32', '-1'], ['f64', 'not-bits']]
-    .map(controls => expectTyped(actions.invokeAction(action, { operation: 'ieee-tool', controls }), ['research-invalid-tool-input']));
+    .map(controls => expectTyped(actions.invokeAction(action, { operation: 'ieee-tool', controls }),
+      [controls[0]==='binary128'?'research-invalid-draft':'research-invalid-tool-input']));
   return { formats: ['f32', 'f64'], actual_inspections: cases.length, matrix_operand_inspections:operandInspections, classes: 8, terminal_cases:terminal, cases: summaries, negative_codes: errors,
     planted_rejections: ['wrong-sign-field', 'wrong-Atlas-revolution'] };
 }
@@ -652,6 +691,25 @@ async function browserResearchJourneys(context, artifacts, binding, actions, { c
     await assertResearchRendered(page,recomputed,view);
     toolCases.push({ tool: id, controls, exported_sha256: sha(exported.exchange.file_text), actual_recomputed: true });
   }
+  // Selection itself owns the next explicit export; it cannot inherit the last
+  // executed tool. A subsequent matrix action likewise takes ownership back.
+  await browserTool(page,view,'codec-tool',standaloneCaseInputs[0][1]);
+  await page.locator('#research-tool').selectOption('ieee-tool');
+  const selectedTool=view.research.tools.find(tool=>tool.id==='ieee-tool');
+  const selectedToolControls=['f32','1065353216'];
+  await fillFields(page,selectedTool.action.fields,selectedToolControls,'tool-field-');
+  const selectedToolExport=await browserReply(page,'#case-export',view.case_exchange.export_action,'ieee-tool');
+  const selectedToolFile=parseCase(selectedToolExport.exchange.file_text,binding.modelId);
+  assert.equal(selectedToolFile.operation,'ieee-tool','research-tool-context: selection exported a previously executed tool');
+  assert.deepEqual(selectedToolFile.controls,selectedToolControls);
+  const matrixContext=researchCase('matmul'),{operation:matrixOperation}=await browserCompute(page,view,matrixContext);
+  await browserTool(page,view,'codec-tool',standaloneCaseInputs[0][1]);
+  const matrixTrace=await browserReply(page,'#research-trace',matrixOperation.trace,matrixOperation.id);
+  assertTrace(matrixTrace,matrixContext,0,0);
+  const matrixExport=await browserReply(page,'#case-export',view.case_exchange.export_action,matrixOperation.id);
+  const matrixFile=parseCase(matrixExport.exchange.file_text,binding.modelId);
+  assert.equal(matrixFile.operation,matrixOperation.id,'research-tool-context: explicit matrix action retained a prior tool case');
+  assert.equal(matrixFile.request,matrixContext.request);assert.equal(matrixFile.response,matrixContext.expectedResponse);
   const codecTool=await browserTool(page,view,'codec-tool',largeCoordinateTool);
   assertCodecInspection(codecTool,largeCoordinateTool[0],0n,16777215);
   const overflow=await browserTool(page,view,'codec-tool',[largeCoordinateTool[0],'0','18446744073709551616']);
@@ -683,6 +741,7 @@ async function browserResearchJourneys(context, artifacts, binding, actions, { c
     assert.deepEqual(examples.map(x => [x.operation, x.example]), view.operations.flatMap(op => op.examples.map(example => [op.id, example.id])));
   }
   return { families, examples, zero_shape_case_roundtrips:zeroShapeCases, failed_raw_protocol_case_preserved:true, guided_case_roundtrips: caseRows, codec_tools: codecRows, ieee_tools: ieeeRows, standalone_case_roundtrips: toolCases,
+    explicit_tool_selection_export:true,matrix_action_reclaims_case_context:true,
     planted_rejections: renderedNegatives };
 }
 async function keyboardResearchJourney(page, view, binding) {
@@ -735,14 +794,17 @@ async function assertResearchAccessibility(context, artifacts, actions, binding)
   assert.equal(require('axe-core/package.json').version, '4.13.0');
   assert.equal(sha(axe), 'c24f097bd2f451d4f933e8bc7d8d539f8672a2ebcb5cc9f9f3eec8ca9470a0c1');
   await page.addScriptTag({ content: axe });
-  const assess = () => page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'tag',
-    values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'] } })).violations.map(x => x.id));
+  const assess = () => page.evaluate(async () => {const result=await window.axe.run(document, { runOnly: { type: 'tag',
+    values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'] } });return {
+    violations:result.violations.map(row=>row.id),incomplete:result.incomplete.map(row=>row.id)};});
   const modes = [];
-  for (const colorScheme of ['light', 'dark']) { await page.emulateMedia({ colorScheme }); const violations = await assess();
-    assert.deepEqual(violations, [], 'research-accessibility: modeled research surface has finite axe violations'); modes.push({ color_scheme: colorScheme, violations }); }
+  for (const colorScheme of ['light', 'dark']) { await page.emulateMedia({ colorScheme }); const assessed = await assess();
+    assert.deepEqual(assessed.violations, [], 'research-accessibility: modeled research surface has finite axe violations');
+    assert.deepEqual(assessed.incomplete, [], 'research-accessibility: modeled research surface has unresolved finite axe checks');
+    modes.push({color_scheme:colorScheme,...assessed}); }
   const row = page.locator('#research-row'); const prior = await row.getAttribute('id');
   await row.evaluate(node => node.removeAttribute('id'));
-  try { assert((await assess()).includes('label'), 'research-accessibility-negative: missing research selection label was accepted'); }
+  try { assert((await assess()).violations.includes('label'), 'research-accessibility-negative: missing research selection label was accepted'); }
   finally { await page.locator('#research-panel input').first().evaluate((node, id) => { node.id = id; }, prior); }
   const method=page.locator('#research-comparison-field-method'),helpBefore=await method.getAttribute('aria-describedby');
   await method.evaluate(node=>node.setAttribute('aria-describedby','missing-research-help'));
