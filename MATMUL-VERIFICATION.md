@@ -72,6 +72,10 @@ then confirms that unfinished guided fields can be restored without weakening
 the closed envelope: current field strings retain their declared count while
 imports ignore their unfinished arithmetic content. Erasing a guided draft's
 field shape remains a typed rejection.
+[The independent corrected-runtime replay](verification/research-ui-lifecycle-green.json)
+passes all six generic lifecycle probes with zero omissions. It binds its exact
+runtime snapshot and does not qualify the later final SDK, native system, or
+actual product browser journeys.
 
 The following records describe their stated historical source selections.
 They are retained independently of the current release acceptance.

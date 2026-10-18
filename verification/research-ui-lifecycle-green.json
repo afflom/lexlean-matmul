@@ -1,0 +1,33 @@
+{
+  "schema": "lexlean-matmul/sdk4-independent-browser-review-green/1",
+  "qualification": false,
+  "scope": "Independent replay of original lifecycle failures and standalone regression against the exact corrected generic V4 runtime; the source available SDK image supplies Chromium157. This is not product arithmetic, final SDK4 image, native System, or release qualification.",
+  "status": "pass",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "tests": 6,
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "stderr_bytes": 0,
+  "runtime_sha256": "275a9b4598763390b8b93e1cc9fbad510d64e4f9d60544589b1ab0f9cf3894d7",
+  "fixture_sha256": "9bb9af910b00bfaa3563d246de7dc02d93c77e72968e71e3b6893b35686c1abe",
+  "driver_sha256": "31e573ba3af93b1c813ec045b815ff5f273cbd70e0a97e7bd81c1d1679dc0b23",
+  "stdout_sha256": "32adf37a556ccaddc1713abb9baff4c2be76f4a2f4d24c49e8d628a7c37462d6",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "original_red_index_sha256": "51c07a6a78dbf99dd3e8f44c35511fe62a47ec06d8fab2afee0a4c63cdd9afa8",
+  "supplemental_red_index_sha256": "d81e92640b3c0e8ce838653ef854652dd4ce463c75b8d1adcf800be78e6c8c5d",
+  "verified_outcomes": [
+    "A valid case imports and restores its own required field despite a blank current guided field.",
+    "An invalid selection change retires a slow trace and preserves invalid input text.",
+    "Raw context renders the source-declared initial-operation inspection fields, replacing a second operation schema.",
+    "An input-only coordinate edit retires a slow trace before blur/change and preserves typed7.",
+    "A standalone tool executes with its own controls despite invalid unrelated matrix coordinates.",
+    "An explicit matrix action refuses invalid selection text without executing the previous coordinate."
+  ],
+  "full_evidence_index": {
+    "path": "/tmp/matmul-sdk4-independent-review/green-index.json",
+    "bytes": 1108,
+    "sha256": "a1c82336490702c2b4207fe516daff4dc69df12b9d024f2734a575fc24107c7d"
+  }
+}
