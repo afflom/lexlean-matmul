@@ -127,9 +127,12 @@ proofs, caller byte limits, and all 233 byte vectors are preserved. The recorded
 source proposal is retained before application. The applied correction passes
 [the full 24-module kernel preflight](verification/research-case-escape-preflight.json).
 Four actual-source and browser-file fixtures also cover escaped value lexemes,
-Unicode saved observations, and a case near the file limit. Their new runtime
-results remain pending a fresh coherent build; neither preflight nor historical
-diagnostics qualify the final application.
+Unicode saved observations, and a case near the file limit. The coherent source
+component below passes all four fixtures in generated Node/Wasm and real local
+file journeys in Chromium, Firefox and WebKit. The actual 972,356-byte imports
+complete in 42.074–48.008 seconds under the unchanged 180-second action bound.
+These observations cover this source component; final immutable-SDK and release
+acceptance remain separate.
 
 [The browser component diagnostic](verification/research-browser-component-diagnostic.json)
 records all three engines passing the research and lifecycle journeys and nine
@@ -159,6 +162,33 @@ bare assets while the server holds the remainder of the same captured HTML
 response, then releases its exact bytes. All three engines pass the diagnostic
 and reject both named cache-key omissions. Its isolated icon overlay tests the
 driver; a fresh coherent generated app must still pass the complete gate.
+
+[The coherent component record](verification/research-coherent-component-diagnostic.json)
+retains the earlier normal build and source successes, followed by its genuine
+MM-30 Firefox focus failure. MM-31 was not reached in that run. The same record
+separately binds the generic SDK focus owner: all 31 tests pass after the new
+focus test first fails; three specific controls reject lost restoration,
+ignored pointer intent, and leaked listeners. The preceding 30 test bodies
+remain unchanged.
+
+A fresh coherent application-only source build then passes MM-25 through MM-31
+on its six untouched generated browser assets. Its 24 source modules match the
+recorded kernel proof, all 287 artifact descriptors are authenticated, and the
+five guest gates pass 4,517 actual calls. The generated parser admits all 4,110
+display replies with zero blank cells or refusals. Chromium, Firefox and WebKit
+pass the modeled navigation, research, representation, exact-file, editing,
+accessibility and lifecycle journeys, including the unchanged Firefox keyboard
+assertion. All nine ordinary HTTP-cache cases pass their expected outcomes,
+with genuine arithmetic and both named single-key omission controls. Nine
+screenshots and three report files retain their exact hashes.
+
+The successor's first orchestration attempt also remains recorded: a missing
+read-only mount made the original absolute proof-custody path unavailable,
+before any generated guest call. A separate wrapper adds that mount and keeps
+the same checker, source, assets and limits. This preflight refusal is not a
+product or arithmetic failure. The successful component still excludes final
+immutable-SDK acceptance, the source-defensive fixture, containing native
+system, complete `just vv`, protected merge and live Pages publication.
 
 The following records describe their stated historical source selections.
 They are retained independently of the current release acceptance.
