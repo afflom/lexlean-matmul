@@ -15,7 +15,7 @@ function applicationTypeOwner(modules) {
   assert.equal(type.kind, 'named');
   assert.equal(type.member.name, 'TextApplication');
   assert.deepEqual(type.arguments, []);
-  assert(['Foundation.View.Text.V1.Model', 'Foundation.View.Text.V2.Model', 'Foundation.View.Text.V3.Model'].includes(type.member.module),
+  assert(['Foundation.View.Text.V1.Model', 'Foundation.View.Text.V2.Model', 'Foundation.View.Text.V3.Model', 'Foundation.View.Text.V4.Model'].includes(type.member.module),
     'Application must use an exact supported source-owned text profile');
   return type.member.module;
 }
@@ -67,7 +67,9 @@ for (const [id, claim] of [['ieee-encode-once', 'MM-13'], ['integer-output-encod
   ['epilogue-encode-once', 'MM-15'], ['laurent-atlas', 'MM-16'], ['codec-composition', 'MM-17'],
   ['workbench-guidance', 'MM-18'], ['guided-computation', 'MM-19'], ['readable-exact-results', 'MM-20'],
   ['recoverable-execution', 'MM-21'], ['accessible-workbench', 'MM-22'], ['local-calculation-privacy', 'MM-23'],
-  ['durable-publication-evidence', 'MM-24']]) {
+  ['durable-publication-evidence', 'MM-24'], ['selected-cell-explanation', 'MM-25'],
+  ['equivalent-executions', 'MM-26'], ['versioned-local-cases', 'MM-27'], ['composed-codec-inspection', 'MM-28'],
+  ['ieee-representation-inspection', 'MM-29'], ['complete-research-journeys', 'MM-30'], ['research-lifecycle-and-privacy', 'MM-31']]) {
   assert(capabilityIds().includes(claim), `Unregistered native-system control ${claim}`);
   if (!authoredControls.some(value => value.fields.some(field => field.field === 'claim' && field.value.value === claim))) {
     authoredControls.push({ kind: 'record', type: { name: 'ControlObligation' }, fields: [
