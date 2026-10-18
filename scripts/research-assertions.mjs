@@ -12,20 +12,33 @@ export const inspectColumns = Object.freeze({
   'comparison-work': ['Unit', 'Count', 'Meaning'],
   'lookup-contributions': ['Index','Activation','Stored symbol','Decoded weight','Gathered product','Before','After'],
 });
+function displayText(value) {
+  return typeof value==='string'&&value.trim().length>0&&Buffer.byteLength(value)<=16384
+    &&!/[\u0000-\u001f\u007f-\u009f]/.test(value)
+    &&![...value].some(character=>{const code=character.codePointAt(0);return code>=0xd800&&code<=0xdfff;});
+}
 export function reportTable(report, id, columns = inspectColumns[id]) {
   assert(Array.isArray(report.tables), 'research-shape: tables are absent');
   const matches = report.tables.filter(table => table.id === id);
   same(matches.length, 1, `research-table: expected exactly one ${id}`);
   const table = matches[0];
-  assert.equal(typeof table.title, 'string'); assert(table.title.trim());
+  assert(displayText(table.title), `research-display: ${id} title is not bounded nonblank scalar text`);
   same(table.columns, columns, `research-columns: ${id}`);
+  assert(table.columns.length>0&&table.columns.every(displayText), `research-display: ${id} columns are not bounded nonblank scalar text`);
   assert(Array.isArray(table.rows));
   assert(table.rows.every(row => Array.isArray(row) && row.length === columns.length && row.every(cell => typeof cell === 'string')),
     `research-shape: malformed ${id} rows`);
+  assert(table.rows.every(row=>row.every(displayText)), `research-display: ${id} cells are not bounded nonblank scalar text`);
   return table.rows;
 }
 function equalScalar(actual, domain, expected, label) {
   assert(scalarEquivalent(actual, domain, expected), `research-scalar: ${label}: ${actual} differs from ${scalarText(domain, expected)}`);
+}
+function explanation(value, label, ...concepts) {
+  assert(concepts.every(concept => concept.test(value)), `research-explanation: ${label}`);
+}
+function noProduct(value, label, ...concepts) {
+  explanation(value, label, /\b(?:not applicable|no (?:scalar )?(?:product|multiplication))\b/i, ...concepts);
 }
 function terminalCell(fixture, index) {
   const x = fixture.output[index];
@@ -56,7 +69,12 @@ export function assertTrace(report, fixture, row, column) {
   const rows = reportTable(report, fixture.normalize ? 'recenter-trace' : 'calculation-trace', traceColumns);
   if (fixture.rows * fixture.columns === 0) {
     same(rows.length, 1, 'research-empty: empty output must explain its actual shape');
-    same(rows[0][0], 'empty output', 'research-empty: a fabricated output cell was traced'); return;
+    same(rows[0][0], 'empty output', 'research-empty: a fabricated output cell was traced');
+    same(rows[0].slice(1,4),['none',String(fixture.rows),String(fixture.columns)],
+      'research-empty: absent selection must preserve the actual empty shape');
+    explanation(rows[0][4], 'empty output pretends to contain a product', /\bno output cell\b/i);
+    explanation(rows[0][5], 'empty output pretends to contain an accumulator', /\bno accumulator\b/i);
+    explanation(rows[0][6], 'empty output omits why there is no selected cell', /\bno output cell\b/i); return;
   }
   if (fixture.normalize) {
     same(rows.length, fixture.original.length + 1, 'research-recenter: normalization trace was truncated');
@@ -64,6 +82,8 @@ export function assertTrace(report, fixture, row, column) {
     for (let i = 0; i < fixture.original.length; i++) {
       const current = rows[i], value = fixture.original[i];
       same(current[0], 'global maximum'); same(current[1], String(i));
+      explanation(current[3], 'maximum trace omits the maximum operation', /^max(?:imum)?$/i);
+      noProduct(current[4], 'maximum reduction pretends to multiply', /\bmax(?:imum)?\b/i, /\breduction\b/i);
       equalScalar(current[2], 'tropical', value, 'recenter original value');
       equalScalar(current[5], 'tropical', maximum, 'recenter previous global maximum');
       maximum = fixture.arithmetic.add(maximum, value);
@@ -96,18 +116,23 @@ export function assertTrace(report, fixture, row, column) {
   if (fixture.hasBias) {
     const actual = rows.find(r => r[0] === 'column bias'); same(actual[1], String(column));
     equalScalar(actual[2], 'integer', fixture.bias[column], 'actual column bias');
+    for (const position of [3,4]) noProduct(actual[position], 'bias addition pretends to multiply', /\bbias\b/i, /\badd(?:ed|ition)?\b/i);
     equalScalar(actual[5], fixture.domain, fixture.linear[index], 'before bias');
     equalScalar(actual[6], fixture.domain, fixture.beforeEncoding[index], 'after bias');
   }
   if (fixture.family === 'tropical') {
     const actual = rows.find(r => r[0] === 'least attaining witness');
     same(actual[1], 'original index');
+    explanation(actual[2], 'witness hides original term indices', /\boriginal\b/i, /\b(?:index|indices)\b/i);
+    explanation(actual[3], 'witness hides the least-index tie rule', /\b(?:least|smallest)\b/i, /\bindex\b/i, /\bties?\b/i);
+    noProduct(actual[4], 'witness selection pretends to multiply', /\bwitness\b/i, /\bselection\b/i);
     const expectedWitness = fixture.expectedResponse.split('\t')[5].split(',')[index];
     same(actual[5], expectedWitness, 'research-witness: tie did not retain least original index');
     equalScalar(actual[6], fixture.domain, fixture.reduced[index], 'attaining value');
   }
   assertLookupContributions(report,fixture,row,column);
   const terminal = rows.at(-1); same(terminal[1], 'once', 'research-terminal: encoding must occur exactly once');
+  noProduct(terminal[4], 'terminal conversion pretends to multiply', /\bterminal\b/i, /\b(?:conversion|encoding)\b/i);
   equalScalar(terminal[5], fixture.domain, fixture.beforeEncoding[index], 'exact value before terminal encoding');
   same(terminal[6], terminalCell(fixture, index), 'research-terminal: terminal bits or scalar differ');
 }

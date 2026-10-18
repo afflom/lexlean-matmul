@@ -94,6 +94,15 @@ checks pass, while the exact generated renderer rejects 418 trace reports for
 meet that display contract. The diagnostic reply edit isolates the cause; it
 does not establish a source fix or browser acceptance.
 
+[The trace source correction](verification/research-trace-display-source.json)
+replaces 22 empty display literals with explanations for terminal conversion,
+bias addition, witness selection, maximum reduction, and empty output. It
+preserves all arithmetic, proofs, axiom policies, and 233 expected byte pairs.
+[The verification owner](verification/research-trace-display-owner.json)
+rejects blank, unsafe, oversized, and misleading phase text, accepts an
+independent paraphrase, and passes all 19 tests without omissions. This finite
+check does not substitute for the successor's kernel or browser verification.
+
 [The exact case-text regression](verification/research-case-text-r3.json)
 retains a real source-generated case imported and exported without any input
 events. Browser controls normalize its CRLF and lone-CR field strings, changing
