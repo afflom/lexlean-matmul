@@ -118,6 +118,16 @@ retirement for only the edited field, preservation of an untouched operand,
 and fresh edited arithmetic. The recorded failure precedes the successor
 runtime and does not claim a restored browser result.
 
+[The icon regression](verification/research-browser-icon-r3.json) isolates
+Firefox's automatic undeclared favicon request. An explicit data icon in the
+generated V4 head prevents it in the three-engine diagnostic. The strict
+six-asset network guard remains unchanged.
+[The cache driver](verification/research-cache-stream-driver.json) warms real
+bare assets while the server holds the remainder of the same captured HTML
+response, then releases its exact bytes. All three engines pass the diagnostic
+and reject both named cache-key omissions. Its isolated icon overlay tests the
+driver; a fresh coherent generated app must still pass the complete gate.
+
 The following records describe their stated historical source selections.
 They are retained independently of the current release acceptance.
 

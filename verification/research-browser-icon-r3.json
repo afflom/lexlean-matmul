@@ -1,0 +1,275 @@
+{
+  "schema": "lexlean-matmul/actual-v4-browser-default-icon-r3/1",
+  "qualification": false,
+  "status": "causal-red-and-single-html-icon-control-closed",
+  "scope": "Unchanged genuine source-generated b334 guest/backend and three pinned browser engines. Diagnostic sole HTML head insertion establishes browser-default request cause and suppression; generated artifact files remain unchanged. Not final generated source, immutable SDK/full-vv/main/Pages or final cache acceptance.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "build_id": "b334d77128a7cad43ffb0d71af43b9a93e1c9064657fe878b41a5791f58baf06",
+  "model_id": "aeb90ff4c975b7188e5ce6cb8c23a43a7a516f848ee6b39dc9715858c57f4afb",
+  "original_assets": [
+    {
+      "path": "app.css",
+      "bytes": 7869,
+      "sha256": "c55c586c64feede090d5330306d298b5737649666d2d215d246713992b5fdf0b"
+    },
+    {
+      "path": "app.js",
+      "bytes": 237034,
+      "sha256": "e64ea33e34049dbde97cbe32977cbc23ad0baf1464a3fef7838c9af5a3a57b11"
+    },
+    {
+      "path": "index.html",
+      "bytes": 8775,
+      "sha256": "2f6288cd38ef51977b18fa57cac1d511896865f3bd1be7b70c78c8d92cb7fca3"
+    },
+    {
+      "path": "lexlean_matmul.js",
+      "bytes": 6934,
+      "sha256": "7cb53fa75f4c9be946b8f70c3654179e2417ea7c8b600d0a01334cb944231358"
+    },
+    {
+      "path": "lexlean_matmul_bg.wasm",
+      "bytes": 1676891,
+      "sha256": "6546059e06285d4b2ce25508e25ca554e2cf85e105b4f923a9daa6a75817da33"
+    },
+    {
+      "path": "provenance.json",
+      "bytes": 656,
+      "sha256": "93c71e2c4cdcb59c627d5e6771d6739968df4dd18e7e907955136e90a529d9e4"
+    }
+  ],
+  "actual_cache_red": {
+    "engine": "firefox",
+    "stage": "positive after actual computation/network/cache checks",
+    "error": "research-cache: undeclared or operand-bearing request",
+    "unexpected_request": "/favicon.ico",
+    "chromium_positive_and_both_named_controls": "passed",
+    "webkit": "not reached"
+  },
+  "cause_probes": [
+    {
+      "case": "css-warm-then-actual-app",
+      "unexpected_requests": [
+        {
+          "phase": "css-document-only",
+          "url": "/favicon.ico",
+          "method": "GET",
+          "status": 404,
+          "referer": "http://127.0.0.1:35281/lexlean-matmul/app.css",
+          "destination": "image",
+          "mode": "no-cors",
+          "site": "same-origin",
+          "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0"
+        }
+      ],
+      "page_observer_saw_favicon": false,
+      "actual_response": "1\tok\t2\t2\t19,22,43,50",
+      "private_home_removed": true
+    },
+    {
+      "case": "direct-actual-app-no-warmup",
+      "unexpected_requests": [
+        {
+          "phase": "actual-application",
+          "url": "/favicon.ico",
+          "method": "GET",
+          "status": 404,
+          "referer": "http://127.0.0.1:40003/lexlean-matmul/",
+          "destination": "image",
+          "mode": "no-cors",
+          "site": "same-origin",
+          "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0"
+        }
+      ],
+      "page_observer_saw_favicon": false,
+      "actual_response": "1\tok\t2\t2\t19,22,43,50",
+      "private_home_removed": true
+    }
+  ],
+  "causal_mutation": {
+    "asset": "index.html",
+    "insertion": "<link rel=\"icon\" href=\"data:,\">",
+    "before_sha256": "2f6288cd38ef51977b18fa57cac1d511896865f3bd1be7b70c78c8d92cb7fca3",
+    "after_sha256": "c0821bfcd6213baa9d85d98517a0da2a0823f4d854e1d0df9ccc10f272807938",
+    "before_bytes": 8775,
+    "after_bytes": 8806
+  },
+  "browser_comparisons": [
+    {
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "case": "original-no-icon",
+      "extra_requests": [],
+      "actual_response": "1\tok\t2\t2\t19,22,43,50",
+      "private_home_removed": true
+    },
+    {
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "case": "one-head-data-icon-insertion",
+      "extra_requests": [],
+      "actual_response": "1\tok\t2\t2\t19,22,43,50",
+      "private_home_removed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "153.0",
+      "case": "original-no-icon",
+      "extra_requests": [
+        {
+          "phase": "actual-application",
+          "url": "/favicon.ico",
+          "method": "GET",
+          "status": 404,
+          "referer": "http://127.0.0.1:37751/lexlean-matmul/",
+          "destination": "image",
+          "mode": "no-cors",
+          "site": "same-origin",
+          "user_agent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0"
+        }
+      ],
+      "actual_response": "1\tok\t2\t2\t19,22,43,50",
+      "private_home_removed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "153.0",
+      "case": "one-head-data-icon-insertion",
+      "extra_requests": [],
+      "actual_response": "1\tok\t2\t2\t19,22,43,50",
+      "private_home_removed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "case": "original-no-icon",
+      "extra_requests": [],
+      "actual_response": "1\tok\t2\t2\t19,22,43,50",
+      "private_home_removed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "case": "one-head-data-icon-insertion",
+      "extra_requests": [],
+      "actual_response": "1\tok\t2\t2\t19,22,43,50",
+      "private_home_removed": true
+    }
+  ],
+  "invariants": {
+    "routing_installed": false,
+    "http_cache_disabled": false,
+    "artifact_files_modified": false,
+    "wasm_or_binding_modified": false,
+    "privacy_guard_relaxed": false,
+    "seventh_asset_added": false
+  },
+  "next_required": "Normal SDK generator must emit the early data-icon policy. A fresh coherent product must pass unchanged strict6asset HTTP cache and allMM30/MM31; controlled HTML overlay is never such a pass.",
+  "files": [
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/component-build-receipt.json",
+      "bytes": 3637,
+      "sha256": "61364e81a20ec9d94d8605fb2ba2b2fadd0aa96ae80b1b6088929a029cef7b5c"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-cause.mjs",
+      "bytes": 5739,
+      "sha256": "0b0ed15bc344d7bee0ef29b0e375b1dcfad0ddfaf36f619a1b4ce5daf3be08f3"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/run_favicon_cause.py",
+      "bytes": 2146,
+      "sha256": "d44b707ca30917f2f3750d2b4db940b452b7948388f315c4ffd6d6a01dc129c8"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-cause.json",
+      "bytes": 11762,
+      "sha256": "eee070535474bcbf5d4562efcea56ca78b6dda150289784a81fc531593b020e5"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-cause.invocation.json",
+      "bytes": 1117,
+      "sha256": "d453f9cbcc5d8c7e1bd97904fff4c54acfb6d57ee9f3752b248b296f4036d384"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-cause.invocation-result.json",
+      "bytes": 1640,
+      "sha256": "ffafaf03b530a0439f4e4213f281cd45e71f387678b47da9d0de0a1e63b71994"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-cause.stdout",
+      "bytes": 8538,
+      "sha256": "04eb1b9cdd6687b78a059b6a1fb64db85f9848bab8af1b746455d0f373e00d11"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-cause.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-data-icon.mjs",
+      "bytes": 6605,
+      "sha256": "2e569c8278f40030d2a27c02c0bea10e0de429b6f1683e663c71c040016530c3"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/run_favicon_data_icon.py",
+      "bytes": 2177,
+      "sha256": "dc42ce91aef9e8e8fdba216b154c9233bb71704fef3ccf52fd1c11cafc4a70ba"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-data-icon.json",
+      "bytes": 26911,
+      "sha256": "2e90c6ac811ef2f6afb362e9b0c418f63d3dcf4e61c5fd2c215f76aaf6aef008"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-data-icon.invocation.json",
+      "bytes": 1119,
+      "sha256": "c397ec3f4c79ae021ea23c7a6f0a5a252ecd208754565e6c5832a133f2071cbb"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-data-icon.invocation-result.json",
+      "bytes": 1652,
+      "sha256": "e9ef2d369160c0b67b2edcad7537ba936e3459f376557b58598d90b7404ababd"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-data-icon.stdout",
+      "bytes": 20098,
+      "sha256": "1f45f39f67dea3bba6aa2048abe2144f98ac993937eb39e818c28bab5f9c1a78"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-data-icon.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-first-red/shipping-before-research-cache.mjs",
+      "bytes": 18048,
+      "sha256": "7c5e231442cadf6cb945449dabcab8a8f548c98ae7daa2a48826e5a6cb5cfac7"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-first-red/MM-31.asset-cache.json",
+      "bytes": 36510,
+      "sha256": "707985f49d6a1585a6f912a2fd0ab44c97c6f007c5a7356b46ab966d2c7762b9"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-first-red/cache-only.invocation.json",
+      "bytes": 1131,
+      "sha256": "698a38226808a528e8139e75063a2de32dc88d1cda3f66f93c4ac91e61f0374e"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-first-red/cache-only.invocation-result.json",
+      "bytes": 1648,
+      "sha256": "adc3ae404820b2e048ddd1b3d4dbcb9d69dd8a5ba7e0dd54d90b8377ebd72b40"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-first-red/cache-only.stderr",
+      "bytes": 733,
+      "sha256": "e173bb4a626a9793c2a3dc14ae05f46aba505e27f72af92bf5fb09ee52887f58"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-first-red/cache-only-diagnostic.json",
+      "bytes": 2518,
+      "sha256": "2eca01d83a5c97b0461c9be2b6cd8cce4b0f19a0c08e03a20cb888277108848d"
+    }
+  ]
+}

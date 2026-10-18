@@ -1,0 +1,308 @@
+{
+  "schema": "lexlean-matmul/research-cache-stream-driver/1",
+  "qualification": false,
+  "status": "causal-harness-checks-closed",
+  "scope": "Actual genuine b334 guest, unchanged binding/Wasm ; source vector suite not rerun by this cache-only probe. Sole in-memory HTML data-icon insertion is an explicit diagnostic control, not captured/generated artifact acceptance. The shipping driver itself never inserts icon/changes captured bytes. No immutable SDK/fullvv/main/Pages or wholeMM31 claim.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "build_id": "b334d77128a7cad43ffb0d71af43b9a93e1c9064657fe878b41a5791f58baf06",
+  "model_id": "aeb90ff4c975b7188e5ce6cb8c23a43a7a516f848ee6b39dc9715858c57f4afb",
+  "diagnostic_html_overlay": {
+    "after_sha256": "5a4dd35a345da8c49b5b9309f33aa587456cfabd0bc4ab965f456fc9fdb524f3",
+    "before_sha256": "2f6288cd38ef51977b18fa57cac1d511896865f3bd1be7b70c78c8d92cb7fca3",
+    "only_change": "<link rel=\"icon\" href=\"data:,\">"
+  },
+  "browser_summaries": [
+    {
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "cases": [
+        {
+          "case": "captured-model-keyed-assets",
+          "status": "passed",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 1,
+            "app.js": 1,
+            "lexlean_matmul.js": 1
+          },
+          "omitted_bare_gets": null,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "5a4dd35a345da8c49b5b9309f33aa587456cfabd0bc4ab965f456fc9fdb524f3",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        },
+        {
+          "case": "binding-model-key-omitted",
+          "status": "intended-rejection",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 1,
+            "app.js": 1,
+            "lexlean_matmul.js": 0
+          },
+          "omitted_bare_gets": 0,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "5a4dd35a345da8c49b5b9309f33aa587456cfabd0bc4ab965f456fc9fdb524f3",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        },
+        {
+          "case": "stylesheet-model-key-omitted",
+          "status": "intended-rejection",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 0,
+            "app.js": 1,
+            "lexlean_matmul.js": 1
+          },
+          "omitted_bare_gets": 0,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "a3378a33aeabc7599ee25ffcc22714f74a1939c8efe2df28357a88c2bf8e18ef",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        }
+      ],
+      "private_profile_removed": true
+    },
+    {
+      "engine": "firefox",
+      "version": "153.0",
+      "cases": [
+        {
+          "case": "captured-model-keyed-assets",
+          "status": "passed",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 1,
+            "app.js": 1,
+            "lexlean_matmul.js": 1
+          },
+          "omitted_bare_gets": null,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "5a4dd35a345da8c49b5b9309f33aa587456cfabd0bc4ab965f456fc9fdb524f3",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        },
+        {
+          "case": "binding-model-key-omitted",
+          "status": "intended-rejection",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 1,
+            "app.js": 1,
+            "lexlean_matmul.js": 0
+          },
+          "omitted_bare_gets": 0,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "5a4dd35a345da8c49b5b9309f33aa587456cfabd0bc4ab965f456fc9fdb524f3",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        },
+        {
+          "case": "stylesheet-model-key-omitted",
+          "status": "intended-rejection",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 0,
+            "app.js": 1,
+            "lexlean_matmul.js": 1
+          },
+          "omitted_bare_gets": 0,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "a3378a33aeabc7599ee25ffcc22714f74a1939c8efe2df28357a88c2bf8e18ef",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        }
+      ],
+      "private_profile_removed": true
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "cases": [
+        {
+          "case": "captured-model-keyed-assets",
+          "status": "passed",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 1,
+            "app.js": 1,
+            "lexlean_matmul.js": 1
+          },
+          "omitted_bare_gets": null,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "5a4dd35a345da8c49b5b9309f33aa587456cfabd0bc4ab965f456fc9fdb524f3",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        },
+        {
+          "case": "binding-model-key-omitted",
+          "status": "intended-rejection",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 1,
+            "app.js": 1,
+            "lexlean_matmul.js": 0
+          },
+          "omitted_bare_gets": 0,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "5a4dd35a345da8c49b5b9309f33aa587456cfabd0bc4ab965f456fc9fdb524f3",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        },
+        {
+          "case": "stylesheet-model-key-omitted",
+          "status": "intended-rejection",
+          "second_warmup_gets": 0,
+          "keyed_gets": {
+            "app.css": 0,
+            "app.js": 1,
+            "lexlean_matmul.js": 1
+          },
+          "omitted_bare_gets": 0,
+          "fresh_wasm_gets": 1,
+          "prefix_bytes": 554,
+          "full_html_sha256": "a3378a33aeabc7599ee25ffcc22714f74a1939c8efe2df28357a88c2bf8e18ef",
+          "actual_response": "1\tok\t2\t2\t19,22,43,50",
+          "page_errors": 0,
+          "external_requests": 0
+        }
+      ],
+      "private_profile_removed": true
+    }
+  ],
+  "normal_browser_invariants": {
+    "routes_installed": false,
+    "http_cache_disabled": false,
+    "seventh_asset": false,
+    "privacy_guard_relaxed": false,
+    "artificial_html_padding": false,
+    "deadline_increased": false,
+    "all_profiles_removed": true
+  },
+  "failures_preserved": [
+    "Original strictcacheFirefoxpositive refusedautomaticbrowserUI/favicon.ico.",
+    "91byte icon-onlyprefix cannotcommit inWebKit withinunchanged30000ms.",
+    "ExplicitUTF8headeralone stillcannotcommit91byteprefix inWebKit."
+  ],
+  "final_driver": "Stream the exactHTMLprefix before first stylesheet/script; includesdataicon+existingmetadata/title. Warmactualbare3twice; second0serverGET; releaseexactunchangedremainder; authenticatefullbody, Worker,currentmodel, real computation and eachonepointcacheomission.",
+  "pending": "Fresh coherent source-generated icon-enabled V4 assets must run this unchanged shipping driver with no HTML overlay; complete MM30/MM31/all31 fullvv and actual deployment remain mandatory.",
+  "files": [
+    {
+      "path": "/home/alex/Desktop/lexlean-matmul/scripts/research-cache.mjs",
+      "bytes": 20513,
+      "sha256": "0b41d6f342eae7ec9d02262dfca796b91ae201d35522462b83ea29557e79e999"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/oracle-current/.prism/matmul/runtime-oracle/MM-31.asset-cache-stream-control.json",
+      "bytes": 82054,
+      "sha256": "a72dd242ad74aedb5f0d65db71729c06473a6f65e87db036fd47dea175b2fdff"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/favicon-r3.json",
+      "bytes": 10319,
+      "sha256": "55689fa253ff7c5924241ca59212577f62eec89c5c1ee688e770dce374f2b03e"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/driver-cache-stream-control.mjs",
+      "bytes": 4905,
+      "sha256": "b29672a6d3b1fae5630ce6463577d3eed888dfa8d5616a6c360ae5a61c17e9da"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/run_cache_stream_control.py",
+      "bytes": 2223,
+      "sha256": "8fbf3869903e3dcac33dcc21a54547e29f865d3a4df45747d9e6a364763dfc90"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/oracle-current/scripts/research-cache-stream-control.mjs",
+      "bytes": 21137,
+      "sha256": "bc47d2ec034c10134db0df6525342185eaca3ac4c5a8fe2eda12043a9d4c2b67"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-control.invocation.json",
+      "bytes": 1145,
+      "sha256": "6e4d48faa841475289b67ee2ab80e73d9afb32bacae7e170fb7a2714b0669469"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-control.invocation-result.json",
+      "bytes": 1681,
+      "sha256": "f33970bb2230ec55e16d5127607a1bef64b8ddc3add5d901afbe8562ee2efb33"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-control.stdout",
+      "bytes": 216,
+      "sha256": "d5e4965d768f06f2d19fefd54128806fe499d4a2b7818ad7265695523f5ea99e"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-control.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-control-diagnostic.json",
+      "bytes": 84162,
+      "sha256": "2e372ed86412d7bd37c67bab5c77fd6f683949f20125a5fd978fd409b54bf3a1"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-driver-independent-review.json",
+      "bytes": 3011,
+      "sha256": "90fd05dfbc7640b03d1b03d233d6c3de96c78e03d4affbd2c1e8098cc44ebd57"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-short-prefix-red/research-cache-stream-control.mjs",
+      "bytes": 20894,
+      "sha256": "236a8cea29393ca0b4cb8b8a2fc12a1d3db382ed7ba59867146cd9ea78f9492a"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-short-prefix-red/cache-stream-control.invocation-result.json",
+      "bytes": 1680,
+      "sha256": "faff74deebcfc6937fa0eeecd4ebbfa331fd9b048c8015a3544847d0f0287f0c"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-short-prefix-red/cache-stream-control.stderr",
+      "bytes": 872,
+      "sha256": "054651abbcc668194aa53de3c793629960245203721e4f08befaba0efb40efac"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-short-prefix-red/MM-31.asset-cache-stream-control.json",
+      "bytes": 56311,
+      "sha256": "7c05c4dc5071e156c09541b64ced91db3969c3d5c15c1d89465f56404776d7fb"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-utf8-short-prefix-red/research-cache-stream-control.mjs",
+      "bytes": 20909,
+      "sha256": "c99defbc5ad09c3fde3b019b4c4e7e9f90a4e2946afb88ee2e7e02853a73508e"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-utf8-short-prefix-red/cache-stream-control.invocation-result.json",
+      "bytes": 1682,
+      "sha256": "2136a4eefce2aace2b7d32ef00c3d0492a03f261eb9775ea00bc44fe4db71321"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-utf8-short-prefix-red/cache-stream-control.stderr",
+      "bytes": 872,
+      "sha256": "a2954fa25b3f8c77315d243bfd9fa5db4fe763cdffc1aedab05784200437d62d"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/cache-stream-utf8-short-prefix-red/MM-31.asset-cache-stream-control.json",
+      "bytes": 56168,
+      "sha256": "dc5bb2a6613cead5d952dc215c71af1024580d7344422d61ab9b8212486d73c2"
+    }
+  ]
+}
