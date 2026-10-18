@@ -1,0 +1,42 @@
+{
+  "schema": "matmul/research-model-capacity-admission/1",
+  "qualification": false,
+  "method": "Actual Engine snapshot, source application projection, canonical encoding and CanonicalDocument profile7 admission; no pre-serialized substitute",
+  "summary": {
+    "bytes": 38673361,
+    "canonical_model": "/tmp/matmul-sdk4-product-projection/model-admitted.prism.json",
+    "contract_admitted": true,
+    "contract_error": null,
+    "items": 19325053,
+    "project": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-v4-projection-input/lexlean.toml",
+    "qualification": false,
+    "schema": "matmul/research-model-projection-accounting/1",
+    "schema_id": "prismpm/model-document/7",
+    "sha256": "1066d24bd023bb054263afb17e43f2342ef77eb825c6e8945b8c820bdd928d59",
+    "vectors": 233
+  },
+  "limits": {
+    "schema": "prismpm/model-document/7",
+    "max_bytes": 67108864,
+    "max_items": 33554432
+  },
+  "earlier_profiles_unchanged": true,
+  "source_custody": {
+    "path": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-v4-projection-input/source-custody.json",
+    "sha256": "ddd0402c62213664179c76d3a7090c37bde63f6f6cd48e175a21233739a37867"
+  },
+  "log": {
+    "path": "/tmp/matmul-sdk-text-v4-provenance/product233-projection-admitted.log",
+    "sha256": "d266072a2f336ce091333be129ae2f925d67dc66efdd787b0a1441db5eb9ef42"
+  },
+  "program": {
+    "path": "/tmp/matmul-sdk4-product-projection/src/main.rs",
+    "sha256": "6aa7f138a828e277ce4fc0bc3731704589adea5ab5ec5df4d1853f7c3290ad11"
+  },
+  "negative_owner_logs": [
+    "product233-projection-accounting.log",
+    "research-logical-boundary-contract-actual-red.log",
+    "research-logical-boundary-contract-green.log"
+  ],
+  "scope": "Source metadata capacity admission only; final full SDK and application release qualification remain pending."
+}

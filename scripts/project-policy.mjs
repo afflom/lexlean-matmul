@@ -10,6 +10,18 @@ validateWorkflow();
 checkErrors();
 const modules = sourceModules();
 assert(modules.length >= 3, 'Core, application, and system authorities must exist.');
+const modelBudget = modules.find(module => module.module === 'Model')?.semantic.declarations
+  .find(declaration => declaration.name === 'applicationModelMaximumBytes');
+assert.equal(modelBudget?.kind, 'definition');
+assert.deepEqual(modelBudget.parameters, []);
+assert.deepEqual(modelBudget.result, { kind: 'uint32' });
+assert.equal(modelBudget.body.kind, 'integer');
+assert.equal(modelBudget.body.representation, 'uint32');
+const configuredBudgets = [...fs.readFileSync(path.join(root, 'prismpm.toml'), 'utf8')
+  .matchAll(/^max_holo_bytes = ([0-9]+)$/gm)];
+assert.equal(configuredBudgets.length, 1, 'The project needs one explicit application-model byte budget.');
+assert.equal(configuredBudgets[0][1], modelBudget.body.value,
+  'The PrismPM application-model budget must equal its typed source declaration.');
 for (const row of files(path.join(root, 'src'))) {
   assert(row.path.endsWith('.lex.tex'), `Product source must be LexLean: ${row.path}`);
 }
