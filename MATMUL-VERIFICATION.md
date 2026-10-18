@@ -140,6 +140,16 @@ current draft's encoded bytes. The corrected checks preserve the complete expect
 observation and measure the actual action frame. These observations precede the
 new JSON fixtures and do not qualify a coherent release.
 
+[The default-workbench review](verification/research-discovery-review.json)
+identifies the research and case controls after the reference footer, with no
+direct navigation. [The three-engine failing test](verification/research-discovery-r3.json)
+confirms that gap while actual matrix arithmetic remains correct. MM-30 now
+requires source-labeled native links, keyboard focus at each workflow, and the
+order calculation, research, cases, guide, footer; removing a direct link or
+moving the guide before research must fail. The authored navigation copy passes
+[the complete 24-module source preflight](verification/research-discovery-source-preflight.json).
+Fresh generated-app navigation and screenshots remain part of full acceptance.
+
 [The icon regression](verification/research-browser-icon-r3.json) isolates
 Firefox's automatic undeclared favicon request. An explicit data icon in the
 generated V4 head prevents it in the three-engine diagnostic. The strict

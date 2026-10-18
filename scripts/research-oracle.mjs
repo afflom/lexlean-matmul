@@ -833,6 +833,57 @@ async function keyboardResearchJourney(page, view, binding) {
   await assertResearchRendered(page,imported,view);
   return ['selected-cell trace','same-input route comparison','actual output inspector','standalone codec inspector','explicit case export','explicit case import/recompute'];
 }
+async function researchDiscoveryStructure(page, view) {
+  const expected = [
+    {label:view.labels.compute,href:'#computation-workspace'},
+    {label:view.research.title,href:'#research-panel'},
+    {label:view.case_exchange.title,href:'#case-exchange'},
+    {label:view.labels.guide,href:'#guide'},
+    {label:view.labels.links,href:'#links'},
+  ];
+  const navigation=page.getByRole('navigation',{name:view.labels.navigation});
+  assert.equal(await navigation.count(),1,'research-discovery: unique source navigation missing');
+  assert.deepEqual(await navigation.locator('a').evaluateAll(nodes=>nodes.map(node=>({label:node.textContent,href:node.getAttribute('href')}))),expected,
+    'research-discovery: direct source-labeled native links missing or changed');
+  const order=['computation-workspace','research-panel','case-exchange','guide','links'];
+  assert.deepEqual(await page.locator('main > [id]').evaluateAll(nodes=>nodes.map(node=>node.id)),order,
+    'research-discovery: core work, research and cases must precede reference material');
+  for(const id of order.slice(0,3)){
+    assert.equal(await page.locator('#'+id).count(),1,'research-discovery: target is missing or duplicated');
+    assert.equal(await page.locator('#'+id).getAttribute('tabindex'),'-1','research-discovery: native destination cannot receive focus');
+  }
+  assert.equal(await page.locator('#links').evaluate(node=>node.tagName),'FOOTER','research-discovery: final reference links lost footer semantics');
+  return {native_links:expected,page_order:order};
+}
+export async function assertResearchDiscovery(context, view, engine) {
+  const {page}=context,structure=await researchDiscoveryStructure(page,view),controls=[];
+  const researchLink=page.locator('header nav a[href="#research-panel"]');
+  const parent=await researchLink.evaluateHandle(node=>node.parentElement),removed=await researchLink.evaluateHandle(node=>{const next=node.nextSibling;node.remove();return{node,next};});
+  try{await assert.rejects(()=>researchDiscoveryStructure(page,view),/research-discovery/);}
+  finally{await parent.evaluate((node,old)=>node.insertBefore(old.node,old.next),removed);}
+  await page.locator('#guide').evaluate(node=>node.parentElement.insertBefore(node,document.querySelector('#research-panel')));
+  try{await assert.rejects(()=>researchDiscoveryStructure(page,view),/research-discovery/);}
+  finally{await page.locator('#guide').evaluate(node=>node.parentElement.insertBefore(node,document.querySelector('#links')));}
+  for(const id of structure.page_order.slice(0,3)){
+    const anchor=page.locator('header nav a[href="#'+id+'"]');await anchor.focus();await page.keyboard.press('Enter');
+    await page.waitForFunction(id=>location.hash==='#'+id&&document.activeElement===document.getElementById(id),id);
+    assert(await page.locator('#'+id).isVisible(),'research-discovery: keyboard destination is hidden');
+    await page.keyboard.press('Tab');
+    const first=await page.evaluate(id=>{const target=document.getElementById(id),active=document.activeElement;return{inside:target.contains(active),id:active.id};},id);
+    assert(first.inside&&first.id,'research-discovery: keyboard cannot reach destination controls');
+    controls.push({target:id,native_enter_focused_target:true,first_control:first.id});
+  }
+  const fixture=researchCase('matmul',{rows:2,inner:2,columns:2,left:[1n,2n,3n,4n],right:[5n,6n,7n,8n]});
+  await browserCompute(page,view,fixture);
+  await page.setViewportSize({width:320,height:800});
+  await page.evaluate(async()=>{await document.fonts.ready;document.activeElement?.blur();scrollTo(0,0);});
+  const relative=`runtime-oracle/research-${engine}-discovery.png`,file=path.join(evidenceRoot,relative);
+  await page.screenshot({path:file,fullPage:false});const bytes=fs.readFileSync(file);
+  await page.setViewportSize({width:1280,height:900});
+  return {...structure,keyboard_destinations:controls,actual_request_sha256:sha(fixture.request),actual_response_sha256:sha(fixture.expectedResponse),
+    actual_core_cells:['19','22','43','50'],planted_rejections:['missing-direct-research-link','reference-before-research'],
+    screenshot:{path:relative,width:320,height:800,bytes:bytes.length,sha256:sha(bytes),surface:'source-labeled direct discovery and actual default2x2 computation'}};
+}
 async function assertResearchAccessibility(context, artifacts, actions, binding) {
   const { page, require } = context, view = actions.view;
   const operation = view.operations.find(x => x.id === 'matmul'), fixture = researchCase('matmul', { rows: 1, inner: 8, columns: 1 });
@@ -1081,12 +1132,13 @@ async function researchFileFailures(page, view, operation, requestMaximum) {
   const beforeBudget=await page.evaluate(()=>window.__researchObserved.inputs.length);
   await page.locator('#case-import').click();
   await page.waitForFunction(copy=>document.querySelector('#status')?.textContent===copy,view.statuses.input_error);
-  assert.equal(await page.evaluate(()=>window.__researchObserved.inputs.length),beforeBudget,'research-file-budget: oversized encoded action reached guest');
+  const budgetGuestCalls=await page.evaluate(()=>window.__researchObserved.inputs.length)-beforeBudget;
+  assert.equal(budgetGuestCalls,0,'research-file-budget: oversized encoded action reached guest');
   assert.deepEqual(await draftValues(),budgetDraft,
     'research-file-budget: encoded action refusal changed a valid draft');
   results.push({bytes:padded.length,code:'input_error',fault:'source-exported valid case padded with legal JSON whitespace exceeds the separate encoded action budget',
     encoded_case_text_bytes:Buffer.byteLength(JSON.stringify(paddedText)),encoded_action_bytes:Buffer.byteLength(budgetFrame),
-    actual_equivalent_draft:true,preserved_draft:true});
+    actual_equivalent_draft:true,preserved_draft:true,worker_guest_calls:budgetGuestCalls});
   const representable=Buffer.concat([Buffer.alloc(cases.maximum_bytes-canonical.length,0x20),canonical]);
   await page.locator('#case-file').setInputFiles({name:'exact-file-limit.json',mimeType:cases.media_type,buffer:representable});
   const atLimit=await browserReply(page,'#case-import',cases.import_action,operation.id);
@@ -1245,7 +1297,7 @@ export async function runResearchArtifactChecks(artifacts, id = 'all', publicati
         for (const engine of ['chromium', 'firefox', 'webkit']) {
           report.browsers.push(await withWorkbench(artifacts, async context => {
             await installResearchObserver(context.page);
-            if (capability === 'MM-30') return { journeys: await browserResearchJourneys(context, artifacts, binding, actions),
+            if (capability === 'MM-30') return { discovery:await assertResearchDiscovery(context,actions.view,engine),journeys: await browserResearchJourneys(context, artifacts, binding, actions),
               accessibility: await assertResearchAccessibility(context, artifacts, actions, binding), screenshots: await researchScreenshots(context, artifacts, actions, engine) };
             return { lifecycle: await researchLifecycle(context, artifacts, binding, actions) };
           }, { engine, publicationUrl, observeWorkers: true }));

@@ -1,0 +1,92 @@
+{
+  "schema": "lexlean-matmul/default-workbench-discovery-independent-review/1",
+  "qualification": false,
+  "status": "one-material-discovery-gap",
+  "scope": "Read-only actual coherent103375model/JavaScript and six clean320\u00d7800viewport images, with peer-declared canonicalCSSoverlay solely for modelidentity wrapping. OriginalJSONescape gap remains explicit. No new browser/build, product edits, final SDK/fullvv/main/Pages or realmobiledevice qualification. All24testdraft fullpagePNG excluded.",
+  "actual_receipt": {
+    "path": "/tmp/matmul-sdk4-product-component-successor/mobile-discovery/receipt.json",
+    "bytes": 26591,
+    "sha256": "23b66f1ac00245819879ba40120febf076572bf95d5172ac30b6f12ec44b1ab4"
+  },
+  "actual_model": {
+    "path": "/tmp/matmul-sdk4-product-component-successor/input/.prism/build/103375d256fc1dff0f43537698ff2089a21aca0d92698cd4dff8bdca36fc0df7/model.prism.json",
+    "bytes": 38681627,
+    "sha256": "0ac3ef981ba97f7ea7fb5f4b9af33fddc13c4a443cc97e4c82231a1d1a113022"
+  },
+  "actual_app_javascript": {
+    "path": "/tmp/matmul-sdk4-product-component-successor/input/.prism/build/103375d256fc1dff0f43537698ff2089a21aca0d92698cd4dff8bdca36fc0df7/view/browser/app.js",
+    "bytes": 238119,
+    "sha256": "bbdd0e883a4fd20a6b254a0256f61d9a8eb5b41a9de7b873151e80fa6abe0e89"
+  },
+  "viewports": [
+    {
+      "path": "/tmp/matmul-sdk4-product-component-successor/mobile-discovery/chromium-320-top.png",
+      "bytes": 72582,
+      "sha256": "975e3938fdb77a4cc06ca0ff4ef0458ed9d635a665e2a44287015d90e0c4341d"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-successor/mobile-discovery/chromium-320-research.png",
+      "bytes": 59858,
+      "sha256": "8037fd8565114e7d362ca4a78e8c43cbefc7e4dc734f910f52f0afa4f9267479"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-successor/mobile-discovery/firefox-320-top.png",
+      "bytes": 85485,
+      "sha256": "710469c8f810be37eb5bbc1815537ec04550c6435b143d6d0911156c68bb2a92"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-successor/mobile-discovery/firefox-320-research.png",
+      "bytes": 70100,
+      "sha256": "dbcfdf73a754e6d5ec2a783ca336393809a9f3d65f09bb66148ac9e7b06a7791"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-successor/mobile-discovery/webkit-320-top.png",
+      "bytes": 85849,
+      "sha256": "bc9362c13816fa9699f7ab03bd6aa2604e954b0ef82d7e14067f22ee8b634cb8"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-successor/mobile-discovery/webkit-320-research.png",
+      "bytes": 67365,
+      "sha256": "8f6f5901c1428d276e4f516d4c440e9b0c4550a6c0c5faf930de8dd6c2b93e86"
+    }
+  ],
+  "verified_baseline": {
+    "engines": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "fresh_default_operation": "matmul",
+    "fresh_default_example": "basic-2x2",
+    "actual_response": "1\tok\t2\t2\t19,22,43,50",
+    "viewport": [
+      320,
+      800
+    ],
+    "horizontal_overflow": false
+  },
+  "strengths": [
+    "Default hero clearly states exactmatrixpurpose, learners/researchers/codecandintegrationaudience, and three concrete start/explain/reproduce steps.",
+    "Source model provides all24guidedoperations, workedexamples, exact selected-cell explanation and route comparison, independentcodec/IEEEtools, localcase identity/recompute, protocol/limit/privacy/recovery reference.",
+    "All3actual320viewport renders are readable and do not show pageoverflow; no need to infer sizing from downscaled long testdraft image."
+  ],
+  "findings": [
+    {
+      "id": "core-research-after-reference-footer",
+      "priority": "material user-journey discovery",
+      "observed": [
+        "All3actualDOMorders place Inputs+Computedresult, then5reference sections/21paragraphs, then Documentation&source footer, then actual researchforms and localcasecontrols.",
+        "Header contains only Compute,explain,compareandreproduce\u2192#guide and Documentation&source\u2192#links; neither targets actualresearch orcases.",
+        "Actualresultcell event updates researchrow/column/selection only; generatedJavaScript has no scrollIntoView and no corresponding focus/navigation handoff to those distant actions.",
+        "Viewporttop presents purpose/instructions, but its primary-looking compute/explain navigation points toreferenceprose. Researchviewport confirms useful actionable researchforms exist once deliberately located."
+      ],
+      "stakeholder_impact": "Learners moving from a computed cell to its explanation, codecdevelopers seeking the independent tools, and integrationusers seeking export/import must discover controls beyond the apparentfooter. This hides the core newvalue despite successful direct-selector automated journeys.",
+      "narrow_correction": "Keep referencecopy, place research+case workflow next to computation before referenceguide/footer, and expose direct source-labeled navigation to computation,research andlocalcases. Reuse modeled labels; no newfeature/menu/tab framework required.",
+      "evidence": "Actualmodelcopy +generatedJS appendorder +all3DOMsnapshots and six normaldefault viewportimages."
+    }
+  ],
+  "limitations": [
+    "Visual inspection covered clean top and research viewports, not a newcase-panel or result-panel screenshot. Source/DOM and separate fullMM30tests ground remaining flow existence; no claim of complete UX/accessibility certification.",
+    "No user confusion study or real mobiledevice test was performed. Finding rests on concrete control/navigation order, not assumed pixelheight or performance."
+  ]
+}

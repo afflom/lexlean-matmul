@@ -7,6 +7,11 @@ inspection, case validation, and comparison execute generated LexLean.
 
 ## Journeys
 
+The header links directly to calculation, research and local cases with labels
+from the public view model. These workflows follow that order before the method
+guide and documentation footer. Native in-page links support keyboard discovery
+without running a calculation or changing the current draft.
+
 | Task | Interaction | Result |
 | --- | --- | --- |
 | Learn a calculation | Choose any of the 24 operations, load one of 28 examples, edit its fields, and compute | Actual exact result, interpretation, and original request/response bytes |
