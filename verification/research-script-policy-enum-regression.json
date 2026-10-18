@@ -1,0 +1,43 @@
+{
+  "schema": "lexlean-matmul/research-script-policy-enum-regression/1",
+  "qualification": false,
+  "scope": "Actual complete helper owner exposed initial incorrect serde spelling in source-model guard; independent URL/math assertion tests retain their scope, no product release qualification.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/research-assertions.test.mjs",
+    "scripts/research-oracle.test.mjs"
+  ],
+  "counts": {
+    "tests": 19,
+    "suites": 0,
+    "pass": 18,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "expected_serialization": "current_model",
+  "incorrect_guard": "current-model",
+  "stdout_sha256": "e8132365e97d144465a8e89fd902f0035259644218a15529d65f0b42094044a4",
+  "stderr_bytes": 0,
+  "browser_oracle_sha256": "97d3608c27dc815cb02ff4169708fcec868e013006846f054e91d0cc2aa06724",
+  "tests_sha256": "e575d8e7d41800e375e173a62bf958467002c92079a64e1f5982bd74631c97b0",
+  "restored": {
+    "counts": {
+      "tests": 19,
+      "suites": 0,
+      "pass": 19,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "stdout_sha256": "5fff74aac5334c325fcfcda050d907abc1c31ea5ab38bbfb764ee8faf945b486",
+    "stderr_bytes": 0,
+    "browser_oracle_sha256": "5ee5a038a895eea5ced2266fdedc45fa975b5f9038f57ad665ec4f90ba8c8901",
+    "tests_sha256": "e575d8e7d41800e375e173a62bf958467002c92079a64e1f5982bd74631c97b0"
+  }
+}
