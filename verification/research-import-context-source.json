@@ -1,0 +1,87 @@
+{
+  "schema": "lexlean-matmul/research-import-source-context-custody/1",
+  "qualification": false,
+  "status": "passed",
+  "scope": "Actual unchanged Workspace source through genuine SDK929 V3 carrier. Declared source context only/noV4 identity export, renderer, finalSDK, fullvv or release qualification.",
+  "build_id": "c4b5a05e288714bf585257fea7d838075b1a6c2d7936867eaaf02472bdd55b73",
+  "actual_carrier_profile": "prismpm/text-application/3",
+  "declared_source_context_identity": "a7e960042247dedcddd5d022a8bda0c6ab953482f7f51ac5aa6dede409222b54",
+  "model_sha256": "a7e960042247dedcddd5d022a8bda0c6ab953482f7f51ac5aa6dede409222b54",
+  "manifest_sha256": "e874f37dd14e0de976cec34d4efed56cb471e93a1fc5b4ff313427e60b1fb778",
+  "browser_wasm": {
+    "bytes": 1676531,
+    "sha256": "6ea49dc81fc873dc53671f7bd168a7b2f135551dca7d01576f2437f3cb18b4c7"
+  },
+  "binding_sha256": "6f94a6a0ef755f67ad4b0ecbf81927617f7e68225503698f63ff266815befe16",
+  "command": {
+    "argv": [
+      "./scripts/in-sdk.sh",
+      "node",
+      ".prism/matmul/research-workspace-check/import-probe.mjs"
+    ],
+    "cwd": "/home/alex/Desktop/lexlean-matmul",
+    "exit": 0,
+    "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+    "gateway": {
+      "path": "/home/alex/Desktop/lexlean-matmul/scripts/in-sdk.sh",
+      "bytes": 1155,
+      "sha256": "3b5dffffcc709e39f34d57535ac4f183617724274d838cd59a55dedbd804adf1"
+    }
+  },
+  "observations": [
+    {
+      "name": "actual-source-export",
+      "request_sha256": "477364169ce7de4a68a8d4bdba66139542b330fd923f1bb292c79bddc065ec88",
+      "response_sha256": "3e62ad15d1a2f62d3ab64987c441d4017f3e1cffa75a0b92d1cad870be0045dd",
+      "status": "ok",
+      "error": "",
+      "exchange": "exported"
+    },
+    {
+      "name": "blank-current-field-with-preserved-arity",
+      "request_sha256": "2cf1831b45778bf1994ef2e398b452d8607fe7e94bdb57b52a3d0c40e9923ac3",
+      "response_sha256": "c4bd7fa75628b8990bd43d4ad4077d533a740d92ced7c992fb0ba217fe758036",
+      "status": "ok",
+      "error": "",
+      "exchange": "imported"
+    },
+    {
+      "name": "guided-current-values-shape-erased",
+      "request_sha256": "2d474423271ee3795847b719b54c175860bdb57a036762e97e3ba8efe20a8af6",
+      "response_sha256": "cd8bd6c68a20f8d7f33f4adf64ead0b77d8d2cb7b406e662428d63289171d9d2",
+      "status": "error",
+      "error": "research-invalid-draft",
+      "exchange": "none"
+    },
+    {
+      "name": "neutral-raw-context",
+      "request_sha256": "793e4b16cd971fcee76d16d3941b75edee61ebbf4b2dbcbaac0a2ecce5463d95",
+      "response_sha256": "c4bd7fa75628b8990bd43d4ad4077d533a740d92ced7c992fb0ba217fe758036",
+      "status": "ok",
+      "error": "",
+      "exchange": "imported"
+    }
+  ],
+  "raw_index": [
+    {
+      "path": "/tmp/matmul-research-import-source-probe/import-probe.json",
+      "bytes": 12858,
+      "sha256": "7b1fb8264f3c61275ebe80cb9f1c868ca4302149f36d85f2b8a3a91dbd1723cd"
+    },
+    {
+      "path": "/tmp/matmul-research-import-source-probe/import-probe.mjs",
+      "bytes": 4658,
+      "sha256": "044f119190141ec7c8e3a728a18daf4222f9675efbb7e500d988455459f38d56"
+    },
+    {
+      "path": "/tmp/matmul-research-import-source-probe/import-probe.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-research-import-source-probe/import-probe.stdout",
+      "bytes": 363,
+      "sha256": "3b0d843a6658bf42d7faa8865de758d3f1017d1c43a7ac4c7f5136c9855190d6"
+    }
+  ]
+}

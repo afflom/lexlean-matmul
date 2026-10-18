@@ -59,6 +59,20 @@ new design. [Stylesheet admission](verification/research-css-admission-r3.json)
 retains the complete owner before and after admitting its exact model key;
 no arbitrary query or additional asset becomes allowed.
 
+[Independent UI lifecycle regressions](verification/research-ui-lifecycle-r3.json)
+retain the original three and subsequent four genuine failing browser probes:
+replacement import must not depend on a finished matrix draft, coordinate edits
+must retire work before blur, and raw controls must follow the declared source
+schema. These generic SDK fixtures perform no product arithmetic. The separate
+native query-admission observation in that record is explicitly a source finding;
+actual native and product-browser acceptance remain required.
+The supplement records the independently reproduced tool-context regression.
+[The actual source import probe](verification/research-import-context-source.json)
+then confirms that unfinished guided fields can be restored without weakening
+the closed envelope: current field strings retain their declared count while
+imports ignore their unfinished arithmetic content. Erasing a guided draft's
+field shape remains a typed rejection.
+
 The following records describe their stated historical source selections.
 They are retained independently of the current release acceptance.
 

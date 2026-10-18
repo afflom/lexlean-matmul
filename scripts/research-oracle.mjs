@@ -503,6 +503,45 @@ async function browserCompute(page, view, fixture) {
   assert.equal(await page.locator('#result').textContent(), fixture.expectedResponse);
   return { operation, report };
 }
+async function assertSourceResearchSchema(page,operation) {
+  const schemas=[];
+  for(const [kind,button]of [['trace','research-trace'],['comparison','research-compare'],['inspection','research-inspect']]) {
+    const spec=operation[kind],prefix='research-'+kind+'-field-';
+    assert.equal(await page.locator('#'+button).textContent(),spec.label,'research-raw-schema: action label differs from source raw authority');
+    assert.equal(await page.locator('#research-'+kind+'-help').textContent(),spec.help,'research-raw-schema: action help differs from source raw authority');
+    assert.deepEqual(await page.locator('#research-'+kind+'-fields input,#research-'+kind+'-fields select,#research-'+kind+'-fields textarea').evaluateAll(nodes=>nodes.map(node=>node.id)),
+      spec.fields.map(field=>prefix+field.id),'research-raw-schema: controls differ from source raw authority');
+    for(const field of spec.fields) {
+      const id=prefix+field.id,node=page.locator('#'+id);
+      assert.equal(await page.locator(`label[for="${id}"]`).textContent(),field.label,'research-raw-schema: field label differs from source raw authority');
+      assert.equal(await page.locator('#'+id+'-help').textContent(),field.help,'research-raw-schema: field help differs from source raw authority');
+      assert.equal(await node.evaluate(n=>n.tagName.toLowerCase()),field.kind==='choice'?'select':field.kind==='multiline'?'textarea':'input','research-raw-schema: field kind differs from source raw authority');
+      if(field.kind==='choice')assert.deepEqual(await node.locator('option').evaluateAll(nodes=>nodes.map(n=>({value:n.value,label:n.textContent}))),field.choices,'research-raw-schema: choices differ from source raw authority');
+    }
+    schemas.push({action:spec.id,fields:spec.fields.map(field=>field.id)});
+  }
+  return schemas;
+}
+async function rawResearchSchemaJourney(page,view,binding) {
+  const initial=view.operations.find(op=>op.id===view.initial_operation);assert(initial);
+  const guided=researchCase('arena');await browserCompute(page,view,guided);
+  const raw=researchCase('matmul');await page.locator('#raw-editor').evaluate(node=>{node.open=true;});
+  await page.locator('#request').fill(raw.request);
+  const schemas=await assertSourceResearchSchema(page,initial);
+  const field=initial.inspection.fields[0];assert(field);
+  const label=page.locator(`label[for="research-inspection-field-${field.id}"]`),original=await label.textContent();
+  await label.evaluate(node=>{node.textContent='Incorrect inherited raw control';});
+  try{await assert.rejects(()=>assertSourceResearchSchema(page,initial),/research-raw-schema/);}
+  finally{await label.evaluate((node,text)=>{node.textContent=text;},original);}
+  const computed=await browserReply(page,'#submit',{id:'compute',timeout_milliseconds:view.execution.timeout_milliseconds},'raw');
+  assert.equal(computed.request,raw.request);assert.equal(computed.response,raw.expectedResponse);
+  await page.locator('#research-row').fill('0');await page.locator('#research-column').fill('0');
+  const trace=await browserReply(page,'#research-trace',initial.trace,'raw');assertTrace(trace,raw,0,0);await assertResearchRendered(page,trace,view);
+  await fillFields(page,initial.inspection.fields,['output','0','0'],'research-inspection-field-');
+  const inspection=await browserReply(page,'#research-inspect',initial.inspection,'raw');assertOutputInspection(inspection,raw,0);
+  return {default_operation:initial.id,entered_from:familyOperation(guided.family),schemas,actual_raw_trace:true,actual_raw_output_inspection:true,
+    source_schemas_distinct:view.operations.some(op=>JSON.stringify([op.trace,op.comparison,op.inspection])!==JSON.stringify([initial.trace,initial.comparison,initial.inspection]))};
+}
 async function assertResearchControlHelp(page) {
   const references=await page.locator('#research-panel input,#research-panel select,#research-panel textarea').evaluateAll(nodes=>nodes
     .filter(node=>/^(research-(trace|comparison|inspection)-field-|tool-field-)/.test(node.id)).map(node=>({id:node.id,
@@ -665,10 +704,15 @@ async function browserResearchJourneys(context, artifacts, binding, actions, { c
   }
   const toolCases = [];
   for (const [id, controls] of standaloneCaseInputs) {
+    await page.locator('#research-row').fill('not-a-matrix-row');
+    await page.locator('#research-column').fill('4294967296');
     const report = await browserTool(page, view, id, controls), specs = caseActions(view);
+    if(id==='codec-tool')assertCodecInspection(report,controls[0],BigInt(controls[1]),Number(controls[2]));
+    else assertIeeeInspection(report,controls[0],BigInt(controls[1]));
     const exported = await browserReply(page, '#case-export', specs.export, id);
     const file = parseCase(exported.exchange.file_text, binding.modelId);
     assert.equal(file.operation, id); assert.equal(file.action, id); assert.equal(file.request, ''); assert.deepEqual(file.controls, controls);
+    assert.deepEqual([file.row,file.column],[0,0],'research-tool-selection: standalone tool case inherited invalid matrix coordinates');
     await page.locator('#case-content').fill(exported.exchange.file_text);
     const imported = await browserReply(page, '#case-import', specs.import, id);
     assert.equal(imported.exchange.status, 'imported'); assert.equal(imported.comparison.status, 'equivalent');
@@ -689,7 +733,8 @@ async function browserResearchJourneys(context, artifacts, binding, actions, { c
     assert.equal(recomputed.exchange.status,'imported'); assert.equal(recomputed.comparison.status,'different');
     assertRetainedTables(recomputed.tables,report.tables);assertCaseObservations(recomputed,foreign.response,report.response);
     await assertResearchRendered(page,recomputed,view);
-    toolCases.push({ tool: id, controls, exported_sha256: sha(exported.exchange.file_text), actual_recomputed: true });
+    toolCases.push({ tool: id, controls, exported_sha256: sha(exported.exchange.file_text), actual_recomputed: true,
+      independent_of_invalid_matrix_selection:true,case_coordinates:[file.row,file.column] });
   }
   // Selection itself owns the next explicit export; it cannot inherit the last
   // executed tool. A subsequent matrix action likewise takes ownership back.
@@ -710,6 +755,7 @@ async function browserResearchJourneys(context, artifacts, binding, actions, { c
   const matrixFile=parseCase(matrixExport.exchange.file_text,binding.modelId);
   assert.equal(matrixFile.operation,matrixOperation.id,'research-tool-context: explicit matrix action retained a prior tool case');
   assert.equal(matrixFile.request,matrixContext.request);assert.equal(matrixFile.response,matrixContext.expectedResponse);
+  const rawSchema=await rawResearchSchemaJourney(page,view,binding);renderedNegatives.push('wrong-raw-research-control-schema');
   const codecTool=await browserTool(page,view,'codec-tool',largeCoordinateTool);
   assertCodecInspection(codecTool,largeCoordinateTool[0],0n,16777215);
   const overflow=await browserTool(page,view,'codec-tool',[largeCoordinateTool[0],'0','18446744073709551616']);
@@ -742,6 +788,7 @@ async function browserResearchJourneys(context, artifacts, binding, actions, { c
   }
   return { families, examples, zero_shape_case_roundtrips:zeroShapeCases, failed_raw_protocol_case_preserved:true, guided_case_roundtrips: caseRows, codec_tools: codecRows, ieee_tools: ieeeRows, standalone_case_roundtrips: toolCases,
     explicit_tool_selection_export:true,matrix_action_reclaims_case_context:true,
+    raw_research_schema:rawSchema,
     planted_rejections: renderedNegatives };
 }
 async function keyboardResearchJourney(page, view, binding) {
@@ -888,6 +935,58 @@ async function replayHeldReply(page) {
 async function waitResearchReady(page) {
   await page.waitForFunction(() => !document.querySelector('#guided-submit').disabled && !document.querySelector('#research-trace').disabled);
 }
+async function importRecoversUnrelatedDraft(page,view,binding,fixture) {
+  const {operation}=await browserCompute(page,view,fixture),specs=caseActions(view);
+  const exported=await browserReply(page,'#case-export',specs.export,operation.id),saved=parseCase(exported.exchange.file_text,binding.modelId);
+  const required=operation.fields.find(field=>field.required&&field.kind==='natural');assert(required);
+  const checks=[];
+  for(const name of ['required-guided-field-empty','invalid-selected-coordinate']) {
+    if(name==='required-guided-field-empty')await page.locator('#field-'+required.id).fill('');
+    else await page.locator('#research-row').fill('not-a-row');
+    const before=await page.evaluate(()=>window.__researchObserved.inputs.length);
+    await page.locator('#case-file').setInputFiles({name:view.case_exchange.file_name,mimeType:view.case_exchange.media_type,buffer:Buffer.from(exported.exchange.file_text)});
+    assert.equal(await page.evaluate(()=>window.__researchObserved.inputs.length),before,'research-import-recovery: choosing a file executed automatically');
+    const restored=await browserReply(page,'#case-import',specs.import,operation.id);assertCaseResult(restored,fixture);assertCaseIdentity(restored,binding.modelId,binding.modelId);
+    for(const [index,field]of operation.fields.entries())assert.equal(await page.locator('#field-'+field.id).inputValue(),saved.values[index],
+      'research-import-recovery: unrelated invalid draft blocked source-restored fields');
+    assert.equal(await page.locator('#research-row').inputValue(),String(saved.row));assert.equal(await page.locator('#research-column').inputValue(),String(saved.column));
+    assert.equal(await page.locator('#result').textContent(),fixture.expectedResponse);
+    checks.push({name,status:restored.exchange.status,fresh_response_sha256:sha(restored.response),source_restored_draft:true});
+  }
+  await page.locator('#case-file').setInputFiles([]);
+  return {source_case_sha256:sha(exported.exchange.file_text),checks};
+}
+async function selectionInputOwnership(page,view,binding,fixture) {
+  assert(fixture.rows>=2&&fixture.columns>=2,'research-selection-fixture: row1 and column1 must both be within actual shape');
+  const checks=[];
+  for(const [field,text,kind]of [['row','1','in-range'],['column','1','in-range'],['row','7','outside-shape'],['column','7','outside-shape'],
+    ['row','not-a-row','invalid-natural'],['column','not-a-column','invalid-natural'],['row','-1','invalid-natural'],['column','4294967296','invalid-natural']]) {
+    const {operation}=await browserCompute(page,view,fixture);await heldResearchReply(page,'#research-trace');
+    const before=await page.evaluate(()=>({terminated:window.__productionWorkerProbe.terminated,inputs:window.__researchObserved.inputs.length}));
+    const input=page.locator('#research-'+field);await input.fill(text);
+    assert.equal(await input.evaluate(node=>node===document.activeElement),true,'research-selection-input: ownership test must precede blur/change');
+    await page.waitForFunction(count=>window.__productionWorkerProbe.terminated>count,before.terminated);
+    assert.equal(await input.inputValue(),text,'research-selection-input: local edit was normalized before explicit source action');
+    if(kind==='invalid-natural') {
+      assert.equal(await input.getAttribute('aria-invalid'),'true','research-selection-input: invalid natural lacks input association');
+      for(const selector of ['#research-trace','#guided-submit','#case-export'])if(!await page.locator(selector).isDisabled())await page.locator(selector).click();
+      assert.equal(await page.evaluate(()=>window.__researchObserved.inputs.length),before.inputs,'research-selection-input: invalid selection reached guest execution');
+    }
+    await replayHeldReply(page);
+    assert.equal(await input.inputValue(),text,'research-selection-stale: a retired report replaced exact unblurred selection text');
+    assert.equal(await page.locator('#research-tables [data-research-table]').count(),0,'research-selection-stale: retired trace repopulated an edited selection');
+    assert.equal(await page.locator('#result').textContent(),'','research-selection-stale: retired result appeared fresh after selection edit');
+    assert.equal(await page.evaluate(()=>window.__researchObserved.inputs.length),before.inputs,'research-selection-input: editing or replay silently recomputed');
+    if(kind==='outside-shape') {
+      await page.waitForFunction(()=>!document.querySelector('#research-trace').disabled);
+      const rejected=await browserReply(page,'#research-trace',operation.trace,operation.id);expectTyped(rejected,['research-invalid-selection']);
+    }
+    await page.locator('#research-row').fill('0');await page.locator('#research-column').fill('0');await waitResearchReady(page);
+    const recovered=await browserReply(page,'#research-trace',operation.trace,operation.id);assertTrace(recovered,fixture,0,0);
+    checks.push({field,text,kind,input_before_blur:true,retired_owner:true,stale_reply_rejected:true,recovered_actual_trace:true});
+  }
+  return checks;
+}
 async function researchFileFailures(page, view, operation, requestMaximum) {
   const cases = view.case_exchange, retained = await page.locator('#fields input,#fields select,#fields textarea').evaluateAll(nodes => nodes.map(x => x.value));
   const exported=await browserReply(page,'#case-export',cases.export_action,operation.id);
@@ -1014,6 +1113,8 @@ async function researchLifecycle(context, artifacts, binding, actions) {
     assert.equal(await page.locator('#research-tables [data-research-table]').count(), 0, 'research-stale: retired report repopulated a new draft');
     invalidations.push(name);
   }
+  const selectionInputs=await selectionInputOwnership(page,view,binding,researchCase('matmul',{rows:2,columns:2}));
+  const importRecovery=await importRecoversUnrelatedDraft(page,view,binding,fixture);
   ({ operation } = await browserCompute(page, view, fixture));
   await page.clock.install(); await page.evaluate(() => { window.__productionWorkerProbe.drop = true; });
   await page.locator('#research-trace').click(); await unblockedResearchStatus(page, view);
@@ -1052,6 +1153,7 @@ async function researchLifecycle(context, artifacts, binding, actions) {
   finally { await page.evaluate(() => localStorage.removeItem('research-case-history')); }
   await persistentState(page);
   return { actual_delayed_cancel: true, stale_reply_replay: true, invalidations, source_deadline_milliseconds: operation.trace.timeout_milliseconds,
+    selection_input_ownership:selectionInputs,import_draft_recovery:importRecovery,
     actual_timeout_retry: true, malformed_reply_retry: true, file_errors: fileErrors, file_read_cancellation:fileCancellation, identity: binding.modelId, storage,
     operand_requests: 0, operand_console_messages: 0,
     planted_rejections: ['busy-live-status-ancestor', 'malformed-actual-worker-output', 'persistent-case-history'],
