@@ -37,12 +37,17 @@ not supply mathematical, rendered-browser, or live-publication evidence.
 reproduces current SDK initialization failing with cached adapter JavaScript
 while a fresh context succeeds. This test uses a generic adapter, performs no
 matrix computation, and records no public-host cache claim. The V4 runtime
-binds app, Worker, and adapter script cache keys to the public canonical model
+binds app, Worker, adapter, and stylesheet cache keys to the public canonical model
 identity. [The request-admission RED](verification/research-model-cache-admission-r3.json)
 and [restored nineteen-test owner](verification/research-model-cache-admission-green.json)
-retain the exact positive and hostile URL checks: only the captured app and
-adapter scripts admit that exact identity query. Operand-bearing, duplicate,
+retain the exact positive and hostile URL checks: only the captured app, adapter,
+and stylesheet admit that exact identity query. Operand-bearing, duplicate,
 foreign-identity, credentialed, and undeclared requests remain rejected.
+[The independent stylesheet-cache observation](verification/research-css-cache-r3.json)
+records the old deployed CSS remaining cached while a fresh context loads the
+new design. [Stylesheet admission](verification/research-css-admission-r3.json)
+retains the complete owner before and after admitting its exact model key;
+no arbitrary query or additional asset becomes allowed.
 
 The following records describe their stated historical source selections.
 They are retained independently of the current release acceptance.

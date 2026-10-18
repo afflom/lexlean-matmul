@@ -56,13 +56,13 @@ test('browser requests admit only exact public model identity keys on captured s
   const permitted=address=>capturedBrowserRequest(address,origin,base,assets,captured);
   for(const asset of assets)assert.equal(permitted(origin+base+asset),true);
   assert.equal(permitted(origin+base),true);
-  for(const asset of ['app.js',javascript]){
+  for(const asset of ['app.js',javascript,'app.css']){
     const address=origin+base+asset+'?model_id='+modelId;
     assert.equal(permitted(address),true,'browser-model-cache: the exact captured script identity must be admitted');
     assert.equal(capturedBrowserRequest(address,origin,base,assets),false,'legacy profiles must retain query-free asset admission');
   }
   for(const address of [
-    origin+base+'app.css?model_id='+modelId,
+    origin+base+'app.css?model_id='+'cd'.repeat(32),
     origin+base+'lexlean_matmul_bg.wasm?model_id='+modelId,
     origin+base+'provenance.json?model_id='+modelId,
     origin+base+'index.html?model_id='+modelId,
