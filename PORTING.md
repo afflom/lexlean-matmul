@@ -91,8 +91,14 @@ declares the native roots, acceptance vectors, Core-Wasm, and portable View.
 `Workbench.lex.tex` wraps guided requests, normalizes entry separators, and
 interprets actual wire responses as bounded structured results. Unframed
 version 1 requests retain their original bytes and responses.
-`Presentation.lex.tex` declares the full Text-V3 interface: fields, examples,
-guidance, design, error assistance, and cancellation/timeout policy. The SDK
+`ResearchWorkspace.lex.tex` adds source-owned research actions and closed JSON
+envelopes. `ResearchForms.lex.tex` normalizes all guided families; research
+modules reconstruct traces, execute alternate routes, inspect codec/IEEE
+representations, and validate/recompute local cases. `ResearchJson.lex.tex`
+parses their exact strings and Unicode without a browser-side domain parser.
+`Presentation.lex.tex` declares the full Text-V4 interface: fields, examples,
+guidance, design, reports, independent tools, local cases, error assistance,
+and cancellation/timeout policy. The SDK
 supplies generic rendering and browser-worker execution without domain arithmetic.
 `MatmulSystem.lex.tex` uses the native `Production.BrowserSystem.SystemModel`
 for browser-system `/2`, binding the application digest, complete generated
@@ -106,12 +112,18 @@ through the SDK release API and direct HTTPS byte checks. Repository scripts
 orchestrate and inspect this evidence; product arithmetic and request handling
 remain LexLean source.
 
-The guided interface covers ten operation families; the advanced editor covers
-all 24 version 1 operation families. Exact cells remain strings, including IEEE
+The guided interface and advanced editor cover all 24 version 1 operation
+families. Exact cells remain strings, including IEEE
 bit patterns larger than JavaScript's exact integer range. Empty matrix shapes
 remain valid. A timed-out or cancelled browser worker is replaced, while inputs
 remain editable. This lifecycle bounds waiting and prevents stale results; it
 does not promise a fixed calculation time on every device.
+
+Text-V4 uses the official Hologram view intent version 2 for its separate
+2 MiB request and 4 MiB response budgets. Earlier text profiles retain intent
+version 1 and their original bounds. The production SDK lock binds the actual
+upstream source package, runtime, renderer, and native oracle; the application
+does not embed a replacement implementation of those dependencies.
 
 ## Evidence scope
 

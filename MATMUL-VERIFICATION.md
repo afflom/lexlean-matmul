@@ -1,6 +1,20 @@
 # Matmul verification record
 
-The production workbench adds `Presentation.lex.tex` and `Workbench.lex.tex`,
+The research workbench extends the original production workbench with Text-V4,
+all 24 guided operation families, 28 editable examples, selected-cell traces,
+actual equivalent executions, complete codec/IEEE inspectors, and local cases.
+MM-25 through MM-31 register their actual-runtime and browser acceptance.
+[The research baseline](verification/research-r3-baseline.json) records seven
+intended preimplementation failures against the accepted PR4 artifact.
+[The workspace source diagnostic](verification/research-workspace-source.json)
+records its exact source selection and kernel checks; it does not qualify a
+generated application or publication. The original 184 accepted byte pairs
+are additionally guarded by their complete ordered request/response hash.
+
+The following records describe their stated historical source selections.
+They are retained independently of the current release acceptance.
+
+The original production workbench adds `Presentation.lex.tex` and `Workbench.lex.tex`,
 the public Text-V3 profile, and MM-18 through MM-24. Its source corpus retains
 all 158 original byte vectors and adds 26 guided/presentation cases. The large
 escaped-response case uses shared closed byte blocks and balanced concatenation,
