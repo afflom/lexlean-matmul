@@ -10,6 +10,7 @@ import { evidenceRoot, freshBuild, sha, writeJson } from './evidence.mjs';
 import { researchFamilies, completeResearchCases, researchCase, ieeeTerminalCases, roundingModes, preservedResearchExamples } from './research-cases.mjs';
 import { assertTrace, assertComparison, assertIeeeInspection, assertOutputInspection, ieeeCases, plantReportDefect, reportTable, expectedResearchCells } from './research-assertions.mjs';
 import { assertCodecInspection, codecInspectionCases, invalidCodecInspections, codecMatrixCase } from './research-codec-reference.mjs';
+import { runResearchCacheChecks } from './research-cache.mjs';
 
 const separator = '\u001f', encoder = new TextEncoder(), decoder = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true });
 const capabilities = Object.freeze(['MM-25', 'MM-26', 'MM-27', 'MM-28', 'MM-29', 'MM-30', 'MM-31']);
@@ -1185,6 +1186,7 @@ export async function runResearchArtifactChecks(artifacts, id = 'all', publicati
           }, { engine, publicationUrl, observeWorkers: true }));
         }
       }
+      if(capability==='MM-31')report.http_cache=await runResearchCacheChecks(artifacts,binding);
       report.finished_at = new Date().toISOString();
       writeJson(path.join(evidenceRoot, 'runtime-oracle', `${capability}.json`), report); records.push(report);
     } catch (error) {

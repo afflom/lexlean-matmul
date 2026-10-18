@@ -1,0 +1,109 @@
+{
+  "schema": "lexlean-matmul/research-cache-driver-preparation/1",
+  "qualification": false,
+  "status": "preparation-and-warmup-passed",
+  "scope": "Actual c4b5 TextV3 six-asset inert stylesheet navigation and bare JS/CSS warmup only in three pinned engines; no app or Worker execution, V4 identity/export, mathematics, source-free system, public deployment or final release qualification. Strict V4 gate is authored but awaits genuine V4 product assets.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "carrier_build_id": "c4b5a05e288714bf585257fea7d838075b1a6c2d7936867eaaf02472bdd55b73",
+  "carrier_model_sha256": "a7e960042247dedcddd5d022a8bda0c6ab953482f7f51ac5aa6dede409222b54",
+  "helper_sha256": "7c5e231442cadf6cb945449dabcab8a8f548c98ae7daa2a48826e5a6cb5cfac7",
+  "warmup_reproduction_argv": [
+    "./scripts/in-sdk.sh",
+    "node",
+    ".prism/matmul/research-cache-warmup/check.mjs"
+  ],
+  "helper_owner_actual_argv": [
+    "./scripts/in-sdk.sh",
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "scripts/research-assertions.test.mjs",
+    "scripts/research-oracle.test.mjs"
+  ],
+  "helper_owner": {
+    "exit": 0,
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "milliseconds": 159.618876
+  },
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "157.0.8099.0",
+      "playwright": "1.62.1",
+      "context_mode": "temporary-persistent-profile",
+      "second_bare_fetch_server_gets": 0,
+      "application_executed": false
+    },
+    {
+      "engine": "firefox",
+      "version": "153.0",
+      "playwright": "1.62.1",
+      "context_mode": "temporary-persistent-profile",
+      "second_bare_fetch_server_gets": 0,
+      "application_executed": false
+    },
+    {
+      "engine": "webkit",
+      "version": "26.5",
+      "playwright": "1.62.1",
+      "context_mode": "temporary-persistent-profile",
+      "second_bare_fetch_server_gets": 0,
+      "application_executed": false
+    }
+  ],
+  "source_checks": [
+    "node --check scripts/research-cache.mjs passed",
+    "node --check scripts/research-oracle.mjs passed",
+    "git diff --check passed"
+  ],
+  "observed_topology_limitation": "An earlier nonpersistent-context warmup did not retain WebKit HTTP cache. Its diagnostic is preserved under ephemeral-first. The final gate uses a fresh normal temporary persistent browser profile for all engines, private HOME/XDG, with cleanup; no routing or cache-disable switches.",
+  "files": [
+    {
+      "source": "/home/alex/Desktop/lexlean-matmul/scripts/research-cache.mjs",
+      "retained_path": "/tmp/matmul-research-cache-warmup-preflight/research-cache.mjs",
+      "bytes": 18048,
+      "sha256": "7c5e231442cadf6cb945449dabcab8a8f548c98ae7daa2a48826e5a6cb5cfac7"
+    },
+    {
+      "source": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-cache-warmup/check.mjs",
+      "retained_path": "/tmp/matmul-research-cache-warmup-preflight/check.mjs",
+      "bytes": 5156,
+      "sha256": "cc1c7de0464d3726e04708a7a3e1ecdc4193afcd749628f124a104c88dc8c5ca"
+    },
+    {
+      "source": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-cache-warmup/result.json",
+      "retained_path": "/tmp/matmul-research-cache-warmup-preflight/result.json",
+      "bytes": 9600,
+      "sha256": "57be4dd2371e7996f8bf237cd071262f844549f6206cf327268f8164e907ec65"
+    },
+    {
+      "source": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-cache-warmup/stdout",
+      "retained_path": "/tmp/matmul-research-cache-warmup-preflight/stdout",
+      "bytes": 205,
+      "sha256": "bdff7d01cc86b164b17c8caa19f4ee85646294e28191e0c7cf7ff7965b74ed5a"
+    },
+    {
+      "source": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-cache-warmup/stderr",
+      "retained_path": "/tmp/matmul-research-cache-warmup-preflight/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-cache-helper-tests.log",
+      "retained_path": "/tmp/matmul-research-cache-warmup-preflight/research-cache-helper-tests.log",
+      "bytes": 4572,
+      "sha256": "dbeadca1baf6f82f75d7b07d7374a5b696d19a188ff3196ee34da9aba87dfb54"
+    },
+    {
+      "source": "/home/alex/Desktop/lexlean-matmul/.prism/matmul/research-cache-helper-tests.stderr",
+      "retained_path": "/tmp/matmul-research-cache-warmup-preflight/research-cache-helper-tests.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

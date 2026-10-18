@@ -125,7 +125,7 @@ pages and a 16 MiB stack; actual memory grows with the request.
 | `src/MatmulSystem.lex.tex` | Native `Production.BrowserSystem.SystemModel`, component/artifact bindings, controls, and Pages target |
 | `model/*.toml`, `features/suites/` | Registered claims, pinned authorities, and behavioral acceptance scenarios |
 
-The public `prismpm/text-application/3` profile models the complete workbench.
+The public `prismpm/text-application/4` profile models the complete workbench.
 The SDK generates generic controls, framing, semantic rendering, and worker
 lifecycle from that closed model. Product arithmetic and interpretation remain
 LexLean. The containing system uses PrismPM's native browser-system `/2` model. Its
