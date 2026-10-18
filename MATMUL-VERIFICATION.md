@@ -11,6 +11,28 @@ records its exact source selection and kernel checks; it does not qualify a
 generated application or publication. The original 184 accepted byte pairs
 are additionally guarded by their complete ordered request/response hash.
 
+[The generated-Wasm regression record](verification/research-integration-regressions.json)
+retains the actual early arithmetic, formatting, and inspection failures.
+[The corrected source graph](verification/research-inspection-case-source.json)
+checks all nineteen workspace modules, including missing-operand rejection and
+preservation of freshly recomputed inspector tables when importing tool cases.
+These source checks precede independent execution of the refreshed guest.
+
+[Model capacity admission](verification/research-model-capacity.json) projects
+all 233 vectors through the real SDK source reader and admits their canonical
+Text-V4 document within its explicit 64 MiB / 33,554,432-item envelope. The
+project's byte budget is bound to its typed `Model` declaration. Earlier SDK
+profiles keep their existing limits. This record qualifies metadata capacity;
+the exact installed SDK and full application still require complete acceptance.
+
+[The retention regression](verification/research-retention-r3.json) and
+[publication-closure regression](verification/research-publication-closure-r3.json)
+record genuine failures before the evidence writer retained complete defensive
+receipts and research screenshots or required all seven current-model research
+checks. [The restored complete owner](verification/research-publication-closure-green.json)
+passes all 44 tests with zero skips or filters. These isolated metadata tests do
+not supply mathematical, rendered-browser, or live-publication evidence.
+
 The following records describe their stated historical source selections.
 They are retained independently of the current release acceptance.
 
