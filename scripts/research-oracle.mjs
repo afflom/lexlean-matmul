@@ -957,6 +957,45 @@ async function importRecoversUnrelatedDraft(page,view,binding,fixture) {
   await page.locator('#case-file').setInputFiles([]);
   return {source_case_sha256:sha(exported.exchange.file_text),checks};
 }
+export async function exactImportedCaseText(page,view,binding) {
+  await installResearchObserver(page);
+  const specs=caseActions(view),values=['2','2','2','1 2\r\n3 4','5 6\r7 8'];
+  const fixture=researchCase('matmul',{inner:2,left:[1n,2n,3n,4n],right:[5n,6n,7n,8n]});
+  const envelope=researchEnvelope({operation:'matmul',values,controls:['output','0','0'],model_id:binding.modelId});
+  const prepared=parseResearchReply(binding.invoke(researchFrame(specs.export,envelope)),specs.export,envelope);
+  assert.equal(prepared.exchange.status,'exported');
+  const original=parseCase(prepared.exchange.file_text,binding.modelId);
+  assert.deepEqual(original.values,values);assert.equal(original.request,fixture.request);assert.equal(original.response,fixture.expectedResponse);
+  const before=await page.evaluate(()=>window.__researchObserved.inputs.length);
+  await page.locator('#case-file').setInputFiles({name:view.case_exchange.file_name,mimeType:view.case_exchange.media_type,buffer:Buffer.from(prepared.exchange.file_text)});
+  assert.equal(await page.evaluate(()=>window.__researchObserved.inputs.length),before,'research-exact-text: choosing a local file executed it');
+  const imported=await browserReply(page,'#case-import',specs.import,'matmul');
+  assertCaseResult(imported,fixture);assert.deepEqual(imported.exchange.draft.values,values);
+  assert.equal(await page.locator('#field-a').inputValue(),'1 2\n3 4');
+  assert.equal(await page.locator('#field-b').inputValue(),'5 6\n7 8');
+  const unchanged=await browserReply(page,'#case-export',specs.export,'matmul');
+  assert.deepEqual(parseCase(unchanged.exchange.file_text,binding.modelId),original,
+    'research-exact-text: unchanged browser export lost source-imported CRLF or lone CR');
+  assert.equal(unchanged.exchange.file_text,prepared.exchange.file_text,'research-exact-text: unchanged source case bytes differ');
+  // An explicit same-value input retires that control's original text only.
+  await page.locator('#field-a').dispatchEvent('input');
+  const retired=await browserReply(page,'#case-export',specs.export,'matmul'),retiredCase=parseCase(retired.exchange.file_text,binding.modelId);
+  assert.deepEqual(retiredCase.values,[...values.slice(0,3),'1 2\n3 4',values[4]],
+    'research-exact-text: one explicit input must retire exactly its own original text');
+  assert.equal(retiredCase.request,fixture.request);assert.equal(retiredCase.response,fixture.expectedResponse);
+  await page.locator('#field-a').fill('2 2\n3 4');
+  const edited=await browserReply(page,'#case-export',specs.export,'matmul'),editedCase=parseCase(edited.exchange.file_text,binding.modelId);
+  const fresh=researchCase('matmul',{inner:2,left:[2n,2n,3n,4n],right:[5n,6n,7n,8n]});
+  assert.deepEqual(editedCase.values,[...values.slice(0,3),'2 2\n3 4',values[4]],'research-exact-text: editing one operand altered the untouched imported operand');
+  assert.equal(editedCase.request,fresh.request);assert.equal(editedCase.response,fresh.expectedResponse);
+  await page.locator('#case-file').setInputFiles([]);
+  const browserCalls=(await page.evaluate(()=>window.__researchObserved.inputs.length))-before;
+  assert.equal(browserCalls,4,'research-exact-text: import/export or input edits caused unexpected guest execution');
+  return {source_case_sha256:sha(prepared.exchange.file_text),unchanged_case_sha256:sha(unchanged.exchange.file_text),
+    original_values:values,unchanged_case_bytes:true,same_value_input_retires_only_edited_field:true,
+    edited_field_preserves_untouched_original:true,fresh_edited_response_sha256:sha(fresh.expectedResponse),
+    browser_guest_calls:browserCalls};
+}
 async function selectionInputOwnership(page,view,binding,fixture) {
   assert(fixture.rows>=2&&fixture.columns>=2,'research-selection-fixture: row1 and column1 must both be within actual shape');
   const checks=[];
@@ -1116,6 +1155,7 @@ async function researchLifecycle(context, artifacts, binding, actions) {
   }
   const selectionInputs=await selectionInputOwnership(page,view,binding,researchCase('matmul',{rows:2,columns:2}));
   const importRecovery=await importRecoversUnrelatedDraft(page,view,binding,fixture);
+  const exactCaseText=await exactImportedCaseText(page,view,binding);
   ({ operation } = await browserCompute(page, view, fixture));
   await page.clock.install(); await page.evaluate(() => { window.__productionWorkerProbe.drop = true; });
   await page.locator('#research-trace').click(); await unblockedResearchStatus(page, view);
@@ -1154,7 +1194,7 @@ async function researchLifecycle(context, artifacts, binding, actions) {
   finally { await page.evaluate(() => localStorage.removeItem('research-case-history')); }
   await persistentState(page);
   return { actual_delayed_cancel: true, stale_reply_replay: true, invalidations, source_deadline_milliseconds: operation.trace.timeout_milliseconds,
-    selection_input_ownership:selectionInputs,import_draft_recovery:importRecovery,
+    selection_input_ownership:selectionInputs,import_draft_recovery:importRecovery,exact_imported_case_text:exactCaseText,
     actual_timeout_retry: true, malformed_reply_retry: true, file_errors: fileErrors, file_read_cancellation:fileCancellation, identity: binding.modelId, storage,
     operand_requests: 0, operand_console_messages: 0,
     planted_rejections: ['busy-live-status-ancestor', 'malformed-actual-worker-output', 'persistent-case-history'],

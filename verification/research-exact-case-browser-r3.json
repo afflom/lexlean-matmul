@@ -1,0 +1,75 @@
+{
+  "schema": "lexlean-matmul/exact-case-browser-gate-regression-closure/1",
+  "qualification": false,
+  "status": "actual-failing-browser-gate",
+  "scope": "New unchanged browser gate with genuine prior b334 assets, actual source export/import/reexport. No successor build, SDK, product, System, main or Pages qualification.",
+  "actual_component": {
+    "build_id": "b334d77128a7cad43ffb0d71af43b9a93e1c9064657fe878b41a5791f58baf06",
+    "model_id": "aeb90ff4c975b7188e5ce6cb8c23a43a7a516f848ee6b39dc9715858c57f4afb",
+    "receipt_sha256": "61364e81a20ec9d94d8605fb2ba2b2fadd0aa96ae80b1b6088929a029cef7b5c"
+  },
+  "driver_source_sha256": "a66cfde06326caaa5e54a4151764895248c1f29a34fd15fd7914cc6beb220b6e",
+  "observed_exit": 1,
+  "elapsed_seconds": 4.000948667526245,
+  "direct_source_export_calls": 1,
+  "browser_guest_calls": 2,
+  "actual_browser_replies": 2,
+  "failure": "research-exact-text: unchanged browser export lost source-imported CRLF or lone CR",
+  "actual_defect": "Real source import restores CRLF/lone CR; unchanged browser export normalized both to LF. The canonical request and arithmetic remain unchanged.",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "disk_guard": {
+    "owned_container": "matmul-v4-exact-case-gate-1190886",
+    "minimum_available_bytes": 1073741824,
+    "stopped": false,
+    "observed_minimum_available_bytes": 4313841664
+  },
+  "source_correction": "The shipping MM31 gate also checks four explicit browser calls, unchanged complete source case bytes, same-value per-control input retirement, untouched field fidelity, and independently derived edited arithmetic. It has no reply substitution or relaxed guard.",
+  "pending": "Fresh coherent source/SDK component must pass this unchanged shipping gate in all three browsers; this RED record does not qualify the final SDK, full vv or publication.",
+  "files": [
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/driver.mjs",
+      "bytes": 2793,
+      "sha256": "7b5ebaee4a0d73ffbb76ec4f5d1aa2ad7a5c85b4572963b1d436dcd30b904780"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/research-oracle.source.mjs",
+      "bytes": 110188,
+      "sha256": "a66cfde06326caaa5e54a4151764895248c1f29a34fd15fd7914cc6beb220b6e"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/receipt.json",
+      "bytes": 2859,
+      "sha256": "474df9fd81c40deac0d70ebb7472153bfb5466c7e508fef65a0b6b9097c39bc4"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/exact-case.invocation-result.json",
+      "bytes": 1781,
+      "sha256": "707c6b37d345529ffe6f7708894662a609fd652fc773a6b5b6b18004370b9716"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/exact-case.stdout",
+      "bytes": 385,
+      "sha256": "5da97c2974d32e8e59a12fc42c5876b4b052edac0b322caa46f549d555670367"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/exact-case.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/browser-observations.json",
+      "bytes": 11930,
+      "sha256": "e05f71296f6c1e996da12b11f859882e1ec09c1dde21816b1af4ec035a80dccc"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/direct-0.request.txt",
+      "bytes": 260,
+      "sha256": "6ffcf1352a58604c5de85e4ca804ff9e27a5c4cb3bc7e383401cf4dff9bd49cd"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/exact-case-gate-r3/direct-0.reply.json",
+      "bytes": 1043,
+      "sha256": "78ae7480d2899afaf53b66e8fadbfd6137d18744b3d7dc7da035299691138a6c"
+    }
+  ]
+}
