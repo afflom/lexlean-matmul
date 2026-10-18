@@ -1,0 +1,214 @@
+{
+  "schema": "lexlean-matmul/actual-v4-complete-display-inventory/1",
+  "qualification": false,
+  "status": "guest-gates-passed-display-refusals-observed",
+  "scope": "Actualunchangedb334Wasm allfiveunfilteredMM25\u201329 gates; exactgeneratedapp.parseResult on every4098current-UI-frame reply without rewriting bytes. Rendererrefusals are genuine diagnostic observations, not accepted outputs. Raw407legacy/directalternate calls remainseparate; MM31 malformed-envelope negatives are outside this inventory. No System/immutableSDK/fullvv/sourcefree/Pages qualification.",
+  "build_id": "b334d77128a7cad43ffb0d71af43b9a93e1c9064657fe878b41a5791f58baf06",
+  "model_id": "aeb90ff4c975b7188e5ce6cb8c23a43a7a516f848ee6b39dc9715858c57f4afb",
+  "source_guest_calls": 4505,
+  "all_five_unfiltered_guest_gates_passed": true,
+  "current_UI_frame_replies": 4098,
+  "renderer_admitted": 3680,
+  "renderer_refused": 418,
+  "all_legitimate_context_refusals_have_blank_display_cells": true,
+  "legitimate_refusals_without_blank_cells": 0,
+  "blank_display_cells": 595,
+  "non_current_UI_frames": 407,
+  "admitted_reply_status_counts": {
+    "error": 874,
+    "ok": 2806
+  },
+  "capabilities": [
+    {
+      "id": "MM-25",
+      "calls": 1688,
+      "status": "passed"
+    },
+    {
+      "id": "MM-26",
+      "calls": 250,
+      "status": "passed"
+    },
+    {
+      "id": "MM-27",
+      "calls": 194,
+      "status": "passed"
+    },
+    {
+      "id": "MM-28",
+      "calls": 2153,
+      "status": "passed"
+    },
+    {
+      "id": "MM-29",
+      "calls": 220,
+      "status": "passed"
+    }
+  ],
+  "summary": {
+    "MM-25": {
+      "blank_cells": 547,
+      "calls": 1688,
+      "current_ui_frames": 1528,
+      "legitimate_contexts": 1528,
+      "legitimate_refused": 370,
+      "renderer_admitted": 1158,
+      "renderer_refused": 370
+    },
+    "MM-26": {
+      "blank_cells": 0,
+      "calls": 250,
+      "current_ui_frames": 52,
+      "legitimate_contexts": 52,
+      "legitimate_refused": 0,
+      "renderer_admitted": 52,
+      "renderer_refused": 0
+    },
+    "MM-27": {
+      "blank_cells": 0,
+      "calls": 194,
+      "current_ui_frames": 193,
+      "legitimate_contexts": 193,
+      "legitimate_refused": 0,
+      "renderer_admitted": 193,
+      "renderer_refused": 0
+    },
+    "MM-28": {
+      "blank_cells": 0,
+      "calls": 2153,
+      "current_ui_frames": 2153,
+      "legitimate_contexts": 2153,
+      "legitimate_refused": 0,
+      "renderer_admitted": 2153,
+      "renderer_refused": 0
+    },
+    "MM-29": {
+      "blank_cells": 48,
+      "calls": 220,
+      "current_ui_frames": 172,
+      "legitimate_contexts": 172,
+      "legitimate_refused": 48,
+      "renderer_admitted": 124,
+      "renderer_refused": 48
+    }
+  },
+  "blank_field_kinds": [
+    {
+      "table": "calculation-trace",
+      "phase": "terminal encoding",
+      "column": "Product",
+      "count": 362
+    },
+    {
+      "table": "calculation-trace",
+      "phase": "least attaining witness",
+      "column": "Left",
+      "count": 10
+    },
+    {
+      "table": "calculation-trace",
+      "phase": "least attaining witness",
+      "column": "Right",
+      "count": 10
+    },
+    {
+      "table": "calculation-trace",
+      "phase": "least attaining witness",
+      "column": "Product",
+      "count": 10
+    },
+    {
+      "table": "recenter-trace",
+      "phase": "global maximum",
+      "column": "Product",
+      "count": 29
+    },
+    {
+      "table": "calculation-trace",
+      "phase": "column bias",
+      "column": "Right",
+      "count": 40
+    },
+    {
+      "table": "calculation-trace",
+      "phase": "column bias",
+      "column": "Product",
+      "count": 40
+    },
+    {
+      "table": "calculation-trace",
+      "phase": "empty output",
+      "column": "Product",
+      "count": 46
+    },
+    {
+      "table": "calculation-trace",
+      "phase": "empty output",
+      "column": "Before",
+      "count": 46
+    },
+    {
+      "table": "recenter-trace",
+      "phase": "empty output",
+      "column": "Product",
+      "count": 1
+    },
+    {
+      "table": "recenter-trace",
+      "phase": "empty output",
+      "column": "Before",
+      "count": 1
+    }
+  ],
+  "raw_responses_preserved": 4505,
+  "raw_requests_preserved": 4505,
+  "raw_reply_rewriting_or_sanitization": false,
+  "source_fix_scope": "Onlydisplay-only blanks in ResearchTrace phases listed above. Exact arithmetic/stored symbols/case values remain unchanged; SDK contract and original233sourcevector bytepairs remain strict.",
+  "files": [
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/inventory.mjs",
+      "bytes": 5612,
+      "sha256": "1185e36dff71e942e366efc61b23e5f711750e6c667d37658903151f688b0a5f"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/inventory.stdout",
+      "bytes": 861,
+      "sha256": "a7a39ab3327ed404ea658e8a44e62ce238578828716a51c214812474295fcad9"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/inventory.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/display-inventory/inventory.json",
+      "bytes": 2239592,
+      "sha256": "ecd7ec48371736b58030dd18a9643ce69399aa78123aa2c9bc8be9504fde5019"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/display-inventory/raw-inventory.json",
+      "bytes": 1106033,
+      "sha256": "4bfe094b4880d5a6997cf550c0f847b06e1ab19bd83cbf94da2b769ab2cfc472"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/component-build-receipt.json",
+      "bytes": 3637,
+      "sha256": "61364e81a20ec9d94d8605fb2ba2b2fadd0aa96ae80b1b6088929a029cef7b5c"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/oracle-context-current.json",
+      "bytes": 15693,
+      "sha256": "2051228db8616f59d74f5d9b9a9abc2d569a608c6e11f489ba55e1880f4d85c4"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/oracle-current/scripts/research-oracle.mjs",
+      "bytes": 106593,
+      "sha256": "c21d19aba634247d21575157d6dfdc48a7469ed3b4b6b4ec6f34c0c7a932c3ee"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/oracle-current/scripts/research-oracle-inventory.mjs",
+      "bytes": 106617,
+      "sha256": "2369598e10dd19e8356938517cb4d6a39f381850ad22822bfad037066c918e28"
+    }
+  ]
+}
