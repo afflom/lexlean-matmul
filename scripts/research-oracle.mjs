@@ -567,7 +567,9 @@ export async function assertResearchRendered(page, report, view) {
     const pages = Math.max(1, Math.ceil(table.rows.length / view.research.page_rows));
     for (let current = 1; current <= pages; current++) {
       const control = page.locator(`[data-table-page="${table.id}"]`);
-      await control.fill(String(current)); await control.dispatchEvent('change');
+      if(await control.inputValue()!==String(current)) {
+        await control.fill(String(current)); await control.dispatchEvent('change');
+      }
       const visible = await element.locator('tbody tr').evaluateAll(nodes => nodes.map(node => ({
         index: Number(node.dataset.rowIndex), cells: [...node.querySelectorAll('td')].map(cell => cell.textContent),
       })));
@@ -636,7 +638,12 @@ async function browserCaseRoundTrip(page, view, modelId, fixture, operation, { d
   assertCaseResult(imported, fixture);assertCaseIdentity(imported,modelId,modelId);
   for (const [index, field] of operation.fields.entries()) assert.equal(await page.locator('#field-' + field.id).inputValue(), file.values[index]);
   const forged = { ...file, response:fixture.family==='matmul'?controlObservation:'recorded output must never become current arithmetic' };
-  await page.locator('#case-content').fill(JSON.stringify(forged));
+  // Firefox's text insertion treats literal DEL as an editing command. JSON
+  // escapes preserve the same source-owned observation through an exact draft.
+  const forgedText=JSON.stringify(forged).replace(/[\u007f-\u009f]/g,character=>'\\u'+character.charCodeAt(0).toString(16).padStart(4,'0'));
+  assert.deepEqual(JSON.parse(forgedText),forged);
+  await page.locator('#case-content').fill(forgedText);
+  assert.equal(await page.locator('#case-content').inputValue(),forgedText,'research-case-input: browser text insertion changed the intended JSON draft');
   const forgedReply=await browserReply(page, '#case-import', specs.import, operation.id);
   assertCaseResult(forgedReply,fixture,'different',forged.response);assertCaseDisplaySafe(forgedReply);await assertResearchRendered(page,forgedReply,view);
   const foreign = { ...file, implementation: modelId === '0'.repeat(64) ? '1'.repeat(64) : '0'.repeat(64) };
@@ -1028,7 +1035,9 @@ async function selectionInputOwnership(page,view,binding,fixture) {
   return checks;
 }
 async function researchFileFailures(page, view, operation, requestMaximum) {
-  const cases = view.case_exchange, retained = await page.locator('#fields input,#fields select,#fields textarea').evaluateAll(nodes => nodes.map(x => x.value));
+  assert(operation.fields.length>0,'research-file: preservation fixture requires actual source fields');
+  const draftValues=()=>Promise.all(operation.fields.map(field=>page.locator('#field-'+field.id).inputValue()));
+  const cases = view.case_exchange, retained = await draftValues();
   const exported=await browserReply(page,'#case-export',cases.export_action,operation.id);
   const canonical=Buffer.from(exported.exchange.file_text);
   assert(canonical.length<cases.maximum_bytes);
@@ -1046,23 +1055,36 @@ async function researchFileFailures(page, view, operation, requestMaximum) {
     await page.waitForFunction(explanation => document.querySelector('#result-error')?.textContent.includes(explanation), hint.explanation);
     assert.equal(await page.locator('#case-file').getAttribute('aria-invalid'), 'true', 'research-file: file error lacks invalid-input association');
     assert.equal(await page.evaluate(() => window.__researchObserved.inputs.length), before, 'research-file: refused bytes reached guest execution');
-    assert.deepEqual(await page.locator('#fields input,#fields select,#fields textarea').evaluateAll(nodes => nodes.map(x => x.value)), retained,
+    assert.deepEqual(await draftValues(), retained,
       'research-file: failure changed a valid draft');
     results.push({ bytes: file.data.length, code: file.code });
   }
   // Legal JSON whitespace still consumes the independent encoded action budget.
   // Use a real source-exported case, not a replacement case parser or answer.
   const paddedText=padded.toString('utf8');
-  assert(Buffer.byteLength(JSON.stringify(paddedText))>requestMaximum,'research-fixture: padded case must exceed the actual outer transport');
+  // The file limit and action limit are separate. A valid unfinished/current
+  // draft also contributes encoded values to an import action's envelope.
+  const operand=operation.fields.find(field=>field.kind==='multiline');assert(operand);
+  const operandNode=page.locator('#field-'+operand.id);
+  await operandNode.fill((await operandNode.inputValue())+'\n'.repeat(4096));
+  const equivalent=await browserReply(page,'#guided-submit',{id:'compute',timeout_milliseconds:view.execution.timeout_milliseconds},operation.id);
+  assert.equal(equivalent.request,exported.request,'research-file-budget: whitespace draft changed actual operands');
+  assert.equal(equivalent.response,exported.response,'research-file-budget: whitespace draft changed actual arithmetic');
+  const budgetDraft=await draftValues();
+  const budgetFrame=researchFrame(cases.import_action,{operation:operation.id,request:'',values:budgetDraft,
+    row:Number(await page.locator('#research-row').inputValue()),column:Number(await page.locator('#research-column').inputValue()),
+    controls:[],model_id:await page.locator('#case-model-id').textContent(),case_text:paddedText});
+  assert(Buffer.byteLength(budgetFrame)>requestMaximum,'research-fixture: complete actual import frame must exceed the outer transport');
   await page.locator('#case-file').setInputFiles({name:'encoded-action-budget.json',mimeType:cases.media_type,buffer:padded});
   const beforeBudget=await page.evaluate(()=>window.__researchObserved.inputs.length);
   await page.locator('#case-import').click();
   await page.waitForFunction(copy=>document.querySelector('#status')?.textContent===copy,view.statuses.input_error);
   assert.equal(await page.evaluate(()=>window.__researchObserved.inputs.length),beforeBudget,'research-file-budget: oversized encoded action reached guest');
-  assert.deepEqual(await page.locator('#fields input,#fields select,#fields textarea').evaluateAll(nodes=>nodes.map(node=>node.value)),retained,
+  assert.deepEqual(await draftValues(),budgetDraft,
     'research-file-budget: encoded action refusal changed a valid draft');
   results.push({bytes:padded.length,code:'input_error',fault:'source-exported valid case padded with legal JSON whitespace exceeds the separate encoded action budget',
-    encoded_case_text_bytes:Buffer.byteLength(JSON.stringify(paddedText)),preserved_draft:true});
+    encoded_case_text_bytes:Buffer.byteLength(JSON.stringify(paddedText)),encoded_action_bytes:Buffer.byteLength(budgetFrame),
+    actual_equivalent_draft:true,preserved_draft:true});
   const representable=Buffer.concat([Buffer.alloc(cases.maximum_bytes-canonical.length,0x20),canonical]);
   await page.locator('#case-file').setInputFiles({name:'exact-file-limit.json',mimeType:cases.media_type,buffer:representable});
   const atLimit=await browserReply(page,'#case-import',cases.import_action,operation.id);
