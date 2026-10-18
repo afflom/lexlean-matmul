@@ -1,0 +1,125 @@
+{
+  "schema": "lexlean-matmul/actual-v4-trace-display-r3/1",
+  "qualification": false,
+  "status": "genuine-integration-red-cause-confirmed",
+  "scope": "Actual b334 V4 component unchanged sixassets/genuineWasm and generatedparseResult; first Chromium MM30 trace fails before rendered correlation. Diagnostic one-point parsed-reply edit only proves sole refusal cause; never a source/guest/runtime fix or accepted computation. No immutableSDK/System/fullvv/PR/main/Pages qualification.",
+  "product_source_revision": "93e1d1022ffd29acdfbd70e74b33ce4318a3dc9e",
+  "build_id": "b334d77128a7cad43ffb0d71af43b9a93e1c9064657fe878b41a5791f58baf06",
+  "model_id": "aeb90ff4c975b7188e5ce6cb8c23a43a7a516f848ee6b39dc9715858c57f4afb",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:929cad7c4e917e48fc7648c93d42380dff46ba2a99f2c07e97e6421f38ddb50c",
+  "app_js_sha256": "e64ea33e34049dbde97cbe32977cbc23ad0baf1464a3fef7838c9af5a3a57b11",
+  "wasm_sha256": "6546059e06285d4b2ce25508e25ca554e2cf85e105b4f923a9daa6a75817da33",
+  "actual_guest": {
+    "request": "research-trace-v1\u001f{\"version\":1,\"operation\":\"matmul\",\"request\":\"1\\tmatmul\\t2\\t3\\t2\\t2,-3,4,-5,6,-7\\t-7,8,-9,10,-11,12\",\"values\":[\"2\",\"3\",\"2\",\"2,-3,4,-5,6,-7\",\"-7,8,-9,10,-11,12\"],\"row\":1,\"column\":1,\"controls\":[],\"model_id\":\"aeb90ff4c975b7188e5ce6cb8c23a43a7a516f848ee6b39dc9715858c57f4afb\",\"case_text\":\"\"}",
+    "request_sha256": "20487feda420fb0eaacf8e67a98b2c50e3330e7c99213c8dce6c70e1d0dc04f9",
+    "reply_sha256": "910be682a47eb015fa65849fbe21f9c1f977eeb548626e84f04d92fa45aba386",
+    "version": 2,
+    "action": "trace",
+    "status": "ok",
+    "operation": "matmul"
+  },
+  "causal_failure": {
+    "layer": "actual generated V4 response admission, before DOM research report correlation",
+    "renderer_error": {
+      "name": "Error",
+      "message": "result contract"
+    },
+    "empty_display_cells": [
+      {
+        "table": "calculation-trace",
+        "row": 3,
+        "column": 4,
+        "column_name": "Product",
+        "phase": "terminal encoding"
+      }
+    ],
+    "contract": "Table display cells use existing plain(value) guard requiring value.trim().length > 0; actual source terminal encoding Product cell is empty. Guard and its registered empty-cell refusal test remain unchanged."
+  },
+  "browser_observation": {
+    "engine": "chromium",
+    "version": "157.0.8099.0",
+    "playwright": "1.62.1",
+    "phase": "first matmul selected trace",
+    "reply_received_and_source_shape_parser_accepted": true,
+    "correlated_dom_report_never_observed": true,
+    "timeout_milliseconds": 30000,
+    "MM30_passed": false,
+    "MM31_reached": false
+  },
+  "causal_control": {
+    "kind": "diagnostic-one-point-display-cell-only",
+    "changed_path": "tables[0].rows[3][4]",
+    "before": "",
+    "after": "not applicable",
+    "actual_generated_parseResult_accepts": true,
+    "not_a_guest_or_source_fix": true
+  },
+  "candidate_source_fix": "Source-owned meaningful nonblank display formatting at Domain/Workspace report boundary; preserve actual scalar values, all stage/column semantics and current SDK admission. Root/domain reviewer own design/implementation.",
+  "files": [
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/component-build-receipt.json",
+      "bytes": 3637,
+      "sha256": "61364e81a20ec9d94d8605fb2ba2b2fadd0aa96ae80b1b6088929a029cef7b5c"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/oracle-context-current.json",
+      "bytes": 15693,
+      "sha256": "2051228db8616f59d74f5d9b9a9abc2d569a608c6e11f489ba55e1880f4d85c4"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/browser-current.invocation.json",
+      "bytes": 1138,
+      "sha256": "f3ad00c2e1bc4f7ab4052a40c02e456fddd541c1889b5e6fc4d36ec5d146509b"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/browser-current.invocation-result.json",
+      "bytes": 1664,
+      "sha256": "75fe019928dc9d39bb83190d6668340fd62e5aba150a1461198148018e676019"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/browser-current.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/browser-current.stderr",
+      "bytes": 946,
+      "sha256": "c1b4cb926fa67a10d4d84f0d1a6d35207ab909b643053703df7fec73f3e5c869"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/browser-diagnostic-current.json",
+      "bytes": 2591,
+      "sha256": "9261e1d89dd9af8fd00128b140a60fced0e7c2b951cfed1dc74668d92f86e485"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/oracle-current/.prism/matmul/runtime-oracle/MM-30.failure.json",
+      "bytes": 1149,
+      "sha256": "f7e6ef8764e606b884a7c2de0bdaff449beabd38ddc2ebfc7fb31105a7eb7fc4"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/trace-parser-probe.mjs",
+      "bytes": 3081,
+      "sha256": "b9d6351f6ba2bfb13c19cc59d94ce4807ec1667891dfe937b03ea7994411dbbe"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/trace-parser-probe.json",
+      "bytes": 3380,
+      "sha256": "8c630d996434c74c094303e82f732ac836b08b01b03390fc896e3538fd4f8a33"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/trace-parser-actual-reply.json",
+      "bytes": 923,
+      "sha256": "910be682a47eb015fa65849fbe21f9c1f977eeb548626e84f04d92fa45aba386"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/trace-parser-probe.stdout",
+      "bytes": 239,
+      "sha256": "b472c3097154782939ecdda4ea92ac83daf009aa23b05368e6ae6efcadc7666e"
+    },
+    {
+      "path": "/tmp/matmul-sdk4-product-component-diagnostic/trace-parser-probe.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

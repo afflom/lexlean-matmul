@@ -1,0 +1,124 @@
+{
+  "schema": "lexlean-matmul/actual-v4-crlf-probe-sealed-evidence/1",
+  "qualification": false,
+  "status": "genuine-exact-draft-roundtrip-red",
+  "scope": "One actual current b334 browser import then unchanged export, using real source-generated valid CRLF/CR guided matrix case and unchanged six assets/helpers. No build/source/runtime/guard edits or final SDK/product qualification.",
+  "build_id": "b334d77128a7cad43ffb0d71af43b9a93e1c9064657fe878b41a5791f58baf06",
+  "model_id": "aeb90ff4c975b7188e5ce6cb8c23a43a7a516f848ee6b39dc9715858c57f4afb",
+  "observation_receipt": {
+    "path": "receipt.json",
+    "bytes": 4355,
+    "sha256": "c274b8dd2f668782bb434e536d0e5b6f13800899f643c96879ca7532ae58b5f3"
+  },
+  "original_values": [
+    "2",
+    "2",
+    "2",
+    "1 2\r\n3 4",
+    "5 6\r7 8"
+  ],
+  "source_import_restored_values": [
+    "2",
+    "2",
+    "2",
+    "1 2\r\n3 4",
+    "5 6\r7 8"
+  ],
+  "DOM_values": {
+    "a": "1 2\n3 4",
+    "b": "5 6\n7 8",
+    "fieldEdits": [],
+    "status": "Ready to compute or explore a representation."
+  },
+  "unchanged_export_values": [
+    "2",
+    "2",
+    "2",
+    "1 2\n3 4",
+    "5 6\n7 8"
+  ],
+  "canonical_request_preserved": true,
+  "arithmetic_response_preserved": true,
+  "matrix_or_raw_input_events": 0,
+  "browser_guest_calls": 2,
+  "process_exit_code": 1,
+  "all_closed_evidence": [
+    {
+      "path": "browser-export.reply.json",
+      "bytes": 1036,
+      "sha256": "42babbfd80ae6176071f75569608b73345081d0d1b55e589fda78ff87da66615"
+    },
+    {
+      "path": "browser-import.reply.json",
+      "bytes": 1437,
+      "sha256": "470c8f0637737e21cd55b44b63c09080e39f39dc8c1aa5e6c0ee5cc7ea27b3b8"
+    },
+    {
+      "path": "browser-input-0.txt",
+      "bytes": 712,
+      "sha256": "b3ffc947dcd2807a18dc9113c7482614ad8602714979c51685a280c7930a6a8b"
+    },
+    {
+      "path": "browser-input-1.txt",
+      "bytes": 294,
+      "sha256": "cbff2f2bb6bd0434a317d6897a089eed5fc2bbd01d044f0591e24318a97474da"
+    },
+    {
+      "path": "browser-observations.json",
+      "bytes": 11946,
+      "sha256": "9c3237fe273443991738302e7c08d48770efbbc9a6dea165ea8b2627c9fa9ca1"
+    },
+    {
+      "path": "exit.json",
+      "bytes": 1291,
+      "sha256": "1986dda62b4b586f6b81eddd2018612df12d01c1e61020d6dcb41011b3f8b53c"
+    },
+    {
+      "path": "invocation.json",
+      "bytes": 819,
+      "sha256": "e88e2faa4674e1424da1d5d35b268806ffc3c8bdbe37eba37ccc714c26125023"
+    },
+    {
+      "path": "original.case.json",
+      "bytes": 406,
+      "sha256": "39b8d09d7837a1b47d11e1348a45d1833eaa0735677f1d1ec1e7c58adf97e296"
+    },
+    {
+      "path": "probe.mjs",
+      "bytes": 6877,
+      "sha256": "ce6e9d4d736c260b863753d10a3497162ecfbbf53d8bc6a5018758183fdb0e86"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 4355,
+      "sha256": "c274b8dd2f668782bb434e536d0e5b6f13800899f643c96879ca7532ae58b5f3"
+    },
+    {
+      "path": "reexported.case.json",
+      "bytes": 400,
+      "sha256": "94673f94cf423c5e0188d5d20f0dfbeee6fc199cc06e04eddeb25deb6d86f678"
+    },
+    {
+      "path": "source-export.reply.json",
+      "bytes": 1043,
+      "sha256": "78ae7480d2899afaf53b66e8fadbfd6137d18744b3d7dc7da035299691138a6c"
+    },
+    {
+      "path": "source-export.request.txt",
+      "bytes": 260,
+      "sha256": "6ffcf1352a58604c5de85e4ca804ff9e27a5c4cb3bc7e383401cf4dff9bd49cd"
+    },
+    {
+      "path": "stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "stdout",
+      "bytes": 150,
+      "sha256": "c3213c44f6112191ba72fd2578c4ce326337d1ba910ae2370498968968ec71e9"
+    }
+  ],
+  "custody_note": "The original observation receipt was written before its own final stdout line and wrapper exit.json; preserve it unchanged. This closed seal hashes the final actual stdout/stderr/exit and all original inputs/replies/cases after completion, superseding only its early evidence-list sizes, never the actual observations.",
+  "browser_cleanup": "Unchanged withWorkbench finally closes actualbrowser/server and removes privatebrowserHome; no persistent product/SDK/runtime edit."
+}

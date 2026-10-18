@@ -85,6 +85,23 @@ passes all six generic lifecycle probes with zero omissions. It binds its exact
 runtime snapshot and does not qualify the later final SDK, native system, or
 actual product browser journeys.
 
+[The actual V4 trace-rendering regression](verification/research-trace-display-r3.json)
+records a genuine generated-Wasm answer rejected by the SDK's nonblank display
+contract. [The complete report inventory](verification/research-display-inventory-r3.json)
+then executes all 4,505 guest checks on that same source component: the arithmetic
+checks pass, while the exact generated renderer rejects 418 trace reports for
+595 blank display cells. The other comparison, case, and inspector reports
+meet that display contract. The diagnostic reply edit isolates the cause; it
+does not establish a source fix or browser acceptance.
+
+[The exact case-text regression](verification/research-case-text-r3.json)
+retains a real source-generated case imported and exported without any input
+events. Browser controls normalize its CRLF and lone-CR field strings, changing
+the exported draft despite preserving its arithmetic result. The required fix
+preserves source text until that field is edited. Both records concern an
+isolated source-maintenance build; final SDK, complete acceptance, and publication
+qualification remain separate.
+
 The following records describe their stated historical source selections.
 They are retained independently of the current release acceptance.
 
