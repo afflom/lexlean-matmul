@@ -41,7 +41,7 @@ A case is UTF-8 JSON with exactly these fields:
 | `request` | Exact canonical arithmetic request, exact raw draft, or empty for a tool |
 | `response` | Exact observed arithmetic response or canonical source-generated tool report |
 | `controls` | Ordered inspection settings or independent-tool fields |
-| `row`, `column` | Zero-based selected cell; bounded indices checked against the fresh output shape |
+| `row`, `column` | Zero-based selected cell; bounded indices checked against the fresh output shape; independent tools use `0,0` |
 | `action` | `compute`, `codec-tool`, or `ieee-tool`, consistent with the operation |
 
 Files use `lexlean-matmul.case.json` when downloaded. The parser rejects
@@ -49,6 +49,9 @@ duplicate, missing, additional, incorrectly typed, and unsupported-version
 fields; malformed UTF-8/Unicode; inconsistent guided requests; invalid settings;
 and declared byte-budget violations. A rejected import preserves the current
 draft. Typed errors and recovery guidance are generated in [ERRORS.md](ERRORS.md).
+A valid case can replace an unfinished draft, including an empty required matrix
+field or invalid selected-coordinate text. Standalone tools and their cases
+remain independent of the matrix selection.
 
 The renderer checks the actual adapter identity before submitting actions. A
 same-identity import executes the current source and compares every response
@@ -75,7 +78,8 @@ The source declares the selected limits and error recovery.
 
 Loading, computing, cancellation, timeout, retry, input changes, operation
 changes, file reads and case recomputation share a declared ownership lifecycle.
-An older worker or file read cannot overwrite newer inputs or results. Reports
+Every coordinate input edit retires pending work before blur. An older worker
+or file read cannot overwrite newer inputs or results. Reports
 paginate with all rows reachable. Files and calculations stay in the browser;
 explicit downloads create local files. No calculation history is persisted.
 
