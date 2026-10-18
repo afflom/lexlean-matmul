@@ -121,7 +121,7 @@ function prepareFixture(directory, modules, fixture) {
   while (cursor.kind === 'cons') { names.push(cursor.head.value); cursor = cursor.tail; }
   assert.equal(cursor.kind, 'nil');
   roots.value = [...new Set(names)].sort().reverse().reduce((tail, name) => ({ kind: 'cons', head: string(name), tail }), { kind: 'nil', element: stringType });
-  text = text.replace('\\begin{semanticmodule}', `\\importmodule{${moduleName}}\n\\begin{semanticmodule}`)
+  text = text.replace('\\title{', `\\importmodule{${moduleName}}\n\\title{`)
     .replace(/^\\semanticdata\{[^\n]*\}$/m, () => `\\semanticdata{${canonical(data)}}`);
   fs.writeFileSync(applicationPath, text);
   return modules.map(module => ({ path: `src/${module.path}`, original_sha256: module.sha256,

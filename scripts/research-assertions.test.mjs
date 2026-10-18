@@ -90,7 +90,7 @@ test('IEEE independent inspection covers both formats and every source value cla
 test('IEEE subnormal atoms reconstruct exact dyadic and signed Euclidean Atlas address', () => {
   const report = {status:'ok',tables:[{id:'ieee-fields',title:'Exact binary64',columns:['Field','Value'],rows:[
     ['Format','binary64'],['Unsigned source bits','9'],['Classification','subnormal'],['Sign bit','0'],['Exponent field','0'],
-    ['Fraction field','9'],['NaN payload field','0'],['Exact decoded value','9 / 2^1074'],
+    ['Fraction field','9'],['NaN payload field (includes quiet bit)','not a NaN'],['Exact decoded value','9 / 2^1074'],
     ['Terminal nearest bits','9'],['Terminal toward-zero bits','9'],['Terminal saturating bits','9'],['Terminal wrapping bits','9'],
   ]},{id:'atlas-atoms',title:'Finite exact atoms',columns:['Digit','Position','Grade','Revolution','Scope','Context','Modality'],rows:[
     ['+1','0','-1074','-34','1','6','2'],['+1','3','-1071','-34','2','1','2'],

@@ -36,6 +36,18 @@ function terminalCell(fixture, index) {
 export function expectedResearchCells(fixture) {
   return fixture.output.map((_value,index)=>terminalCell(fixture,index)+(fixture.family==='tropical'?' [witness '+fixture.expectedResponse.split('\t')[5].split(',')[index]+']':''));
 }
+export function assertOutputInspection(report,fixture,index) {
+  same(report.status,'ok','research-output-inspection: selected output inspection failed');
+  same(report.request,fixture.request,'research-output-inspection: inspected a different request');
+  same(report.response,fixture.expectedResponse,'research-output-inspection: changed actual terminal output');
+  assert(Number.isInteger(index)&&index>=0&&index<fixture.output.length);
+  if(fixture.domain==='ieee')assertIeeeInspection(report,fixture.format,fixture.output[index]);
+  else {
+    const text=terminalCell(fixture,index);
+    same(reportTable(report,'operand-values'),[['output',String(index),text,text]],
+      'research-output-inspection: stored/decoded selected scalar differs from actual terminal arithmetic');
+  }
+}
 export function assertTrace(report, fixture, row, column) {
   assert.equal(report.status, 'ok', 'research-status: trace did not succeed');
   assert.equal(report.request, fixture.request, 'research-input: trace changed canonical operands');
@@ -162,6 +174,9 @@ export function assertIeeeInspection(report, format, bits) {
   same(report.status, 'ok', 'research-status: IEEE inspection did not succeed');
   const rows = reportTable(report, 'ieee-fields'), values = new Map(rows);
   same(values.size, rows.length, 'research-ieee: duplicate bitfield');
+  same(rows.map(row=>row[0]),['Format','Unsigned source bits','Classification','Sign bit','Exponent field','Fraction field',
+    'NaN payload field (includes quiet bit)','Exact decoded value',...['nearest','toward-zero','saturating','wrapping'].map(mode=>`Terminal ${mode} bits`)],
+    'research-ieee: missing, extra or reordered inspection fields');
   const fractionWidth = format === 'f32' ? 23n : 52n, exponentWidth = format === 'f32' ? 8n : 11n;
   const fraction = bits & ((1n << fractionWidth) - 1n), exponent = (bits >> fractionWidth) & ((1n << exponentWidth) - 1n);
   const sign = bits >> (fractionWidth + exponentWidth), allExp = (1n << exponentWidth) - 1n;
@@ -170,7 +185,7 @@ export function assertIeeeInspection(report, format, bits) {
       ? fraction === 0n ? sign ? 'negative zero' : 'positive zero' : 'subnormal' : 'normal';
   for (const [key, expected] of [['Format', format === 'f32' ? 'binary32' : 'binary64'], ['Unsigned source bits', String(bits)],
     ['Classification', classification], ['Sign bit', String(sign)], ['Exponent field', String(exponent)],
-    ['Fraction field', String(fraction)], ['NaN payload field', exponent === allExp && fraction !== 0n ? String(fraction) : '0']]) {
+    ['Fraction field', String(fraction)], ['NaN payload field (includes quiet bit)', exponent === allExp && fraction !== 0n ? String(fraction) : 'not a NaN']]) {
     same(values.get(key), expected, `research-ieee: wrong ${key}`);
   }
   const decoded = ieeeOracle.decode(format, bits);
