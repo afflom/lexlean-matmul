@@ -1,68 +1,94 @@
-# Research workbench requirements
+# Research workbench
 
-The next release adds explanation, equivalent-route comparison, reproducible
-case exchange, and codec/IEEE inspection as complete modeled product features.
-The authoritative behavior, controls, design, copy, bounds, and failures belong
-in LexLean and the public PrismPM application model. This document organizes
-the required outcomes; it does not establish their implementation or acceptance.
+The application serves learners, numerical researchers, codec developers,
+integrators, and reviewers through one modeled workbench. Its public Text-V4
+view and user journeys are declared in `src/Presentation.lex.tex`. All arithmetic,
+inspection, case validation, and comparison execute generated LexLean.
 
-## Stakeholder journeys
+## Journeys
 
-| Journey | Required result |
+| Task | Interaction | Result |
+| --- | --- | --- |
+| Learn a calculation | Choose any of the 24 operations, load one of 28 examples, edit its fields, and compute | Actual exact result, interpretation, and original request/response bytes |
+| Explain an output | Select a zero-based row and column, then trace | Actual operands and decoded contributions, exact accumulation, epilogue, and terminal encoding checked against the computed result |
+| Compare implementations | Choose an applicable route or automatic comparison | Two actual executions over identical inputs, complete responses, and an equivalence decision; commands can be replayed independently |
+| Examine stored data | Select an operand/index/decoded coordinate, or use the standalone codec tool | Full root-to-leaf codec path, actual transformed codes, widths, decoded word length, and selected value |
+| Examine IEEE data | Inspect a matrix value, or enter a format and unsigned bit pattern in the IEEE tool | Sign/exponent/fraction, classification, exact finite interpretation, canonical NAF/Laurent atoms, and terminal behavior |
+| Preserve and review a case | Export; later choose a local JSON file and import | Validated inputs and controls, saved/current identities, a fresh execution, and comparison with the exact saved observation |
+
+Direct decoding and table gathering are compared where both exist. Other
+families use a separately executed reverse or partitioned exact schedule.
+Tropical ties retain the least original witness index. The interface reports
+incompatible route selections explicitly.
+
+Codec inspection covers grid, book, sign, ternary, E8, packed, offset,
+transcode, and runs. It follows the selected coordinate without materializing
+an arbitrarily large decoded word. Unknown runs have zero length; the inspector
+stops there without inventing a child code or value. Coordinates use validated
+unsigned 64-bit representation and are checked against the actual decoded word.
+
+## Local case interchange
+
+A case is UTF-8 JSON with exactly these fields:
+
+| Field | Meaning |
 | --- | --- |
-| Explain an edited calculation | Choose any output cell and inspect the actual decoded operands, products, reduction, epilogue, and terminal encoding. Empty outputs and empty reductions have explicit explanations. |
-| Compare equivalent executions | Execute two valid routes over the identical immutable request and compare the complete canonical outputs, including secondary components and tropical witnesses. |
-| Reproduce a finding | Explicitly export a versioned local file with the canonical request, recorded response, selected settings, and implementation identity. Import validates the file and recomputes the result locally before reporting agreement. |
-| Inspect a codec | Choose any modeled codec and stored symbol; inspect its true composition path, child codes, decoded word, width/modulo rules, and canonical codebook ordering. |
-| Inspect IEEE data | Choose binary32 or binary64 bits and inspect sign, exponent, fraction, classification, exact finite value, canonical atoms/addresses, and terminal encoding behavior. Signed zeros and distinct NaN payloads remain distinguishable as input symbols. |
-| Use the complete interface | Every original operation family has a guided form and editable examples. Trace, comparison, inspector, and case controls have source-owned labels, instructions, design, status, recovery, and keyboard/mobile journeys. |
+| `schema` | Exactly `lexlean-matmul/case/1` |
+| `version` | Exactly `1` |
+| `implementation` | Lowercase 64-digit SHA256 identity of the generated application model |
+| `operation` | A guided operation ID, `raw`, `codec-tool`, or `ieee-tool` |
+| `values` | Ordered guided field strings; empty for raw requests and independent tools |
+| `request` | Exact canonical arithmetic request, exact raw draft, or empty for a tool |
+| `response` | Exact observed arithmetic response or canonical source-generated tool report |
+| `controls` | Ordered inspection settings or independent-tool fields |
+| `row`, `column` | Zero-based selected cell; bounded indices checked against the fresh output shape |
+| `action` | `compute`, `codec-tool`, or `ieee-tool`, consistent with the operation |
 
-## Complete arithmetic coverage
+Files use `lexlean-matmul.case.json` when downloaded. The parser rejects
+duplicate, missing, additional, incorrectly typed, and unsupported-version
+fields; malformed UTF-8/Unicode; inconsistent guided requests; invalid settings;
+and declared byte-budget violations. A rejected import preserves the current
+draft. Typed errors and recovery guidance are generated in [ERRORS.md](ERRORS.md).
 
-Explanations and equivalent executions cover all 24 original operation
-families: matmul, gemm, coded, table, partitioned, complex, dyadic, tropical,
-recenter, ieee, ieee-gemm, ieee-table, encode, encode-dyadic, bias, bias-gemm,
-complex-gemm, complex-bias, complex-bias-gemm, tropical-gemm, complex-encode,
-tropical-encode, codec, and arena.
+The renderer checks the actual adapter identity before submitting actions. A
+same-identity import executes the current source and compares every response
+byte. A different identity shows both identities and requires explicit
+recomputation before presenting a fresh answer. Saved answers never supply the
+current calculation. Exact observations are displayed as numbered JSON-string
+chunks; decoding and concatenating each category reconstructs the entire saved
+or fresh response, including control characters and non-ASCII text.
 
-Direct and table comparisons execute the actual codec traversals. Other
-families compare exact reduction schedules with the identical terminal
-semantics. Recenter compares equivalent maximum/normalization constructions.
-A particular incompatible route produces a typed explanation while a valid
-comparison remains available for that family. Mathematical work counts describe
-the declared operations; they are not instruction counts or throughput claims.
+An arithmetic failure can itself be exported and recomputed as a case. Editing
+a restored draft starts a new calculation. Exporting always computes from the
+current draft, so an earlier displayed answer cannot be silently attached to
+edited inputs.
 
-All nine codec stages remain available, including compositions: grid, book,
-sign, ternary, E8, packed, offset, transcode, and runs. Inspection follows the
-actual mapping through wrappers and branches, rather than applying an unchanged
-code independently to each prefix. Both IEEE formats include zero, subnormal,
-normal, infinity, NaN, cancellation, underflow, overflow, all existing encoding
-modes, and zero-beta overwrite behavior.
+## Execution and bounds
 
-## State, files, and evidence
+The original version 1 arithmetic protocol and original presentation frames
+retain their byte-exact behavior and 16 KiB request limit. Text-V4 actions use
+a closed source-owned JSON envelope with a separate 2 MiB transport request
+limit, 4 MiB response limit, and 1 MiB local case-file limit. These budgets apply
+to encoded UTF-8 bytes, including framing and escaping. Ordinary computations
+have a 30-second worker deadline; research actions have a 180-second deadline.
+The source declares the selected limits and error recovery.
 
-Computation, explanation, comparison, and standalone inspection are explicit
-actions over the current draft. Selecting any valid cell or symbol makes its
-complete data available. Pagination and selectors expose bounded data without
-silently dropping rows. Changing inputs retires dependent results; cancellation,
-timeout, failure, and retry preserve editable drafts and cannot publish stale
-work. Long research actions have their own declared cancellable deadlines.
+Loading, computing, cancellation, timeout, retry, input changes, operation
+changes, file reads and case recomputation share a declared ownership lifecycle.
+An older worker or file read cannot overwrite newer inputs or results. Reports
+paginate with all rows reachable. Files and calculations stay in the browser;
+explicit downloads create local files. No calculation history is persisted.
 
-Case files have a versioned bounded schema. Recorded responses are observations,
-not trusted answers. Imported requests are parsed and recomputed by LexLean;
-agreement and disagreement are explicit results. Recorded and current
-implementation identities remain visible, including a deliberate recomputation
-journey for an older implementation. Invalid files, unknown versions, duplicate
-fields, invalid encodings, invalid selections, and budget excesses are typed.
+## Acceptance boundary
 
-File exchange is explicit and browser local. Operands and cases do not enter
-URLs, telemetry, logs, network requests, or automatic persistent history.
-The original version 1 protocol and existing accepted vectors retain their
-behavior. Its 16 KiB wire bound is distinct from the bounded outer transport
-needed to import a complete case file.
+MM-25 through MM-31 cover these journeys alongside the previous 24 capabilities.
+They exercise actual generated guest results, independent arithmetic and codec
+references, command replay, malformed inputs, planted report defects, worker
+ownership failures, file failures, and Chromium/Firefox/WebKit interaction.
+Source-only defensive fixtures call unchanged production functions for otherwise
+unreachable malformed prepared states; they are separate diagnostic applications.
 
-Registered behavioral scenarios, independent arithmetic/representation oracles,
-meaningful planted defects, and real three-engine browser journeys establish
-these features. Release requires the entire immutable-SDK `just vv` boundary,
-protected main deployment, source-free export, retained revision-bound evidence,
-and live byte/journey verification. Component diagnostics retain their scope.
+The complete unfiltered `just vv` in the immutable selected SDK, both native CI
+platforms, clean reproduction, protected merge, and fresh-main Pages publication
+checks qualify a release. Historical baselines and component diagnostics retain
+their recorded scope and cannot qualify a later revision.

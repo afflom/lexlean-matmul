@@ -16,11 +16,22 @@ handling remain LexLean declarations.
 
 Choose a calculation, load a worked example, and edit its matrices. Entries
 accept spaces, commas, or line breaks. Compute displays the actual exact result,
-its interpretation, and inspectable protocol bytes. The first example multiplies
-two 2-by-2 matrices; cancellation, IEEE, complex, dyadic, tropical, and composed
-codec examples explore the other domains. The advanced editor accepts the
-complete [version 1 protocol](PROTOCOL.md), including operations without a
-guided form.
+its interpretation, and inspectable protocol bytes. All 24 operation families
+have guided forms, with 28 editable worked examples. The advanced editor accepts
+the complete [version 1 protocol](PROTOCOL.md).
+
+Select an output cell to trace its actual decoded operands, contributions,
+accumulation, epilogue, and terminal encoding. Compare equivalent executions
+over the same inputs and inspect their exact commands and responses. The codec
+inspector follows every composed stage to a selected decoded coordinate; the
+IEEE inspector explains binary32/binary64 fields, exact values, and Laurent
+atoms. Both inspectors also work as independent tools.
+
+Export a local case to retain inputs, selected cell, inspection settings, model
+identity, and the observed answer. Importing recomputes the case and compares
+every saved response byte. A different model identity requires explicit
+recomputation. See [RESEARCH-WORKBENCH.md](RESEARCH-WORKBENCH.md) for the journeys
+and interchange contract.
 
 On GitHub Pages, calculations run in a browser worker. Cancel and retry preserve the current
 draft, while changing an input clears the previous result. Calculation history
@@ -87,7 +98,7 @@ The browser protocol declares dimensions from zero through eight, at most 64
 magnitude digits per input coefficient, and explicit byte budgets. These are
 transport bounds. See [PROTOCOL.md](PROTOCOL.md) for requests and examples, and
 [PORTING.md](PORTING.md) for the reference correspondence and substrate choices.
-The Text-V3 application model also declares a maximum of 32,767 Core-Wasm memory
+The Text-V4 application model also declares a maximum of 32,767 Core-Wasm memory
 pages and a 16 MiB stack; actual memory grows with the request.
 
 ## Model and source map
@@ -104,6 +115,11 @@ pages and a 16 MiB stack; actual memory grows with the request.
 | `src/ExtendedProtocol.lex.tex` | IEEE, output-encoding, and epilogue requests |
 | `src/CodecProtocol.lex.tex` | General codec and canonical arena requests; delegates the existing operations |
 | `src/Workbench.lex.tex` | Guided input normalization, exact response interpretation, bounded JSON, and typed presenter failures |
+| `src/ResearchModel.lex.tex`, `src/ResearchTrace.lex.tex` | Typed research inputs and selected-cell reconstruction checked against the actual terminal response |
+| `src/ResearchCompare.lex.tex` | Independent equivalent routes and exact alternate execution schedules |
+| `src/ResearchInspect.lex.tex`, `src/Research.lex.tex` | Composed codec and IEEE inspectors and their public source APIs |
+| `src/ResearchJson.lex.tex`, `src/ResearchCases.lex.tex` | Closed JSON parsing, versioned local cases, Unicode and schema validation |
+| `src/ResearchForms.lex.tex`, `src/ResearchWorkspace.lex.tex` | All guided serializers, action envelopes, case recomputation, exact comparisons, and response bounds |
 | `src/Presentation.lex.tex` | Purpose, instructions, fields, examples, error assistance, design, and execution policy |
 | `src/Application.lex.tex` | Application roots, byte-level acceptance vectors, Core-Wasm, and portable View |
 | `src/MatmulSystem.lex.tex` | Native `Production.BrowserSystem.SystemModel`, component/artifact bindings, controls, and Pages target |
