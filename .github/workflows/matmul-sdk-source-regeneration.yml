@@ -1,0 +1,36 @@
+name: reviewable immutable SDK source regeneration
+
+on:
+  push:
+    branches: [ci/sdk-text-v4-source-regeneration-2026-10-19]
+
+permissions: {}
+
+concurrency:
+  group: matmul-sdk-source-regeneration-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    if: github.repository == 'afflom/lexlean-matmul'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the exact regeneration commit without credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Regenerate source through the unchanged lock-selected SDK
+        run: python3 scripts/regenerate-system-ci.py .github/source-regeneration-input.json
+      - name: Retain original generated source and bounded observations
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: immutable-sdk-source-regeneration-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .prism/matmul/source-regeneration-ci/retained
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
