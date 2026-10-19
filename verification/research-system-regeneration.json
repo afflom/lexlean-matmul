@@ -1,0 +1,215 @@
+{
+  "schema": "lexlean-matmul/immutable-sdk-system-regeneration/1",
+  "scope": "authenticated-source-maintenance-only",
+  "qualification": false,
+  "recorded_at": "2026-10-19T10:49:49.710535+00:00",
+  "sdk_source_revision": "829cde60b116e8083d89f10d1b6fb42f2b62f8c7",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:6f3d0c8f3603ae94625247b1540a624b6ca9d709037a639b290f4bd53b033d73",
+  "generation_commit": "d21955eada891f50cb49b0469eed6fed781ec6d0",
+  "generation_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39236125366",
+  "run_attempt": 1,
+  "generation_job": 118005500805,
+  "artifact": {
+    "id": 12180183569,
+    "byte_length": 1729657,
+    "digest": "sha256:984fd08c2aef80afe214abb6411fa9c09e1d8b35d5baac893841f3284125bb40",
+    "retention_days": 30
+  },
+  "authored_inputs_verified": 219,
+  "canonical_inputs_verified": 7,
+  "isolated_helper_inputs": 3,
+  "generated_files": [
+    {
+      "bytes": 63611,
+      "git_mode": "100644",
+      "path": "src/MatmulSystem.lex.tex",
+      "sha256": "336778a6696aed4353dc95e1c88f23da3abbbbcbad24409cd301e4785dc6ab5b"
+    },
+    {
+      "bytes": 2749,
+      "git_mode": "100644",
+      "path": "lexlean.lock",
+      "sha256": "ee441d9b8cc769285f41eb22f16a24b8e0f37fa24528673c7e576e518145afd0"
+    },
+    {
+      "bytes": 12548,
+      "git_mode": "100644",
+      "path": "CONFORMANCE.md",
+      "sha256": "3c9cff26a32e8724ccaf1f73839dd0beb1aa530ae0de4b20310d9d352df1ded8"
+    },
+    {
+      "bytes": 15105,
+      "git_mode": "100644",
+      "path": "ERRORS.md",
+      "sha256": "72d390f5567f014f9bdfb8bcd8509a9234af40f91a88ed68f17a886c73fa943b"
+    }
+  ],
+  "changed_generated_files": [
+    "src/MatmulSystem.lex.tex"
+  ],
+  "mandatory_controls": 31,
+  "added_controls": [
+    "MM-25",
+    "MM-26",
+    "MM-27",
+    "MM-28",
+    "MM-29",
+    "MM-30",
+    "MM-31"
+  ],
+  "previous24_controls_preserved": true,
+  "other_semantic_nodes_preserved": true,
+  "native_binding": {
+    "adapter_digest": "sha256:59df071a35deca05e62224e43b82d7bc9b5c649f989a3424fd704123633a539e",
+    "application_model_digest": "sha256:bd710bc0c23f720d83e8dc7e5624c726543b1edff0023f03dab50d7d5b9edba2",
+    "check": {
+      "entity_count": 0,
+      "model_id": "bd710bc0c23f720d83e8dc7e5624c726543b1edff0023f03dab50d7d5b9edba2",
+      "schema": "prismpm/check-result/1",
+      "semantic_id": "03bd4b17bb2c64b8b83736b60905bc9ca8f2aac456495ad3f0c5dc7e372008aa",
+      "snapshot_id": "ebe34f079b30bc136b61cfd2fd8ef606799713010053d418f6ec787914d05ad6"
+    },
+    "schema": "lexlean-matmul/native-system-input/1",
+    "source_sha256": "336778a6696aed4353dc95e1c88f23da3abbbbcbad24409cd301e4785dc6ab5b"
+  },
+  "commands": [
+    {
+      "name": "00-pull-locked-sdk",
+      "argv": [
+        "docker",
+        "pull",
+        "ghcr.io/afflom/lexlean-matmul-sdk@sha256:6f3d0c8f3603ae94625247b1540a624b6ca9d709037a639b290f4bd53b033d73"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 193.213728843,
+      "stdout": {
+        "bytes": 3553,
+        "sha256": "87b7d7b71f72d654868fd90f3e818adc26d6ed5afc93ede9543e3b72c16eee52"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "01-inspect-locked-sdk",
+      "argv": [
+        "docker",
+        "image",
+        "inspect",
+        "ghcr.io/afflom/lexlean-matmul-sdk@sha256:6f3d0c8f3603ae94625247b1540a624b6ca9d709037a639b290f4bd53b033d73"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.01159859099999494,
+      "stdout": {
+        "bytes": 7153,
+        "sha256": "f2ede5408ddd49575d050491837b96d3620fb3295cc64c8550e36caa4fcfe246"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "02-bootstrap-fetch",
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "prismpm",
+        "--json",
+        "fetch",
+        "--locked"
+      ],
+      "exit_code": 3,
+      "elapsed_seconds": 127.660294179,
+      "stdout": {
+        "bytes": 365,
+        "sha256": "b2a500c50cebc8e761ebc75cac8d8d95953477f3294a3c49f5ba4176ba5a07dd"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "03-update-system",
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "node",
+        "scripts/update-system.mjs"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 25.063520061999952,
+      "stdout": {
+        "bytes": 106,
+        "sha256": "5855dd4c5046c80fc344eea8c1310253e0a42a0772655d6702d328c232296edb"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "04-final-fetch",
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "prismpm",
+        "--json",
+        "fetch",
+        "--locked"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1410.5069952650001,
+      "stdout": {
+        "bytes": 10783642,
+        "sha256": "6831e27c1ccd20e18016f2b9cf454f4c7df0d4c1bbb5b6b720f47409d0b6536c"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "05-model-write",
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "just",
+        "model-write"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 39.800752314999954,
+      "stdout": {
+        "bytes": 69,
+        "sha256": "5688f68185619e15c818efa3669787bd0fd3b44a5835a2f8738997e763780239"
+      },
+      "stderr": {
+        "bytes": 83,
+        "sha256": "caabb74c290a46afefdc2de8e262c986ad956fe6909833185e8887e25ecf148e"
+      }
+    }
+  ],
+  "bootstrap_refusal": {
+    "code": "PP2101",
+    "exit_code": 3,
+    "scope": "Original stale application-model binding reported before source regeneration; not a successful fetch. The final public locked fetch returned0."
+  },
+  "retained_reviews": [
+    {
+      "name": "artifact-custody",
+      "byte_length": 7264,
+      "sha256": "c02d9d3b93fafc5c8035622ebd5746ac544d8ab4a20b5940536d6ec184fcf034"
+    },
+    {
+      "name": "root-semantic-review",
+      "byte_length": 2454,
+      "sha256": "5d1be1454d588b229979b9ea12d123fc8b3e375be4ed861828f69c75a13d0668"
+    }
+  ],
+  "notes": [
+    "The unchanged source updater and model-write recipe ran through scripts/in-sdk.sh in the lock-selected immutable SDK.",
+    "The SDK regenerated all four allowed outputs; lexlean.lock, CONFORMANCE.md and ERRORS.md remained byte-identical. Only the containing system source changed.",
+    "Relative to that frozen input, all seven new mandatory obligations were appended to the preserved24 controls; the two native application-model digest fields were refreshed. Every other semantic node and the source prologue stayed identical.",
+    "The three temporary CI helper files remain isolated from the feature PR.",
+    "Full SDK source checks, consumer acceptance, protected merge and GitHub Pages publication remain separate mandatory gates."
+  ],
+  "comparison_baseline": "Frozen source-regeneration input at d21955eada891f50cb49b0469eed6fed781ec6d0, including its declared V4 application profile and resource migration."
+}
