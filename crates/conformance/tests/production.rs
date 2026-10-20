@@ -3,7 +3,12 @@
 use std::path::Path;
 use std::process::Command;
 
+static BROWSER_OWNER: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
 fn check(id: &str) {
+    let _browser = BROWSER_OWNER
+        .lock()
+        .unwrap_or_else(std::sync::PoisonError::into_inner);
     let root = Path::new(env!("CARGO_MANIFEST_DIR"))
         .ancestors()
         .nth(2)
