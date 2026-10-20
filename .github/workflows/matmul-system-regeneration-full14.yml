@@ -1,0 +1,207 @@
+name: current locked SDK explicit source regeneration and full component diagnostic
+
+on:
+  push:
+    branches: [ci/matmul-system-regen-full14-74e432-2026-10-20]
+
+permissions: {}
+
+concurrency:
+  group: matmul-system-regen-full14-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  component-diagnostic:
+    name: Explicit source regeneration then whole production and research components
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 74e432e8a6d0fa55b5f4b02baac8653cfef041ab
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Regenerate through unchanged source updater and retain original component evidence
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import datetime,hashlib,json,os,pathlib,re,selectors,signal,stat,subprocess,time
+          ROOT=pathlib.Path.cwd(); OUT=pathlib.Path(os.environ['RUNNER_TEMP'])/'matmul-system-regeneration-full14';OUT.mkdir(exist_ok=False)
+          SOURCE='74e432e8a6d0fa55b5f4b02baac8653cfef041ab';TREE='835730bd7c60f128e83b945634cc964ecbc56654';IMAGE='ghcr.io/afflom/lexlean-matmul-sdk@sha256:f98ba2c32336acf02f809da3af49bf81ac5c62af1fed03e69576daa93f853f47';BRANCH='ci/matmul-system-regen-full14-74e432-2026-10-20';GUARDS={'AGENTS.md': '9a1fe3f73ab2963812c35976909c331292e1ca39ce47c0711ec1aafe8b869d87', 'Justfile': '5eca5b4af2f4424ef87b2d1e8679b83fe7d0d05eb59aeb5df1e5fdd92bd5b570', 'crates/conformance/tests/production.rs': 'b2e66f2c49c748f8236c44ea81a2730776b3d8769110371117fa4d1d3ce4685a', 'crates/conformance/tests/research.rs': '41c915eebc041cf05304abe86413e175811cd31ebe8d015fdda290cd657def2b', 'prismpm.lock': 'ff0c6be184fa43640dd7d4929d6c8942599e4a4f478e871ffb3aff882b18b8ce', 'scripts/build.mjs': 'bdc71e1760cb561fd2006dbdf2e176e3f557b9f3ee06618ad5995d84a7c4dff9', 'scripts/conformance.mjs': '000ac400cf600b36160c5cf8e5b424b8d323b8eb3cff1054a5deff1798316e88', 'scripts/evidence.mjs': '8b79705caf72626ad66edeccc339ccc56b0113805419cec8038a5483fd9d231b', 'scripts/in-sdk.sh': '3b5dffffcc709e39f34d57535ac4f183617724274d838cd59a55dedbd804adf1', 'scripts/production-oracle.mjs': 'da5614b24c18fd94241977143233f2efab12dd4eb7afc536acb6574446fe9b4a', 'scripts/research-oracle.mjs': '3307b9b24c3f043637ab81f8dbb8f01e63113c577000dac21f2973c4e6a2fa2d', 'template.lock': '79f62c9ae28af6b0f73c6d95ba0cef2f53c9befd5088b42a1fec39392e6a28d5', 'scripts/update-system.mjs': 'fa9309b88fd5156e7677aaf15d60df054b11708aef14a74f27bceecd0fe44cf5', 'scripts/system-model.mjs': '5e0cf50f3d8438431754ce73aa7fcc5e4af3c36ef92eea3d3efff63837d5f0a0'}
+          DEADLINE=time.monotonic()+170*60; MAX_STREAM=64*1024**2; MAX_ARTIFACT=256*1024**2;retained=0;commands=[];complete=False;pending_group=None
+          sha=lambda b:hashlib.sha256(b).hexdigest()
+          INPUT_COUNT=230;INPUT_ROWS_SHA256='143d8868a5b07809f3cf1fcfbdb43afbefb08603be13ff0943b6010d1733e679';GENERATED=['src/MatmulSystem.lex.tex', 'lexlean.lock', 'CONFORMANCE.md', 'ERRORS.md'];EXPECTED_PP2101='system release binds application model "sha256:bd710bc0c23f720d83e8dc7e5624c726543b1edff0023f03dab50d7d5b9edba2", but the imported application model is sha256:306c07fbf8a0e0a2eb886bb2b5f0742e7305d3e0bff48954b8934e9f202d563a';IMPORTED_APPLICATION='sha256:306c07fbf8a0e0a2eb886bb2b5f0742e7305d3e0bff48954b8934e9f202d563a'
+          PLANNED_COMMANDS=[('01-bootstrap-fetch', ['./scripts/in-sdk.sh', 'prismpm', '--json', 'fetch', '--locked']), ('02-update-system', ['./scripts/in-sdk.sh', 'node', 'scripts/update-system.mjs']), ('03-final-locked-fetch', ['./scripts/in-sdk.sh', 'prismpm', '--json', 'fetch', '--locked']), ('04-model-write', ['./scripts/in-sdk.sh', 'just', 'model-write']), ('05-model', ['./scripts/in-sdk.sh', 'just', 'model']), ('06-normal-build', ['./scripts/in-sdk.sh', 'node', 'scripts/build.mjs']), ('07-both-whole-test-targets', ['./scripts/in-sdk.sh', 'cargo', 'test', '-p', 'repo-conformance', '--test', 'production', '--test', 'research', '--no-fail-fast'])];bootstrap_outcome=None;native_binding=None;source_regeneration_complete=False;working_before=None;native_bytes=None
+          AUTHORED_DIRECTORIES=['.cargo','.devcontainer','.github','bootstrap','crates','features','model','scripts','src','verification','xtask']
+          def put(name,body):
+           global retained
+           if not isinstance(body,bytes):body=(json.dumps(body,indent=2,sort_keys=True)+'\n').encode()
+           assert retained+len(body)<=(MAX_ARTIFACT if name=='result.json'else MAX_ARTIFACT-65536),'bounded diagnostic retention exceeded'
+           target=OUT/name;target.parent.mkdir(parents=True,exist_ok=True)
+           with target.open('xb')as f:f.write(body)
+           retained+=len(body);return {'path':name,'bytes':len(body),'sha256':sha(body)}
+          def regular(path,limit=8*1024**2):
+           assert path.resolve()==path,'symlink observation refused'
+           fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW|os.O_NONBLOCK)
+           try:
+            before=os.fstat(fd);assert stat.S_ISREG(before.st_mode)and before.st_nlink==1 and before.st_size<=limit
+            with os.fdopen(fd,'rb',closefd=False)as f:body=f.read(limit+1)
+            assert len(body)==before.st_size
+            for after in [os.fstat(fd),path.lstat()]:
+             for k in ['st_dev','st_ino','st_size','st_mode','st_nlink','st_mtime_ns','st_ctime_ns']:assert getattr(after,k)==getattr(before,k)
+            return body
+           finally:os.close(fd)
+          def git(*args):return subprocess.check_output(['git',*args],timeout=30)
+          def snapshot():
+           result=[]
+           for raw in git('ls-files','--stage','-z').split(b'\0'):
+            if not raw:continue
+            header,path=raw.split(b'\t',1);mode,oid,stage=header.decode().split();name=path.decode();assert stage=='0'and mode in ['100644','100755']
+            body=regular(ROOT/name,16*1024**2);result.append({'path':name,'mode':mode,'git_blob':oid,'bytes':len(body),'sha256':sha(body)})
+           return result
+          def documents(phase):
+           for name in ['CONFORMANCE.md','ERRORS.md','src/MatmulSystem.lex.tex','lexlean.lock','src/Model.lex.tex','src/ResearchModel.lex.tex','model/ids.toml','model/ledger.toml','model/authorities.toml']:
+            put('snapshots/'+phase+'/'+name,regular(ROOT/name))
+          def group_exists(proc):
+           proc.poll()
+           try:os.killpg(proc.pid,0);return True
+           except ProcessLookupError:return False
+          def retire_group(proc):
+           signals=[]
+           for sig in [signal.SIGTERM,signal.SIGKILL]:
+            try:os.killpg(proc.pid,sig);signals.append(signal.Signals(sig).name)
+            except ProcessLookupError:pass
+            end=time.monotonic()+10
+            while group_exists(proc)and time.monotonic()<end:time.sleep(.05)
+            if not group_exists(proc):return {'signals':signals,'process_group_absent':True,'leader_returncode':proc.poll()}
+           return {'signals':signals,'process_group_absent':False,'leader_returncode':proc.poll()}
+          def working_tree_state(rows):
+           names=lambda data:[name for name in data.decode('utf-8').split(chr(0))if name]
+           return {'modes':[{'path':row['path'],'mode':stat.S_IMODE((ROOT/row['path']).lstat().st_mode)}for row in rows],
+            'tracked_diff_paths':names(git('-c','core.fileMode=true','diff','--no-ext-diff','--name-only','-z')),
+            'untracked_paths':names(git('ls-files','--others','--exclude-standard','-z')),
+            'ignored_authored_paths':names(git('ls-files','--others','--ignored','--exclude-standard','-z','--',*AUTHORED_DIRECTORIES))}
+          def strict_json(body):
+           def pairs(rows):
+            result={}
+            for key,value in rows:
+             assert key not in result,'duplicate JSON member'
+             result[key]=value
+            return result
+           def nonfinite(value):raise ValueError('nonfinite JSON number: '+value)
+           return json.loads(body.decode('utf-8'),object_pairs_hook=pairs,parse_constant=nonfinite)
+          def run(number,argv):
+           global retained,pending_group,bootstrap_outcome
+           assert time.monotonic()<DEADLINE,'whole diagnostic deadline exhausted'
+           put('commands/'+number+'.argv.json',{'argv':argv,'cwd':str(ROOT),'started_at':datetime.datetime.now(datetime.timezone.utc).isoformat()})
+           sel=selectors.DefaultSelector();sizes={};files={};digests={};reason=None;retirement=None;code=None
+           proc=subprocess.Popen(argv,stdout=subprocess.PIPE,stderr=subprocess.PIPE,start_new_session=True);pending_group=proc.pid
+           try:
+            for name,stream in [('stdout',proc.stdout),('stderr',proc.stderr)]:
+             path=OUT/'commands'/(number+'.'+name);files[name]=path.open('xb');sizes[name]=0;digests[name]=hashlib.sha256();sel.register(stream,selectors.EVENT_READ,name)
+            while sel.get_map():
+             if time.monotonic()>=DEADLINE:reason='whole170min diagnostic deadline';break
+             for key,_ in sel.select(timeout=min(1,max(.001,DEADLINE-time.monotonic()))):
+              body=os.read(key.fileobj.fileno(),65536)
+              if not body:sel.unregister(key.fileobj);continue
+              name=key.data
+              if sizes[name]+len(body)>MAX_STREAM or retained+len(body)>MAX_ARTIFACT-65536:reason='explicit diagnostic output bound';break
+              files[name].write(body);sizes[name]+=len(body);retained+=len(body);digests[name].update(body)
+             if reason:break
+            if reason is None:
+             try:code=proc.wait(timeout=30)
+             except subprocess.TimeoutExpired:reason='leader wait30s after pipe EOF timed out'
+            if reason is None and group_exists(proc):reason='owned process group remains after leader exit'
+           except BaseException as error:
+            reason='capture exception '+type(error).__name__
+           finally:
+            if reason is not None:retirement=retire_group(proc)
+            if not group_exists(proc):pending_group=None
+            for f in files.values():f.close()
+            sel.close()
+           code=proc.poll();result={'argv':argv,'returncode':code,'incomplete_reason':reason,'complete_streams':reason is None,'retirement':retirement,'process_group_absent':pending_group is None,'streams':[{'path':'commands/'+number+'.'+n,'bytes':sizes[n],'sha256':digests[n].hexdigest()}for n in sizes]};commands.append(result);put('commands/'+number+'.status.json',result);print(json.dumps({'command':number,**result}),flush=True)
+           assert reason is None and pending_group is None,'original command capture failed or incomplete: '+number
+           if number=='01-bootstrap-fetch'and argv==PLANNED_COMMANDS[0][1]:
+            assert code==3,'known-stale exact source bootstrap must return PP2101 exit3'
+            value=strict_json(regular(OUT/'commands'/(number+'.stdout'),MAX_STREAM))
+            assert isinstance(value,dict),'bootstrap JSON must be an object'
+            diagnostic=value.get('diagnostic');assert isinstance(diagnostic,dict),'missing bootstrap JSON diagnostic'
+            assert diagnostic.get('code')=='PP2101'and diagnostic.get('message')==EXPECTED_PP2101,'bootstrap refusal is not the exact observed stale binding'
+            bootstrap_outcome={'returncode':3,'classification':'expected-stale-binding-refusal','successful_fetch':False,'diagnostic':value}
+            put('bootstrap-outcome.json',bootstrap_outcome)
+           else:assert code==0,'original command failed: '+number
+          before=None;problem=None
+          try:
+           assert os.environ['GITHUB_REPOSITORY']=='afflom/lexlean-matmul'and os.environ['GITHUB_EVENT_NAME']=='push'and os.environ['GITHUB_REF']=='refs/heads/'+BRANCH and os.environ['GITHUB_RUN_ATTEMPT']=='1'
+           assert re.fullmatch('[0-9a-f]{40}',os.environ['GITHUB_SHA'])
+           assert git('rev-parse','HEAD').decode().strip()==SOURCE and git('rev-parse','HEAD^{tree}').decode().strip()==TREE and git('status','--porcelain')==b''
+           assert not(ROOT/'.prism').exists(),'fresh checkout must not inherit private SDK/build state'
+           assert json.loads(regular(ROOT/'prismpm.lock'))['sdk_image']==IMAGE and json.loads(regular(ROOT/'template.lock'))['sdk_image']==IMAGE
+           for path,expected in GUARDS.items():assert sha(regular(ROOT/path))==expected,path
+           before=snapshot();put('inputs.before.json',before);documents('before')
+           assert len(before)==INPUT_COUNT and sha(json.dumps(before,sort_keys=True,separators=(',',':')).encode())==INPUT_ROWS_SHA256,'complete source230 inventory mismatch'
+           put('input-closure.json',{'files':INPUT_COUNT,'canonical_rows_sha256':INPUT_ROWS_SHA256,'protected_files':INPUT_COUNT-len(GENERATED),'allowed_generated_paths':GENERATED})
+           working_before=working_tree_state(before);put('working-tree.before.json',working_before)
+           assert not working_before['tracked_diff_paths']and not working_before['untracked_paths']and not working_before['ignored_authored_paths'],'unexpected source closure before maintenance'
+           put('identity.json',{'authenticated_source_maintenance_only':True,'diagnostic_only':True,'qualification':False,'acceptance':False,'consumer_source':SOURCE,'consumer_tree':TREE,'locked_sdk':IMAGE,'helper_head':os.environ['GITHUB_SHA'],'workflow_ref':os.environ.get('GITHUB_WORKFLOW_REF'),'run':os.environ['GITHUB_RUN_ID'],'attempt':1,'runner_arch':os.environ.get('RUNNER_ARCH')})
+           for number,argv in PLANNED_COMMANDS:
+            run(number,argv)
+            if number=='02-update-system':
+             native_bytes=regular(ROOT/'.prism/matmul/native-system-input.json');native_binding=strict_json(native_bytes)
+             assert native_binding['schema']=='lexlean-matmul/native-system-input/1'and native_binding['application_model_digest']==IMPORTED_APPLICATION
+             assert native_binding['source_sha256']==sha(regular(ROOT/'src/MatmulSystem.lex.tex'))
+             assert native_binding['check']['schema']=='prismpm/check-result/1'and native_binding['check']['model_id']==IMPORTED_APPLICATION.removeprefix('sha256:')
+             put('source-regeneration/native-system-input.json',native_bytes)
+            if number=='05-model':source_regeneration_complete=True
+           checks=[]
+           for i in range(18,32):
+            row=json.loads(regular(ROOT/'.prism/matmul/checks'/('MM-'+str(i)+'.json')));assert row['id']=='MM-'+str(i)and row['status']=='passed';checks.append(row)
+           put('actual-fourteen-checks.json',checks);complete=True
+          except BaseException as error:
+           problem={'type':type(error).__name__,'message':str(error)};print(json.dumps({'diagnostic_error':problem}),flush=True)
+          finally:
+           try:
+            assert pending_group is None,'command process-group retirement unproven; final working-tree reads refused'
+            if before is not None:
+             after=snapshot();put('inputs.after.json',after);documents('after');allowed=set(GENERATED)
+             put('generated-files.diff',git('diff','--no-ext-diff','--',*GENERATED));put('all-tracked.diff',git('diff','--no-ext-diff'));put('status.porcelain',git('status','--porcelain'))
+             working_after=working_tree_state(after);put('working-tree.after.json',working_after)
+             assert working_before is not None and working_after['modes']==working_before['modes'],'tracked working-tree permission mode changed'
+             assert set(working_after['tracked_diff_paths'])<=allowed,'protected tracked diff outside four generated paths'
+             assert not working_after['untracked_paths']and not working_after['ignored_authored_paths'],'untracked authored input changed the source closure'
+             assert len(after)==INPUT_COUNT and [(r['path'],r['mode'],r['git_blob'])for r in before]==[(r['path'],r['mode'],r['git_blob'])for r in after],'tracked source closure or index changed'
+             assert [r for r in before if r['path']not in allowed]==[r for r in after if r['path']not in allowed],'protected tracked input changed'
+             if native_binding is not None:
+              assert native_bytes==regular(ROOT/'.prism/matmul/native-system-input.json'),'native binding receipt changed after source updater'
+              assert native_binding['source_sha256']==sha(regular(ROOT/'src/MatmulSystem.lex.tex')),'final generated System differs from the source updater receipt'
+             put('source-regeneration/generated-files.json',{'before':[r for r in before if r['path']in allowed],'after':[r for r in after if r['path']in allowed],'protected_inputs_unchanged':True,'source_regeneration_commands_complete':source_regeneration_complete,'native_binding':native_binding,'scope':'Authenticated source maintenance only; no release acceptance or SDK adoption.'})
+            observed=[];evidence=ROOT/'.prism/matmul'
+            if evidence.exists():
+             assert evidence.resolve()==evidence
+             choices=[x for x in evidence.iterdir()if x.is_file()and x.suffix=='.json']
+             for directory in ['checks','runtime-oracle']:
+              parent=evidence/directory
+              if parent.exists():
+               assert parent.resolve()==parent
+               for current,dirs,names in os.walk(parent,followlinks=False):
+                for d in dirs:assert not(pathlib.Path(current)/d).is_symlink()
+                choices += [pathlib.Path(current)/n for n in names if pathlib.Path(n).suffix in ['.json','.png']]
+             for path in sorted(set(choices)):
+              relative=path.relative_to(evidence).as_posix();observed.append(put('matmul-evidence/'+relative,regular(path)))
+            put('retained-evidence-index.json',{'files':observed,'selection':'Only top-level .prism/matmul JSON plus checks/runtime-oracle JSON/PNG; no SDK/private workspace/OCI/archive/native payload traversal.'})
+           except BaseException as error:
+            complete=False;problem={'type':type(error).__name__,'message':str(error)};print(json.dumps({'retention_or_integrity_error':problem}),flush=True)
+           put('result.json',{'authenticated_source_maintenance_only':True,'diagnostic_only':True,'qualification':False,'acceptance':False,'source_regeneration_commands_complete':source_regeneration_complete,'complete_seven_commands_and_fourteen_cases':complete,'status':'source-regeneration-and-component-diagnostic-complete-for-review'if complete else'source-regeneration-or-component-diagnostic-failed-or-incomplete','bootstrap_outcome':bootstrap_outcome,'commands':commands,'error':problem,'limits':{'whole_capture_seconds':170*60,'per_stream_bytes':MAX_STREAM,'aggregate_retained_bytes':MAX_ARTIFACT},'scope':'Current74e432/f98 authenticated source-maintenance and component evidence only. Does not replace justvv, new6048 SDK qualification/adoption, finalsame-head3 CI, main5 or publication. New generated source is not adopted by this helper. Preserve the historical829 receipt. Docker --rm follows unchanged wrapper; no independent Docker-resource absence claim.'})
+          if not complete:raise SystemExit(1)
+          PY
+      - name: Retain source regeneration and component evidence including original failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: matmul-system-regeneration-full14-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/matmul-system-regeneration-full14
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
