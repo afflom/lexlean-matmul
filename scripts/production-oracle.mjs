@@ -230,7 +230,7 @@ async function guided({ page, application }, view, interpretationOnly = false) {
 export function workerProbe() {
   const Actual = window.Worker;
   const state = window.__productionWorkerProbe = { drop: false, hold: false, replacement: null, ignoreTerminate: false,
-    created: 0, terminated: 0, sent: [], workers: [], held: [] };
+    created: 0, terminated: 0, sent: [], workers: [], held: [], captureInput: false };
   window.Worker = class extends Actual {
     constructor(...args) {
       super(...args); state.created++; state.workers.push(this);
@@ -243,7 +243,8 @@ export function workerProbe() {
       });
       const send = this.postMessage.bind(this), retire = this.terminate.bind(this);
       this.postMessage = (message, transfer) => {
-        state.sent.push({ type: message?.type, generation: message?.generation });
+        state.sent.push({ type: message?.type, generation: message?.generation,
+          ...(state.captureInput && message?.type === 'invoke' ? { input: [...message.input] } : {}) });
         if (!(state.drop && message?.type === 'invoke')) send(message, transfer);
       };
       this.terminate = () => { if (!state.ignoreTerminate) { state.terminated++; retire(); } };
@@ -385,7 +386,7 @@ async function wasmCacheChecks(artifacts) {
   }
 }
 
-async function recovery({ page, context, url, ready }, view, policy) {
+async function recovery({ page, context, url, ready, application }, view, policy) {
   const prepared = { kind: 'raw', input: '1\tmatmul\t1\t1\t1\t6\t7', wire: '1\tok\t1\t1\t42' };
   const status = (target, copy) => target.waitForFunction(expected => document.querySelector('#status').textContent === expected, copy);
   const slow = await context.newPage(); let release;
@@ -477,8 +478,31 @@ async function recovery({ page, context, url, ready }, view, policy) {
   const explanation = await page.locator('#result-error').innerText(), hint = view.errors.find(row => row.code === 'malformed-request');
   assert(hint); for (const copy of [hint.title, hint.explanation, hint.recovery]) assert(explanation.includes(copy));
   await submitUiVector(page, prepared); assert.equal(await page.locator('#request').getAttribute('aria-invalid'), null);
-  await fillUiVector(page, { kind: 'raw', input: separator }); await page.locator('#submit').click();
+  const invocationCount = () => page.evaluate(() => window.__productionWorkerProbe.sent.filter(row => row.type === 'invoke').length);
+  let losslessRawErrors = 0;
+  if (application.profile === 'prismpm/text-application/4') {
+    const before = await invocationCount();
+    await page.evaluate(() => { window.__productionWorkerProbe.captureInput = true; });
+    try {
+      await submitUiVector(page, { kind: 'raw', input: separator, wire: '1\terror\tmalformed-request' });
+      assert.equal(await invocationCount(), before + 1, 'MM-21: raw Unit Separator did not execute the actual guest');
+      const input = await page.evaluate(() => window.__productionWorkerProbe.sent.filter(row => row.type === 'invoke').at(-1).input);
+      const framed = Buffer.from(input).toString('utf8'), prefix = view.raw.request_prefix + separator;
+      assert(framed.startsWith(prefix), 'MM-21: raw input used a different source-owned envelope');
+      assert.equal(JSON.parse(framed.slice(prefix.length)).request, separator, 'MM-21: raw Unit Separator bytes changed before guest execution');
+      assert.equal(await page.locator('#result-request').textContent(), separator, 'MM-21: the guest did not echo the exact raw request');
+      assert.equal(await page.locator('#request').inputValue(), separator);
+      assert.equal(await page.locator('#request').getAttribute('aria-invalid'), 'true');
+      losslessRawErrors++;
+    } finally { await page.evaluate(() => { window.__productionWorkerProbe.captureInput = false; }); }
+  }
+  assert(Number.isSafeInteger(application.request_maximum) && application.request_maximum > 0);
+  const oversized = 'x'.repeat(application.request_maximum + 1), beforeOversized = await invocationCount();
+  await fillUiVector(page, { kind: 'raw', input: oversized }); await page.locator('#submit').click();
   await status(page, view.statuses.input_error);
+  assert.equal(await page.locator('#request').inputValue(), oversized, 'MM-21: input refusal changed the draft');
+  assert.equal(await invocationCount(), beforeOversized, 'MM-21: an oversized draft reached the guest');
+  assert.equal(await page.locator('#request').getAttribute('aria-invalid'), 'true');
   await page.locator('#load-example').click(); await status(page, view.statuses.ready);
   assert.equal(await page.locator('#request').getAttribute('aria-invalid'), null);
   assert.equal(await page.locator('#result').textContent(), '', 'MM-21: loading a draft retained an earlier result');
@@ -501,6 +525,7 @@ async function recovery({ page, context, url, ready }, view, policy) {
     return { actual_wasm_failure_recoveries: 1, actual_delayed_initializations: 1, cancellation_cases: 1,
       timeout_cases: 1, draft_edit_retirements: 1, stale_authentic_reply_refusals: 1, corrected_typed_errors: 1,
       failed_engine_draft_recoveries: ['raw-edit', 'reset', 'guided-example'], loaded_example_error_recoveries: 1,
+      lossless_raw_guest_errors: losslessRawErrors, oversized_input_refusals: 1,
       running_live_status_checks: 1, screen_reader_speech_tested: false,
       maximum_main_thread_gap_ms: maximum, cpu_slowdown: policy.browserCpuSlowdown,
       planted_rejections: ['native-worker-retirement-omitted', 'busy-live-status-ancestor'] };

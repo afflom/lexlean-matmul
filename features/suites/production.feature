@@ -23,6 +23,7 @@ Feature: Modeled production reference workbench
     Given a worker computation, a delayed load, a previously cached Wasm module, and modeled protocol failures
     When the visitor cancels, times out, retries, or corrects an input
     Then each new engine fetch bypasses the cached module, visible states preserve inputs, and stale work cannot replace the current result
+    And V4 raw JSON preserves a Unit Separator for a genuine typed guest error, while an over-budget draft is refused before invocation and a loaded example clears the error and computes
 
   @MM-22 @build
   Scenario: A keyboard and small-screen visitor can complete the guided journey
