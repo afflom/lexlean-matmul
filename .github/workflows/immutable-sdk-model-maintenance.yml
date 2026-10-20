@@ -1,0 +1,36 @@
+name: reviewable public SDK model maintenance
+
+on:
+  push:
+    branches: [ci/sdk-final-model-maintenance-dfdc4df7-2026-10-20]
+
+permissions: {}
+
+concurrency:
+  group: matmul-public-sdk-model-maintenance-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  maintain:
+    if: github.repository == 'afflom/lexlean-matmul'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the exact isolated maintenance commit without credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Run the registered model writer and checks through the locked public SDK
+        run: python3 scripts/maintain-model-ci.py .github/immutable-sdk-model-maintenance-input.json
+      - name: Retain original bounded maintenance observations and generated model evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: immutable-sdk-model-maintenance-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .prism/matmul/model-maintenance-ci/retained
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 30
