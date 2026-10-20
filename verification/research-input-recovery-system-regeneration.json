@@ -1,0 +1,996 @@
+{
+  "acceptance": false,
+  "actual_terminal": {
+    "attempt": 1,
+    "conclusion": "success",
+    "helper_revision": "0dc8b858db754596939adb882d34891149937c54",
+    "job_completed_at": "2026-10-20T08:16:33Z",
+    "job_conclusion": "success",
+    "job_id": 118499216102,
+    "job_name": "Explicit source regeneration then whole production and research components",
+    "job_started_at": "2026-10-20T07:02:20Z",
+    "job_status": "completed",
+    "original_jobs_capture": {
+      "argv": [
+        "gh",
+        "api",
+        "repos/afflom/lexlean-matmul/actions/runs/39383945264/attempts/1/jobs?per_page=100"
+      ],
+      "capture_error": null,
+      "complete_streams": true,
+      "elapsed_seconds": 0.5227806189795956,
+      "overflow": false,
+      "returncode": 0,
+      "stderr": {
+        "bytes": 0,
+        "path": "/tmp/matmul-sdk6048db07-provenance/consumer74-source-regeneration-full14-watch/20261020T081705.446281Z/jobs.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 2247,
+        "path": "/tmp/matmul-sdk6048db07-provenance/consumer74-source-regeneration-full14-watch/20261020T081705.446281Z/jobs.json",
+        "sha256": "a9641e75f33973f55ed02ea9b61f020d26e59f3f6291a039110b7743d7681ff4"
+      },
+      "terminated_returncode": null,
+      "timed_out": false
+    },
+    "original_run_capture": {
+      "argv": [
+        "gh",
+        "api",
+        "repos/afflom/lexlean-matmul/actions/runs/39383945264"
+      ],
+      "capture_error": null,
+      "complete_streams": true,
+      "elapsed_seconds": 0.49784832797013223,
+      "overflow": false,
+      "returncode": 0,
+      "stderr": {
+        "bytes": 0,
+        "path": "/tmp/matmul-sdk6048db07-provenance/consumer74-source-regeneration-full14-watch/20261020T081705.446281Z/run.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 12243,
+        "path": "/tmp/matmul-sdk6048db07-provenance/consumer74-source-regeneration-full14-watch/20261020T081705.446281Z/run.json",
+        "sha256": "762f29d070b5f7c6a0cab0674bb79ea31de8171ff435c90dfd894fd3f05b8c50"
+      },
+      "terminated_returncode": null,
+      "timed_out": false
+    },
+    "owner_step": {
+      "completed_at": "2026-10-20T08:16:30Z",
+      "conclusion": "success",
+      "name": "Regenerate through unchanged source updater and retain original component evidence",
+      "number": 3,
+      "started_at": "2026-10-20T07:02:22Z",
+      "status": "completed"
+    },
+    "run_id": 39383945264,
+    "runner_id": 1000004130,
+    "runner_labels": [
+      "ubuntu-24.04"
+    ],
+    "status": "completed"
+  },
+  "adopted_outputs": [
+    {
+      "actual_target_ref": {
+        "bytes": 63611,
+        "path": "/home/alex/Desktop/lexlean-matmul/src/MatmulSystem.lex.tex",
+        "sha256": "f039748ecba5d76dce86678f11bc3a3c5f5617098769d9f3002e9cb3102051f4"
+      },
+      "byte_exact": true,
+      "bytes": 63611,
+      "git_mode": "100644",
+      "original_raw_ref": {
+        "bytes": 63611,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/after/src/MatmulSystem.lex.tex",
+        "sha256": "f039748ecba5d76dce86678f11bc3a3c5f5617098769d9f3002e9cb3102051f4"
+      },
+      "path": "src/MatmulSystem.lex.tex",
+      "preserved_local_mode_octal": "0o664",
+      "sha256": "f039748ecba5d76dce86678f11bc3a3c5f5617098769d9f3002e9cb3102051f4"
+    }
+  ],
+  "adoption_preflight": {
+    "actual_adoption_performed": true,
+    "actual_canonical_pin_after": [
+      {
+        "bytes": 1525,
+        "path": "/home/alex/Desktop/lexlean-matmul/.devcontainer/devcontainer.json",
+        "sha256": "0ada35b09e63c68a2c4fe917d08f3a27ec40af0dae76450196efdff07c3bdeef"
+      },
+      {
+        "bytes": 2390,
+        "path": "/home/alex/Desktop/lexlean-matmul/.github/workflows/bootstrap.yml",
+        "sha256": "1da9dc45db01def0b054f03a80f3b7db088baddb551bd33a355cf2a2de1e2562"
+      },
+      {
+        "bytes": 23719,
+        "path": "/home/alex/Desktop/lexlean-matmul/.github/workflows/prismpm.yml",
+        "sha256": "0dc852b731ada8da1b18a177c4029faff33afdf59bbe4f225e420e63f3db10d3"
+      },
+      {
+        "bytes": 7724,
+        "path": "/home/alex/Desktop/lexlean-matmul/.github/workflows/template-update.yml",
+        "sha256": "36a04dd9ce1ef6f513d7ebb06d48b06b8aedc00554472f4c5864d3c799a87449"
+      },
+      {
+        "bytes": 257573,
+        "path": "/home/alex/Desktop/lexlean-matmul/prismpm.lock",
+        "sha256": "cd7e82210576454cd11ffab5c32f883f534f358d159a175100a3f4c2160acaa1"
+      },
+      {
+        "bytes": 61754,
+        "path": "/home/alex/Desktop/lexlean-matmul/standards.lock",
+        "sha256": "55eb16a9819d03db1e0db608ee23bde282ceb80c38c1c580e85e31bc5e86da87"
+      },
+      {
+        "bytes": 1176,
+        "path": "/home/alex/Desktop/lexlean-matmul/template.lock",
+        "sha256": "bed775b84fe806b27418e150af881bcc21cd05f536c1625c7f9508220c17a54c"
+      }
+    ],
+    "commit_binding": "The containing Git commit binds this receipt and exact raw System output. This record was written before that commit to avoid a self-referential commit hash.",
+    "copy_selection": [
+      "src/MatmulSystem.lex.tex"
+    ],
+    "current_targets": [
+      {
+        "actual_local_mode_octal": "0o664",
+        "actual_post_adoption_ref": {
+          "bytes": 63611,
+          "path": "/home/alex/Desktop/lexlean-matmul/src/MatmulSystem.lex.tex",
+          "sha256": "f039748ecba5d76dce86678f11bc3a3c5f5617098769d9f3002e9cb3102051f4"
+        },
+        "equals_raw_before_bytes": true,
+        "path": "src/MatmulSystem.lex.tex",
+        "pre_adoption_current_ref": {
+          "bytes": 63611,
+          "path": "/home/alex/Desktop/lexlean-matmul/src/MatmulSystem.lex.tex",
+          "sha256": "336778a6696aed4353dc95e1c88f23da3abbbbcbad24409cd301e4785dc6ab5b"
+        },
+        "tracked_mode_class": "100644"
+      },
+      {
+        "actual_local_mode_octal": "0o644",
+        "actual_post_adoption_ref": {
+          "bytes": 2749,
+          "path": "/home/alex/Desktop/lexlean-matmul/lexlean.lock",
+          "sha256": "ee441d9b8cc769285f41eb22f16a24b8e0f37fa24528673c7e576e518145afd0"
+        },
+        "equals_raw_before_bytes": true,
+        "path": "lexlean.lock",
+        "pre_adoption_current_ref": {
+          "bytes": 2749,
+          "path": "/home/alex/Desktop/lexlean-matmul/lexlean.lock",
+          "sha256": "ee441d9b8cc769285f41eb22f16a24b8e0f37fa24528673c7e576e518145afd0"
+        },
+        "tracked_mode_class": "100644"
+      },
+      {
+        "actual_local_mode_octal": "0o664",
+        "actual_post_adoption_ref": {
+          "bytes": 12548,
+          "path": "/home/alex/Desktop/lexlean-matmul/CONFORMANCE.md",
+          "sha256": "3c9cff26a32e8724ccaf1f73839dd0beb1aa530ae0de4b20310d9d352df1ded8"
+        },
+        "equals_raw_before_bytes": true,
+        "path": "CONFORMANCE.md",
+        "pre_adoption_current_ref": {
+          "bytes": 12548,
+          "path": "/home/alex/Desktop/lexlean-matmul/CONFORMANCE.md",
+          "sha256": "3c9cff26a32e8724ccaf1f73839dd0beb1aa530ae0de4b20310d9d352df1ded8"
+        },
+        "tracked_mode_class": "100644"
+      },
+      {
+        "actual_local_mode_octal": "0o664",
+        "actual_post_adoption_ref": {
+          "bytes": 15105,
+          "path": "/home/alex/Desktop/lexlean-matmul/ERRORS.md",
+          "sha256": "72d390f5567f014f9bdfb8bcd8509a9234af40f91a88ed68f17a886c73fa943b"
+        },
+        "equals_raw_before_bytes": true,
+        "path": "ERRORS.md",
+        "pre_adoption_current_ref": {
+          "bytes": 15105,
+          "path": "/home/alex/Desktop/lexlean-matmul/ERRORS.md",
+          "sha256": "72d390f5567f014f9bdfb8bcd8509a9234af40f91a88ed68f17a886c73fa943b"
+        },
+        "tracked_mode_class": "100644"
+      }
+    ],
+    "identity_evidence_ref": {
+      "bytes": 9764,
+      "path": "/tmp/matmul-sdk6048db07-provenance/root-D3-source-semantic-adoption-review-r1.json",
+      "sha256": "c59f65af6375b1a5d37236bcdd47e7de28a4a378725e84fa0c6f39bdee40ad3d"
+    },
+    "observed_at": "2026-10-20T08:28:14.741828+00:00",
+    "pre_adoption_pin_head": "615b7a17db7d780ec971d7c5379effa4655de488",
+    "pre_adoption_pin_tree": "c7ed269c4901a8ad594e035c141507a774b158d3",
+    "root_revalidated_before_copy": true
+  },
+  "artifact": {
+    "byte_length": 5839228,
+    "created_at": "2026-10-20T08:16:31Z",
+    "digest": "sha256:615928d34ca23ab99b01000d52a1ad399e0089f75b786377b52d3be2ae2d02d4",
+    "expired": false,
+    "expires_at": "2026-11-19T08:16:30Z",
+    "id": 12249368714,
+    "name": "matmul-system-regeneration-full14-39383945264-1",
+    "original_full_job_log_ref": {
+      "bytes": 41208,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/original-full-job-log/stdout",
+      "sha256": "ba9ddadb75ea12e5e61d9a73108da2e139ad1787f60de1efdafa1b6057414ca0"
+    },
+    "original_job_log_status_ref": {
+      "bytes": 733,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/original-full-job-log/exit.json",
+      "sha256": "52295d76c21f5eed583e8d78b6dee36e29a6dafe529422ac4f6d34c6cd065542"
+    },
+    "original_metadata_ref": {
+      "bytes": 793,
+      "path": "/tmp/matmul-sdk6048db07-provenance/consumer74-source-regeneration-full14-watch/20261020T081705.446281Z/artifacts.json",
+      "sha256": "9ba5e1cd5cec058234cacf1ff87a7d5b705ffdc9d7e8da6a3842861d3aed51d1"
+    },
+    "original_zip_ref": {
+      "bytes": 5839228,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/original-ZIP/stdout",
+      "sha256": "615928d34ca23ab99b01000d52a1ad399e0089f75b786377b52d3be2ae2d02d4"
+    },
+    "original_zip_status_ref": {
+      "bytes": 720,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/original-ZIP/exit.json",
+      "sha256": "2c765a2a94033c628fa82b0b770831e4258887b214b5d31706922110266b2d77"
+    },
+    "retention_days": 30,
+    "retention_rule": "created_at and expires_at minus30days each within exact successful upload interval; no timestamp grace",
+    "upload_step": {
+      "completed_at": "2026-10-20T08:16:32Z",
+      "conclusion": "success",
+      "name": "Retain source regeneration and component evidence including original failures",
+      "number": 4,
+      "started_at": "2026-10-20T08:16:30Z",
+      "status": "completed"
+    }
+  },
+  "bootstrap_refusal": {
+    "classification": "expected-stale-binding-refusal",
+    "diagnostic": {
+      "diagnostic": {
+        "causes": [],
+        "code": "PP2101",
+        "help": [],
+        "labels": [],
+        "message": "system release binds application model \"sha256:bd710bc0c23f720d83e8dc7e5624c726543b1edff0023f03dab50d7d5b9edba2\", but the imported application model is sha256:306c07fbf8a0e0a2eb886bb2b5f0742e7305d3e0bff48954b8934e9f202d563a",
+        "notes": [],
+        "primary": null
+      },
+      "schema": "prismpm/error-result/1"
+    },
+    "original_ref": {
+      "bytes": 563,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/bootstrap-outcome.json",
+      "sha256": "7bfd1f9716b056cc30e925731a6914017b4ff0712edcdb892c2391cca28c10d7"
+    },
+    "returncode": 3,
+    "successful_fetch": false
+  },
+  "both_whole_test_targets": {
+    "components": {
+      "production": {
+        "failed": 0,
+        "filtered": 0,
+        "ignored": 0,
+        "passed": 7
+      },
+      "research": {
+        "failed": 0,
+        "filtered": 0,
+        "ignored": 0,
+        "passed": 7
+      }
+    },
+    "failed": 0,
+    "filtered": 0,
+    "ignored": 0,
+    "measured": 0,
+    "original_stderr_ref": {
+      "bytes": 337,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/07-both-whole-test-targets.stderr",
+      "sha256": "c6dccd06c1aec568a4f82c693c330f1050c903e084838cd8c855e9683584c8df"
+    },
+    "original_stdout": {
+      "bytes": 769,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/07-both-whole-test-targets.stdout",
+      "sha256": "e3e0910aec92ca0502ed50bbeb693e3ec0e069bb3d15d9ea520c2cbb74d62fb8"
+    },
+    "passed_each": 7,
+    "targets": 2
+  },
+  "changed_generated_files": [
+    "src/MatmulSystem.lex.tex"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "prismpm",
+        "--json",
+        "fetch",
+        "--locked"
+      ],
+      "complete_streams": true,
+      "exit_code": 3,
+      "name": "01-bootstrap-fetch",
+      "original_argv_ref": {
+        "bytes": 216,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/01-bootstrap-fetch.argv.json",
+        "sha256": "9386acb42e81242ad9e7ab429b289cd185d623abd5bca72872d8cd9f9d506cfa"
+      },
+      "original_status_ref": {
+        "bytes": 590,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/01-bootstrap-fetch.status.json",
+        "sha256": "cd42f78762b7347f700cee36673b894534c17af6c7325e9650f09b48c261cf25"
+      },
+      "process_group_absent": true,
+      "started_at": "2026-10-20T07:02:22.590985+00:00",
+      "stderr": {
+        "bytes": 3584,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/01-bootstrap-fetch.stderr",
+        "sha256": "96dab2a9af6aaef67c7a0d55ecab0f7ff6289bc7110d854eb68fa160b79bbf04"
+      },
+      "stdout": {
+        "bytes": 365,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/01-bootstrap-fetch.stdout",
+        "sha256": "53ffa377ea5e000cf4e833d910192b3ad2af5a3dfafe4209cbfa80573d68d96e"
+      }
+    },
+    {
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "node",
+        "scripts/update-system.mjs"
+      ],
+      "complete_streams": true,
+      "exit_code": 0,
+      "name": "02-update-system",
+      "original_argv_ref": {
+        "bytes": 203,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/02-update-system.argv.json",
+        "sha256": "d3a0b532ecf144df48394794d7629ccbd0b0024d52406c1d02871d118cfaa9b1"
+      },
+      "original_status_ref": {
+        "bytes": 570,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/02-update-system.status.json",
+        "sha256": "22fd9201654e91d3ee0b62aff11fbb22da22d005881a68fdde72601cd77db86c"
+      },
+      "process_group_absent": true,
+      "started_at": "2026-10-20T07:06:44.638427+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/02-update-system.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 106,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/02-update-system.stdout",
+        "sha256": "0bce38a8d5eceac2d3167921c1772aafaa03ee7cb69c9686336af236c6d2793b"
+      }
+    },
+    {
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "prismpm",
+        "--json",
+        "fetch",
+        "--locked"
+      ],
+      "complete_streams": true,
+      "exit_code": 0,
+      "name": "03-final-locked-fetch",
+      "original_argv_ref": {
+        "bytes": 216,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/03-final-locked-fetch.argv.json",
+        "sha256": "c3112b3d974ebb1cca9fd26d83457bd733039ac7cde00391d11a15b544a4fdf0"
+      },
+      "original_status_ref": {
+        "bytes": 598,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/03-final-locked-fetch.status.json",
+        "sha256": "1057bb2943f8d08b501c1c7872ffcc1bcddeb19b878732f5ae741ee630ada87c"
+      },
+      "process_group_absent": true,
+      "started_at": "2026-10-20T07:07:06.137456+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/03-final-locked-fetch.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 10783642,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/03-final-locked-fetch.stdout",
+        "sha256": "8f2de2a6b56d27cdbab8d4e4143dbef2b4e47e0d9ca5761f792ec7117f5e63e4"
+      }
+    },
+    {
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "just",
+        "model-write"
+      ],
+      "complete_streams": true,
+      "exit_code": 0,
+      "name": "04-model-write",
+      "original_argv_ref": {
+        "bytes": 189,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/04-model-write.argv.json",
+        "sha256": "ee92665b226a9eac3d8c9862cfc50100ea3442be458f48c38e1272a27a92617f"
+      },
+      "original_status_ref": {
+        "bytes": 552,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/04-model-write.status.json",
+        "sha256": "39eaf84c7cd421adb0808e5d70196ba7124ed4164e6d9e5bb56824b81a2009dc"
+      },
+      "process_group_absent": true,
+      "started_at": "2026-10-20T07:22:20.392063+00:00",
+      "stderr": {
+        "bytes": 83,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/04-model-write.stderr",
+        "sha256": "caabb74c290a46afefdc2de8e262c986ad956fe6909833185e8887e25ecf148e"
+      },
+      "stdout": {
+        "bytes": 69,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/04-model-write.stdout",
+        "sha256": "5688f68185619e15c818efa3669787bd0fd3b44a5835a2f8738997e763780239"
+      }
+    },
+    {
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "just",
+        "model"
+      ],
+      "complete_streams": true,
+      "exit_code": 0,
+      "name": "05-model",
+      "original_argv_ref": {
+        "bytes": 183,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/05-model.argv.json",
+        "sha256": "6f8c4d1219f422ed7fffca9c50e902edc1f17f73ea24ae5640613e5ae1356be0"
+      },
+      "original_status_ref": {
+        "bytes": 537,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/05-model.status.json",
+        "sha256": "69106e70f1e0c95a0d23f4ef71443021bd75d541152f2b4860fb0d099c7facdc"
+      },
+      "process_group_absent": true,
+      "started_at": "2026-10-20T07:22:42.463155+00:00",
+      "stderr": {
+        "bytes": 160,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/05-model.stderr",
+        "sha256": "d5e5d92533717faa4df5e939ef59bba6c5c3c79e23209a61c84486e043e7fa1d"
+      },
+      "stdout": {
+        "bytes": 3874,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/05-model.stdout",
+        "sha256": "4416a86a73a3cb681eeee80997c75a398d69f400a8ea7a666950fc25382e31e7"
+      }
+    },
+    {
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "node",
+        "scripts/build.mjs"
+      ],
+      "complete_streams": true,
+      "exit_code": 0,
+      "name": "06-normal-build",
+      "original_argv_ref": {
+        "bytes": 195,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/06-normal-build.argv.json",
+        "sha256": "2cb1eabd66d5ded348de86bf05846f3f662cf9207370cda179edf65379a0f2ef"
+      },
+      "original_status_ref": {
+        "bytes": 560,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/06-normal-build.status.json",
+        "sha256": "55d1a9b2c5efd0836cad1eab574be6ef1051e10405ecf914be2f8189f4b1c647"
+      },
+      "process_group_absent": true,
+      "started_at": "2026-10-20T07:22:55.395445+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/06-normal-build.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 147,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/06-normal-build.stdout",
+        "sha256": "b9fe830c86aa6e7e81863d1ab0da7a0db7f356c9b8985ce48c0c0cff5901af1e"
+      }
+    },
+    {
+      "argv": [
+        "./scripts/in-sdk.sh",
+        "cargo",
+        "test",
+        "-p",
+        "repo-conformance",
+        "--test",
+        "production",
+        "--test",
+        "research",
+        "--no-fail-fast"
+      ],
+      "complete_streams": true,
+      "exit_code": 0,
+      "name": "07-both-whole-test-targets",
+      "original_argv_ref": {
+        "bytes": 301,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/07-both-whole-test-targets.argv.json",
+        "sha256": "8c8f2bcd9a2449005f2ffe56be26e5694dd2ac7a3fdc32dcb6b6fdd14477f651"
+      },
+      "original_status_ref": {
+        "bytes": 690,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/07-both-whole-test-targets.status.json",
+        "sha256": "d7f6a2a43b8b2e49c46b5ff9d4f92350e451851ed73f7458541e91f75376f077"
+      },
+      "process_group_absent": true,
+      "started_at": "2026-10-20T08:04:48.498810+00:00",
+      "stderr": {
+        "bytes": 337,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/07-both-whole-test-targets.stderr",
+        "sha256": "c6dccd06c1aec568a4f82c693c330f1050c903e084838cd8c855e9683584c8df"
+      },
+      "stdout": {
+        "bytes": 769,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/commands/07-both-whole-test-targets.stdout",
+        "sha256": "e3e0910aec92ca0502ed50bbeb693e3ec0e069bb3d15d9ea520c2cbb74d62fb8"
+      }
+    }
+  ],
+  "comparison_baseline": "Generation used the exact 230 tracked inputs at source74/tree835730bd. Adoption started from clean commit615b7a17db7d780ec971d7c5379effa4655de488/treec7ed269c4901a8ad594e035c141507a774b158d3 with the separately installed current6048 SDK pin.",
+  "fourteen_case_results": {
+    "all14": [
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-18",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-19",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-20",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-21",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-22",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-23",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-24",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-25",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-26",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-27",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-28",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-29",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-30",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      },
+      {
+        "build_id": "b456ccdf20d29642b2f99df509877b15162ed62a65a449ce6061c2de73a0485a",
+        "id": "MM-31",
+        "source_digest": "dc3b47bd935a898b19234456c0d4a3181be1ede066bcb8cb98d73ba59f2d3635",
+        "status": "passed",
+        "verification_digest": "e1da65baa868df1c6d940d68dde708a94faf3105e53ee099b572ab648ece9688"
+      }
+    ],
+    "complete_whole_target_omissions": 0,
+    "original_full_record_ref": {
+      "bytes": 735497,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/actual-fourteen-checks.json",
+      "sha256": "3b750d7c107dcc4a87f6f65a509c65b58afcc6cbf220ae848e916fdae26da9da"
+    },
+    "runtime_semantics_review": {
+      "bytes": 25355,
+      "path": "/tmp/current74-D3-actual-source-semantic-review-r1/review.json",
+      "sha256": "d3505ad6581d3221c5d9c8e232c3b5a44bcda12418f1802ceacd31825d416d65"
+    },
+    "scope": "Original D3 source74/f98 production7+research7 component evidence only. Runtime records intentionally have differing schemas; no common skipped/filtered fields are invented."
+  },
+  "generated_files": [
+    {
+      "after": {
+        "bytes": 63611,
+        "git_mode": "100644",
+        "sha256": "f039748ecba5d76dce86678f11bc3a3c5f5617098769d9f3002e9cb3102051f4"
+      },
+      "before": {
+        "bytes": 63611,
+        "git_mode": "100644",
+        "sha256": "336778a6696aed4353dc95e1c88f23da3abbbbcbad24409cd301e4785dc6ab5b"
+      },
+      "changed": true,
+      "path": "src/MatmulSystem.lex.tex",
+      "raw_after_snapshot_ref": {
+        "bytes": 63611,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/after/src/MatmulSystem.lex.tex",
+        "sha256": "f039748ecba5d76dce86678f11bc3a3c5f5617098769d9f3002e9cb3102051f4"
+      },
+      "raw_before_snapshot_ref": {
+        "bytes": 63611,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/before/src/MatmulSystem.lex.tex",
+        "sha256": "336778a6696aed4353dc95e1c88f23da3abbbbcbad24409cd301e4785dc6ab5b"
+      }
+    },
+    {
+      "after": {
+        "bytes": 2749,
+        "git_mode": "100644",
+        "sha256": "ee441d9b8cc769285f41eb22f16a24b8e0f37fa24528673c7e576e518145afd0"
+      },
+      "before": {
+        "bytes": 2749,
+        "git_mode": "100644",
+        "sha256": "ee441d9b8cc769285f41eb22f16a24b8e0f37fa24528673c7e576e518145afd0"
+      },
+      "changed": false,
+      "path": "lexlean.lock",
+      "raw_after_snapshot_ref": {
+        "bytes": 2749,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/after/lexlean.lock",
+        "sha256": "ee441d9b8cc769285f41eb22f16a24b8e0f37fa24528673c7e576e518145afd0"
+      },
+      "raw_before_snapshot_ref": {
+        "bytes": 2749,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/before/lexlean.lock",
+        "sha256": "ee441d9b8cc769285f41eb22f16a24b8e0f37fa24528673c7e576e518145afd0"
+      }
+    },
+    {
+      "after": {
+        "bytes": 12548,
+        "git_mode": "100644",
+        "sha256": "3c9cff26a32e8724ccaf1f73839dd0beb1aa530ae0de4b20310d9d352df1ded8"
+      },
+      "before": {
+        "bytes": 12548,
+        "git_mode": "100644",
+        "sha256": "3c9cff26a32e8724ccaf1f73839dd0beb1aa530ae0de4b20310d9d352df1ded8"
+      },
+      "changed": false,
+      "path": "CONFORMANCE.md",
+      "raw_after_snapshot_ref": {
+        "bytes": 12548,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/after/CONFORMANCE.md",
+        "sha256": "3c9cff26a32e8724ccaf1f73839dd0beb1aa530ae0de4b20310d9d352df1ded8"
+      },
+      "raw_before_snapshot_ref": {
+        "bytes": 12548,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/before/CONFORMANCE.md",
+        "sha256": "3c9cff26a32e8724ccaf1f73839dd0beb1aa530ae0de4b20310d9d352df1ded8"
+      }
+    },
+    {
+      "after": {
+        "bytes": 15105,
+        "git_mode": "100644",
+        "sha256": "72d390f5567f014f9bdfb8bcd8509a9234af40f91a88ed68f17a886c73fa943b"
+      },
+      "before": {
+        "bytes": 15105,
+        "git_mode": "100644",
+        "sha256": "72d390f5567f014f9bdfb8bcd8509a9234af40f91a88ed68f17a886c73fa943b"
+      },
+      "changed": false,
+      "path": "ERRORS.md",
+      "raw_after_snapshot_ref": {
+        "bytes": 15105,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/after/ERRORS.md",
+        "sha256": "72d390f5567f014f9bdfb8bcd8509a9234af40f91a88ed68f17a886c73fa943b"
+      },
+      "raw_before_snapshot_ref": {
+        "bytes": 15105,
+        "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/before/ERRORS.md",
+        "sha256": "72d390f5567f014f9bdfb8bcd8509a9234af40f91a88ed68f17a886c73fa943b"
+      }
+    }
+  ],
+  "generation_commit": "0dc8b858db754596939adb882d34891149937c54",
+  "generation_consumer_source": "74e432e8a6d0fa55b5f4b02baac8653cfef041ab",
+  "generation_consumer_tree": "835730bd7c60f128e83b945634cc964ecbc56654",
+  "generation_job": 118499216102,
+  "generation_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39383945264",
+  "generation_tree": "567cc883d65ea171d8dccca97953cccec955a48d",
+  "generation_workflow": ".github/workflows/matmul-system-regeneration-full14.yml",
+  "historical_receipt_preserved": {
+    "bytes": 7293,
+    "generation_commit": "d21955eada891f50cb49b0469eed6fed781ec6d0",
+    "generation_job": 118005500805,
+    "generation_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39236125366",
+    "post_adoption_unchanged": true,
+    "pre_adoption_ref": {
+      "bytes": 7293,
+      "path": "/home/alex/Desktop/lexlean-matmul/verification/research-system-regeneration.json",
+      "sha256": "955219361895cba961a4423c825f668f1b34d655198864305b2e7878fa91ca94"
+    },
+    "repository_path": "verification/research-system-regeneration.json",
+    "sdk_source_revision": "829cde60b116e8083d89f10d1b6fb42f2b62f8c7",
+    "sha256": "955219361895cba961a4423c825f668f1b34d655198864305b2e7878fa91ca94"
+  },
+  "input_files_verified": 230,
+  "native_binding": {
+    "adapter_digest": "sha256:59df071a35deca05e62224e43b82d7bc9b5c649f989a3424fd704123633a539e",
+    "application_model_digest": "sha256:306c07fbf8a0e0a2eb886bb2b5f0742e7305d3e0bff48954b8934e9f202d563a",
+    "check": {
+      "entity_count": 0,
+      "model_id": "306c07fbf8a0e0a2eb886bb2b5f0742e7305d3e0bff48954b8934e9f202d563a",
+      "schema": "prismpm/check-result/1",
+      "semantic_id": "3356f53bbe824e9a4bd7be5e4e84cadd73de27732e886be3f61ae6058e3bf3e6",
+      "snapshot_id": "bf29088ffbc08bfc3b43cf4a6e40a4ccf5b899ddf06910ca86ff8a76d0b0ecdf"
+    },
+    "schema": "lexlean-matmul/native-system-input/1",
+    "source_sha256": "f039748ecba5d76dce86678f11bc3a3c5f5617098769d9f3002e9cb3102051f4"
+  },
+  "native_binding_component_copy_ref": {
+    "bytes": 626,
+    "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/matmul-evidence/native-system-input.json",
+    "sha256": "6bebcab0591f9c3b40c4a73df05be06de34f6958b06c8f7ca3adfbe9a18903b2"
+  },
+  "native_binding_original_ref": {
+    "bytes": 626,
+    "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/source-regeneration/native-system-input.json",
+    "sha256": "6bebcab0591f9c3b40c4a73df05be06de34f6958b06c8f7ca3adfbe9a18903b2"
+  },
+  "new6048_projector_prerequisite": {
+    "installed_canonical_binding_receipt": {
+      "bytes": 18474,
+      "path": "/home/alex/Desktop/lexlean-matmul/verification/immutable-sdk-binding.json",
+      "sha256": "57c6ac0a797e5a202da71f0924a5c7c2e69c25f6c94935f426aeb313e76456bc"
+    },
+    "pre_adoption_pin_head": "615b7a17db7d780ec971d7c5379effa4655de488",
+    "pre_adoption_pin_tree": "c7ed269c4901a8ad594e035c141507a774b158d3",
+    "projector_exit": {
+      "bytes": 537,
+      "path": "/tmp/matmul-sdk6048db07-provenance/binding-projector-execution-r1/exit.json",
+      "sha256": "8519ee9ae1338f090259d83e253ca26264ce8bcefaacc3216d889050b66ff786"
+    },
+    "projector_stdout": {
+      "bytes": 1444,
+      "path": "/tmp/matmul-sdk6048db07-provenance/binding-projector-execution-r1/stdout",
+      "sha256": "a7fc5de4816918170a64aa47a43756aa68d90b5d5d4604c8949cce01dc32b449"
+    },
+    "scope": "Actual current6048 canonical pin installation preceded this generated-System adoption. System generation described by this receipt remains D3 source74/f98/sourcef43.",
+    "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:203fbb3769ab565b63d22d27a777adb916e6b13e558f539e95a1dca610870e5a",
+    "sdk_source_revision": "6048db073d8b1bdf026685dfbc42016fb5a00f67",
+    "strict_install_receipt": {
+      "bytes": 3222,
+      "path": "/tmp/matmul-sdk6048db07-provenance/strict-binding-install-receipt-r1.json",
+      "sha256": "66fbae3c86d2309538b1db2f5128fee97bb6d239cbe03181844d96693069a12a"
+    }
+  },
+  "notes": [
+    "Root adopted the exact authenticated original raw System output after original-custody and semantic review. The lockfile and generated reports were already byte-identical and were preserved. Post-copy target, canonical pin and historical receipt checks completed before this record was committed.",
+    "Generator was D3 helper0dc8b858/source74 with f98 publicSDK/sourcef43. Current615/203f/source6048 installation is a separate earlier prerequisite, not the generator identity.",
+    "Only original raw MatmulSystem changed, at two application-model digest leaves. All 31 controls, other semantic nodes and TeX framing were preserved. Adoption copied the authenticated snapshot bytes without manual digest edits or source reconstruction.",
+    "Bootstrap3/PP2101 remains a refusal with successful_fetch=false, followed by six genuine0command statuses. Complete streams/process_group_absent come from original statuses; no elapsed durations or Docker-resource absence are invented.",
+    "All four current target bytes equaled the raw before snapshots immediately before adoption. Existing local modes, current canonical pin and binding, and historical 829 receipt were preserved; unchanged generated outputs were not overwritten.",
+    "Full14 is original source74/f98 component evidence only. Current6048 model maintenance/installed qualification, finalsame-headPR3/protectedmerge/main5/live publication/visual acceptance remain separate."
+  ],
+  "protected_inputs_verified": 226,
+  "qualification": false,
+  "recorded_at": "2026-10-20T08:30:51.037215+00:00",
+  "repository_path": "verification/research-input-recovery-system-regeneration.json",
+  "retained_reviews": {
+    "metadata_admission": {
+      "bytes": 21269,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/terminal-metadata-admission.json",
+      "sha256": "32cdcb5b90c7283e76850a47c48fde9f9097932bb527eb0d5671b3ee5faad994"
+    },
+    "original_custody": {
+      "bytes": 1454,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody.json",
+      "sha256": "ee3f1be81734e071913efcd13c36938d71a1002e37d480e142799793ef3d38f3"
+    },
+    "root_semantic_review": {
+      "bytes": 9764,
+      "path": "/tmp/matmul-sdk6048db07-provenance/root-D3-source-semantic-adoption-review-r1.json",
+      "sha256": "c59f65af6375b1a5d37236bcdd47e7de28a4a378725e84fa0c6f39bdee40ad3d"
+    },
+    "second_original_custody_peer": {
+      "bytes": 13287,
+      "path": "/tmp/current6048-D3-original-custody-independent-review-r1.json",
+      "sha256": "77f4050bb95b249f27e7b585a8f3e0d2f2af02e2e2ca51acc09e8914f8bf3ee2"
+    },
+    "source_adoption_review": {
+      "bytes": 25355,
+      "path": "/tmp/current74-D3-actual-source-semantic-review-r1/review.json",
+      "sha256": "d3505ad6581d3221c5d9c8e232c3b5a44bcda12418f1802ceacd31825d416d65"
+    },
+    "source_component_review": {
+      "bytes": 788079,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/source-component-review.json",
+      "sha256": "7963545c334e2fd454c6309cee176b304571d8b979130af6a60dc413f9273337"
+    }
+  },
+  "run_attempt": 1,
+  "schema": "lexlean-matmul/immutable-sdk-system-regeneration/1",
+  "scope": "authenticated-source-maintenance-only",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:f98ba2c32336acf02f809da3af49bf81ac5c62af1fed03e69576daa93f853f47",
+  "sdk_source_revision": "f43f6778cb13b59601254143594e4e5547e01ff2",
+  "semantic_review": {
+    "actual_changes": [
+      {
+        "after": "sha256:306c07fbf8a0e0a2eb886bb2b5f0742e7305d3e0bff48954b8934e9f202d563a",
+        "before": "sha256:bd710bc0c23f720d83e8dc7e5624c726543b1edff0023f03dab50d7d5b9edba2",
+        "path": [
+          "declarations",
+          19,
+          "body",
+          "fields",
+          1,
+          "value",
+          "fields",
+          1,
+          "value",
+          "value"
+        ]
+      },
+      {
+        "after": "sha256:306c07fbf8a0e0a2eb886bb2b5f0742e7305d3e0bff48954b8934e9f202d563a",
+        "before": "sha256:bd710bc0c23f720d83e8dc7e5624c726543b1edff0023f03dab50d7d5b9edba2",
+        "path": [
+          "declarations",
+          20,
+          "body",
+          "fields",
+          0,
+          "value",
+          "value"
+        ]
+      }
+    ],
+    "after_source_ref": {
+      "bytes": 63611,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/after/src/MatmulSystem.lex.tex",
+      "sha256": "f039748ecba5d76dce86678f11bc3a3c5f5617098769d9f3002e9cb3102051f4"
+    },
+    "all_previous_controls_preserved": true,
+    "before_source_ref": {
+      "bytes": 63611,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/snapshots/before/src/MatmulSystem.lex.tex",
+      "sha256": "336778a6696aed4353dc95e1c88f23da3abbbbcbad24409cd301e4785dc6ab5b"
+    },
+    "controls_after": 31,
+    "controls_before": 31,
+    "other_semantic_nodes_preserved": true,
+    "prologue_preserved": true,
+    "raw_semantic_delta_ref": {
+      "bytes": 6797,
+      "path": "/tmp/current74-D3-actual-source-semantic-review-r1/System-two-leaf-semantic-delta.json",
+      "sha256": "8acef353d4beaea2167b7b21ade6da8a9aa9209968ddabd401db97c7041184cf"
+    },
+    "review_ref": {
+      "bytes": 25355,
+      "path": "/tmp/current74-D3-actual-source-semantic-review-r1/review.json",
+      "sha256": "d3505ad6581d3221c5d9c8e232c3b5a44bcda12418f1802ceacd31825d416d65"
+    },
+    "root_review_ref": {
+      "bytes": 9764,
+      "path": "/tmp/matmul-sdk6048db07-provenance/root-D3-source-semantic-adoption-review-r1.json",
+      "sha256": "c59f65af6375b1a5d37236bcdd47e7de28a4a378725e84fa0c6f39bdee40ad3d"
+    }
+  },
+  "source_closure": {
+    "canonical_rows_sha256": "143d8868a5b07809f3cf1fcfbdb43afbefb08603be13ff0943b6010d1733e679",
+    "files": 230,
+    "immutable_source_blob_review": {
+      "bytes": 9764,
+      "path": "/tmp/matmul-sdk6048db07-provenance/root-D3-source-semantic-adoption-review-r1.json",
+      "sha256": "c59f65af6375b1a5d37236bcdd47e7de28a4a378725e84fa0c6f39bdee40ad3d"
+    },
+    "index_note": "git_blob in original descriptors is the unchanged index blob; generated content is bound by raw afterSHA/snapshot. Root/semantic peer authenticated immutable230 source blobs/modes; this proposal rechecked retained tables/protected226/changed subset.",
+    "original_identity_ref": {
+      "bytes": 664,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/identity.json",
+      "sha256": "e4efff7baf242f5d8be97a5fee0366592ce039fed932c4d6fcd67b694dcc4939"
+    },
+    "protected_files": 226,
+    "raw_after_ref": {
+      "bytes": 54915,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/inputs.after.json",
+      "sha256": "180606d92b0bc58ee366035f2dc824ed19d483a21626712c0dc3175107bb8967"
+    },
+    "raw_before_ref": {
+      "bytes": 54915,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/inputs.before.json",
+      "sha256": "97bb3821f97625520e2dc6cba2b3625f6c041ab99381ea96665ee3a42ba2b6f8"
+    },
+    "raw_input_closure_ref": {
+      "bytes": 266,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/input-closure.json",
+      "sha256": "f9469cc88e38b8a9a9bb7fcea5f38ccdd4edc236ae0bdb7d3ba31fb1235ac127"
+    },
+    "raw_working_tree_after_ref": {
+      "bytes": 18648,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/working-tree.after.json",
+      "sha256": "59bd858d04073c4a7c42105915212fc933947dbfbb25d4ad18d315b3b192fcd5"
+    },
+    "raw_working_tree_before_ref": {
+      "bytes": 18614,
+      "path": "/tmp/matmul-sdk6048db07-provenance/D3-original-terminal-custody-r1/custody/member-data/working-tree.before.json",
+      "sha256": "dabe641dd99cc61e2740f5a9e054f92afbf803c07176b1a19af04ed7cb5d532c"
+    },
+    "working_modes": 230
+  },
+  "source_regeneration_commands_complete": true,
+  "status": "adopted-authenticated-source-output",
+  "working_modes_verified": 230
+}
