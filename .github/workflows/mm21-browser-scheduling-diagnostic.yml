@@ -1,0 +1,29 @@
+name: MM21 same-build browser scheduling diagnostic
+on:
+  push:
+    branches: [ci/mm21-browser-scheduling-b22-2026-10-20]
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    steps:
+      - name: Check out the exact isolated diagnostic revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Build once and capture both complete original production owners
+        run: >-
+          python3 diagnostics/mm21-scheduling/driver.py --execute
+          --output "${{ runner.temp }}/mm21-scheduling-evidence"
+      - name: Retain original owner outcomes and sampled scheduling after either result
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mm21-scheduling-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: ${{ runner.temp }}/mm21-scheduling-evidence
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
