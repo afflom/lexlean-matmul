@@ -1,6 +1,6 @@
 {
   "name": "UOR PrismPM SDK",
-  "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:47d8c7b5d937c4baf9f963e806bf39b23c20d61914815b69164751988c64d0bb",
+  "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:f98ba2c32336acf02f809da3af49bf81ac5c62af1fed03e69576daa93f853f47",
   "containerUser": "root",
   "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
   "workspaceFolder": "${localWorkspaceFolder}",

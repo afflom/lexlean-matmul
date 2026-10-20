@@ -1,28 +1,28 @@
 {
   "schema": "lexlean-matmul/original-sdk-binding-handoff/1",
   "scope": "original-immutable-sdk-transport-canonical-policy-binding-only",
-  "recorded_at": "2026-10-19T23:53:45.773611+00:00",
-  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:47d8c7b5d937c4baf9f963e806bf39b23c20d61914815b69164751988c64d0bb",
-  "sdk_source_revision": "fa204056c9aa0be01129690ad6acd7d0d2e29138",
+  "recorded_at": "2026-10-20T03:42:40.238311+00:00",
+  "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:f98ba2c32336acf02f809da3af49bf81ac5c62af1fed03e69576daa93f853f47",
+  "sdk_source_revision": "f43f6778cb13b59601254143594e4e5547e01ff2",
   "sdk_source_pr": "https://github.com/UOR-Foundation/PrismPM/pull/201",
   "template_revision": "1c7ee5150b65bfadfe8b8b54c0e1051f68b40394",
   "action_reference": "UOR-Foundation/PrismPM/action@03e8dfd0cc9269145850c7be17ac7a3ef8bc3acc",
-  "original_construction_run": "https://github.com/UOR-Foundation/PrismPM/actions/runs/39334882756",
-  "original_transport_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39336615257",
-  "complete_binding_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39336615257",
-  "complete_binding_workflow_revision": "97ca4ab224a38e5ea204c10fd842da376da7eb66",
+  "original_construction_run": "https://github.com/UOR-Foundation/PrismPM/actions/runs/39356643280",
+  "original_transport_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39358773959",
+  "complete_binding_run": "https://github.com/afflom/lexlean-matmul/actions/runs/39358773959",
+  "complete_binding_workflow_revision": "b696f05235d7d8504bd7977bbb503478cd7b4e0a",
   "attempt": 1,
-  "binding_job": 118367924977,
+  "binding_job": 118436311549,
   "binding_artifact": {
-    "id": 12229274317,
-    "byte_length": 94979,
-    "digest": "sha256:5077393b36de43ae163ef7f6d6a264b183a963249cdb05f85bd4d89d7e297412"
+    "id": 12238592426,
+    "byte_length": 94962,
+    "digest": "sha256:b6e9162b44cfae15683642a56f3b4392ec79341d8dac847f76cc30388aecb755"
   },
   "bound_files": [
     {
       "byte_length": 1525,
       "path": ".devcontainer/devcontainer.json",
-      "sha256": "00ce806e79cccc845749ef41cfa5a021c25c4bf67f23528caa1807f67ecc2297"
+      "sha256": "d34be6b33cd5d6d7e880bbfdc5aee5957ead50a715c75d1ac86b932c267f6839"
     },
     {
       "byte_length": 2390,
@@ -42,7 +42,7 @@
     {
       "byte_length": 257573,
       "path": "prismpm.lock",
-      "sha256": "0555bd997cd6e12efd204dd9808cbf37b8d69ba314689eccd0f01400f00d03d9"
+      "sha256": "ff0c6be184fa43640dd7d4929d6c8942599e4a4f478e871ffb3aff882b18b8ce"
     },
     {
       "byte_length": 61754,
@@ -52,7 +52,7 @@
     {
       "byte_length": 1176,
       "path": "template.lock",
-      "sha256": "61f54e6d8a5232bee439997e58b7397738ac2a42e996d4360e85dd03d1454833"
+      "sha256": "79f62c9ae28af6b0f73c6d95ba0cef2f53c9befd5088b42a1fec39392e6a28d5"
     }
   ],
   "installed": true,
@@ -69,18 +69,18 @@
   "native_original_selfchecks": [
     {
       "platform": "linux/amd64",
-      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:6f576795887c816b2ff85d2e2d015544aed8ecd24df2b4588f58ac4ecbf9e007",
-      "original_job": 118341788828,
-      "original_job_url": "https://github.com/UOR-Foundation/PrismPM/actions/runs/39334882756/job/118341788828",
+      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:e0cb7cd73cbcd6de7e3494264117220cd20a059dafa95cbe44e1bb0c0ffdea85",
+      "original_job": 118412872389,
+      "original_job_url": "https://github.com/UOR-Foundation/PrismPM/actions/runs/39356643280/job/118412872389",
       "original_artifact": {
-        "id": 12228713210,
-        "byte_length": 5358516564,
-        "digest": "sha256:b606ef8cf49fd78a58eb443bbb99c6e065d382bad1d63966ff9a40df6bede845"
+        "id": 12237999133,
+        "byte_length": 5358646100,
+        "digest": "sha256:dfc305d2b4dfadcb5a4bd1ec7fabca0eab0c4451c5a27d5122b45fe5a94ff9ae"
       },
       "original_oci_archive": {
         "path": "sdk.oci.tar",
-        "byte_length": 5358321152,
-        "digest": "sha256:25cb23e075bb292027894f6c1b59f21ad842303c2c894ddf82b2514cf68cba78"
+        "byte_length": 5358450688,
+        "digest": "sha256:5ba7bc6937f3e09b4bdea532b95454035a01317bedcdce62df8806e8c753ccf1"
       },
       "native_smoke": {
         "status": 0,
@@ -96,7 +96,7 @@
         {
           "path": "evidence/candidate.json",
           "byte_length": 613,
-          "digest": "sha256:0e959971e0e5cb6e41f09527cbd5066f52a5fd6d1139b0f9748d6d1daaf28700"
+          "digest": "sha256:791c1eba4212b4e8a66bce71434d975f868a2da266060684b4e831573947249a"
         },
         {
           "path": "evidence/cli.json",
@@ -106,22 +106,22 @@
         {
           "path": "evidence/config.json",
           "byte_length": 16501,
-          "digest": "sha256:a87c70b50c25790235a66c23f4d1801e903aa40913ea14f6b06c993de1308b7d"
+          "digest": "sha256:c7242d4076153a15399ee1c50159b35915734faf9bd0b7f4109c549e342e8afc"
         },
         {
           "path": "evidence/digest.txt",
           "byte_length": 72,
-          "digest": "sha256:476b392456ef0e8afc9319bdbc91b9d9becb56729642c1fd66865a427683895e"
+          "digest": "sha256:2703d3062b5d94073b344a3314d1e430e1c2bbce3e86dfd94df8db12dcb35b01"
         },
         {
           "path": "evidence/inventory.json",
           "byte_length": 105263,
-          "digest": "sha256:78b66cc114c1c2fa4a1385d1b52443989be5c0ee5d1b397f03de752ae857560d"
+          "digest": "sha256:be6d43a398ac1eeda6b1ac58132edf66a358a9892a2d992d6d7d7318e968f2a1"
         },
         {
           "path": "evidence/manifest.json",
           "byte_length": 6177,
-          "digest": "sha256:6f576795887c816b2ff85d2e2d015544aed8ecd24df2b4588f58ac4ecbf9e007"
+          "digest": "sha256:e0cb7cd73cbcd6de7e3494264117220cd20a059dafa95cbe44e1bb0c0ffdea85"
         },
         {
           "path": "evidence/model-check.json",
@@ -146,25 +146,25 @@
         "model-check",
         "shadowed-tool-rejected"
       ],
-      "inventory_digest": "sha256:78b66cc114c1c2fa4a1385d1b52443989be5c0ee5d1b397f03de752ae857560d",
-      "public_configuration_digest": "sha256:a87c70b50c25790235a66c23f4d1801e903aa40913ea14f6b06c993de1308b7d",
+      "inventory_digest": "sha256:be6d43a398ac1eeda6b1ac58132edf66a358a9892a2d992d6d7d7318e968f2a1",
+      "public_configuration_digest": "sha256:c7242d4076153a15399ee1c50159b35915734faf9bd0b7f4109c549e342e8afc",
       "public_original_manifest_and_config_equal": true,
       "qualification": false
     },
     {
       "platform": "linux/arm64",
-      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:36b0e822f44eac56c7057dda66ca42e556cccef4928e53683ea39fa856472412",
-      "original_job": 118341788421,
-      "original_job_url": "https://github.com/UOR-Foundation/PrismPM/actions/runs/39334882756/job/118341788421",
+      "image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:68cb4ee7f897f09658114daa7a2b4f4c2dde74e7ae8fdde66d45632d88efb6d9",
+      "original_job": 118412872376,
+      "original_job_url": "https://github.com/UOR-Foundation/PrismPM/actions/runs/39356643280/job/118412872376",
       "original_artifact": {
-        "id": 12228957828,
-        "byte_length": 5332124902,
-        "digest": "sha256:91dabe49ed437a1d559b64b3c6f0bb4cd6aaed383e76b155457321c744a71b6a"
+        "id": 12238003391,
+        "byte_length": 5332252902,
+        "digest": "sha256:f0add9ee37b9e5836a367b1146b44fb83ed10211040721ad8014a03a5e9dfb72"
       },
       "original_oci_archive": {
         "path": "sdk.oci.tar",
-        "byte_length": 5331929600,
-        "digest": "sha256:27d90e02b44d5c3f52aa5087e2cfcba7a06bd820ed71effd849face57109f394"
+        "byte_length": 5332057600,
+        "digest": "sha256:86aa6d00c4ecb3e91b91dc3e0556c70b2f3297bc464281c7ad55817f91788ee4"
       },
       "native_smoke": {
         "status": 0,
@@ -180,7 +180,7 @@
         {
           "path": "evidence/candidate.json",
           "byte_length": 613,
-          "digest": "sha256:190a5d15e89c51875928f3ece3e6742b3a80e895790212b7fa3bda654ea15a57"
+          "digest": "sha256:73e2af2ac4fe71ed75ffab18606b445f4a656c4f765367d85182d44c70d9a876"
         },
         {
           "path": "evidence/cli.json",
@@ -190,22 +190,22 @@
         {
           "path": "evidence/config.json",
           "byte_length": 16502,
-          "digest": "sha256:cf4ab49d646d48aa904e9c2c96109eac07e900550cb8109fbf8281c1cb2f53e2"
+          "digest": "sha256:15f181082d44be28863ef4b912520ea3703ba580ded8ebdfb9274f501e1094d9"
         },
         {
           "path": "evidence/digest.txt",
           "byte_length": 72,
-          "digest": "sha256:f8cef2c1f93d4d7ee850ed3290bf1a9ac4b01f0caba166a3eccb0facba6f3260"
+          "digest": "sha256:9b5d619a40766780ed1430a63b4f6f8ddc770718c10e808872207637a174b68d"
         },
         {
           "path": "evidence/inventory.json",
           "byte_length": 105152,
-          "digest": "sha256:618b43c0f51d99efcf65b9e3c0fc6a879d21dfc9c89b84ee801f4a4f87ea27e6"
+          "digest": "sha256:b825cf035c544bc323add52dc840d78f9ae3262b9fca3879acb63cb51b922c96"
         },
         {
           "path": "evidence/manifest.json",
           "byte_length": 6177,
-          "digest": "sha256:36b0e822f44eac56c7057dda66ca42e556cccef4928e53683ea39fa856472412"
+          "digest": "sha256:68cb4ee7f897f09658114daa7a2b4f4c2dde74e7ae8fdde66d45632d88efb6d9"
         },
         {
           "path": "evidence/model-check.json",
@@ -230,8 +230,8 @@
         "model-check",
         "shadowed-tool-rejected"
       ],
-      "inventory_digest": "sha256:618b43c0f51d99efcf65b9e3c0fc6a879d21dfc9c89b84ee801f4a4f87ea27e6",
-      "public_configuration_digest": "sha256:cf4ab49d646d48aa904e9c2c96109eac07e900550cb8109fbf8281c1cb2f53e2",
+      "inventory_digest": "sha256:b825cf035c544bc323add52dc840d78f9ae3262b9fca3879acb63cb51b922c96",
+      "public_configuration_digest": "sha256:15f181082d44be28863ef4b912520ea3703ba580ded8ebdfb9274f501e1094d9",
       "public_original_manifest_and_config_equal": true,
       "qualification": false
     }
@@ -263,22 +263,22 @@
     "schema": "lexlean-matmul/original-sdk-binding-install/2",
     "qualification": false,
     "installed": true,
-    "source_revision": "fa204056c9aa0be01129690ad6acd7d0d2e29138",
-    "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:47d8c7b5d937c4baf9f963e806bf39b23c20d61914815b69164751988c64d0bb",
+    "source_revision": "f43f6778cb13b59601254143594e4e5547e01ff2",
+    "sdk_image": "ghcr.io/afflom/lexlean-matmul-sdk@sha256:f98ba2c32336acf02f809da3af49bf81ac5c62af1fed03e69576daa93f853f47",
     "template_revision": "1c7ee5150b65bfadfe8b8b54c0e1051f68b40394",
     "action_reference": "UOR-Foundation/PrismPM/action@03e8dfd0cc9269145850c7be17ac7a3ef8bc3acc",
-    "custody_sha256": "078630aa48bdb2905170fedab1d568882d2ba2847fde070d8c8a9d4eb88763a8",
-    "binding_artifact_id": 12229274317,
-    "constructor_run": 39334882756,
+    "custody_sha256": "dc0ca1c0fcc144031da98cdb04cf977e02c61fe65b81ed3009c3160a2c9c6493",
+    "binding_artifact_id": 12238592426,
+    "constructor_run": 39356643280,
     "constructor_attempt": 1,
-    "transport_run": 39336615257,
+    "transport_run": 39358773959,
     "transport_attempt": 1,
-    "archive_sha256": "5077393b36de43ae163ef7f6d6a264b183a963249cdb05f85bd4d89d7e297412",
+    "archive_sha256": "b6e9162b44cfae15683642a56f3b4392ec79341d8dac847f76cc30388aecb755",
     "preflight_before": [
       {
         "path": ".devcontainer/devcontainer.json",
         "bytes": 1525,
-        "sha256": "421f4aa046cab31f545421a0f24f47a561dcc67b0c9efc28b95f415dba13473a"
+        "sha256": "00ce806e79cccc845749ef41cfa5a021c25c4bf67f23528caa1807f67ecc2297"
       },
       {
         "path": ".github/workflows/bootstrap.yml",
@@ -298,7 +298,7 @@
       {
         "path": "prismpm.lock",
         "bytes": 257573,
-        "sha256": "d74a6b6b937029a02c28d0a0137bc771e415acdb9848bea9b4f164f970b8acfd"
+        "sha256": "0555bd997cd6e12efd204dd9808cbf37b8d69ba314689eccd0f01400f00d03d9"
       },
       {
         "path": "standards.lock",
@@ -308,14 +308,14 @@
       {
         "path": "template.lock",
         "bytes": 1176,
-        "sha256": "4e0b8475918c20466f0e79cda17e47e8a1bef02a390b6b356efc02031c7aa40b"
+        "sha256": "61f54e6d8a5232bee439997e58b7397738ac2a42e996d4360e85dd03d1454833"
       }
     ],
     "bound_files": [
       {
         "byte_length": 1525,
         "path": ".devcontainer/devcontainer.json",
-        "sha256": "00ce806e79cccc845749ef41cfa5a021c25c4bf67f23528caa1807f67ecc2297"
+        "sha256": "d34be6b33cd5d6d7e880bbfdc5aee5957ead50a715c75d1ac86b932c267f6839"
       },
       {
         "byte_length": 2390,
@@ -335,7 +335,7 @@
       {
         "byte_length": 257573,
         "path": "prismpm.lock",
-        "sha256": "0555bd997cd6e12efd204dd9808cbf37b8d69ba314689eccd0f01400f00d03d9"
+        "sha256": "ff0c6be184fa43640dd7d4929d6c8942599e4a4f478e871ffb3aff882b18b8ce"
       },
       {
         "byte_length": 61754,
@@ -345,7 +345,7 @@
       {
         "byte_length": 1176,
         "path": "template.lock",
-        "sha256": "61f54e6d8a5232bee439997e58b7397738ac2a42e996d4360e85dd03d1454833"
+        "sha256": "79f62c9ae28af6b0f73c6d95ba0cef2f53c9befd5088b42a1fec39392e6a28d5"
       }
     ],
     "scope": "Exact authenticated canonical files only; no SDK/product/release/Pages qualification."
@@ -355,71 +355,95 @@
     "reviews": [
       {
         "name": "root-custody",
-        "byte_length": 1635,
-        "sha256": "fe93577caf7a00adac5ef6185ca8bcf6491f177de87c0e47e63b0b697d36081c"
+        "byte_length": 6889,
+        "sha256": "d2f5381df79b2003d0c07fe6c19ed54a8c6d6771495c9a872c408d56963929b2"
       },
       {
         "name": "independent-custody",
-        "byte_length": 4298,
-        "sha256": "cf16cbd8a9e6b4db95088930acecf4a9af86bb09e9d2dc126ae4764c528477e0"
+        "byte_length": 5935,
+        "sha256": "2257c9bcb1069570b155d04ea55697fefadd54695286bc3db87eb6f7c2674a3d"
       },
       {
         "name": "canonical-custody",
-        "byte_length": 5817,
-        "sha256": "2e2e61c1c17d97129bf86f52ecddc96dfeb6ae56889516e9aae4640305029051"
+        "byte_length": 2880,
+        "sha256": "f9d9a3fdbf57c9a02557335c75231efbba8425f285e5884c321d008687a6da1f"
       },
       {
         "name": "hosted-constructor-amd64-log-review",
-        "byte_length": 6343,
-        "sha256": "5cdb7a7e3c3443424397c32d0f2412baed243b487b8c56b4b8db364fc7a5edc4"
+        "byte_length": 6369,
+        "sha256": "6253deb533eca35aa24021e5e44d341aa91d698a13c20ae8fc6ee9533db1ab97"
       },
       {
         "name": "hosted-constructor-arm64-log-review",
-        "byte_length": 6347,
-        "sha256": "4feb015495460d6d231f0070d51803339cc4eb3ef9eb0dd82685538387eb56a7"
+        "byte_length": 6373,
+        "sha256": "f520fc267015dd3a9567610c7fe69af222f2293e37cc85aad6c05ae7ef911b12"
       },
       {
         "name": "hosted-transport-amd64-log-review",
-        "byte_length": 7904,
-        "sha256": "d7d6c5891c98492a067e768e527290a68e31dbcc2ea97913fc4af0d78d22696b"
+        "byte_length": 7937,
+        "sha256": "4ecc93039f3d6f625009febb7052635d6a51b50a58cbbf97e6d8a14a16b2660c"
       },
       {
         "name": "hosted-transport-arm64-log-review",
-        "byte_length": 7904,
-        "sha256": "a0b6e7cb60be2af0a44edf67d560c5262cfb8670816170960ca69937d49dbb9c"
+        "byte_length": 7937,
+        "sha256": "2a238b8ca67d6431636a25eda66e4753e1c1bf7835c21e305b20dcc52bcb9fb5"
       },
       {
         "name": "hosted-binding-log-review",
-        "byte_length": 8469,
-        "sha256": "b2df238a73fdcb31665c2e1e816fece5af5fc6f19189e9f7219f0ced3e62a56c"
+        "byte_length": 8502,
+        "sha256": "321b533ed047d56dcea05d43a8fa7fc1fbc557ef1a66e37d7fbce28b0dd70991"
       },
       {
         "name": "strict-dry-run",
         "byte_length": 3223,
-        "sha256": "9216d7b67a4807303daec3048898fdb936474360fff2f0fe0585c4610d5697a9"
+        "sha256": "ce9b8e2145c40dbf0162c4200163d5f8abb6c83102910c66cf35c9f67f84e67d"
       },
       {
         "name": "strict-installation",
         "byte_length": 3222,
-        "sha256": "75eae4ba0260f87e43909cc72a2585d7571110ad582f70a36e864398bf532d3a"
+        "sha256": "45cd773e92c8a41d0c7ad4e6038b9d1fc830bf0db606d61dc1c90bc47c4f4770"
       },
       {
         "name": "reviewed-context",
-        "byte_length": 10218,
-        "sha256": "078630aa48bdb2905170fedab1d568882d2ba2847fde070d8c8a9d4eb88763a8"
+        "byte_length": 11161,
+        "sha256": "dc0ca1c0fcc144031da98cdb04cf977e02c61fe65b81ed3009c3160a2c9c6493"
       }
     ]
   },
+  "source_identity_equivalence": {
+    "scope": "fresh-final-source-emitter-and-adapter-byte-equality-only",
+    "baseline_source_revision": "fa204056c9aa0be01129690ad6acd7d0d2e29138",
+    "source_revision": "f43f6778cb13b59601254143594e4e5547e01ff2",
+    "source_tree": "9cd989611e4b8f87dbe6a810957306bcc2fcb3f8",
+    "registered_input_count": 33,
+    "emitter_digest": "d259f0b1ee428bc52f7484229805d2e9c8b5ca2afac8b6b1a65c740adbac24e8",
+    "adapter_sha256": "59df071a35deca05e62224e43b82d7bc9b5c649f989a3424fd704123633a539e",
+    "fresh_comparison": {
+      "byte_length": 13429,
+      "sha256": "82483d9b8b177686076b66d866c6384e67da0334d04ecfdce0f57c5b464e7160"
+    },
+    "qualification": false,
+    "limitation": "Source identity equality is not public fetch/check, installed SDK qualification or consumer acceptance."
+  },
+  "historical_system_regeneration": {
+    "path": "verification/research-system-regeneration.json",
+    "byte_length": 7293,
+    "sha256": "955219361895cba961a4423c825f668f1b34d655198864305b2e7878fa91ca94",
+    "sdk_source_revision": "829cde60b116e8083d89f10d1b6fb42f2b62f8c7",
+    "scope": "unchanged historical829 source-maintenance only; no new SDK generation claimed"
+  },
   "previous_binding": {
-    "path": "verification/history/immutable-sdk-binding-829cde6.json",
-    "byte_length": 15878,
-    "sha256": "94edf99a411d9baa8bcb34a40366ba42601d6ed1c72b031f71ec268511ccdf3f"
+    "path": "verification/history/immutable-sdk-binding-fa20405.json",
+    "byte_length": 16838,
+    "sha256": "f70a6aa0f6c842140507617c48a2295409b2e9a4a59ddfc673e3d95269402840"
   },
   "notes": [
     "Both original native construction jobs and all three transport/binding jobs completed on their original first attempts; these are custody facts only.",
     "Actual original/public native manifest and configuration bytes, the index and all seven installed canonical output files were rehashed for this projection.",
     "All ten smoke descriptors are retained from each original construction record. Complete original ZIP/OCI archive and smoke verification remains hosted/source-backed in the five actual root-reviewed original job logs; unretained bodies are not claimed inspected locally.",
-    "The byte-exact 829cde binding is preserved as history, including its unchanged previous 6fa history link. No prior source, installed, consumer, main or Pages success is inherited.",
+    "The byte-exact active fa binding is preserved as immediate history, followed by unchanged829 and6fa. No prior source, installed, consumer, main or Pages success is inherited.",
+    "Fresh final-source commit/tree/body evidence preserves all33 emitter inputs, their exact manifest and the Pages adapter. Changed input bytes are refused by this same-identity projector and require a separate SDK-owned model regeneration review.",
+    "The unchanged historical829 System regeneration receipt remains historical. This projection does not claim a new SDK System generation or successful public fetch/check.",
     "This receipt records only actual canonical binding custody and installation. Full source, installed SDK qualification, consumer PR/main gates, protected merge and fresh Pages publication remain independently required."
   ]
 }
