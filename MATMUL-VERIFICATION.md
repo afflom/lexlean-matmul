@@ -409,6 +409,20 @@ exact-SDK comparison and restored three-engine journeys preserve the browser
 pins, deadlines, scenarios, and planted defects; they remain diagnostic evidence
 until the complete acceptance and publication boundary passes.
 
+The production test harness gives each browser check exclusive execution within
+its test binary. At PR head `b22cb5e`, MM-21 measured
+[305 ms in Pages acceptance](https://github.com/afflom/lexlean-matmul/actions/runs/39394094558/job/118532405748)
+and [267 ms on AMD64](https://github.com/afflom/lexlean-matmul/actions/runs/39394094373/job/118532404758)
+against the modeled 250 ms limit under fourfold CPU slowdown.
+[The original ARM64 run](https://github.com/afflom/lexlean-matmul/actions/runs/39394094373/job/118532405579)
+passed the complete acceptance gate with the original parallel harness. These
+observations do not establish a timing cause. Serialization prevents unrelated
+verification browsers from competing during the measurement; the application
+worker, slowdown, threshold, seven scenarios, and all assertions remain intact.
+A failed check still fails its test, and later checks acquire the recovered lock
+so they also run. The harness change alters the verification digest and requires
+fresh complete acceptance evidence.
+
 The containing native browser-system `/2` binds the application model digest,
 generated artifact closure, mandatory controls, locked SPDX oracle, and Pages
 target. Its release gate builds and inspects the native OCI artifact, exports
