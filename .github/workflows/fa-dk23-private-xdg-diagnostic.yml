@@ -1,0 +1,57 @@
+name: fa SDK complete DK23 private XDG diagnostic
+
+on:
+  push:
+    branches: [ci/sdk-fa-dk23-private-xdg-diagnostic-2026-10-20]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        factor: [private-xdg]
+    steps:
+      - name: Check out the actual diagnostic helper revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          path: diagnostic-code
+          persist-credentials: false
+      - name: Check out the exact consumer binding
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 8dfb7cfb3a9a32c20526498450fc020bfc2b6f03
+          path: product
+          persist-credentials: false
+      - name: Check out the original exact SDK source authority
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: UOR-Foundation/PrismPM
+          ref: fa204056c9aa0be01129690ad6acd7d0d2e29138
+          path: sdk-source
+          persist-credentials: false
+      - name: Use the pinned metadata driver Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: 22.23.2
+      - name: Capture the complete original DK23 owner and retire its container
+        run: >-
+          node diagnostic-code/diagnostics/fa-dk23-private-xdg/driver.mjs --execute
+          --source "$GITHUB_WORKSPACE/sdk-source"
+          --consumer "$GITHUB_WORKSPACE/product"
+          --output "$GITHUB_WORKSPACE/dk23-private-xdg-diagnostic-evidence"
+          --factor "${{ matrix.factor }}"
+      - name: Retain original diagnostic bytes even after failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: fa-sdk-amd64-${{ matrix.factor }}-dk23-private-xdg-diagnostic-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: dk23-private-xdg-diagnostic-evidence
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
