@@ -1,0 +1,33 @@
+name: original SDK DK32 model Lake cache diagnostic
+on:
+  push:
+    branches: [ci/sdk-dk32-model-lake-cache-6048db07-2026-10-20]
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [baseline, candidate]
+    steps:
+      - name: Check out the exact isolated diagnostic revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Run every original DK32 file with the original SDK isolation and bounds
+        run: >-
+          python3 diagnostics/dk32-cache/driver.py --execute --mode "${{ matrix.mode }}"
+          --output "${{ runner.temp }}/dk32-${{ matrix.mode }}-evidence"
+      - name: Retain original diagnostic streams and sampled capacity after either outcome
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sdk-dk32-cache-${{ matrix.mode }}-${{ github.run_id }}-a${{ github.run_attempt }}
+          path: ${{ runner.temp }}/dk32-${{ matrix.mode }}-evidence
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
